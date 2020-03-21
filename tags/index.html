@@ -10,7 +10,7 @@
   
   <title>
     
-      Hydrangea (施工中)
+      Tags | Hydrangea (施工中)
     
   </title>
   <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
     <header class="header fixed-header">
   <div class="header-container">
     <a class="home-link" href="/">
-      <div class="logo"></div>
+      <!--div class="logo"></div-->
       <span>Hydrangea (施工中)</span>
     </a>
     <ul class="right-list">
@@ -124,133 +124,31 @@
 </header>
 
     <div id="article-banner">
-  <h2></h2>
-  <p class="post-date">2020-03-19</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
+  <h2>Tags</h2>
+  <p class="post-date">标签检索</p>
 </div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"></section>
-    <!-- Tags START -->
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="nav">none</ol>
+<main class="app-body">
+  <div id="tag-cloud">
     
   </div>
-</aside>
   
-  <!-- Catalog END -->
 </main>
 
 <script>
   (function () {
-    var url = 'http://yoursite.com/tags/index.html';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
+    var url = 'http://yoursite.com/tags/index.html'
+    $('#article-banner').geopattern(url)
     $('.header').removeClass('fixed-header')
 
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
+    var tag = location.hash.replace('#', '')
+    if (tag) {
+      var tagId = "#tag-" + tag;
+      $("html, body").animate({
+        scrollTop: $(tagId).offset().top 
+      }, 400)
+    }
   })();
 </script>
-
-
-
-
-  <script>
-    var gitmentConfig = "kokic";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "",
-        owner: "kokic",
-        repo: "kokic.github.io",
-        oauth: {
-          client_id: "0f87e490e00ee3fd87ef",
-          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  </script>
-
-
-
-
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

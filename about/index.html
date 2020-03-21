@@ -10,7 +10,7 @@
   
   <title>
     
-      Hydrangea (施工中)
+      About | Hydrangea (施工中)
     
   </title>
   <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
     <header class="header fixed-header">
   <div class="header-container">
     <a class="home-link" href="/">
-      <div class="logo"></div>
+      <!--div class="logo"></div-->
       <span>Hydrangea (施工中)</span>
     </a>
     <ul class="right-list">
@@ -124,8 +124,8 @@
 </header>
 
     <div id="article-banner">
-  <h2></h2>
-  <p class="post-date">2020-03-21</p>
+  <h2>About</h2>
+  <p class="post-date">2020-03-21（此处修改了 Hexo 的原布局）</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -139,8 +139,11 @@
 <h3 id="身份"><a class="markdownIt-Anchor" href="#身份"></a> 身份</h3>
 <p>目前自然是学生，以后依旧是学生（雾）。会写一点 code，写的最多的是 <a href="https://www.java.com/" target="_blank" rel="noopener">Java</a> 和 <a href="https://www.cplusplus.com" target="_blank" rel="noopener">C++</a>，其他比较杂的就不说了，不是OIer，<s>可能世界上只有我不是OIer了</s>。</p>
 <h3 id="爱好"><a class="markdownIt-Anchor" href="#爱好"></a> 爱好</h3>
-<p>喜欢美的东西（人之天性），其实无论是谁，在发现事物背后的抽象本质时都会忍不住在心中暗赞一声 wonderful。具体来说，如果别人交给我一份 ugly code，我会可能会花相对较多的时间把它变 elegant（完全不能忍受不空格的 code 以及糟糕的命名）。一般听空灵/纯音/交响，当然也有例外。话说感觉自己技能点全点在一些奇奇怪怪的的领域了。</p>
+<p>喜欢美的东西（人之天性），其实无论是谁，在发现事物背后的抽象本质时都会忍不住在心中暗赞一声 wonderful。具体来说，如果别人交给我一份 ugly code，我会可能会花相对较多的时间把它变 elegant（完全不能忍受不空格的 code 以及糟糕的命名）。偶尔听歌，一般听空灵/纯音/交响，当然也有例外。不怎么玩 game，热门的完全不碰，有时间可能会 minecraft。<s>感觉自己技能点全点在一些奇奇怪怪的的领域了</s>。</p>
 <h3 id="coda"><a class="markdownIt-Anchor" href="#coda"></a> coda</h3>
+<blockquote>
+<p>你看隔壁王叔叔都20岁了还打数理基础，你可千万不能变成他那样。</p>
+</blockquote>
 <p>暂时就这些。</p>
 <h2 id="友链"><a class="markdownIt-Anchor" href="#友链"></a> 友链</h2>
 <ul>
@@ -156,17 +159,6 @@
     <!-- NAV START -->
     
     <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
   </article>
   <!-- Article END -->
   <!-- Catalog START -->
@@ -232,41 +224,6 @@
     })
   })();
 </script>
-
-
-
-
-  <script>
-    var gitmentConfig = "kokic";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "",
-        owner: "kokic",
-        repo: "kokic.github.io",
-        oauth: {
-          client_id: "0f87e490e00ee3fd87ef",
-          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  </script>
-
-
-
-
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
