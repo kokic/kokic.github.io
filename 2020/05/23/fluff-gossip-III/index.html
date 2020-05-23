@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="description">
+  <meta name="keyword" content="">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      闲谈 · 其三 | Hydrangea
+    
+  </title>
+  <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  <!-- partial('_third-party/mathjax') -->
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <!--div class="logo"></div-->
+      <span>Hydrangea</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>闲谈 · 其三</h2>
+  <p class="post-date">2020-05-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><h2 id="types"><a class="markdownIt-Anchor" href="#types"></a> Types</h2>
+<p>在发现我设备里的某本电子书（Shared Source CLI Essentials）存在严重的内容丢失后（Chapter 3. Using Types to Describe Components 的 3.1 - 3.5 都是空白的，应该是 chm 转 pdf 的锅），<br />
+我不得不重新找了一份 chm 格式的。</p>
+<p>以下内容来自《Shared Source CLI Essentials》</p>
+<h5 id="31-types-and-type-systems"><a class="markdownIt-Anchor" href="#31-types-and-type-systems"></a> 3.1. Types and Type Systems</h5>
+<p>（类型与类型系统）</p>
+<p>The notion of a type system can be difficult to define. For most programmers, the old adage, “I can’t tell you what it is, but I know it when I see it” describes their definition of a type system. Intuitively, we know that primitive types, classes, structs, and such are part of a type system, and that languages will enforce certain rules regarding the use of these types. But to actually say, in formal terms, what a type system is and entails is difficult. Nonetheless, most programmers, regardless of their background, will be able to infer some interesting details about the CLI type system from Example 3-1, even if they’re not familiar or comfortable with C#.</p>
+<p>（类型系统的概念可能很难定义。 对于大多数程序员而言，“古谚曰：我没办法告诉你它是什么，但当我看到它时我就懂了”描述了他们对类型系统的定义。显而易见，我们知道原始类型、类、结构等是类型系统的一部分，并且语言将强制执行有关使用这些类型的某些规则。但实际上，很难正式的说类型系统是什么并且涉及什么。尽管如此，大多数程序员，无论其背景如何，都可以从示例 3-1 中推断出一些有关 CLI 类型系统的有趣细节，即使他们对 C# 并不熟悉或喜欢。）</p>
+<p><strong>Example 3-1. The Echo component revisited</strong></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">SampleEcho</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">enum</span> EchoVariation &#123; Louder, Softer, Indistinct &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">struct</span> EchoValue &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> theEcho;</span><br><span class="line">    <span class="keyword">public</span> EchoVariation itsFlavor;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IEchoer</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DoEcho</span>(<span class="params"><span class="keyword">out</span> EchoValue[] resultingEcho</span>)</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Echo</span> : <span class="title">IEchoer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> toEcho = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> echoCount = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> System.Int16 echoRepetitions = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">EchoEventHandler</span>(<span class="params"><span class="keyword">string</span> echoInfo</span>)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">event</span> EchoEventHandler OnEcho;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Echo</span>(<span class="params"><span class="keyword">string</span> initialEcho</span>)</span> &#123;</span><br><span class="line">      toEcho = initialEcho;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> EchoString &#123;</span><br><span class="line">      <span class="keyword">get</span> &#123; <span class="keyword">return</span> toEcho; &#125;</span><br><span class="line">      <span class="keyword">set</span> &#123; toEcho = <span class="keyword">value</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DoEcho</span>(<span class="params"><span class="keyword">out</span> EchoValue[] resultingEcho</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (toEcho == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span>(<span class="keyword">new</span> Exception(<span class="string">"Alas, there is nothing to echo!"</span>));</span><br><span class="line">      &#125;</span><br><span class="line">      resultingEcho = <span class="keyword">new</span> EchoValue[echoRepetitions];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">sbyte</span> i = <span class="number">0</span>; i &lt; echoRepetitions; i++) &#123;</span><br><span class="line">        resultingEcho[i].theEcho = toEcho;</span><br><span class="line">        <span class="keyword">switch</span> (i) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">            resultingEcho[i].itsFlavor = EchoVariation.Louder;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            resultingEcho[i].itsFlavor = EchoVariation.Softer;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">            resultingEcho[i].itsFlavor = EchoVariation.Indistinct;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (OnEcho != <span class="literal">null</span>) &#123;</span><br><span class="line">        OnEcho(System.String.Format(<span class="string">"Echo number &#123;0&#125;"</span>, echoCount));</span><br><span class="line">      &#125;</span><br><span class="line">      echoCount++;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Casual users of C, C++, or Java will find much here that feels familiar and intuitive. For example, the Echo component contains a number of type definitions: the enumerated type EchoVariation, the struct EchoValue, the interface IEchoer, and the class Echo. We can see some fields, some methods, some code and so. This is intuitive and familiar, even if we’ve never put formal definitions to it.</p>
+<p>（普通的 C、C++ 或 Java 使用者会在这里发现很多熟悉和直观的内容。例如，<code>Echo</code>组件包含许多类型定义：枚举类型<code>EchoVariation</code>，结构<code>EchoValue</code>，接口<code>IEchoer</code>和类<code>Echo</code>。 我们可以看到一些字段，一些方法，一些代码等等。尽管我们从未对它进行正式定义，但其中许多都是直观且熟悉的。）</p>
+<h5 id="311-type-object-and-component"><a class="markdownIt-Anchor" href="#311-type-object-and-component"></a> 3.1.1. Type, Object, and Component</h5>
+<p>（类型，对象和组件）<br />
+…</p>
+<p>A type is a specification that describes how a piece of unadorned data will be interpreted within the CLI execution engine. Types provide a way to classify both the shape of data and the ways that operations on that data should be expected to behave. The use of types has proven to be indispensable for the construction of reliable software on a large scale; their use results in a classification system that can be used to automate and enrich most aspects of the programming process, from compilation and linking to ensuring correct runtime behavior.</p>
+<p>（类型是一种描述了如何在 CLI 执行引擎中解释未经修饰的数据的规范。类型提供了一种对数据的形状及应该对数据进行操作的方式进行分类的方法。实践表明，类型的使用对于构建大规模可靠软件是必不可少的。它们的使用产生了一个分类系统，该系统可用于自动化和丰富编程过程的大多数方面，从编译和链接到确保正确的运行时行为。）<br />
+…</p>
+<h5 id="312-type-systems-more-formally-defined"><a class="markdownIt-Anchor" href="#312-type-systems-more-formally-defined"></a> 3.1.2. Type Systems, More Formally Defined</h5>
+<p>The role of the type system in the CLI is twofold: it provides a logically consistent and unchanging conceptual foundation for programmers, and it ensures that programs can be checked for correctness at runtime. This latter role, enforcer of typesafety, helps to prevent tampering, and is an effective way to help ensure a robust, stable, and secure runtime environment. It is absolutely required when building services and applications that combine components from many sources.</p>
+<p>（CLI 中类型系统的作用是双重的：它为程序员提供了逻辑上一致且不变的概念基础，并确保可以在运行时检查程序的正确性。后一个角色是类型安全的执行者，有助于防止篡改，并且是确保可靠，稳定和安全的运行时环境的有效方法。在构建多个来源的组件组合在一起的服务和应用程序时，这是绝对必需的。）</p>
+<p>…</p>
+<p>A system that checks (either statically or at runtime) to make sure that all types are being used correctly, as defined in their type descriptions, is said to be strongly typed. Strongly typed systems avoid erroneous or malicious computation by prohibiting operations that cannot be verified as typesafe; the ECMA specification contains a number of rules that define exactly what this means in the context of the CLI. When a component is JIT-compiled in the CLI’s execution engine, the compiler not only produces executable code, but also performs verification of that code using the rules specified in the ECMA specification. By ensuring that all loaded components are typesafe, the execution engine provides an important guarantee of integrity to component programmers.</p>
+<p>（系统检查（通过静态或运行时）以确保正确使用所有类型（如其类型描述中所定义）的系统被称为强类型。强类型的系统通过禁止无法验证为类型安全的操作来避免错误或恶意的计算；ECMA 规范包含许多规则，这些规则准确定义了 CLI 上下文中的含义。在 CLI 的执行引擎中对组件进行 JIT 编译时，编译器不仅会生成可执行代码，而且还会使用 ECMA 规范中指定的规则执行对该代码的验证。通过确保所有加载的组件都是类型安全的，执行引擎为组件程序员提供了重要的可靠性保证。）</p>
+<p>There are many benefits to using type systems :<br />
+（使用类型系统有很多好处：）</p>
+<ul>
+<li>
+<p>Detecting errors（错误检测）</p>
+<p>This is the most obvious advantage, by which types are used to detect areas of code in which the programmer has inadvertently asked for incorrect behavior taking a method call on a type that doesn’t exist, for example. It is better to detect this kind of error during development than at runtime, since you can rely on tools to do very complete checks.</p>
+<p>（这是最明显的优势，通过使用类型来检测程序员无意间要求错误行为的代码区域（例如，对不存在的类型进行方法调用）。与在运行时相比，最好在开发过程中检测这种错误，因为您可以依靠工具进行非常完整的检查。）</p>
+</li>
+<li>
+<p>Maintenance （维护）</p>
+<p>This is an extension of error detection, in which programmers use typechecking as a powerful tool to support the refactoring of code. Instead of relying on programmer-centric disciplines when changing code to support new features or results, a programmer can simply change a type’s definition and run the compiler. The compiler will find the places where the code is no longer consistent, giving the programmer a well-defined and precise list of what needs to be changed to support the modification. While this technique might arguably fall into the category of slothful engineering practice, it is nonetheless very common.</p>
+<p>（这是错误检测的扩展，程序员在其中将类型检查用作支持代码重构的强大工具。更改代码以支持新功能或新结果时，不必依赖于程序员中心规则，而只需更改类型的定义并运行编译器即可。编译器将查找代码不再一致的位置，从而为程序员提供了良定义的精确列表，列出了需要更改以支持 modification 的内容。尽管可以说这种技术可能属于懒惰的工程实践范畴，但它却非常普遍。）</p>
+</li>
+<li>
+<p>Abstraction （抽象）</p>
+<p>Strongly typed systems can enforce programmer discipline in ways that other tools simply cannot. This is particularly true within object-oriented systems that support inheritance (either interface-based or implementation-based) then a method expects a parameter of type Person, for example, the typechecker enforces that only Persons, and derived types, will be accepted. This in turn gives the programmer a powerful means to differentiate between Persons and other types, such as Lists, Forms, and XmlReaders, making code clearer and more intentional.</p>
+<p>（强类型的系统可以以其他工具根本无法执行的方式强制执行程序员规则。在支持继承（基于接口或基于实现）的面向对象系统中，这尤其如此。例如，当一种方法期望参数类型为<code>Person</code>时，类型检查器将强制只将<code>Person</code>和派生类型作为参数。反过来，这又为程序员提供了一种强有力的手段来区分<code>Person</code>和其他类型，例如<code>Lists</code>、<code>Forms</code>和<code>XmlReaders</code>，从而使代码更清晰，更有针对性。）</p>
+</li>
+<li>
+<p>Documentation （文档）</p>
+<p>Types are also handy when reading programs, since the structure of type declarations helps offer hints regarding their usage and behavior. This sort of documentation is especially useful because, unlike comments, there is no way for it to become outdated or inaccurate.</p>
+<p>（在读取程序时，类型也很方便，因为类型声明的结构有助于提供有关其用法和行为的提示。这种文档特别有用，因为与注释不同，它不会变得过期或不准确。）</p>
+</li>
+<li>
+<p>Efficiency （效率）</p>
+<p>If the type of an argument can be extracted at runtime, then optimizations can be made on that type to increase program speed, reduce memory footprints, or both.</p>
+<p>（如果可以在运行时提取参数的类型，则可以对该类型进行优化以提高程序速度，减少内存占用，或两者兼而有之。）</p>
+</li>
+<li>
+<p>Security （安全）</p>
+<p>A typechecker can enforce a policy that says that types are not to be used in ways which would allow for malicious code to subvert the program or act in other undesirable ways. Some languages may choose to allow programmers to override a strict policy for the purposes of interfacing with code that is not typesafe; in this case, it is important to permit these programmers to make explicit assertions about their intentions, prove that they are authorized to make such assertions, and then include these assertions in the type-checking process.</p>
+<p>（类型检查器可以强制执行一项策略，规定不得以允许恶意代码颠覆程序或以其他不良方式采取行动的方式使用类型。某些语言可能选择允许程序员重写严格的策略，以与非类型安全的代码进行交互。在这种情况下，重要的是允许这些程序员针对其意图进行明确的声明，证明他们有权进行此类声明，然后将这些声明包括在类型检查过程中。）</p>
+</li>
+</ul>
+<p>A strongly typed system can offer all of these benefits, without inconveniencing the programmer in the least.<br />
+（强类型系统可以提供所有这些好处，而不会给程序员带来任何一点的麻烦。）</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#闲谈" >
+    <span class="tag-code">闲谈</span>
+  </a>
+
+  <a href="/tags#计算机" >
+    <span class="tag-code">计算机</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020/04/25/fluff-gossip-II/">
+        <span class="nav-arrow">← </span>
+        
+          闲谈 · 其二
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/07/07/lorem-Ipsum/">
+        
+          Lorem Ipsum
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- No Comment -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#types"><span class="toc-nav-text"> Types</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#31-types-and-type-systems"><span class="toc-nav-text"> 3.1. Types and Type Systems</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#311-type-object-and-component"><span class="toc-nav-text"> 3.1.1. Type, Object, and Component</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#312-type-systems-more-formally-defined"><span class="toc-nav-text"> 3.1.2. Type Systems, More Formally Defined</span></a></li></ol></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2020/05/23/fluff-gossip-III/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2020 Hydrangea | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng" target="_blank" rel="noopener">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
