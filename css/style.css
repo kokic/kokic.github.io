@@ -436,14 +436,20 @@ body td {
 }
 @font-face {
   font-style: normal;
-  font-family: "Meslo LG";
-  src: local("Meslo LG S"), url("../lib/meslo-LG/MesloLGS-Regular.ttf") format("truetype");
+  font-family: "Latin Modern Math";
+  src: local("Latin Modern Math"), url("../lib/fonts/LatinModern-Math.otf") format("truetype");
+}
+@font-face {
+  font-style: normal;
+  font-family: "Inconsolata";
+  src: local("Inconsolata"), url("../lib/fonts/Inconsolata.ttf") format("truetype");
 }
 p strong {
   font-family: monospace;
 }
 p inc {
-  font-family: "Meslo LG";
+  font-family: "Inconsolata";
+  font-size: 15.400000000000002px;
 }
 .scroll {
   margin-top: -1em;
@@ -1504,7 +1510,7 @@ pre {
   border: 1px dotted #666;
   border-radius: 4px;
   font-size: 13px;
-  font-family: "Menlo", "Meslo LG", monospace;
+  font-family: "Inconsolata", monospace;
   line-height: 22px;
   -webkit-border-radius: 4px;
 }
@@ -1517,6 +1523,8 @@ code {
   padding: 0 5px;
   border: 1px dotted #666;
   border-radius: 2px;
+  font-family: "Inconsolata", monospace;
+  font-size: 15.400000000000002px;
   -webkit-border-radius: 2px;
 }
 .highlight {
@@ -1525,7 +1533,7 @@ code {
   padding: 10px 15px;
   border-radius: 4px;
   background: #fafafa;
-  font-family: "Menlo", "Meslo LG", monospace;
+  font-family: "Inconsolata", monospace;
   -webkit-border-radius: 4px;
 }
 .highlight figcaption {
@@ -1582,4 +1590,5 @@ code {
 }
 .highlight .line {
   height: 22px;
+  font-size: 15.400000000000002px;
 }
