@@ -67,7 +67,7 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/07-07-lorem-ipsum.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/12-05-rakugaki-1.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2020/09-13-the-big-picture-and-development.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -161,7 +161,7 @@ $$net\;mass=\lim\sum(\text{inﬁnitesimals of }zero\;mass)$$
 <p>“net mass”是指考虑 inﬁnitesimals 的和的极限，例如 “$\mathrm{d}x\;\mathrm{d}y$”，人们可以认为它具有“zero mass”</p>
 <h2 id="§1-5-坐标变换的影响"><a href="#§1-5-坐标变换的影响" class="headerlink" title="§1.5. 坐标变换的影响"></a>§1.5. 坐标变换的影响</h2><p>正如单变量微积分一样，在更一般的空间上积分的计算可以通过适当的坐标变换来简化. 任何 [指的是连续可微的] 坐标的变化都会在被积函数中产生一个由 Jacobian 给出的新因子.  这个因子由 Jacobian 构成，即偏导数矩阵的行列式，对于我们假设的高中生来说，这似乎有点神秘，因为他只知道单变量微积分中的坐标变换.  另一方面，Jacobian 矩阵的样子可以用如下的计算方式来定义： </p>
 <h3 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h3><p>令 $U,V\sube\mathbb{R}^2$ 是 $\mathbb{R}^2$ 的开子集，且 $$U\ni(s,t)\mapsto(x,y)=(f(s,t),g(s,t))\in V$$ 一种连续可微的坐标变换形如 Jacobian<br>$$J\overset{\text{def}}{=}\text{det}\begin{pmatrix} \frac{\partial f}{\partial s} &amp; \frac{\partial f}{\partial t} \\\\ \frac{\partial g}{\partial s} &amp; \frac{\partial g}{\partial t} \end{pmatrix}$$ ——可被认为是 $U$ 上的一个连续实值函数——在整个 $U$ 上都不为零. 然后对任意连续实值函数 $\phi:U\to\R,\psi:V\to\R$ 有 $\psi(f(s,t),g(s,t))=\phi(s,t)$，上述坐标变换对 $V$ 上 $\psi$ 积分计算的影响可能如下：<br>$$\int_V\psi\mathrm{d}x\mathrm{d}y=\int_U\phi\cdot J\mathrm{d}s\mathrm{d}t$$</p>
-<h3 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h3><p>在第六步的情况下，坐标变化对“inﬁnitesimals” $\mathrm{d}x;\mathrm{d}y$ 和 $\mathrm{d}s\mathrm{d}t$ 的影响可以理解为以下内容： 第一，一个定域到 $U$ 点的一个非常小的开邻域，在这个邻域上，$f$ 和 $g$ 的各种偏导数是粗略恒定的，这意味着由 $f$ 和 $g$ 确定的坐标变化大致是线性的. 那么这种线性变换对区域的影响——即在第五步的语言中，用线性变换的行列式乘以最小的球面平行四边形的“masses”.<br>事实上，为了验证这一点，我们观察到，在可能的前后组合旋转后 [这显然不影响此类面积的计算]，可以假设所考虑的平行四边形的一个侧面是 $s$ 轴上的一条线段，其左端点等于原点 $(0,0)$，此外，线性变换可以写成形式的完全扩张和幂次线性变换的组合<br>$$(s,t)\mapsto(a\cdot s, b\cdot t);\qquad(s,t)\mapsto(s+c\cdot t,t)$$</p>
+<h3 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h3><p>在第六步的情况下，坐标变化对“inﬁnitesimals” $\mathrm{d}x\;\mathrm{d}y$ 和 $\mathrm{d}s\;\mathrm{d}t$ 的影响可以理解为以下内容： 第一，一个定域到 $U$ 点的一个非常小的开邻域，在这个邻域上，$f$ 和 $g$ 的各种偏导数是粗略恒定的，这意味着由 $f$ 和 $g$ 确定的坐标变化大致是线性的. 那么这种线性变换对区域的影响——即在第五步的语言中，用线性变换的行列式乘以最小的球面平行四边形的“masses”.<br>事实上，为了验证这一点，我们观察到，在可能的前后组合旋转后 [这显然不影响此类面积的计算]，可以假设所考虑的平行四边形的一个侧面是 $s$ 轴上的一条线段，其左端点等于原点 $(0,0)$，此外，线性变换可以写成形式的完全扩张和幂次线性变换的组合<br>$$(s,t)\mapsto(a\cdot s, b\cdot t);\qquad(s,t)\mapsto(s+c\cdot t,t)$$</p>
 <p>其中 $a,b,c\in\R$ 且 $ab\neq0$，另一方面，在这种“上三角”线性变换的情况下，线性变换对所考虑的平行四边形面积的影响在高中平面几何水平上是一种简单的计算. </p>
 <h2 id="§1-6-从平面笛卡尔坐标到极坐标的通道"><a href="#§1-6-从平面笛卡尔坐标到极坐标的通道" class="headerlink" title="§1.6. 从平面笛卡尔坐标到极坐标的通道"></a>§1.6. 从平面笛卡尔坐标到极坐标的通道</h2><p>一旦步骤五、六和七“无害”的概述被认同，我们就可以进行下一步操作： </p>
 <h3 id="第八步"><a href="#第八步" class="headerlink" title="第八步"></a>第八步</h3><p>将第六步应用于第四步的积分，在欧氏平面上负 $x$ 轴的补 $\R^2\backslash(\R_{\le0}\times\{0\})$ 上对坐标变换进行积分</p>
@@ -228,7 +228,7 @@ $$\begin{aligned} \displaystyle\bigg(\int_{-\infty}^\infty e^{-x^{2}}\mathrm{d}x
     Copyright &copy;
     
     
-    2017-2020
+    2017-2021
     Hydrangea
   </div>
   <div class="footer-right">

@@ -168,6 +168,20 @@
 <p>而对于多个集合，则需借助一些语言自身的特性（这里用到了 <code>eval</code> 用以执行字符串形式的 js 代码，但并不是必要的）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function prod_cartesian(...rest) &#123;</span><br><span class="line">  return arguments.length &#x3D;&#x3D; 1 ? arguments[0] : eval(((index, tuple, len) &#x3D;&gt; &#123;</span><br><span class="line">    while (++index &lt; len) tuple +&#x3D; &#96;, \$\&#123;x_$&#123;index&#125;\&#125;&#96;;</span><br><span class="line">    var maps &#x3D; &#96;arguments[$&#123;--index&#125;].map(x_$&#123;index&#125; &#x3D;&gt; \&#96;($&#123;tuple&#125;)\&#96;)&#96;;</span><br><span class="line">    while (--index &gt; -1) maps &#x3D; &#96;arguments[$&#123;index&#125;].flatMap(x_$&#123;index&#125; &#x3D;&gt; $&#123;maps&#125;)&#96;;</span><br><span class="line">    return maps;</span><br><span class="line">  &#125;)(0, &quot;\$\&#123;x_0\&#125;&quot;, arguments.length));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>但是，不难发现，通过递归的方式，即</p>
+<center>$A\times B\times C\overset{\text{def}}{=}(A\times B)\times C $</center>
+<center><small>以 $n=3$ 为例，相应的有序 3 元组（3-tuple）为：</small></center>
+<center>$(a, b, c)\overset{\text{def}}{=}((a,b),c)$</center>
+也即
+<center><code>prod_cartesian(A, B, C)</code></center>
+<center>$\darr$</center>
+<center><code>prod_cartesian(prod_cartesian(A, B), C)</code></center>
+来实现一般 Cartesian 积是更符合数学风格的，对程序生成的结果中多余圆括号（parentheses）的处理，无非是一些常规的正则
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prod_cartesian(prod_cartesian(A, B), C)</span><br><span class="line">  .map(x &#x3D;&gt; x.replace(&#x2F;\(+&#x2F;g, &quot;(&quot;).replace(&#x2F;\)\,&#x2F;g, &quot;,&quot;));</span><br></pre></td></tr></table></figure>
+
+
+
+
 <h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><p>设 $S$ 是一个非空集合，将映射 $S^2\to S$ 称为 $S$ 的合成，具体而言，$S$ 上的合成是将 $(a,b)\in S^2$ 映为 $t\in S$. 合成作用在 $(a,b)$ 上得到 $t$ 常记为 $a\cdot b=t$，这里的 $\cdot$ 并非是常规意义上的数的乘法.<br>合成的结合律是指 $\forall a,b,c\in S,(a\cdot b)\cdot c=a\cdot(b\cdot c)$，合成的交换律是指 $\forall a,b\in S,a\cdot b=b\cdot a$，自然，结合律是比交换律更基础的性质，这一点从函数的复合上可以看出.<br>设 $A$ 是一个非空集合，$a\in A$，$f$ 和 $g$ 均为 $A\to A$ 的函数，$g\cdot f$ 表示复合映射 $a\mapsto g(f(a))$，设 $h$ 也是一个 $A\to A$ 的函数，函数的复合满足结合律，也即 $(h\cdot g)\cdot f=h\cdot(g\cdot f)$. </p>
 <h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序-2"></a>程序-2</h3><p>基于此，我们可以在 javascript 中定义 <inc>compose</inc> 方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;  compose :: func -&gt; func -&gt; a -&gt; a</span><br><span class="line">var compose &#x3D; f &#x3D;&gt; g &#x3D;&gt; x &#x3D;&gt; f(g(x));</span><br></pre></td></tr></table></figure>
@@ -246,7 +260,7 @@
     Copyright &copy;
     
     
-    2017-2020
+    2017-2021
     Hydrangea
   </div>
   <div class="footer-right">
