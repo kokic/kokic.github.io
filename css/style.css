@@ -319,13 +319,14 @@
 body h1,
 body .h1 {
   display: block;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   color: #2bbc8a;
   letter-spacing: 0.01em;
-  font-weight: 700;
+  font-weight: 100;
   font-style: normal;
-  font-size: 1.5em;
+  font-size: 1.8em;
+  font-family: "Marcellus-SC";
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -338,13 +339,14 @@ body .h2 {
   color: #383838;
   text-transform: none;
   letter-spacing: normal;
-  font-weight: bold;
+  font-weight: 100;
+  font-family: "Marcellus-SC", "Noto Serif SC";
   font-size: 1rem;
 }
 body h3 {
   color: #383838;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 100;
   font-size: 0.9rem;
 }
 body h4,
@@ -353,7 +355,7 @@ body h6 {
   display: inline;
   text-decoration: none;
   color: #8c8c8c;
-  font-weight: bold;
+  font-weight: 100;
   font-size: 0.9rem;
 }
 body h3,
@@ -444,6 +446,16 @@ body td {
   font-family: "Inconsolata";
   src: local("Inconsolata"), url("../lib/fonts/Inconsolata.ttf") format("truetype");
 }
+@font-face {
+  font-style: normal;
+  font-family: "Lora-Regular";
+  src: local("Lora-Regular"), url("../lib/fonts/Lora-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-style: normal;
+  font-family: "Marcellus-SC";
+  src: local("Marcellus-SC"), url("../lib/fonts/Marcellus-SC.ttf") format("truetype");
+}
 p strong {
   font-family: monospace;
 }
@@ -477,7 +489,7 @@ body {
   font-display: swap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Noto Serif SC";
+  font-family: "Lora-Regular", "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -506,6 +518,7 @@ body {
 .content a {
   color: #383838;
   text-decoration: none;
+  font-family: "Marcellus-SC";
   background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
   background-position: bottom;
   background-size: 100% 6px;
@@ -595,10 +608,11 @@ body {
   margin-bottom: 0;
   color: #383838;
   letter-spacing: 0.01em;
-  font-weight: 700;
+  font-weight: 100;
   font-style: normal;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 2rem;
+  font-family: "Marcellus-SC";
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -606,6 +620,7 @@ body {
   background: none;
   color: inherit;
   text-decoration: none;
+  font-family: "Marcellus-SC";
 }
 #header #logo {
   display: inline-block;
@@ -1403,7 +1418,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 11.200000000000001px;
-  font-family: "Noto Serif SC";
+  font-family: "Lora-Regular", "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
