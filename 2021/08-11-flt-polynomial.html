@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>幂的轮换和下界</title>
+    <title>多项式的费马大定理</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-04-peter-scholze-ineq.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-14-continued-frac77.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2021/07-11-co-floor-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-04-peter-scholze-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +95,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        幂的轮换和下界
+        多项式的费马大定理
     </h1>
 
 
@@ -107,7 +107,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-07-22T16:00:00.000Z" itemprop="datePublished">2021-07-23</time>
+        <time datetime="2021-08-10T16:00:00.000Z" itemprop="datePublished">2021-08-11</time>
         
       
     </div>
@@ -123,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+        <a class="tag-link-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
     </div>
 
 
@@ -132,10 +132,10 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>求最大的常数 $k$ 使得对任意正实数 $x,y,z$ 都有 $$x^y+y^z+z^x\gt k$$</p>
-<p>实际上只要证明对任意正实数 $x,y$ 有 $x^y+y^x\gt1$ 即可</p>
-<p>只需考虑 $x,y$ 均小于 $1$ 的情况，取变换<br>$$(x,y)\longmapsto\left(\dfrac{1}{1+a},\dfrac{1}{1+b}\right)$$<br>此时有 $a\gt0,b\gt0$，于是得到<br>$$\begin{aligned}x^y+y^x&amp;=\left(\dfrac{1}{1+a}\right)^{(1+b)^{-1}}+\left(\dfrac{1}{1+b}\right)^{(1+a)^{-1}}\\ &amp;=\dfrac{1}{(1+a)^{(1+b)^{-1}}}+\dfrac{1}{(1+b)^{(1+a)^{-1}}}\\ &amp;\ge\dfrac{1}{1+\dfrac{a}{1+b}}+\dfrac{1}{1+\dfrac{b}{1+a}}\\ &amp;=1+\dfrac{1}{1+a+b}\\ &amp;\gt1\end{aligned}$$ 其中第一个不等号利用了 Bernoulli 不等式，证完.</p>
-<p>考虑原命题，不妨假设 $y=\max\{x,y,z\}$，于是 $$x^y+y^z\ge x^y+x^z\gt x^z$$ 这立即推出 $x^y+y^z+z^x\gt x^y+y^x\gt1$，证完.</p>
+    <p>证明：方程 $[f(x)]^n+[g(x)]^n=[h(x)]^n$ 在整数 $n\ge3$ 时无互素的实多项式解.</p>
+<p>方便起见，临时地记 $[f(x)]^n\cdot f^{\prime}(x)$ 为 $\mathfrak{d}(f,n)$.<br>两边求导，得 $$\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n-1)$$ 也即 $$\mathfrak{d}(f,n)+f(x)\mathfrak{d}(g,n-1)=f(x)\mathfrak{d}(h,n-1) \\ g(x)\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n)=g(x)\mathfrak{d}(h,n-1) \\ h(x)\mathfrak{d}(f,n-1)+h(x)\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n)$$ 利用方程依次消去 $[f(x)]^n,[g(x)]^n,[h(x)]^n$ 整理得<br>$$\mathfrak{r}(g,f)=\mathfrak{r}(h,f) \\ \mathfrak{r}(f,g)=\mathfrak{r}(h,g) \\ \mathfrak{r}(f,h)=-\mathfrak{r}(g,h)$$ 其中 $\mathfrak{r}(g,f)$ 暂记 $[g^\prime(x)f(x)-f^\prime(x)g(x)]\cdot[g(x)]^{n-1}$.</p>
+<p>由互素立得 $$[f(x)]^{n-1}\,|\,g^\prime(x)h(x)-h^\prime(x)g(x) \\ [g(x)]^{n-1}\,|\,h^\prime(x)f(x)-f^\prime(x)h(x) \\ [h(x)]^{n-1}\,|\,f^\prime(x)g(x)-g^\prime(x)f(x)$$ 且知整除号右端均不为零. </p>
+<p>不妨设 $\deg f(x)=\max\deg\big\{f(x),g(x),h(x)\big\}$，有 $$\begin{aligned}\deg\,[f(x)]^{n-1}&amp;=(n-1)\deg f(x) \\ &amp;\le\deg\big(g^\prime(x)h(x)-h^\prime(x)g(x)\big) \\ &amp;\le\deg\big(g^\prime(x)h(x)\big) \\ &amp;=\deg g^\prime(x)+\deg h(x) \\ &amp;\le2\deg f(x)-1\\ &amp;\lt2\deg f(x) \end{aligned}$$ 故 $n-1\lt2,n\lt3$，证完.</p>
 
   </div>
 </article>

@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>幂的轮换和下界</title>
+    <title>Scholze 不等式</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-04-peter-scholze-ineq.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-11-flt-polynomial.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2021/07-11-co-floor-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/07-23-inf-abc-powers-rots.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +95,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        幂的轮换和下界
+        Scholze 不等式
     </h1>
 
 
@@ -107,7 +107,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-07-22T16:00:00.000Z" itemprop="datePublished">2021-07-23</time>
+        <time datetime="2021-08-03T16:00:00.000Z" itemprop="datePublished">2021-08-04</time>
         
       
     </div>
@@ -123,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>, <a class="tag-link-link" href="/tags/%E5%BD%BC%E5%BE%97%C2%B7%E8%88%92%E5%B0%94%E8%8C%A8/" rel="tag">彼得·舒尔茨</a>
     </div>
 
 
@@ -132,10 +132,14 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>求最大的常数 $k$ 使得对任意正实数 $x,y,z$ 都有 $$x^y+y^z+z^x\gt k$$</p>
-<p>实际上只要证明对任意正实数 $x,y$ 有 $x^y+y^x\gt1$ 即可</p>
-<p>只需考虑 $x,y$ 均小于 $1$ 的情况，取变换<br>$$(x,y)\longmapsto\left(\dfrac{1}{1+a},\dfrac{1}{1+b}\right)$$<br>此时有 $a\gt0,b\gt0$，于是得到<br>$$\begin{aligned}x^y+y^x&amp;=\left(\dfrac{1}{1+a}\right)^{(1+b)^{-1}}+\left(\dfrac{1}{1+b}\right)^{(1+a)^{-1}}\\ &amp;=\dfrac{1}{(1+a)^{(1+b)^{-1}}}+\dfrac{1}{(1+b)^{(1+a)^{-1}}}\\ &amp;\ge\dfrac{1}{1+\dfrac{a}{1+b}}+\dfrac{1}{1+\dfrac{b}{1+a}}\\ &amp;=1+\dfrac{1}{1+a+b}\\ &amp;\gt1\end{aligned}$$ 其中第一个不等号利用了 Bernoulli 不等式，证完.</p>
-<p>考虑原命题，不妨假设 $y=\max\{x,y,z\}$，于是 $$x^y+y^z\ge x^y+x^z\gt x^z$$ 这立即推出 $x^y+y^z+z^x\gt x^y+y^x\gt1$，证完.</p>
+    <p>Peter Scholze 在 Lectures on Condensed Mathematics 中使用了如下结果：</p>
+<p>对任意正实数 $x_1,x_2$ 存在正常数 $C$ 使得<br>$$\|\ell(x_1+x_2)-\ell(x_1)-\ell(x_2)\|\le C(\| x_1\|+\|x_2\|)$$ 成立，其中 $\ell:x\mapsto x\log|x|$.</p>
+<p>如果考虑 $\|\cdot\|$ 为绝对值 $|\cdot|$，则由初等方法便可证明 $C=\log2$，下面给出一种朴素的证明.</p>
+<p>由对称性，可设 $x_1,x_2$ 中的一者为定值且大于零，故令<br>$$f(x)=\dfrac{|\ell(x+c)-\ell(x)-\ell(c)|}{|x|+c}$$</p>
+<p>i. 若 $x\in(0,+\infty)$，$f^\prime(x)=\dfrac{c\log\dfrac{c}{x}}{(c+x)^2}$，即知<br>$$f(x)\le f(c)=\log2$$</p>
+<p>ii. 若 $x\in(-c,0)$，$f^\prime(x)=\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，于是<br>$$f(x)\le f(\phi^{-2}c)=\log\phi$$</p>
+<p>iii. 若 $x\in(-\infty,-c)$，$f^\prime(x)=-\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，<br>$$f(x)\le f(-\phi^{2}c)=\log\phi$$</p>
+<p>其中 $\phi=\dfrac{1+\sqrt5}{2}$ 为黄金分割，证完.</p>
 
   </div>
 </article>
