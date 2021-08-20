@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>七夕与旧事与连分数</title>
+    <title>Chowla 定理</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-20-zhihu-q-427172083.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2021/08-11-flt-polynomial.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-14-continued-frac77.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +93,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        七夕与旧事与连分数
+        Chowla 定理
     </h1>
 
 
@@ -107,7 +105,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-08-13T16:00:00.000Z" itemprop="datePublished">2021-08-14</time>
+        <time datetime="2021-08-19T16:00:00.000Z" itemprop="datePublished">2021-08-20</time>
         
       
     </div>
@@ -123,7 +121,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>, <a class="tag-link-link" href="/tags/%E8%BF%9E%E5%88%86%E6%95%B0/" rel="tag">连分数</a>
+        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>, <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>
     </div>
 
 
@@ -132,18 +130,16 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>考虑正整数集编码的序列 $$\Z_{\ge1}\longleftrightarrow\bigg\{a,a+\dfrac{b}{a},a+\dfrac{b}{a+\dfrac{b}{a}},\cdots\bigg\}$$<br>我们断言 $\underbrace{a+\dfrac{b}{a+\dfrac{b}{a+\ddots}}}_{n}=\dfrac{\sigma(n)}{\sigma(n-1)}$，其中 $\sigma(n)=\displaystyle\sum_{0\le k\le\lfloor n/2\rfloor}{n-k\choose k}a^{n-2k}b^k$</p>
-<p>通过归纳法，只需证明 $n\implies n+1$ 成立. 由<br>$$\begin{aligned}\underbrace{a+\dfrac{b}{a+\dfrac{b}{a+\ddots}}}_{n+1}&amp;=a+\dfrac{b}{\underbrace{a+\dfrac{b}{a+\ddots}}_{n}} \\ &amp;=\dfrac{a\cdot\sigma(n)+b\cdot\sigma(n-1)}{\sigma(n)} \end{aligned}$$ 只要证明 $\sigma(n+1)=a\cdot\sigma(n)+b\cdot\sigma(n-1)$，即</p>
-<div class="scroll">
-$$\sum_{0\le k\le\lfloor (n+1)/2\rfloor}{n+1-k\choose k}a^{n+1-2k}b^k=\sum_{0\le k\le\lfloor n/2\rfloor}{n-k\choose k}a^{n+1-2k}b^k+\sum_{0\le k\le\lfloor (n-1)/2\rfloor}{n-1-k\choose k}a^{n-1-2k}b^{k+1}$$
-</div>
+    <p>图像引用自 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/427172083/answer/2072240238">知乎回答</a>.</p>
+<p><img alt="chowla theorem" 
+  src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BTheorem+%28I.+Chowla%29%7D%5Ctext%7B+let+m%7D%5Cge2%2C%5Ctext%7Band+let+%7DA%2CB%5Ctext%7B+be+nonempty+subsets+of+%7D%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%2C%5C%5C+%5Ctext%7Bif+%7D0%5Cin+B%5Ctext%7B+and+%7D%28b%2Cm%29%3D1%5C%3B%5Cforall%5C%3Bb%5Cin+B%5Cbackslash%5C%7B0%5C%7D%2C%5Ctext%7Bthen+%7D%7CA%2BB%7C%5Cge%5Cmin%28m%2C%7CA%7C%2B%7CB%7C-1%29"/></p>
+<img alt="chowla theorem" src="https://www.zhihu.com/equation?tex=%5Ctextit%7BProof.+%7D%5Ctext%7Bclearly%2C+we+can+assume+that+%7D%7CA%7C%2B%7CB%7C%5Cle+m%2C%5Ctext%7Band+so+%7D%5Cmin%28m%2C+%7CA%7C%2B%7CB%7C-1%29%5Cle+m-1%2C%5C%5C%5Ctext%7Bif+the+theorem+is+false%2C+there+exist+sets+%7DA%2CB%5Csubset%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%5Ctext%7B+s.t.+%7D+%7CA%7C%2C%7CB%7C%5Cge2%2C%5Ctext%7Band+%7D+%5C%5C%7CA%2BB%7C%5Clt%7CA%7C%2B%7CB%7C-1+%5C%5C+%5Ctext%7Bin+particular%2C+%7DA%5Cneq%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%2C%5Ctext%7Bchoose+the+pair+%7D%28A%2CB%29%5Ctext%7B+so+that+%7D%7CB%7C%5Ctext%7B+is+minimal%2C+%7D%5C%5C%5Ctext%7Bthere+exists+an+element+%7Db%5E%5Cprime%5Cin+B%5Cbackslash%5C%7B0%5C%7D%2C%5Ctext%7Bif+%7Da%2Bb%5E%5Cprime%5Cin+A%5C%3B%5Cforall%5C%3B+a%5Cin+A%2C%5Ctext%7Bthen+%7Da%2Btb%5Cin+A%5C%3B%5Cforall%5C%3Bt%5Cin%5Cmathbb%7BN%7D%2C%5Ctext%7Bso%7D+%5C%5C+%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%3D%5C%7Ba%2Btb%5E%5Cprime%3At%5Cin%5B0%2Cm-1%5D%5C%7D%5Csubseteq+A%5Csubseteq+%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D+%5C%5C+%5Ctext%7Bwhich+is+false.+therefore+there+exists+an+element+%7De%5Cin+A%5Ctext%7B+s.t.+%7De%2Bb%5E%5Cprime%5Cnotin+A%2C%5Ctext%7Bobviously+%7D%5C%5C+A%5C%3B%5Ccup%5C%3B%5C%7Bb%2Be%3Ab%5Cin+B%5C%7D%2BB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%5Csubseteq+A%2BB+%5C%5C++%5Ctext%7Band+so%2C+%7D%7CA%5C%3B%5Ccup%5C%3B%5C%7Bb%2Be%3Ab%5Cin+B%5C%7D%2BB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%7C%5Cle%7CA%2BB%7C%5Clt%7CA%7C%2B%7CB%7C-1+%5C%5C+%5Ctext%7Bsince+%7De%5Cin+A%2C0%5Cin+B%2C%5Ctext%7Btherefore+%7D+%7CB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%7C%5Clt%7CB%7C%2C%5Ctext%7Bwhich+contradicts%7D%5Cmin%7CB%7C."/>
 
-<p>此处只考虑 $n$ 为偶数，奇数的情形是相仿的，注意到此时 $\left\lfloor(n+1)/2\right\rfloor=n/2,\left\lfloor(n-1)/2\right\rfloor=n/2-1$，将同类项合并，由 Pascal 恒等式知 $\displaystyle{n+1-k\choose k}-{n-k\choose k}={n-k\choose k-1}$，又由哑指标变换<br>$$\begin{aligned}\text{rhs}_2&amp;=\sum_{0\le k\le n/2-1}{n-1-k\choose k}a^{n-1-2k}b^{k+1} \\ &amp;=\sum_{0\le k-1\le n/2-1}{n-k\choose k-1}a^{n+1-2k}b^{k} \\ &amp;= \sum_{1\le k\le \lfloor n/2\rfloor}{n-k\choose k-1}a^{n+1-2k}b^{k}\end{aligned}$$ 由此得到左端，证完.</p>
+<p>注：此定理与 Cauchy-Davenport 定理均为加性数论、加性组合中的经典结果，相关内容可参考任意一本此领域的专著.</p>
 <hr>
-<p><font color=grey>2021-08-17 补充</font></p>
-<p>根据已知的结果 $\sigma(n+1)=a\cdot\sigma(n)+b\cdot\sigma(n-1)$，可以由特征方程 $x^2-ax-b$ 解得 $\sigma(n)$ 的解析形式.<br>$$\sigma(n)=\dfrac{1}{2^{n+1}}(\alpha_1\zeta_1^n+\alpha_2\zeta_2^n)$$ 其中 $\alpha_1=1+\dfrac{a}{\sqrt\Delta},\zeta_1=a+\sqrt\Delta,\Delta=a^2+4b$, 而 $\alpha_2$ 与 $\zeta_2$ 取前与之对应者共轭.</p>
-<p>因而可定义 $$\Lambda(n)=\dfrac{\sigma(n)}{\sigma(n-1)}=\dfrac{1}{2}\cdot\dfrac{\alpha_1\zeta_1^n+\alpha_2\zeta_2^n}{\alpha_1\zeta_1^{n-1}+\alpha_2\zeta_2^{n-1}}$$ 经过较冗长的整理后可得 $$2\Lambda(N)=a+\sqrt{\Delta}\ell\left(\left[\ell(a/\sqrt\Delta)\right]^N\right)$$ 其中 $\ell(x)=\begin{pmatrix}1 &amp;\;\;\,1 \\ 1 &amp; -1\end{pmatrix}\cdot x=\dfrac{x+1}{x-1}$.</p>
-<p>容易发现 $\ell(x)=\ell^{-1}(x)$，利用这一点，可以得到 $$\Re\log\ell\left(\dfrac{2\Lambda(N)-\mathcal{O}}{\sqrt{\Delta}}\right)=N\log\ell(\mathcal{O}^{-1})$$ 其中 $\mathcal{O}=\dfrac{a}{\sqrt{\Delta}}$，由此解得 $$\Lambda^{-1}(s)=\Re\log_{\ell(\mathcal{O}^{-1})}{\ell\left(\dfrac{2s}{\sqrt{\Delta}}-\mathcal{O}\right)}$$ 综上，有 $$\Lambda^{-1}\bigg\{a,a+\dfrac{b}{a},a+\dfrac{b}{a+\dfrac{b}{a}},\cdots\bigg\}=\Z_{\ge1}$$</p>
+<p>注意到 Cauchy-Davenport 定理可由 Chowla 定理推出.</p>
+<p><strong>定理</strong> 设 $p$ 为素数，$A,B\subseteq\Z/p\Z$ 非空，则有 $$|A+B|\ge\min(p,|A|+|B|-1)$$ 令 $b^\prime\in B,B^\prime=\{b-b^\prime:b\in B\}$，易知 $|B^\prime|=|B|$ 且有 $|A+B^\prime|=|A+B|$，由 $0\in B^\prime$ 且 $\forall b\in B^\prime\backslash\{0\}$ 都有 $b,p$ 互素，对 $(A,B^\prime)$ 应用 Chowla 定理 $$\begin{aligned}|A+B|&amp;=|A+B^\prime|\\ &amp;\ge\min(p,|A|+|B|^\prime-1)\\ &amp;=\min(p,|A|+|B|-1)\end{aligned}$$ 证完.</p>
+<p><strong>定理</strong> 设 $N\ge2,\;p$ 为素数，$A_1,\cdots,A_N$ 是 $\Z/p\Z$ 的非空子集，则 $$\left|\sum_{1\le k\le N}A_k\right|\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)$$<br>令 $S=\displaystyle\sum_{1\le k\le N-1}A_k$，由归纳法，假设 $N-1$ 时成立，即 $$|S|\ge\min\left(p,\sum_{1\le k\le N-1}|A_k|-N+2\right)$$ 对 $(S,A_N)$ 利用 $N=2$ 时的结果 $$\begin{aligned}|S+A_N|&amp;\ge\min(p,|S|+|A_N|-1)\\ &amp;\ge\min(p,\min|S|+|A_N|-1)\\ &amp;\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)\end{aligned}$$ 证完.</p>
 
   </div>
 </article>
