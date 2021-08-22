@@ -468,6 +468,10 @@ p inc {
   white-space: nowrap;
   overflow-x: scroll;
 }
+::-webkit-scrollbar {
+  height: 3px;
+  background-color: rgba(240,240,240,0.5);
+}
 *,
 *:before,
 *:after {

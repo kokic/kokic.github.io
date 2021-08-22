@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>Chowla 定理</title>
+    <title>圆函数与椭圆曲线</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-22-elliptic-curve.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2021/08-14-continued-frac77.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-20-zhihu-q-427172083.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +93,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Chowla 定理
+        圆函数与椭圆曲线
     </h1>
 
 
@@ -107,7 +105,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-08-19T16:00:00.000Z" itemprop="datePublished">2021-08-20</time>
+        <time datetime="2021-08-21T16:00:00.000Z" itemprop="datePublished">2021-08-22</time>
         
       
     </div>
@@ -123,7 +121,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>, <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>
+        <a class="tag-link-link" href="/tags/%E5%88%86%E6%9E%90/" rel="tag">分析</a>
     </div>
 
 
@@ -132,17 +130,31 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>图像引用自 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/427172083/answer/2072240238">知乎回答</a>.</p>
-<p><img alt="chowla theorem" 
-  src="https://www.zhihu.com/equation?tex=%5Ctextbf%7BTheorem+%28I.+Chowla%29%7D%5Ctext%7B+let+m%7D%5Cge2%2C%5Ctext%7Band+let+%7DA%2CB%5Ctext%7B+be+nonempty+subsets+of+%7D%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%2C%5C%5C+%5Ctext%7Bif+%7D0%5Cin+B%5Ctext%7B+and+%7D%28b%2Cm%29%3D1%5C%3B%5Cforall%5C%3Bb%5Cin+B%5Cbackslash%5C%7B0%5C%7D%2C%5Ctext%7Bthen+%7D%7CA%2BB%7C%5Cge%5Cmin%28m%2C%7CA%7C%2B%7CB%7C-1%29"/></p>
-<img alt="chowla theorem" src="https://www.zhihu.com/equation?tex=%5Ctextit%7BProof.+%7D%5Ctext%7Bclearly%2C+we+can+assume+that+%7D%7CA%7C%2B%7CB%7C%5Cle+m%2C%5Ctext%7Band+so+%7D%5Cmin%28m%2C+%7CA%7C%2B%7CB%7C-1%29%5Cle+m-1%2C%5C%5C%5Ctext%7Bif+the+theorem+is+false%2C+there+exist+sets+%7DA%2CB%5Csubset%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%5Ctext%7B+s.t.+%7D+%7CA%7C%2C%7CB%7C%5Cge2%2C%5Ctext%7Band+%7D+%5C%5C%7CA%2BB%7C%5Clt%7CA%7C%2B%7CB%7C-1+%5C%5C+%5Ctext%7Bin+particular%2C+%7DA%5Cneq%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%2C%5Ctext%7Bchoose+the+pair+%7D%28A%2CB%29%5Ctext%7B+so+that+%7D%7CB%7C%5Ctext%7B+is+minimal%2C+%7D%5C%5C%5Ctext%7Bthere+exists+an+element+%7Db%5E%5Cprime%5Cin+B%5Cbackslash%5C%7B0%5C%7D%2C%5Ctext%7Bif+%7Da%2Bb%5E%5Cprime%5Cin+A%5C%3B%5Cforall%5C%3B+a%5Cin+A%2C%5Ctext%7Bthen+%7Da%2Btb%5Cin+A%5C%3B%5Cforall%5C%3Bt%5Cin%5Cmathbb%7BN%7D%2C%5Ctext%7Bso%7D+%5C%5C+%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D%3D%5C%7Ba%2Btb%5E%5Cprime%3At%5Cin%5B0%2Cm-1%5D%5C%7D%5Csubseteq+A%5Csubseteq+%5Cmathbb%7BZ%7D%2Fm%5Cmathbb%7BZ%7D+%5C%5C+%5Ctext%7Bwhich+is+false.+therefore+there+exists+an+element+%7De%5Cin+A%5Ctext%7B+s.t.+%7De%2Bb%5E%5Cprime%5Cnotin+A%2C%5Ctext%7Bobviously+%7D%5C%5C+A%5C%3B%5Ccup%5C%3B%5C%7Bb%2Be%3Ab%5Cin+B%5C%7D%2BB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%5Csubseteq+A%2BB+%5C%5C++%5Ctext%7Band+so%2C+%7D%7CA%5C%3B%5Ccup%5C%3B%5C%7Bb%2Be%3Ab%5Cin+B%5C%7D%2BB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%7C%5Cle%7CA%2BB%7C%5Clt%7CA%7C%2B%7CB%7C-1+%5C%5C+%5Ctext%7Bsince+%7De%5Cin+A%2C0%5Cin+B%2C%5Ctext%7Btherefore+%7D+%7CB%5C%3B%5Ccap%5C%3B%5C%7Ba-e%3Aa%5Cin+A%5C%7D%7C%5Clt%7CB%7C%2C%5Ctext%7Bwhich+contradicts%7D%5Cmin%7CB%7C."/>
-
-<p>注：此定理与 Cauchy-Davenport 定理均为加性数论、加性组合中的经典结果，相关内容可参考任意一本此领域的专著.</p>
+    <p>考虑半径为 $r$ 的圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，长度为 $$L=\int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\mathrm{d}x=r\arcsin\dfrac{x}{r}\bigg|_{-r}^r=\pi r$$ 因而圆的弧长定义了反正弦函数，即 $$\arcsin x=\int_0^x\dfrac{1}{\sqrt{1-t^2}}\mathrm{d}t$$ 其反函数被称为正弦函数，统称圆函数 (三角函数).</p>
+<p>现考虑椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，有 $y=\dfrac{b}{a}\cdot\sqrt{a^2-x^2}$，故<br>$$\begin{aligned}L&amp;=\int_{-a}^a\bigg(\dfrac{a^4-(a^2-b^2)x^2}{a^2(a^2-x^2)}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-a}^a\bigg(\dfrac{1-k^2t^2}{1-t^2}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-1}^1\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t \end{aligned}$$ 其中 $t=\dfrac{x}{a},k^2=1-\dfrac{b^2}{a^2}$ ($k$ 即离心率).</p>
+<p>由此引出了所谓的 <strong>第二类不完全椭圆积分</strong> $$\text{E}(x,k)=\int_0^x\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t,\;x\in[0,1]$$ 其中 $k$ 称作椭圆函数的模，不定积分的版本被称作第二类 Legendre 正规形式.</p>
+<p>Jacobi (及 Abel) 发现了问题的关键所在，考察椭圆积分的反函数，定义 $$\text{sn}^{-1}(x)=\int_0^x\dfrac{\mathrm{d}t}{\sqrt{(1-t^2)(1-k^2t^2)}}$$ 而 $\text{sn}(x)$ 被称作椭圆正弦函数.</p>
+<p>通过对一大类 (定义在复平面上的) 椭圆函数的研究，人们发现椭圆函数是双周期的亚纯函数，而在现代数学的定义中，双周期的亚纯函数都被称作椭圆函数.</p>
+<p>注：几何上的观点是，椭圆函数可以视为复环面到复球面的映射.</p>
 <hr>
-<p>注意到 Cauchy-Davenport 定理可由 Chowla 定理推出.</p>
-<p><strong>定理</strong> 设 $p$ 为素数，$A,B\subseteq\Z/p\Z$ 非空，则有 $$|A+B|\ge\min(p,|A|+|B|-1)$$ 令 $b^\prime\in B,B^\prime=\{b-b^\prime:b\in B\}$，易知 $|B^\prime|=|B|$ 且有 $|A+B^\prime|=|A+B|$，由 $0\in B^\prime$ 且 $\forall b\in B^\prime\backslash\{0\}$ 都有 $b,p$ 互素，对 $(A,B^\prime)$ 应用 Chowla 定理 $$\begin{aligned}|A+B|&amp;=|A+B^\prime|\\ &amp;\ge\min(p,|A|+|B|^\prime-1)\\ &amp;=\min(p,|A|+|B|-1)\end{aligned}$$ 证完.</p>
-<p>注：Vosper 定理给出了 Cauchy-Davenport 定理的取等条件，其表述为 设 $\Z/p\Z$ 的非空子集 $A,B$ 满足条件 $|A|,|B|\ge2\;,|A|+|B|\lt p$，若有 $|A+B|=|A|+|B|-1$，则 $A,B$ 为两个公差相同的等差数列.</p>
-<p><strong>定理</strong> 设 $N\ge2,\;p$ 为素数，$A_1,\cdots,A_N$ 是 $\Z/p\Z$ 的非空子集，则 $$\left|\sum_{1\le k\le N}A_k\right|\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)$$<br>令 $S=\displaystyle\sum_{1\le k\le N-1}A_k$，由归纳法，假设 $N-1$ 时成立，即 $$|S|\ge\min\left(p,\sum_{1\le k\le N-1}|A_k|-N+2\right)$$ 对 $(S,A_N)$ 利用 $N=2$ 时的结果 $$\begin{aligned}|S+A_N|&amp;\ge\min(p,|S|+|A_N|-1)\\ &amp;\ge\min(p,\min|S|+|A_N|-1)\\ &amp;\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)\end{aligned}$$ 证完.</p>
+<p>注意到对所有的 $\omega_1,\omega_2\in\mathbb{C},\;\Im\dfrac{\omega_1}{\omega_2}\gt0$ 时，级数 $$\displaystyle\sum_{(m,n)\neq(0,0)}\dfrac{1}{(m\omega_1+n\omega_2)^3}$$ 绝对收敛，令 $\omega=m\omega_1+n\omega_2$，因此 $$f(z)=\displaystyle\sum_{(m,n)\in\Z\times\Z}\dfrac{1}{(z-\omega)^3}$$ 也绝对收敛，且在圆 $|z|\le R$ 中除去有限个极点后一致收敛，故 $f(z)$ 是以 $\omega_1$ 和 $\omega_2$ 为周期的奇的三阶椭圆函数.</p>
+<p>由 $f(z)$ 出发可以构造偶的二阶椭圆函数，事实上，这正是 Weierstrass 的工作，考虑函数 $$\wp(z)=\dfrac{1}{z}+\sum_{\omega\in\Lambda^\times}\left(\dfrac{1}{(z-\omega)^2}-\dfrac{1}{\omega^2}\right),\;z\in\mathbb{C}\backslash\Lambda$$ 其中格 $\Lambda=\Z\omega_1\oplus\Z\omega_2$，注意到当 $|\omega|\to\infty$ 时，$\dfrac{1}{(z-\omega)^2}-\dfrac{1}{\omega^2}\to\mathcal{O}(\omega^{-3})$，因此 $\wp(z)$ 绝对收敛.</p>
+<p>注：$\wp$ 读作 <strong>Weierstrass p 函数</strong> 或 Weierstrass 椭圆函数.</p>
+<p>注：定义复数 $z,z^\prime$ 关于格 $\Lambda$ 的等价关系为 $$z\sim z^\prime\iff z-z^\prime\in\Lambda$$ 由此定义 <strong>复环面</strong> $\mathbb{C}/\Lambda:=\{z+\Lambda:z\in\mathbb{C}\}$，代数上，容易看出交换群 $(\mathbb{C},+)$ 直接诱导 $(\mathbb{C}/\Lambda,+)$ 交换，几何上，可以验证 $\mathbb{C}/\Lambda$ 是一个紧 Riemann 面，熟知紧 Riemann 面上的全纯函数一定是常数，因此，全纯的椭圆函数必为常值，或由 $\overline{\Lambda}$ 是紧集，故 $f(z)$ 在 $\mathbb{C}$ 上有界，应用 Liouville 定理亦可.</p>
+<p>注：以 $\mathbb{CT}^1$ 表 (一维) 复环面，$\mathbb{CP}^1$ 表复球面，则椭圆函数是 $\mathbb{CT}^1\longrightarrow\mathbb{CP}^1$ 的全纯函数.</p>
+<p>其导数 $\wp^\prime(z)=\sum_{\omega\in\Lambda^\times}(z-\omega)^{-3}$ 亦反映了 $\wp(z)$ 是以 $\Lambda$ 为周期的偶函数.</p>
+<p>$\wp(z)$ 在 $z=0$ (的邻域) 处的 Laurent 级数展开可以表示成 $$\wp(z)=\dfrac{1}{z^2}+\sum_{n\in2\Z_{\ge1}}(n+1)G_{n+2}(\Lambda)z^n$$ 若取 $\Lambda=\Z\tau\oplus\Z$，则 $G_k(\Lambda)$ 在 $\tau\in\mathbb{H}$ (上半复平面) 时全纯，$G_{k}(\Lambda)=\sum_{\omega\in\Lambda^\times}\omega^{-k}$ 正是 <strong>Eisenstein 级数</strong>.</p>
+<p>注：题外话，所谓的 (椭圆函数的) <strong>正规化</strong> 是指，总可以令 $\tau=\dfrac{\omega_1}{\omega_2}\in\mathbb{H}$ 使得椭圆函数 $F(z)=f(\omega_2z)$ 以 $1$ 和 $\tau$ 为周期，自然 $f(z)=\sum_{(m,n)\in\Z^2}(z+m+n\tau)^{-3}$ 是正规化椭圆函数，可以证明右端级数绝对收敛且一致收敛.</p>
+<p>注：恰如研究以 $2\pi$ 为周期的 $\sin x$ 常置于区间 $[0,2\pi]$ 内，(复平面上的) 椭圆函数也常在 <strong>基本平行四边形</strong> 中考察，其定义为 $\{z\in\mathbb{C}:z=a+b\tau,a,b\in[0,1)\}$.</p>
+<p>注：特别地，当 $\tau\in\mathbb{Q}$ 时，$f(z)$ 退化为单周期函数，当 $\tau\in\R\backslash\mathbb{Q}$，由稠密性可证 $f(z)$ 是常数.</p>
+<p>实际上，Eisenstein 证明了所有的椭圆函数 $f(z)$ 都满足如下形式的微分方程 </p>
+<center>$(f^\prime(z))^2=f(z)$ <small>的三次无重根多项式</small></center>
+
+<p>如此一来，$\wp(z)$ 与 $\wp^\prime(z)$ 的关系便彻底明了 $$(\wp^\prime(z))^2=4(\wp(z))^3-g_2\wp(z)-g_3$$ 其中 $g_2=60G_4(\Lambda),g_3=140G_6(\Lambda)$.</p>
+<p>再令 $\wp(z)=w$，上式即为 $$\dfrac{\text{d}z}{\text{d}w}=\dfrac{1}{\sqrt{4w^3-g_2w-g_3}}$$ 因此 $$z-z_0=\int^w_{w_0}\dfrac{\text{d}w}{\sqrt{4w^3-g_2w-g_3}}$$ 令 $z_0\to0$ 因而 $w_0\to\infty$ 立即得到 $$z=\int^{\wp(z)}_{\infty}\dfrac{\text{d}t}{\sqrt{4t^3-g_2t-g_3}}$$</p>
+<p>自然地，考虑 $$(\wp(z),\wp^\prime(z))\longmapsto(x,y)$$ 给出三次曲线 $y^2=4x^3-g_2x-g_1$ 的参数化，所谓的 <strong>椭圆曲线</strong> 正是来源于此.</p>
+<hr>
+<p>待续</p>
 
   </div>
 </article>
