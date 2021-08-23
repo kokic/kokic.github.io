@@ -469,8 +469,8 @@ p inc {
   overflow-x: scroll;
 }
 ::-webkit-scrollbar {
-  height: 3px;
-  background-color: rgba(240,240,240,0.5);
+  height: 6px;
+  background-color: rgba(240,240,240,0);
 }
 *,
 *:before,
