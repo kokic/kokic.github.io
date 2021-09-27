@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>多项式的 Fermat 大定理</title>
+    <title>椭圆曲线的群结构</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-14-continued-frac77.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2021/08-04-peter-scholze-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/09-10-concept-discomfort.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +93,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        多项式的 Fermat 大定理
+        椭圆曲线的群结构
     </h1>
 
 
@@ -107,7 +105,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-08-10T16:00:00.000Z" itemprop="datePublished">2021-08-11</time>
+        <time datetime="2021-09-11T16:00:00.000Z" itemprop="datePublished">2021-09-12</time>
         
       
     </div>
@@ -123,7 +121,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>
     </div>
 
 
@@ -132,12 +130,35 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>证明：方程 $[f(x)]^n+[g(x)]^n=[h(x)]^n$ 在整数 $n\ge3$ 时无互素的非常值实多项式解.</p>
-<p>方便起见，临时地记 $[f(x)]^n\cdot f^{\prime}(x)$ 为 $\mathfrak{d}(f,n)$.<br>两边求导，得 $$\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n-1)$$ 也即 $$\mathfrak{d}(f,n)+f(x)\mathfrak{d}(g,n-1)=f(x)\mathfrak{d}(h,n-1) \\ g(x)\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n)=g(x)\mathfrak{d}(h,n-1) \\ h(x)\mathfrak{d}(f,n-1)+h(x)\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n)$$ 利用方程依次消去 $[f(x)]^n,[g(x)]^n,[h(x)]^n$ 整理得<br>$$\mathfrak{r}(g,f)=\mathfrak{r}(h,f) \\ \mathfrak{r}(f,g)=\mathfrak{r}(h,g) \\ \mathfrak{r}(f,h)=-\mathfrak{r}(g,h)$$ 其中 $\mathfrak{r}(g,f)$ 暂记 $[g^\prime(x)f(x)-f^\prime(x)g(x)]\cdot[g(x)]^{n-1}$.</p>
-<p>由互素立得 $$[f(x)]^{n-1}\,|\,g^\prime(x)h(x)-h^\prime(x)g(x) \\ [g(x)]^{n-1}\,|\,h^\prime(x)f(x)-f^\prime(x)h(x) \\ [h(x)]^{n-1}\,|\,f^\prime(x)g(x)-g^\prime(x)f(x)$$ 且知整除号右端均不为零. </p>
-<p>不妨设 $\deg f(x)=\max\deg\big\{f(x),g(x),h(x)\big\}$，有 $$\begin{aligned}\deg\,[f(x)]^{n-1}&amp;=(n-1)\deg f(x) \\ &amp;\le\deg\big(g^\prime(x)h(x)-h^\prime(x)g(x)\big) \\ &amp;\le\deg\big(g^\prime(x)h(x)\big) \\ &amp;=\deg g^\prime(x)+\deg h(x) \\ &amp;\le2\deg f(x)-1\\ &amp;\lt2\deg f(x) \end{aligned}$$ 故 $n-1\lt2,n\lt3$，证完.</p>
+    <script src="../lib/loader.js"></script>
+<script>
+const path = "/assets/images/group-law";
+const svg_path = path + "-svg_";
+function displayGraph(id, width, height) {
+  document.write((height != null || height != undefined) ? 
+    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width + " height=" + height + " viewBox") + "</div>": 
+    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width +  " viewBox") + "</div>");
+}
+</script>
+
+<p>上接 <a href="/2021/08-22-elliptic-curve.html">圆函数与椭圆曲线</a></p>
 <hr>
-<p>注：恰如 abc 猜想蕴含 Fermat 大定理，多项式的 abc 定理（即 Mason-Stothers 定理）亦蕴含多项式的费马大定理.</p>
+<p>椭圆曲线是一条亏格 $g=1$ 的光滑射影 $[$即，非奇异$]$ 曲线 $E$ 配上一有理点 $[$作单位元，常取无穷远点$]$ $\mathcal{O}$ 所成的二元组 $(E,\mathcal{O})$. 若 $E$ 是域 $K$ 上的曲线，$\mathcal{O}\in E(K)$ 是 $E$ 上的 $K\!$—有理点，则称 $(E,\mathcal{O})$ 是 $K$ 上的椭圆曲线 $E/K$. </p>
+<p>注：换言之，曲线光滑 $\iff$ 处处有良定的切线.</p>
+<p>注：可以证明，$\mathbb{P}^2$ 中的三次光滑曲线 $E$ $\Longrightarrow$ 其亏格 $g_E=1$.</p>
+<p>每一条椭圆曲线都能够被嵌入为 $\mathbb{P}^2$ 中的光滑三次曲线，其由如下形式的方程 $[E$ 的 <strong>仿射 Weierstrass 方程</strong>$]$ 给出<br>$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$$ “零点” $\mathcal{O}$ 自然是无穷远点 $(0,1,0)$，而 $E/K$ 则意味着 $a_k$ $[k=1,2,3,4,6]$ 可取自 $K$ 中. 射影 Weierstrass 方程无非是仿射版本的齐次化 $[$分别乘上 $z]$.</p>
+<p>注：射影平面 $\mathbb{P}^2$ 可视作 平面 $[$“仿射部分”$]$ $\sqcup$ $\{(x:y:0):x,y\in K,|x|+|y|\gt0\}$ $[$“无穷远点”$]$，平面借由 $(x,y)\longmapsto(x:y:1)$ 嵌入 $\mathbb{P}$.</p>
+<p>对于一条由 Weierstrass 方程定义的椭圆曲线 $E$，记<br>$$\begin{aligned}b_2&amp;:=a_1^2+4a_2 \\ b_4&amp;:=2a_4+a_1a_3 \\ b_6&amp;:=a_3^2+4a_6 \\ b_8&amp;:=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2 \\ c_4&amp;:=b_2^2-24b_4 \\ c_6&amp;:=-b_2^3+36b_2b_4-216b_6 \\ \Delta&amp;:=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6 \\ j&amp;:=\dfrac{c_4^3}{\Delta},\quad\text{if}\;\Delta\neq0\end{aligned}$$<br>注：<strong>判别式</strong> $[$discriminant$]$ $\Delta\neq0$ $[$可逆$]$ 是由于椭圆曲线的光滑性要求无重根，$j$ 即为所谓的 $j$ <strong>不变量</strong> $[j$-invariance$]$.</p>
+<p>考虑两条由 Weierstrass 方程定义的椭圆曲线<br>$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6 \\ E^\prime:y^2+a_1^\prime xy+a_3^\prime y=x^3+a_2^\prime x^2+a_4^\prime x+a_6^\prime$$ 其 <strong>同构</strong> $E\cong E^\prime$ 是指 $\exists\,\psi$ $[$多项式映射$]$ 使得 $E=u^{-6}\cdot\psi(E^\prime)$，其中<br>$$\psi:\begin{pmatrix}x \\ y\end{pmatrix}\longmapsto\begin{pmatrix}u^2 &amp; 0 \\ su^2 &amp; u^3 \end{pmatrix}\begin{pmatrix}x \\ y\end{pmatrix}+\begin{pmatrix}r \\ t\end{pmatrix}$$ $r,s,t,u\in K$ 且 $u$ 可逆 $[$ 即，$u\in K^\times]$，$\psi$ 称 <strong>容许的变换</strong>.</p>
+<p>若 $K$ 的特征 $\text{char}(K)\neq2,3$，则 $K$ 在容许的变换下可化为<br>$$E:y^2=x^3+Ax+B$$ 也即 $a_k$ $[k=1,2,3]$ 可取为 $0$. 对于此种形式，有<br>$$\begin{aligned}b_2&amp;=0 \\ b_4&amp;=2A \\ b_6&amp;=4B \\ b_8&amp;=-A^2 \\ c_4&amp;=-48A \\ c_6&amp;=-864B \\ \Delta&amp;=-16(4A^3+27B^2) \\ j&amp;=-1728\cdot\dfrac{64A^3}{\Delta} \\ &amp;=1728\cdot\dfrac{4A^3}{4A^3+27B^2},\quad\text{if}\;\Delta\neq0\end{aligned}$$<br>注：$[$一般的$]$ 三次方程 $x^3+Ax+B=0$ 根的判别式可表为 $\Delta=4A^3+27B^2$，而 $\Delta=0$ 时此方程有重根，对应的椭圆曲线退化，其上恰有一个奇点.</p>
+<p>取 $\psi:(x,y)\longmapsto(u^2x,u^3y)$ $[$Weierstrass 坐标变换，$r,s,t$ 为 $0]$，在此同构映射下 $j$ 仍是不变的，故 $j$-不变量完整分类了 $[$代数闭域 $K$ 上的$]$ 椭圆曲线，即 $$j(E)=j({E^\prime})\iff E\cong E^\prime$$<br>若在椭圆曲线上（自然地）定义群结构，则多项式映射 $\psi$ 自动成为群同态.</p>
+<p>单值化定理 $[$Uniformization Theorem$]$ 表明 $\Complex$ 上任意的椭圆曲线 $E:y^2=x^3+Ax+B$ 都一一对应到一个复格 $\Lambda$ 使<br>$$\begin{aligned}\psi:\Complex/\Lambda&amp;\longrightarrow E \\ z&amp;\longrightarrow(\wp(z),\wp^\prime(z))\end{aligned}$$ 是复李群同构，即 $E\cong\Complex/\Lambda$ $[$解析同构$]$. 故椭圆曲线之间的态射 $\psi$ 可以一一对应到复环面 $\Complex/\Lambda$ 间的全纯映射</p>
+<script> displayGraph(1, "22ex") </script>
+<p>其中 $\alpha\in\Complex$ 满足 $\alpha\Lambda_1\subseteq\Lambda_2$，复乘 $$\text{Hom}(\Lambda_1,\Lambda_2)=\{\alpha\in\Complex:\alpha\Lambda_1\subseteq\Lambda_2\}$$</p>
+<p>注：$[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线 $(E,\mathcal{O})$ $\iff$ 亏格 $1$ 带基点 $\mathcal{O}\in E$ 的紧 Riemann 曲面 $E$ 典范同构于 $(\mathbb{C}/\Lambda,0)$. </p>
+<p>注：全体 $[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线构成范畴 $\mathsf{Ell}_\mathbb{C}$，范畴间的态射 $(E,\mathcal{O})\longrightarrow(E^\prime,\mathcal{O}^\prime)$ 定义为满足 $f(\mathcal{O})=\mathcal{O}^\prime$ 的 Riemann 曲面态射 $f:E\longrightarrow E^\prime$.</p>
+<p>事实上，Weierstrass 证明了对所有 $P,Q,R\in E$，存在直线 $\ell\in\mathbb{P}^2$ 交 $E$ 于 $P,Q,R$ 等价于 $P+Q+R=\mathcal{O}$.</p>
+<p>设 $P(x_1,y_1),Q(x_2,y_2)\in E:y^2=x^3+Ax+B$，几何直观给出两点加法公式<br>$$x(P+Q)=\begin{cases} \bigg(\dfrac{y_2-y_1}{x_2-x_1}\bigg)^2-x_1-x_2 &amp;\text{if } P\neq Q \\ \\ \dfrac{x_1^4-2Ax_1^2-8Bx_1+A^2}{4(x_1^3+Ax_1+B)} &amp;\text{if } P=Q \end{cases}$$<br>注：所谓的几何直观是指，$P+Q=-R$ 应视作 $P,Q$ 连线与 $E$ 交于点 $R$，$R,\mathcal{O}$ 连线交 $E$ 于 $-R$.</p>
 
   </div>
 </article>

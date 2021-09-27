@@ -67,6 +67,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2021/08-24-inf-ab-powers-n.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2021/08-20-zhihu-q-427172083.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -121,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E5%88%86%E6%9E%90/" rel="tag">分析</a>
+        <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>, <a class="tag-link-link" href="/tags/%E5%88%86%E6%9E%90/" rel="tag">分析</a>
     </div>
 
 
@@ -167,6 +169,8 @@ it does not change when one replaces one system of periods by another equivalent
 <p>注：重要的一点是，每一个与 $\wp(z)$ 同周期的偶椭圆函数都能够写为 $\wp(z)$ 的有理函数，每一个与 $\wp(z)$ 同周期的 (single) 椭圆函数都可以写为 $\wp(z)$ 及其导数的有理函数.</p>
 <p>再令 $\wp(z)=w$，上式即为 $$\dfrac{\text{d}z}{\text{d}w}=\dfrac{1}{\sqrt{4w^3-g_2w-g_3}}$$ 因此 $$z-z_0=\int^w_{w_0}\dfrac{\text{d}w}{\sqrt{4w^3-g_2w-g_3}}$$ 令 $z_0\to0$ 因而 $w_0\to\infty$ 立即得到 $$z=\int^{\wp(z)}_{\infty}\dfrac{\text{d}t}{\sqrt{4t^3-g_2t-g_3}}$$</p>
 <p>自然地，考虑 $$(\wp(z),\wp^\prime(z))\longmapsto(x,y)$$ 给出三次曲线 $y^2=4x^3-g_2x-g_1$ 的参数化，所谓的 <strong>椭圆曲线</strong> 正是来源于此.</p>
+<hr>
+<p>下接 <a href="/2021/09-12-group-law.html">椭圆曲线的群结构</a></p>
 
   </div>
 </article>
@@ -246,7 +250,8 @@ it does not change when one replaces one system of periods by another equivalent
         {left: "\\[", right: "\\]", display: true}, 
         {left: "$", right: "$", display: false}, 
         {left: "\\(", right: "\\)", display: false}
-      ]
+      ],
+      throwOnError: true
     });
   </script>
   

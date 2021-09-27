@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>多项式的 Fermat 大定理</title>
+    <title>一般的幂和下界</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/08-14-continued-frac77.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-30-umbral-calculus.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2021/08-04-peter-scholze-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/08-22-elliptic-curve.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +95,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        多项式的 Fermat 大定理
+        一般的幂和下界
     </h1>
 
 
@@ -107,7 +107,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-08-10T16:00:00.000Z" itemprop="datePublished">2021-08-11</time>
+        <time datetime="2021-08-23T16:00:00.000Z" itemprop="datePublished">2021-08-24</time>
         
       
     </div>
@@ -123,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E5%A4%9A%E9%A1%B9%E5%BC%8F/" rel="tag">多项式</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
     </div>
 
 
@@ -132,12 +132,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>证明：方程 $[f(x)]^n+[g(x)]^n=[h(x)]^n$ 在整数 $n\ge3$ 时无互素的非常值实多项式解.</p>
-<p>方便起见，临时地记 $[f(x)]^n\cdot f^{\prime}(x)$ 为 $\mathfrak{d}(f,n)$.<br>两边求导，得 $$\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n-1)$$ 也即 $$\mathfrak{d}(f,n)+f(x)\mathfrak{d}(g,n-1)=f(x)\mathfrak{d}(h,n-1) \\ g(x)\mathfrak{d}(f,n-1)+\mathfrak{d}(g,n)=g(x)\mathfrak{d}(h,n-1) \\ h(x)\mathfrak{d}(f,n-1)+h(x)\mathfrak{d}(g,n-1)=\mathfrak{d}(h,n)$$ 利用方程依次消去 $[f(x)]^n,[g(x)]^n,[h(x)]^n$ 整理得<br>$$\mathfrak{r}(g,f)=\mathfrak{r}(h,f) \\ \mathfrak{r}(f,g)=\mathfrak{r}(h,g) \\ \mathfrak{r}(f,h)=-\mathfrak{r}(g,h)$$ 其中 $\mathfrak{r}(g,f)$ 暂记 $[g^\prime(x)f(x)-f^\prime(x)g(x)]\cdot[g(x)]^{n-1}$.</p>
-<p>由互素立得 $$[f(x)]^{n-1}\,|\,g^\prime(x)h(x)-h^\prime(x)g(x) \\ [g(x)]^{n-1}\,|\,h^\prime(x)f(x)-f^\prime(x)h(x) \\ [h(x)]^{n-1}\,|\,f^\prime(x)g(x)-g^\prime(x)f(x)$$ 且知整除号右端均不为零. </p>
-<p>不妨设 $\deg f(x)=\max\deg\big\{f(x),g(x),h(x)\big\}$，有 $$\begin{aligned}\deg\,[f(x)]^{n-1}&amp;=(n-1)\deg f(x) \\ &amp;\le\deg\big(g^\prime(x)h(x)-h^\prime(x)g(x)\big) \\ &amp;\le\deg\big(g^\prime(x)h(x)\big) \\ &amp;=\deg g^\prime(x)+\deg h(x) \\ &amp;\le2\deg f(x)-1\\ &amp;\lt2\deg f(x) \end{aligned}$$ 故 $n-1\lt2,n\lt3$，证完.</p>
-<hr>
-<p>注：恰如 abc 猜想蕴含 Fermat 大定理，多项式的 abc 定理（即 Mason-Stothers 定理）亦蕴含多项式的费马大定理.</p>
+    <p>设正实数 $x,y$ 和正整数 $n$ 满足 $x^n+y^n=1$，证明 $$\log(x^x+y^y)\ge\bigg(1-\dfrac{1}{n\cdot\sqrt[n]{2}}\bigg)\log2$$<br>对左侧使用算术平均 — 几何平均不等式，考虑证明 $$x\log(x)+y\log y\ge\bigg(\dfrac{1}{2}-\dfrac{1}{n\cdot\sqrt[n]{2}}\bigg)\log2$$ 故考虑函数 $x\log x+(1-x^n)^{1/n}\log(1-x^n)^{1/n}$</p>
+<p>求导并令其等于零，有 $$1+\log x=x^{n-1}y^{1-n}+x^{n-1}y^{1-n}\log y$$ 也即 $$\dfrac{1+\log x}{x^{n-1}}=\dfrac{1+\log y}{y^{n-1}}$$ 注意 $x,y\in(0,1]$，通过对阶的分析，容易知道上述形式的函数 $\dfrac{1+\log x}{x^{n-1}}$ 当 $n\le 2$ 时单调，由双射知 $x=y$，下证 $n\ge3$ 时的情况，由于<br>$$f(x)=\dfrac{1+\log x}{x^{n-1}}\le f\left(\exp\,-\dfrac{n-2}{n-1}\right)$$ 故 $f(x)$ 在 $\left(\exp\,-\dfrac{n-2}{n-1},1\right]$ 上单调. </p>
+<p>若假设 $x&lt;y$，则 $$\exists\,\varepsilon\in(0,1)\text{ s.t. }f(x+\varepsilon)=f(y)$$ 此时第二个不等号无法取等，亦无法取得最小值，故一定有 $x=y=\dfrac{1}{\sqrt[n]{2}}$，证完.</p>
 
   </div>
 </article>
