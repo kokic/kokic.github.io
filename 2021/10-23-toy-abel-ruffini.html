@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>次线性不等式</title>
+    <title>二次的 Abel-Ruffini 定理</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/10-23-toy-abel-ruffini.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/10-28-flt-polynomial-geo.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2021/09-12-group-law.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/10-03-anti-sublinear-ineq.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +95,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        次线性不等式
+        二次的 Abel-Ruffini 定理
     </h1>
 
 
@@ -107,7 +107,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-10-02T16:00:00.000Z" itemprop="datePublished">2021-10-03</time>
+        <time datetime="2021-10-22T16:00:00.000Z" itemprop="datePublished">2021-10-23</time>
         
       
     </div>
@@ -123,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E6%8B%93%E6%89%91/" rel="tag">拓扑</a>
     </div>
 
 
@@ -132,36 +132,14 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>映射 $f:X\longrightarrow Y$ 的次可加性意谓 $\forall\,a,b\in X$ $$f(a+b)\le f(a)+f(b)\tag{1}$$ 若再赋予其正齐次性 $f(T\cdot a)=T\cdot f(a)$ 其中 $T\in$ 域 $K,K\times\cdots\times K\subseteq X$，则称 $f$ 为次线性映射，而当 $(1)$ 中不等号反向时，称其为反次线性映射.</p>
-<p>一些常见的不等式，如 三角、Minkowski、Hölder 等，均可视为对范数 $\|\cdot\|$ 的合适选取. 在泛函的语言中，次可加性索性就被称作三角不等式. 通过构造范数反过来引出三角不等式的做法如今并不鲜见，常见的操作往往是考虑指数的分配. </p>
-<p>注：取可数测度、离散形式.</p>
-<div class="scroll">
-$$\begin{array}{|c|c|}
-\hline \text{Norm} & \text{Inequality} \\ 
-\hline \\ 1,\displaystyle\sum_{1\le j\le k}|x_j| & \text{Triangle},\;|x+y|\le|x|+|y| \\ \\ 
-\hline \\ p,\bigg(\displaystyle\sum_{1\le j\le k}|x_j|^p\bigg)^{1/p} & \text{Minkowski},\;\|x+y\|_p\le\|x\|_p+\|y\|_p \\ \\ 
-\hline \\ \omega,\displaystyle\prod_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}|x_j|^{\omega_j} & \text{Hölder},\;(\underline{\underline{x}}+\underline{\underline{y}})^\omega\ge\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega \\ \\
-\hline \end{array}$$
-</div>
-
-<p>下面将指出表中 Hölder 不等式其形式上的自洽性. 二项式定理给出自然的不等式 $(x+y)^n\ge x^n+y^n$，Hölder 不等式表明这个不等号在映射 $$(x,y)\xmapsto{\qquad}(\underline{\underline{x}},\underline{\underline{y}}) \\ n\xmapsto{\qquad}\omega$$ 下被保持. 而上述自然不等式又给出了 Bernoulli 不等式 $(1+x)^\alpha\le 1+\alpha x$，借由 $x\longmapsto xy^{-1}-1$ 立即得出<br>$$x^\alpha y^\beta\le\alpha x+\beta y,\quad\alpha+\beta=1$$ 注：考虑如下图表，$\pi:x\longmapsto x-1,\;\alpha\ge1$</p>
-<div class="scroll">$$\begin{CD}
-(1+x)^\alpha\;\ge\;1\;+\;\alpha x @>\qquad\!?\!\qquad>> (1+x)^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}x \\ 
-            @V\pi VV                                  @AA\pi^{-1}A \\
-x^\alpha\;\ge\;1\;+\;\alpha(x-1) @>\enspace\;f^{-1}\;\curvearrowright\;x\;\enspace>> x^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}(x-1)
-\end{CD}$$
-</div>
-
-<p>因而此自然不等式可以诱导出加权算术平均$-$几何平均不等式，如果定义 $$\omega\underline{\underline{x}}\overset{\text{def}}{=}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\omega_j|x_j|$$ 显见 $\underline{\underline{x}}^\omega\le\omega\underline{\underline{x}}$，这样就有<br>$$\begin{aligned}\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega\le(\underline{\underline{x}}+\underline{\underline{y}})^\omega\le\omega\underline{\underline{x}}+\underline{\underline{y}}^\omega\le\omega(\underline{\underline{x}}+\underline{\underline{y}})\end{aligned}$$ 从以下演算也可看出其形式的合理性<br>$$\begin{aligned}\log\omega\underline{\underline{x}} &amp;=\log\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}|x_j| \\ &amp;\le k^{-1}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log k{\omega_j}|x_j| \\ &amp;=k^{-1}\log k\omega\underline{\underline{x}} \\ \\ \log\underline{\underline{x}}^\omega &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log|x_j|^{\omega_j} \\ &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}\log|x_j| \\ &amp;=\omega\log\underline{\underline{x}} \end{aligned}$$</p>
-<center> $\omega\log\underline{\underline{x}}\le\log\omega\underline{\underline{x}}\le k^{-1}\log k\omega\underline{\underline{x}}$ </center>
-
-
-
-
-
-
-
-
+    <p>本文以二次方程版本的 Abel-Ruffini 定理（姑且可以这么称呼）来解释这一点 $—$ 即，为何要考察根的对称性. 不加声明地，下文所述之 “方程” 均指 “一元方程”.</p>
+<p><strong>定理</strong> &nbsp; 加减乘除不可解二次及以上方程</p>
+<p>不失一般性，可以考虑首一的情形 $$x^2+\ell_1x+\ell=0$$ 并可设其有相异的两根 $x_1,x_2$，此方程的解应由系数 $\ell,\ell_1$ 给出，故再设<br>$$x_k=\text{Solu}_k(\ell,\ell_1),\quad 1\le k\le2$$ 自然其中 $\text{Solu}_k$ 是只包含 $\ell,\ell_1$ 之加减乘除的表达式.</p>
+<p>现在考虑这样一个连续映射 $G$ 使得<br>$$\begin{aligned}G:\mathbb{C}\times[0,1]&amp;\xrightarrow{\qquad}\mathbb{C}\\ (x_k,0)&amp;\xmapsto{\qquad} x_k\\ (x_k,1)&amp;\xmapsto{\qquad} x_{k+1},\quad k\in(\Z/2\Z)^\times \end{aligned}$$ 直观来看，$G$ 在终点的行为是一个置换 $(x_1,x_2)$，再考虑将方程左侧写为 $(x-x_1)(x-x_2)$，由于 Viète 定理，$x_1+x_2=-\ell_1,x_1x_2=\ell$，这说明在 $G$ 的作用下 $\ell,\ell_1$ 保持不变，这样一来 $\text{Solu}_k$ 也应当保持不变，但根据已知，在 $G$ 作用后应有<br>$$\text{Solu}_k(\ell,\ell_1)=x_{k+1},\quad k\in(\Z/2\Z)^\times$$ 这样就引出了矛盾，表明满足要求的 $\text{Solu}_k$ 并不存在. $\Box$ </p>
+<hr>
+<p><strong>补充</strong> &nbsp; Viète 定理指出此方程的系数被根的对称多项式表达，更进一步地，这来自于 $\mathbb{C}$ 上加法和乘法的交换性. 譬如考虑一次方程 $x+\ell=0$，根的唯一性已经彻底地破坏了对称，而在高次的情形想要区分出每个根（即，解方程这件事所根本要做的）是次数愈大愈加困难的（这是对一般的高次方程而言）.</p>
+<p><strong>补充</strong> &nbsp; 既然已经知道，二次方程的根存在对称性，并且这种对称性无法被（有限次的）加减乘除区分，那么要解这样的方程，考虑的就是构造不对称的表达. $x_1-x_2$ 是不对称的，无法由已知的对称多项式表示出来（容易证明这一点），故考虑对称的 $(x_1-x_2)^2$，由于<br>$$(x_1-x_2)^2=(x_1+x_2)^2-4x_1x_2=\ell_1^2-4\ell$$ 若在此时引入运算 平方根 $\sqrt{\;\cdot\;}$ 就给出 $$“x_1-x_2”=\pm\sqrt{\ell_1^2-4\ell}$$ 在 $\R$ 上，应当发觉，这种表示是极为诡异的，通常在使用平方根号时，都是假定开根后非负，即所谓的算术平方根，但是在上面这个表达式中，$“x_1-x_2”$ 或正或负，仍具对称性，在进一步固定 $x_1\gt x_2$ 取其算术平方根后，对称性才得以被破坏，也是在这一步才区分出 $x_1,x_2$. 而在 $\mathbb{C}$ 上，则必须要引入 $\sqrt{-1}$ 和带幅角的开根运算才能将根区分.</p>
+<p><strong>补充</strong> &nbsp; 然而，正如加减乘除只能破坏一次方程的对称性，开根也存在其限制，读者应当从简短的本文中学到一件事，越是解高次的方程，就越会发现开根的能力是有极限的.</p>
 
   </div>
 </article>

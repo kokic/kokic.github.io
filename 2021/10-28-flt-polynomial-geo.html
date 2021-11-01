@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>次线性不等式</title>
+    <title>多项式的 Fermat 大定理 - 几何工具</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/10-23-toy-abel-ruffini.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/11-01-arith-prog-ag-mean.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2021/09-12-group-law.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/10-23-toy-abel-ruffini.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +95,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        次线性不等式
+        多项式的 Fermat 大定理 - 几何工具
     </h1>
 
 
@@ -107,7 +107,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-10-02T16:00:00.000Z" itemprop="datePublished">2021-10-03</time>
+        <time datetime="2021-10-27T16:00:00.000Z" itemprop="datePublished">2021-10-28</time>
         
       
     </div>
@@ -123,7 +123,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>
     </div>
 
 
@@ -132,34 +132,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>映射 $f:X\longrightarrow Y$ 的次可加性意谓 $\forall\,a,b\in X$ $$f(a+b)\le f(a)+f(b)\tag{1}$$ 若再赋予其正齐次性 $f(T\cdot a)=T\cdot f(a)$ 其中 $T\in$ 域 $K,K\times\cdots\times K\subseteq X$，则称 $f$ 为次线性映射，而当 $(1)$ 中不等号反向时，称其为反次线性映射.</p>
-<p>一些常见的不等式，如 三角、Minkowski、Hölder 等，均可视为对范数 $\|\cdot\|$ 的合适选取. 在泛函的语言中，次可加性索性就被称作三角不等式. 通过构造范数反过来引出三角不等式的做法如今并不鲜见，常见的操作往往是考虑指数的分配. </p>
-<p>注：取可数测度、离散形式.</p>
-<div class="scroll">
-$$\begin{array}{|c|c|}
-\hline \text{Norm} & \text{Inequality} \\ 
-\hline \\ 1,\displaystyle\sum_{1\le j\le k}|x_j| & \text{Triangle},\;|x+y|\le|x|+|y| \\ \\ 
-\hline \\ p,\bigg(\displaystyle\sum_{1\le j\le k}|x_j|^p\bigg)^{1/p} & \text{Minkowski},\;\|x+y\|_p\le\|x\|_p+\|y\|_p \\ \\ 
-\hline \\ \omega,\displaystyle\prod_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}|x_j|^{\omega_j} & \text{Hölder},\;(\underline{\underline{x}}+\underline{\underline{y}})^\omega\ge\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega \\ \\
-\hline \end{array}$$
-</div>
-
-<p>下面将指出表中 Hölder 不等式其形式上的自洽性. 二项式定理给出自然的不等式 $(x+y)^n\ge x^n+y^n$，Hölder 不等式表明这个不等号在映射 $$(x,y)\xmapsto{\qquad}(\underline{\underline{x}},\underline{\underline{y}}) \\ n\xmapsto{\qquad}\omega$$ 下被保持. 而上述自然不等式又给出了 Bernoulli 不等式 $(1+x)^\alpha\le 1+\alpha x$，借由 $x\longmapsto xy^{-1}-1$ 立即得出<br>$$x^\alpha y^\beta\le\alpha x+\beta y,\quad\alpha+\beta=1$$ 注：考虑如下图表，$\pi:x\longmapsto x-1,\;\alpha\ge1$</p>
-<div class="scroll">$$\begin{CD}
-(1+x)^\alpha\;\ge\;1\;+\;\alpha x @>\qquad\!?\!\qquad>> (1+x)^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}x \\ 
-            @V\pi VV                                  @AA\pi^{-1}A \\
-x^\alpha\;\ge\;1\;+\;\alpha(x-1) @>\enspace\;f^{-1}\;\curvearrowright\;x\;\enspace>> x^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}(x-1)
-\end{CD}$$
-</div>
-
-<p>因而此自然不等式可以诱导出加权算术平均$-$几何平均不等式，如果定义 $$\omega\underline{\underline{x}}\overset{\text{def}}{=}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\omega_j|x_j|$$ 显见 $\underline{\underline{x}}^\omega\le\omega\underline{\underline{x}}$，这样就有<br>$$\begin{aligned}\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega\le(\underline{\underline{x}}+\underline{\underline{y}})^\omega\le\omega\underline{\underline{x}}+\underline{\underline{y}}^\omega\le\omega(\underline{\underline{x}}+\underline{\underline{y}})\end{aligned}$$ 从以下演算也可看出其形式的合理性<br>$$\begin{aligned}\log\omega\underline{\underline{x}} &amp;=\log\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}|x_j| \\ &amp;\le k^{-1}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log k{\omega_j}|x_j| \\ &amp;=k^{-1}\log k\omega\underline{\underline{x}} \\ \\ \log\underline{\underline{x}}^\omega &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log|x_j|^{\omega_j} \\ &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}\log|x_j| \\ &amp;=\omega\log\underline{\underline{x}} \end{aligned}$$</p>
-<center> $\omega\log\underline{\underline{x}}\le\log\omega\underline{\underline{x}}\le k^{-1}\log k\omega\underline{\underline{x}}$ </center>
-
-
-
-
-
-
+    <p>构造 $\mathbb{P}^2\supset Y=\{[x:y:z]|x^n+y^n=z^n\}$ 并且令 $\phi:Y\xrightarrow{\quad}\mathbb{P}^1,\;[x:y:z]\xmapsto{\quad}[x:y]$ 这样一来就有<br>$$Y_{[s:t]}=Y\cap\phi^{-1}([s:t])=\{z|z^n=s^n+t^n\}$$ 由于在 $\mathbb{C}$ 上必有 $n$ 个统一的根，若 $s^n+t^n$ 非零则有 $|Y_{[s:t]}|=n$. 令 $Z=\{[s:t]|s^n+t^n=0\}$，注意到 $[0:0]\notin\mathbb{P}^1$，若 $[s:t]\in Z$ 则必有 $s,t\neq0$，因此 $[s:t]=[1:t^\prime]$ 其中 $t^\prime=\frac{t}s$，故 $Z$ 只是一 $n$ 点集 $[1:\rho^i]$，其中 $\rho$ 是 $-1$ 的 $n$ 次本原根，所以 $\chi(Z)=n$.</p>
+<p>现考察 $\phi:Y\backslash\phi^{-1}(Z)\xrightarrow{\quad}\mathbb{P}^1\backslash Z$，示性数之乘性给出<br>$$\begin{aligned}\chi(Y\backslash\phi^{-1}(Z))&amp;=n\cdot\chi(\mathbb{P}^1\backslash Z)\\ &amp;=n(\chi(\mathbb{P}^1)-\chi(Z))\\ &amp;=n(2-n)\end{aligned}$$ 注意到 $\phi:\phi^{-1}(Z)\xrightarrow{\quad}Z$ 是双射，这表明 $$\chi(\phi^{-1}(Z))=\chi(\phi(Z))=n$$ 示性数之加性给出<br>$$\begin{aligned}\chi(Y)&amp;=\chi(Y\backslash\phi^{-1}(Z))+\chi(\phi^{-1}(Z))\\ &amp;=n(2-n)+n\\ &amp;=n(3-n)\end{aligned}$$ 由 $2-2g=\chi$ 计算得到<br>$$g(Y)=\dfrac{(n-2)(n-1)}{2}$$ 又由于 $$0=g(\mathbb{P}^1)\ge g(Y)=\dfrac{(n-2)(n-1)}{2}$$ 这表明只能有 $n=1,2$，证完. </p>
+<p style="margin-left:98%;margin-top:-2.6em;">$\Box$</p>
 
 
 
