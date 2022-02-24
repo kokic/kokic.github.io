@@ -29,7 +29,7 @@
     
     
     <!-- title -->
-    <title>椭圆曲线的群结构</title>
+    <title>简单图的色多项式分解</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -67,10 +67,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/10-03-anti-sublinear-ineq.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2021/09-10-concept-discomfort.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2022/01-24-erdos-mmf-thm.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -95,7 +93,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        椭圆曲线的群结构
+        简单图的色多项式分解
     </h1>
 
 
@@ -107,7 +105,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-09-11T16:00:00.000Z" itemprop="datePublished">2021-09-12</time>
+        <time datetime="2022-02-22T16:00:00.000Z" itemprop="datePublished">2022-02-23</time>
         
       
     </div>
@@ -123,7 +121,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>
+        <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>
     </div>
 
 
@@ -132,35 +130,63 @@
   
 
   <div class="content" itemprop="articleBody">
-    <script src="../lib/loader.js"></script>
-<script>
-const path = "/assets/images/group-law";
-const svg_path = path + "-svg_";
-function displayGraph(id, width, height) {
-  document.write((height != null || height != undefined) ? 
-    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width + " height=" + height + " viewBox") + "</div>": 
-    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width +  " viewBox") + "</div>");
-}
-</script>
+    <script src="../lib/graphs.js"></script>
 
-<p>上接 <a href="/2021/08-22-elliptic-curve.html">圆函数与椭圆曲线</a></p>
+<p>简单图意谓既无平行边 $[$同一条边$]$ 亦无自环 $[$顶点到自身的边$]$ 的图，现取一简单图 $G$ 与其上一边 $e$，$\pi(G)$ 表以 $q$ 种颜色着 $G$ 上顶点的总着色数 $[$即，色多项式$] ($自然，着色要求被边相连的顶点不重色$)$，则有如下等式<br>$$\pi_G(q)=\pi_{G\,-\,e}(q)-\pi_{G\,\cdot\,e}(q)$$ 这被称作 删除收缩公式 $[$deletion-contraction formula$]$ 其中 $G-e$ 是从 $G$ 中删去边 $e$ 所剩图 $G-\{e\}$ 的简记, $G\cdot e$ 则表示将 $G$ 中边 $e$ 的两个端点合并为一个点后所得的图, 而原先的 $e$ 自动消失.</p>
+<p>证明：显然. 可以假定边 $e$ 的两个端点分别为 $A,B$，由于在证明此结果时，关注点集中在图本身，因此将 $\pi_G(q)$ 记作 $\pi(G)$，不难发现 </p>
+<div class="scroll">$$\gdef\st#1{\footnotesize\text{ #1 }} \begin{aligned}
+\pi(G-e)&=\pi(G-e{\st{中}}A,B{\st{同色的部分}})\,+ \\
+&\kern{0.3em}\quad\pi(G-e{\st{中}}A,B{\st{异色的部分}}) \\
+&=\pi(G\cdot e)+\pi(G) \\
+\end{aligned}$$
+</div> 证完.
+
 <hr>
-<p>椭圆曲线是一条亏格 $g=1$ 的光滑射影 $[$即，非奇异$]$ 曲线 $E$ 配上一有理点 $[$作单位元，常取无穷远点$]$ $\mathcal{O}$ 所成的二元组 $(E,\mathcal{O})$. 若 $E$ 是域 $K$ 上的曲线，$\mathcal{O}\in E(K)$ 是 $E$ 上的 $K\!$—有理点，则称 $(E,\mathcal{O})$ 是 $K$ 上的椭圆曲线 $E/K$. </p>
-<p>注：换言之，曲线光滑 $\iff$ 处处有良定的切线.</p>
-<p>注：可以证明，$\mathbb{P}^2$ 中的三次光滑曲线 $E$ $\Longrightarrow$ 其亏格 $g_E=1$.</p>
-<p>每一条椭圆曲线都能够被嵌入为 $\mathbb{P}^2$ 中的光滑三次曲线，其由如下形式的方程 $[E$ 的 <strong>仿射 Weierstrass 方程</strong>$]$ 给出<br>$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$$ “零点” $\mathcal{O}$ 自然是无穷远点 $(0:1:0)$，而 $E/K$ 则意味着 $a_k$ $[k=1,2,3,4,6]$ 可取自 $K$ 中. 射影 Weierstrass 方程无非是仿射版本的齐次化 $[$分别乘上 $z]$.</p>
-<p>注：射影平面 $\mathbb{P}^2$ 可视作 平面 $[$“仿射部分”$]$ $\sqcup$ $\{(x:y:0):x,y\in K,|x|+|y|\gt0\}$ $[$“无穷远点”$]$，平面借由 $(x,y)\longmapsto(x:y:1)$ 嵌入 $\mathbb{P}$.</p>
-<p>对于一条由 Weierstrass 方程定义的椭圆曲线 $E$，记<br>$$\begin{aligned}b_2&amp;:=a_1^2+4a_2 \\ b_4&amp;:=2a_4+a_1a_3 \\ b_6&amp;:=a_3^2+4a_6 \\ b_8&amp;:=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2 \\ c_4&amp;:=b_2^2-24b_4 \\ c_6&amp;:=-b_2^3+36b_2b_4-216b_6 \\ \Delta&amp;:=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6 \\ j&amp;:=\dfrac{c_4^3}{\Delta},\quad\text{if}\;\Delta\neq0\end{aligned}$$<br>注：<strong>判别式</strong> $[$discriminant$]$ $\Delta\neq0$ $[$可逆$]$ 是由于椭圆曲线的光滑性要求无重根，$j$ 即为所谓的 $j$ <strong>不变量</strong> $[j$-invariance$]$.</p>
-<p>考虑两条由 Weierstrass 方程定义的椭圆曲线<br>$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6 \\ E^\prime:y^2+a_1^\prime xy+a_3^\prime y=x^3+a_2^\prime x^2+a_4^\prime x+a_6^\prime$$ 其 <strong>同构</strong> $E\cong E^\prime$ 是指 $\exists\,\psi$ $[$多项式映射$]$ 使得 $E=u^{-6}\cdot\psi(E^\prime)$，其中<br>$$\psi:\begin{pmatrix}x \\ y\end{pmatrix}\longmapsto\begin{pmatrix}u^2 &amp; 0 \\ su^2 &amp; u^3 \end{pmatrix}\begin{pmatrix}x \\ y\end{pmatrix}+\begin{pmatrix}r \\ t\end{pmatrix}$$ $r,s,t,u\in K$ 且 $u$ 可逆 $[$ 即，$u\in K^\times]$，$\psi$ 称 <strong>容许的变换</strong>.</p>
-<p>若 $K$ 的特征 $\text{char}(K)\neq2,3$，则 $K$ 在容许的变换下可化为<br>$$E:y^2=x^3+Ax+B$$ 也即 $a_k$ $[k=1,2,3]$ 可取为 $0$. 对于此种形式，有<br>$$\begin{aligned}b_2&amp;=0 \\ b_4&amp;=2A \\ b_6&amp;=4B \\ b_8&amp;=-A^2 \\ c_4&amp;=-48A \\ c_6&amp;=-864B \\ \Delta&amp;=-16(4A^3+27B^2) \\ j&amp;=-1728\cdot\dfrac{64A^3}{\Delta} \\ &amp;=1728\cdot\dfrac{4A^3}{4A^3+27B^2},\quad\text{if}\;\Delta\neq0\end{aligned}$$<br>注：$[$一般的$]$ 三次方程 $x^3+Ax+B=0$ 根的判别式可表为 $\Delta=4A^3+27B^2$，而 $\Delta=0$ 时此方程有重根，对应的椭圆曲线退化，其上恰有一个奇点.</p>
-<p>取 $\psi:(x,y)\longmapsto(u^2x,u^3y)$ $[$Weierstrass 坐标变换，$r,s,t$ 为 $0]$，在此同构映射下 $j$ 仍是不变的，故 $j$-不变量完整分类了 $[$代数闭域 $K$ 上的$]$ 椭圆曲线，即 $$j(E)=j({E^\prime})\iff E\cong E^\prime$$<br>若在椭圆曲线上（自然地）定义群结构，则多项式映射 $\psi$ 自动成为群同态.</p>
-<p>单值化定理 $[$Uniformization Theorem$]$ 表明 $\Complex$ 上任意的椭圆曲线 $E:y^2=x^3+Ax+B$ 都一一对应到一个复格 $\Lambda$ 使<br>$$\begin{aligned}\psi:\Complex/\Lambda&amp;\xrightarrow{\qquad} E \\ z&amp;\xmapsto{\qquad}(\wp(z),\wp^\prime(z))\end{aligned}$$ 是复李群同构，即 $E\cong\Complex/\Lambda$ $[$解析同构$]$. 故椭圆曲线之间的态射 $\psi$ 可以一一对应到复环面 $\Complex/\Lambda$ 间的全纯映射</p>
-<script> displayGraph(1, "22ex") </script>
-<p>其中 $\alpha\in\Complex$ 满足 $\alpha\Lambda_1\subseteq\Lambda_2$，复乘 $$\text{Hom}(\Lambda_1,\Lambda_2)=\{\alpha\in\Complex:\alpha\Lambda_1\subseteq\Lambda_2\}$$</p>
-<p>注：$[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线 $(E,\mathcal{O})$ $\iff$ 亏格 $1$ 带基点 $\mathcal{O}\in E$ 的紧 Riemann 曲面 $E$ 典范同构于 $(\mathbb{C}/\Lambda,0)$. </p>
-<p>注：全体 $[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线构成范畴 $\mathsf{Ell}_\mathbb{C}$，范畴间的态射 $(E,\mathcal{O})\longrightarrow(E^\prime,\mathcal{O}^\prime)$ 定义为满足 $f(\mathcal{O})=\mathcal{O}^\prime$ 的 Riemann 曲面态射 $f:E\longrightarrow E^\prime$.</p>
-<p>事实上，Weierstrass 证明了对所有 $P,Q,R\in E$，存在直线 $\ell\in\mathbb{P}^2$ 交 $E$ 于 $P,Q,R$ 等价于 $P+Q+R=\mathcal{O}$.</p>
-<p>设 $P(x_1,y_1),Q(x_2,y_2)\in E:y^2=x^3+Ax+B$，几何直观给出两点加法公式<br>$$x(P+Q)=\begin{cases} \bigg(\dfrac{y_2-y_1}{x_2-x_1}\bigg)^2-x_1-x_2 &amp;\text{if } P\neq Q \\ \\ \dfrac{x_1^4-2Ax_1^2-8Bx_1+A^2}{4(x_1^3+Ax_1+B)} &amp;\text{if } P=Q \end{cases}$$<br>注：所谓的几何直观是指，$P+Q=-R$ 应视作 $P,Q$ 连线与 $E$ 交于点 $R$，$R,\mathcal{O}$ 连线交 $E$ 于 $-R$.</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNixbMCwxLCJHIl0sWzEsMSwiPSJdLFsyLDAsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==&embed"
+width="100%" style="transform: scale(1.3); pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>然而，即便是对于这样简单的图，若不借助上述结果，想要计算其着色数 $[$色多项式$]$ 也不是一件容易的事. 但是对于端点数更少的图, 是容易计算的, 譬如：</p>
+<div style="overflow: hidden;"> <iframe src="../lib/quiver/index.html?q=
+WzAsNSxbMiwwLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbMSwxLCI9Il0sWzAsMSwiR1xcY2RvdCBlIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>几乎可以一眼看出其各个端点的着色数</p>
+<div style="overflow: hidden;"> <iframe src="../lib/quiver/index.html?q=
+WzAsMyxbMCwwLCJxIl0sWzAsMiwicS0xIl0sWzIsMiwicS0yIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>这样就得出 $\pi_{G\,\cdot\,e}(q)=q(q-1)(q-2)$，而对于 $\pi_{G\,-\,e}(q)$，尽管其端点数未变，但其边数仍少去一条，也变得容易计算：</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNCxbMCwwLCJxIl0sWzAsMiwicS0xIl0sWzIsMiwicS0xIl0sWzIsMCwicS0xIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>于是 $\pi_{G\,-\,e}(q)=q(q-1)^3$，可知<br>$$\pi_G(q)=q(q-1)(q^2-3q+3)$$</p>
+<p>现在来考虑一个 $n$ 边形的着色数 $——$ 或者等价的，可以看成是将圆分成 $n$ 个扇形，然后对扇形着色，而相邻扇形不重色. 对于着色数而言，边的弯曲与否无需关注，因此绘制成弧亦无影响，故以下图来表示一 $n$ 边形.</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNSxbMCwwLCJcXGJ1bGxldF8xIl0sWzIsMCwiXFxidWxsZXRfMiJdLFswLDIsIlxcYnVsbGV0X24iXSxbMiwyLCJcXGJ1bGxldF8zIl0sWzEsMiwiXFxjZG90cyJdLFsxLDAsIiIsMCx7ImN1cnZlIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwzLCIiLDIseyJjdXJ2ZSI6LTIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=&embed"
+width="100%" style="margin-top: 1.2em; transform: scale(1.3); pointer-events: none; border: none;"></iframe></div>
+
+<p>或者更正式地，这被称之为环图 $C_n$. 显然，有 </p>
+<div class="scroll">
+$$\begin{aligned}\pi_{C_n}(q)
+&=q(q-1)^{n-1}-\pi_{C_{n-1}}(q) \\
+&=q\sum_{4\le k\le n}(-1)^{n-k}(q-1)^{k-1}+(-1)^{n-3}\pi_{C_3}(q) \\ 
+&=(q-1)^n+(-1)^n(q-1)^3-(-1)^nq(q-1)(q-2) \\
+&=(q-1)^n+(-1)^n(q-1)
+\end{aligned}$$
+</div>
+
+<p>证明也可以考虑归纳，假定 $$\pi_{C_n}(q)=(q-1)^n+(-1)^n(q-1)$$ 则</p>
+<div>$$\begin{aligned}\pi_{C_{n+1}}(q)
+&=q(q-1)^n-\pi_{C_n}(q) \\
+&=q(q-1)^n-(q-1)^n-(-1)^n(q-1) \\
+&=(q-1)^{n+1}+(-1)^{n+1}(q-1)
+\end{aligned}$$
+</div>
+
+
+
 
   </div>
 </article>
