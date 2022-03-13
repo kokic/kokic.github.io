@@ -183,7 +183,7 @@
 
 
 <h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><p>设 $S$ 是一个非空集合，将映射 $S^2\to S$ 称为 $S$ 的合成，具体而言，$S$ 上的合成是将 $(a,b)\in S^2$ 映为 $t\in S$. 合成作用在 $(a,b)$ 上得到 $t$ 常记为 $a\cdot b=t$，这里的 $\cdot$ 并非是常规意义上的数的乘法.<br>合成的结合律是指 $\forall a,b,c\in S,(a\cdot b)\cdot c=a\cdot(b\cdot c)$，合成的交换律是指 $\forall a,b\in S,a\cdot b=b\cdot a$，自然，结合律是比交换律更基础的性质，这一点从函数的复合上可以看出.<br>设 $A$ 是一个非空集合，$a\in A$，$f$ 和 $g$ 均为 $A\to A$ 的函数，$g\cdot f$ 表示复合映射 $a\mapsto g(f(a))$，设 $h$ 也是一个 $A\to A$ 的函数，函数的复合满足结合律，也即 $(h\cdot g)\cdot f=h\cdot(g\cdot f)$. </p>
-<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序-2"></a>程序-2</h3><p>基于此，我们可以在 javascript 中定义 <inc>compose</inc> 方法</p>
+<h3 id="程序-2"><a href="#程序-2" class="headerlink" title="程序-2"></a>程序-2</h3><p>基于此，我们可以在 javascript 中定义 <code>compose</code> 方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;  compose :: func -&gt; func -&gt; a -&gt; a</span><br><span class="line">var compose &#x3D; f &#x3D;&gt; g &#x3D;&gt; x &#x3D;&gt; f(g(x));</span><br></pre></td></tr></table></figure>
 <p>注意到，此处通过 <strong>currying</strong> 将 <code>compose(f, g)</code> 变换为 <code>compose(f)(g)</code>，同时不妨取 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var f &#x3D; a &#x3D;&gt; &#96;f($&#123;a&#125;)&#96;, g &#x3D; a &#x3D;&gt; &#96;g($&#123;a&#125;)&#96;, h &#x3D; a &#x3D;&gt; &#96;h($&#123;a&#125;)&#96;;</span><br></pre></td></tr></table></figure>
@@ -210,7 +210,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var gcd_euclid &#x3D; (a, b) &#x3D;&gt; b &#x3D;&#x3D; 0 ? a : gcd_euclid(b, a % b);</span><br></pre></td></tr></table></figure>
 <p>又由 <strong>贝祖等式</strong> [bézout’s identity] $\forall a,b\in\mathbb{Z},\exist x,y\in\mathbb{Z}$ 使 $ax+by=\text{gcd}(a,b)$，由此便有了 <strong>扩展欧几里得算法</strong> [extended euclidean algorithm]，在计算 $\text{gcd}(a,b)$ 的同时还能找到 $x,y$. </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var gcd_euclid_extended &#x3D; (a, b) &#x3D;&gt; </span><br><span class="line">  b &#x3D;&#x3D; 0 ? [a, 1, 0] : </span><br><span class="line">    (([d, x, y]) &#x3D;&gt; [d, y, x - Math.floor(a &#x2F; b) * y])</span><br><span class="line">    (gcd_euclid_extended(b, a % b));</span><br></pre></td></tr></table></figure>
-<p>不难看出，<inc>gcd_euclid_extended</inc> 返回一组数 $(d,x,y)$，其中 $d=\text{gcd}(a,b)$. </p>
+<p>不难看出，<code>gcd_euclid_extended</code> 返回一组数 $(d,x,y)$，其中 $d=\text{gcd}(a,b)$. </p>
 <p>附：在初等数论中，常将 $\text{gcd}(a,b)$ 简记为 $(a, b)$，本文不使用此记法</p>
 <p>设 $M\subset\mathbb{Z}$，若 $\forall x,y\in M$ 都有 $x-y\in M$，则称 $M$ 为一个 <strong>模</strong> [module]，特别如 $\{0\}$ 和 $\mathbb{Z}$ 被称作 <strong>平凡模</strong> [trivial module]，容易知道任意非平凡模 $M$ 必为某一正整数的所有倍数构成的集合，也即是说 $\exists m\in\mathbb{Z}_{\ge1}\text{ s.t. }M=m\mathbb{Z}$. </p>
 <p>进而可知，$\forall (a,b)\in\mathbb{Z}^2_{\ge1}$，有 $\{m\cdot\text{gcd}(a,b):m\in\mathbb{Z}\}=\{ax+by:(x,y)\in\mathbb{Z}^2\}$</p>
