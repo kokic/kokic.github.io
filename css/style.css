@@ -443,8 +443,8 @@ body td {
 }
 @font-face {
   font-style: normal;
-  font-family: "Inconsolata";
-  src: local("Inconsolata"), url("../lib/fonts/Inconsolata.ttf") format("truetype");
+  font-family: "Monaco";
+  src: local("Monaco"), url("../lib/fonts/Monaco.ttf") format("truetype");
 }
 @font-face {
   font-style: normal;
@@ -456,15 +456,20 @@ body td {
   font-family: "Marcellus-SC";
   src: local("Marcellus-SC"), url("../lib/fonts/Marcellus-SC.ttf") format("truetype");
 }
+p {
+  text-align: justify;
+  word-break: break-all;
+}
 p strong {
   font-family: monospace;
 }
 p inc {
-  font-family: "Inconsolata";
-  font-size: 15.400000000000002px;
+  font-family: "Monaco";
+  font-size: 14px;
 }
 .scroll {
   margin-top: -1em;
+  margin-left: 0.5em;
   white-space: nowrap;
   overflow-x: scroll;
 }
@@ -1529,7 +1534,7 @@ pre {
   border: 1px dotted #666;
   border-radius: 4px;
   font-size: 13px;
-  font-family: "Inconsolata", monospace;
+  font-family: "Monaco", monospace;
   line-height: 22px;
   -webkit-border-radius: 4px;
 }
@@ -1538,12 +1543,12 @@ pre code {
   padding: 0;
   border: none;
 }
+/* vaild code */
 code {
   padding: 0 5px;
-  border: 1px dotted #666;
   border-radius: 2px;
-  font-family: "Inconsolata", monospace;
-  font-size: 15.400000000000002px;
+  font-family: "Monaco", monospace;
+  font-size: 14px;
   -webkit-border-radius: 2px;
 }
 .highlight {
@@ -1552,7 +1557,7 @@ code {
   padding: 10px 15px;
   border-radius: 4px;
   background: #fafafa;
-  font-family: "Inconsolata", monospace;
+  font-family: "Monaco", monospace;
   -webkit-border-radius: 4px;
 }
 .highlight figcaption {
@@ -1607,7 +1612,8 @@ code {
   text-align: right;
   opacity: 0.2;
 }
-.highlight .line {
+/* vaild code */
+.line {
   height: 22px;
-  font-size: 15.400000000000002px;
+  font-size: 14px;
 }
