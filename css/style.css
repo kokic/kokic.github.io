@@ -448,11 +448,6 @@ body td {
 }
 @font-face {
   font-style: normal;
-  font-family: "Lora-Regular";
-  src: local("Lora-Regular"), url("../lib/fonts/Lora-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-style: normal;
   font-family: "Marcellus-SC";
   src: local("Marcellus-SC"), url("../lib/fonts/Marcellus-SC.ttf") format("truetype");
 }
@@ -498,7 +493,7 @@ body {
   font-display: swap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Lora-Regular", "Noto Serif SC";
+  font-family: "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -527,7 +522,7 @@ body {
 .content a {
   color: #383838;
   text-decoration: none;
-  font-family: "Marcellus-SC";
+  font-family: "Monaco", "Noto Serif SC";
   background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
   background-position: bottom;
   background-size: 100% 6px;
@@ -1412,7 +1407,7 @@ article .content .caption {
 }
 #tag-cloud .tag-cloud-tags a {
   display: inline-block;
-  margin: 10px;
+  margin: 4px;
 }
 .tooltipped {
   position: relative;
@@ -1427,7 +1422,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 11.200000000000001px;
-  font-family: "Lora-Regular", "Noto Serif SC";
+  font-family: "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
