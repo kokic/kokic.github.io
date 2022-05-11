@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -139,11 +142,12 @@
     <script src="../lib/loader.js"></script>
 <script>
 const path = "/assets/images/group-law";
-const svg_path = path + "-svg_";
+const suffix = "svg";
 function displayGraph(id, width, height) {
+  const 𝓞 = `${path}-${id}.${suffix}`;
   document.write((height != null || height != undefined) ? 
-    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width + " height=" + height + " viewBox") + "</div>": 
-    "<div style='margin:0 auto;'>" + loadFile(svg_path + id).replace("viewBox", "width=" + width +  " viewBox") + "</div>");
+    "<div style='margin:0 auto;'>" + loadFile(𝓞).replace("viewBox", "width=" + width + " height=" + height + " viewBox") + "</div>": 
+    "<div style='margin:0 auto;'>" + loadFile(𝓞).replace("viewBox", "width=" + width +  " viewBox") + "</div>");
 }
 </script>
 
@@ -164,7 +168,12 @@ function displayGraph(id, width, height) {
 <p>注：$[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线 $(E,\mathcal{O})$ $\iff$ 亏格 $1$ 带基点 $\mathcal{O}\in E$ 的紧 Riemann 曲面 $E$ 典范同构于 $(\mathbb{C}/\Lambda,0)$. </p>
 <p>注：全体 $[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线构成范畴 $\mathsf{Ell}_\mathbb{C}$，范畴间的态射 $(E,\mathcal{O})\longrightarrow(E^\prime,\mathcal{O}^\prime)$ 定义为满足 $f(\mathcal{O})=\mathcal{O}^\prime$ 的 Riemann 曲面态射 $f:E\longrightarrow E^\prime$.</p>
 <p>事实上，Weierstrass 证明了对所有 $P,Q,R\in E$，存在直线 $\ell\in\mathbb{P}^2$ 交 $E$ 于 $P,Q,R$ 等价于 $P+Q+R=\mathcal{O}$.</p>
-<p>设 $P(x_1,y_1),Q(x_2,y_2)\in E:y^2=x^3+Ax+B$，几何直观给出两点加法公式<br>$$x(P+Q)=\begin{cases} \bigg(\dfrac{y_2-y_1}{x_2-x_1}\bigg)^2-x_1-x_2 &amp;\text{if } P\neq Q \\ \\ \dfrac{x_1^4-2Ax_1^2-8Bx_1+A^2}{4(x_1^3+Ax_1+B)} &amp;\text{if } P=Q \end{cases}$$<br>注：所谓的几何直观是指，$P+Q=-R$ 应视作 $P,Q$ 连线与 $E$ 交于点 $R$，$R,\mathcal{O}$ 连线交 $E$ 于 $-R$.</p>
+<p>设 $P(x_1,y_1),Q(x_2,y_2)\in E:y^2=x^3+Ax+B$，几何直观给出两点加法公式 </p>
+<div class="scroll">
+$$x(P+Q)=\begin{cases} \bigg(\dfrac{y_2-y_1}{x_2-x_1}\bigg)^2-x_1-x_2 &\text{if } P\neq Q \\\ \\\ \dfrac{x_1^4-2Ax_1^2-8Bx_1+A^2}{4(x_1^3+Ax_1+B)} &\text{if } P=Q \end{cases}$$
+</div>
+
+<p>注：所谓的几何直观是指，$P+Q=-R$ 应视作 $P,Q$ 连线与 $E$ 交于点 $R$，$R,\mathcal{O}$ 连线交 $E$ 于 $-R$.</p>
 
   </div>
 </article>
@@ -185,8 +194,6 @@ function displayGraph(id, width, height) {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -225,8 +232,6 @@ function displayGraph(id, width, height) {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -256,6 +261,7 @@ function displayGraph(id, width, height) {
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

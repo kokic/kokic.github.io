@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -194,7 +197,10 @@ $$\lambda_{2k-1}=(a+k)(b-c-k),\lambda_{2k}=(b+k)(a-c-k)$$
 <p>1828 年，法国数学家（当时还不是）Évariste Galois (1811-1832) 在他的第一篇论文《Démonstration d’un théorème sur les fractions continues périodiques》中简单总结了 Euler、Lagrange 等人关于连分数的工作并证明了一个关于周期连分数的结论，这是他数学研究的初次尝试. 我们猜测，Galois 会研究连分数（包括后来对高次方程可解性的研究）很可能是受到 Lagrange 的《Réflexions sur la résolution algébrique des équations》的影响. </p>
 <p>1892 年，法国数学家 Henri Eugène Padé (1863-1953) 受德国数学家 Georg Frobenius (1849-1917) 的工作启发，根据经典的连续分数理论提出了 Padé approximation. </p>
 <p>1894 年，Stieltjes 发表了论文《Recherches sur les fractions continues》，这个工作（实际上是两篇论文）是连分式解析理论的开端，它研究了收敛性问题以及定积分与发散级数的联系，正因如此，Stieltjes 被誉为“连分数分析之父”. 在这篇论文中，Stieltjes 为了表示一个解析函数序列的极限，被迫引进了一种新的积分（确切来说，是对黎曼积分进行了推广），这种积分（也就是我们现在所知的 Riemann-Stieltjes integral）后来成为研究一般测度上的积分的开端. </p>
-<p>1913 年，印度数学家（当时还不是）Srinivasa Ramanujan (1887–1920) 在写给英国数学家 Godfrey Harold Hardy (1877-1947) 的信中记录着这样一些恒等式（只选择了有关连分数的那部分）<br>$$\int_0^ae^{-x}\mathrm{d}x=\cfrac{\sqrt\pi}{2}-\cfrac{e^{-a^2}}{2a+\cfrac{1}{a+\cfrac{2}{2a+\cfrac{3}{a+\cfrac{4}{2a+\cdots}}}}}$$</p>
+<p>1913 年，印度数学家（当时还不是）Srinivasa Ramanujan (1887–1920) 在写给英国数学家 Godfrey Harold Hardy (1877-1947) 的信中记录着这样一些恒等式（只选择了有关连分数的那部分）</p>
+<div class="scroll">
+$$\int_0^ae^{-x}\mathrm{d}x=\cfrac{\sqrt\pi}{2}-\cfrac{e^{-a^2}}{2a+\cfrac{1}{a+\cfrac{2}{2a+\cfrac{3}{a+\cfrac{4}{2a+\cdots}}}}}$$
+</div>
 <div class="scroll">
 $$4\int_0^\infty\dfrac{xe^{-x\sqrt5}}{\text{cosh}x}\mathrm{d}x=\cfrac{1}{1+\cfrac{1^2}{1+\cfrac{1^2}{1+\cfrac{2^2}{1+\cfrac{2^2}{1+\cfrac{3^2}{1+\cfrac{3^2}{1+\cdots}}}}}}}$$
 </div>
@@ -232,8 +238,6 @@ $$\cfrac{1}{1+\cfrac{e^{-2\pi\sqrt5}}{1+\cfrac{e^{-4\pi\sqrt5}}{1+\cdots}}}=\lef
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -272,8 +276,6 @@ $$\cfrac{1}{1+\cfrac{e^{-2\pi\sqrt5}}{1+\cfrac{e^{-4\pi\sqrt5}}{1+\cdots}}}=\lef
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -303,6 +305,7 @@ $$\cfrac{1}{1+\cfrac{e^{-2\pi\sqrt5}}{1+\cfrac{e^{-4\pi\sqrt5}}{1+\cdots}}}=\lef
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

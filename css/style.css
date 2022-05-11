@@ -421,7 +421,7 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 12px;
+  font-size: 13px;
   overflow: auto;
   display: block;
 }
@@ -430,7 +430,7 @@ body th {
   border-bottom: 1px dashed #666;
   color: #383838;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 14px;
 }
 body td {
   padding: 0 8px;
@@ -440,11 +440,6 @@ body td {
   font-style: normal;
   font-family: "Latin Modern Math";
   src: local("Latin Modern Math"), url("../lib/fonts/LatinModern-Math.otf") format("truetype");
-}
-@font-face {
-  font-style: normal;
-  font-family: "Monaco";
-  src: local("Monaco"), url("../lib/fonts/Monaco.ttf") format("truetype");
 }
 @font-face {
   font-style: normal;
@@ -459,11 +454,15 @@ p strong {
   font-family: monospace;
 }
 p inc {
-  font-family: "Monaco";
-  font-size: 14px;
+  font-family: "JetBrains Mono";
+  font-size: 15px;
+}
+.vol {
+  font-size: 1.1em;
 }
 .scroll {
   margin-top: -1em;
+  margin-bottom: -1em;
   margin-left: 0.5em;
   white-space: nowrap;
   overflow-x: scroll;
@@ -492,8 +491,8 @@ body {
   color: #383838;
   font-display: swap;
   font-weight: 400;
-  font-size: 14px;
-  font-family: "Noto Serif SC";
+  font-size: 15px;
+  font-family: "Vollkorn", "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -522,13 +521,15 @@ body {
 .content a {
   color: #383838;
   text-decoration: none;
-  font-family: "Monaco", "Noto Serif SC";
+  font-family: "Vollkorn", "Noto Serif SC";
   background-image: linear-gradient(transparent, transparent 5px, #383838 5px, #383838);
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .content a:hover {
+  color: #d480aa;
   background-image: linear-gradient(transparent, transparent 4px, #d480aa 4px, #d480aa);
 }
 .content a.icon {
@@ -1421,8 +1422,8 @@ article .content .caption {
   color: #fff;
   font-display: swap;
   font-weight: 400;
-  font-size: 11.200000000000001px;
-  font-family: "Noto Serif SC";
+  font-size: 12px;
+  font-family: "Vollkorn", "Noto Serif SC";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
@@ -1526,10 +1527,9 @@ pre {
   overflow-x: auto;
   padding: 10px 15px;
   padding-bottom: 0;
-  border: 1px dotted #666;
-  border-radius: 4px;
+  border-radius: 4px /* ignore, view prism */;
   font-size: 13px;
-  font-family: "Monaco", monospace;
+  font-family: "JetBrains Mono";
   line-height: 22px;
   -webkit-border-radius: 4px;
 }
@@ -1538,12 +1538,13 @@ pre code {
   padding: 0;
   border: none;
 }
-/* vaild code */
+/* vaild inline code */
 code {
   padding: 0 5px;
   border-radius: 2px;
-  font-family: "Monaco", monospace;
-  font-size: 14px;
+  font-family: "JetBrains Mono";
+  font-size: 15px;
+  color: #4d4d4c;
   -webkit-border-radius: 2px;
 }
 .highlight {
@@ -1552,7 +1553,7 @@ code {
   padding: 10px 15px;
   border-radius: 4px;
   background: #fafafa;
-  font-family: "Monaco", monospace;
+  font-family: "JetBrains Mono";
   -webkit-border-radius: 4px;
 }
 .highlight figcaption {
@@ -1610,5 +1611,5 @@ code {
 /* vaild code */
 .line {
   height: 22px;
-  font-size: 14px;
+  font-size: 15px;
 }

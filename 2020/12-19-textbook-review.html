@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -147,7 +150,7 @@
 <h3 id="p-57"><a href="#p-57" class="headerlink" title="p. 57"></a>p. 57</h3><p>习题 B-5 依稀可见 <strong>分式线性变换</strong> (莫比乌斯变换) 的影子, 且此形式在后续内容 (p. 97 习题 B-3) 中仍会出现. 后者实际上是给出了恒等式：<br>$$\dfrac{1-a}{1+a}\cdot\dfrac{1-b}{1+b}=\dfrac{1-\dfrac{a+b}{1+ab}}{1+\dfrac{a+b}{1+ab}}$$<br>以供兼备想象力与好奇心的学生去关注所谓的 “结构”, 若是再与选修 2-2 pp. 104, 106 复数乘除法的定义结合起来思考, 便能打开代数学奇妙新世界的大门.</p>
 <p>对有足够背景知识的读者的明示: 不妨考虑整系数分式线性变换在 $\text{PGL}(2,\mathbb{Q})$ 的共轭.</p>
 <h3 id="pp-65-68-88"><a href="#pp-65-68-88" class="headerlink" title="pp. 65, 68, 88"></a>pp. 65, 68, 88</h3><p>p. 65 的阅读理解部分中指出了无理数 $\sqrt{2}$ 较好的近似 $\sqrt{2}=1.4142135623730950488…$, 表明此数据常用于估值, 而 $1.4\lt\cdots\lt1.4142\lt\cdots\lt\sqrt{2}\lt\cdots\lt1.4143\lt\cdots\lt1.5$ 暗示了一种实数构造的方式.</p>
-<p>习题 p. 68 A-3、A-6 分别给出 $\sqrt[3]{5}=1.70997…,\dfrac{1}{\sqrt[4]{e}}=0.77880…$, 习题 B-1 中有 $\sqrt{a\sqrt{a\sqrt{a}}}$ 这样一题, 无非是想引诱学生发现下面的事实:<br>$$\underbrace{\sqrt{a\sqrt{a\sqrt{a\cdots}}}}_{n}=a^{1-2^{-n}}$$<br>注意此时我们尚未了解等比数列的求和, 但仍可通过对正方形的等面积分割计算 $\dfrac{1}{2}+\dfrac{1}{4}+\dfrac{1}{8}+\cdots=1$.<br>特别的, 令 $n\to+\infty$, 立即得到 $\sqrt{a\sqrt{a\sqrt{a\cdots}}}=a$. 事实上, 更一般的有 $\underbrace{\sqrt[p]{a\sqrt[p]{a\sqrt[p]{a\cdots}}}}_{n}=a^{(1-p^{-n})/(p-1)}$.</p>
+<p>习题 p. 68 A-3、A-6 分别给出 $\sqrt[3]{5}=1.70997…,\dfrac{1}{\sqrt[4]{e}}=0.77880…$, 习题 B-1 中有 $\sqrt{a\sqrt{a\sqrt{a}}}$ 这样一题, 无非是想引诱学生发现下面的事实:<br>$$\underbrace{\sqrt{a\sqrt{a\sqrt{a\cdots}}}}_{n}=a^{1-2^{-n}}$$<br>注意此时我们尚未了解等比数列的求和, 但仍可通过对正方形的等面积分割计算 $\dfrac{1}{2}+\dfrac{1}{4}+\dfrac{1}{8}+\cdots=1$.<br>特别的, 令 $n\to+\infty$, 立即得到 $\sqrt{a\sqrt{a\sqrt{a\cdots}}}=a$. 更一般的有 $\underbrace{\sqrt[p]{a\sqrt[p]{a\sqrt[p]{a\cdots}}}}_{n}=a^{(1-p^{-n})/(p-1)}$.</p>
 <p>仍令 $n\to+\infty$, 即得 $\displaystyle\sum_{k\ge1}p^{-k}=\dfrac{1}{p-1}$, 此时, 若读者稍作思考, 便能发现 $\dfrac{1}{1-z}=\displaystyle-\sum_{k\ge1}z^{-k}\;(|z|\gt1)$, 于是在无意之中我们将 $z$ 的定义域扩大到了收敛域以外, 即左端 $\dfrac{1}{1-z}$ 的 <strong>洛朗级数</strong> 展开, 再结合熟知的 (泰勒级数) $\dfrac{1}{1-z}=\displaystyle\sum_{k\ge0}z^k\;(|z|\lt1)$, 这将会启发学生对 <strong>解析函数奇点</strong> 和 <strong>收敛半径</strong> 等概念的思考.</p>
 <hr>
 <p>习题 p.68 B-4 是黄金分割律算术性质的体现, 习题 p. 88 B-1 表明 $(n^2+n+1)(n-1)=n^3-1$, 此处或许是想引诱学生发现 <strong>分圆多项式</strong> (不妨将根绘制在复平面上) 以至 <strong>解析数论</strong> 的存在:<br>$$x^n-1=\prod_{k=1}^n(x-\varepsilon^k)=\prod_{d\,|\,n}\Phi_d(x)$$<br>其中 $\varepsilon=\cos\dfrac{2\pi}{n}+\sqrt{-1}\sin\dfrac{2\pi}{n}$.</p>
@@ -189,8 +192,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -229,8 +230,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -260,6 +259,7 @@
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

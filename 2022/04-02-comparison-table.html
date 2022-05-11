@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,14 +67,14 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2022/05-10-code-exhibition.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2022/03-24-disquisition-3.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -614,8 +619,6 @@ table td {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -654,8 +657,6 @@ table td {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -685,6 +686,7 @@ table td {
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

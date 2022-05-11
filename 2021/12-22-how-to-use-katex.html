@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -148,14 +151,28 @@ small {
 <p>$iv.$ 本方案缺陷明显，但读者也当有尝试的勇气.</p>
 <p>$v.$ 读者所使用之设备上应当有一个浏览器.</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>读者应大体知道如何使用浏览器打开本地的 <code>.html</code> 文件，这几乎是唯一的门槛之所在. 官网自然已给出详尽之教程，访问 <a target="_blank" rel="noopener" href="https://katex.org/docs/browser.html">此处</a> 可见如下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;katex.min.css&quot; integrity&#x3D;&quot;sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj&#x2F;6JR5z27gSSULCNHIRReVs&quot; crossorigin&#x3D;&quot;anonymous&quot;&gt;</span><br><span class="line">    &lt;script defer src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;katex.min.js&quot; integrity&#x3D;&quot;sha384-z1fJDqw8ZApjGO3&#x2F;unPWUPsIymfsJmyrDVWC8Tv&#x2F;a1HeOtGmkwNd&#x2F;7xUS0Xcnvsx&quot; crossorigin&#x3D;&quot;anonymous&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script defer src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;contrib&#x2F;auto-render.min.js&quot; integrity&#x3D;&quot;sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR&quot; crossorigin&#x3D;&quot;anonymous&quot;</span><br><span class="line">      onload&#x3D;&quot;renderMathInElement(document.body);&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;katex.min.css&quot; integrity&#x3D;&quot;sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj&#x2F;6JR5z27gSSULCNHIRReVs&quot; crossorigin&#x3D;&quot;anonymous&quot;&gt;
+    &lt;script defer src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;katex.min.js&quot; integrity&#x3D;&quot;sha384-z1fJDqw8ZApjGO3&#x2F;unPWUPsIymfsJmyrDVWC8Tv&#x2F;a1HeOtGmkwNd&#x2F;7xUS0Xcnvsx&quot; crossorigin&#x3D;&quot;anonymous&quot;&gt;&lt;&#x2F;script&gt;
+    &lt;script defer src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;katex@0.15.1&#x2F;dist&#x2F;contrib&#x2F;auto-render.min.js&quot; integrity&#x3D;&quot;sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR&quot; crossorigin&#x3D;&quot;anonymous&quot;
+      onload&#x3D;&quot;renderMathInElement(document.body);&quot;&gt;&lt;&#x2F;script&gt;
+  &lt;&#x2F;head&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此处给出的是 0.15.1 版本之模板 $($目前已是最新$)$，于较新的版本有所需要的读者，访问上述官网链接照例复制即可.</p>
 <h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><p>于设备上创建一文本文件，使其后缀名为 <code>.html</code> 而前缀名全由读者意思. 先将上模板内容置入其中，而于标签 <code>&lt;/head&gt;</code> 之后写下 <code>&lt;body&gt;&lt;/body&gt;</code>，再于标签之间键入形如 <code>$...$</code> 或 <code>$$...$$</code> 的 $\TeX$ 命令，两者之差异对于熟悉 $\LaTeX$ 的读者是明显的.</p>
 <p>下面给出一例，其渲染行间之 $\text{Gaussian integral}$，即 $$\int_{-\infty}^\infty e^{-x^{2}}\mathrm{d}x=\sqrt{\pi}$$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">$$\int_&#123;-\infty&#125;^\infty e^&#123;-x^&#123;2&#125;&#125;\mathrm&#123;d&#125;x&#x3D;\sqrt&#123;\pi&#125;$$</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+$$\int_&#123;-\infty&#125;^\infty e^&#123;-x^&#123;2&#125;&#125;\mathrm&#123;d&#125;x&#x3D;\sqrt&#123;\pi&#125;$$
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>于此基本已大功告成，可见其操作相当之容易，这时读者只需用浏览器打开此文件 $($ 在连接到互联网的情况下 $)$ 即可见得显示效果.</p>
 <h3 id="细节之处理"><a href="#细节之处理" class="headerlink" title="细节之处理"></a>细节之处理</h3><p>这一步并非必要，其作用仅是调整 <code>body</code> 中的字体大小 $($为 36 像素$)$ 以期显示的更大一些.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">  body &#123;</span><br><span class="line">    font-size: 36px;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;
+  body &#123;
+    font-size: 36px;
+  &#125;
+&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>自然，应置其于 <code>&lt;head&gt;</code> 与 <code>&lt;/head&gt;</code> 之间.</p>
 <h3 id="离线"><a href="#离线" class="headerlink" title="离线"></a>离线</h3><p>原理直观而朴素，将文件下载到本地并依路径加载即可，其余部分是完全一样的，具体操作交由读者自己完成，相信对于认真阅读本文之读者是全无问题的.</p>
 <p>注：于离线使用时，<code>src</code> 所依路径可设为 <code>.html</code> 文件之相对路径.</p>
@@ -179,8 +196,6 @@ small {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -219,8 +234,6 @@ small {
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -250,6 +263,7 @@ small {
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -140,9 +143,9 @@
 <p>对任意正实数 $x_1,x_2$ 存在正常数 $C$ 使得<br>$$\|\ell(x_1+x_2)-\ell(x_1)-\ell(x_2)\|\le C(\| x_1\|+\|x_2\|)$$ 成立，其中 $\ell:x\mapsto x\log|x|$.</p>
 <p>如果考虑 $\|\cdot\|$ 为绝对值 $|\cdot|$，则由初等方法便可证明 $C=\log2$，下面给出一种朴素的证明.</p>
 <p>由对称性，可设 $x_1,x_2$ 中的一者为定值且大于零，故令<br>$$f(x)=\dfrac{|\ell(x+c)-\ell(x)-\ell(c)|}{|x|+c}$$</p>
-<p>i. 若 $x\in(0,+\infty)$，$f^\prime(x)=\dfrac{c\log\dfrac{c}{x}}{(c+x)^2}$，即知<br>$$f(x)\le f(c)=\log2$$</p>
-<p>ii. 若 $x\in(-c,0)$，$f^\prime(x)=\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，于是<br>$$f(x)\le f(\phi^{-2}c)=\log\phi$$</p>
-<p>iii. 若 $x\in(-\infty,-c)$，$f^\prime(x)=-\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，<br>$$f(x)\le f(-\phi^{2}c)=\log\phi$$</p>
+<p>i. 若 $x\in\R_{(0,+\infty)}$，$f^\prime(x)=\dfrac{c\log\dfrac{c}{x}}{(c+x)^2}$，即知<br>$$f(x)\le f(c)=\log2$$</p>
+<p>ii. 若 $x\in\R_{(-c,0)}$，$f^\prime(x)=\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，于是<br>$$f(x)\le f(\phi^{-2}c)=\log\phi$$</p>
+<p>iii. 若 $x\in\R_{(-\infty,-c)}$，$f^\prime(x)=-\dfrac{c\log\dfrac{-c}{(c+x)^2}}{(c-x)^2}$，<br>$$f(x)\le f(-\phi^{2}c)=\log\phi$$</p>
 <p>其中 $\phi=\dfrac{1+\sqrt5}{2}$ 为黄金分割，证完.</p>
 
   </div>
@@ -164,8 +167,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -204,8 +205,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -235,6 +234,7 @@
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

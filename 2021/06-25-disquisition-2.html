@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -143,7 +146,7 @@
 </div>
 证完.
 
-<h3 id="Aczel"><a href="#Aczel" class="headerlink" title="Aczél"></a>Aczél</h3><p>证明 $$\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}$$<br>不妨设 $$\dfrac{x_k}{\ell_k}=\begin{cases}\cosh\theta_1 &amp;\text{if }k=1\\ \sinh\theta_1\cosh\theta_k\displaystyle\prod_{j=2}^{k-1}\sin\theta_j &amp;\text{if }2\le k\le n-1 \\ \displaystyle\sinh\theta_1\prod_{j=2}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$<br>于是 <div class="scroll"><br>$$\begin{aligned}x_1-\displaystyle\sum_{k=2}^n x_k&amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-2}\sin\theta_j \\ &amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\ge\ell_1\cosh\theta_1-\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sinh\theta_1 \\ &amp;\ge\bigg(\ell^2_1-\displaystyle\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\end{aligned}$$</p>
+<h3 id="Aczel"><a href="#Aczel" class="headerlink" title="Aczél"></a>Aczél</h3><p>证明 $$\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}$$<br>不妨设 <div class="scroll">$$\dfrac{x_k}{\ell_k}=\begin{cases}\cosh\theta_1 &amp;\text{if }k=1\\ \sinh\theta_1\cosh\theta_k\displaystyle\prod_{j=2}^{k-1}\sin\theta_j &amp;\text{if }2\le k\le n-1 \\ \displaystyle\sinh\theta_1\prod_{j=2}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$ </div><br>于是 <div class="scroll"><br>$$\begin{aligned}x_1-\displaystyle\sum_{k=2}^n x_k&amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-2}\sin\theta_j \\ &amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\ge\ell_1\cosh\theta_1-\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sinh\theta_1 \\ &amp;\ge\bigg(\ell^2_1-\displaystyle\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\end{aligned}$$</p>
 </div>
 证完.
 
@@ -153,11 +156,11 @@
 <h2 id="不证自明的形式"><a href="#不证自明的形式" class="headerlink" title="不证自明的形式"></a>不证自明的形式</h2><p>易知 $|x|+|y|\ge |x+y|\implies\displaystyle\sum|x_k|\ge \left|\sum x_k\right|$，利用这一点，自然想到下面的证明 </p>
 <h3 id="Cauchy-1"><a href="#Cauchy-1" class="headerlink" title="Cauchy"></a>Cauchy</h3><p>命 <div class="scroll"><br>$$\begin{aligned}P_n&amp;:\bigg(\sum_{k=1}^na_k^2\bigg)\bigg(\sum_{k=1}^nb_k^2\bigg)\ge\bigg(\sum_{k=1}^na_kb_k\bigg)^2 \\ Q_n&amp;:\sum_{k=1}^n\dfrac{x_k^2}{\ell_k^2}\ge\bigg(\sum_{k=1}^nx_k\bigg)^2\bigg({\sum_{k=1}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
 </div>
-由 $$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$ 证完.
+由 <div class="scroll">$$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$</div> 证完.
 
 <h3 id="Aczel-1"><a href="#Aczel-1" class="headerlink" title="Aczél"></a>Aczél</h3><p>命 <div class="scroll"><br>$$\begin{aligned}P_n&amp;:\bigg(a_1-\sum_{k=2}^na_k^2\bigg)\bigg(b_1-\sum_{k=2}^nb_k^2\bigg)\le\bigg(a_1b_1-\sum_{k=2}^na_kb_k\bigg)^2 \\Q_n&amp;:\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
 </div>
-由 $$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$ 证完.
+由 <div class="scroll">$$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$</div> 证完.
 
 <p>同时，考虑 $|x|+|y|\sim |x+y|,\sim\in\{\ge,\le\}$，自然，当上式恒等时，$|\cdot|$ 是线性变换.</p>
 <hr>
@@ -165,16 +168,16 @@
 </div>
 
 <p>当 $p$ 取 $0,1$ 时，显然 $(1)$ 式恒等，此即 $u^p,v^{p-1}$ 依次为常数 $1$ 时的情形. 换言之，其一为常数，另一变量尚可固定，因而线性.<br>当 $p\in(-\infty,0)\cup(1,+\infty)$ 时，$\sim$ 成为 $\ge$，此即所谓的 Radon 不等式（中等数学里常称为权方和不等式）.<br>当 $0\lt p\lt1$ 时，$\sim$ 成为 $\le$.</p>
-<p>固定一变量，此时不妨令 $f(x)=\dfrac{x^p}{\ell^{p-1}}$，形式上有 $f^{-1}(x)=\ell^{1-p^{-1}}x^{p^{-1}}$. 由 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$ 立即得到<br>$$\ell_1^{1-p^{-1}}x_1^{p^{-1}}+\ell_2^{1-p^{-1}}x_2^{p^{-1}}\le(\ell_1+\ell_2)^{1-p^{-1}}(x_1+x_2)^{p^{-1}}$$<br>再设 $p^{-1}+q^{-1}=1$，于是 $$\ell_1x_1+\ell_2x_2\le(\ell_1^q+\ell_2^q)^{1/q}(x_1^p+x_2^p)^{1/p}$$ 这即是常见的 Hölder 不等式.</p>
+<p>固定一变量，此时不妨令 $f(x)=\dfrac{x^p}{\ell^{p-1}}$，形式上有 $f^{-1}(x)=\ell^{1-p^{-1}}x^{p^{-1}}$. 由 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$ 立即得到</p>
+<div class="scroll">$$\ell_1^{1-p^{-1}}x_1^{p^{-1}}+\ell_2^{1-p^{-1}}x_2^{p^{-1}}\le(\ell_1+\ell_2)^{1-p^{-1}}(x_1+x_2)^{p^{-1}}$$</div>
+
+<p>再设 $p^{-1}+q^{-1}=1$，于是 $$\ell_1x_1+\ell_2x_2\le(\ell_1^q+\ell_2^q)^{1/q}(x_1^p+x_2^p)^{1/p}$$ 这即是常见的 Hölder 不等式.</p>
 <p>类似 Cauchy 与 Aczél 的对偶，有 $$\displaystyle\sum_{x\in X^2}|x|\ge\big|\sum_{x\in X^2}x\big|\iff\sum_{x\in X^2}^{\text{op}}|x|\le\big|\sum_{x\in X^2}^{\text{op}}x\big|$$<br>后者（Hölder 的对偶）被称作 Aczél-Popoviciu 不等式<br>其中 $$\sum_{i\in I}^{\text{op}}x_i\overset{\text{sign}}{=}x_{\min I}-\sum_{i\in I\backslash{\min I}}x_i$$</p>
 <hr>
-<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>因为 $$f\sim g\xrightarrow{\quad f^{-1}\quad}\text{id}\sim g\cdot f^{-1}\xrightarrow{\quad g^{-1}\quad}g^{-1}\sim f^{-1}$$<br>取 $$f\xrightarrow{\varphi}f^{-1} \qquad\qquad \varphi\cdot\varphi=\text{id}$$<br>并且 $$(\sim,\sim^{-1})\;\cong\text{id}$$<br>考虑 $$“\ge”\quad\overset{\text{form}}{=}\quad“\gt”\;\text{glue}\;“\text{ id }”\quad\overset{\text{form}}{=}\;(\succ,\text{id})$$<br>又 <div class="scroll"><br>$$\textbf{Ineq}:(\mathcal{S},\,\cdot\,)\hookrightarrow(\mathscr{P}(\mathcal{S}),\,\cdot\,)\qquad \mathcal{S}^\prime\ni s\mapsto {t:\mathcal{S}\ni t\sim s}$$<br>$$f:\mathcal{S}\to(\mathcal{S}^\prime\subset\mathcal{S},\,\sim\,)\qquad\sim:\mathcal{S}^\prime\to\mathcal{S}^\prime \qquad f(x\cdot y)\sim f(x)\cdot f(y)$$</p>
+<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>因为 $$f\sim g\xrightarrow{\quad f^{-1}\quad}\text{id}\sim g\cdot f^{-1}\xrightarrow{\quad g^{-1}\quad}g^{-1}\sim f^{-1}$$<br>取 $$f\xrightarrow{\varphi}f^{-1} \qquad\qquad \varphi\cdot\varphi=\text{id}$$<br>并且 $$(\sim,\sim^{-1})\;\cong\text{id}$$<br>考虑 $$“\ge”\quad\overset{\text{form}}{=}\quad“\gt”\;\text{glue}\;“\text{ id }”\quad\overset{\text{form}}{=}\;(\succ,\text{id})$$<br>又 <div class="scroll">$\textbf{Ineq}:(\mathcal{S},\,\cdot\,)\hookrightarrow(\mathscr{P}(\mathcal{S}),\,\cdot\,)\qquad \mathcal{S}^\prime\ni s\mapsto {t:\mathcal{S}\ni t\sim s}$<br>$f:\mathcal{S}\to(\mathcal{S}^\prime\subset\mathcal{S},\,\sim\,)\qquad\sim:\mathcal{S}^\prime\to\mathcal{S}^\prime \qquad f(x\cdot y)\sim f(x)\cdot f(y)$</p>
 </div>
-给出 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$
-$$(f^{-1},\;\cdot\;,\sim^{-1}) \xrightarrow{\text{inv}\;\cdot} (f^{-1},\;\cdot^{-1}\;,\sim)$$
-$$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;\cdot} (f,\;\cdot^{-1}\;,\sim^{-1})$$
-$$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\;,\sim)$$
 
+<p>给出 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv};f} (f^{-1},\;\cdot\;,\sim^{-1})$$<br>$$(f^{-1},\;\cdot\;,\sim^{-1}) \xrightarrow{\text{inv};\cdot} (f^{-1},\;\cdot^{-1}\;,\sim)$$<br>$$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;\cdot} (f,\;\cdot^{-1}\;,\sim^{-1})$$<br>$$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv};f} (f^{-1},\;\cdot^{-1}\;,\sim)$$</p>
 <hr>
 <p>参考：无.</p>
 <p>待续.</p>
@@ -198,8 +201,6 @@ $$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -238,8 +239,6 @@ $$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -269,6 +268,7 @@ $$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 

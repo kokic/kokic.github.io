@@ -15,8 +15,13 @@
         google_plus:    theme.open_graph.google_plus,
     }) -->
     
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
-     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.min.css">
     <link rel="stylesheet" href="/lib/katex/copy-tex.css">
@@ -62,8 +67,6 @@
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -149,12 +152,12 @@ $$\sum_{j\in\Z_{\ge0}}\dfrac{a_jx^j}{j!}\cdot\sum_{k\in\Z_{\ge0}}\dfrac{b_kx^k}{
 =\sum_{\ell\in\Z_{\ge0}}\left(\sum_{0\le m\le\ell}{\ell \choose m}a_mb_{\ell-m}\right)\cdot\dfrac{x^\ell}{\ell!}$$</div>
 其系数俨然就是二项式展开，本影映射的观点便自然产生.
 
-<p>宛若天成，注意到 $$\sum_{j\in\Z_{\ge0}}\dfrac{a_jx^j}{j!}=\mathcal{U}\left(\sum_{j\in\Z_{\ge0}}\dfrac{\mathfrak{a}^jx^j}{j!}\right)=\mathcal{U}(e^{\mathfrak{a}x})$$<br>而 $\mathcal{U}(e^{\mathfrak{a}x})\cdot\mathcal{U}(e^{\mathfrak{b}x})=\mathcal{U}\big(e^{\mathfrak{(a+b)}x}\big)$，将右侧展开得</p>
+<p>宛若天成，注意到 $$\sum_{j\in\Z_{\ge0}}\dfrac{a_jx^j}{j!}=\mathcal{U}\bigg(\sum_{j\in\Z_{\ge0}}\dfrac{\mathfrak{a}^jx^j}{j!}\bigg)=\mathcal{U}(e^{\mathfrak{a}x})$$<br>而 $\mathcal{U}(e^{\mathfrak{a}x})\cdot\mathcal{U}(e^{\mathfrak{b}x})=\mathcal{U}\big(e^{\mathfrak{(a+b)}x}\big)$，将右侧展开得</p>
 <div class="scroll">
-$$\begin{aligned}\mathcal{U}\left(\sum_{\ell\in\Z_{\ge0}}(\mathfrak{a+b})^\ell\cdot\dfrac{x^\ell}{\ell!}\right)
-&=\mathcal{U}\left(\sum_{\ell\in\Z_{\ge0}}(\mathfrak{a+b})^\ell\cdot\dfrac{x^\ell}{\ell!}\right) \\\ 
+$$\begin{aligned}\mathcal{U}\bigg(\sum_{\ell\in\Z_{\ge0}}(\mathfrak{a+b})^\ell\cdot\dfrac{x^\ell}{\ell!}\bigg)
+&=\mathcal{U}\bigg(\sum_{\ell\in\Z_{\ge0}}(\mathfrak{a+b})^\ell\cdot\dfrac{x^\ell}{\ell!}\bigg) \\\ 
 &=\sum_{\ell\in\Z_{\ge0}}\mathcal{U}((\mathfrak{a+b})^\ell)\cdot\dfrac{x^\ell}{\ell!} \\\ 
-&=\sum_{\ell\in\Z_{\ge0}}\left(\sum_{0\le m\le\ell}{\ell \choose m}a_mb_{\ell-m}\right)\cdot\dfrac{x^\ell}{\ell!} 
+&=\sum_{\ell\in\Z_{\ge0}}\bigg(\sum_{0\le m\le\ell}{\ell \choose m}a_mb_{\ell-m}\bigg)\cdot\dfrac{x^\ell}{\ell!} 
 \end{aligned}$$</div>
 
 <p>因此，形式上的计算 $\mathcal{U}(e^{\mathfrak{a}x})\cdot\mathcal{U}(e^{\mathfrak{b}x})=\mathcal{U}\big(e^{\mathfrak{(a+b)}x}\big)$ 是合理的. 但需注意，由于上述（对影元的操作）过程中仅仅是使用了 $\mathfrak{a}^kx^k=(\mathfrak{a}x)^k$ 这条性质，换言之，只是定义了影元与复数的乘法，所以 $$\mathfrak{a+a}\neq 2\mathfrak{a}$$ </p>
@@ -214,8 +217,6 @@ $$\begin{aligned}\sum_{1\le m\le n}m^k&=\dfrac{1}{k+1}\sum_{0\le j\le k}{k+1\cho
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -254,8 +255,6 @@ $$\begin{aligned}\sum_{1\le m\le n}m^k&=\dfrac{1}{k+1}\sum_{0\le j\le k}{k+1\cho
           <li><a href="/tags/">Tag</a></li>
          
           <li><a href="/categories/">Category</a></li>
-         
-          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
@@ -285,6 +284,7 @@ $$\begin{aligned}\sum_{1\le m\le n}m^k&=\dfrac{1}{k+1}\sum_{0\le j\le k}{k+1\cho
       throwOnError: true
     });
   </script>
+  <script src="/lib/prism/prism.js"></script>
   
 <!-- jquery -->
 
