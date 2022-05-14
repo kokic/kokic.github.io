@@ -522,7 +522,7 @@ body {
   color: #383838;
   text-decoration: none;
   font-family: "Vollkorn", "Noto Serif SC";
-  background-image: linear-gradient(transparent, transparent 5px, #d7d7d7 5px, #d7d7d7);
+  background-image: linear-gradient(transparent, transparent 4.5px, #e0e0e0 4.5px, #e0e0e0);
   background-position: bottom;
   background-size: 100% 6px;
   background-repeat: repeat-x;
