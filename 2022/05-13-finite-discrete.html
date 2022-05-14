@@ -26,7 +26,7 @@
     
     
     <!-- title -->
-    <title>次线性不等式</title>
+    <title>调和分析的有限离散逼近</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -65,10 +65,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2021/10-23-toy-abel-ruffini.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2021/09-12-group-law.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2022/05-10-code-exhibition.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -93,7 +91,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        次线性不等式
+        调和分析的有限离散逼近
     </h1>
 
 
@@ -105,7 +103,7 @@
       
     <div class="postdate">
       
-        <time datetime="2021-10-02T16:00:00.000Z" itemprop="datePublished">2021-10-03</time>
+        <time datetime="2022-05-12T16:00:00.000Z" itemprop="datePublished">2022-05-13</time>
         
       
     </div>
@@ -121,7 +119,7 @@
       
   <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+        <a class="tag-link-link" href="/tags/IUTT/" rel="tag">IUTT</a>
   </div>  
 
 
@@ -130,34 +128,18 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>映射 $f:X\longrightarrow Y$ 的次可加性意谓 $\forall\,a,b\in X$ $$f(a+b)\le f(a)+f(b)\tag{1}$$ 若再赋予其正齐次性 $f(T\cdot a)=T\cdot f(a)$ 其中 $T\in$ 域 $K,K\times\cdots\times K\subseteq X$，则称 $f$ 为次线性映射，而当 $(1)$ 中不等号反向时，称其为反次线性映射.</p>
-<p>一些常见的不等式，如 三角、Minkowski、Hölder 等，均可视为对范数 $\|\cdot\|$ 的合适选取. 在泛函的语言中，次可加性索性就被称作三角不等式. 通过构造范数反过来引出三角不等式的做法如今并不鲜见，常见的操作往往是考虑指数的分配. </p>
-<p>注：取可数测度、离散形式.</p>
+    <p>译自 <a target="_blank" rel="noopener" href="http://www.kurims.kyoto-u.ac.jp/~motizuki/Alien%20Copies,%20Gaussians,%20and%20inter-universal%20Teichmuller%20Theory.pdf">from Gaussian Integrals to Inter-universal Teichmüller</a> § 2.14.</p>
+<p>最后, 我们通过暂停来更详细地检查实际上的 <em>转换</em> 来结束当前的 §2, 实际上, 在当前 §2 的前面部分, 从导数 [在字面意义上, 如在 §2.5 的讨论中] 到 <strong>Galois 群/étale 基本群</strong> [即, 譬如在 §2.6 及之后的讨论中]. 这种转变与 [HASurI]、[HASurII] 的 [scheme-theoretic] Hodge-Arakelov 理论中的许多思想密切相关.</p>
+<p><strong>例 2.14.1. 微分演算在实线上的有限离散逼近.</strong> 我们首先回顾 [比如说, 无限可微] 函数在实线上的微分演算允许有限离散近似, 即, 通过替换</p>
 <div class="scroll">
-$$\begin{array}{|c|c|}
-\hline \text{Norm} & \text{Inequality} \\ 
-\hline \\ 1,\displaystyle\sum_{1\le j\le k}|x_j| & \text{Triangle},\;|x+y|\le|x|+|y| \\ \\ 
-\hline \\ p,\bigg(\displaystyle\sum_{1\le j\le k}|x_j|^p\bigg)^{1/p} & \text{Minkowski},\;\|x+y\|_p\le\|x\|_p+\|y\|_p \\ \\ 
-\hline \\ \omega,\displaystyle\prod_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}|x_j|^{\omega_j} & \text{Hölder},\;(\underline{\underline{x}}+\underline{\underline{y}})^\omega\ge\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega \\ \\
-\hline \end{array}$$
+$$\frac{\text{d}f(x)}{\text{d}x}=\lim_{\delta\to0}\frac{f(x+\delta)-f(x)}{\delta}\quad\leadsto\quad f(X+1)-f(X)$$
 </div>
 
-<p>下面将指出表中 Hölder 不等式其形式上的自洽性. 二项式定理给出自然的不等式 $(x+y)^n\ge x^n+y^n$，Hölder 不等式表明这个不等号在映射 $$(x,y)\xmapsto{\qquad}(\underline{\underline{x}},\underline{\underline{y}}) \\ n\xmapsto{\qquad}\omega$$ 下被保持. 而上述自然不等式又给出了 Bernoulli 不等式 $(1+x)^\alpha\le 1+\alpha x$，借由 $x\longmapsto xy^{-1}-1$ 立即得出<br>$$x^\alpha y^\beta\le\alpha x+\beta y,\quad\alpha+\beta=1$$ 注：考虑如下图表，$\pi:x\longmapsto x-1,\;\alpha\ge1$</p>
-<div class="scroll">$$\begin{CD}
-(1+x)^\alpha\;\ge\;1\;+\;\alpha x @>\qquad\!?\!\qquad>> (1+x)^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}x \\ 
-            @V\pi VV                                  @AA\pi^{-1}A \\
-x^\alpha\;\ge\;1\;+\;\alpha(x-1) @>\enspace\;f^{-1}\;\curvearrowright\;x\;\enspace>> x^{1/\alpha}\;\le\;1\;+\;\alpha^{-1}(x-1)
-\end{CD}$$
+<p>导数的微分算子 [在古典意义上]. 如果 d 是一个正整数, 那么可以在次数 $\lt d$ 且系数 $\in\mathbb{Q}$ 的多项式函数的情况下考虑这样的差分算子来轻松验证. 在元素 $0,$ $1,$ $\dots,$ $d-1$ $\in\Z$ $\subseteq\mathbb{Q}$ 处的 <strong>求值</strong> 产生维数为 $d$ 的 $\mathbb{Q}$-向量空间的自然同构<br>$$\mathbb{Q}[X]^{\lt d}\;\bigg(\overset{\text{def}}{=}\bigoplus_{j=0}^{d-1}\mathbb{Q}\cdot X^j\bigg)\quad\overset{\sim}{\rarr}\quad\bigoplus_0^{d-1}\mathbb{Q}$$ $——$ 例如, 参见 [Harts] 第一章 §7 中著名的 Hilbert 多项式经典理论的讨论, 了解更多细节. 事实上, 明确计算使这种求值同构成为有限自由 $\Z$-模的同构所必需的 “分母” 并不难. 这种 “离散函数论” [cf. 也可以将下面的示例 2.14.2] 视为 Hodge-Arakelov 理论的各种构造的 <strong>基本原型</strong>.</p>
+<p><strong>例 2.14.2. 单位圆上 Fourier 分析的有限离散逼近.</strong> 本着例 2.14.1 讨论的精神, 我们回顾了经典函数论 $——$ 实际上, 于 <strong>单位圆上</strong> $\mathbb{S}^1$ 的 <strong>Fourier 分析</strong> 承认一个著名的有限离散近似, 如果 $d$ 是一个 $[$为简单起见$]$ 奇正整数, 因此 $d^*\overset{def}{=}\frac12(d-1)$ $\in\Z$, 然后可以很容易地验证, 在 $\mathbb{G}_m$ 的  <strong>$d$-挠点</strong> (译注: torsion points) 的子概型 $\bm{\mu}_d\subseteq\mathbb{G}_m$ 的 $[$比如说, 概型理论$]$ 点上, 对乘法群概型 $\mathbb{G}_m$ $\overset{\text{def}}{=}$ $\text{Spec}$ $(\Z[U,$ $U^{-1}])$ 上次数 $\in\{$ $-d^*,$ $-d^*+1,$ $\dots,$ $-1,$ $0,$ $1,$ $d^*-1,$ $d^*$ $\}$ 系数 $\in\Z$ 的多项式函数和 $\Z$ 系数的 <strong>求值</strong> 产生阶为 $d$ 有限自由 $\Z$-模的自然同构<br>$$\bigoplus_{j=-d^*}^{d^*}\Z\cdot U^j \quad\overset{\sim}{\rarr}\quad\mathcal{O}_{\bm{\mu}_d}$$ $——$ 其中, 通过滥用符号, 我们将 $\mathcal{O}_{\bm{\mu}_d}$ 写为仿射概型 $\bm{\mu}_d$ 结构层的环的整体部分. 如果一个换基 (译注: base-changes) 通过自然包含 (译注: inclusion) $\Z\hookrightarrow\mathbb{C}$ 变化到复数域 $\mathbb{C}$ 中, 那么, 当 $d$ 足够 “大” 时, 可以想到这些 $d$-挠点 的整体</p>
+<div class="scroll">
+$$\exp(2\pi i\cdot\tfrac1d\Z)=\bigg\{\exp(2\pi i\cdot\tfrac0d),\exp(2\pi i\cdot\tfrac1d),\dots,\exp(2\pi i\cdot\tfrac{(d-1)}d)\bigg\}\subseteq\mathbb{S}^1$$
 </div>
-
-<p>因而此自然不等式可以诱导出加权算术平均$-$几何平均不等式，如果定义 $$\omega\underline{\underline{x}}\overset{\text{def}}{=}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\omega_j|x_j|$$ 显见 $\underline{\underline{x}}^\omega\le\omega\underline{\underline{x}}$，这样就有<br>$$\begin{aligned}\underline{\underline{x}}^\omega+\underline{\underline{y}}^\omega\le(\underline{\underline{x}}+\underline{\underline{y}})^\omega\le\omega\underline{\underline{x}}+\underline{\underline{y}}^\omega\le\omega(\underline{\underline{x}}+\underline{\underline{y}})\end{aligned}$$ 从以下演算也可看出其形式的合理性<br>$$\begin{aligned}\log\omega\underline{\underline{x}} &amp;=\log\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}|x_j| \\ &amp;\le k^{-1}\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log k{\omega_j}|x_j| \\ &amp;=k^{-1}\log k\omega\underline{\underline{x}} \\ \\ \log\underline{\underline{x}}^\omega &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}\log|x_j|^{\omega_j} \\ &amp;=\sum_{\substack{1\le j\le k \\ \underline{\omega_1}^\times+\cdots+\underline{\omega_k}^\times=1}}{\omega_j}\log|x_j| \\ &amp;=\omega\log\underline{\underline{x}} \end{aligned}$$</p>
-<center> $\omega\log\underline{\underline{x}}\le\log\omega\underline{\underline{x}}\le k^{-1}\log k\omega\underline{\underline{x}}$ </center>
-
-
-
-
-
-
 
 
 

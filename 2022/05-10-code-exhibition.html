@@ -7,14 +7,6 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
-    <!-- open_graph({
-        image:          thumbnail(page),
-        fb_app_id:      theme.open_graph.fb_app_id,
-        fb_admins:      theme.open_graph.fb_admins,
-        twitter_id:     theme.open_graph.twitter_id,
-        google_plus:    theme.open_graph.google_plus,
-    }) -->
-    
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500,700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
@@ -39,7 +31,6 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
     
       
 <link rel="stylesheet" href="/css/rtl.css">
@@ -73,6 +64,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" href="/2022/05-13-finite-discrete.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" href="/2022/04-02-comparison-table.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -141,9 +134,7 @@ and thus I learned how to set the colors of prism's various tokens.
 Here, we assume that ℤ is <code>Integer</code>.
 </p>
 
-<script>document.write(`<pre class="line-numbers language-Haskell" data-language="Haskell"><code class="language-Haskell">`);
-document.write(loadFile('/assets/codes/fibonacci.hs'))
-document.write(`</code></pre>`)</script>
+<script> displayCode('fibonacci.hs', 'Haskell') </script>
 
 <p class="vol">
 This is the most classic quick sort algorithm and there is no change in the principle. 
@@ -162,9 +153,7 @@ Most importantly, it has to allow the omission of certain branches,
 and these restrictions lead us to short-circuit operations.
 </p>
 
-<script>document.write(`<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">`);
-document.write(loadFile('/assets/codes/qsort.java'))
-document.write(`</code></pre>`)</script>
+<script> displayCode('qsort.java', 'Java') </script>
 
 
   </div>
@@ -233,12 +222,10 @@ document.write(`</code></pre>`)</script>
     </div>
     <!-- styles -->
 
-
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-<!-- 
+
 <link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
- -->
 
 
     
