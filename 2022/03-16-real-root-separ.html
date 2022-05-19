@@ -130,7 +130,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p>一个经典的问题是，如何确定多项式实根的位置，即对于 $$F=\sum_{0\le k\le N}c_kx^k\in\R[x]$$ 考虑以下估计：<br>&emsp;$(i)$ 有效区间，求 $M\gt0$ 使 $|x|\ge M$ 时 $|F(x)|\gt0$.<br>&emsp;$(ii)$ 隔离区间，求 $(L_1,R_1),\cdots,(L_N,R_N)$ 使 $F(x)$ 的所有实根都满足 $x\in(L_k,R_k)$.</p>
+    <p>一个经典的问题是，如何确定多项式实根的位置，即对于 $$F=\sum_{0\le k\le N}c_kx^k\in\R[x]$$ 考虑以下估计：<br>&emsp;$(i)$ 有效区间，求 $M\gt0$ 使 $|x|\ge M$ 时 $|F(x)|$ $\gt$ $0$.<br>&emsp;$(ii)$ 隔离区间，求 $(L_1,R_1),\cdots,(L_N,R_N)$ 使 $F(x)$ 的所有实根都满足 $x\in(L_k,R_k)$.</p>
 <hr>
 <p>$(i)$ 置<br>$$\sigma=\max\bigg\{1,\sum_{0\le k\le N-1}\dfrac{c_k}{c_N}\bigg\} \\ \tau=1+\max\bigg\{\dfrac{c_0}{c_N},\cdots,\dfrac{c_{N-1}}{c_N}\bigg\}$$</p>
 <p>下面证明 $M\ge\min\{\sigma,\tau\}$. 首先假定一个根 $|x|\gt1$，由<br>$$|c_N||x|^N\le\sum_{0\le k\le N-1}|c_k||a|^k\lt\sigma|c_N||x|^{N-1}$$ $$\begin{aligned}|c_N||x|^N&amp;\lt|c_N|(N-1)\sum_{0\le k\le N-1}|x|^k\\ &amp;=\dfrac{(N-1)|c_N||x|^N}{|x|-1}\end{aligned}$$ 证完.</p>
