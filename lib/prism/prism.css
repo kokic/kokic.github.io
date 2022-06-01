@@ -13,7 +13,7 @@ pre[class*="language-"] {
 	background: none;
 	/* text-shadow: 0 1px white; */
 	font-family: "JetBrains Mono";
-	font-size: 1em;
+	font-size: 14px; /* block */
 	border-radius: 6px;
 	text-align: left;
 	white-space: pre;
@@ -35,13 +35,13 @@ pre[class*="language-"] {
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
 	text-shadow: none;
-	background: #f7f7f7;
+	background: #FA9CD3;
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
 	text-shadow: none;
-	background: #f7f7f7;
+	background: #FA9CD3;
 }
 
 @media print {
