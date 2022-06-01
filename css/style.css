@@ -448,6 +448,11 @@ body td {
 }
 @font-face {
   font-style: normal;
+  font-family: "Ubuntu";
+  src: local("Ubuntu"), url("../lib/fonts/UbuntuMono.ttf") format("truetype");
+}
+@font-face {
+  font-style: normal;
   font-family: "Marcellus-SC";
   src: local("Marcellus-SC"), url("../lib/fonts/Marcellus-SC.ttf") format("truetype");
 }
@@ -487,6 +492,15 @@ p inc {
 ::selection {
   color: #fff;
   background: #272727;
+}
+.typing {
+  height: 1.5em;
+  border-right: 1px solid transparent;
+  animation: typing 3s steps(20, end), blink-caret 0.75s step-end infinite;
+  word-break: break-all;
+  overflow: hidden;
+  margin: 1em auto;
+  font-size: 1.2em;
 }
 html {
   margin: 0;
@@ -1625,4 +1639,68 @@ code {
 .line {
   height: 22px;
   font-size: 14px;
+}
+@-moz-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13em;
+  }
+}
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13em;
+  }
+}
+@-o-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13em;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 13em;
+  }
+}
+@-moz-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@-webkit-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@-o-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
 }
