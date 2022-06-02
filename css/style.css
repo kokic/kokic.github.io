@@ -448,8 +448,8 @@ body td {
 }
 @font-face {
   font-style: normal;
-  font-family: "Ubuntu";
-  src: local("Ubuntu"), url("../lib/fonts/UbuntuMono.ttf") format("truetype");
+  font-family: "UbuntuMono";
+  src: local("UbuntuMono"), url("../lib/fonts/UbuntuMono.ttf") format("truetype");
 }
 @font-face {
   font-style: normal;
