@@ -26,7 +26,7 @@
     
     
     <!-- title -->
-    <title>Rigidity of Elliptic Curve</title>
+    <title>Star of David</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -65,10 +65,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2022/06-14-star-of-david.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2022/06-01-proj-zeich.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2022/06-09-rigid-curve.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -93,7 +91,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Rigidity of Elliptic Curve
+        Star of David
     </h1>
 
 
@@ -105,7 +103,7 @@
       
     <div class="postdate">
       
-        <time datetime="2022-06-08T16:00:00.000Z" itemprop="datePublished">2022-06-09</time>
+        <time datetime="2022-06-13T16:00:00.000Z" itemprop="datePublished">2022-06-14</time>
         
       
     </div>
@@ -121,7 +119,7 @@
       
   <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+        <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>
   </div>  
 
 
@@ -130,13 +128,54 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><strong>定理</strong> &emsp; 令 $k$ 是特征不为 $2$ 的域, 取 $\tau\in k^\times$, $X,Y\in k(t)$ 为有理函数 (即, 两个多项式的商) 满足<br>$$\Gamma: Y^2=X(X-1)(X-\tau)$$ 则 $X,Y\in k$. 这等价于说, 不存在由有理函数给出的非常数映射 $\R^1\longrightarrow\Gamma$.</p>
-<p>$proof$. &emsp; 首先 $k[t]$ 是唯一分解整环, 这允许我们假定两组互素对 $(p,q)$ 与 $(r,s)$ 使得 $X=\frac{p}q,Y=\frac{r}s$, 无需多言, 自然 $p,q,r,s\in k[t]$. 整理得到<br>$$\Gamma:r^2q^3=s^2p(p-q)(p-\tau q)$$ 由于 $r,s$ 互素, 这表明 $s^2\,|\,q^3$, 同理 $p,q$ 互素 $\implies$ $q^3\,|\,s^2$ 因此 $\exist\,\alpha$ 作为 $k[t]$ 的单位 $\in k$ $\text{ s.t. }$ $s^2=\alpha q^3$. 故 $\alpha q=(\frac{s}q)^2$ $$r^2=\alpha p(p-q)(p-\tau q)$$ 实际上, 由无穷递降法可以证明此处 $p,q$ 必然是常数, 具体而言, 以 $\bar k$ 表示 $k$ 的代数闭域, $p,q\in\bar k[t]$ 互素, 假定四种不同的线性组合 $ap+bq$ 在 $\bar k[t]$ 中完全平方, $(a:b)$ $\in$ $\mathbb{P}^1\bar k$, 则 $p,q$ $\in\bar k$. 完全类似地, 也可以应用于 $r,s$, 故证毕.</p>
+    <p>这居然是个带名字 (<a target="_blank" rel="noopener" href="https://mathworld.wolfram.com/StarofDavidTheorem.html">Star of David</a>) 的结论…</p>
+<div class="scroll">
+$${n-1\choose r-1}{n\choose r+1}{n+1\choose r}={n-1\choose r}{n\choose r-1}{n+1\choose r+1}$$
+</div>
+<br>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNyxbMSwwLCJ7bi0xXFxjaG9vc2Ugci0xfSJdLFsyLDEsIntuXFxjaG9vc2Ugcn0iXSxbMSwyLCJ7bisxXFxjaG9vc2Ugcn0iXSxbMywwLCJ7bi0xXFxjaG9vc2Ugcn0iXSxbMywyLCJ7bisxXFxjaG9vc2UgcisxfSJdLFswLDEsIntuXFxjaG9vc2Ugci0xfSJdLFs0LDEsIntuXFxjaG9vc2UgcisxfSJdLFswLDYsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==&embed"
+width="100%" style="transform: scale(1.3); pointer-events: none; border: none;"></iframe></div>
+
+<p>$proof$. &emsp; </p>
+<div class="scroll">
+$$\def\a{\textcolor{EF477E}}
+\def\b{\textcolor{1AAA65}}
+\def\c{\textcolor{00A6F4}}
+\begin{aligned}
+\text{lhs}&=
+\frac{\a{(n-1)!}}{\b{(r-1)!}\c{(n-r)!}} \cdot
+\frac{\b{n!}}{\c{(r+1)!}\a{(n-r-1)!}} \cdot
+\frac{\c{(n+1)!}}{\a{r!}\b{(n-r+1)!}} \\ &=
+\frac{(n-1)!}{r!(n-r-1)!} \cdot
+\frac{n!}{(r-1)!(n-r+1)!} \cdot
+\frac{(n+1)!}{(r+1)!(n-r)!} \\ &=
+\text{rhs}
+\end{aligned}$$
+</div>
+
+<p>有鉴于这个证明, 笔者提议将其称之为 “榫卯引理” (雾). D. Singmaster、Hitotumatu &amp; Sato 等人的推广版本似乎不太漂亮.</p>
 <hr>
-<p>再次叙述证明最后一步所用的结果, 若有四组 $(a:b)$ $\in$ $\mathbb{P}^1\bar k$ 使 $ap+bq$ 在 $\bar k[t]$ 中完全平方, 则 $p,q$ $\in$ $k$.</p>
-<p>$proof$. &emsp; 考虑线性变换 $\ell$<br>$$\begin{pmatrix}p \\ q\end{pmatrix}\text{—}\kern-0.36em\leadsto\begin{pmatrix}\alpha &amp; \beta \\ \gamma &amp; \delta \end{pmatrix}\begin{pmatrix}p \\ q\end{pmatrix},\quad \begin{pmatrix}\alpha &amp; \beta \\ \gamma &amp; \delta \end{pmatrix}\in\text{GL}_2(k)$$ 若此结果不成立, 从反例当中选取 $p,q$ 使<br>$$h:\max\{\deg p,\deg q\}$$ 最小, 借由 $\ell$ 使 $p,q,p-q,p-\tau q$ 为平方, 记 $(u^2,v^2)$ $=$ $(p,q)$, 自然 $u,v$ 互素. 故<br>$$\max\{\deg u,\deg v\}\lt\max\{\deg p,\deg q\}$$ 但同时我们知道<br>$$(\Box^2=)\;p-\tau q=(u+\omega v)(u-\omega v)\;(=\Box^2\Box^2)$$ 而 $u\pm v,u\pm\omega v$ 的存在与 $h$ 的最小性矛盾, 证毕. </p>
+<p>上述证明并不依赖于常数 $1$, 因此可以做形式替换 $$1\;\xmapsto{\qquad\qquad}\;s$$ </p>
+<div class="scroll">
+$${n-s\choose r-s}{n\choose r+s}{n+s\choose r}={n-s\choose r}{n\choose r-s}{n+s\choose r+s}$$
+</div>
+
+<p>这可以改写为</p>
+<div class="scroll">
+$$\begin{aligned}
+\frac{\dbinom{n+s}{r+s}}{\dbinom{n+s}r\dbinom{n}{r+s}}
+&=\frac{\dbinom{n-s}{r-s}}{\dbinom{n-s}{r}\dbinom{n}{r-s}} \\
+&=(n-r+s)!(n-r-s)!\dbinom{n}{r}_\text{d}
+\end{aligned}$$
+</div>
+
+<p>其中 $n\ge r\ge0$ $$\dbinom{n}{r}_\text{d}\overset{\text{def}}{=}\frac{r!}{n!(n-r)!}$$</p>
 <hr>
-<p>尾声: 尽管这表明将 $\Gamma$ 有理参数化的希望破灭了, 但在 $\mathbb{C}$ 上仍然可以通过某个著名的双周期亚纯函数 $\wp(z)$ $——$ <a href="/2021/08-22-elliptic-curve.html">Weierstrass 椭圆函数</a> 来参数化, 这件事成为当今众交叉领域最初的火种之一.</p>
+<p>(随便画个图, 与正文无关)</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsMTYsWzQsMCwiWCJdLFszLDEsIlkiXSxbMiwwLCJYJyJdLFsxLDEsIlknIl0sWzMsMywiWSJdLFsxLDMsIlknIl0sWzIsMiwiWCciXSxbMCwxLCIwIl0sWzQsMiwiWCJdLFswLDMsIjAiXSxbNiwwLCJYJyciXSxbNSwxLCJZJyciXSxbNSwzLCJZJyciXSxbNiwyLCJYJyciXSxbNywwLCIwIl0sWzcsMiwiMCJdLFswLDFdLFsyLDBdLFszLDFdLFsyLDNdLFsxLDRdLFszLDVdLFsyLDYsIiIsMSx7Im9mZnNldCI6MSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsNSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsM10sWzAsOCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzgsNCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzksNV0sWzYsOCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzUsNF0sWzAsMTBdLFsxLDExXSxbNCwxMl0sWzEwLDExXSxbMTEsMTJdLFsxMCwxM10sWzEzLDEyXSxbOCwxMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEwLDE0XSxbMTMsMTVdXQ==&embed"
+width="100%" style="transform: scale(1.2); pointer-events: none; border: none;"></iframe></div>
 
   </div>
 </article>

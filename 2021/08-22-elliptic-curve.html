@@ -131,7 +131,7 @@
 
   <div class="content" itemprop="articleBody">
     <p>考虑半径为 $r$ 的圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，长度为 $$L=\int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\mathrm{d}x=r\arcsin\dfrac{x}{r}\bigg|_{-r}^r=\pi r$$ 因而圆的弧长定义了反正弦函数，即 $$\arcsin x=\int_0^x\dfrac{1}{\sqrt{1-t^2}}\mathrm{d}t$$ 其反函数被称为正弦函数，统称圆函数 (三角函数).</p>
-<p>现考虑椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，有 $y=\dfrac{b}{a}\cdot\sqrt{a^2-x^2}$，故<br>$$\begin{aligned}L&amp;=\int_{-a}^a\bigg(\dfrac{a^4-(a^2-b^2)x^2}{a^2(a^2-x^2)}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-a}^a\bigg(\dfrac{1-k^2t^2}{1-t^2}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-1}^1\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t \end{aligned}$$ 其中 $t=\dfrac{x}{a},k^2=1-\dfrac{b^2}{a^2}$ ($k$ 即离心率).</p>
+<p>现考虑椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，有 $y=\dfrac{b}{a}\cdot\sqrt{a^2-x^2}$，故<br>$$\begin{aligned}L&amp;=\int_{-a}^a\bigg(\dfrac{a^4-(a^2-b^2)x^2}{a^2(a^2-x^2)}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-a}^a\bigg(\dfrac{1-k^2t^2}{1-t^2}\bigg)^{1/2}\mathrm{d}x\\ \frac{L}{a}&amp;=\int_{-1}^1\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t \end{aligned}$$ 其中 $t=\dfrac{x}{a},k^2=1-\dfrac{b^2}{a^2}$ ($k$ 即离心率).</p>
 <p>由此引出了所谓的 <strong>第二类不完全椭圆积分</strong> $$\text{E}(x,k)=\int_0^x\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t,\;x\in[0,1]$$ 其中 $k$ 称作椭圆函数的模，不定积分的版本被称作第二类 Legendre 正规形式.</p>
 <p>Jacobi (及 Abel) 发现了问题的关键所在，考察椭圆积分的反函数，定义 $$\text{sn}^{-1}(x)=\int_0^x\dfrac{\mathrm{d}t}{\sqrt{(1-t^2)(1-k^2t^2)}}$$ 而 $\text{sn}(x)$ 被称作椭圆正弦函数.</p>
 <p>通过对一大类 (定义在复平面上的) 椭圆函数的研究，人们发现椭圆函数是双周期的亚纯函数，而在现代数学的定义中，双周期的亚纯函数都被称作椭圆函数.</p>
@@ -158,7 +158,7 @@ it does not change when one replaces one system of periods by another equivalent
 <p>其导数 $\wp^\prime(z)=\sum_{\omega\in\Lambda^\times}(z-\omega)^{-3}$ 亦反映了 $\wp(z)$ 是以 $\Lambda$ 为周期的偶函数.</p>
 <p>$\wp(z)$ 在 $z=0$ (的邻域) 处的 Laurent 级数展开可以表示成 $$\wp(z)=\dfrac{1}{z^2}+\sum_{n\in2\Z_{\ge1}}(n+1)G_{n+2}(\Lambda)z^n$$ 若取 $\Lambda=\Z\tau\oplus\Z$，则 $G_k(\Lambda)$ 在 $\tau\in\mathbb{H}$ (上半复平面) 时全纯，$G_{k}(\Lambda)=\sum_{\omega\in\Lambda^\times}\omega^{-k}$ 正是 <strong>Eisenstein 级数</strong>.</p>
 <p>注：题外话，所谓的 (椭圆函数的) <strong>正规化</strong> 是指，总可以令 $\tau=\dfrac{\omega_1}{\omega_2}\in\mathbb{H}$ 使得椭圆函数 $F(z)=f(\omega_2z)$ 以 $1$ 和 $\tau$ 为周期，自然 $f(z)=\sum_{(m,n)\in\Z^2}(z+m+n\tau)^{-3}$ 是正规化椭圆函数，可以证明右端级数绝对收敛且一致收敛.</p>
-<p>注：恰如研究以 $2\pi$ 为周期的 $\sin x$ 常置于区间 $[0,2\pi]$ 内，(复平面上的) 椭圆函数也常在 <strong>基本平行四边形</strong> 中考察，其定义为 $\{z\in\mathbb{C}:z=a+b\tau,a,b\in[0,1)\}$.</p>
+<p>注：恰如研究以 $2\pi$ 为周期的 $\sin x$ 常置于区间 $[0,2\pi]$ 内，(复平面上的) 椭圆函数也常在 <strong>基本平行四边形</strong> 中考察，其定义为 $$\{z\in\mathbb{C}:z=a+b\tau,a,b\in[0,1)\}$$</p>
 <p>注：特别地，当 $\tau\in\mathbb{Q}$ 时，$f(z)$ 退化为单周期函数，当 $\tau\in\R\backslash\mathbb{Q}$，由稠密性可证 $f(z)$ 是常数.</p>
 <p>实际上，Eisenstein 证明了所有形如 $$f(z)=\sum_{\omega\in\Lambda}\dfrac{1}{(z+\omega)^2}-\sum_{\omega\in\Lambda^\times}\dfrac{1}{\omega^2}$$ 的椭圆函数 $f(z)$ 都满足如下形式的微分方程 </p>
 <center>$(f^\prime(z))^2=f(z)$ <small>的三次无重根多项式</small></center>
