@@ -170,7 +170,7 @@ const select = (s, t) => sources.slice(s - 1, t).join('\n')
 <p>一般地, 为了能够在遍历的同时知道元素所在位置的索引, 可以考虑使用 <code>zip</code> 构建配对组 <code>(x, index)</code></p>
 <script>displayAsCode(select(56, 57), 'Haskell')</script>
 
-<p>这种做法在数学上还被应用于无交并 $\sqcup$ 的经典构造<br>$$X\sqcup Y\overset{\text{def}}{=}\{X\times\{0\}\}\cup\{Y\times\{1\}\}$$<br>无独有偶, 下面将实现 <code>fences𝖱</code> 和 <code>fences𝖱𝛘</code>, <code>ns</code> 用于设置数据右侧填充的空格长度</p>
+<p>这种做法在数学上还被应用于无交并 $\sqcup$ 的经典构造<br>$$X\sqcup Y\overset{\text{def}}{=}(X\times\{0\})\cup(Y\times\{1\})$$<br>无独有偶, 下面将实现 <code>fences𝖱</code> 和 <code>fences𝖱𝛘</code>, <code>ns</code> 用于设置数据右侧填充的空格长度</p>
 <script>displayAsCode(select(59, 67), 'Haskell')</script>
 
 <p>现在只要组合 <code>lines𝖱</code> &amp; <code>fences𝖱</code> 就能得到 <code>rowEntire𝖱</code></p>
