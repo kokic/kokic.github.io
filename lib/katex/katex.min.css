@@ -79,7 +79,7 @@
 }
 
 .katex {
-    font: normal 1.21em KaTeX_Main,Noto Serif SC,Times New Roman,serif;
+    font: normal 1.2em KaTeX_Main, var(--font-family-katex);
     line-height: 1.2;
     text-indent: 0;
     text-rendering: auto;
