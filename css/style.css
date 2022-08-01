@@ -1,3 +1,149 @@
+:root {
+  --light-grey: #e0e0e0;
+  --light-grey-image: linear-gradient(transparent, transparent 4.5px, #e0e0e0 4.5px, #e0e0e0);
+  --light-grey-deep: #c8c8c8; /* link */
+  --dark-grey: #6f6d6d;
+  --pink: #d480aa;
+  --pink-image: linear-gradient(transparent, transparent 4px, #d480aa 4px, #d480aa);
+  --shadow: rgba(0,0,0,0.1);
+  --red: #ef477e;
+  --blue: #2d8be2;
+  --blue-tint: #e7f3ff;
+  --violet: #b928be;
+  --violet-tint: #ffefff;
+  --miku: #28bea0;
+  --miku-tint: #e8f9f6;
+  --green-deep: #2bbc8a;
+  --green-deep-image: linear-gradient(transparent, transparent 4px, #2bbc8a 4px, #2bbc8a);
+  --green-deep-trans: #2bbc8a;
+  --green-deep-trans-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
+  --black: #383838;
+  --black-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
+  --black-trans: #383838;
+  --black-trans-image: linear-gradient(transparent, transparent 4px, var(--black-trans) 4px, var(--black-trans));
+  --font-family-katex: "LXGWWenKai-Regular";
+  --font-family-typing: "Marcellus-SC", "LXGWWenKai-Regular";
+}
+block {
+  font-family: Noto Sans SC;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  display: inline-block;
+}
+.border-green {
+  border-radius: 0.3em;
+  background-color: #ecf9e8;
+  border: 0.1em solid #5abe28;
+}
+.border-rust {
+  border-radius: 0.3em;
+  background-color: #fdf3e7;
+  border: 0.1em solid #ef8e27;
+}
+.border-blue {
+  border-radius: 0.3em;
+  background-color: #e7f3ff;
+  border: 0.1em solid #2d8be2;
+}
+.border-miku {
+  border-radius: 0.3em;
+  background-color: #e8f9f7;
+  border: 0.1em solid #28beaf;
+}
+bar-float {
+  font-family: JetBrains Mono, Noto Serif SC;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  display: inline-block;
+  border-radius: 1em;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+bar-title {
+  font-family: Vollkorn;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 0.5em;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+bar-title > p {
+  margin-left: 0.5em;
+}
+bar-title > primary {
+  display: block;
+  margin: -0.5em;
+  margin-bottom: 0;
+  padding: 0 0.5em;
+  color: #fff;
+}
+.bar-title-miku {
+  background-color: var(--miku-tint);
+}
+.bar-title-miku > primary {
+  background-color: var(--miku);
+}
+.bar-title-silver {
+  color: #53555a;
+  background-color: #f5f5f5;
+}
+.bar-title-silver > primary {
+  color: #f5f5f5;
+  background-color: #b2b3b8;
+}
+span-gradient {
+  font-family: JetBrains Mono;
+  color: #fff;
+  padding: 0 0.2em;
+  margin: 0 0.2em;
+  font-size: 1em;
+  display: inline-block;
+  border: 0.1em solid transparent;
+  border-radius: 0.5em;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+.span-gradient-violet {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #8f41e9, #578aef);
+}
+.span-gradient-cyan {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #51f0a1, #50e9ef);
+}
+.span-gradient-pink {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #eeb054, #ee54d4);
+}
+.span-gradient-unripe {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #4284e7, #6ef7d9);
+}
+.span-gradient-koishi {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #e7bf67, #33c0ce);
+}
+bar-left {
+  padding: 0.2em 0.5em;
+  line-height: 1.25em;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+.bar-left-blue {
+  border-left: 0.15em solid var(--blue);
+  background-color: var(--blue-tint);
+}
+.bar-left-violet {
+  border-left: 0.15em solid var(--violet);
+  background-color: var(--violet-tint);
+}
+.bar-left-miku {
+  border-left: 0.15em solid var(--miku);
+  background-color: var(--miku-tint);
+}
+.bar-left-grey {
+  border-left: 0.15em solid var(--dark-grey);
+  background-color: var(--light-grey);
+}
 .inline {
   display: inline;
 }
@@ -326,7 +472,6 @@ body .h1 {
   font-weight: 100;
   font-style: normal;
   font-size: 1.8em;
-  font-family: "Marcellus-SC";
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -340,7 +485,7 @@ body .h2 {
   text-transform: none;
   letter-spacing: normal;
   font-weight: 100;
-  font-family: "Marcellus-SC", "Noto Serif SC";
+  font-family: "LXGWWenKai-Regular";
   font-size: 1rem;
 }
 body h3 {
@@ -438,8 +583,13 @@ body td {
 }
 @font-face {
   font-style: normal;
-  font-family: "Latin Modern Math";
-  src: local("Latin Modern Math"), url("../lib/fonts/LatinModern-Math.otf") format("truetype");
+  font-family: "LatinModern-Math";
+  src: local("LatinModern-Math"), url("../lib/fonts/LatinModern-Math.otf") format("truetype");
+}
+@font-face {
+  font-style: normal;
+  font-family: "LXGWWenKai-Regular";
+  src: local("LXGWWenKai-Regular"), url("../lib/fonts/LXGWWenKai-Regular.ttf") format("truetype");
 }
 @font-face {
   font-style: normal;
@@ -461,9 +611,11 @@ p {
   word-break: break-all;
 }
 p b {
+  font-size: 0.95em;
   font-family: monospace;
 }
 p strong {
+  font-size: 0.95em;
   font-family: monospace;
 }
 p inc {
@@ -518,7 +670,7 @@ body {
   font-display: swap;
   font-weight: 400;
   font-size: 15px;
-  font-family: "Vollkorn", "Noto Serif SC";
+  font-family: "LXGWWenKai-Regular";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -547,7 +699,7 @@ body {
 .content a {
   color: #383838;
   text-decoration: none;
-  font-family: "Vollkorn", "Noto Serif SC";
+  font-family: "LXGWWenKai-Regular";
   background-image: linear-gradient(transparent, transparent 4.5px, #e0e0e0 4.5px, #e0e0e0);
   background-position: bottom;
   background-size: 100% 6px;
@@ -642,8 +794,8 @@ body {
   font-weight: 100;
   font-style: normal;
   font-size: 2rem;
-  line-height: 2rem;
   font-family: "Marcellus-SC";
+  line-height: 2rem;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -651,7 +803,6 @@ body {
   background: none;
   color: inherit;
   text-decoration: none;
-  font-family: "Marcellus-SC";
 }
 #header #logo {
   display: inline-block;
@@ -1066,7 +1217,8 @@ body {
 }
 #footer-post #toc-footer .toc-level-2:before {
   color: #2bbc8a;
-  content: "#";
+  content: "§";
+  font-family: "Marcellus-SC";
 }
 #footer-post #toc-footer .toc-level-3 {
   color: #666;
@@ -1130,6 +1282,7 @@ article header .posttitle {
   text-transform: none;
   font-size: 1.5em;
   line-height: 1.25;
+  font-family: "LXGWWenKai-Regular";
 }
 article header .meta {
   margin-top: 0;
@@ -1152,9 +1305,9 @@ article .content h2:before {
   top: -4px;
   left: -1rem;
   color: #2bbc8a;
-  content: "#";
-  font-weight: bold;
+  content: "§";
   font-size: 1.2rem;
+  font-family: "Marcellus-SC";
 }
 article .content img,
 article .content video {
@@ -1248,7 +1401,7 @@ article .content .caption {
   background-repeat: repeat-x;
 }
 .article-tag .tag-link:before {
-  content: "#";
+  content: "§";
 }
 .article-category .category-link {
   background-image: linear-gradient(transparent, transparent 10px, #d480aa 10px, #d480aa);
@@ -1449,7 +1602,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 12px;
-  font-family: "Vollkorn", "Noto Serif SC";
+  font-family: "LXGWWenKai-Regular";
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
