@@ -130,13 +130,13 @@
 
   <div class="content" itemprop="articleBody">
     <p>考虑半径为 $r$ 的圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，长度为 $$L=\int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\mathrm{d}x=r\arcsin\dfrac{x}{r}\bigg|_{-r}^r=\pi r$$ 因而圆的弧长定义了反正弦函数，即 $$\arcsin x=\int_0^x\dfrac{1}{\sqrt{1-t^2}}\mathrm{d}t$$ 其反函数被称为正弦函数，统称圆函数 (三角函数).</p>
-<p>现考虑椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，有 $y=\dfrac{b}{a}\cdot\sqrt{a^2-x^2}$，故<br>$$\begin{aligned}L&amp;=\int_{-a}^a\bigg(\dfrac{a^4-(a^2-b^2)x^2}{a^2(a^2-x^2)}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-a}^a\bigg(\dfrac{1-k^2t^2}{1-t^2}\bigg)^{1/2}\mathrm{d}x\\ \frac{L}{a}&amp;=\int_{-1}^1\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t \end{aligned}$$ 其中 $t=\dfrac{x}{a},k^2=1-\dfrac{b^2}{a^2}$ ($k$ 即离心率).</p>
+<p>现考虑椭圆 $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1$，$y=\dfrac{b}{a}\sqrt{a^2-x^2}$，故<br>$$\begin{aligned}L&amp;=\int_{-a}^a\bigg(\dfrac{a^4-(a^2-b^2)x^2}{a^2(a^2-x^2)}\bigg)^{1/2}\mathrm{d}x\\ &amp;=\int_{-a}^a\bigg(\dfrac{1-k^2t^2}{1-t^2}\bigg)^{1/2}\mathrm{d}x\\ \frac{L}{a}&amp;=\int_{-1}^1\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t \end{aligned}$$ 其中 $t=\dfrac{x}{a},k^2=1-\dfrac{b^2}{a^2}$ ($k$ 即离心率).</p>
 <p>由此引出了所谓的 <strong>第二类不完全椭圆积分</strong> $$\text{E}(x,k)=\int_0^x\dfrac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}\mathrm{d}t,\;x\in[0,1]$$ 其中 $k$ 称作椭圆函数的模，不定积分的版本被称作第二类 Legendre 正规形式.</p>
 <p>Jacobi (及 Abel) 发现了问题的关键所在，考察椭圆积分的反函数，定义 $$\text{sn}^{-1}(x)=\int_0^x\dfrac{\mathrm{d}t}{\sqrt{(1-t^2)(1-k^2t^2)}}$$ 而 $\text{sn}(x)$ 被称作椭圆正弦函数.</p>
 <p>通过对一大类 (定义在复平面上的) 椭圆函数的研究，人们发现椭圆函数是双周期的亚纯函数，而在现代数学的定义中，双周期的亚纯函数都被称作椭圆函数.</p>
 <p>注：几何上的观点是，椭圆函数可以视为复环面到复球面的映射.</p>
 <hr>
-<div style='font-family: Latin Modern Math; font-size:1.1em;'>
+<div style='font-family: LatinModern-Math; font-size:1.1em;'>
 The form that Jacobi had given to the theory of elliptic
 functions was far from perfection; its flaws are obvious.
 At the base we find three fundamental functions <small>$\text{sn}$</small>, <small>$\text{cn}$</small> and <small>$\text{dn}$</small>. 
