@@ -1,0 +1,154 @@
+block {
+  font-family: Noto Sans SC;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  display: inline-block;
+}
+
+/* 绿框圆角矩形 */
+.border-green {
+  border-radius: 0.3em;
+  background-color: #ecf9e8;
+  border: 0.1em solid #5abe28;
+}
+
+/* 橙框圆角矩形 */
+.border-rust {
+  border-radius: 0.3em;
+  background-color: #fdf3e7;
+  border: 0.1em solid #ef8e27;
+}
+
+/* 蓝框圆角矩形 */
+.border-blue {
+  border-radius: 0.3em;
+  background-color: #e7f3ff;
+  border: 0.1em solid #2d8be2;
+}
+
+/* 葱绿框圆角矩形 */
+.border-miku {
+  border-radius: 0.3em;
+  background-color: #e8f9f7;
+  border: 0.1em solid #28beaf;
+}
+
+/* 带阴影的圆角 (1em) 矩形样式 */
+bar-float {
+  font-family: JetBrains Mono, Noto Serif SC;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  display: inline-block;
+  border-radius: 1em;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+
+/* 带阴影及标题的圆角 (0.5em) 矩形样式 */
+bar-title {
+  font-family: Vollkorn;
+  text-align: left;
+  padding: 0.5em;
+  margin: 0.15em;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 0.5em;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+
+bar-title > p {
+  margin-left: 0.5em;
+}
+
+bar-title > primary {
+  display: block;
+  margin: -0.5em;
+  margin-bottom: 0;
+  padding: 0 0.5em;
+  color: white;
+}
+
+.bar-title-miku {
+  background-color: var(--miku-tint);
+}
+
+.bar-title-miku > primary {
+  background-color: var(--miku);
+}
+
+.bar-title-silver {
+  color: #53555a;
+  background-color: #f5f5f5;
+}
+
+.bar-title-silver > primary {
+  color: #f5f5f5;
+  background-color: #b2b3b8;
+}
+
+span-gradient {
+  font-family: JetBrains Mono;
+  color: #fff;
+  padding: 0 0.2em;
+  margin: 0 0.2em;
+  font-size: 1em;
+  display: inline-block;
+  border: 0.1em solid transparent;
+  border-radius: 0.5em;
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  box-shadow: 1px 2px 4px 1px var(--shadow);
+}
+
+.span-gradient-violet {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #8f41e9, #578aef);
+}
+
+.span-gradient-cyan {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #51f0a1, #50e9ef);
+}
+
+.span-gradient-pink {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #eeb054, #ee54d4);
+}
+
+.span-gradient-unripe {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #4284e7, #6ef7d9);
+}
+
+.span-gradient-koishi {
+  background-image: linear-gradient(to right, #222, #222), linear-gradient(90deg, #e7bf67, #33c0ce);
+}
+
+/* 四个标题使用的单侧圆角条状样式 (左) */
+bar-left {
+  padding: 0.2em 0.5em;
+  line-height: 1.25em;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+/* 蓝单侧圆角条状样式 (左) */
+.bar-left-blue {
+  border-left: 0.15em solid var(--blue);
+  background-color: var(--blue-tint);
+}
+
+/* 紫罗兰单侧圆角条状样式 (左) */
+.bar-left-violet {
+  border-left: 0.15em solid var(--violet);
+  background-color: var(--violet-tint);
+}
+
+/* 葱绿单侧圆角条状样式 (左) */
+.bar-left-miku {
+  border-left: 0.15em solid var(--miku);
+  background-color: var(--miku-tint);
+}
+
+/* 灰单侧圆角条状样式 (左) */
+.bar-left-grey {
+  border-left: 0.15em solid var(--dark-grey);
+  background-color: var(--light-grey);
+}
