@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.min.css">
+    <link rel="stylesheet" href="/lib/katex/copy-tex.css">
+    
+    <script src="/lib/katex/katex.min.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    
+    <script src="/lib/katex/copy-tex.min.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>形式化构造</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2022/04-02-comparison-table.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2022/03-16-real-root-separ.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        形式化构造
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-03-23T16:00:00.000Z" itemprop="datePublished">2022-03-24</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>温馨提示</strong>&emsp; 本文中考虑的所有态射皆属 $\textsf{D}_\text{Abel}$，即</p>
+<div class="scroll">
+$$\textsf{D}_\text{Abel}\ni F:F((X_i)_{i\in I}) = F(X_{\sigma(i)}),\;\forall\,\sigma\in\text{Aut}(I)$$ 
+</div>
+
+<p>不至混淆时常将 $F:((X_i)_{i\in I})\mapsto\Box$ 简记为 $F:\Box$，由定义可知任意 $\sigma\in\text{Aut}(I)$ 下 $\Box$ 不变，而原本 $((X_i)_{i\in I})$ 上的运算 $X_i\cdot X_{i+1}\cdot X_{i+2}\cdots$ 被 $F$ 保持，因此以 $\mapsto\Box$ 代<br>$$\mapsto(\Box(X_i),\Box(X_{i+1}),\Box(X_{i+2}),\cdots)$$ 考虑 $\textsf{D}_\text{Abel}$ 中一些简单的元素，显然 $|I|=1$ 时仅有平凡的 $\text{id}:X$.&emsp;$|I|=2$ 时，交换的加法表明最简单的情形为 $F:X_1+X_2$.&emsp;通常仅需取$^{[1]}$ 其一个特殊的子集 $\mathsf{A}$，$\mathsf{A}$ 中元素 $\mathsf{A}\ni F$ 满足 $F((X_i)_{i\in I})=X$ 当且仅当对所有的 $i\in I$ 都有 $X_i=X$.&emsp;同时也不难看出，任意关于 $X_i$ 的对称多项式 $\in\textsf{D}_\text{Abel}$，$\mathsf{A}\cap\textsf{D}_\text{Abel}=\text{id}:X$ 以及<br>$$\forall\,F\in\mathsf{A}:F((X_i)_{i\in I})\succeq X_i\lor X_i\succeq F((X_i)_{i\in I})$$ 类似地在 $\mathsf{A}$ 中考虑 $|I|=2$ 时最简单的元素，其有着特殊的地位，习惯上通常称之为算术平均 $U_\text{arit}:\frac{X_1+X_2}2$，此时从 $\textsf{D}_\text{Abel}$ 到 $\mathsf{A}$ 的映射正是 $\frac{X}{|I|}$，同理，毋庸置疑的是，对于一般的 $|I|$ 可以有 $U_{\text{arit-}|I|}=\frac1{|I|}\sum_{i\in I}X_i$.</p>
+<hr>
+<p><strong>定义</strong>&emsp; 态射 $F$ 对 $U\in\mathsf{A}$ 的 <strong>修饰</strong> $F\ltimes U$ 是指如下运算</p>
+<div>$$\begin{aligned}
+\ltimes:\quad(\textsf{D}_\text{Abel},\mathsf{A})&\;\xrightarrow{\qquad\qquad}\;\mathsf{A} \\
+(F,U)&\;\xmapsto{\qquad\qquad}\;F^{-1}UF
+\end{aligned}$$</div> 
+
+<p>在此，考虑自然导出一些常见的例子，直接以 $\Box$ 在合适的位置代替 $F:\Box$, 于是<br>$$X^p\ltimes U_\text{arit}=(\frac{X_1^p+X_2^p}2)^{\frac1p}$$ 这是一个简单但非平凡的构造，倘若这里考虑的是 $X\mathfrak{p}$，由于形式上的接壤其直接退化为 $U_\text{arit}$，故称 $\text{id}:X\mathfrak{p}$ 为 $U_\text{arit}$ 的单位修饰，更进一步地，可以验证其单位修饰只能形如 $\text{id}:X\mathfrak{p}+\ell$.&emsp;$|I|=2$ 时的退化已无可挽回, 对一般的 $|I|$ 犹可追 $——$ 只需破坏 $X_i$ 对称性使 $X\mathfrak{p}$ 在其上非退化, 由此在 $U_{\text{arit}-|I|}$ 中考虑其 $(X_i)_{i\in I}$, 将 $X_i$ 分成 $\mathcal{R}$ 组使得每组元素所成集合 ${X_r}$ 仅有一个元素, 换言之, $(X_i)$ 中有 $\mathcal{R}$ 个元素相异, 显然 $\sum_{1\le i\le\mathcal{R}}\mathfrak{p}_i=|I|$, 因此有 $X\mathfrak{p}\ltimes U_{\text{arit-}|I|}\sqsupseteq X\mathfrak{p}\ltimes U_{\text{arit-}\mathcal{R}}=\frac1{|I|}\sum_{1\le i\le\mathcal{R}}X_i\mathfrak{p}_i$.</p>
+<p>现在考虑 $\mathcal{R}=2$ 得到 $\frac{X_1\mathfrak{p}_1+X_2\mathfrak{p}_2}{\mathfrak{p}_1+\mathfrak{p}_2}$.&emsp;如果记 $|\mathfrak{p}|=\mathfrak{p}_1$ $+$ $\mathfrak{p}_2$ $+$ $\cdots$ 那么就有 $U_{\text{arit-}|\mathfrak{p}|}\sqsubseteq U_{\mathfrak{p}\text{-arit}}\overset{\text{def}}{=}$ $\frac1{|\mathfrak{p}|}$ $\sum$ $_{1\le i\le|\{p_i\}|}$ $X_i\mathfrak{p}_i$. 熟知 $e^X\succeq X+1$ 等价于 $X-1\succeq\log X$，这种关系将自然地保持到 $F:\Box$ 作用之后的情景，由 $U_\text{arit}$ 的单位修饰 $\text{id}_\ltimes(U_\text{arit}):X\mathfrak{p}+\ell$，$(X-1)\ltimes U_\text{arit}=U_\text{arit}$，$\succeq$ 的另一侧无非是 $\log$ $\ltimes $ $U_\text{arit}=\sqrt{X_1X_2}$，这样就自然导出了算术平均与几何平均之间 $U_\text{geo}$ 的关系.&emsp;考虑 $e^X\ltimes U_\text{arit}$ 则有 $\log$ $(e^X_1+e^X_2)-\log2\succeq U_\text{arit}$. 将其统一记作 $e^X\ltimes U_\text{arit}\longrightarrow U_\text{arit}\longrightarrow\log X\ltimes U_\text{arit}(=U_\text{geo})$. 可以类似地考虑 $\text{id}_\ltimes(U_\text{geo}):X^\mathfrak{p}\ell$，这最终将引导我们发现<br>$$\text{id}_\ltimes(U_\text{arit})|_{X,\ell\rightsquigarrow\log(-)}=\log(\text{id}_\ltimes(\log\ltimes U_\text{arit}))$$ 当然，这来自于 $U_{\text{arit}}=\log(U_{\text{geo}})|_{\log X\rightsquigarrow X}$. </p>
+<hr>
+<p>通过之前的讨论，可以清晰地发现 $U_\text{arit}\longrightarrow U_\text{geo}$ 以及 $U_{\mathfrak{p}\text{-arit}}\longrightarrow U_{\mathfrak{p}\text{-geo}}$ 其中<br>$$U_{\mathfrak{p}\text{-geo}}\overset{\text{def}}{=}(\prod_iX_i^{\mathfrak{p}_i})^{\frac1{|\mathfrak{p}|}}$$ 皆说明从算术平均到几何平均的变化无非是 $X\longrightarrow\log X$，这就解释了为何取对数在此类不等式的证明上可以发挥相当有效的作用.&emsp;现在不妨限制 $U_{\mathfrak{p}\text{-arit}}\succeq U_{\mathfrak{p}\text{-geo}}$，具体而言，使 $\mathcal{R}=2$ 得到 $\frac{X_1\mathfrak{p}_1+X_2\mathfrak{p}_2}{\mathfrak{p}_1+\mathfrak{p}_2}\succeq (X_1^{\mathfrak{p}_1}X_2^{\mathfrak{p}_2})^{\frac1{\mathfrak{p}_1+\mathfrak{p}_2}}$ 这正是所谓的 Young 不等式，一个经典的应用体现在 $p$ 范数 $|X|_p=(\sum_jX_j^p)^{\frac1p}$ 上，其理所应当给出 $\prod_i|X_i|_{\mathfrak{p}_i}\succeq|\prod_iX_i|_{|\mathfrak{p}^{-1}|^{-1}}$.&emsp;证明考虑两边乘 $|\mathfrak{p}^{-1}|^{-1}=\frac1{\mathfrak{p}^{-1}_1+\mathfrak{p}^{-1}_2+\cdots}$ 次方，再对局部项 $(\frac{\prod_iX_{ij}}{\prod_i|X_i|_{\mathfrak{p}_i}})^{|\mathfrak{p}^{-1}|^{-1}}$ 中的 $\frac{X_{ij}^{|\mathfrak{p}^{-1}|^{-1}}}{|X_i|_{p_i}^{|\mathfrak{p}^{-1}|^{-1}}}$，使用一般的 Young 不等式稍作变形 $\prod_iX_i\preceq\sum_i\frac{X_i^{\mathfrak{p}_i|\mathfrak{p}^{-1}|}}{\mathfrak{p}_i|\mathfrak{p}^{-1}|}$，可以得到 $(\frac{\prod_iX_{ij}}{\prod_i|X_i|_{\mathfrak{p}_i}})^{|\mathfrak{p}^{-1}|^{-1}}\preceq|\mathfrak{p}^{-1}|^{-1}\sum_i\frac{X_{ij}^{\mathfrak{p}_i}}{\mathfrak{p}_i|X_i|_{\mathfrak{p}_i}^{\mathfrak{p}_i}}$，对 $j$ 求和，立刻得到右侧 $=|\mathfrak{p}^{-1}|^{-1}\sum_i\mathfrak{p}_i^{-1}=1$.</p>
+<hr>
+<p>退回到第二段，此前已验证<br>$$U_{\text{arit}}=\log(U_{\text{geo}})|_{\log X\rightsquigarrow X}$$ 而 $U_\text{geo}=\log\ltimes U_\text{arit}$，现在考虑 $\exp X\ltimes U_\text{arit}$ 的情形，首先可以确定的是<br>$$\exp(\exp X\ltimes U_\text{arit})|_{\exp X\rightsquigarrow X}=U_{\text{arit}}$$ 当然，即便考虑 $F\ltimes U=F^{-1}UF$，也可以轻易验证<br>$$F(F\ltimes U)|_{F(X)\rightsquigarrow X}=U_{\text{arit}}$$ 比这更为重要的是如何计算 $\text{id}_\ltimes(-)$，好在先前的尝试已经给出足够多的启示，原封不动地将 $\log(-)\rightsquigarrow\exp(-)$，现在只需去验证 $\text{id}_\ltimes(U_\text{arit})|_{X,\ell\rightsquigarrow\exp(-)}=\exp(\text{id}_\ltimes(\exp\ltimes U_\text{arit}))$，这当然极其容易.&emsp;命 $f:X,\ell\rightsquigarrow\log(-)$，常用下图来总结这件事. </p>
+<div>$$\begin{gathered}
+\exp X\ltimes U_\text{arit}\longrightarrow U_\text{arit}\longrightarrow\log X\ltimes U_\text{arit} \\
+\darr\kern5.5em\darr\kern5.5em\darr \\
+\exp(\text{id}_\ltimes(-))\xrightarrow{f}\text{id}_\ltimes(-)\xrightarrow{f}\log(\text{id}_\ltimes(-)) \\
+\end{gathered}$$</div> 
+
+<p>但是此图包含的信息实则不超过下图</p>
+<div class="scroll">$$\begin{CD}
+   F\,\ltimes\,U @>>> \log\,\ltimes\,F\,\ltimes\,U \\
+@V{\normalsize{\cdots\;\subseteq}}\qquad VV @VV{\normalsize{\kern2.5em\overset{\text{def}}{=:}}\;\mathcal{G}^{\log}|_{U,\,F}}V \\
+   F\,\cdot\,\text{id} @>>> \log\,\cdot\,F\,\cdot\,\text{id}
+\end{CD}$$</div>
+
+<p>换言之，等价的描述是 $\mathcal{G}^{\log}|_{U_\text{arit},\,\exp}\rightrightarrows\mathcal{G}^{\log}|_{U_\text{arit},\,\mathbf{1}}$.</p>
+<hr>
+<p>$[1]$：这由 $\mathsf{A}\cong\textsf{D}_\text{Abel}$ 保证.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2022
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

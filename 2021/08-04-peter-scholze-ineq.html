@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.min.css">
+    <link rel="stylesheet" href="/lib/katex/copy-tex.css">
+    
+    <script src="/lib/katex/katex.min.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    
+    <script src="/lib/katex/copy-tex.min.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>Scholze 不等式</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/08-11-flt-polynomial.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2021/07-23-inf-abc-powers-rots.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Scholze 不等式
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-03T16:00:00.000Z" itemprop="datePublished">2021-08-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%B8%8D%E7%AD%89%E5%BC%8F/" rel="tag">不等式</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Peter Scholze 在 Lectures on Condensed Mathematics 中使用了如下结果：</p>
+<p>对任意正实数 $x_1,x_2$ 存在正常数 $C$ 使得<br>$$\|\ell(x_1+x_2)-\ell(x_1)-\ell(x_2)\|\le C(\| x_1\|+\|x_2\|)$$ 成立，其中 $\ell:x\mapsto x\log|x|$.</p>
+<p>如果考虑 $\|\cdot\|$ 为绝对值 $|\cdot|$，则由初等方法便可证明 $C=\log2$，下面给出一种朴素的证明.</p>
+<p>由对称性，可设 $x_1,x_2$ 中的一者为定值且大于零，故令<br>$$f(x)=\dfrac{|\ell(x+c)-\ell(x)-\ell(c)|}{|x|+c}$$</p>
+<p>i. 若 $x\in\R_{(0,+\infty)}$，$f^\prime(x)=\dfrac{c\log\dfrac{c}{x}}{(c+x)^2}$，即知<br>$$f(x)\le f(c)=\log2$$</p>
+<p>ii. 若 $x\in\R_{(-c,0)}$，$f^\prime(x)=\dfrac{c\log-\dfrac{c}{(c+x)^2}}{(c-x)^2}$，于是<br>$$f(x)\le f(\phi^{-2}c)=\log\phi$$</p>
+<p>iii. 若 $x\in\R_{(-\infty,-c)}$，$f^\prime(x)=-\dfrac{c\log\dfrac{-c}{(c+x)^2}}{(c-x)^2}$，<br>$$f(x)\le f(-\phi^{2}c)=\log\phi$$</p>
+<p>其中 $\phi=\dfrac{1+\sqrt5}{2}$ 为黄金分割，证完.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2022
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

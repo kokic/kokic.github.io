@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.min.css">
+    <link rel="stylesheet" href="/lib/katex/copy-tex.css">
+    
+    <script src="/lib/katex/katex.min.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    
+    <script src="/lib/katex/copy-tex.min.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>Rigidity of Elliptic Curve</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2022/06-14-star-of-david.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2022/06-01-proj-zeich.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Rigidity of Elliptic Curve
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-06-08T16:00:00.000Z" itemprop="datePublished">2022-06-09</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E4%BB%A3%E6%95%B0/" rel="tag">代数</a>, <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>定理</strong> &emsp; 令 $k$ 是特征不为 $2$ 的域, 取 $\tau\in k^\times$, $X,Y\in k(t)$ 为有理函数 (即, 两个多项式的商) 满足<br>$$\Gamma: Y^2=X(X-1)(X-\tau)$$ 则 $X,Y\in k$. 这等价于说, 不存在由有理函数给出的非常数映射 $\R^1\longrightarrow\Gamma$.</p>
+<p>$proof$. &emsp; 首先 $k[t]$ 是唯一分解整环, 这允许我们假定两组互素对 $(p,q)$ 与 $(r,s)$ 使得 $X=\frac{p}q,Y=\frac{r}s$, 无需多言, 自然 $p,q,r,s\in k[t]$. 整理得到<br>$$\Gamma:r^2q^3=s^2p(p-q)(p-\tau q)$$ 由于 $r,s$ 互素, 这表明 $s^2\,|\,q^3$, 同理 $p,q$ 互素 $\implies$ $q^3\,|\,s^2$ 因此 $\exist\,\alpha$ 作为 $k[t]$ 的单位 $\in k$ $\text{ s.t. }$ $s^2=\alpha q^3$. 故 $\alpha q=(\frac{s}q)^2$ $$r^2=\alpha p(p-q)(p-\tau q)$$ 实际上, 由无穷递降法可以证明此处 $p,q$ 必然是常数, 具体而言, 以 $\bar k$ 表示 $k$ 的代数闭域, $p,q\in\bar k[t]$ 互素, 假定四种不同的线性组合 $ap+bq$ 在 $\bar k[t]$ 中完全平方, $(a:b)$ $\in$ $\mathbb{P}^1\bar k$, 则 $p,q$ $\in\bar k$. 完全类似地, 也可以应用于 $r,s$, 故证毕.</p>
+<hr>
+<p>再次叙述证明最后一步所用的结果, 若有四组 $(a:b)$ $\in$ $\mathbb{P}^1\bar k$ 使 $ap+bq$ 在 $\bar k[t]$ 中完全平方, 则 $p,q$ $\in$ $k$.</p>
+<p>$proof$. &emsp; 考虑线性变换 $\ell$<br>$$\begin{pmatrix}p \\ q\end{pmatrix}\text{—}\kern-0.36em\leadsto\begin{pmatrix}\alpha &amp; \beta \\ \gamma &amp; \delta \end{pmatrix}\begin{pmatrix}p \\ q\end{pmatrix},\quad \begin{pmatrix}\alpha &amp; \beta \\ \gamma &amp; \delta \end{pmatrix}\in\text{GL}_2(k)$$ 若此结果不成立, 从反例当中选取 $p,q$ 使<br>$$h:\max\{\deg p,\deg q\}$$ 最小, 借由 $\ell$ 使 $p,q,p-q,p-\tau q$ 为平方, 记 $(u^2,v^2)$ $=$ $(p,q)$, 自然 $u,v$ 互素. 故<br>$$\max\{\deg u,\deg v\}\lt\max\{\deg p,\deg q\}$$ 但同时我们知道<br>$$(\Box^2=)\;p-\tau q=(u+\omega v)(u-\omega v)\;(=\Box^2\Box^2)$$ 而 $u\pm v,u\pm\omega v$ 的存在与 $h$ 的最小性矛盾, 证毕. </p>
+<hr>
+<p>尾声: 尽管这表明将 $\Gamma$ 有理参数化的希望破灭了, 但在 $\mathbb{C}$ 上仍然可以通过某个著名的双周期亚纯函数 $\wp(z)$ $——$ <a href="/2021/08-22-elliptic-curve.html">Weierstrass 椭圆函数</a> 来参数化, 这件事成为当今众交叉领域最初的火种之一.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2022
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
