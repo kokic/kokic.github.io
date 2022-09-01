@@ -21,8 +21,10 @@
   --black-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
   --black-trans: #383838;
   --black-trans-image: linear-gradient(transparent, transparent 4px, var(--black-trans) 4px, var(--black-trans));
-  --font-family-katex: "LXGW WenKai";
-  --font-family-typing: "Marcellus-SC", "LXGW WenKai";
+  --font-zh-name: "LXGW WenKai Screen";
+  --font-family-bold: monospace;
+  --font-family-katex: "KaTeX_Main", var(--font-zh-name);
+  --font-family-typing: "Marcellus-SC", var(--font-zh-name);
 }
 block {
   font-family: Noto Sans SC;
@@ -485,7 +487,7 @@ body .h2 {
   text-transform: none;
   letter-spacing: normal;
   font-weight: 100;
-  font-family: "LXGW WenKai";
+  font-family: var(--font-zh-name);
   font-size: 1rem;
 }
 body h3 {
@@ -607,11 +609,11 @@ p {
 }
 p b {
   font-size: 0.95em;
-  font-family: monospace;
+  font-family: var(--font-family-bold);
 }
 p strong {
   font-size: 0.95em;
-  font-family: monospace;
+  font-family: var(--font-family-bold);
 }
 p inc {
   font-family: "JetBrains Mono";
@@ -665,7 +667,7 @@ body {
   font-display: swap;
   font-weight: 400;
   font-size: 15px;
-  font-family: "LXGW WenKai";
+  font-family: var(--font-zh-name);
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -694,7 +696,7 @@ body {
 .content a {
   color: #383838;
   text-decoration: none;
-  font-family: "LXGW WenKai";
+  font-family: var(--font-zh-name);
   background-image: linear-gradient(transparent, transparent 4.5px, #e0e0e0 4.5px, #e0e0e0);
   background-position: bottom;
   background-size: 100% 6px;
@@ -1277,7 +1279,7 @@ article header .posttitle {
   text-transform: none;
   font-size: 1.5em;
   line-height: 1.25;
-  font-family: "LXGW WenKai";
+  font-family: var(--font-zh-name);
 }
 article header .meta {
   margin-top: 0;
@@ -1597,7 +1599,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 12px;
-  font-family: "LXGW WenKai";
+  font-family: var(--font-zh-name);
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
