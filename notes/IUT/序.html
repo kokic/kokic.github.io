@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.min.css">
+    <link rel="stylesheet" href="/lib/katex/copy-tex.css">
+    
+    <script src="/lib/katex/katex.min.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    
+    <script src="/lib/katex/copy-tex.min.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>Hydrangea</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    <div id="title">
+      <h1>Hydrangea</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/tags/">Tag</a></li>
+       
+        <li><a href="/categories/">Category</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <p>译自 <a target="_blank" rel="noopener" href="https://www.kurims.kyoto-u.ac.jp/~yuichiro/introduction_to_inter-universal_teichmuller_theory.pdf">宇宙際 Teichmuller 理論入門</a>.</p>
+<h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><p>正如标题所暗示的那样, 这篇论文的目的是对望月新一先生创立的<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/inter-universal+Teichm%C3%BCller+theory">跨宇宙 Teichmüller 理论</a>进行介绍性评论. 特别是, “<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/anabelian+geometry">远阿贝尔几何</a>在跨宇宙 Teichmüller 理论中是如何使用的”, “在跨宇宙 Teichmüller 理论中可以证明哪些定理以获得某些 <a target="_blank" rel="noopener" href="https://encyclopediaofmath.org/wiki/Diophantine_geometry">Diophantus 几何</a>结果”, “为了获得跨宇宙 Teichmüller 理论的主要定理而引入的 Hodge 剧院是什么” 这些要点是本文内容的核心.</p>
+<p>在撰写本文时, 我们牢记了以下两点. (a) 通过明确说明每个阶段所面临的问题, 并解释这个问题在跨宇宙 Teichmüller 理论中是如何解决的（即使在解释中存在一些迂回、冗余和离题), 我们试图尽可能清楚地表明, 跨宇宙 Teichmüller 理论中的各种论证和其中出现的各种概念都是 “自然” 和 “必要” 的. (b) 跨宇宙 Teichmüller 理论中有许多 “新观点”. 虽然 (至少其中一些) 不难理解, 但我认为它们的 “新奇性” 可能会导致读者放弃理解它们而努力的情况. 因此, 即使是非常初级的东西, 通过举几个例子, 我们努力确保不会仅仅因为其新颖性而导致这种新想法的讨论落空. </p>
+<p>此外, 这篇文章还包含一些 —— 或者说不计其数 —— “不准确的陈述”.  这是因为, 如果试图 “只用精确的陈述” 来解释理论, 那么至少在作者的能力范围内, 解释的方法就会变得与原来论文中解释理论的方式没有多大区别, 这样的解释就失去了意义. 这与原论文中对该理论的 “解释” 不同, 后者只是对该理论完成的后期阶段的准确描述, 在 “解释” 中, 我们想象这个理论是如何产生的, 然后讨论这个理论是多么自然, 至少对作者来说, 这种 “不正确的说法” 是必要的. 请原谅我这样做.</p>
+<p>本文的结构大致如下: </p>
+<ul>
+<li>§1 至 §3: 解释远阿贝尔几何如何用于跨宇宙 Teichmüller 理论.</li>
+<li>§4 至 §12: 为了获得一些 Diophantus 几何结果 (见第 4 节的开头), “应该做什么”, “什么样的方法是可能的”, “在这种方法的框架内可以做什么” 特别地, 粗略解释了跨宇宙 Teichmüller 理论的主要定理.</li>
+<li>§13 至 §20: 解释 theta 函数的局部理论及其整体化, 特别是其中加法/几何对称性起着重要作用的 “加法 Hodge 剧院” 的构建.  </li>
+<li>§21 至 §25: 数域复原所涉及的理论解释, 特别是乘法/算术对称性发挥重要作用的 “乘法 Hodge 剧院” 的构建.</li>
+<li>§26: 最终的 Hodge 剧院的组成说明.</li>
+</ul>
+<p>让我们更深入地研究一下这个理论. (有关详细信息, 请参阅 §27.) 通过 §4 到 §12 中描述的 “链接方法” 为了证明一个 Diophantus 几何定理 (见 §4 的开头), 对于一个合适的固定<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/number+field">数域</a>上的<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/elliptic+curve">椭圆曲线</a></p>
+<p>&nbsp;&nbsp;(a) 对数壳 (见§8) <br><br>&nbsp;&nbsp;(b) 椭圆曲线的 $q$ 参数的 (大于 1) 有理数宽度 <br><br>&nbsp;&nbsp;(c) 数域</p>
+<p>因此，只要证明三个对象 (在一些合适的环境中) 的多辐表示 (见 §7) 的存在就足够了. 另一方面, 为了获得这些对象的多辐表示, 从 “放弃设定的环状结构” 所不可避免地产生的不确定性 (见 §10), 上述 (b) 和 (c) 必须受到保护/隔离. 因此, 我们需要将 (b) 和 (c) 视为 “一些合适函数的特殊值”，而非 “只是数字”. 这样的函数对于 (b) 来说是 theta 函数 (见§13)，对于 (c) 来说是 “<b></b>$\kappa$ 系函数” (见§24). (见 §11 中的讨论.)</p>
+<p>应该分配给 <a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/theta+function">theta 函数</a>的点是, $\text{LabCusp}^\pm_K\cong\mathbb{F}_l$ 自然地由集合的元素标记. 考虑 $\mathbb{F}_\ell$ 的每个元素的特殊值, $\mathbb{F}_\ell^\times=\mathbb{F}_\ell\backslash\{0\}$ 给出 (b) 标记的点处的特殊值, 并代入标记为 $0\in\mathbb{F}_\ell$ 的点, 事实证明, 我们得到了 (theta 函数出现的地方) “theta monoid” 的分裂. 另外, 这种在 $0\in\mathbb{F}_\ell$ 处的替换分裂后来通过对数映射与 (a) 结合为 (b) 和 (c) 的合适 “容器”. (参见 §19 和 §20 的讨论以及 §8 和 §9 的一些讨论.) 在非常粗略的层面上, “加法 Hodge 剧院” (即 $\mathcal{D}\text{-}\Theta^{\pm\text{ell}}$ Hodge 剧院或 $\Theta^{\pm\text{ell}}$ Hodge 剧院) 是由 §13 到 §20 组成, Theta 函数, 对其分配点的标签管理, 以及 “容器” 的设置 (即, 以 (a) 结束的内容) 的特殊值 (即 (b)).</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2022
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
