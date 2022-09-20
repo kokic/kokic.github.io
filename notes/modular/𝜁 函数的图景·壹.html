@@ -75,7 +75,11 @@
 
   <div class="content" itemprop="articleBody">
       
-          
+          <p>记部分和 $\displaystyle\sum_{1\le n\le x}\ell(n)$ 为 $S(x)$, 以 $\partial$ 表 $\frac{\text{d}}{\text{d}x}$,<br>由 Taylor 展开有 $S(x-1)=S(x)-S^\prime(x)+\frac12S^{\prime\prime}(x)+\cdots=e^{-\partial}S(x)$</p>
+<p>故 $\ell(x)=(1-e^{-\partial})S(x)=\frac{1-e^{\partial}}{\partial}\cdot\partial S(x)$,<br>$\partial S(x)=\frac{\partial}{1-e^{\partial}}f(x)=\sum_{k\ge0}(-1)^kB_k\frac{\partial^k}{k!}f(x)$</p>
+<p>两边积分得 $S(x)=\int f(x)\text{d}x+\sum_{k\ge1}(-1)^kB_k\frac{\partial^{k-1}}{k!}f(x)$. </p>
+<p>再记 $S_k(x)=S(x)|_{\ell(n)\,\leadsto\,n^k}$, 熟知 $S_{-1}(x)=\gamma+\log x+\frac1{2n}-\frac1{12n^2}+\cdots$.</p>
+
         
   </div>
 </article>
