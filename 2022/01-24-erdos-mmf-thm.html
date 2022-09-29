@@ -130,13 +130,11 @@
     <script>document.title = "Erdős 单调乘性函数定理";</script>
 
 <style>
-small {
-  color: grey;
-}
+small { color: grey; }
 </style>
 
 <p><small>很有意思的一个结果，本文证明来自 Everett Howe.</small></p>
-<div class="scroll" style="font-size: 0.75em; font-family: monospace;">
+<div class="scroll" style="font-size: 0.8em; font-family: JetBrains Mono;">
 <br>A New Proof of Erdos's Theorem on Monotone Multiplicative Functions <br>
 Author(s): Everett Howe <br>
 Source: The American Mathematical Monthly, Vol.93, No.8 (Oct., 1986), pp.593-595 <br>
@@ -148,7 +146,7 @@ Accessed: 04-01-2016 18:56 UTC
 <p><strong>定理$\,(\text{Erdős})$</strong> $f$ 增 $[$increasing$]$ 且乘性 $[$multiplicative$]$，则必存在一个常数 $\alpha$ 使 $f(n)=n^\alpha,n\in\Z_{\ge1}$. &nbsp;Howe 证明了以下两个定理，从而推出此结果.</p>
 <p><strong>定理</strong> $i. $ 若 $f$ 增且完全乘性，则必存在一个常数 $\alpha$ 使 $f(n)=n^\alpha,n\in\Z_{\ge1}$.</p>
 <p>$proof.$ 考虑使用反证法，假定这样的 $\alpha$ 不存在，由此知 $\log f(n)/\log n$ 非常值，故可取不同的 $m,n\in\Z_{\ge1}$ 使<br>$$x=\dfrac{\log f(m)}{\log m},\quad y=\dfrac{\log f(n)}{\log n},\quad x\gt y$$ 这样一来就有正整数 $A,B$ 使得<br>$$\dfrac{y}x\cdot\dfrac{B\log n}{\log m}\lt A\le\dfrac{B\log n}{\log m}$$ 事实上，取<br>$$A=\left\lfloor\dfrac{B\log n}{\log m}\right\rfloor,B=\left\lfloor\dfrac{x\log m}{(x-y)\log n}\right\rfloor$$ 即可满足上述不等式 $($容易验证$)$. 但同时，由于<br>$$A\log m\le B\log n\quad\land\quad Ax\log m\gt By\log n$$ 这就是说<br>$$m^A\le n^B\quad\land\quad f(m^A)\gt f(n^B)$$ 与 $f$ 增矛盾，证毕.</p>
-<p><strong>定理</strong> $ii$. &nbsp;所有增的乘性函数都是完全乘性.</p>
+<p><strong>定理</strong> $ii$. &nbsp;所有增的乘性函数都完全乘性.</p>
 <p>$proof.$ 作者使用了一个巧妙的引理 $——$ 记<br>$$\ell=\inf\limits_{x\,\notin\,p\Z_{\ge1}}\dfrac{f(x+p)}{f(x)}$$ 则有如下蕴含 </p>
 <div style="text-align: center;">
 增的乘性函数 $f$, 素数 $p\;\implies \ell=1$
