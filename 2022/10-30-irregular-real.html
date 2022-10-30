@@ -23,7 +23,7 @@
     
     
     <!-- title -->
-    <title>Recent thoughts</title>
+    <title>Real World is Irregular</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -62,10 +62,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2022/10-30-irregular-real.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2022/10-02-misogyny-man.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2022/10-28-recent-thoughts.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -90,7 +88,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        Recent thoughts
+        Real World is Irregular
     </h1>
 
 
@@ -102,7 +100,7 @@
       
     <div class="postdate">
       
-        <time datetime="2022-10-27T16:00:00.000Z" itemprop="datePublished">2022-10-28</time>
+        <time datetime="2022-10-29T16:00:00.000Z" itemprop="datePublished">2022-10-30</time>
         
       
     </div>
@@ -133,23 +131,17 @@ small {
 }
 </style>
 
-<p>I’ve been busy configuring my work environment on a new device <u>Redmi Book Pro 15, 2022</u> recently and encountered many (almost serious) problems during this period (about three weeks, of course, linux only. The default system of the device is Windows 11, works great). Here are some more details on why I use linux and choose Manjaro, and the price to pay for it <small>(common sense: Linux linux usually requires additional settings on some special devices, so unfortunately I’m not among the “lucky few” )</small>. To save time for someone with the same problem, I’ll list the solutions first.</p>
+<p>This is not a strange thing, the natural language we use in the real world is very irregular, just need an example to illustrate this. At the same time, this can be used as a reason to explain custom infixes in Haskell why does the operation have to be marked with the symbol “<code>&#96;</code>”. <small>Of course, another obvious reason is the syntax of the Haskell function call (<code>f x y z</code>), infix expressions like this can easily be ambiguous without some special identifiers.</small></p>
+<p>This example is about the incompatibility caused by the precedence of modulo (<code>mod</code>) and exponent (<code>^</code>) operations, even though it is legal in natural language or mathematical expressions (so the human parser is much more powerful than many algorithms).</p>
+<p>First let’s examine two common infix operators (binary operators) <code>a × b</code> and <code>a mod b</code>. For parser, their main difference is whether no spaces are allowed on both sides of the operator. In simple terms, this may be nothing, just need to do a special check for the whitespace-eliminated part of “<code>mod</code>” during parse (≥ 1, corresponding to the “<code>+</code>” of the <u>RegExp</u> $\leadsto$ regular expression). </p>
+<p>Now, we consider the following definition (exponentiation as part of modulo operation, depending on priority)</p>
 <ul>
-<li><p>USB autosuspend - <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Power_management#USB_autosuspend">https://wiki.archlinux.org/title/Power_management#USB_autosuspend</a>. autosuspend can be disabled by setting power/autosuspend (<code>usbcore.autosuspend</code>) to -1 i.e., never autosuspend.</p>
-</li>
-<li><p>Screen corruption after resuming from suspend or hibernation (7) &amp; System does not return from suspend (25) see <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/NVIDIA/Troubleshooting#System_does_not_return_from_suspend">NVIDIA/Troubleshooting</a>.</p>
-</li>
+<li><code>powExp := unaryExp ('^' unaryExp)<sup>*</sup></code></li>
+<li><code>modExp := powExp (' mod ' powExp)<sup>*</sup></code></li>
 </ul>
-<p>$\kern{2em}\mathcal{Q}_1$ <strong>How is this device?</strong> $\leadsto$ CPU - Intel i7 12650H <small>(A piece of news: Even though my old device was using an “extremely old” 3rd gen Intel i7 processor (which seemed top hardware back then) and it has been used for about 8 years, with a great SSD it’s still possible to do most of the work, until recently I was still using it for programming in Java / Haskell / OCaml etc. on Windows 10)</small>, 2.3GHz, Graphics - NVIDIA GeForce RTX2050 <small>(I’m not sure if this is the main cause of the problem, but in most cases NVIDIA’s graphics do cause a lot of trouble (again, only for linux. It’s not that NVIDIA’s products have any quality problems, in fact it’s in machine learning field is quite outstanding, not to mention cuda))</small>, RAM - 8GB $\times$ 2 LDDR5 5200MHz, Hard Disk - SSD 512GB … <small>Everything looks fine, it’s thin and light and has great performance, a great high-res screen. In the early years this only happened on the <u>Mac Book Pro</u>. Of course none of this is free, the whole device ended up costing me $1000, but it’s still a lot cheaper than a <u>Mac Book Pro</u> (half the price for a <u>Mac Book Pro</u> of the same size).</small></p>
-<p>$\kern{2em}\mathcal{Q}_2$ <strong>What’s the problem?</strong> $\leadsto$ A lot of times I’ve programmed on Windows, but this time I’ve changed my mind, mostly because of the language I’m using <small>(if you’ve tried Haskell on Windows you’ll understand, for every GHC - Glasgow Haskell Compiler, ghcup will all install a whole set of separate MSYS2, <del>which leads me to believe that Haskeller has found a technique to produce a completely free unlimited capacity hard drive</del>)</small> and tools have better support on Linux (package management). Coincidentally, the Haskell community today has a lot in common with “Loyal Apple User” </p>
-<ul>
-<li><p>very good at propaganda and has a very committed set of users (religious, xx-ists) who don’t admit that what they espouse has Any shortcomings, and always find reasons for all kinds of problems. <del>Jobs’ love for the toaster is nothing compared to the Apple fanatic’s love for Apple.</del></p>
-</li>
-<li><p>with almost unlimited resources, never considering cost, “Loyal Apple User” will tell you when you use the perfect apple product and encounter performance problems Just pay for an upgrade or simply get a new, more expensive “Pro” <small>(if you’re already using the Pro, maybe they’ll ask Apple to come up with a “Pro Plus” or criticize you for having poor taste and not being able to appreciate a good product and being too critical)</small>.</p>
-</li>
-<li><p>they always talk about words like “productivity”. This one, in particular, is strikingly similar and repetitive, and at one point made me wonder if “Holy Haskell Users” were all “Loyal Apple Users” because they were both able to spell the word “productivity” quickly and accurately and without any mistakes.</p>
-</li>
-</ul>
+<p>However, in our implementation, this rule is problematic. <code>powExp</code> will skip all spaces before <code>mod</code> even if the symbol <code>&#39;^&#39;</code> is not present. This results in <code>&#39;mod&#39;</code> (≠ <code>&#39; mod &#39;</code>) not being parsed correctly. There are many compromises to solve this problem, such as not introducing <code>pow</code> but directly defining <code>modExp := unaryExp (' mod ' unaryExp)<sup>*</sup></code></p>
+<hr>
+<p>Why not design <code>mod</code> to also allow modes without spaces (i.e. <code>&#39;mod&#39;</code>)? Sure, maybe this is the whole answer to this question. This doesn’t cause trouble when you need to match certain identifiers. <small>Although doing so is not syntactically equivalent (say, expressions such as <code>5mod3</code> will also be parsed correctly. On the other hand, this also explains why identifiers have many restrictions).</small></p>
 
   </div>
 </article>
