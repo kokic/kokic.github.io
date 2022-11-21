@@ -21,7 +21,7 @@
   --black-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
   --black-trans: #383838;
   --black-trans-image: linear-gradient(transparent, transparent 4px, var(--black-trans) 4px, var(--black-trans));
-  --font-zh-name: "LXGW WenKai Screen";
+  --font-zh-name: "Noto Serif SC";
   --font-family-bold: "KaTeX_SansSerif", "Noto Sans SC";
   --font-family-katex: "KaTeX_Main", var(--font-zh-name);
   --font-family-typing: "Marcellus-SC", var(--font-zh-name);
