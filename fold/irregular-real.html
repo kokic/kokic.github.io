@@ -68,68 +68,32 @@
 </header>
 
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2021</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2021-07-06T16:00:00.000Z" itemprop="datePublished">2021-07-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2021/07-07-lorem-ipsum.html">Lorem Ipsum</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2020</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-12-04T16:00:00.000Z" itemprop="datePublished">2020-12-05</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/12-05-rakugaki-1.html">落书き</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   
 
-</div>
+  <div class="content" itemprop="articleBody">
+      
+          <style type="text/css">
+small {
+  color: grey;
+}
+</style>
+
+<p>This is not a strange thing, the natural language we use in the real world is very irregular, just need an example to illustrate this. At the same time, this can be used as a reason to explain custom infixes in Haskell why does the operation have to be marked with the symbol “<code>&#96;</code>”. <small>Of course, another obvious reason is the syntax of the Haskell function call (<code>f x y z</code>), infix expressions like this can easily be ambiguous without some special identifiers.</small></p>
+<p>This example is about the incompatibility caused by the precedence of modulo (<code>mod</code>) and exponent (<code>^</code>) operations, even though it is legal in natural language or mathematical expressions (so the human parser is much more powerful than many algorithms).</p>
+<p>First let’s examine two common infix operators (binary operators) <code>a × b</code> and <code>a mod b</code>. For parser, their main difference is whether no spaces are allowed on both sides of the operator. In simple terms, this may be nothing, just need to do a special check for the whitespace-eliminated part of “<code>mod</code>” during parse (≥ 1, corresponding to the “<code>+</code>” of the <u>RegExp</u> $\leadsto$ regular expression). </p>
+<p>Now, we consider the following definition (exponentiation as part of modulo operation, depending on priority)</p>
+<ul>
+<li><code>powExp := unaryExp ('^' unaryExp)<sup>*</sup></code></li>
+<li><code>modExp := powExp (' mod ' powExp)<sup>*</sup></code></li>
+</ul>
+<p>However, in our implementation, this rule is problematic. <code>powExp</code> will skip all spaces before <code>mod</code> even if the symbol <code>&#39;^&#39;</code> is not present. This results in <code>&#39;mod&#39;</code> (≠ <code>&#39; mod &#39;</code>) not being parsed correctly. There are many compromises to solve this problem, such as not introducing <code>pow</code> but directly defining <code>modExp := unaryExp (' mod ' unaryExp)<sup>*</sup></code></p>
+<hr>
+<p>Why not design <code>mod</code> to also allow modes without spaces (i.e. <code>&#39;mod&#39;</code>)? Sure, maybe this is the whole answer to this question. This doesn’t cause trouble when you need to match certain identifiers. <small>Although doing so is not syntactically equivalent (say, expressions such as <code>5mod3</code> will also be parsed correctly. On the other hand, this also explains why identifiers have many restrictions).</small></p>
+
+        
+  </div>
+</article>
 
         
         <footer id="footer">
