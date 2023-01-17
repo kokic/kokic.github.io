@@ -21,7 +21,7 @@
   --black-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
   --black-trans: #383838;
   --black-trans-image: linear-gradient(transparent, transparent 4px, var(--black-trans) 4px, var(--black-trans));
-  --font-zh-name: "Noto Serif SC";
+  --font-zh-name: "LXGW WenKai Screen";
   --font-family-bold: "KaTeX_SansSerif", "Noto Sans SC";
   --font-family-katex: "KaTeX_Main", var(--font-zh-name);
   --font-family-typing: "Marcellus-SC", var(--font-zh-name);
@@ -674,6 +674,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+@media (min-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+}
 .content {
   position: relative;
   display: flex;
@@ -1277,9 +1282,14 @@ article header .posttitle {
   margin-top: 0;
   margin-bottom: 0;
   text-transform: none;
-  font-size: 1.5em;
+  font-size: 22.5px;
   line-height: 1.25;
   font-family: var(--font-zh-name);
+}
+@media (min-width: 720px) {
+  article header .posttitle {
+    font-size: 30px;
+  }
 }
 article header .meta {
   margin-top: 0;
@@ -1297,13 +1307,21 @@ article header .author {
 article header .postdate {
   display: inline;
 }
+article .content h2 {
+  font-size: 15.9px;
+}
+@media (min-width: 720px) {
+  article .content h2 {
+    font-size: 20.25px;
+  }
+}
 article .content h2:before {
   position: absolute;
   top: -4px;
   left: -1rem;
   color: #2bbc8a;
   content: "§";
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-family: "Marcellus-SC";
 }
 article .content img,

@@ -120,7 +120,7 @@
   font-style: normal;
 }
 .katex {
-  font: normal 1.2em "KaTeX_Main", "Noto Serif SC";
+  font: normal 1.2em var(--font-family-katex);
   line-height: 1.2;
   text-indent: 0;
   text-rendering: auto;
@@ -130,7 +130,7 @@
   border-color: currentColor;
 }
 .katex .katex-version::after {
-  content: "0.16.3";
+  content: "0.16.2";
 }
 .katex .katex-mathml {
   /* Accessibility hack to only show to screen readers
@@ -294,6 +294,7 @@
 .katex .mfrac .frac-line {
   display: inline-block;
   width: 100%;
+  font-size: 1.5em;
   border-bottom-style: solid;
 }
 .katex .mfrac .frac-line,
