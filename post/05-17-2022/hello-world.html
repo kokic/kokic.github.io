@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.css">
+    <script src="/lib/katex/katex.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    <script src="/lib/katex/copy-tex.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>Construction of letters</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/06-01-2022/proj-zeich.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/05-13-2021/finite-discrete.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Construction of letters
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-05-16T16:00:00.000Z" itemprop="datePublished">2022-05-17</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" rel="tag">程序语言</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <script src="../lib/loader.js"></script>
+
+<p>$—$ Exploring minimal representation in ECMAScript</p>
+<hr>
+<p>Notice: <em>This article is motivated by several Kata on Codewars. This post will show how to solve the hardest parts of these problems naturally, but for obvious reasons I can’t link the corresponding problems directly. At the same time, those readers who know exactly what the problem is, please don’t read until you solve the problem independently, or at least only read a little bit as a hint.</em></p>
+<p>First of all, we have to define some basic rules, many of which seem to be restrictive, but that is the real core of the problem.</p>
+<ul>
+<li>no ASCII &amp; unicode letters allowed </li>
+<li>only allowed to use numbers (<code>0-9</code>) and special characters (<code>()[]&#123;&#125;_!</code>, etc.)<br>$\impliedby$ implicit string construction, there are some letters whose construction is not obvious.</li>
+<li>every line must have at most <code>1</code> ASCII character<br>$\impliedby$ expressions that allow arbitrary line breaks.</li>
+<li>$N$ lines or less<br>$\impliedby$ it’s not important, as long as the principle is clear, it’s not difficult to do this.</li>
+</ul>
+<hr>
+<p>There are some obvious tricks to use <code>!1</code>, <code>!0</code> and <code>[]._</code> which give <code>false</code>, <code>true</code> and <code>undefined</code> respectively. The same object may have multiple constructs, eg.</p>
+<center>
+$\bigg\{$ <code>[]._</code> $,$ <code>&#123;&#125;._</code>  $,$ $\dots$ $\bigg\}$ $\xtwoheadrightarrow{\qquad}$ $\bigg\{$ <code>undefined</code> $\bigg\}$
+</center>
+
+<p>This means that representations of minimal length exist, but are not always unique. It seems like a meaningful thing to find a minimal representation, which can solve the problem of the limit of the $N$ lines.</p>
+<p>Next, consider how to implicitly convert objects to strings, and we know that the direct way is <code>+ []</code></p>
+<center>
+<code>obj + []</code> $\xmapsto{\qquad}$ <code>obj.toString()</code>
+</center>
+
+<p>Combining the above two points, we get the corresponding representation of the following character set</p>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&#39;a&#39;  (b)  (c)  &#39;d&#39;  &#39;e&#39;  &#39;f&#39;  (g)
+(h)  &#39;i&#39;  (j)  (k)  &#39;l&#39;  (m)  &#39;n&#39;
+(o)  (p)  (q)       &#39;r&#39;  &#39;s&#39;  &#39;t&#39;
+&#39;u&#39;  (v)  (w)       (x)  (y)  (z)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Another key part comes from <code>&#123;&#125;+[]</code>. This expression will give the string <code>[object Object]</code>. Finally there are some characters that look too special to appear in any of the existing JavaScript built-in symbols. </p>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&#39;a&#39;  &#39;b&#39;  &#39;c&#39;  &#39;d&#39;  &#39;e&#39;  &#39;f&#39;  (g)
+(h)  &#39;i&#39;  &#39;j&#39;  (k)  &#39;l&#39;  (m)  &#39;n&#39;
+&#39;o&#39;  (p)  (q)       &#39;r&#39;  &#39;s&#39;  &#39;t&#39;
+&#39;u&#39;  (v)  (w)       (x)  (y)  (z)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>But actually, we don’t need to get all the characters from the inner object, with method <code>.toString(36)</code> we will get all lowercase letters. Assuming that the integer <code>n</code> satisfies <code>10 &lt;= n &lt;= 35</code></p>
+<center>
+<code>n.toString(36)</code> $\cong$ $\big\{$ <code>'a'</code> $,\dots,$ <code>'z'</code> $\big\}$ 
+<br> <code>10</code> $\xmapsto{\qquad}$ <code>'a'</code>
+<br> $\kern-0.6em\vdots$
+<br> <code>35</code> $\xmapsto{\qquad}$ <code>'z'</code>
+</center>
+
+<p>This approach allows us to take many steps forward at once, and it looks like we’re about to reach the end, but the construction of the uppercase letters isn’t going to be smooth sailing. In fact, before we can get all lowercase letters, we have to get <code>&#39;S&#39;</code> by other constructions e.g. literal coincidence, via the constructor</p>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&gt; &#96;&#96;[&#39;constructor&#39;]
+[Function: String]
+
+&gt; (&#96;&#96;[&#39;constructor&#39;] + [])[9]
+&#39;S&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<p>Good news, we have obtained all lowercase letters. It is no coincidence that the construction of all uppercase letters will also be obtained in one go by some key method, which is obviously <code>String.fromCharCode</code>. </p>
+<p>Here, the focus can be found on how to generate  the character <code>&#39;C&#39;</code>. I will give a tricky approach.</p>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&gt; [][&#39;flat&#39;][&#39;constructor&#39;](&#39;return escape&#39;)()
+function escape() &#123; [native code] &#125;
+
+&gt; escape(&#39;,&#39;)
+&#39;%2C&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<p>In the last step, which may be a mathematical problem, we need to consider the decomposition of an integer in an additive or multiplicative way. These decompositions need to meet the following requirements: </p>
+<ul>
+<li>only one number can appear in each term, i.e. each term must satisfy <code>1 &lt;= n &lt;= 9</code></li>
+<li>minimized decomposition length</li>
+</ul>
+<p>Since the composite numbers can always be decomposed by prime factors, in fact, this problem can be considered only for the case of prime numbers.</p>
+<p>$$N=\prod_{p\,|\,N}p^{v_p(N)} \quad \leadsto \quad p$$ </p>
+<p>Of course, for prime numbers, the only available decomposition method is addition. In order to make the length of the decomposition as short as possible, we need a large number of digits 9. With the help of some knowledge of elementary number theory, it is obvious that we consider the number modulo 9. $$p=r\mod 9$$</p>
+<p>Further, we can also figure out exactly how many additive decompositions there are for each number.</p>
+<center>
+$a_p\overset{\text{def}}{=}\#\text{ decomposition of }p$ <br>
+$$\sum a_pX^p=\prod^\ell\frac{X(1-X^9)}{1-X}$$
+
+<p>$$a_p=\sum_{k=0}^{\lfloor(p-\ell)/9\rfloor}(-1)^k{\ell\choose k}{p-1-9k \choose \ell-1}$$</p>
+</center>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2023
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

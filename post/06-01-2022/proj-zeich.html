@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.css">
+    <script src="/lib/katex/katex.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    <script src="/lib/katex/copy-tex.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>Zeich in Dynastes</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/post/06-09-2022/rigid-curve.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/post/05-17-2022/hello-world.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Zeich in Dynastes
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-05-31T16:00:00.000Z" itemprop="datePublished">2022-06-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/" rel="tag">程序语言</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <script src="../lib/loader.js"></script>
+
+<script>
+
+const sources = loadFile('/assets/codes/zeich.hs').split('\n');
+const select = (s, t) => sources.slice(s - 1, t).join('\n')
+</script>
+
+<p>首先, 假定有形式定义 <code>𝛅 _ _ _ = _ ? _ : _</code>, 即</p>
+<pre class="line-numbers language-Haskell" data-language="Haskell"><code class="language-Haskell">𝛅 :: Bool -&gt; a -&gt; a -&gt; a
+𝛅 True  x _ &#x3D; x
+𝛅 False _ y &#x3D; y<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>现在定义 <code>occup</code> 用来计算一个 <code>Char</code> 或 <code>String</code> 的占用长度 $——$ &nbsp;即半角为 $1$, 全角为 $2$. 为了滥用函数名 <code>occup</code>, 考虑使用 <code>class</code>, 对于 <code>String</code> (𝕾) 无非是 <code>[Char]</code>, 其 <code>occup</code> 由列表中的每一项贡献. 具体而言, 如下所示</p>
+<script>displayAsCode(select(11, 20), 'Haskell')</script>
+
+<p>明确地, 可以看见 <code>G . F</code> 作为 Pointfree 后的<br>$$\lambda:\;(X,Y) \quad\xmapsto{\qquad}\quad G(Y, F(X))$$ 注意, 这里使用的是 <code>foldr</code>, 因此这里 $F$ 对应的 <code>occup</code> 作用在 $X$ 上. 这里顺带还实现了 <code>occupWithFence</code>.</p>
+<p>下一步, 考虑实现函数 <code>occupBound</code>, 用于计算出一个 <code>[𝕾]</code> 中最大的 <code>occup</code>. 为了完整展示信息以及对齐, 需要将表格的宽度统一为占用最长的格的宽度.</p>
+<script>displayAsCode(select(22, 24), 'Haskell')</script>
+
+<hr>
+<p>表格边框线的绘制步骤是平凡的</p>
+<script>displayAsCode(select(36, 39), 'Haskell')</script>
+
+<p>这里引入了 <code>HorizonForm</code> 来确定线的样式</p>
+<script>displayAsCode(select(31, 34), 'Haskell')</script>
+
+<p>还可以定义 <code>lines𝖱</code> 用来处理 <code>[Int]</code></p>
+<script>displayAsCode(select(42, 46), 'Haskell')</script>
+
+<p>考虑定义 <code>space</code> 来补充空格。</p>
+<script>displayAsCode(select(48, 49), 'Haskell')</script>
+
+<p>在此之上, 类似于 <code>line</code> 可以定义 <code>fence</code> 来完成每个表格的中间部分的绘制 </p>
+<script>displayAsCode(select(51, 54), 'Haskell')</script>
+
+<hr>
+<p>一般地, 为了能够在遍历的同时知道元素所在位置的索引, 可以考虑使用 <code>zip</code> 构建配对组 <code>(x, index)</code></p>
+<script>displayAsCode(select(56, 57), 'Haskell')</script>
+
+<p>这种做法在数学上还被应用于无交并 $\sqcup$ 的经典构造<br>$$X\sqcup Y\overset{\text{def}}{=}(X\times\{0\})\cup(Y\times\{1\})$$<br>无独有偶, 下面将实现 <code>fences𝖱</code> 和 <code>fences𝖱𝛘</code>, <code>ns</code> 用于设置数据右侧填充的空格长度</p>
+<script>displayAsCode(select(59, 67), 'Haskell')</script>
+
+<p>现在只要组合 <code>lines𝖱</code> &amp; <code>fences𝖱</code> 就能得到 <code>rowEntire𝖱</code></p>
+<script>displayAsCode(select(69, 70), 'Haskell')</script>
+
+<p>而对于携带额外参数 𝛘 的版本, 可以做得更精细一些, 后面更进一步的组合中将会使用 <code>rowCentre𝖱𝛘</code> </p>
+<script>displayAsCode(select(73, 77), 'Haskell')</script>
+
+<p>最后, <code>table</code> 的构成将会因为之前的准备工作变得异常清晰</p>
+<script>displayAsCode(select(79, 84), 'Haskell')</script>
+
+<hr>
+<p>测试, 考虑最基本的 $2\times2$ 表格</p>
+<pre class="line-numbers language-Haskell" data-language="Haskell"><code class="language-Haskell">main &#x3D; putStrLn $ table 
+  [ [&quot; &quot;, &quot;A&quot;, &quot;B&quot;],  
+    [&quot;X&quot;, &quot;AX   ゴ&quot;, &quot;BX かか&quot;],
+    [&quot;Y&quot;, &quot;AY ああ&quot;, &quot;BY   ん&quot;] ]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>结果如下 (<code>Font Family: Ubuntu Mono</code>)</p>
+<pre style="margin: 0 auto;font-size: 1.2em; font-family: 'UbuntuMono';">
++---+---------+---------+
+|   | A       | B       |
++---+---------+---------+
+| X | AX   ゴ | BX かか |
+| Y | AY ああ | BY   ん |
++---+---------+---------+
+</pre>
+
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2023
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
