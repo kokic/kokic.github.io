@@ -120,7 +120,7 @@
   font-style: normal;
 }
 .katex {
-  font: normal 1.2em var(--font-family-katex);
+  font: normal 1.2em KaTeX_Main;
   line-height: 1.2;
   text-indent: 0;
   text-rendering: auto;
@@ -145,6 +145,7 @@
 }
 .katex .katex-html {
   /* \newline is an empty block at top level, between .base elements */
+  font-family: KaTeX_Main, var(--font-family-katex);
 }
 .katex .katex-html > .newline {
   display: block;
