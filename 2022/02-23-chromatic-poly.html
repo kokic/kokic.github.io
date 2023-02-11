@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.css">
+    <script src="/lib/katex/katex.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    <script src="/lib/katex/copy-tex.js"></script>
+    
+    
+    
+    <!-- title -->
+    <title>简单图的色多项式分解</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2022/03-03-read-quiver.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2022/01-24-erdos-mmf-thm.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        简单图的色多项式分解
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-02-22T16:00:00.000Z" itemprop="datePublished">2022-02-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E7%BB%84%E5%90%88/" rel="tag">组合</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <script src="../lib/graphs.js"></script>
+
+<p>简单图意谓既无平行边 $[$同一条边$]$ 亦无自环 $[$顶点到自身的边$]$ 的图，现取一简单图 $G$ 与其上一边 $e$，$\pi(G)$ 表以 $q$ 种颜色着 $G$ 上顶点的总着色数 $[$即，色多项式$] ($自然，着色要求被边相连的顶点不重色$)$，则有如下等式<br>$$\pi_G(q)=\pi_{G\,-\,e}(q)-\pi_{G\,\cdot\,e}(q)$$ 这被称作 删除收缩公式 $[$deletion-contraction formula$]$ 其中 $G-e$ 是从 $G$ 中删去边 $e$ 所剩图 $G-\{e\}$ 的简记, $G\cdot e$ 则表示将 $G$ 中边 $e$ 的两个端点合并为一个点后所得的图, 而原先的 $e$ 自动消失.</p>
+<p>证明：显然. 可以假定边 $e$ 的两个端点分别为 $A,B$，由于在证明此结果时，关注点集中在图本身，因此将 $\pi_G(q)$ 记作 $\pi(G)$，不难发现 </p>
+<div class="scroll">$$\gdef\st#1{\footnotesize\text{ #1 }} \begin{aligned}
+\pi(G-e)&=\pi(G-e{\st{中}}A,B{\st{同色的部分}})\,+ \\
+&\kern{0.3em}\quad\pi(G-e{\st{中}}A,B{\st{异色的部分}}) \\
+&=\pi(G\cdot e)+\pi(G) \\
+\end{aligned}$$
+</div> 证完.
+
+<hr>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNixbMCwxLCJHIl0sWzEsMSwiPSJdLFsyLDAsIlxcYnVsbGV0Il0sWzIsMiwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFs0LDAsIlxcYnVsbGV0Il0sWzIsMywiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDQsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw1LCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzUsNCwiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==&embed"
+width="100%" style="transform: scale(1.3); pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>然而，即便是对于这样简单的图，若不借助上述结果，想要计算其着色数 $[$色多项式$]$ 也不是一件容易的事. 但是对于端点数更少的图, 是容易计算的, 譬如：</p>
+<div style="overflow: hidden;"> <iframe src="../lib/quiver/index.html?q=
+WzAsNSxbMiwwLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzQsMiwiXFxidWxsZXQiXSxbMSwxLCI9Il0sWzAsMSwiR1xcY2RvdCBlIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwyLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>几乎可以一眼看出其各个端点的着色数</p>
+<div style="overflow: hidden;"> <iframe src="../lib/quiver/index.html?q=
+WzAsMyxbMCwwLCJxIl0sWzAsMiwicS0xIl0sWzIsMiwicS0yIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>这样就得出 $\pi_{G\,\cdot\,e}(q)=q(q-1)(q-2)$，而对于 $\pi_{G\,-\,e}(q)$，尽管其端点数未变，但其边数仍少去一条，也变得容易计算：</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNCxbMCwwLCJxIl0sWzAsMiwicS0xIl0sWzIsMiwicS0xIl0sWzIsMCwicS0xIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwzLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d&embed"
+width="100%" style="transform: scale(1.3); margin: 0 auto; pointer-events: none; border-radius: 2px; border: none;"></iframe></div>
+
+<p>于是 $\pi_{G\,-\,e}(q)=q(q-1)^3$，可知<br>$$\pi_G(q)=q(q-1)(q^2-3q+3)$$</p>
+<p>现在来考虑一个 $n$ 边形的着色数 $——$ 或者等价的，可以看成是将圆分成 $n$ 个扇形，然后对扇形着色，而相邻扇形不重色. 对于着色数而言，边的弯曲与否无需关注，因此绘制成弧亦无影响，故以下图来表示一 $n$ 边形.</p>
+<div style="overflow: hidden;"><iframe src="../lib/quiver/index.html?q=
+WzAsNSxbMCwwLCJcXGJ1bGxldF8xIl0sWzIsMCwiXFxidWxsZXRfMiJdLFswLDIsIlxcYnVsbGV0X24iXSxbMiwyLCJcXGJ1bGxldF8zIl0sWzEsMiwiXFxjZG90cyJdLFsxLDAsIiIsMCx7ImN1cnZlIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMiwiIiwwLHsiY3VydmUiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMSwzLCIiLDIseyJjdXJ2ZSI6LTIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=&embed"
+width="100%" style="margin-top: 1.2em; transform: scale(1.3); pointer-events: none; border: none;"></iframe></div>
+
+<p>或者更正式地，这被称之为环图 $C_n$. 显然，有 </p>
+<div class="scroll">
+$$\begin{aligned}\pi_{C_n}(q)
+&=q(q-1)^{n-1}-\pi_{C_{n-1}}(q) \\
+&=q\sum_{4\le k\le n}(-1)^{n-k}(q-1)^{k-1}+(-1)^{n-3}\pi_{C_3}(q) \\ 
+&=(q-1)^n+(-1)^n(q-1)^3-(-1)^nq(q-1)(q-2) \\
+&=(q-1)^n+(-1)^n(q-1)
+\end{aligned}$$
+</div>
+
+<p>证明也可以考虑归纳，假定 $$\pi_{C_n}(q)=(q-1)^n+(-1)^n(q-1)$$ 则</p>
+<div class="scroll">
+$$\begin{aligned}\pi_{C_{n+1}}(q)
+&=q(q-1)^n-\pi_{C_n}(q) \\
+&=q(q-1)^n-(q-1)^n-(-1)^n(q-1) \\
+&=(q-1)^{n+1}+(-1)^{n+1}(q-1)
+\end{aligned}$$
+</div>
+
+
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2023
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
