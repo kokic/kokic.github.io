@@ -23,7 +23,7 @@
     
     
     <!-- title -->
-    <title>Hydrangea</title>
+    <title>ϑ 系数的算术信息</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -73,7 +73,7 @@
 
   <div class="content" itemprop="articleBody">
       
-          <p>自然地考虑 $$x^2+y^2=\ell$$ 此处先限制 $x,y\in\{0,1,2\}$. </p>
+          <h2 id="有限集"><a href="#有限集" class="headerlink" title="有限集"></a>有限集</h2><p>自然地考虑 $$x^2+y^2=\ell$$ 此处先限制 $x,y\in\{0,1,2\}$. </p>
 <p>由 $(x^2,y^2)\leadsto (1+\varphi+\varphi^{2^2},1+\varphi+\varphi^{2^2})$ 完成计数器的生成.</p>
 <p>通过指数映射, 具体而言即</p>
 <ul>
@@ -95,6 +95,7 @@ $$(1+\varphi+\varphi^{2^2})^2=1+2\varphi+\varphi^2+2\varphi^4+2\varphi^5+\varphi
 <li>$x^2+y^2=5, (x,y)=(1,2)\lor(2,1)$</li>
 <li>$x^2+y^2=8, (x,y)=(2,2)$</li>
 </ul>
+<hr>
 <p>下面考察 $y^2=x^3+1$ 即 $y^2-x^3=1$. </p>
 <p>这里, 稍显刻意地限制 (整数) 并给出对应的计数器</p>
 <div class="scroll">
@@ -111,10 +112,12 @@ $$\begin{aligned}
 &\quad\;(\varphi^{(-3)^2}+\cdots+\varphi^{3^2})(\varphi+1+\varphi^{-1}+\varphi^{-2^3}) \\
 &=(1+2\varphi+2\varphi^{2^2}+2\varphi^{3^2})(\varphi+\cdots+\varphi^{-2^3}) \\
 &=\varphi^{-8}+\cdots+3+5\varphi+2\varphi^2+\cdots
-+2\varphi^{10}\end{aligned}$$
++2\varphi^{10}
+\end{aligned}$$
 </div>
 
 <p>$(x,y)=(-1,0)\lor(0,\pm1)\lor(2,\pm3)$.</p>
+<hr>
 <p>但是对于 $x^2y=\ell$ 这样的 (存在着未知量乘法的) 形式, 粗略来看, 没有类似的方法. 不过, 可以先试探性地固定其中一个 (即, 将其看作另一个量的系数).</p>
 <p>这样首先得到的是 $G(\varphi)=1+\varphi^y+\varphi^{2^2y}$, 应用 $y$ 的限制可以展开为</p>
 <ul>
@@ -139,6 +142,102 @@ $$\begin{aligned}
 </li>
 </ul>
 <p>那么下面要处理的问题正是如何自动地 (对 $y$) 计数. 显然这正是 $$\sum_yG(\varphi)=5+\varphi+\varphi^2+\cdots$$</p>
+<hr>
+<h2 id="Z-ge1"><a href="#Z-ge1" class="headerlink" title="$\Z_{\ge1}$"></a>$\Z_{\ge1}$</h2><p>再考虑 $$E_\ell:x^2+y^2=\ell$$ 而 $(x,y)\in\Z_{\ge1}\times\Z_{\ge1}$.</p>
+<p>注: 对于 $(x,y)\in\Z\times\Z$, 显然如果 $(x,y)$ 是一组解则 $(-x,-y)$ 也是.</p>
+<p>由 $x\lor y\leadsto \sum_{n\in\Z_{\ge1}}\varphi^{n^2}$ 及 (形式) $\vartheta$ 级数的定义 $\sum_{n\in\Z}\varphi^{n^2}$ 可知 $$x^2+y^2\leadsto \frac14(\vartheta(\varphi)-1)^2$$ </p>
+<p>右侧记为 $G(\varphi)$, 展开即 $$\varphi^2 + 2\varphi^5 +\varphi^8 + 2\varphi^{10} + 2\varphi^{13} + 2\varphi^{17} + \cdots$$</p>
+<ul>
+<li>$x^2+y^2=2, (x,y)=(1,1)$</li>
+<li>$x^2+y^2=5, (x,y)=(1,2)\lor(2,1)$</li>
+<li>$x^2+y^2=8, (x,y)=(2,2)$</li>
+<li>$x^2+y^2=10, (x,y)=(1,3)\lor(3,1)$</li>
+<li>$x^2+y^2=13, (x,y)=(2,3)\lor(3,2)$</li>
+<li>$x^2+y^2=17, (x,y)=(1,4)\lor(4,1)$</li>
+<li>$\cdots$</li>
+</ul>
+<p>注: 显然 $\sum_{n\in\Z_{\ge1}}\varphi^{n^2}=\frac12(\vartheta(\varphi)-1)$, $\vartheta(\varphi)=1+2\sum_{n\in\Z_{\ge1}}\varphi^{n^2}$. </p>
+<p>(未完成)</p>
+<!-- 这里, 注意 [有限集]() 中 $(x,y)\in\Z_{\ge1}\times\Z_{\ge1}$ 的那部分, 显然具有公共的解. 换言之, 如果 -->
+
+<p>$\textbf{Theorem}\;(\text{Fermat}).$ 素数表为两 (整数) 平方和 $p=x^2+y^2$  $\iff$ $p=1\mod 4$ 或 $p=2$. </p>
+<p>$$\cdots+N_{E_\ell}\varphi^\ell+\cdots$$</p>
+<ul>
+<li>$N_{E_\ell}=\frac1{n!}\frac{\partial^n}{\partial\varphi^n}G(\varphi)$</li>
+<li>素数 $\ell=1\mod4$ $\implies$ $N_{E_\ell}\in\Z_{\ge1}$</li>
+<li>$\frac14(\vartheta(\varphi)-1)^2=\frac14((\vartheta(\varphi))^2-2\vartheta(\varphi)+1)$</li>
+<li>$N_{E_\ell}=1$ $\iff$ $x^2=y^2$ $\implies$ $\sqrt{\frac12\ell}\in\Z_{\ge1}$</li>
+</ul>
+<div class="scroll">
+$$\begin{array}{|c|c|c|c|} \hline
+   \ell & N_{E_\ell} & p & a_p \\ \hline
+   5 & 2 & 5 & 1 \\ \hline
+   8 & 1 & - & - \\ \hline
+   10 & 2 & - & - \\ \hline
+   13 & 2 & 13 & 1 \\ \hline
+   17 & 2 & 17 & 1 \\ \hline
+   18 & 2 & - & - \\ \hline
+   20 & 2 & - & - \\ \hline
+   25 & 2 & - & - \\ \hline
+   26 & 2 & - & - \\ \hline
+   29 & 2 & 29 & 1 \\ \hline
+   32 & 1 & - & - \\ \hline
+   34 & 2 & - & - \\ \hline
+   37 & 2 & 37 & 1 \\ \hline
+   40 & 2 & - & - \\ \hline
+   41 & 2 & 41 & 1 \\ \hline
+   45 & 2 & - & - \\ \hline
+   50 & 3 & - & - \\ \hline
+   52 & 2 & - & - \\ \hline
+   53 & 2 & 53 & 1 \\ \hline
+   58 & 2 & - & - \\ \hline
+   61 & 2 & 61 & 1 \\ \hline
+   65 & 4 & - & - \\ \hline
+   68 & 2 & - & - \\ \hline
+\end{array} 
+\;
+\begin{array}{|c|c|c|c|} \hline
+   \ell & N_{E_\ell} & p & a_p \\ \hline
+   72 & 1 & - & - \\ \hline
+   73 & 2 & 73 & 1 \\ \hline
+   74 & 2 & - & - \\ \hline
+   80 & 2 & - & - \\ \hline
+   82 & 2 & - & - \\ \hline
+   85 & 4 & - & - \\ \hline
+   89 & 2 & 89 & 1 \\ \hline
+   90 & 2 & - & - \\ \hline
+   97 & 2 & 97 & 1 \\ \hline
+   98 & 1 & - & - \\ \hline
+   100 & 2 & - & - \\ \hline
+   101 & 2 & 101 & 1 \\ \hline
+   104 & 2 & - & - \\ \hline
+   106 & 2 & - & - \\ \hline
+   109 & 2 & 109 & 1 \\ \hline
+   113 & 2 & 113 & 1 \\ \hline
+   116 & 2 & - & - \\ \hline
+   117 & 2 & - & - \\ \hline
+   122 & 2 & - & - \\ \hline
+   125 & 4 & - & - \\ \hline
+   128 & 1 & - & - \\ \hline
+   130 & 4 & - & - \\ \hline
+   136 & 2 & - & - \\ \hline
+\end{array}$$
+</div>
+
+<ul>
+<li>$x^2+y^2=50, (x,y)=(5,5)\lor(1,7)\lor(7,1)$</li>
+<li>$x^2+y^2=53, (x,y)=(2,7)\lor(7,2)$</li>
+<li>$x^2+y^2=72, (x,y)=(6,6)$</li>
+<li>$x^2+y^2=85, (x,y)=(2,9)\lor(9,2)\lor(6,7)\lor(7,6)$</li>
+</ul>
+<hr>
+<h2 id="text-Fourier"><a href="#text-Fourier" class="headerlink" title="$\text{Fourier}$"></a>$\text{Fourier}$</h2><p>$$\vartheta(q)=\sum_{n\in\Z}q^{n^2}$$</p>
+<h2 id="mathbb-Q-p"><a href="#mathbb-Q-p" class="headerlink" title="$\mathbb{Q}_p$"></a>$\mathbb{Q}_p$</h2><ul>
+<li>Hasse–Minkowski 定理</li>
+</ul>
+<p>注: Ernst Selmer 证明了 $3x^3+4y^3+5z^3=0$ 在 $\mathbb{Q}$ 上无解而在 $\R$ 和 (对所有素数 $p$) $\mathbb{Q}_p$ 都有解. </p>
+<hr>
+<h2 id="有限域"><a href="#有限域" class="headerlink" title="有限域"></a>有限域</h2><hr>
 
         
   </div>
