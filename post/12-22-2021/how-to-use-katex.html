@@ -246,6 +246,11 @@ $$\int_&#123;-\infty&#125;^\infty e^&#123;-x^&#123;2&#125;&#125;\mathrm&#123;d&#
         {left: "$", right: "$", display: false}, 
         {left: "\\(", right: "\\)", display: false}
       ],
+      macros: {
+        "\\Q": String.raw`\mathbb{Q}`, 
+        "\\C": String.raw`\mathbb{C}`, 
+        "\\defeq": String.raw`\overset{\text{def}}{=}`, 
+      }, 
       throwOnError: true
     });
   </script>

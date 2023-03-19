@@ -73,12 +73,22 @@
 
   <div class="content" itemprop="articleBody">
       
-          <h2 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h2><table>
+          <style>
+table {
+  margin: 0 auto;
+  display: inline;
+} 
+table th {
+  font-weight: normal;
+}
+</style>
+
+<h2 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h2><table>
 <thead>
 <tr>
-<th>名前</th>
+<th><ruby>何<rt>dona</rt>者<rt>ta</rt></ruby></th>
 <th></th>
-<th><ruby>リン<rt>rinn</rt>ク<rt>ku</rt></ruby></th>
+<th><ruby>鏈<rt>rinn</rt>接<rt>ku</rt></ruby></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -102,7 +112,7 @@
 <td><a target="_blank" rel="noopener" href="https://mkaliez.com/">mkaliez.com</a></td>
 </tr>
 <tr>
-<td>明乃の屋</td>
+<td>明乃茶话会</td>
 <td></td>
 <td><a target="_blank" rel="noopener" href="https://kono-dada.github.io/">kono-dada.github.io</a></td>
 </tr>
@@ -110,6 +120,11 @@
 <td>徐诩绫目</td>
 <td></td>
 <td><a target="_blank" rel="noopener" href="http://home.ustc.edu.cn/~xuxuayame">home.ustc.edu.cn/~xuxuayame</a></td>
+</tr>
+<tr>
+<td>Reinhardt</td>
+<td></td>
+<td><a target="_blank" rel="noopener" href="http://reinhardthk.github.io/">reinhardthk.github.io</a></td>
 </tr>
 </tbody></table>
 
@@ -161,6 +176,11 @@
         {left: "$", right: "$", display: false}, 
         {left: "\\(", right: "\\)", display: false}
       ],
+      macros: {
+        "\\Q": String.raw`\mathbb{Q}`, 
+        "\\C": String.raw`\mathbb{C}`, 
+        "\\defeq": String.raw`\overset{\text{def}}{=}`, 
+      }, 
       throwOnError: true
     });
   </script>

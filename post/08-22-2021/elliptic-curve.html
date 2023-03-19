@@ -248,6 +248,11 @@ it does not change when one replaces one system of periods by another equivalent
         {left: "$", right: "$", display: false}, 
         {left: "\\(", right: "\\)", display: false}
       ],
+      macros: {
+        "\\Q": String.raw`\mathbb{Q}`, 
+        "\\C": String.raw`\mathbb{C}`, 
+        "\\defeq": String.raw`\overset{\text{def}}{=}`, 
+      }, 
       throwOnError: true
     });
   </script>
