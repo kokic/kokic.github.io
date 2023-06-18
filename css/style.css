@@ -21,7 +21,8 @@
   --black-image: linear-gradient(transparent, transparent 4px, var(--green-deep-trans) 4px, var(--green-deep-trans));
   --black-trans: #383838;
   --black-trans-image: linear-gradient(transparent, transparent 4px, var(--black-trans) 4px, var(--black-trans));
-  --font-zh-name: "LXGW WenKai Screen";
+  --font-zh-sans: "Noto Sans SC";
+  --font-zh-serif: "Noto Serif SC";
   --font-family-bold: "KaTeX_SansSerif", "Noto Sans SC";
   --font-family-katex: var(--font-zh-name);
   --font-family-typing: "Marcellus-SC", var(--font-zh-name);
@@ -471,7 +472,7 @@ body .h1 {
   margin-bottom: 1rem;
   color: #2bbc8a;
   letter-spacing: 0.01em;
-  font-weight: 100;
+  font-weight: 700;
   font-style: normal;
   font-size: 1.8em;
   -moz-osx-font-smoothing: grayscale;
@@ -487,8 +488,11 @@ body .h2 {
   text-transform: none;
   letter-spacing: normal;
   font-weight: 100;
-  font-family: var(--font-zh-name);
+  font-family: var(--font-zh-sans);
   font-size: 1rem;
+}
+body .date {
+  font-weight: 700;
 }
 body h3 {
   color: #383838;
@@ -667,7 +671,7 @@ body {
   font-display: swap;
   font-weight: 400;
   font-size: 15px;
-  font-family: var(--font-zh-name);
+  font-family: var(--font-zh-serif);
   line-height: 1.725;
   text-rendering: geometricPrecision;
   flex: 1;
@@ -701,7 +705,7 @@ body {
 .content a {
   color: #7a6dca;
   text-decoration: none;
-  font-family: var(--font-zh-name);
+  font-family: var(--font-zh-sans);
   background-image: linear-gradient(transparent, transparent 0, #fff 0, #fff);
   background-position: bottom;
   background-size: 100% 6px;
@@ -793,7 +797,7 @@ body {
   margin-bottom: 0;
   color: #383838;
   letter-spacing: 0.01em;
-  font-weight: 100;
+  font-weight: 400;
   font-style: normal;
   font-size: 2rem;
   font-family: "Marcellus-SC";
@@ -821,7 +825,7 @@ body {
 #header #nav {
   color: #2bbc8a;
   letter-spacing: 0.01em;
-  font-weight: 200;
+  font-weight: 700;
   font-style: normal;
   font-size: 0.8rem;
 }
@@ -1251,6 +1255,7 @@ body {
   margin-bottom: 1rem;
   margin-left: 0;
   list-style-type: none;
+  font-weight: 700;
 }
 .post-list .post-item .meta {
   display: block;
@@ -1258,6 +1263,7 @@ body {
   min-width: 100px;
   color: #666;
   font-size: 14px;
+  font-family: var(--font-zh-sans);
 }
 @media (min-width: 480px) {
   .post-list .post-item {
@@ -1284,7 +1290,8 @@ article header .posttitle {
   text-transform: none;
   font-size: 22.5px;
   line-height: 1.25;
-  font-family: var(--font-zh-name);
+  font-family: var(--font-zh-sans);
+  font-weight: 700;
 }
 @media (min-width: 720px) {
   article header .posttitle {
@@ -1294,6 +1301,8 @@ article header .posttitle {
 article header .meta {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-family: var(--font-zh-sans);
+  font-weight: 700;
 }
 article header .meta * {
   color: #8c8c8c;
@@ -1471,6 +1480,7 @@ article .content .caption {
   vertical-align: top;
   text-align: center;
   font-size: 11px;
+  font-weight: 700;
 }
 #footer ul {
   margin: 0;
@@ -1506,6 +1516,7 @@ article .content .caption {
   height: 20px;
   vertical-align: middle;
   line-height: 20px;
+  font-family: var(--font-zh-sans);
 }
 @media (min-width: 39rem) {
   #footer {
@@ -1603,6 +1614,7 @@ article .content .caption {
 #tag-cloud .tag-cloud-tags a {
   display: inline-block;
   margin: 4px;
+  font-weight: 700;
 }
 .tooltipped {
   position: relative;
@@ -1617,7 +1629,7 @@ article .content .caption {
   font-display: swap;
   font-weight: 400;
   font-size: 12px;
-  font-family: var(--font-zh-name);
+  font-family: var(--font-zh-serif);
   line-height: 1.725;
   text-rendering: geometricPrecision;
   text-align: center;
@@ -1708,8 +1720,14 @@ article .content .caption {
 #categories .category-list-title {
   color: #666;
 }
+#categories .category-list .category-list-item {
+  font-family: var(--font-zh-sans);
+  font-weight: 700;
+}
 #categories .category-list .category-list-item .category-list-count {
   color: #666;
+  font-family: var(--font-zh-serif);
+  font-weight: 400;
 }
 #categories .category-list .category-list-item .category-list-count:before {
   content: " (";
