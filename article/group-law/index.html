@@ -131,7 +131,7 @@
   
 
   <div class="content" itemprop="articleBody">
-    <script src="../lib/loader.js"></script>
+    <script src="../../lib/loader.js"></script>
 <script>
 const path = "/assets/images/group-law";
 const suffix = "svg";
@@ -140,10 +140,11 @@ function displayGraph(id, width, height) {
   document.write((height != null || height != undefined) ? 
     "<div style='margin:0 auto;'>" + loadFile(𝓞).replace("viewBox", "width=" + width + " height=" + height + " viewBox") + "</div>": 
     "<div style='margin:0 auto;'>" + loadFile(𝓞).replace("viewBox", "width=" + width +  " viewBox") + "</div>");
+  document.close();
 }
 </script>
 
-<p>上接 <a href="/post/08-22-2021/elliptic-curve.html">圆函数与椭圆曲线</a></p>
+<p>上接 <a href="../elliptic-curve">圆函数与椭圆曲线</a></p>
 <hr>
 <p>椭圆曲线是一条亏格 $g=1$ 的光滑射影 $[$即，非奇异$]$ 曲线 $E$ 配上一有理点 $[$作单位元，常取无穷远点$]$ $\mathcal{O}$ 所成的二元组 $(E,\mathcal{O})$. 若 $E$ 是域 $K$ 上的曲线，$\mathcal{O}\in E(K)$ 是 $E$ 上的 $K\!$—有理点，则称 $(E,\mathcal{O})$ 是 $K$ 上的椭圆曲线 $E/K$. </p>
 <p>注：换言之，曲线光滑 $\iff$ 处处有良定的切线.</p>
