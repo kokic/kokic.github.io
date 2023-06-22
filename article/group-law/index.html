@@ -24,6 +24,10 @@
     <script src="/lib/katex/auto-render.js"></script>
     <script src="/lib/katex/copy-tex.js"></script>
     
+    <!-- Quiver Embed -->
+    <script src="/lib/quiver-embed/quiver-embed.js"></script>
+
+    
     
     
     <!-- title -->
@@ -156,7 +160,20 @@ function displayGraph(id, width, height) {
 <p>若 $K$ 的特征 $\text{char}(K)\neq2,3$，则 $K$ 在容许的变换下可化为<br>$$E:y^2=x^3+Ax+B$$ 也即 $a_k$ $[k=1,2,3]$ 可取为 $0$. 对于此种形式，有<br>$$\begin{aligned}b_2&amp;=0 \\ b_4&amp;=2A \\ b_6&amp;=4B \\ b_8&amp;=-A^2 \\ c_4&amp;=-48A \\ c_6&amp;=-864B \\ \Delta&amp;=-16(4A^3+27B^2) \\ j&amp;=-1728\cdot\dfrac{64A^3}{\Delta} \\ &amp;=1728\cdot\dfrac{4A^3}{4A^3+27B^2},\quad\text{if}\;\Delta\neq0\end{aligned}$$<br>注：$[$一般的$]$ 三次方程 $x^3+Ax+B=0$ 根的判别式可表为 $\Delta=4A^3+27B^2$，而 $\Delta=0$ 时此方程有重根，对应的椭圆曲线退化，其上恰有一个奇点.</p>
 <p>取 $\psi:(x,y)\longmapsto(u^2x,u^3y)$ $[$Weierstrass 坐标变换，$r,s,t$ 为 $0]$，在此同构映射下 $j$ 仍是不变的，故 $j$-不变量完整分类了 $[$代数闭域 $K$ 上的$]$ 椭圆曲线，即 $$j(E)=j({E^\prime})\iff E\cong E^\prime$$<br>若在椭圆曲线上（自然地）定义群结构，则多项式映射 $\psi$ 自动成为群同态.</p>
 <p>单值化定理 $[$Uniformization Theorem$]$ 表明 $\Complex$ 上任意的椭圆曲线 $E:y^2=x^3+Ax+B$ 都一一对应到一个复格 $\Lambda$ 使<br>$$\begin{aligned}\psi:\Complex/\Lambda&amp;\xrightarrow{\qquad} E \\ z&amp;\xmapsto{\qquad}(\wp(z),\wp^\prime(z))\end{aligned}$$ 是复李群同构，即 $E\cong\Complex/\Lambda$ $[$解析同构$]$. 故椭圆曲线之间的态射 $\psi$ 可以一一对应到复环面 $\Complex/\Lambda$ 间的全纯映射</p>
-<script> displayGraph(1, "22ex") </script>
+<pre class="quiver">
+[0, 4, 
+  [0, 0, "\mathbb{C}/\Lambda_1"], 
+  [2, 0, "\mathbb{C}/\Lambda_2"], 
+  [0, 1, "E"], 
+  [2, 1, "E^\prime"], 
+
+  [0, 1, "\alpha"], 
+  [0, 2, "\psi", 2], 
+  [1, 3, "\psi^\prime"], 
+  [2, 3, "\phi", 2]
+]
+</pre>
+
 <p>其中 $\alpha\in\Complex$ 满足 $\alpha\Lambda_1\subseteq\Lambda_2$，复乘 $$\text{Hom}(\Lambda_1,\Lambda_2)=\{\alpha\in\Complex:\alpha\Lambda_1\subseteq\Lambda_2\}$$</p>
 <p>注：$[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线 $(E,\mathcal{O})$ $\iff$ 亏格 $1$ 带基点 $\mathcal{O}\in E$ 的紧 Riemann 曲面 $E$ 典范同构于 $(\mathbb{C}/\Lambda,0)$. </p>
 <p>注：全体 $[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线构成范畴 $\mathsf{Ell}_\mathbb{C}$，范畴间的态射 $(E,\mathcal{O})\longrightarrow(E^\prime,\mathcal{O}^\prime)$ 定义为满足 $f(\mathcal{O})=\mathcal{O}^\prime$ 的 Riemann 曲面态射 $f:E\longrightarrow E^\prime$.</p>
