@@ -44,7 +44,7 @@
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -82,21 +82,32 @@
   <div class="content" itemprop="articleBody">
       
           <p>译自 <a target="_blank" rel="noopener" href="https://www.kurims.kyoto-u.ac.jp/~yuichiro/introduction_to_inter-universal_teichmuller_theory.pdf">宇宙際 Teichmuller 理論入門</a>.</p>
-<h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><p>正如标题所暗示的那样, 这篇论文的目的是对望月新一先生创立的<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/inter-universal+Teichm%C3%BCller+theory">跨宇宙 Teichmüller 理论</a>进行介绍性评论. 特别是, “<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/anabelian+geometry">远阿贝尔几何</a>在跨宇宙 Teichmüller 理论中是如何使用的”, “在跨宇宙 Teichmüller 理论中可以证明哪些定理以获得某些 <a target="_blank" rel="noopener" href="https://encyclopediaofmath.org/wiki/Diophantine_geometry">Diophantus 几何</a>结果”, “为了获得跨宇宙 Teichmüller 理论的主要定理而引入的 Hodge 剧院是什么” 这些要点是本文内容的核心.</p>
+<p>香蕉空间版见 <a target="_blank" rel="noopener" href="https://www.bananaspace.org/wiki/%E7%94%A8%E6%88%B7:Kokic/%E5%AE%87%E5%AE%99%E9%9A%9B_Teichmuller_%E7%90%86%E8%AB%96%E5%85%A5%E9%96%80/%E5%BA%8F">此处</a>. </p>
+<h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><p>正如标题所暗示的那样, 本论文旨在介绍性地评述望月新一先生所创立之 <a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/inter-universal+Teichm%C3%BCller+theory">跨宇宙 Teichmüller 理论</a>. 特别是, “<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/anabelian+geometry">远阿贝尔几何</a> 在跨宇宙 Teichmüller 理论中是如何使用的”, “在跨宇宙 Teichmüller 理论中可以证明哪些定理以获得某些  <a target="_blank" rel="noopener" href="https://encyclopediaofmath.org/wiki/Diophantine_geometry">Diophantus 几何</a> 结果”, “为了获得跨宇宙 Teichmüller 理论的主要定理而引入的Hodge 剧场是什么” 这些要点是本文内容的核心.</p>
 <p>在撰写本文时, 我们牢记了以下两点. (a) 通过明确说明每个阶段所面临的问题, 并解释这个问题在跨宇宙 Teichmüller 理论中是如何解决的（即使在解释中存在一些迂回、冗余和离题), 我们试图尽可能清楚地表明, 跨宇宙 Teichmüller 理论中的各种论证和其中出现的各种概念都是 “自然” 和 “必要” 的. (b) 跨宇宙 Teichmüller 理论中有许多 “新观点”. 虽然 (至少其中一些) 不难理解, 但我认为它们的 “新奇性” 可能会导致读者放弃理解它们而努力的情况. 因此, 即使是非常初级的东西, 通过举几个例子, 我们努力确保不会仅仅因为其新颖性而导致这种新想法的讨论落空. </p>
 <p>此外, 这篇文章还包含一些 —— 或者说不计其数 —— “不准确的陈述”.  这是因为, 如果试图 “只用精确的陈述” 来解释理论, 那么至少在作者的能力范围内, 解释的方法就会变得与原来论文中解释理论的方式没有多大区别, 这样的解释就失去了意义. 这与原论文中对该理论的 “解释” 不同, 后者只是对该理论完成的后期阶段的准确描述, 在 “解释” 中, 我们想象这个理论是如何产生的, 然后讨论这个理论是多么自然, 至少对作者来说, 这种 “不正确的说法” 是必要的. 请原谅我这样做.</p>
 <p>本文的结构大致如下: </p>
 <ul>
-<li>§1 至 §3: 解释远阿贝尔几何如何用于跨宇宙 Teichmüller 理论.</li>
-<li>§4 至 §12: 为了获得一些 Diophantus 几何结果 (见第 4 节的开头), “应该做什么”, “什么样的方法是可能的”, “在这种方法的框架内可以做什么” 特别地, 粗略解释了跨宇宙 Teichmüller 理论的主要定理.</li>
-<li>§13 至 §20: 解释 theta 函数的局部理论及其整体化, 特别是其中加法/几何对称性起着重要作用的 “加法 Hodge 剧院” 的构建.  </li>
-<li>§21 至 §25: 数域复原所涉及的理论解释, 特别是乘法/算术对称性发挥重要作用的 “乘法 Hodge 剧院” 的构建.</li>
-<li>§26: 最终的 Hodge 剧院的组成说明.</li>
+<li><p>§1 至 §3: 解释远阿贝尔几何如何用于跨宇宙 Teichmüller 理论.</p>
+</li>
+<li><p>§4 至 §12: 为了获得一些 Diophantus 几何结果 (见第 4 节的开头), “应该做什么”, “什么样的方法是可能的”, “在这种方法的框架内可以做什么” 特别地, 粗略解释了跨宇宙 Teichmüller 理论的主要定理.</p>
+</li>
+<li><p>§13 至 §20: 解释 theta 函数的局部理论及其整体化, 特别是其中加法/几何对称性起着重要作用的 “加法 Hodge 剧场” 的构建. </p>
+</li>
+<li><p>§21 至 §25: 数域复原所涉及的理论解释, 特别是乘法/算术对称性发挥重要作用的 “乘法 Hodge 剧场” 的构建.</p>
+</li>
+<li><p>§26: 最终的 Hodge 剧场的组成说明.</p>
+</li>
 </ul>
-<p>让我们更深入地研究一下这个理论. (有关详细信息, 请参阅 §27.) 通过 §4 到 §12 中描述的 “链接方法” 为了证明一个 Diophantus 几何定理 (见 §4 的开头), 对于一个合适的固定<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/number+field">数域</a>上的<a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/elliptic+curve">椭圆曲线</a></p>
-<p>&nbsp;&nbsp;(a) 对数壳 (见§8)<br>&nbsp;&nbsp;(b) 椭圆曲线的 $q$ 参数的 (大于 1) 有理数宽度<br>&nbsp;&nbsp;(c) 数域</p>
-<p>因此，只要证明三个对象 (在一些合适的环境中) 的多辐表示 (见 §7) 的存在就足够了. 另一方面, 为了获得这些对象的多辐表示, 从 “放弃设定的环状结构” 所不可避免地产生的不确定性 (见 §10), 上述 (b) 和 (c) 必须受到保护/隔离. 因此, 我们需要将 (b) 和 (c) 视为 “一些合适函数的特殊值”，而非 “只是数字”. 这样的函数对于 (b) 来说是 theta 函数 (见§13)，对于 (c) 来说是 “<b></b>$\kappa$ 系函数” (见§24). (见 §11 中的讨论.)</p>
-<p>应该分配给 <a target="_blank" rel="noopener" href="https://ncatlab.org/nlab/show/theta+function">theta 函数</a>的点是, $\text{LabCusp}^\pm_K\cong\mathbb{F}_l$ 自然地由集合的元素标记. 考虑 $\mathbb{F}_\ell$ 的每个元素的特殊值, $\mathbb{F}_\ell^\times=\mathbb{F}_\ell\backslash\{0\}$ 给出 (b) 标记的点处的特殊值, 并代入标记为 $0\in\mathbb{F}_\ell$ 的点, 事实证明, 我们得到了 (theta 函数出现的地方) “theta monoid” 的分裂. 另外, 这种在 $0\in\mathbb{F}_\ell$ 处的替换分裂后来通过对数映射与 (a) 结合为 (b) 和 (c) 的合适 “容器”. (参见 §19 和 §20 的讨论以及 §8 和 §9 的一些讨论.) 在非常粗略的层面上, “加法 Hodge 剧院” (即 $\mathcal{D}\text{-}\Theta^{\pm\text{ell}}$ Hodge 剧院或 $\Theta^{\pm\text{ell}}$ Hodge 剧院) 是由 §13 到 §20 组成, Theta 函数, 对其分配点的标签管理, 以及 “容器” 的设置 (即, 以 (a) 结束的内容) 的特殊值 (即 (b)).</p>
+<p>让我们更深入地研究一下这个理论. (有关详细信息, 请参阅 §27.) 通过 §4 到 §12 中描述的 “链接方法” 为了证明一个 Diophantus 几何定理 (见 §4 的开头), 对于一个合适的固定数域上的椭圆曲线, </p>
+<p>&emsp; (a) &nbsp; 对数壳 (见§8)<br>&emsp; (b) &nbsp; 椭圆曲线的 $q$ 参数的 (大于 $1$) 有理数宽度<br>&emsp; (c) &nbsp; 数域</p>
+<p>因此，只要证明三个对象 (在一些合适的环境中) 的多辐表示 (见 §7) 的存在就足够了. 另一方面, 为了获得这些对象的多辐表示, 从 “放弃设定的环状结构” 所不可避免地产生的不确定性 (见 §10), 上述 (b) 和 (c) 必须受到保护/隔离. 因此, 我们需要将 (b) 和 (c) 视为 “一些合适函数的特殊值”，而非 “只是数字”. 这样的函数对于 (b) 来说是 theta 函数 (见§13)，对于 (c) 来说是 “$\kappa$ 系函数” (见§24). (见 §11 中的讨论.)</p>
+<p>应该分配给 theta 函数的点是, $\text{LabCusp}^\pm_K\cong\mathbb{F}_l$ 自然地由集合的元素标记. 考虑 $\mathbb{F}_\ell$ 的每个元素的特殊值, $\mathbb{F}_\ell^\times=\mathbb{F}_\ell\backslash{0}$ 给出 (b) 标记的点处的特殊值, 并代入标记为 $0\in\mathbb{F}_\ell$ 的点, 事实证明, 我们得到了 (theta 函数出现的地方) “theta 幺半群” 的分裂. 另外, 这种在 $0\in\mathbb{F}_\ell$ 处的替换分裂后来通过对数映射与 (a) 结合为 (b) 和 (c) 的合适 “容器”. (参见 §19 和 §20 的讨论以及 §8 和 §9 的一些讨论.) 在非常粗略的层面上, “加法 Hodge 剧场” (即 $\mathcal{D}\text{-}\Theta^{\pm\text{ell}}$ Hodge 剧场或 $\Theta^{\pm\text{ell}}$ Hodge 剧场) 是由 §13 到 §20 组成, Theta 函数, 对其分配点的标签管理, 以及特殊值 (即 (b)) 的 “容器” 的设置 (即, 最终成为(a)的东西).</p>
+<p>此外, (c) 的多辐表示必须在不破坏其 “加法 Hodge 剧场” 中的加法对称性的标签管理下实现. 在此之上, 必须将标签管理与 “加法 Hodge 剧场” 中出现的全局对称性和应该多辐显示的 (c) 的不相容性相对应. (参见 §21 的讨论. ) $\text{LabCusp}_K \cong \mathbb{F}^\times_l/{\pm1}$ 这个集合是对 theta 函数非单位特殊值的自然标签集合, 这个集合的乘法对称性与上述标签管理相关. 基于这种乘法 / 数论对称性, 数域及其上的算术线丛与 theta 函数的代入点之间的适当关联是通过 §21 至 §25 节中构建的 “乘法 Hodge 剧场” 概念实现的. (参见 §18 或 §21 节的讨论.) 也就是说, 非常粗略地看, “乘法 Hodge 剧场” (即 $\mathcal{D}-\Theta\text{NF Hodge}$ 剧场或 $\Theta\text{NF Hodge}$ 剧场) 被认为是 (c) 的多辐表示以及其 (c) 与 (通过在 “加法 Hodge 剧场” 中进行“代入” theta 函数操作而获得的) (a) 或 (b) 之间关联设置.</p>
+<p>基于加法 / 几何对称性构建的 “加法 Hodge 剧场” 和基于乘法 / 数论对称性构建的 “乘法 Hodge 剧场” 通过 (从对称性的角度来看是 “非传统形式” 的) 粘合而获得的概念是 $\mathcal{D}\text{-}\Theta^{\pm\text{ell}}$ 剧场或 $\Theta^{\pm\text{ell}}$ 剧场. (参见第 26 节的讨论. ) 然后, 通过对数链接 (参见 §9 或 §26) 将两个 theta 剧场连接起来, 可以将某个单位乘法群转换为 (a) 这种紧凑的加法群.<br>而且, 它将成为 (b) 或 (c) 的 “容器”. (参见 §8 或 §9 的讨论. ) 另一方面, 由于 “对数映射取决于设置的环结构” 这一事实, (a) 这种 “容器” 通过 (单个) 对数链接不具有与称为 theta 链接的设置环结构不相容链接的相容性. 为了避免这个问题, 必须考虑对数 Kummer 对应, 即由无限列对数链接产生的 “Frobenius 对数壳的对数映射关系的无限列以及各自 Frobenius 对数壳与平展对数壳之间的 Kummer 同构” 的总体. (参见 §9 或 §10 的讨论. )</p>
+<p>由于平展部分的不确定性和附加到对数壳的 Kummer 同构上的不确定性, 为了获得 (a) 的多辐显示, 必须允许 (a) 对应的 (Ind1) 和 (Ind2) 这两种不确定性 (参见第 10 节). 此外, 由于只能确认上述对数 Kummer 对应满足上半相容性这一事实, 为了获得 (a) 的多辐显示, 必须允许 (a) 对应的 (Ind3) 这种不确定性 (参见第 10 节). 另一方面, 使用到目前为止出现过的各种概念, 在相对 “轻微的不确定性” (Ind1), (Ind2), (Ind3) 下, 在某个适当的设置中, 可以多辐显示 (a), (b), (c).</p>
+<p>当作者第一次学习这个宇宙 Teichmüller 理论时, 他的印象是 “如果这样的论述被允许, 那么不是什么都可以随心所欲地做吗? ” 但是, 随着进一步学习或探索类似论述, 对理论的印象变成了 “理论中各种对象的构造建立在几乎要崩溃的勉强维持的平衡之上, 并且这种理论并不容易模仿”, 这与最初的印象相反.</p>
+<p>正如我已经提到的, 本文中存在许多为了解释而不精确的描述. 当然, 当解释某些事物时, 解释方法并不是唯一的, 而且通常也不存在 “最好的东西”. 本文中进行的解释仅仅是作者在某个时间点选择的一种方法. 如果另一个人进行类似本文的解释, 那么将获得完全不同方法的解释. 或者, 如果作者几年后再次尝试阐述这个理论, 那么可能会获得别样的解释. 如果希望真正理解宇宙 Teichmüller 理论, 那么必须仔细阅读原始论文, 这是一个显而易见的事实.</p>
 
         
   </div>
