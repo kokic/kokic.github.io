@@ -24,7 +24,7 @@
   --font-zh-sans: "Noto Sans SC";
   --font-zh-serif: "Noto Serif SC";
   --font-family-bold: "KaTeX_SansSerif", "Noto Sans SC";
-  --font-family-katex: var(--font-zh-name);
+  --font-family-katex: var(--font-zh-serif);
   --font-family-typing: "Marcellus-SC", var(--font-zh-name);
 }
 block {
@@ -1360,16 +1360,15 @@ article .content blockquote {
   margin: 1rem 10px;
   padding: 0.5em 10px;
   background: inherit;
-  color: #2bbc8a;
+  color: #383838;
   quotes: "\201C" "\201D" "\2018" "\2019";
-  font-weight: bold;
 }
 article .content blockquote p {
   margin: 0;
 }
 article .content blockquote:before {
   margin-right: 0.25em;
-  color: #2bbc8a;
+  color: #383838;
   content: "\201C";
   vertical-align: -0.4em;
   font-size: 2em;
