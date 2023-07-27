@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -81,13 +82,21 @@
 
   <div class="content" itemprop="articleBody">
       
-          <p>记部分和 $\sum_{1\le n\le x}\ell(n)$ 为 $S(x)$, 以 $\partial$ 表 $\frac{\text{d}}{\text{d}x}$, 由 Taylor 展开有<br>$$\begin{aligned}S(x-1)&amp;=S(x)-S^\prime(x)+\frac12S^{\prime\prime}(x)+\cdots \\ &amp;=e^{-\partial}S(x)\end{aligned}$$ 故 $\ell(x)=(1-e^{-\partial})S(x)$, 为了得到有关的 $\partial S(x)$ 信息, 将右侧写作 $\frac{1-e^{\partial}}{\partial}\cdot\partial S(x)$, 这样一来<br>$$\partial S(x)=\frac{\partial}{1-e^{-\partial}}f(x)=\sum_{k\ge0}(-1)^kB_k\frac{\partial^k}{k!}f(x)$$ 两边积分 (就如同解微分方程时经常做的那样)<br>$$S(x)=\int\ell(x)\text{d}x+\sum_{k\ge1}(-1)^kB_k\frac{\partial^{k-1}}{k!}\ell(x)$$ 再记 $S_k(x)=S(x)|_{\ell(n)\,\leadsto\,n^k}$, 这个对 Bernoulli 公式 (或曰 Faulhaber 公式, 可参见 <a href="../../post/08-30-2021/umbral-calculus.html">此处</a>) 的重新发现来自 Euler (考虑 $k\ge0$), 但更神秘的部分位于 $k\lt0$. 熟知<br>$$S_{-1}(n)=\gamma+\log x+\frac1{2n}-\frac1{12n^2}+\cdots$$</p>
+          <p>记部分和 $\sum_{1\le n\le x}\ell(n)$ 为 $S(x)$, 以 $\partial$ 表 $\frac{\text{d}}{\text{d}x}$, 由 Taylor 展开有<br>
+$$\begin{aligned}S(x-1)&amp;=S(x)-S^\prime(x)+\frac12S^{\prime\prime}(x)+\cdots \\ &amp;=e^{-\partial}S(x)\end{aligned}$$ 故 $\ell(x)=(1-e^{-\partial})S(x)$, 为了得到有关的 $\partial S(x)$ 信息, 将右侧写作 $\frac{1-e^{\partial}}{\partial}\cdot\partial S(x)$, 这样一来<br>
+$$\partial S(x)=\frac{\partial}{1-e^{-\partial}}f(x)=\sum_{k\ge0}(-1)^kB_k\frac{\partial^k}{k!}f(x)$$ 两边积分 (就如同解微分方程时经常做的那样)<br>
+$$S(x)=\int\ell(x)\text{d}x+\sum_{k\ge1}(-1)^kB_k\frac{\partial^{k-1}}{k!}\ell(x)$$ 再记 $S_k(x)=S(x)|_{\ell(n)\,\leadsto\,n^k}$, 这个对 Bernoulli 公式 (或曰 Faulhaber 公式, 可参见 <a href="../../post/08-30-2021/umbral-calculus.html">此处</a>) 的重新发现来自 Euler (考虑 $k\ge0$), 但更神秘的部分位于 $k\lt0$. 熟知<br>
+$$S_{-1}(n)=\gamma+\log x+\frac1{2n}-\frac1{12n^2}+\cdots$$</p>
 <div class="scroll">
 $$S_{-k}(n)=\lim_{N\to\infty}S_{-k}(N)+\frac1{(k-1)n^{k-1}}+\frac1{2n^k}+\cdots$$
 </div>
-
-<p>这里 $k\gt1$ (否则发散), $\lim_{N\to\infty}S_{-k}(N)$ 作为 Riemann $\zeta$ 函数显得尤为特殊. 从乘法公式 (典范乘积, 来自 Weierstrass 分解) $\sin x=x\prod_{k\ge1}(1-\frac{x^2}{k^2\pi^2})$ 和加法公式 (即 Taylor 展开) 中 $x^3$ 项的系数可以看出 (Euler 对于 Basel 问题的解答)<br>$$\sum_{k\ge1}\frac1{k^2\pi^2}=\frac1{3!}$$ 完全类似, 考虑 $\cot x=(\log\sin x)^\prime$ 就能得到<br>$$\zeta(2k)=\frac{(-1)^{k-1}B_{2k}(2\pi)^{2k}}{2(2k)!}$$ (但是对于奇数的取值, 就没有这么乐观的形式了).</p>
-<p>另一个出发点是 Euler 积 $\zeta(s)=\prod_p\frac1{1-\frac1{p^s}}$, $s\gt1$. 最直接的应用是证明素数有无限多个 (取 $s=1$)<br>$$\begin{aligned}\log\zeta(s)&amp;=-\sum_p\log(1-\frac1p) \\ &amp;=\sum_p\frac1{p^s}+\mathcal{O}(1)\end{aligned}$$ 通过函数方程<br>$$\zeta(s)-2\cdot2^{-s}\zeta(s)=1-\frac1{2^s}+\frac1{3^s}-\cdots$$ 给出 $\R_{(0,1)}$ 上的扩充定义 ($s\gt0$)<br>$$\zeta(s)=\frac1{1-2^{1-s}}(1-\frac1{2^s}+\frac1{3^s}-\cdots)$$ 也可以顺带考虑 $\zeta(s)$ 在 $s=1$ 附近的渐进行为 —— $\zeta(s)=\frac1{s-1}+\mathcal{O}(1)$. Euler 对 $\zeta(-s)$ 形式上的展开给出了如下 “有效的” 定义</p>
+<p>这里 $k\gt1$ (否则发散), $\lim_{N\to\infty}S_{-k}(N)$ 作为 Riemann $\zeta$ 函数显得尤为特殊. 从乘法公式 (典范乘积, 来自 Weierstrass 分解) $\sin x=x\prod_{k\ge1}(1-\frac{x^2}{k^2\pi^2})$ 和加法公式 (即 Taylor 展开) 中 $x^3$ 项的系数可以看出 (Euler 对于 Basel 问题的解答)<br>
+$$\sum_{k\ge1}\frac1{k^2\pi^2}=\frac1{3!}$$ 完全类似, 考虑 $\cot x=(\log\sin x)^\prime$ 就能得到<br>
+$$\zeta(2k)=\frac{(-1)^{k-1}B_{2k}(2\pi)^{2k}}{2(2k)!}$$ (但是对于奇数的取值, 就没有这么乐观的形式了).</p>
+<p>另一个出发点是 Euler 积 $\zeta(s)=\prod_p\frac1{1-\frac1{p^s}}$, $s\gt1$. 最直接的应用是证明素数有无限多个 (取 $s=1$)<br>
+$$\begin{aligned}\log\zeta(s)&amp;=-\sum_p\log(1-\frac1p) \\ &amp;=\sum_p\frac1{p^s}+\mathcal{O}(1)\end{aligned}$$ 通过函数方程<br>
+$$\zeta(s)-2\cdot2^{-s}\zeta(s)=1-\frac1{2^s}+\frac1{3^s}-\cdots$$ 给出 $\R_{(0,1)}$ 上的扩充定义 ($s\gt0$)<br>
+$$\zeta(s)=\frac1{1-2^{1-s}}(1-\frac1{2^s}+\frac1{3^s}-\cdots)$$ 也可以顺带考虑 $\zeta(s)$ 在 $s=1$ 附近的渐进行为 —— $\zeta(s)=\frac1{s-1}+\mathcal{O}(1)$. Euler 对 $\zeta(-s)$ 形式上的展开给出了如下 “有效的” 定义</p>
 <div class="scroll">
 $$\begin{aligned}\zeta(-s)
 &=1^s+2^s+\cdots \\ 
@@ -95,10 +104,6 @@ $$\begin{aligned}\zeta(-s)
 &=\frac{(-1)^sB_{s+1}}{s+1} \quad (\text{\footnotesize 对于正整数 }s)
 \end{aligned}$$
 </div>
-
-
-
-
 
         
   </div>

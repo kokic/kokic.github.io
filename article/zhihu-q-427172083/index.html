@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -161,7 +162,8 @@
 <p>注意到 Cauchy-Davenport 定理可由 Chowla 定理推出.</p>
 <p><strong>定理</strong> 设 $p$ 为素数，$A,B\subseteq\Z/p\Z$ 非空，则有 $$|A+B|\ge\min(p,|A|+|B|-1)$$ 令 $b^\prime\in B,B^\prime=\{b-b^\prime:b\in B\}$，易知 $|B^\prime|=|B|$ 且有 $|A+B^\prime|=|A+B|$，由 $0\in B^\prime$ 且 $\forall b\in B^\prime\backslash\{0\}$ 都有 $b,p$ 互素，对 $(A,B^\prime)$ 应用 Chowla 定理 $$\begin{aligned}|A+B|&amp;=|A+B^\prime|\\ &amp;\ge\min(p,|A|+|B|^\prime-1)\\ &amp;=\min(p,|A|+|B|-1)\end{aligned}$$ 证完.</p>
 <p>注：Vosper 定理给出了 Cauchy-Davenport 定理的取等条件，其表述为 设 $\Z/p\Z$ 的非空子集 $A,B$ 满足条件 $|A|,|B|\ge2\;,|A|+|B|\lt p$，若有 $|A+B|=|A|+|B|-1$，则 $A,B$ 为两个公差相同的等差数列.</p>
-<p><strong>定理</strong> 设 $N\ge2,\;p$ 为素数，$A_1,\cdots,A_N$ 是 $\Z/p\Z$ 的非空子集，则 $$\left|\sum_{1\le k\le N}A_k\right|\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)$$<br>令 $S=\displaystyle\sum_{1\le k\le N-1}A_k$，由归纳法，假设 $N-1$ 时成立，即 $$|S|\ge\min\left(p,\sum_{1\le k\le N-1}|A_k|-N+2\right)$$ 对 $(S,A_N)$ 利用 $N=2$ 时的结果 $$\begin{aligned}|S+A_N|&amp;\ge\min(p,|S|+|A_N|-1)\\ &amp;\ge\min(p,\min|S|+|A_N|-1)\\ &amp;\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)\end{aligned}$$ 证完.</p>
+<p><strong>定理</strong> 设 $N\ge2,\;p$ 为素数，$A_1,\cdots,A_N$ 是 $\Z/p\Z$ 的非空子集，则 $$\left|\sum_{1\le k\le N}A_k\right|\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)$$<br>
+令 $S=\displaystyle\sum_{1\le k\le N-1}A_k$，由归纳法，假设 $N-1$ 时成立，即 $$|S|\ge\min\left(p,\sum_{1\le k\le N-1}|A_k|-N+2\right)$$ 对 $(S,A_N)$ 利用 $N=2$ 时的结果 $$\begin{aligned}|S+A_N|&amp;\ge\min(p,|S|+|A_N|-1)\\ &amp;\ge\min(p,\min|S|+|A_N|-1)\\ &amp;\ge\min\left(p,\sum_{1\le k\le N}|A_k|-N+1\right)\end{aligned}$$ 证完.</p>
 
   </div>
 </article>

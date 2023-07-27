@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -81,7 +82,8 @@
 
   <div class="content" itemprop="articleBody">
       
-          <h2 id="有限集"><a href="#有限集" class="headerlink" title="有限集"></a>有限集</h2><p>自然地考虑 $$x^2+y^2=\ell$$ 此处先限制 $x,y\in\{0,1,2\}$. </p>
+          <h2 id="有限集">有限集</h2>
+<p>自然地考虑 $$x^2+y^2=\ell$$ 此处先限制 $x,y\in\{0,1,2\}$.</p>
 <p>由 $(x^2,y^2)\leadsto (1+\varphi+\varphi^{2^2},1+\varphi+\varphi^{2^2})$ 完成计数器的生成.</p>
 <p>通过指数映射, 具体而言即</p>
 <ul>
@@ -93,8 +95,7 @@
 <div class="scroll">
 $$(1+\varphi+\varphi^{2^2})^2=1+2\varphi+\varphi^2+2\varphi^4+2\varphi^5+\varphi^8$$
 </div>
-
-<p>这给出: </p>
+<p>这给出:</p>
 <ul>
 <li>$x^2+y^2=0, (x,y)=(0,0)$</li>
 <li>$x^2+y^2=1, (x,y)=(0,1)\lor(1,0)$</li>
@@ -104,7 +105,7 @@ $$(1+\varphi+\varphi^{2^2})^2=1+2\varphi+\varphi^2+2\varphi^4+2\varphi^5+\varphi
 <li>$x^2+y^2=8, (x,y)=(2,2)$</li>
 </ul>
 <hr>
-<p>下面考察 $y^2=x^3+1$ 即 $y^2-x^3=1$. </p>
+<p>下面考察 $y^2=x^3+1$ 即 $y^2-x^3=1$.</p>
 <p>这里, 稍显刻意地限制 (整数) 并给出对应的计数器</p>
 <div class="scroll">
 $$\begin{gathered}
@@ -113,8 +114,7 @@ y^2\leadsto \varphi^{(-3)^2}+\cdots+1+\varphi+\varphi^{2^2}+\varphi^{3^2} \\
 -x^3\leadsto \varphi+1+\varphi^{-1}+\varphi^{-2^3}
 \end{gathered}$$
 </div>
-
-<p>这样, 由于 </p>
+<p>这样, 由于</p>
 <div class="scroll">
 $$\begin{aligned}
 &\quad\;(\varphi^{(-3)^2}+\cdots+\varphi^{3^2})(\varphi+1+\varphi^{-1}+\varphi^{-2^3}) \\
@@ -123,25 +123,27 @@ $$\begin{aligned}
 +2\varphi^{10}
 \end{aligned}$$
 </div>
-
 <p>$(x,y)=(-1,0)\lor(0,\pm1)\lor(2,\pm3)$.</p>
 <hr>
 <p>但是对于 $x^2y=\ell$ 这样的 (存在着未知量乘法的) 形式, 粗略来看, 没有类似的方法. 不过, 可以先试探性地固定其中一个 (即, 将其看作另一个量的系数).</p>
 <p>这样首先得到的是 $G(\varphi)=1+\varphi^y+\varphi^{2^2y}$, 应用 $y$ 的限制可以展开为</p>
 <ul>
-<li><p>$y=0, G(\varphi)=3$</p>
+<li>
+<p>$y=0, G(\varphi)=3$</p>
 <ul>
 <li>$x^2y=0, x=0\lor1\lor2$</li>
 </ul>
 </li>
-<li><p>$y=1, G(\varphi)=1+\varphi+\varphi^4$</p>
+<li>
+<p>$y=1, G(\varphi)=1+\varphi+\varphi^4$</p>
 <ul>
 <li>$x^2y=0, x=0$</li>
 <li>$x^2y=1, x=1$</li>
 <li>$x^2y=4, x=2$</li>
 </ul>
 </li>
-<li><p>$y=2, G(\varphi)=1+\varphi^2+\varphi^8$</p>
+<li>
+<p>$y=2, G(\varphi)=1+\varphi^2+\varphi^8$</p>
 <ul>
 <li>$x^2y=0, x=0$</li>
 <li>$x^2y=2, x=1$</li>
@@ -151,9 +153,10 @@ $$\begin{aligned}
 </ul>
 <p>那么下面要处理的问题正是如何自动地 (对 $y$) 计数. 显然这正是 $$\sum_yG(\varphi)=5+\varphi+\varphi^2+\cdots$$</p>
 <hr>
-<h2 id="Z-ge1"><a href="#Z-ge1" class="headerlink" title="$\Z_{\ge1}$"></a>$\Z_{\ge1}$</h2><p>再考虑 $$E_\ell:x^2+y^2=\ell$$ 而 $(x,y)\in\Z_{\ge1}\times\Z_{\ge1}$.</p>
+<h2 id="Z-ge1">$\Z_{\ge1}$</h2>
+<p>再考虑 $$E_\ell:x^2+y^2=\ell$$ 而 $(x,y)\in\Z_{\ge1}\times\Z_{\ge1}$.</p>
 <p>注: 对于 $(x,y)\in\Z\times\Z$, 显然如果 $(x,y)$ 是一组解则 $(-x,-y)$ 也是.</p>
-<p>由 $x\lor y\leadsto \sum_{n\in\Z_{\ge1}}\varphi^{n^2}$ 及 (形式) $\vartheta$ 级数的定义 $\sum_{n\in\Z}\varphi^{n^2}$ 可知 $$x^2+y^2\leadsto \frac14(\vartheta(\varphi)-1)^2$$ </p>
+<p>由 $x\lor y\leadsto \sum_{n\in\Z_{\ge1}}\varphi^{n^2}$ 及 (形式) $\vartheta$ 级数的定义 $\sum_{n\in\Z}\varphi^{n^2}$ 可知 $$x^2+y^2\leadsto \frac14(\vartheta(\varphi)-1)^2$$</p>
 <p>右侧记为 $G(\varphi)$, 展开即 $$\varphi^2 + 2\varphi^5 +\varphi^8 + 2\varphi^{10} + 2\varphi^{13} + 2\varphi^{17} + \cdots$$</p>
 <ul>
 <li>$x^2+y^2=2, (x,y)=(1,1)$</li>
@@ -164,11 +167,10 @@ $$\begin{aligned}
 <li>$x^2+y^2=17, (x,y)=(1,4)\lor(4,1)$</li>
 <li>$\cdots$</li>
 </ul>
-<p>注: 显然 $\sum_{n\in\Z_{\ge1}}\varphi^{n^2}=\frac12(\vartheta(\varphi)-1)$, $\vartheta(\varphi)=1+2\sum_{n\in\Z_{\ge1}}\varphi^{n^2}$. </p>
+<p>注: 显然 $\sum_{n\in\Z_{\ge1}}\varphi^{n^2}=\frac12(\vartheta(\varphi)-1)$, $\vartheta(\varphi)=1+2\sum_{n\in\Z_{\ge1}}\varphi^{n^2}$.</p>
 <p>(未完成)</p>
 <!-- 这里, 注意 [有限集]() 中 $(x,y)\in\Z_{\ge1}\times\Z_{\ge1}$ 的那部分, 显然具有公共的解. 换言之, 如果 -->
-
-<p>$\textbf{Theorem}\;(\text{Fermat}).$ 素数表为两 (整数) 平方和 $p=x^2+y^2$  $\iff$ $p=1\mod 4$ 或 $p=2$. </p>
+<p>$\textbf{Theorem}\;(\text{Fermat}).$ 素数表为两 (整数) 平方和 $p=x^2+y^2$  $\iff$ $p=1\mod 4$ 或 $p=2$.</p>
 <p>$$\cdots+N_{E_\ell}\varphi^\ell+\cdots$$</p>
 <ul>
 <li>$N_{E_\ell}=\frac1{n!}\frac{\partial^n}{\partial\varphi^n}G(\varphi)$</li>
@@ -231,7 +233,6 @@ $$\begin{array}{|c|c|c|c|} \hline
    136 & 2 & - & - \\ \hline
 \end{array}$$
 </div>
-
 <ul>
 <li>$x^2+y^2=50, (x,y)=(5,5)\lor(1,7)\lor(7,1)$</li>
 <li>$x^2+y^2=53, (x,y)=(2,7)\lor(7,2)$</li>
@@ -239,13 +240,16 @@ $$\begin{array}{|c|c|c|c|} \hline
 <li>$x^2+y^2=85, (x,y)=(2,9)\lor(9,2)\lor(6,7)\lor(7,6)$</li>
 </ul>
 <hr>
-<h2 id="text-Fourier"><a href="#text-Fourier" class="headerlink" title="$\text{Fourier}$"></a>$\text{Fourier}$</h2><p>$$\vartheta(q)=\sum_{n\in\Z}q^{n^2}$$</p>
-<h2 id="mathbb-Q-p"><a href="#mathbb-Q-p" class="headerlink" title="$\mathbb{Q}_p$"></a>$\mathbb{Q}_p$</h2><ul>
+<h2 id="text-Fourier">$\text{Fourier}$</h2>
+<p>$$\vartheta(q)=\sum_{n\in\Z}q^{n^2}$$</p>
+<h2 id="mathbb-Q-p">$\mathbb{Q}_p$</h2>
+<ul>
 <li>Hasse–Minkowski 定理</li>
 </ul>
-<p>注: Ernst Selmer 证明了 $3x^3+4y^3+5z^3=0$ 在 $\mathbb{Q}$ 上无解而在 $\R$ 和 (对所有素数 $p$) $\mathbb{Q}_p$ 都有解. </p>
+<p>注: Ernst Selmer 证明了 $3x^3+4y^3+5z^3=0$ 在 $\mathbb{Q}$ 上无解而在 $\R$ 和 (对所有素数 $p$) $\mathbb{Q}_p$ 都有解.</p>
 <hr>
-<h2 id="有限域"><a href="#有限域" class="headerlink" title="有限域"></a>有限域</h2><hr>
+<h2 id="有限域">有限域</h2>
+<hr>
 
         
   </div>

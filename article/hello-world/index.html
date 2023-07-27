@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -136,41 +137,39 @@
 
   <div class="content" itemprop="articleBody">
     <script src="../lib/loader.js"></script>
-
 <p>$—$ Exploring minimal representation in ECMAScript</p>
 <hr>
 <p>Notice: <em>This article is motivated by several Kata on Codewars. This post will show how to solve the hardest parts of these problems naturally, but for obvious reasons I can’t link the corresponding problems directly. At the same time, those readers who know exactly what the problem is, please don’t read until you solve the problem independently, or at least only read a little bit as a hint.</em></p>
 <p>First of all, we have to define some basic rules, many of which seem to be restrictive, but that is the real core of the problem.</p>
 <ul>
-<li>no ASCII &amp; unicode letters allowed </li>
-<li>only allowed to use numbers (<code>0-9</code>) and special characters (<code>()[]&#123;&#125;_!</code>, etc.)<br>$\impliedby$ implicit string construction, there are some letters whose construction is not obvious.</li>
-<li>every line must have at most <code>1</code> ASCII character<br>$\impliedby$ expressions that allow arbitrary line breaks.</li>
-<li>$N$ lines or less<br>$\impliedby$ it’s not important, as long as the principle is clear, it’s not difficult to do this.</li>
+<li>no ASCII &amp; unicode letters allowed</li>
+<li>only allowed to use numbers (<code>0-9</code>) and special characters (<code>()[]&#123;&#125;_!</code>, etc.)<br>
+$\impliedby$ implicit string construction, there are some letters whose construction is not obvious.</li>
+<li>every line must have at most <code>1</code> ASCII character<br>
+$\impliedby$ expressions that allow arbitrary line breaks.</li>
+<li>$N$ lines or less<br>
+$\impliedby$ it’s not important, as long as the principle is clear, it’s not difficult to do this.</li>
 </ul>
 <hr>
 <p>There are some obvious tricks to use <code>!1</code>, <code>!0</code> and <code>[]._</code> which give <code>false</code>, <code>true</code> and <code>undefined</code> respectively. The same object may have multiple constructs, eg.</p>
 <center>
 $\bigg\{$ <code>[]._</code> $,$ <code>&#123;&#125;._</code>  $,$ $\dots$ $\bigg\}$ $\xtwoheadrightarrow{\qquad}$ $\bigg\{$ <code>undefined</code> $\bigg\}$
 </center>
-
 <p>This means that representations of minimal length exist, but are not always unique. It seems like a meaningful thing to find a minimal representation, which can solve the problem of the limit of the $N$ lines.</p>
 <p>Next, consider how to implicitly convert objects to strings, and we know that the direct way is <code>+ []</code></p>
 <center>
 <code>obj + []</code> $\xmapsto{\qquad}$ <code>obj.toString()</code>
 </center>
-
 <p>Combining the above two points, we get the corresponding representation of the following character set</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&#39;a&#39;  (b)  (c)  &#39;d&#39;  &#39;e&#39;  &#39;f&#39;  (g)
 (h)  &#39;i&#39;  (j)  (k)  &#39;l&#39;  (m)  &#39;n&#39;
 (o)  (p)  (q)       &#39;r&#39;  &#39;s&#39;  &#39;t&#39;
 &#39;u&#39;  (v)  (w)       (x)  (y)  (z)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>Another key part comes from <code>&#123;&#125;+[]</code>. This expression will give the string <code>[object Object]</code>. Finally there are some characters that look too special to appear in any of the existing JavaScript built-in symbols. </p>
+<p>Another key part comes from <code>&#123;&#125;+[]</code>. This expression will give the string <code>[object Object]</code>. Finally there are some characters that look too special to appear in any of the existing JavaScript built-in symbols.</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&#39;a&#39;  &#39;b&#39;  &#39;c&#39;  &#39;d&#39;  &#39;e&#39;  &#39;f&#39;  (g)
 (h)  &#39;i&#39;  &#39;j&#39;  (k)  &#39;l&#39;  (m)  &#39;n&#39;
 &#39;o&#39;  (p)  (q)       &#39;r&#39;  &#39;s&#39;  &#39;t&#39;
 &#39;u&#39;  (v)  (w)       (x)  (y)  (z)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>But actually, we don’t need to get all the characters from the inner object, with method <code>.toString(36)</code> we will get all lowercase letters. Assuming that the integer <code>n</code> satisfies <code>10 &lt;= n &lt;= 35</code></p>
 <center>
 <code>n.toString(36)</code> $\cong$ $\big\{$ <code>'a'</code> $,\dots,$ <code>'z'</code> $\big\}$ 
@@ -178,40 +177,35 @@ $\bigg\{$ <code>[]._</code> $,$ <code>&#123;&#125;._</code>  $,$ $\dots$ $\bigg\
 <br> $\kern-0.6em\vdots$
 <br> <code>35</code> $\xmapsto{\qquad}$ <code>'z'</code>
 </center>
-
-<p>This approach allows us to take many steps forward at once, and it looks like we’re about to reach the end, but the construction of the uppercase letters isn’t going to be smooth sailing. In fact, before we can get all lowercase letters, we have to get <code>&#39;S&#39;</code> by other constructions e.g. literal coincidence, via the constructor</p>
+<p>This approach allows us to take many steps forward at once, and it looks like we’re about to reach the end, but the construction of the uppercase letters isn’t going to be smooth sailing. In fact, before we can get all lowercase letters, we have to get <code>'S'</code> by other constructions e.g. literal coincidence, via the constructor</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&gt; &#96;&#96;[&#39;constructor&#39;]
 [Function: String]
 
 &gt; (&#96;&#96;[&#39;constructor&#39;] + [])[9]
 &#39;S&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <hr>
-<p>Good news, we have obtained all lowercase letters. It is no coincidence that the construction of all uppercase letters will also be obtained in one go by some key method, which is obviously <code>String.fromCharCode</code>. </p>
-<p>Here, the focus can be found on how to generate  the character <code>&#39;C&#39;</code>. I will give a tricky approach.</p>
+<p>Good news, we have obtained all lowercase letters. It is no coincidence that the construction of all uppercase letters will also be obtained in one go by some key method, which is obviously <code>String.fromCharCode</code>.</p>
+<p>Here, the focus can be found on how to generate  the character <code>'C'</code>. I will give a tricky approach.</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&gt; [][&#39;flat&#39;][&#39;constructor&#39;](&#39;return escape&#39;)()
 function escape() &#123; [native code] &#125;
 
 &gt; escape(&#39;,&#39;)
 &#39;%2C&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <hr>
-<p>In the last step, which may be a mathematical problem, we need to consider the decomposition of an integer in an additive or multiplicative way. These decompositions need to meet the following requirements: </p>
+<p>In the last step, which may be a mathematical problem, we need to consider the decomposition of an integer in an additive or multiplicative way. These decompositions need to meet the following requirements:</p>
 <ul>
 <li>only one number can appear in each term, i.e. each term must satisfy <code>1 &lt;= n &lt;= 9</code></li>
 <li>minimized decomposition length</li>
 </ul>
 <p>Since the composite numbers can always be decomposed by prime factors, in fact, this problem can be considered only for the case of prime numbers.</p>
-<p>$$N=\prod_{p\,|\,N}p^{v_p(N)} \quad \leadsto \quad p$$ </p>
+<p>$$N=\prod_{p\,|\,N}p^{v_p(N)} \quad \leadsto \quad p$$</p>
 <p>Of course, for prime numbers, the only available decomposition method is addition. In order to make the length of the decomposition as short as possible, we need a large number of digits 9. With the help of some knowledge of elementary number theory, it is obvious that we consider the number modulo 9. $$p=r\mod 9$$</p>
 <p>Further, we can also figure out exactly how many additive decompositions there are for each number.</p>
 <center>
 $a_p\overset{\text{def}}{=}\#\text{ decomposition of }p$ <br>
 $$\sum a_pX^p=\prod^\ell\frac{X(1-X^9)}{1-X}$$
-
 <p>$$a_p=\sum_{k=0}^{\lfloor(p-\ell)/9\rfloor}(-1)^k{\ell\choose k}{p-1-9k \choose \ell-1}$$</p>
 </center>
-
 
   </div>
 </article>

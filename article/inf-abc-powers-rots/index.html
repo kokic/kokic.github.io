@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -137,7 +138,10 @@
   <div class="content" itemprop="articleBody">
     <p>求最大的常数 $k$ 使得对任意正实数 $x,y,z$ 都有 $$x^y+y^z+z^x\gt k$$</p>
 <p>实际上只要证明对任意正实数 $x,y$ 有 $x^y+y^x\gt1$ 即可</p>
-<p>只需考虑 $x,y$ 均小于 $1$ 的情况，取变换<br>$$(x,y)\longmapsto\left(\dfrac{1}{1+a},\dfrac{1}{1+b}\right)$$<br>此时有 $a\gt0,b\gt0$，于是得到<br>$$\begin{aligned}x^y+y^x&amp;=\left(\dfrac{1}{1+a}\right)^{(1+b)^{-1}}+\left(\dfrac{1}{1+b}\right)^{(1+a)^{-1}}\\ &amp;=\dfrac{1}{(1+a)^{(1+b)^{-1}}}+\dfrac{1}{(1+b)^{(1+a)^{-1}}}\\ &amp;\ge\dfrac{1}{1+\dfrac{a}{1+b}}+\dfrac{1}{1+\dfrac{b}{1+a}}\\ &amp;=1+\dfrac{1}{1+a+b}\\ &amp;\gt1\end{aligned}$$ 其中第一个不等号利用了 Bernoulli 不等式，证完.</p>
+<p>只需考虑 $x,y$ 均小于 $1$ 的情况，取变换<br>
+$$(x,y)\longmapsto\left(\dfrac{1}{1+a},\dfrac{1}{1+b}\right)$$<br>
+此时有 $a\gt0,b\gt0$，于是得到<br>
+$$\begin{aligned}x^y+y^x&amp;=\left(\dfrac{1}{1+a}\right)^{(1+b)^{-1}}+\left(\dfrac{1}{1+b}\right)^{(1+a)^{-1}}\\ &amp;=\dfrac{1}{(1+a)^{(1+b)^{-1}}}+\dfrac{1}{(1+b)^{(1+a)^{-1}}}\\ &amp;\ge\dfrac{1}{1+\dfrac{a}{1+b}}+\dfrac{1}{1+\dfrac{b}{1+a}}\\ &amp;=1+\dfrac{1}{1+a+b}\\ &amp;\gt1\end{aligned}$$ 其中第一个不等号利用了 Bernoulli 不等式，证完.</p>
 <p>考虑原命题，不妨假设 $y=\max\{x,y,z\}$，于是 $$x^y+y^z\ge x^y+x^z\gt x^z$$ 这立即推出 $x^y+y^z+z^x\gt x^y+y^x\gt1$，证完.</p>
 <hr>
 <p><font color=grey>2021-08-17 补充</font></p>

@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -86,7 +87,7 @@
     <br/>
         
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AM%E2%80%93GM"><span class="toc-number">1.1.</span> <span class="toc-text">AM–GM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy"><span class="toc-number">1.2.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel"><span class="toc-number">1.3.</span> <span class="toc-text">Aczél</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-%E4%B8%8E-Aczel-%E7%AD%89%E4%BB%B7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">Cauchy 与 Aczél 等价的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Young-amp-%E4%BA%8C%E5%85%83-%E5%8A%A0%E6%9D%83-AM%E2%80%93GM-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">Young &amp; (二元)加权 AM–GM 不等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%AF%81%E8%87%AA%E6%98%8E%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">不证自明的形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-1"><span class="toc-number">2.1.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel-1"><span class="toc-number">2.2.</span> <span class="toc-text">Aczél</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8D%89%E7%A8%BF"><span class="toc-number">3.</span> <span class="toc-text">草稿</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AM%E2%80%93GM"><span class="toc-number">1.1.</span> <span class="toc-text">AM–GM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy"><span class="toc-number">1.2.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel"><span class="toc-number">1.3.</span> <span class="toc-text">Aczél</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-%E4%B8%8E-Aczel-%E7%AD%89%E4%BB%B7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">Cauchy 与 Aczél 等价的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Young-%E4%BA%8C%E5%85%83-%E5%8A%A0%E6%9D%83-AM%E2%80%93GM-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">Young &amp; (二元)加权 AM–GM 不等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%AF%81%E8%87%AA%E6%98%8E%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">不证自明的形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-2"><span class="toc-number">2.1.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel-2"><span class="toc-number">2.2.</span> <span class="toc-text">Aczél</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8D%89%E7%A8%BF"><span class="toc-number">3.</span> <span class="toc-text">草稿</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -135,45 +136,76 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>三角函数由于对加法和乘法有性质良好的合成结果，常常用于证明带有某类结构的不等式，以下举例一二. </p>
-<h3 id="AM–GM"><a href="#AM–GM" class="headerlink" title="AM–GM"></a>AM–GM</h3><p>取 $f(x)=(1-x^2)x^{2n},n\in\R_{\ge0}$ 易得 $f(x)\le\dfrac{n^n}{(n+1)^{n+1}}$.<br>不妨设 $x_k^{n/2}=\begin{cases}\cos\theta_k\displaystyle\prod_{j=1}^{k-1}\sin\theta_j &amp;\text{if }k\neq n \\ \displaystyle\prod_{j=1}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$<br>于是 $\displaystyle\prod_{k=1}^nx_k^{n/2}=\prod_{k=1}^{n-1}\cos\theta_k(\sin\theta_k)^{n-k}\le\dfrac{1}{\sqrt{n^n}}$<br>证完，这即为算术平均-几何平均不等式.</p>
+    <h2 id="动机">动机</h2>
+<p>三角函数由于对加法和乘法有性质良好的合成结果，常常用于证明带有某类结构的不等式，以下举例一二.</p>
+<h3 id="AM–GM">AM–GM</h3>
+<p>取 $f(x)=(1-x^2)x^{2n},n\in\R_{\ge0}$ 易得 $f(x)\le\dfrac{n^n}{(n+1)^{n+1}}$.<br>
+不妨设 $x_k^{n/2}=\begin{cases}\cos\theta_k\displaystyle\prod_{j=1}^{k-1}\sin\theta_j &amp;\text{if }k\neq n \\ \displaystyle\prod_{j=1}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$<br>
+于是 $\displaystyle\prod_{k=1}^nx_k^{n/2}=\prod_{k=1}^{n-1}\cos\theta_k(\sin\theta_k)^{n-k}\le\dfrac{1}{\sqrt{n^n}}$<br>
+证完，这即为算术平均-几何平均不等式.</p>
 <p>注：考虑到便于换元，其中假设了 $\displaystyle\sum_{k=1}^nx_k=1$，这与待证命题等价，以下同理.</p>
-<h3 id="Cauchy"><a href="#Cauchy" class="headerlink" title="Cauchy"></a>Cauchy</h3><p>证明 $$\displaystyle\sum_{k=1}^n\dfrac{x_k^2}{\ell_k^2}\ge\bigg(\displaystyle\sum_{k=1}^nx_k\bigg)^2\bigg({\sum_{k=1}^n{\ell_k^2}}\bigg)^{-1}$$<br>不妨设 $$\dfrac{x_k}{\ell_k}=\begin{cases}\cos\theta_k\displaystyle\prod_{j=1}^{k-1}\sin\theta_j &amp;\text{if }k\neq n \\ \displaystyle\prod_{j=1}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$<br>于是 <div class="scroll"><br>$$\begin{aligned}\displaystyle\sum_{k=1}^nx_k&amp;\le\ell_1\cos\theta_1+\cdots+\sqrt{\ell^2_{n-1}+\ell^2_n}\prod_{j=1}^{n-2}\sin\theta_j \\ &amp;\le\ell_1\cos\theta_1+\cdots+\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\prod_{j=1}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\le\ell_1\cos\theta_1+\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sin\theta_1 \\ &amp;\le\bigg(\displaystyle\sum_{k=1}^n\ell_k^2\bigg)^{1/2} \end{aligned}$$</p>
+<h3 id="Cauchy">Cauchy</h3>
+<p>证明 $$\displaystyle\sum_{k=1}^n\dfrac{x_k^2}{\ell_k^2}\ge\bigg(\displaystyle\sum_{k=1}^nx_k\bigg)^2\bigg({\sum_{k=1}^n{\ell_k^2}}\bigg)^{-1}$$<br>
+不妨设 $$\dfrac{x_k}{\ell_k}=\begin{cases}\cos\theta_k\displaystyle\prod_{j=1}^{k-1}\sin\theta_j &amp;\text{if }k\neq n \\ \displaystyle\prod_{j=1}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$<br>
+于是 <div class="scroll"><br>
+$$\begin{aligned}\displaystyle\sum_{k=1}^nx_k&amp;\le\ell_1\cos\theta_1+\cdots+\sqrt{\ell^2_{n-1}+\ell^2_n}\prod_{j=1}^{n-2}\sin\theta_j \\ &amp;\le\ell_1\cos\theta_1+\cdots+\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\prod_{j=1}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\le\ell_1\cos\theta_1+\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sin\theta_1 \\ &amp;\le\bigg(\displaystyle\sum_{k=1}^n\ell_k^2\bigg)^{1/2} \end{aligned}$$</p>
 </div>
 证完.
-
-<h3 id="Aczel"><a href="#Aczel" class="headerlink" title="Aczél"></a>Aczél</h3><p>证明 $$\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}$$<br>不妨设 <div class="scroll">$$\dfrac{x_k}{\ell_k}=\begin{cases}\cosh\theta_1 &amp;\text{if }k=1\\ \sinh\theta_1\cosh\theta_k\displaystyle\prod_{j=2}^{k-1}\sin\theta_j &amp;\text{if }2\le k\le n-1 \\ \displaystyle\sinh\theta_1\prod_{j=2}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$ </div><br>于是 <div class="scroll"><br>$$\begin{aligned}x_1-\displaystyle\sum_{k=2}^n x_k&amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-2}\sin\theta_j \\ &amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\ge\ell_1\cosh\theta_1-\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sinh\theta_1 \\ &amp;\ge\bigg(\ell^2_1-\displaystyle\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\end{aligned}$$</p>
+<h3 id="Aczel">Aczél</h3>
+<p>证明 $$\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}$$<br>
+不妨设 <div class="scroll">$$\dfrac{x_k}{\ell_k}=\begin{cases}\cosh\theta_1 &amp;\text{if }k=1\\ \sinh\theta_1\cosh\theta_k\displaystyle\prod_{j=2}^{k-1}\sin\theta_j &amp;\text{if }2\le k\le n-1 \\ \displaystyle\sinh\theta_1\prod_{j=2}^{n-1}\sin\theta_j &amp;\text{if }k=n\end{cases}$$ </div><br>
+于是 <div class="scroll"><br>
+$$\begin{aligned}x_1-\displaystyle\sum_{k=2}^n x_k&amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-2}\sin\theta_j \\ &amp;\ge\ell_1\cosh\theta_1-\cdots-\sqrt{\ell^2_{n-2}+\ell^2_{n-1}+\ell^2_n}\sinh\theta_1\prod_{j=2}^{n-3}\sin\theta_j \\ &amp;\;\;\vdots \\ &amp;\ge\ell_1\cosh\theta_1-\bigg(\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\sinh\theta_1 \\ &amp;\ge\bigg(\ell^2_1-\displaystyle\sum_{k=2}^n\ell_k^2\bigg)^{1/2}\end{aligned}$$</p>
 </div>
 证完.
-
-<h3 id="Cauchy-与-Aczel-等价的证明"><a href="#Cauchy-与-Aczel-等价的证明" class="headerlink" title="Cauchy 与 Aczél 等价的证明"></a>Cauchy 与 Aczél 等价的证明</h3><p>观察上例，将 Aczél 证明中以负号起始的右项左移，于是二者等价.</p>
-<h3 id="Young-amp-二元-加权-AM–GM-不等式"><a href="#Young-amp-二元-加权-AM–GM-不等式" class="headerlink" title="Young &amp; (二元)加权 AM–GM 不等式"></a>Young &amp; (二元)加权 AM–GM 不等式</h3><p>证明 $\omega_1x+\omega_2y\ge x^{\omega_1}y^{\omega_2}$.<br>取变换 $$(x,y)\longmapsto(\omega_1^{-1}\cos^2\theta,\omega_2^{-1}\sin^2\theta)$$<br>于是 $$\begin{aligned}x^{\omega_1}y^{\omega_2}&amp;=\omega_1^{-\omega_1}\omega_2^{-\omega_2}(\sin\theta\cos^{\omega_1/\omega_2}\theta)^{2\omega_2}\\ &amp;\le\omega_1^{-\omega_1}\omega_2^{-\omega_2}\dfrac{(\omega_1/\omega_2)^{\omega_1}}{\omega_1/\omega_2+1}\\ &amp;=1\end{aligned}$$<br>证完.</p>
-<p>注：最后一个不等号是因为<br>$$\sin\theta\cos^N\theta\le\left(\dfrac{N^N}{(N+1)^{N+1}}\right)^{1/2}$$ 而这是显然的.</p>
-<h2 id="不证自明的形式"><a href="#不证自明的形式" class="headerlink" title="不证自明的形式"></a>不证自明的形式</h2><p>易知<br>$$|x|+|y|\ge |x+y|\implies\displaystyle\sum|x_k|\ge \left|\sum x_k\right|$$ 利用这一点，自然想到下面的证明 </p>
-<h3 id="Cauchy-1"><a href="#Cauchy-1" class="headerlink" title="Cauchy"></a>Cauchy</h3><p>命 <div class="scroll"><br>$$\begin{aligned}P_n&amp;:\bigg(\sum_{k=1}^na_k^2\bigg)\bigg(\sum_{k=1}^nb_k^2\bigg)\ge\bigg(\sum_{k=1}^na_kb_k\bigg)^2 \\ Q_n&amp;:\sum_{k=1}^n\dfrac{x_k^2}{\ell_k^2}\ge\bigg(\sum_{k=1}^nx_k\bigg)^2\bigg({\sum_{k=1}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
+<h3 id="Cauchy-与-Aczel-等价的证明">Cauchy 与 Aczél 等价的证明</h3>
+<p>观察上例，将 Aczél 证明中以负号起始的右项左移，于是二者等价.</p>
+<h3 id="Young-二元-加权-AM–GM-不等式">Young &amp; (二元)加权 AM–GM 不等式</h3>
+<p>证明 $\omega_1x+\omega_2y\ge x^{\omega_1}y^{\omega_2}$.<br>
+取变换 $$(x,y)\longmapsto(\omega_1^{-1}\cos^2\theta,\omega_2^{-1}\sin^2\theta)$$<br>
+于是 $$\begin{aligned}x^{\omega_1}y^{\omega_2}&amp;=\omega_1^{-\omega_1}\omega_2^{-\omega_2}(\sin\theta\cos^{\omega_1/\omega_2}\theta)^{2\omega_2}\\ &amp;\le\omega_1^{-\omega_1}\omega_2^{-\omega_2}\dfrac{(\omega_1/\omega_2)^{\omega_1}}{\omega_1/\omega_2+1}\\ &amp;=1\end{aligned}$$<br>
+证完.</p>
+<p>注：最后一个不等号是因为<br>
+$$\sin\theta\cos^N\theta\le\left(\dfrac{N^N}{(N+1)^{N+1}}\right)^{1/2}$$ 而这是显然的.</p>
+<h2 id="不证自明的形式">不证自明的形式</h2>
+<p>易知<br>
+$$|x|+|y|\ge |x+y|\implies\displaystyle\sum|x_k|\ge \left|\sum x_k\right|$$ 利用这一点，自然想到下面的证明</p>
+<h3 id="Cauchy-2">Cauchy</h3>
+<p>命 <div class="scroll"><br>
+$$\begin{aligned}P_n&amp;:\bigg(\sum_{k=1}^na_k^2\bigg)\bigg(\sum_{k=1}^nb_k^2\bigg)\ge\bigg(\sum_{k=1}^na_kb_k\bigg)^2 \\ Q_n&amp;:\sum_{k=1}^n\dfrac{x_k^2}{\ell_k^2}\ge\bigg(\sum_{k=1}^nx_k\bigg)^2\bigg({\sum_{k=1}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
 </div>
 由 <div class="scroll">$$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$</div> 证完.
-
-<h3 id="Aczel-1"><a href="#Aczel-1" class="headerlink" title="Aczél"></a>Aczél</h3><p>命 <div class="scroll"><br>$$\begin{aligned}P_n&amp;:\bigg(a_1-\sum_{k=2}^na_k^2\bigg)\bigg(b_1-\sum_{k=2}^nb_k^2\bigg)\le\bigg(a_1b_1-\sum_{k=2}^na_kb_k\bigg)^2 \\Q_n&amp;:\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
+<h3 id="Aczel-2">Aczél</h3>
+<p>命 <div class="scroll"><br>
+$$\begin{aligned}P_n&amp;:\bigg(a_1-\sum_{k=2}^na_k^2\bigg)\bigg(b_1-\sum_{k=2}^nb_k^2\bigg)\le\bigg(a_1b_1-\sum_{k=2}^na_kb_k\bigg)^2 \\Q_n&amp;:\dfrac{x_1^2}{\ell_1^2}-\displaystyle\sum_{k=2}^n\dfrac{x_k^2}{\ell_k^2}\le\bigg(x_1-\displaystyle\sum_{k=2}^nx_k\bigg)^2\bigg(\ell^2_1-{\sum_{k=2}^n{\ell_k^2}}\bigg)^{-1}\end{aligned}$$</p>
 </div>
 由 <div class="scroll">$$P_2\iff Q_2\implies Q_3\implies\cdots\implies Q_n\iff P_n$$</div> 证完.
-
 <p>同时，考虑 $|x|+|y|\sim |x+y|,\sim\in\{\ge,\le\}$，自然，当上式恒等时，$|\cdot|$ 是线性变换.</p>
 <hr>
 <p>现仍考察 $$|x|+|y|\sim |x+y|\tag{1}$$ 且命其中 <div class="scroll">$$|\cdot|:\;\R_{\ge0}\times\R_{\gt0}\ni(u,v)\longmapsto \dfrac{u^p}{v^{p-1}}\in\R_{\ge0},\;X\subset\R_{\ge0}$$</p>
 </div>
-
-<p>当 $p$ 取 $0,1$ 时，显然 $(1)$ 式恒等，此即 $u^p,v^{p-1}$ 依次为常数 $1$ 时的情形. 换言之，其一为常数，另一变量尚可固定，因而线性.<br>当 $p\in(-\infty,0)\cup(1,+\infty)$ 时，$\sim$ 成为 $\ge$，此即所谓的 Radon 不等式（中等数学里常称为权方和不等式）.<br>当 $0\lt p\lt1$ 时，$\sim$ 成为 $\le$.</p>
+<p>当 $p$ 取 $0,1$ 时，显然 $(1)$ 式恒等，此即 $u^p,v^{p-1}$ 依次为常数 $1$ 时的情形. 换言之，其一为常数，另一变量尚可固定，因而线性.<br>
+当 $p\in(-\infty,0)\cup(1,+\infty)$ 时，$\sim$ 成为 $\ge$，此即所谓的 Radon 不等式（中等数学里常称为权方和不等式）.<br>
+当 $0\lt p\lt1$ 时，$\sim$ 成为 $\le$.</p>
 <p>固定一变量，此时不妨令 $f(x)=\dfrac{x^p}{\ell^{p-1}}$，形式上有 $f^{-1}(x)=\ell^{1-p^{-1}}x^{p^{-1}}$. 由 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$ 立即得到</p>
 <div class="scroll">$$\ell_1^{1-p^{-1}}x_1^{p^{-1}}+\ell_2^{1-p^{-1}}x_2^{p^{-1}}\le(\ell_1+\ell_2)^{1-p^{-1}}(x_1+x_2)^{p^{-1}}$$</div>
-
 <p>再设 $p^{-1}+q^{-1}=1$，于是 $$\ell_1x_1+\ell_2x_2\le(\ell_1^q+\ell_2^q)^{1/q}(x_1^p+x_2^p)^{1/p}$$ 这即是常见的 Hölder 不等式.</p>
-<p>类似 Cauchy 与 Aczél 的对偶，有 $$\displaystyle\sum_{x\in X^2}|x|\ge\big|\sum_{x\in X^2}x\big|\iff\sum_{x\in X^2}^{\text{op}}|x|\le\big|\sum_{x\in X^2}^{\text{op}}x\big|$$<br>后者（Hölder 的对偶）被称作 Aczél-Popoviciu 不等式<br>其中 $$\sum_{i\in I}^{\text{op}}x_i\overset{\text{sign}}{=}x_{\min I}-\sum_{i\in I\backslash{\min I}}x_i$$</p>
+<p>类似 Cauchy 与 Aczél 的对偶，有 $$\displaystyle\sum_{x\in X^2}|x|\ge\big|\sum_{x\in X^2}x\big|\iff\sum_{x\in X^2}^{\text{op}}|x|\le\big|\sum_{x\in X^2}^{\text{op}}x\big|$$<br>
+后者（Hölder 的对偶）被称作 Aczél-Popoviciu 不等式<br>
+其中 $$\sum_{i\in I}^{\text{op}}x_i\overset{\text{sign}}{=}x_{\min I}-\sum_{i\in I\backslash{\min I}}x_i$$</p>
 <hr>
-<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p>因为 $$f\sim g\xrightarrow{\quad f^{-1}\quad}\text{id}\sim g\cdot f^{-1}\xrightarrow{\quad g^{-1}\quad}g^{-1}\sim f^{-1}$$<br>取 $$f\xrightarrow{\varphi}f^{-1} \qquad\qquad \varphi\cdot\varphi=\text{id}$$<br>并且 $$(\sim,\sim^{-1})\;\cong\text{id}$$<br>考虑 $$“\ge”\quad\overset{\text{form}}{=}\quad“\gt”\;\text{glue}\;“\text{ id }”\quad\overset{\text{form}}{=}\;(\succ,\text{id})$$<br>又 <div class="scroll">$\textbf{Ineq}:(\mathcal{S},\,\cdot\,)\hookrightarrow(\mathscr{P}(\mathcal{S}),\,\cdot\,)\qquad \mathcal{S}^\prime\ni s\mapsto {t:\mathcal{S}\ni t\sim s}$<br>$f:\mathcal{S}\to(\mathcal{S}^\prime\subset\mathcal{S},\,\sim\,)\qquad\sim:\mathcal{S}^\prime\to\mathcal{S}^\prime \qquad f(x\cdot y)\sim f(x)\cdot f(y)$</p>
+<h2 id="草稿">草稿</h2>
+<p>因为 $$f\sim g\xrightarrow{\quad f^{-1}\quad}\text{id}\sim g\cdot f^{-1}\xrightarrow{\quad g^{-1}\quad}g^{-1}\sim f^{-1}$$<br>
+取 $$f\xrightarrow{\varphi}f^{-1} \qquad\qquad \varphi\cdot\varphi=\text{id}$$<br>
+并且 $$(\sim,\sim^{-1})\;\cong\text{id}$$<br>
+考虑 $$“\ge”\quad\overset{\text{form}}{=}\quad“\gt”\;\text{glue}\;“\text{ id }”\quad\overset{\text{form}}{=}\;(\succ,\text{id})$$<br>
+又 <div class="scroll">$\textbf{Ineq}:(\mathcal{S},\,\cdot\,)\hookrightarrow(\mathscr{P}(\mathcal{S}),\,\cdot\,)\qquad \mathcal{S}^\prime\ni s\mapsto {t:\mathcal{S}\ni t\sim s}$<br>
+$f:\mathcal{S}\to(\mathcal{S}^\prime\subset\mathcal{S},\,\sim\,)\qquad\sim:\mathcal{S}^\prime\to\mathcal{S}^\prime \qquad f(x\cdot y)\sim f(x)\cdot f(y)$</p>
 </div>
-
-<p>给出 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$<br>$$(f^{-1},\;\cdot\;,\sim^{-1}) \xrightarrow{\text{inv}\;\cdot} (f^{-1},\;\cdot^{-1}\;,\sim)$$<br>$$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;\cdot} (f,\;\cdot^{-1}\;,\sim^{-1})$$<br>$$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\;,\sim)$$</p>
+<p>给出 $$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot\;,\sim^{-1})$$<br>
+$$(f^{-1},\;\cdot\;,\sim^{-1}) \xrightarrow{\text{inv}\;\cdot} (f^{-1},\;\cdot^{-1}\;,\sim)$$<br>
+$$(f,\;\cdot\;,\sim) \xrightarrow{\text{inv}\;\cdot} (f,\;\cdot^{-1}\;,\sim^{-1})$$<br>
+$$(f,\;\cdot^{-1}\;,\sim^{-1}) \xrightarrow{\text{inv}\;f} (f^{-1},\;\cdot^{-1}\;,\sim)$$</p>
 <hr>
 <p>参考：无.</p>
 <p>待续.</p>
@@ -202,7 +234,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AM%E2%80%93GM"><span class="toc-number">1.1.</span> <span class="toc-text">AM–GM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy"><span class="toc-number">1.2.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel"><span class="toc-number">1.3.</span> <span class="toc-text">Aczél</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-%E4%B8%8E-Aczel-%E7%AD%89%E4%BB%B7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">Cauchy 与 Aczél 等价的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Young-amp-%E4%BA%8C%E5%85%83-%E5%8A%A0%E6%9D%83-AM%E2%80%93GM-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">Young &amp; (二元)加权 AM–GM 不等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%AF%81%E8%87%AA%E6%98%8E%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">不证自明的形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-1"><span class="toc-number">2.1.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel-1"><span class="toc-number">2.2.</span> <span class="toc-text">Aczél</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8D%89%E7%A8%BF"><span class="toc-number">3.</span> <span class="toc-text">草稿</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">动机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AM%E2%80%93GM"><span class="toc-number">1.1.</span> <span class="toc-text">AM–GM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy"><span class="toc-number">1.2.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel"><span class="toc-number">1.3.</span> <span class="toc-text">Aczél</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-%E4%B8%8E-Aczel-%E7%AD%89%E4%BB%B7%E7%9A%84%E8%AF%81%E6%98%8E"><span class="toc-number">1.4.</span> <span class="toc-text">Cauchy 与 Aczél 等价的证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Young-%E4%BA%8C%E5%85%83-%E5%8A%A0%E6%9D%83-AM%E2%80%93GM-%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">Young &amp; (二元)加权 AM–GM 不等式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E8%AF%81%E8%87%AA%E6%98%8E%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">不证自明的形式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Cauchy-2"><span class="toc-number">2.1.</span> <span class="toc-text">Cauchy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Aczel-2"><span class="toc-number">2.2.</span> <span class="toc-text">Aczél</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8D%89%E7%A8%BF"><span class="toc-number">3.</span> <span class="toc-text">草稿</span></a></li></ol>
     </div>
     
     <div id="actions-footer">

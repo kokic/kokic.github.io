@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -131,30 +132,42 @@
 
   <div class="content" itemprop="articleBody">
     <p><span style="color: grey;">update: 2023-01-28</span></p>
-<p>$\blacksquare\blacksquare\blacksquare$ 在一周前發了張經典的 javascript 梗圖給我. </p>
+<p>$\blacksquare\blacksquare\blacksquare$ 在一周前發了張經典的 javascript 梗圖給我.</p>
 <div style="color: grey;text-align:center">派大星 - 射線惡魔.jpg</div>
-
-<p>&emsp;&emsp;射線惡魔: <code>0 == &quot;0&quot;</code><br>&emsp;&emsp;&emsp;派大星: <code>true</code><br>&emsp;&emsp;射線惡魔: <code>0 == []</code><br>&emsp;&emsp;&emsp;派大星: <code>true</code><br>&emsp;&emsp;射線惡魔: 好的, 如果 <code>0 == &quot;0&quot;</code> 以及 <code>0 == []</code> 那顯然 <code>&quot;0&quot; == []</code><br>&emsp;&emsp;射線惡魔: 我覺得那才合理啊<br>&emsp;&emsp;射線惡魔: <code>&quot;0&quot; == []</code><br>&emsp;&emsp;&emsp;派大星: <code>false</code></p>
+<p>  射線惡魔: <code>0 == &quot;0&quot;</code><br>
+   派大星: <code>true</code><br>
+  射線惡魔: <code>0 == []</code><br>
+   派大星: <code>true</code><br>
+  射線惡魔: 好的, 如果 <code>0 == &quot;0&quot;</code> 以及 <code>0 == []</code> 那顯然 <code>&quot;0&quot; == []</code><br>
+  射線惡魔: 我覺得那才合理啊<br>
+  射線惡魔: <code>&quot;0&quot; == []</code><br>
+   派大星: <code>false</code></p>
 <p>當然, 更常見的版本還會在這之後配上基督教三位一體 (聖父、聖子、聖靈、上帝) 與 javascript 值 (<code>[]</code>、<code>&quot;0&quot;</code>、<code>&quot;\t&quot;</code>、<code>0</code>) 的對應.</p>
 <p>實際上這個事情沒有如此複杂, 衹是由於初學者或圍觀群眾不熟悉 javascript 中使得這些關係變得合理自然的方式.</p>
-<p>首先來回顧相等運算符 <code>==</code> 在 MDN Reference 上的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">說明</a>: “equality operator … attempts to convert and compare operands that are of different types.” </p>
+<p>首先來回顧相等運算符 <code>==</code> 在 MDN Reference 上的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">說明</a>: “equality operator … attempts to convert and compare operands that are of different types.”</p>
 <ul>
-<li><p>對於 <code>0 == &quot;0&quot;</code>, 這當然是一對不同的類型, 在這裡做的轉換即 <code>(0).toString()</code> 這樣就會變成 <code>&quot;0&quot;</code>. </p>
+<li>
+<p>對於 <code>0 == &quot;0&quot;</code>, 這當然是一對不同的類型, 在這裡做的轉換即 <code>(0).toString()</code> 這樣就會變成 <code>&quot;0&quot;</code>.</p>
 </li>
-<li><p>對於 <code>0 == []</code>, 需要再多瞭解一些東西, 比如 <code>[].toString()</code> 的結果是 <code>&quot;&quot;</code> 這樣一個空字符串, 以及這個地方為什麼不是把數字 <code>0</code> 往數組類型上面靠… </p>
+<li>
+<p>對於 <code>0 == []</code>, 需要再多瞭解一些東西, 比如 <code>[].toString()</code> 的結果是 <code>&quot;&quot;</code> 這樣一個空字符串, 以及這個地方為什麼不是把數字 <code>0</code> 往數組類型上面靠…</p>
 <ul>
-<li><p>數組判等 (在各種語言的各種意義之下) 其實是一個更困難 (更模糊) 的事, 相對於數字或者字符串這種更加基本的類型當然沒道理往數組類型這上面跑. </p>
+<li>
+<p>數組判等 (在各種語言的各種意義之下) 其實是一個更困難 (更模糊) 的事, 相對於數字或者字符串這種更加基本的類型當然沒道理往數組類型這上面跑.</p>
 </li>
-<li><p>還有一個更統一但也更依賴於語言特性的看法是, 等號在這裡嘗試做的類型轉換實際上是給其中一個操作數套上對方的構造器, 比如在這裡就是 <code>Array(0) == []</code> 或者 <code>Number([]) == 0</code>. </p>
+<li>
+<p>還有一個更統一但也更依賴於語言特性的看法是, 等號在這裡嘗試做的類型轉換實際上是給其中一個操作數套上對方的構造器, 比如在這裡就是 <code>Array(0) == []</code> 或者 <code>Number([]) == 0</code>.</p>
 </li>
-<li><p>熟悉的人可能覺得很合理但實際上這裡有重言式 (同義反復) 的問題在, 比如完全就沒交代為甚麼 <code>Number([])</code> 會變成數字 <code>0</code>, 雖然繼續查 MDN 會告訴你這是轉成 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number">原始值</a> 導致的 (實際上又變回前面說的 “往更加基本的類型上面轉” 了). </p>
+<li>
+<p>熟悉的人可能覺得很合理但實際上這裡有重言式 (同義反復) 的問題在, 比如完全就沒交代為甚麼 <code>Number([])</code> 會變成數字 <code>0</code>, 雖然繼續查 MDN 會告訴你這是轉成 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number">原始值</a> 導致的 (實際上又變回前面說的 “往更加基本的類型上面轉” 了).</p>
 </li>
 </ul>
 </li>
-<li><p>講清這兩件事最後一個就很顯然了, 這裡的等號因為帶著跨類型的轉換不是一個傳遞的關係, 顯然也無法推導出 <code>&quot;0&quot; == []</code>, 而且都已經知道 <code>[]</code> 字符串化之後是 <code>&quot;&quot;</code>, 更不可能和 <code>&quot;0&quot;</code> 相等了.</p>
+<li>
+<p>講清這兩件事最後一個就很顯然了, 這裡的等號因為帶著跨類型的轉換不是一個傳遞的關係, 顯然也無法推導出 <code>&quot;0&quot; == []</code>, 而且都已經知道 <code>[]</code> 字符串化之後是 <code>&quot;&quot;</code>, 更不可能和 <code>&quot;0&quot;</code> 相等了.</p>
 </li>
 </ul>
-<p>實際上本來設計這一套轉換其實是沒什麼問題的, 想通了就會很方便, 大多數對於這個方面的吐槽都構不成問題, 甚至在瀏覽器 DOM 這種讀到的數據經常數字和字符串混用的環境下還更有優勢. </p>
+<p>實際上本來設計這一套轉換其實是沒什麼問題的, 想通了就會很方便, 大多數對於這個方面的吐槽都構不成問題, 甚至在瀏覽器 DOM 這種讀到的數據經常數字和字符串混用的環境下還更有優勢.</p>
 
   </div>
 </article>

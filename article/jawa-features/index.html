@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -86,7 +87,7 @@
     <br/>
         
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81-version-geqslant10"><span class="toc-number">1.</span> <span class="toc-text">新機能まとめ (version $\geqslant10$)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-10%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.1.</span> <span class="toc-text">Java 10新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-11%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.2.</span> <span class="toc-text">Java 11新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-12%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.3.</span> <span class="toc-text">Java 12新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-13%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.4.</span> <span class="toc-text">Java 13新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-14%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.5.</span> <span class="toc-text">Java 14新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-15%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.6.</span> <span class="toc-text">Java 15新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-16%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.7.</span> <span class="toc-text">Java 16新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.7.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-17%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.8.</span> <span class="toc-text">Java 17新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.8.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-18%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.9.</span> <span class="toc-text">Java 18新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.9.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-19%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.10.</span> <span class="toc-text">Java 19新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.10.1.</span> <span class="toc-text">Features</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81-version-pro-geqslant10-pro"><span class="toc-number">1.</span> <span class="toc-text">新機能まとめ (version $\geqslant10$)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-10%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.1.</span> <span class="toc-text">Java 10新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-11%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.2.</span> <span class="toc-text">Java 11新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-12%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.3.</span> <span class="toc-text">Java 12新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-13%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.4.</span> <span class="toc-text">Java 13新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-14%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.5.</span> <span class="toc-text">Java 14新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-15%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.6.</span> <span class="toc-text">Java 15新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-16%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.7.</span> <span class="toc-text">Java 16新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.7.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-17%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.8.</span> <span class="toc-text">Java 17新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.8.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-18%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.9.</span> <span class="toc-text">Java 18新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.9.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-19%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.10.</span> <span class="toc-text">Java 19新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.10.1.</span> <span class="toc-text">Features</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -135,9 +136,10 @@ pro { font-size: 0.75em }
 hs { line-height: 2.5em; }
 a { font-weight: 400; }
 </style>
-
 <p><a target="_blank" rel="noopener" href="https://openjdk.org/projects/jdk-updates/">JDK Update Releases</a>、<a target="_blank" rel="noopener" href="https://qiita.com/">Qiita</a>、<a target="_blank" rel="noopener" href="https://www.azul.com/">Azul</a> から収集.</p>
-<h2 id="新機能まとめ-version-geqslant10"><a href="#新機能まとめ-version-geqslant10" class="headerlink" title="新機能まとめ (version $\geqslant10$)"></a>新機能まとめ (version <pro>$\geqslant10$</pro>)</h2><h3 id="Java-10新機能まとめ"><a href="#Java-10新機能まとめ" class="headerlink" title="Java 10新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/d9bc4b3f715d17c2830d">Java 10新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h2 id="新機能まとめ-version-pro-geqslant10-pro">新機能まとめ (version <pro>$\geqslant10$</pro>)</h2>
+<h3 id="Java-10新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/d9bc4b3f715d17c2830d">Java 10新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 286: <a target="_blank" rel="noopener" href="http://openjdk.java.net/jeps/286">Local-Variable Type
 Inference</a><br>
@@ -166,11 +168,8 @@ Versioning</a><br>
 <hs></hs>
 <a target="_blank" rel="noopener" href="https://www.azul.com/blog/109-new-features-in-jdk-10/">109 New Features in JDK 10 | Azul</a>
 </pre>
-
-
-
-
-<h3 id="Java-11新機能まとめ"><a href="#Java-11新機能まとめ" class="headerlink" title="Java 11新機能まとめ *"></a>Java 11新機能まとめ *</h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-11新機能まとめ">Java 11新機能まとめ *</h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 181: <a target="_blank" rel="noopener" href="http://openjdk.java.net/jeps/181">Nest-Based Access
 Control</a><br />
@@ -207,8 +206,8 @@ Nashorn JavaScript Engine</a><br />
 336: <a target="_blank" rel="noopener" href="http://openjdk.java.net/jeps/336">Deprecate the
 Pack200 Tools and API</a>
 </pre>
-
-<h3 id="Java-12新機能まとめ"><a href="#Java-12新機能まとめ" class="headerlink" title="Java 12新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/0e860819b6ffb1aca90a">Java 12新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-12新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/0e860819b6ffb1aca90a">Java 12新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -255,8 +254,8 @@ Unused Committed Memory from G1</a></td>
 
 <a target="_blank" rel="noopener" href="https://www.azul.com/blog/39-new-features-and-apis-in-jdk-12/">39 New Features of JDK 12 | Azul</a>
 </pre>
-
-<h3 id="Java-13新機能まとめ"><a href="#Java-13新機能まとめ" class="headerlink" title="Java 13新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/3e1625a77cb435394547">Java 13新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-13新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/3e1625a77cb435394547">Java 13新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -286,8 +285,8 @@ Legacy Socket API</a></td>
 </tr>
 </table>
 </pre>
-
-<h3 id="Java-14新機能まとめ"><a href="#Java-14新機能まとめ" class="headerlink" title="Java 14新機能まとめ *"></a>Java 14新機能まとめ *</h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-14新機能まとめ">Java 14新機能まとめ *</h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table class="jeps" summary="jeps">
 <tr>
@@ -374,11 +373,8 @@ Access API (Incubator)</a></td>
 
 <a target="_blank" rel="noopener" href="https://www.azul.com/blog/whats-new-in-jdk14-latest-release/">80 New Features and APIs in JDK 14 | Azul</a>
 </pre>
-
-
-
-
-<h3 id="Java-15新機能まとめ"><a href="#Java-15新機能まとめ" class="headerlink" title="Java 15新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/2858699bc1cd89222cd8">Java 15新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-15新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/2858699bc1cd89222cd8">Java 15新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -455,8 +451,8 @@ Activation for Removal</a></td>
 
 <a target="_blank" rel="noopener" href="https://www.azul.com/blog/jdk-15-release-64-new-features-and-apis/">69 New Features & APIs in the JDK 15 Release | Azul</a>
 </pre>
-
-<h3 id="Java-16新機能まとめ"><a href="#Java-16新機能まとめ" class="headerlink" title="Java 16新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/215769cdcb14d6c5412f">Java 16新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-16新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/215769cdcb14d6c5412f">Java 16新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -507,11 +503,8 @@ Port</a></td>
 </table>
 <a target="_blank" rel="noopener" href="https://www.azul.com/resources-hub/about-java/67-new-features-in-jdk-16">67 New Features in JDK 16</a>
 </pre>
-
-
-
-
-<h3 id="Java-17新機能まとめ"><a href="#Java-17新機能まとめ" class="headerlink" title="Java 17新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/ec58bf8f30d236a12acb">Java 17新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-17新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/ec58bf8f30d236a12acb">Java 17新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -586,8 +579,8 @@ Deserialization Filters</a></td>
 </tr>
 </table>
 </pre>
-
-<h3 id="Java-18新機能まとめ"><a href="#Java-18新機能まとめ" class="headerlink" title="Java 18新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/17d990aa8a5b1c5223c8">Java 18新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-18新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/17d990aa8a5b1c5223c8">Java 18新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table width="100%">
 <tr>
@@ -637,8 +630,8 @@ Finalization for Removal</a></td>
 </tr>
 </table>
 </pre>
-
-<h3 id="Java-19新機能まとめ"><a href="#Java-19新機能まとめ" class="headerlink" title="Java 19新機能まとめ"></a><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/b903c10502f9ffe50c3a">Java 19新機能まとめ</a></h3><pre class="scroll" style="line-height: 1.5em;">
+<h3 id="Java-19新機能まとめ"><a target="_blank" rel="noopener" href="https://qiita.com/nowokay/items/b903c10502f9ffe50c3a">Java 19新機能まとめ</a></h3>
+<pre class="scroll" style="line-height: 1.5em;">
 <h4>Features</h4><br>
 <table>
 <tr>
@@ -674,9 +667,6 @@ Preview)</a></td>
 </table>
 </pre>
 
-
-
-
   </div>
 </article>
 
@@ -701,7 +691,7 @@ Preview)</a></td>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81-version-geqslant10"><span class="toc-number">1.</span> <span class="toc-text">新機能まとめ (version $\geqslant10$)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-10%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.1.</span> <span class="toc-text">Java 10新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-11%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.2.</span> <span class="toc-text">Java 11新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-12%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.3.</span> <span class="toc-text">Java 12新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-13%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.4.</span> <span class="toc-text">Java 13新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-14%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.5.</span> <span class="toc-text">Java 14新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-15%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.6.</span> <span class="toc-text">Java 15新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-16%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.7.</span> <span class="toc-text">Java 16新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.7.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-17%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.8.</span> <span class="toc-text">Java 17新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.8.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-18%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.9.</span> <span class="toc-text">Java 18新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.9.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-19%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.10.</span> <span class="toc-text">Java 19新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.10.1.</span> <span class="toc-text">Features</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81-version-pro-geqslant10-pro"><span class="toc-number">1.</span> <span class="toc-text">新機能まとめ (version $\geqslant10$)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-10%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.1.</span> <span class="toc-text">Java 10新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-11%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.2.</span> <span class="toc-text">Java 11新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-12%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.3.</span> <span class="toc-text">Java 12新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-13%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.4.</span> <span class="toc-text">Java 13新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-14%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.5.</span> <span class="toc-text">Java 14新機能まとめ *</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.5.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-15%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.6.</span> <span class="toc-text">Java 15新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.6.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-16%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.7.</span> <span class="toc-text">Java 16新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.7.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-17%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.8.</span> <span class="toc-text">Java 17新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.8.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-18%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.9.</span> <span class="toc-text">Java 18新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.9.1.</span> <span class="toc-text">Features</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-19%E6%96%B0%E6%A9%9F%E8%83%BD%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-number">1.10.</span> <span class="toc-text">Java 19新機能まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.10.1.</span> <span class="toc-text">Features</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="actions-footer">

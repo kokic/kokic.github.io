@@ -7,6 +7,7 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
     
@@ -82,7 +83,9 @@
   <div class="content" itemprop="articleBody">
       
           <p>$\text{SL}(2,\mathbb{R})$ 的 Gauss 定理指出, 每个 $\text{SL}(2,\mathbb{R})$ 中的元素可以写成矩阵 $\begin{pmatrix} 1 &amp; * \\ 0 &amp; 1 \end{pmatrix}$ 和 $\begin{pmatrix} 1 &amp; 0 \\ * &amp; 1 \end{pmatrix}$ 的乘积.</p>
-<p>$proof$. 设 $T=\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\in\text{SL}(2,\mathbb{R})$, $c\neq0$. 对 $s,t\in\mathbb{R}$, 考虑<br>$$\begin{pmatrix} 1 &amp; s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\begin{pmatrix} 1 &amp; t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix} \underline{a} &amp; t\underline{a}+\underline{b} \\ c &amp; \underline{d} \end{pmatrix}$$ 其中 $\underline{a}=a+sc$, $\underline{b}=b+sd$, $\underline{d}=d+ct$. 因为 $s\neq0$, 可选取 $s$ 使得 $\underline{a}=1$, 从而选择 $t=-\underline{b}$. 又因为右边矩阵的行列式是 $1$, 故 $\underline{d}=1$. 这样就得到了<br>$$\begin{pmatrix} 1 &amp; s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\begin{pmatrix} 1 &amp; t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix}1 &amp; 0 \\ c &amp; 1 \end{pmatrix}$$ $$\begin{pmatrix} 1 &amp; -s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; 0 \\ c &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; -t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix}a &amp; b \\ c &amp; d \end{pmatrix}$$ 现在考虑 $\begin{vmatrix}a &amp; b \\ 0 &amp; d \end{vmatrix}=1$ 的矩阵, 显然 $a\neq0$, 用 $\begin{pmatrix}1 &amp; 0 \\ -u &amp; 1 \end{pmatrix}$, $u\neq0$ 左乘得 $R=\begin{pmatrix}a &amp; b \\ -au &amp; d-bu \end{pmatrix}$ 换言之 $\begin{pmatrix}a &amp; b \\ 0 &amp; d \end{pmatrix}=\begin{pmatrix}1 &amp; 0 \\ u &amp; 1 \end{pmatrix}R$, 而 $R$ 可以写成所需矩阵的乘积, 证毕.</p>
+<p>$proof$. 设 $T=\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\in\text{SL}(2,\mathbb{R})$, $c\neq0$. 对 $s,t\in\mathbb{R}$, 考虑<br>
+$$\begin{pmatrix} 1 &amp; s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\begin{pmatrix} 1 &amp; t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix} \underline{a} &amp; t\underline{a}+\underline{b} \\ c &amp; \underline{d} \end{pmatrix}$$ 其中 $\underline{a}=a+sc$, $\underline{b}=b+sd$, $\underline{d}=d+ct$. 因为 $s\neq0$, 可选取 $s$ 使得 $\underline{a}=1$, 从而选择 $t=-\underline{b}$. 又因为右边矩阵的行列式是 $1$, 故 $\underline{d}=1$. 这样就得到了<br>
+$$\begin{pmatrix} 1 &amp; s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}\begin{pmatrix} 1 &amp; t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix}1 &amp; 0 \\ c &amp; 1 \end{pmatrix}$$ $$\begin{pmatrix} 1 &amp; -s \\ 0 &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; 0 \\ c &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; -t \\ 0 &amp; 1 \end{pmatrix}=\begin{pmatrix}a &amp; b \\ c &amp; d \end{pmatrix}$$ 现在考虑 $\begin{vmatrix}a &amp; b \\ 0 &amp; d \end{vmatrix}=1$ 的矩阵, 显然 $a\neq0$, 用 $\begin{pmatrix}1 &amp; 0 \\ -u &amp; 1 \end{pmatrix}$, $u\neq0$ 左乘得 $R=\begin{pmatrix}a &amp; b \\ -au &amp; d-bu \end{pmatrix}$ 换言之 $\begin{pmatrix}a &amp; b \\ 0 &amp; d \end{pmatrix}=\begin{pmatrix}1 &amp; 0 \\ u &amp; 1 \end{pmatrix}R$, 而 $R$ 可以写成所需矩阵的乘积, 证毕.</p>
 
         
   </div>
