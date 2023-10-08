@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC&display=swap" rel="stylesheet">
+
+    
+    
+    
+    <!-- Prism -->
+    <link rel="stylesheet" href="/lib/prism/prism.css">
+    
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="/lib/katex/katex.css">
+    <script src="/lib/katex/katex.js"></script>
+    <script src="/lib/katex/auto-render.js"></script>
+    <script src="/lib/katex/copy-tex.js"></script>
+    
+    <!-- Quiver Embed -->
+    <script src="/lib/quiver-embed/quiver-embed.js"></script>
+
+    
+    
+    
+    <!-- title -->
+    <title>斋藤毅 - 算术几何学</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/article/music-list/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/article/bleach/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+        
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%87%A0%E4%BD%95%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">算术几何学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%8B%E8%97%A4%E6%AF%85"><span class="toc-number">1.1.</span> <span class="toc-text">斋藤毅</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%BB%8E%E6%9B%BC%E7%8C%9C%E6%83%B3"><span class="toc-number">2.</span> <span class="toc-text">1. 黎曼猜想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%A3%E6%95%B0%E5%9F%9F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%9F%9F%E7%9B%B8%E4%BC%BC%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">2. 代数域与函数域相似性</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        斋藤毅 - 算术几何学
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Hydrangea</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-06T16:00:00.000Z" itemprop="datePublished">2023-10-07</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/record/">record</a> › <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+    </div>
+
+
+      
+  <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%87%A0%E4%BD%95/" rel="tag">几何</a>, <a class="tag-link-link" href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a>
+  </div>  
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>译自 <a target="_blank" rel="noopener" href="https://www.ms.u-tokyo.ac.jp/~t-saito/jd/i1.pdf">数論幾何学 —— リーマン予想からエタール・コホモロジーへ</a>.</p>
+<h2 id="算术几何学">算术几何学</h2>
+<h3 id="斋藤毅">斋藤毅</h3>
+<p style="text-align:right"> —— 从黎曼猜想到平展上同调 </p>
+<p>今天我将讨论数论和几何的话题. 在三年级的课程中, 数论是代数, 所以你可能觉得它与处理流形和同调的几何没有关系. 然而, 有趣的是, 这两件事在数学中变成了一体.</p>
+<h2 id="1-黎曼猜想">1. 黎曼猜想</h2>
+<p>首先, 从黎曼的 $\zeta$ 函数定义开始. 黎曼的 $\zeta$ 函数被定义为狄利克雷级数.</p>
+<p>$$\zeta(s)=\sum_{n=1}^\infty\frac1{n^s} \tag1$$</p>
+<p>这在实部 $s&gt;1$ 的范围内绝对收敛, 并定义了 <strong>全纯函数</strong>. 使用素因数分解的唯一性, 也可以用欧拉积表示它.</p>
+<p>$$\zeta(s)=\prod_{p: 素数}\Big(1-\frac1{p^s}\Big)^{-1} \tag2$$</p>
+<p>$\zeta(s)$ 是整个复平面上的有理函数 <strong>解析延拓</strong>, 除了 $s=1$ 处的第一极点外, 它是全纯的. 关于 <strong>零点</strong>, 由于欧拉积在实部 $&gt;1$ 的范围内收敛, 因此可以知道没有零点. 使用这一事实和函数方程, 可以知道在实部 $&lt;0$ 的范围内, 零点不是第一个偶数的负零点.</p>
+<p>自然数 $n$ 以下的素数个数 $\pi(n)$ 大约是 $\dfrac{n}{\log n}$, 这是素数定理, 它通过证明实部为 $1$ 的零点不存在来证明. 著名的黎曼猜想陈述了实部在 $0$ 和 $1$ 之间的零点的实部都是 $\dfrac12$, 这是一个未解决的问题. 如果这被证明, 我们将能够更精确地了解素数的分布.</p>
+<h2 id="2-代数域与函数域相似性">2. 代数域与函数域相似性</h2>
+<p>古典的的代数整数论是关于称为代数体的有理数域的 <strong>有限次扩张</strong> 的理论. 有限域上的一元有理函数域的有限次扩张称为一元函数域, 但是这些域和代数域非常相似. 这被称为代数和函数域之间的相似性. 在数学中, 通过找到这些相似之处并研究它们的相似之处, 可以更好地了解两者.</p>
+<p>Riemann zeta 函数 $(1)$ 可以视为有理数域的 zeta 函数. 这样考虑, 可以定义在有限域上的一元函数域的 zeta 函数. 关于这一点, 已经证明了类似的 Riemann 猜想.</p>
+<p>首先, 从有理函数域的情况开始. $p$ 是素数, $\mathbf{F}_p$ 是大小为 $p$ 的有限域. 对于一元多项式环 $A=\mathbf{F}_p[T]$, 它不仅是 <strong>主理想整环</strong>, 而且 <strong>极大理想</strong> $\mathfrak{m}$ 的剩余域 $A/\mathfrak{m}$ 都是有限域, 并且具有与整数环 $\mathbf{Z}$ 非常相似的性质. 使用此方法, 可以将 $A = \mathbf{F}_p[T]$ 的 zeta 函数定义为欧拉乘积 $(2)$</p>
+<p>$$\zeta_A(s)=\prod_{\mathfrak{m}:;A ~ 的极大理想}\Big(1-\frac1{N\mathfrak{m}^s}\Big)^{-1} \tag3$$</p>
+<p>这里, $N\mathfrak{m}$ 是表示有限域 $A/\mathfrak{m}$ 的元素数量的符号.</p>
+<p>考虑整数环 $\mathbf{Z}$ 作为 $A$ 并将其应用于 $(3)$, 则可以得到使用欧拉积表示黎曼 $\zeta$ 函数的公式 $(2)$. 将 $A=\mathbf{F}_p[T]$ 还原为多项式环, 由于 <strong>素元分解</strong> 的唯一性也成立, 因此可以使用狄利克雷级数表示 $A$ 的 $\zeta$ 函数 $\zeta_A(s)$, 如 $(1)$ 所示.</p>
+<p>$A=\mathbf{F}_p[T]$ 的 $\zeta$ 函数 $\zeta_A(s)$ 与黎曼 $\zeta$ 函数 $\zeta(s)$ 的一个重要区别是, $\zeta_A(s)$ 是一个简单的函数 $\dfrac1{1-p^{1-s}}$. 由此可知, $\zeta_A(s)$ 在 $s=1+\dfrac{2π\sqrt{-1}}{\log p}$ ($n$ 为整数) 处具有 $1$ 阶极点.</p>
+<p><strong>问题</strong> $\bf1$ 对于 $A=\mathbf{F}_p[T]$, 证明 $\zeta_A(s)=\dfrac1{1-p^{1-s}}$.</p>
+<p>到目前为止, $A$ 是多项式环 $\mathbf{F}_p[T]$, 如果 $A$ 是整数环 $Z$ 上的 <strong>有限生成</strong>, 则对于任何交换环, 都可以使用 $(3)$ 定义其 $\zeta$ 函数. 在这里, 我们使用可交换环的定理, 即整数环 $\mathbf{Z}$ 上的有限生成的环作为有限域的所有域.</p>
+<p>接下来研究的是是多项式环 $\mathbf{F}_p[T]$<br>
+$$\mathbf{F}_p[X,Y]/(Y^2-f(X)) \tag4$$</p>
+<p>这样的环. 这里, $p$ 是大于等于 $3$ 的质数, $f(X)\in\mathbf{F}_p[X]$ 是没有重根的三次式. 研究这种情况下的 $\zeta$ 函数 $\zeta_A(s)$ 比 <strong>问题</strong> $\bf1$ 要困难得多, 但仍然比黎曼 $\zeta$ 函数简单得多.</p>
+<p>$$\zeta_A(s)=\frac{1-ap^{-s}+p^{1-2s}}{1-p^{1-s}} \tag5$$</p>
+<p>已知它会变成这样. 不仅如此, $a$ 是整数, 且满足 $|a|&lt;2\sqrt{p}$.</p>
+<p>这个不等式的分子 $1−ap^{−s}+p^{1−2s}$ 可以解为 $(1−αp^{−s})(1−\bar{α}p^{−s})$, 其中复数 $a$ 的绝对值等于 $p^{\frac12}$. 因此, $\zeta_A(s)$ 的零点的实部为 $\frac12$, 这意味着 $\zeta_A(s)$ 满足了类似于黎曼猜想的性质.</p>
+<p>关于类似于黎曼猜想的问题, 我们已经知道了很多. 但是, 我们先不讨论这个问题, 而是考虑一下为什么分子的式子是 $p−s$ 的二次式. 这里数论和几何相结合.</p>
+<p>关于这个问题的后续内容</p>
+<p style="text-align: center;"><span style="font-size:1.5em; font-weight: bold;">数学的现在</span> &emsp; (东京大学出版社)</p>
+<p style="text-align: right">请阅读</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E5%87%A0%E4%BD%95%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">算术几何学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%8B%E8%97%A4%E6%AF%85"><span class="toc-number">1.1.</span> <span class="toc-text">斋藤毅</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%BB%8E%E6%9B%BC%E7%8C%9C%E6%83%B3"><span class="toc-number">2.</span> <span class="toc-text">1. 黎曼猜想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%A3%E6%95%B0%E5%9F%9F%E4%B8%8E%E5%87%BD%E6%95%B0%E5%9F%9F%E7%9B%B8%E4%BC%BC%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">2. 代数域与函数域相似性</span></a></li></ol>
+    </div>
+    
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <!-- <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a> -->
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2017-2023
+    Hydrangea
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/tags/">Tag</a></li>
+         
+          <li><a href="/categories/">Category</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    
+  <script>
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true}, 
+        {left: "\\[", right: "\\]", display: true}, 
+        {left: "$", right: "$", display: false}, 
+        {left: "\\(", right: "\\)", display: false}
+      ],
+      macros: {
+        "\\Q": String.raw`\mathbb{Q}`, 
+        "\\C": String.raw`\mathbb{C}`, 
+        "\\defeq": String.raw`\overset{\text{def}}{=}`, 
+      }, 
+      throwOnError: true
+    });
+  </script>
+  <script src="/lib/prism/prism.js"></script>
+  
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+<!-- 
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+ -->
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
