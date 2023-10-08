@@ -572,7 +572,7 @@ body table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 13px;
+  font-size: 15px;
   overflow: auto;
   display: block;
 }
@@ -646,15 +646,37 @@ p inc {
   color: #fff;
   background: #272727;
 }
-.typing {
-  height: 1.5em;
-  border-right: 1px solid transparent;
-  animation: typing 3s steps(20, end), blink-caret 0.75s step-end infinite;
-  word-break: break-all;
-  overflow: hidden;
+.about-text {
+  color: #c9c8c8;
+  cursor: pointer;
   margin: 1em auto;
   font-size: 1.2em;
+  font-family: var(--font-zh-sans);
+  font-weight: bold;
 }
+.about-text:hover {
+  color: #7a6dca;
+}
+/*
+.hover
+  height: 1.5em
+  border-right: 1px solid transparent
+  animation: typing 3s steps(20, end), blink-caret .75s step-end infinite
+  word-break: break-all
+  overflow: hidden
+  margin: 1em auto
+  font-size: 1.2em
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 13em; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+*/
 html {
   margin: 0;
   padding: 0;
@@ -1824,68 +1846,4 @@ code {
 .line {
   height: 22px;
   font-size: 14px;
-}
-@-moz-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 13em;
-  }
-}
-@-webkit-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 13em;
-  }
-}
-@-o-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 13em;
-  }
-}
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 13em;
-  }
-}
-@-moz-keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: currentColor;
-  }
-}
-@-webkit-keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: currentColor;
-  }
-}
-@-o-keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: currentColor;
-  }
-}
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: currentColor;
-  }
 }

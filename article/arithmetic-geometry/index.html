@@ -7,23 +7,26 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono">
-    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
-    
-    
     
     <!-- Prism -->
     <link rel="stylesheet" href="/lib/prism/prism.css">
     
+
     <!-- KaTeX -->
     <link rel="stylesheet" href="/lib/katex/katex.css">
     <script src="/lib/katex/katex.js"></script>
     <script src="/lib/katex/auto-render.js"></script>
     <script src="/lib/katex/copy-tex.js"></script>
+    
     
     <!-- Quiver Embed -->
     <script src="/lib/quiver-embed/quiver-embed.js"></script>
@@ -152,12 +155,12 @@
 <p>古典的的代数整数论是关于称为代数体的有理数域的 <strong>有限次扩张</strong> 的理论. 有限域上的一元有理函数域的有限次扩张称为一元函数域, 但是这些域和代数域非常相似. 这被称为代数和函数域之间的相似性. 在数学中, 通过找到这些相似之处并研究它们的相似之处, 可以更好地了解两者.</p>
 <p>Riemann zeta 函数 $(1)$ 可以视为有理数域的 zeta 函数. 这样考虑, 可以定义在有限域上的一元函数域的 zeta 函数. 关于这一点, 已经证明了类似的 Riemann 猜想.</p>
 <p>首先, 从有理函数域的情况开始. $p$ 是素数, $\mathbf{F}_p$ 是大小为 $p$ 的有限域. 对于一元多项式环 $A=\mathbf{F}_p[T]$, 它不仅是 <strong>主理想整环</strong>, 而且 <strong>极大理想</strong> $\mathfrak{m}$ 的剩余域 $A/\mathfrak{m}$ 都是有限域, 并且具有与整数环 $\mathbf{Z}$ 非常相似的性质. 使用此方法, 可以将 $A = \mathbf{F}_p[T]$ 的 zeta 函数定义为欧拉乘积 $(2)$</p>
-<p>$$\zeta_A(s)=\prod_{\mathfrak{m}:;A ~ 的极大理想}\Big(1-\frac1{N\mathfrak{m}^s}\Big)^{-1} \tag3$$</p>
+<p>$$\zeta_A(s)=\prod_{\mathfrak{m}: ~ A ~ 的极大理想}\Big(1-\frac1{N\mathfrak{m}^s}\Big)^{-1} \tag3$$</p>
 <p>这里, $N\mathfrak{m}$ 是表示有限域 $A/\mathfrak{m}$ 的元素数量的符号.</p>
 <p>考虑整数环 $\mathbf{Z}$ 作为 $A$ 并将其应用于 $(3)$, 则可以得到使用欧拉积表示黎曼 $\zeta$ 函数的公式 $(2)$. 将 $A=\mathbf{F}_p[T]$ 还原为多项式环, 由于 <strong>素元分解</strong> 的唯一性也成立, 因此可以使用狄利克雷级数表示 $A$ 的 $\zeta$ 函数 $\zeta_A(s)$, 如 $(1)$ 所示.</p>
 <p>$A=\mathbf{F}_p[T]$ 的 $\zeta$ 函数 $\zeta_A(s)$ 与黎曼 $\zeta$ 函数 $\zeta(s)$ 的一个重要区别是, $\zeta_A(s)$ 是一个简单的函数 $\dfrac1{1-p^{1-s}}$. 由此可知, $\zeta_A(s)$ 在 $s=1+\dfrac{2π\sqrt{-1}}{\log p}$ ($n$ 为整数) 处具有 $1$ 阶极点.</p>
 <p><strong>问题</strong> $\bf1$ 对于 $A=\mathbf{F}_p[T]$, 证明 $\zeta_A(s)=\dfrac1{1-p^{1-s}}$.</p>
-<p>到目前为止, $A$ 是多项式环 $\mathbf{F}_p[T]$, 如果 $A$ 是整数环 $Z$ 上的 <strong>有限生成</strong>, 则对于任何交换环, 都可以使用 $(3)$ 定义其 $\zeta$ 函数. 在这里, 我们使用可交换环的定理, 即整数环 $\mathbf{Z}$ 上的有限生成的环作为有限域的所有域.</p>
+<p>到目前为止, $A$ 是多项式环 $\mathbf{F}_p[T]$, 如果 $A$ 是整数环 $\mathbf{Z}$ 上的 <strong>有限生成</strong>, 则对于任何交换环, 都可以使用 $(3)$ 定义其 $\zeta$ 函数. 在这里, 我们使用可交换环的定理, 即整数环 $\mathbf{Z}$ 上的有限生成的环作为有限域的所有域.</p>
 <p>接下来研究的是是多项式环 $\mathbf{F}_p[T]$<br>
 $$\mathbf{F}_p[X,Y]/(Y^2-f(X)) \tag4$$</p>
 <p>这样的环. 这里, $p$ 是大于等于 $3$ 的质数, $f(X)\in\mathbf{F}_p[X]$ 是没有重根的三次式. 研究这种情况下的 $\zeta$ 函数 $\zeta_A(s)$ 比 <strong>问题</strong> $\bf1$ 要困难得多, 但仍然比黎曼 $\zeta$ 函数简单得多.</p>
