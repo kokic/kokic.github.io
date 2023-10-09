@@ -661,6 +661,10 @@ p inc {
   color: #7a6dca;
   background-color: none;
 }
+.fst-letter-red::first-letter {
+  color: var(--first-red);
+  font-size: 120%;
+}
 #pinned {
   margin: 0;
 }
@@ -669,17 +673,9 @@ p inc {
   font-family: "Cormorant Garamond";
   color: #383838;
 }
-#pinned::first-letter {
-  color: var(--first-red);
-  font-size: 120%;
-}
 .about-links-h2 {
   font-size: 1.2rem;
   font-family: "Cinzel", "Noto Serif SC";
-}
-.about-links-h2::first-letter {
-  color: var(--first-red);
-  font-size: 120%;
 }
 /*
 .hover

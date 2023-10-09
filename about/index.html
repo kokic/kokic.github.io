@@ -92,7 +92,7 @@ const content = document.querySelector(".content");
 
 const renderH2 = function (text) {
   const h2 = document.createElement("h2");
-  h2.className = "about-links-h2";
+  h2.className = "about-links-h2 fst-letter-red";
   h2.textContent = text;
   content.appendChild(h2);
   return h2;
@@ -144,6 +144,7 @@ renderLinksTable(
     [ "Xinyu Yi", "xinyu-yi.github.io", "https://xinyu-yi.github.io" ]  
   , [ "Kitamado", "seasawher.github.io/blog", "https://seasawher.github.io/blog/" ]
   , [ "Yutsing Kuh", "yutsing.eth.limo", "https://yutsing.eth.limo" ]
+  , [ "Marisa Kirisame", "marisa.moe", "http://marisa.moe" ]
 )
 
 renderH2("标记的链接 · Marked Links");
@@ -153,9 +154,15 @@ renderLinksTable(
   , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
   , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]
   , [ "Jacob Lurie", "www.math.ias.edu/~lurie", "https://www.math.ias.edu/~lurie" ]
+  , [ "Borcherds", "math.berkeley.edu/people/faculty/richard-e-borcherds", "https://math.berkeley.edu/people/faculty/richard-e-borcherds" ]
+  , [ "Joseph Silverman", "www.math.brown.edu/johsilve", "https://www.math.brown.edu/johsilve" ]
+  , [ "Don Zagier", "people.mpim-bonn.mpg.de/zagier", "https://people.mpim-bonn.mpg.de/zagier" ]
   , [ "kerodon", "kerodon.net", "https://kerodon.net" ]
+  , [ "The Rising Sea", "math.stanford.edu/~vakil/216blog", "http://math.stanford.edu/~vakil/216blog" ]
   , [ "The Stacks project", "stacks.math.columbia.edu", "https://stacks.math.columbia.edu" ]
-  , [ "香蕉空间", "www.bananaspace.org", "https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5"  ]
+  , [ "香蕉空间", "www.bananaspace.org", "https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5" ]
+  , [ "LMFDB", "www.lmfdb.org", "https://www.lmfdb.org" ]
+  , [ "Math Genealogy", "www.genealogy.math.ndsu.nodak.edu", "https://www.genealogy.math.ndsu.nodak.edu/index.php" ]
 )
 </script>
 
