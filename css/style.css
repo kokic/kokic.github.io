@@ -7,6 +7,7 @@
   --pink-image: linear-gradient(transparent, transparent 4px, #d480aa 4px, #d480aa);
   --shadow: rgba(0,0,0,0.1);
   --red: #ef477e;
+  --first-red: #ff4d62;
   --blue: #2d8be2;
   --blue-tint: #e7f3ff;
   --violet: #b928be;
@@ -653,9 +654,32 @@ p inc {
   font-size: 1.2em;
   font-family: var(--font-zh-sans);
   font-weight: bold;
+  transition: all 0.4s ease-in-out;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .about-text:hover {
   color: #7a6dca;
+  background-color: none;
+}
+#pinned {
+  margin: 0;
+}
+#pinned a {
+  font-weight: 400;
+  font-family: "Cormorant Garamond";
+  color: #383838;
+}
+#pinned::first-letter {
+  color: var(--first-red);
+  font-size: 120%;
+}
+.about-links-h2 {
+  font-size: 1.2rem;
+  font-family: "Cinzel", "Noto Serif SC";
+}
+.about-links-h2::first-letter {
+  color: var(--first-red);
+  font-size: 120%;
 }
 /*
 .hover
@@ -898,6 +922,11 @@ body {
     display: table-cell;
     vertical-align: middle;
   }
+  #header #nav ul {
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+  }
   #header #nav ul a:hover {
     background: none;
   }
@@ -911,8 +940,12 @@ body {
     right: 1rem;
     display: inline-block;
   }
+  #header #nav ul.responsive {
+    height: 140px;
+  }
   #header #nav ul.responsive li {
     display: block;
+    transition: all 4s ease-in-out 1s;
   }
   #header #nav li:not(:first-child) {
     padding-top: 1rem;

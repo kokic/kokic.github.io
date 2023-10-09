@@ -92,8 +92,7 @@ const content = document.querySelector(".content");
 
 const renderH2 = function (text) {
   const h2 = document.createElement("h2");
-  h2.style.fontFamily = "Cinzel, Noto Serif SC";
-  h2.style.fontSize = "1.2rem";
+  h2.className = "about-links-h2";
   h2.textContent = text;
   content.appendChild(h2);
   return h2;
