@@ -613,11 +613,11 @@ p {
   word-break: break-all;
 }
 p b {
-  font-size: 0.95em;
+  font-size: 1em;
   font-family: var(--font-family-bold);
 }
 p strong {
-  font-size: 0.95em;
+  font-size: 1em;
   font-family: var(--font-family-bold);
 }
 p inc {
@@ -1664,6 +1664,7 @@ article .content .caption {
 #tag-cloud .tag-cloud-tags a {
   display: inline-block;
   margin: 4px;
+  font-family: "Cormorant Garamond";
   font-weight: 700;
 }
 .tooltipped {
@@ -1773,6 +1774,9 @@ article .content .caption {
 #categories .category-list .category-list-item {
   font-family: var(--font-zh-sans);
   font-weight: 700;
+}
+#categories .category-list .category-list-item .category-list-link {
+  font-family: "Cinzel";
 }
 #categories .category-list .category-list-item .category-list-count {
   color: #666;
