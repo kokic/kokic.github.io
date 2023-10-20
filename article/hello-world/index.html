@@ -142,7 +142,7 @@
     <script src="../lib/loader.js"></script>
 <p>$—$ Exploring minimal representation in ECMAScript</p>
 <hr>
-<p>Notice: <em>This article is motivated by several Kata on Codewars. This post will show how to solve the hardest parts of these problems naturally, but for obvious reasons I can’t link the corresponding problems directly. At the same time, those readers who know exactly what the problem is, please don’t read until you solve the problem independently, or at least only read a little bit as a hint.</em></p>
+<p>Notice: <em>This article is motivated by several Kata on Codewars. This post will show how to solve the hardest parts of these problems naturally, but for obvious reasons I can't link the corresponding problems directly. At the same time, those readers who know exactly what the problem is, please don't read until you solve the problem independently, or at least only read a little bit as a hint.</em></p>
 <p>First of all, we have to define some basic rules, many of which seem to be restrictive, but that is the real core of the problem.</p>
 <ul>
 <li>no ASCII &amp; unicode letters allowed</li>
@@ -151,7 +151,7 @@ $\impliedby$ implicit string construction, there are some letters whose construc
 <li>every line must have at most <code>1</code> ASCII character<br>
 $\impliedby$ expressions that allow arbitrary line breaks.</li>
 <li>$N$ lines or less<br>
-$\impliedby$ it’s not important, as long as the principle is clear, it’s not difficult to do this.</li>
+$\impliedby$ it's not important, as long as the principle is clear, it's not difficult to do this.</li>
 </ul>
 <hr>
 <p>There are some obvious tricks to use <code>!1</code>, <code>!0</code> and <code>[]._</code> which give <code>false</code>, <code>true</code> and <code>undefined</code> respectively. The same object may have multiple constructs, eg.</p>
@@ -173,14 +173,14 @@ $\bigg\{$ <code>[]._</code> $,$ <code>&#123;&#125;._</code>  $,$ $\dots$ $\bigg\
 (h)  &#39;i&#39;  &#39;j&#39;  (k)  &#39;l&#39;  (m)  &#39;n&#39;
 &#39;o&#39;  (p)  (q)       &#39;r&#39;  &#39;s&#39;  &#39;t&#39;
 &#39;u&#39;  (v)  (w)       (x)  (y)  (z)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>But actually, we don’t need to get all the characters from the inner object, with method <code>.toString(36)</code> we will get all lowercase letters. Assuming that the integer <code>n</code> satisfies <code>10 &lt;= n &lt;= 35</code></p>
+<p>But actually, we don't need to get all the characters from the inner object, with method <code>.toString(36)</code> we will get all lowercase letters. Assuming that the integer <code>n</code> satisfies <code>10 &lt;= n &lt;= 35</code></p>
 <center>
 <code>n.toString(36)</code> $\cong$ $\big\{$ <code>'a'</code> $,\dots,$ <code>'z'</code> $\big\}$ 
 <br> <code>10</code> $\xmapsto{\qquad}$ <code>'a'</code>
 <br> $\kern-0.6em\vdots$
 <br> <code>35</code> $\xmapsto{\qquad}$ <code>'z'</code>
 </center>
-<p>This approach allows us to take many steps forward at once, and it looks like we’re about to reach the end, but the construction of the uppercase letters isn’t going to be smooth sailing. In fact, before we can get all lowercase letters, we have to get <code>'S'</code> by other constructions e.g. literal coincidence, via the constructor</p>
+<p>This approach allows us to take many steps forward at once, and it looks like we're about to reach the end, but the construction of the uppercase letters isn't going to be smooth sailing. In fact, before we can get all lowercase letters, we have to get <code>'S'</code> by other constructions e.g. literal coincidence, via the constructor</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">&gt; &#96;&#96;[&#39;constructor&#39;]
 [Function: String]
 

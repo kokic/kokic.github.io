@@ -147,13 +147,13 @@
    派大星: <code>false</code></p>
 <p>當然, 更常見的版本還會在這之後配上基督教三位一體 (聖父、聖子、聖靈、上帝) 與 javascript 值 (<code>[]</code>、<code>&quot;0&quot;</code>、<code>&quot;\t&quot;</code>、<code>0</code>) 的對應.</p>
 <p>實際上這個事情沒有如此複杂, 衹是由於初學者或圍觀群眾不熟悉 javascript 中使得這些關係變得合理自然的方式.</p>
-<p>首先來回顧相等運算符 <code>==</code> 在 MDN Reference 上的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">說明</a>: “equality operator … attempts to convert and compare operands that are of different types.”</p>
+<p>首先來回顧相等運算符 <code>==</code> 在 MDN Reference 上的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">說明</a>: “equality operator ... attempts to convert and compare operands that are of different types.”</p>
 <ul>
 <li>
 <p>對於 <code>0 == &quot;0&quot;</code>, 這當然是一對不同的類型, 在這裡做的轉換即 <code>(0).toString()</code> 這樣就會變成 <code>&quot;0&quot;</code>.</p>
 </li>
 <li>
-<p>對於 <code>0 == []</code>, 需要再多瞭解一些東西, 比如 <code>[].toString()</code> 的結果是 <code>&quot;&quot;</code> 這樣一個空字符串, 以及這個地方為什麼不是把數字 <code>0</code> 往數組類型上面靠…</p>
+<p>對於 <code>0 == []</code>, 需要再多瞭解一些東西, 比如 <code>[].toString()</code> 的結果是 <code>&quot;&quot;</code> 這樣一個空字符串, 以及這個地方為什麼不是把數字 <code>0</code> 往數組類型上面靠...</p>
 <ul>
 <li>
 <p>數組判等 (在各種語言的各種意義之下) 其實是一個更困難 (更模糊) 的事, 相對於數字或者字符串這種更加基本的類型當然沒道理往數組類型這上面跑.</p>
