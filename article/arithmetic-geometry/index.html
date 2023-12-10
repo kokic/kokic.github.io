@@ -74,8 +74,10 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/article/music-list/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        <li><a class="icon" href="/article/music-list/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="/article/bleach/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -141,16 +143,16 @@
 <h2 id="算术几何学">算术几何学</h2>
 <h3 id="斋藤毅">斋藤毅</h3>
 <p style="text-align:right"> —— 从黎曼猜想到平展上同调 </p>
-<p>今天我将讨论数论和几何的话题. 在三年级的课程中, 数论是代数, 所以你可能觉得它与处理流形和同调的几何没有关系. 然而, 有趣的是, 这两件事在数学中变成了一体.</p>
+<p>今天我将讨论数论和几何的话题. 在三年级的课程中, 数论被划分到代数, 所以你可能觉得它与处理流形和同调的几何没有关系. 然而, 有趣的是, 这两件事在数学中变成了一体.</p>
 <h2 id="1-黎曼猜想">1. 黎曼猜想</h2>
 <p>首先, 从黎曼的 $\zeta$ 函数定义开始. 黎曼的 $\zeta$ 函数被定义为狄利克雷级数.</p>
 <p>$$\zeta(s)=\sum_{n=1}^\infty\frac1{n^s} \tag1$$</p>
-<p>这在实部 $s&gt;1$ 的范围内绝对收敛, 并定义了 <strong>全纯函数</strong>. 使用素因数分解的唯一性, 也可以用欧拉积表示它.</p>
+<p>这在 $s$ 的实部 $&gt;1$ 的范围内绝对收敛, 并确定了 <strong>全纯函数</strong>. 使用素因数分解的唯一性, 也可以用欧拉积表示它.</p>
 <p>$$\zeta(s)=\prod_{p: 素数}\Big(1-\frac1{p^s}\Big)^{-1} \tag2$$</p>
-<p>$\zeta(s)$ 是整个复平面上的有理函数 <strong>解析延拓</strong>, 除了 $s=1$ 处的第一极点外, 它是全纯的. 关于 <strong>零点</strong>, 由于欧拉积在实部 $&gt;1$ 的范围内收敛, 因此可以知道没有零点. 使用这一事实和函数方程, 可以知道在实部 $&lt;0$ 的范围内, 零点不是第一个偶数的负零点.</p>
+<p>$\zeta(s)$ 可以 <strong>解析延拓</strong> 为整个复平面上的亚纯函数, 除了 $s=1$ 处的 $1$ 阶极点外, 它是全纯的. 关于 <strong>零点</strong>, 由于欧拉积在实部 $&gt;1$ 的范围内收敛, 因此可以知道没有零点. 使用这一事实和函数方程, 可以知道在实部 $&lt;0$ 的范围内, 仅在负偶数处有 $1$ 阶零点.</p>
 <p>自然数 $n$ 以下的素数个数 $\pi(n)$ 大约是 $\dfrac{n}{\log n}$, 这是素数定理, 它通过证明实部为 $1$ 的零点不存在来证明. 著名的黎曼猜想陈述了实部在 $0$ 和 $1$ 之间的零点的实部都是 $\dfrac12$, 这是一个未解决的问题. 如果这被证明, 我们将能够更精确地了解素数的分布.</p>
 <h2 id="2-代数域与函数域相似性">2. 代数域与函数域相似性</h2>
-<p>古典的的代数整数论是关于称为代数体的有理数域的 <strong>有限次扩张</strong> 的理论. 有限域上的一元有理函数域的有限次扩张称为一元函数域, 但是这些域和代数域非常相似. 这被称为代数和函数域之间的相似性. 在数学中, 通过找到这些相似之处并研究它们的相似之处, 可以更好地了解两者.</p>
+<p>古典的代数整数论是关于称为代数数域即有理数域的 <strong>有限次扩张</strong> 的理论. 有限域上的一元有理函数域的有限次扩张称为一元函数域, 但是这些域和代数数域非常相似. 这被称为代数数域和函数域之间的相似性. 在数学中, 通过找到这些相似之处并研究它们的相似之处, 可以更好地了解两者.</p>
 <p>Riemann zeta 函数 $(1)$ 可以视为有理数域的 zeta 函数. 这样考虑, 可以定义在有限域上的一元函数域的 zeta 函数. 关于这一点, 已经证明了类似的 Riemann 猜想.</p>
 <p>首先, 从有理函数域的情况开始. $p$ 是素数, $\mathbf{F}_p$ 是大小为 $p$ 的有限域. 对于一元多项式环 $A=\mathbf{F}_p[T]$, 它不仅是 <strong>主理想整环</strong>, 而且 <strong>极大理想</strong> $\mathfrak{m}$ 的剩余域 $A/\mathfrak{m}$ 都是有限域, 并且具有与整数环 $\mathbf{Z}$ 非常相似的性质. 使用此方法, 可以将 $A = \mathbf{F}_p[T]$ 的 zeta 函数定义为欧拉乘积 $(2)$</p>
 <p>$$\zeta_A(s)=\prod_{\mathfrak{m}: ~ A ~ 的极大理想}\Big(1-\frac1{N\mathfrak{m}^s}\Big)^{-1} \tag3$$</p>
@@ -158,14 +160,14 @@
 <p>考虑整数环 $\mathbf{Z}$ 作为 $A$ 并将其应用于 $(3)$, 则可以得到使用欧拉积表示黎曼 $\zeta$ 函数的公式 $(2)$. 将 $A=\mathbf{F}_p[T]$ 还原为多项式环, 由于 <strong>素元分解</strong> 的唯一性也成立, 因此可以使用狄利克雷级数表示 $A$ 的 $\zeta$ 函数 $\zeta_A(s)$, 如 $(1)$ 所示.</p>
 <p>$A=\mathbf{F}_p[T]$ 的 $\zeta$ 函数 $\zeta_A(s)$ 与黎曼 $\zeta$ 函数 $\zeta(s)$ 的一个重要区别是, $\zeta_A(s)$ 是一个简单的函数 $\dfrac1{1-p^{1-s}}$. 由此可知, $\zeta_A(s)$ 在 $s=1+\dfrac{2π\sqrt{-1}}{\log p}$ ($n$ 为整数) 处具有 $1$ 阶极点.</p>
 <p><strong>问题</strong> $\bf1$ 对于 $A=\mathbf{F}_p[T]$, 证明 $\zeta_A(s)=\dfrac1{1-p^{1-s}}$.</p>
-<p>到目前为止, $A$ 是多项式环 $\mathbf{F}_p[T]$, 如果 $A$ 是整数环 $\mathbf{Z}$ 上的 <strong>有限生成</strong>, 则对于任何交换环, 都可以使用 $(3)$ 定义其 $\zeta$ 函数. 在这里, 我们使用可交换环的定理, 即整数环 $\mathbf{Z}$ 上的有限生成的环作为有限域的所有域.</p>
-<p>接下来研究的是是多项式环 $\mathbf{F}_p[T]$<br>
-$$\mathbf{F}_p[X,Y]/(Y^2-f(X)) \tag4$$</p>
-<p>这样的环. 这里, $p$ 是大于等于 $3$ 的质数, $f(X)\in\mathbf{F}_p[X]$ 是没有重根的三次式. 研究这种情况下的 $\zeta$ 函数 $\zeta_A(s)$ 比 <strong>问题</strong> $\bf1$ 要困难得多, 但仍然比黎曼 $\zeta$ 函数简单得多.</p>
+<p>到目前为止, $A$ 是多项式环 $\mathbf{F}_p[T]$, 如果 $A$ 在整数环 $\mathbf{Z}$ 上 <strong>有限生成</strong>, 则对于任何交换环, 都可以使用 $(3)$ 定义其 $\zeta$ 函数. 在这里, 我们使用可交换环的定理, 即整数环 $\mathbf{Z}$ 上作为环而言有限生成的域都是有限域.</p>
+<p>在多项式环 $\mathbf{F}_p[T]$ 之后被研究的是</p>
+<p>$$\mathbf{F}_p[X,Y]/(Y^2-f(X)) \tag4$$<br>
+这样的环. 这里, $p$ 是大于等于 $3$ 的质数, $f(X)\in\mathbf{F}_p[X]$ 是没有重根的三次式. 研究这种情况下的 $\zeta$ 函数 $\zeta_A(s)$ 比 <strong>问题</strong> $\bf1$ 要困难得多, 但仍然比黎曼 $\zeta$ 函数简单得多.</p>
 <p>$$\zeta_A(s)=\frac{1-ap^{-s}+p^{1-2s}}{1-p^{1-s}} \tag5$$</p>
-<p>已知它会变成这样. 不仅如此, $a$ 是整数, 且满足 $|a|&lt;2\sqrt{p}$.</p>
-<p>这个不等式的分子 $1−ap^{−s}+p^{1−2s}$ 可以解为 $(1−αp^{−s})(1−\bar{α}p^{−s})$, 其中复数 $a$ 的绝对值等于 $p^{\frac12}$. 因此, $\zeta_A(s)$ 的零点的实部为 $\frac12$, 这意味着 $\zeta_A(s)$ 满足了类似于黎曼猜想的性质.</p>
-<p>关于类似于黎曼猜想的问题, 我们已经知道了很多. 但是, 我们先不讨论这个问题, 而是考虑一下为什么分子的式子是 $p−s$ 的二次式. 这里数论和几何相结合.</p>
+<p>已知它会变成这样. 不仅如此, 还知道 $a$ 是整数, 且满足 $|a|&lt;2\sqrt{p}$.</p>
+<p>这个不等式的分子 $1−ap^{−s}+p^{1−2s}$ 可以分解为 $(1−αp^{−s})(1−\bar{α}p^{−s})$, 其中复数 $a$ 的绝对值等于 $p^{\frac12}$. 因此, $\zeta_A(s)$ 的零点的实部为 $\frac12$, 这意味着 $\zeta_A(s)$ 满足了类似于黎曼猜想的性质.</p>
+<p>关于类似于黎曼猜想的问题, 我们已经知道了很多. 但是, 我们先不讨论这个问题, 而是考虑一下为什么分子的式子是 $p^{−s}$ 的二次式. 这里正是数论和几何相结合的地方.</p>
 <p>关于这个问题的后续内容</p>
 <p style="text-align: center;"><span style="font-size:1.5em; font-weight: bold;">数学的现在</span> &emsp; (东京大学出版社)</p>
 <p style="text-align: right">请阅读</p>
