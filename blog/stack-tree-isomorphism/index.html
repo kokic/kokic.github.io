@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+  
+
+  <title>栈置换-二叉树同构</title>
+  <link rel="icon" type="image/svg" sizes="16x16" href="/img/avatar.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <style>
+
+@font-face {
+  font-style: normal;
+  font-family: "TexGyrePagella";
+  src: local("TexGyrePagella"), url("fonts/texgyrepagella-regular.otf") format("truetype");
+}
+
+</style>
+  <style>
+
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a210;
+    --text-color: #3C4043;
+    --text-pale-color: #94969f;
+    --bg-color: #ffffff; 
+    --highlight-mark-color: #5f75b035;
+  
+    --callout-note-color: #5871a2;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #5d77ac;
+    --primary-pale-color: #5d77ac20;
+    --text-color: #9197a5;
+    --text-pale-color: #747983;
+    --bg-color: #202124;
+    --highlight-mark-color: #5f75b035;
+
+    --callout-note-color: #5d77ac;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* typography */
+  body {
+    --main-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --icon-size: 20px;
+    --homepage-font-size: 16px;
+    --homepage-line-height: 1.75;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 1.75;
+    --aside-font-size: 15px;
+    --img-border-radius: 0px;
+    --callout-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-pale-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+</style>
+
+  <link rel="stylesheet" href="/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-light.css" />
+
+
+  
+
+
+    
+
+<link rel="stylesheet" href="/js/katex/katex.min.css">
+
+<script defer src="/js/katex/katex.min.js"></script>
+<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+
+
+  
+  
+  
+</head>
+
+<body class="post">
+  
+  <script>
+    const theme = sessionStorage.getItem('theme');
+    const match = window.matchMedia("(prefers-color-scheme: dark)").matches
+    if ((theme && theme == 'dark') || (!theme && match)) {
+      document.body.classList.add('dark');
+      const hl = document.querySelector('link#hl');
+      if (hl) hl.href = '/hl-dark.css';
+    }
+  </script>
+  
+  
+<header  class="blur" >
+  <div id="header-wrapper">
+    <nav>
+      <a class="instant" href="/">kokic</a>
+      
+        <button id="toggler" class="separator" aria-label="toggle expand">::</button>
+      
+      
+        <span class="wrap left fold">{</span>
+        
+        
+          
+        
+          
+        
+        
+        
+          
+          
+          <a class="instant " href="&#x2F;blog">blog</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;projects">projects</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;readme">readme</a>
+          
+        
+        <span class="wrap right fold">} ;</span>
+      
+    </nav>
+    <div id="btns">
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      <button id="theme-toggle" aria-label="theme switch" data-moon-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-sun-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z" fill="currentColor"></path></svg>
+      </button>
+      
+
+      
+      
+      
+      
+      <button id="toc-toggle" aria-label="table of content">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M3 4H21V6H3V4ZM3 11H15V13H3V11ZM3 18H21V20H3V18Z" fill="currentColor"></path></svg>
+      </button>
+      
+      
+    </div>
+  </div>
+</header>
+
+
+
+
+
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.364L11.9997 8L18.3637 14.364L16.9495 15.7782L11.9997 10.8284Z" fill="currentColor"></path></svg>
+    </button>
+    
+  </aside>
+  <main>
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;"></div>
+      
+      
+      <article class="prose" data-backlink-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M9.41421 8L18.0208 16.6066L16.6066 18.0208L8 9.41421V17H6V6H17V8H9.41421Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <h1>栈置换-二叉树同构</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">2024-11-06</span>
+            </div>
+
+          
+
+          
+          <div id="tags">
+            <a class="instant" href="https://kokic.github.io/tags/stack"><span>#</span>stack</a><a class="instant" href="https://kokic.github.io/tags/tree"><span>#</span>tree</a><a class="instant" href="https://kokic.github.io/tags/isomorphism"><span>#</span>isomorphism</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        
+
+        
+          <p>在介绍本文的目的之前, 我们首先解释一下标题栈置换-二叉树同构的含义. </p>
+<p>栈置换: 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$, 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+<blockquote class="callout note">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>注</strong></p>
+        
+        <p><ruby>栈置换<rt>stack permutation</rt></ruby> 也译作 <ruby>栈混洗<rt>stack shuffle</rt></ruby>.</p>
+
+    </div>
+</blockquote>
+<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树. 这两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构. 本文正是要指出实现该同构的一种方式, 具体地写出这个双射. </p>
+<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作看起来要多一些. 因此首先需要通过一些技巧将构建二叉树的操作编码为两种. </p>
+<p>在构建二叉树的过程中, 对于一个节点, 我们可以添加它的左子树或右子树. 对于一个已经有子树的节点, 也可以向子树的节点中做这样的操作. <ruby>约化<rt>reduce</rt></ruby>这些操作的技巧在于, 应该考虑栈弹出的对应物, 对树而言, 这就是回到它的<ruby>双亲<rt>parent</rt></ruby>节点. 这样一来, 每次添加节点后, 下次操作的目标节点就转移为之前新增的节点. </p>
+<p>我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>. 对应的, 以此刻画二叉树的构建: </p>
+<ul>
+<li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(1 (2 (3)))</code>. </li>
+<li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(1 _ (2 _ (3)))</code>.</li>
+<li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(1 (2) (3))</code>.</li>
+</ul>
+<blockquote class="callout tip">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M9.97308 18H11V13H13V18H14.0269C14.1589 16.7984 14.7721 15.8065 15.7676 14.7226C15.8797 14.6006 16.5988 13.8564 16.6841 13.7501C17.5318 12.6931 18 11.385 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.3843 6.46774 12.6917 7.31462 13.7484C7.40004 13.855 8.12081 14.6012 8.23154 14.7218C9.22766 15.8064 9.84103 16.7984 9.97308 18ZM10 20V21H14V20H10ZM5.75395 14.9992C4.65645 13.6297 4 11.8915 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 11.8925 19.3428 13.6315 18.2443 15.0014C17.624 15.7748 16 17 16 18.5V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V18.5C8 17 6.37458 15.7736 5.75395 14.9992Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>提示</strong></p>
+        
+        <p>注意到每个树节点的<ruby>双亲<rt>parent</rt></ruby>节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
+
+    </div>
+</blockquote>
+<p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换. 空栈的弹出视为恒等映射 $\text{id}$, 二进制序列对齐为 $8$ 位. </p>
+<pre class="z-code"><code><span class="z-text z-plain">    o
+   /
+  o         →     11100000    →    321
+ / 
+o   
+
+    o
+   /
+  o         →     11010000    →    231
+   \ 
+    o       
+
+o
+ \ 
+  o         →     10110000    →    132
+ /
+o
+
+o
+ \ 
+  o         →     10101000    →    123
+   \
+    o
+
+  o
+ / \        →     11001000    →    213
+o   o       
+
+</span></code></pre>
+<p>相应的, 对于一个栈置换或者有效的出栈序列, 总可以写出它的二进制序列, 并以此得到对应的二叉树. 这个双射构造的证明只需要对元素个数 $n$ 归纳. </p>
+<p>至此, 本文的核心任务已经完成. 以下我们讨论二进制序列长度的一些估计. 利用上文讨论的对应, 二进制序列同时编码了二叉树和栈置换, 通过对栈置换的分析可以轻松得到二进制序列长度的上下界: </p>
+<ul>
+<li>
+<p>注意到 $n$ 元素栈二进制序列最短的情况是 $n$ 个元素全部入栈且在此期间不出栈, 这个序列总是形如 <code>111...000</code>, 其中 <code>1</code> 的个数就是 $n$, <code>0</code> 的个数最少是 $n$, 因此整个序列长度最短是 $2n$. </p>
+</li>
+<li>
+<p>$n$ 元素栈二进制序列最长的情况是每压入一个元素后立刻弹出, 这个序列总是形如 <code>10101...</code>, 除去第一个 <code>1</code>, 容易知道剩下还有 $n-1$ 个 <code>01</code>, 在此之后还需要 $n$ 个 <code>0</code> 将元素全部弹出, 故序列长度为 $3n-1$. </p>
+</li>
+</ul>
+<p>因此序列长度 $\ell$ 满足 $2n \le \ell \le 3n-1$. 这就是为何之前三元素对齐时长度选择了 $8$. 由于尾部连续的 <code>0</code> 不改变树的结构, 这部分连续出栈信息实际上是多余的. 换言之, 仅从存储的角度考虑, 我们不需要额外编码连续出栈至空的信息, 此时的序列长度范围是 $n \le \ell \le 2n-1$. </p>
+<!--
+<blockquote class="callout note">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>注</strong></p>
+        
+        <p>在图的染色问题中, $n$ 节点树的染色多项式与 $n$ 点<ruby>径<rt>path</rt>图</ruby>的染色多项式相同. 这可以使用删除-收缩公式证明.</p>
+
+    </div>
+</blockquote>
+-->
+
+        
+      </article>
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    <footer>
+  <div class="copyright">
+    <p>2021 - inf © kokic</p>
+
+  </div>
+  
+  <div class="credits">
+    powered by
+    <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a>
+    and
+    <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
+  </div>
+  
+</footer>
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="/js/main.js"></script>
+</body>
+ 
+</html>
