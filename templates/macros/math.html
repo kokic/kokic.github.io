@@ -1,0 +1,39 @@
+{% macro math_render(style) %}
+
+{% if style is string %}
+    {% set format = style | lower %}
+{% elif style == true%}
+    {% set format = "katex" %}
+{% else %}
+    {{ throw(message = "Undefined math style") }}
+{% endif %}
+<link rel="stylesheet" href="/js/katex/katex.min.css">
+{% if format == "typst" %}
+<script defer src="/js/typst-auto-render.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            throwOnError: false
+        });
+    });
+</script>
+{% elif format == "katex" %}
+<script defer src="/js/katex/katex.min.js"></script>
+<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+{% else %}
+    {{ throw(message = "Unsupported math render engine " ~ style) }}
+{% endif %}
+{% endmacro %}
