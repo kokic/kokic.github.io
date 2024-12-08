@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+  
+
+  <title>椭圆曲线的群结构</title>
+  <link rel="icon" type="image/svg" sizes="16x16" href="/img/avatar.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <style>
+
+@font-face {
+  font-style: normal;
+  font-family: "TexGyrePagella";
+  src: local("TexGyrePagella"), url("fonts/texgyrepagella-regular.otf") format("truetype");
+}
+
+</style>
+  <style>
+
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a210;
+    --text-color: #3C4043;
+    --text-pale-color: #94969f;
+    --bg-color: #ffffff; 
+    --highlight-mark-color: #5f75b035;
+  
+    --callout-note-color: #5871a2;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #5d77ac;
+    --primary-pale-color: #5d77ac20;
+    --text-color: #9197a5;
+    --text-pale-color: #747983;
+    --bg-color: #202124;
+    --highlight-mark-color: #5f75b035;
+
+    --callout-note-color: #5d77ac;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* typography */
+  body {
+    --main-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --icon-size: 20px;
+    --homepage-font-size: 16px;
+    --homepage-line-height: 1.75;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 1.75;
+    --aside-font-size: 15px;
+    --img-border-radius: 0px;
+    --callout-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-pale-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+</style>
+
+  <link rel="stylesheet" href="/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-light.css" />
+
+
+  
+
+
+    
+
+<link rel="stylesheet" href="/js/katex/katex.min.css">
+
+<script defer src="/js/katex/katex.min.js"></script>
+<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+
+
+  
+  
+  
+</head>
+
+<body class="post">
+  
+  <script>
+    const theme = sessionStorage.getItem('theme');
+    const match = window.matchMedia("(prefers-color-scheme: dark)").matches
+    if ((theme && theme == 'dark') || (!theme && match)) {
+      document.body.classList.add('dark');
+      const hl = document.querySelector('link#hl');
+      if (hl) hl.href = '/hl-dark.css';
+    }
+  </script>
+  
+  
+<header  class="blur" >
+  <div id="header-wrapper">
+    <nav>
+      <a class="instant" href="/">kokic</a>
+      
+        <button id="toggler" class="separator" aria-label="toggle expand">::</button>
+      
+      
+        <span class="wrap left fold">{</span>
+        
+        
+          
+        
+          
+        
+        
+        
+          
+          
+          <a class="instant " href="&#x2F;blog">blog</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;projects">projects</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;readme">readme</a>
+          
+        
+        <span class="wrap right fold">} ;</span>
+      
+    </nav>
+    <div id="btns">
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      <button id="theme-toggle" aria-label="theme switch" data-moon-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-sun-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z" fill="currentColor"></path></svg>
+      </button>
+      
+
+      
+      
+      
+      
+      <button id="toc-toggle" aria-label="table of content">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M3 4H21V6H3V4ZM3 11H15V13H3V11ZM3 18H21V20H3V18Z" fill="currentColor"></path></svg>
+      </button>
+      
+      
+    </div>
+  </div>
+</header>
+
+
+
+
+
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.364L11.9997 8L18.3637 14.364L16.9495 15.7782L11.9997 10.8284Z" fill="currentColor"></path></svg>
+    </button>
+    
+  </aside>
+  <main>
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;"></div>
+      
+      
+      <article class="prose" data-backlink-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M9.41421 8L18.0208 16.6066L16.6066 18.0208L8 9.41421V17H6V6H17V8H9.41421Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <h1>椭圆曲线的群结构</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">2021-09-12</span>
+            </div>
+
+          
+
+          
+          <div id="tags">
+            <a class="instant" href="https://kokic.github.io/tags/elliptic-curve"><span>#</span>elliptic curve</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+          <p>椭圆曲线是一条亏格 $g=1$ 的光滑射影 $[$即, 非奇异$]$ 曲线 $E$ 配上一有理点 $[$作单位元, 常取无穷远点$]$ $\mathcal{O}$ 所成的二元组 $(E,\mathcal{O})$. 若 $E$ 是域 $K$ 上的曲线, $\mathcal{O}\in E(K)$ 是 $E$ 上的 $K\!$—有理点, 则称 $(E,\mathcal{O})$ 是 $K$ 上的椭圆曲线 $E/K$. </p>
+<p>注：换言之, 曲线光滑 $\iff$ 处处有良定的切线.</p>
+<p>注：可以证明, $\mathbb{P}^2$ 中的三次光滑曲线 $E$ $\Longrightarrow$ 其亏格 $g_E=1$.</p>
+<p>每一条椭圆曲线都能够被嵌入为 $\mathbb{P}^2$ 中的光滑三次曲线, 其由如下形式的方程 $[E$ 的 <strong>仿射 Weierstrass 方程</strong>$]$ 给出
+$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6$$ “零点” $\mathcal{O}$ 自然是无穷远点 $(0:1:0)$, 而 $E/K$ 则意味着 $a_k$ $[k=1,2,3,4,6]$ 可取自 $K$ 中. 射影 Weierstrass 方程无非是仿射版本的齐次化 $[$分别乘上 $z]$.</p>
+<p>注：射影平面 $\mathbb{P}^2$ 可视作 平面 $[$“仿射部分”$]$ $\sqcup$ $\{(x:y:0):x,y\in K,|x|+|y|\gt0\}$ $[$“无穷远点”$]$, 平面借由 $(x,y)\longmapsto(x:y:1)$ 嵌入 $\mathbb{P}$.</p>
+<p>对于一条由 Weierstrass 方程定义的椭圆曲线 $E$, 记 
+$$\begin{aligned}b_2&amp;:=a_1^2+4a_2 \\ b_4&amp;:=2a_4+a_1a_3 \\ b_6&amp;:=a_3^2+4a_6 \\ b_8&amp;:=a_1^2a_6+4a_2a_6-a_1a_3a_4+a_2a_3^2-a_4^2 \\ c_4&amp;:=b_2^2-24b_4 \\ c_6&amp;:=-b_2^3+36b_2b_4-216b_6 \\ \Delta&amp;:=-b_2^2b_8-8b_4^3-27b_6^2+9b_2b_4b_6 \\ j&amp;:=\dfrac{c_4^3}{\Delta},\quad\text{if}\;\Delta\neq0\end{aligned}$$ 
+注：<strong>判别式</strong> $[$discriminant$]$ $\Delta\neq0$ $[$可逆$]$ 是由于椭圆曲线的光滑性要求无重根, $j$ 即为所谓的 $j$ <strong>不变量</strong> $[j$-invariance$]$.</p>
+<p>考虑两条由 Weierstrass 方程定义的椭圆曲线
+$$E:y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6 \\ E^\prime:y^2+a_1^\prime xy+a_3^\prime y=x^3+a_2^\prime x^2+a_4^\prime x+a_6^\prime$$ 其 <strong>同构</strong> $E\cong E^\prime$ 是指 $\exists\,\psi$ $[$多项式映射$]$ 使得 $E=u^{-6}\cdot\psi(E^\prime)$, 其中
+$$\psi:\begin{pmatrix}x \\ y\end{pmatrix}\longmapsto\begin{pmatrix}u^2 &amp; 0 \\ su^2 &amp; u^3 \end{pmatrix}\begin{pmatrix}x \\ y\end{pmatrix}+\begin{pmatrix}r \\ t\end{pmatrix}$$ $r,s,t,u\in K$ 且 $u$ 可逆 $[$ 即, $u\in K^\times]$, $\psi$ 称 <strong>容许的变换</strong>.</p>
+<p>若 $K$ 的特征 $\text{char}(K)\neq2,3$, 则 $K$ 在容许的变换下可化为
+$$E:y^2=x^3+Ax+B$$ 也即 $a_k$ $[k=1,2,3]$ 可取为 $0$. 对于此种形式, 有
+$$\begin{aligned}b_2&amp;=0 \\ b_4&amp;=2A \\ b_6&amp;=4B \\ b_8&amp;=-A^2 \\ c_4&amp;=-48A \\ c_6&amp;=-864B \\ \Delta&amp;=-16(4A^3+27B^2) \\ j&amp;=-1728\cdot\dfrac{64A^3}{\Delta} \\ &amp;=1728\cdot\dfrac{4A^3}{4A^3+27B^2},\quad\text{if}\;\Delta\neq0\end{aligned}$$
+注：$[$一般的$]$ 三次方程 $x^3+Ax+B=0$ 根的判别式可表为 $\Delta=4A^3+27B^2$, 而 $\Delta=0$ 时此方程有重根, 对应的椭圆曲线退化, 其上恰有一个奇点.</p>
+<p>取 $\psi:(x,y)\longmapsto(u^2x,u^3y)$ $[$Weierstrass 坐标变换, $r,s,t$ 为 $0]$, 在此同构映射下 $j$ 仍是不变的, 故 $j$-不变量完整分类了 $[$代数闭域 $K$ 上的$]$ 椭圆曲线, 即 $$j(E)=j({E^\prime})\iff E\cong E^\prime$$
+若在椭圆曲线上（自然地）定义群结构, 则多项式映射 $\psi$ 自动成为群同态.</p>
+<p>单值化定理 $[$Uniformization Theorem$]$ 表明 $\Complex$ 上任意的椭圆曲线 $E:y^2=x^3+Ax+B$ 都一一对应到一个复格 $\Lambda$ 使
+$$\begin{aligned}\psi:\Complex/\Lambda&amp;\xrightarrow{\qquad} E \\ z&amp;\xmapsto{\qquad}(\wp(z),\wp^\prime(z))\end{aligned}$$ 是复李群同构, 即 $E\cong\Complex/\Lambda$ $[$解析同构$]$. 故椭圆曲线之间的态射 $\psi$ 可以一一对应到复环面 $\Complex/\Lambda$ 间的全纯映射</p>
+<p>其中 $\alpha\in\Complex$ 满足 $\alpha\Lambda_1\subseteq\Lambda_2$, 复乘 $$\text{Hom}(\Lambda_1,\Lambda_2)=\{\alpha\in\Complex:\alpha\Lambda_1\subseteq\Lambda_2\}$$</p>
+<p>注：$[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线 $(E,\mathcal{O})$ $\iff$ 亏格 $1$ 带基点 $\mathcal{O}\in E$ 的紧 Riemann 曲面 $E$ 典范同构于 $(\mathbb{C}/\Lambda,0)$. </p>
+<p>注：全体 $[$复数域 $\mathbb{C}$ 上的$]$ 椭圆曲线构成范畴 $\mathsf{Ell}_\mathbb{C}$, 范畴间的态射 $(E,\mathcal{O})\longrightarrow(E^\prime,\mathcal{O}^\prime)$ 定义为满足 $f(\mathcal{O})=\mathcal{O}^\prime$ 的 Riemann 曲面态射 $f:E\longrightarrow E^\prime$.</p>
+<p>事实上, Weierstrass 证明了对所有 $P,Q,R\in E$, 存在直线 $\ell\in\mathbb{P}^2$ 交 $E$ 于 $P,Q,R$ 等价于 $P+Q+R=\mathcal{O}$.</p>
+<p>设 $P(x_1,y_1),Q(x_2,y_2)\in E:y^2=x^3+Ax+B$, 几何直观给出两点加法公式 </p>
+<div class="scroll">
+$$x(P+Q)=\begin{cases} \bigg(\dfrac{y_2-y_1}{x_2-x_1}\bigg)^2-x_1-x_2 &\text{if } P\neq Q \\\ \\\ \dfrac{x_1^4-2Ax_1^2-8Bx_1+A^2}{4(x_1^3+Ax_1+B)} &\text{if } P=Q \end{cases}$$
+</div>
+<p>注: 所谓的几何直观是指, $P+Q=-R$ 应视作点 $P,Q$ 连线与点 $E$ 交于点 $R$, $R,\mathcal{O}$ 连线交 $E$ 于点 $-R$. 这里 $-R$ 当然是 $R$ 关于 $x$-轴的对称点.</p>
+
+        
+      </article>
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    <footer>
+  <div class="copyright">
+    <p>2021 - inf © kokic</p>
+
+  </div>
+  
+  <div class="credits">
+    powered by
+    <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a>
+    and
+    <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
+  </div>
+  
+</footer>
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="/js/main.js"></script>
+</body>
+ 
+</html>

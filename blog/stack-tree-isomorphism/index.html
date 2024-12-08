@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  
+  
+  
+
+  <title>栈置换-二叉树同构</title>
+  <link rel="icon" type="image/svg" sizes="16x16" href="/img/avatar.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <style>
+
+@font-face {
+  font-style: normal;
+  font-family: "TexGyrePagella";
+  src: local("TexGyrePagella"), url("fonts/texgyrepagella-regular.otf") format("truetype");
+}
+
+</style>
+  <style>
+
+  /* light mode colors */
+  body {
+    --primary-color: #5871a2;
+    --primary-pale-color: #5871a210;
+    --text-color: #3C4043;
+    --text-pale-color: #94969f;
+    --bg-color: #ffffff; 
+    --highlight-mark-color: #5f75b035;
+  
+    --callout-note-color: #5871a2;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* dark mode colors */
+  body.dark {
+    --primary-color: #5d77ac;
+    --primary-pale-color: #5d77ac20;
+    --text-color: #9197a5;
+    --text-pale-color: #747983;
+    --bg-color: #202124;
+    --highlight-mark-color: #5f75b035;
+
+    --callout-note-color: #5d77ac;
+    --callout-important-color: #8062b0;
+    --callout-warning-color: #936e51;
+    --callout-alert-color: #bc5252;
+    --callout-question-color: #477389;
+    --callout-tip-color: #3c8460;
+  }
+
+  /* typography */
+  body {
+    --main-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --homepage-max-width: 768px;
+    --main-max-width: 768px;
+    --avatar-size: 60px;
+    --icon-size: 20px;
+    --homepage-font-size: 16px;
+    --homepage-line-height: 1.75;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 1.75;
+    --aside-font-size: 15px;
+    --img-border-radius: 0px;
+    --callout-border-radius: 0px;
+    --detail-border-radius: 0px;
+    --dark-mode-img-brightness: 0.75;
+    --dark-mode-chart-brightness: 0.75;
+    --inline-code-border-radius: 2px;
+    --inline-code-bg-color: var(--primary-pale-color);
+    --block-code-border-radius: 0px;
+    --block-code-border-color: var(--primary-color);
+    --detail-border-color: var(--primary-color);
+  }
+
+</style>
+
+  <link rel="stylesheet" href="/main.css">
+  
+
+<link id="hl" rel="stylesheet" type="text/css" href="/hl-light.css" />
+
+
+  
+
+
+    
+
+<link rel="stylesheet" href="/js/katex/katex.min.css">
+
+<script defer src="/js/katex/katex.min.js"></script>
+<script defer src="/js/katex/contrib/auto-render.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            throwOnError: false
+        });
+    });
+</script>
+
+
+
+
+  
+  
+  
+</head>
+
+<body class="post">
+  
+  <script>
+    const theme = sessionStorage.getItem('theme');
+    const match = window.matchMedia("(prefers-color-scheme: dark)").matches
+    if ((theme && theme == 'dark') || (!theme && match)) {
+      document.body.classList.add('dark');
+      const hl = document.querySelector('link#hl');
+      if (hl) hl.href = '/hl-dark.css';
+    }
+  </script>
+  
+  
+<header  class="blur" >
+  <div id="header-wrapper">
+    <nav>
+      <a class="instant" href="/">kokic</a>
+      
+        <button id="toggler" class="separator" aria-label="toggle expand">::</button>
+      
+      
+        <span class="wrap left fold">{</span>
+        
+        
+          
+        
+          
+        
+        
+        
+          
+          
+          <a class="instant " href="&#x2F;blog">blog</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;projects">projects</a>
+          <span class="wrap-separator fold">,</span>
+        
+          
+          
+            
+          
+          <a class="instant fold" href="&#x2F;readme">readme</a>
+          
+        
+        <span class="wrap right fold">} ;</span>
+      
+    </nav>
+    <div id="btns">
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      <button id="theme-toggle" aria-label="theme switch" data-moon-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-sun-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.51472 4.92893L4.92893 3.51472L7.05025 5.63604L5.63604 7.05025L3.51472 4.92893ZM16.9497 18.364L18.364 16.9497L20.4853 19.0711L19.0711 20.4853L16.9497 18.364ZM19.0711 3.51472L20.4853 4.92893L18.364 7.05025L16.9497 5.63604L19.0711 3.51472ZM5.63604 16.9497L7.05025 18.364L4.92893 20.4853L3.51472 19.0711L5.63604 16.9497ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M10 7C10 10.866 13.134 14 17 14C18.9584 14 20.729 13.1957 21.9995 11.8995C22 11.933 22 11.9665 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C12.0335 2 12.067 2 12.1005 2.00049C10.8043 3.27098 10 5.04157 10 7ZM4 12C4 16.4183 7.58172 20 12 20C15.0583 20 17.7158 18.2839 19.062 15.7621C18.3945 15.9187 17.7035 16 17 16C12.0294 16 8 11.9706 8 7C8 6.29648 8.08133 5.60547 8.2379 4.938C5.71611 6.28423 4 8.9417 4 12Z" fill="currentColor"></path></svg>
+      </button>
+      
+
+      
+      
+      
+      
+      <button id="toc-toggle" aria-label="table of content">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M3 4H21V6H3V4ZM3 11H15V13H3V11ZM3 18H21V20H3V18Z" fill="currentColor"></path></svg>
+      </button>
+      
+      
+    </div>
+  </div>
+</header>
+
+
+
+
+
+<div id="wrapper">
+  <div id="blank"></div>
+  <aside>
+    
+    
+    <nav>
+      <ul>
+        
+        <li>
+          <a class="h2" href="#bei-jing">背景</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#bian-ma">编码</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#li-zi">例子</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#zheng-he">正合</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#xiu-zheng">修正</a>
+          
+        </li>
+        
+        <li>
+          <a class="h2" href="#shi-xian">实现</a>
+          
+        </li>
+        
+      </ul>
+    </nav>
+    
+    
+    <button id="back-to-top" aria-label="back to top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M11.9997 10.8284L7.04996 15.7782L5.63574 14.364L11.9997 8L18.3637 14.364L16.9495 15.7782L11.9997 10.8284Z" fill="currentColor"></path></svg>
+    </button>
+    
+  </aside>
+  <main>
+    <div>
+      
+      
+      
+      
+      <div id="copy-cfg" style="display: none;" data-copy-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M6.9998 6V3C6.9998 2.44772 7.44752 2 7.9998 2H19.9998C20.5521 2 20.9998 2.44772 20.9998 3V17C20.9998 17.5523 20.5521 18 19.9998 18H16.9998V20.9991C16.9998 21.5519 16.5499 22 15.993 22H4.00666C3.45059 22 3 21.5554 3 20.9991L3.0026 7.00087C3.0027 6.44811 3.45264 6 4.00942 6H6.9998ZM5.00242 8L5.00019 20H14.9998V8H5.00242ZM8.9998 6H16.9998V16H18.9998V4H8.9998V6Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;" data-check-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;"></div>
+      
+      
+      <article class="prose" data-backlink-icon="&lt;svg xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot;&gt;&lt;path d=&quot;M9.41421 8L18.0208 16.6066L16.6066 18.0208L8 9.41421V17H6V6H17V8H9.41421Z&quot; fill=&quot;currentColor&quot;&gt;&lt;&#x2F;path&gt;&lt;&#x2F;svg&gt;">
+        <h1>栈置换-二叉树同构</h1>
+        <div id="post-info">
+          <div id="date">
+            <span id="publish">2024-11-06</span>
+            </div>
+
+          
+
+          
+          <div id="tags">
+            <a class="instant" href="https://kokic.github.io/tags/stack"><span>#</span>stack</a><a class="instant" href="https://kokic.github.io/tags/tree"><span>#</span>tree</a><a class="instant" href="https://kokic.github.io/tags/isomorphism"><span>#</span>isomorphism</a>
+          </div>
+          
+        </div>
+
+        
+        
+
+        
+
+        
+        <div id="last-updated"></div>
+        <script>
+        var date = new Date(document.lastModified);
+        document.getElementById("last-updated").innerHTML = `<i>Last updated: ${date.toLocaleDateString("zh-CN").replaceAll("/", "-")}</i>`;
+        </script>
+        
+
+        
+
+        
+          <h2 id="bei-jing">背景<a class="zola-anchor" href="#bei-jing" aria-label="Anchor link for: bei-jing" style="visibility: hidden;"></a>
+</h2>
+<p>在介绍本文的目的之前, 我们首先解释一下标题栈置换-二叉树同构的含义. </p>
+<p>栈置换: 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$, 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+<blockquote class="callout note">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>注</strong></p>
+        
+        <p><ruby>栈置换<rt>stack permutation</rt></ruby> 也译作 <ruby>栈混洗<rt>stack shuffle</rt></ruby>.</p>
+
+    </div>
+</blockquote>
+<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树. 这两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构. 本文正是要指出实现该同构的一种方式, 具体地写出这个双射. </p>
+<h2 id="bian-ma">编码<a class="zola-anchor" href="#bian-ma" aria-label="Anchor link for: bian-ma" style="visibility: hidden;"></a>
+</h2>
+<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. </p>
+<p>在构建二叉树的过程中, 对于一个节点, 我们可以添加它的左子树或右子树. 对于一个已经有子树的节点, 也可以向子树的节点中做这样的操作. <ruby>约化<rt>reduce</rt></ruby>这些操作的技巧在于, 应该考虑栈弹出的对应物, 对树而言, 这就是回到它的<ruby>双亲<rt>parent</rt></ruby>节点. 这样一来, 每次添加节点后, 下次操作的目标节点就转移为之前新增的节点. </p>
+<p>我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>. 对应的, 以此刻画二叉树的构建: </p>
+<ul>
+<li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(1 (2 (3)))</code>. </li>
+<li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(1 _ (2 _ (3)))</code>.</li>
+<li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(1 (2) (3))</code>.</li>
+</ul>
+<blockquote class="callout tip">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M9.97308 18H11V13H13V18H14.0269C14.1589 16.7984 14.7721 15.8065 15.7676 14.7226C15.8797 14.6006 16.5988 13.8564 16.6841 13.7501C17.5318 12.6931 18 11.385 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.3843 6.46774 12.6917 7.31462 13.7484C7.40004 13.855 8.12081 14.6012 8.23154 14.7218C9.22766 15.8064 9.84103 16.7984 9.97308 18ZM10 20V21H14V20H10ZM5.75395 14.9992C4.65645 13.6297 4 11.8915 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 11.8925 19.3428 13.6315 18.2443 15.0014C17.624 15.7748 16 17 16 18.5V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V18.5C8 17 6.37458 15.7736 5.75395 14.9992Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>提示</strong></p>
+        
+        <p>注意到每个树节点的<ruby>双亲<rt>parent</rt></ruby>节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
+
+    </div>
+</blockquote><blockquote class="callout note">
+    
+    <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 7H13V9H11V7ZM11 11H13V17H11V11Z" fill="currentColor"></path></svg>
+    </div>
+    <div class="content">
+        
+        <p><strong>注意</strong></p>
+        
+        <p>在处理 <code>0</code> 时, 如果当前栈已空, 则这些 <code>0</code> 会被跳过. 换言之, 空栈的弹出视为恒等映射 $\text{id}$. 我们在此处只强调栈的情况是因为 &quot;空栈弹出&quot; 并不直接对应于 &quot;回到树根的前一层&quot;. 这个观察是后文讨论的关键.</p>
+
+    </div>
+</blockquote><h2 id="li-zi">例子<a class="zola-anchor" href="#li-zi" aria-label="Anchor link for: li-zi" style="visibility: hidden;"></a>
+</h2>
+<p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换. 二进制序列对齐为 $6$ 位. </p>
+<pre class="z-code"><code><span class="z-text z-plain">    o
+   /
+  o          →     111000     →    321
+ / 
+o   
+
+    o
+   /
+  o          →     110100     →    231
+   \ 
+    o       
+
+o
+ \ 
+  o          →     101100     →    132
+ /
+o
+
+o
+ \ 
+  o          →     101010     →    123
+   \
+    o
+
+  o
+ / \         →     110010     →    213
+o   o       
+
+</span></code></pre>
+<p>相应的, 对于一个栈置换或者有效的出栈序列, 总可以写出它的二进制序列, 并以此得到对应的二叉树. </p>
+<h2 id="zheng-he">正合<a class="zola-anchor" href="#zheng-he" aria-label="Anchor link for: zheng-he" style="visibility: hidden;"></a>
+</h2>
+<p>对于一个有效的二进制序列, 也就是说它能确定一棵二叉树与其对应的栈置换, 如果在构建栈的过程中, 没有发生 &quot;空栈的弹出&quot; 且恰好弹空, 那么我们就称这个二进制序列 <strong><ruby>栈正合<rt>stack exact</rt></ruby></strong>. 显而易见, 二进制序列栈正合当且仅当其中的 <code>1</code> 和 <code>0</code> 的个数相等. 相应的, 没有发生 &quot;回到根的前一层&quot; 且恰好回到根称为 <strong><ruby>树正合<rt>tree exact</rt></ruby></strong>. </p>
+<p>前面我们提到, &quot;空栈弹出&quot; 并不直接对应于 &quot;回到根的前一层&quot;, 我们在 <a href="https://kokic.github.io/blog/stack-tree-isomorphism/#li-zi">例子</a> 中展示了树结点数或者栈元素为 $3$ 时的情况, 可以验证, 其中给出的二进制序列都栈正合但并非树正合, 如 <code>111000</code> 和 <code>101010</code>, 前者是因为多余的 <code>0</code> 而后者是未能回到根节点. 除了这两者, 其他序列既是栈正合又是树正合, 以下简称为正合. </p>
+<p>相应的, 给定一棵二叉树, 它的树正合序列可以唯一写出, 但是却未必栈正合. 现在来构造几个树正合但不满足栈正合的例子: </p>
+<ul>
+<li>
+<p>从 <code>101010</code> 出发, 我们只要补上缺少的 <code>0</code> 就能得到一个例子, 即 <code>1010100</code>. 根据前文的约定, &quot;空栈弹出&quot; 不会对栈置换造成任何影响, 换言之, 这两个序列对应着同一个栈置换. </p>
+</li>
+<li>
+<p>下一个例子需要考虑 $4$ 个节点的树, 为 <code>110100</code> 的根节点加上右节点得到 <code>11010001</code>, 这就是所需的序列. <code>11010001</code> 的栈置换为 <code>2314</code>, 但是从 <code>2314</code> 出发, 其对应的栈正合序列为 <code>11010010</code>. 可以注意到, 栈正合序列已经不再具有正确的树编码信息, 正因为在树编码到栈置换这一步忽略了对栈而言多余的 <code>0</code>. </p>
+</li>
+</ul>
+<div>
+$$\begin{gathered} 
+& & \text{tree-exact} & & \\
+& \nearrow & & \searrow & \\
+\text{tree} & & & & \text{stack} \\
+& \nwarrow & & \swarrow & \\
+& & \text{stack-exact} & & \\
+\end{gathered}$$
+</div>
+<p>这样一来, 只有在二进制序列正合时, $\text{tree}$ 和 $\text{stack}$ 之间的关系才能表示成 $\text{tree} \rightleftarrows \text{code} \rightleftarrows \text{stack}$, 此时 $\text{tree-exact}$ 和 $\text{stack-exact}$ 相等, 记为 $\text{code}$. </p>
+<h2 id="xiu-zheng">修正<a class="zola-anchor" href="#xiu-zheng" aria-label="Anchor link for: xiu-zheng" style="visibility: hidden;"></a>
+</h2>
+<blockquote>
+<p>Hille, Reinhold Friedrich. &quot;Stack permutations and an order relation for binary trees.&quot; (1982).</p>
+</blockquote>
+<p>这篇文章 [Hille, 1982] 和本文使用了一致的二进制编码规则, 但是在算法部分给出了错误的实现, 其中的 <code>ENCODE</code> 对应于本文实现处的 <code>toCode</code>, <code>ENCODE</code> 以本文使用的 Lean4 语言写出就是</p>
+<pre class="z-code"><code><span class="z-text z-plain">-- Hille&#39;s ENCODE
+def encode : Tree → String
+  | .node l r =&gt; &quot;1&quot; ++ encode l ++ encode r
+  | _ =&gt; &quot;0&quot;
+</span></code></pre>
+<p>但是这个标准的前序遍历过程对于树序列的计算来说是不正确的, 实际上, 它会计算出无效的树序列, 并且问题非常隐晦, 因为对于大部分二叉树, <code>encode</code> 所返回的结果几乎都正确. 第一个出错的结果位于前文提到的栈置换 <code>2314</code>, 其树正合序列为 <code>110100010</code>, 栈正合序列为 <code>11010010</code>, 对应着如下所示的 $4$ 结点二叉树</p>
+<pre class="z-code"><code><span class="z-text z-plain">    o
+   / \
+  o   o       →     11010001     →    2314
+   \                                   
+    o                                 
+
+
+    ∅         ←     11010010     ←    2314
+</span></code></pre>
+<p>但请注意, <code>encode</code> 是一个 <code>Tree → String</code>, 在语义上它计算的应该是树序列而非栈序列, 尽管存在将栈序列唯一转换为树序列的方法, 但是这些内容在 [Hille, 1982] 并未提及, 也就是说, 以该文章的视角来看, 该文章的 <code>ENCODE</code> 就应该是其开头给出的树编码, 这就是问题所在. </p>
+<p>我们可以手工验证 <code>encode</code> 的计算结果, 而这个 <code>110100100</code> 是无效的树编码. 对应地, 我们将给出 <code>Tree → String</code> 的正确实现, 也就是 <code>toCode</code>, 其将返回 <code>1101000100</code> 这样一个有效的树编码, 当然, 这不是树正合的序列, 但无关紧要.</p>
+<pre class="z-code"><code><span class="z-text z-plain">          o
+         / \                       o 
+encode( o   o )  =  &quot;1&quot; ++ encode(  \  ) ++ encode( o )
+         \                           o               
+          o      =  &quot;1&quot; ++ &quot;1&quot; ++ &quot;0&quot; ++ 2 × encode( o )
+
+                 =  &quot;110&quot; ++ 2 × &quot;100&quot;
+
+                 =  &quot;110100100&quot;
+</span></code></pre>
+<h2 id="shi-xian">实现<a class="zola-anchor" href="#shi-xian" aria-label="Anchor link for: shi-xian" style="visibility: hidden;"></a>
+</h2>
+<p>解析器 <code>Parser</code> 的部分不是本文的重点, 一言以蔽之, 上述二进制序列的解析规则定义为</p>
+<div>$$(\texttt{"1"} \mapsto \texttt{L} ~|~ \texttt{"01"} \mapsto \texttt{R} ~|~ \texttt{"0"} \mapsto \texttt{U})^*$$</div>
+<pre data-linenos class="z-code"><code><table><tbody><tr><td>1</td><td><span class="z-text z-plain">
+</td></tr><tr><td>2</td><td>import Lean.Data.Parsec
+</td></tr><tr><td>3</td><td>
+</td></tr><tr><td><mark>4</mark></td><td><mark>inductive Ins where
+</mark></td></tr><tr><td><mark>5</mark></td><td><mark>  | lchild
+</mark></td></tr><tr><td><mark>6</mark></td><td><mark>  | rchild
+</mark></td></tr><tr><td><mark>7</mark></td><td><mark>  | up
+</mark></td></tr><tr><td><mark>8</mark></td><td><mark>deriving Repr
+</mark></td></tr><tr><td>9</td><td>
+</td></tr><tr><td>10</td><td>namespace Parser
+</td></tr><tr><td>11</td><td>
+</td></tr><tr><td>12</td><td>open Lean Parsec
+</td></tr><tr><td>13</td><td>
+</td></tr><tr><td>14</td><td>def left := pstring &quot;1&quot; *&gt; pure Ins.lchild
+</td></tr><tr><td>15</td><td>def right := pstring &quot;01&quot; *&gt; pure Ins.rchild
+</td></tr><tr><td>16</td><td>def up := pstring &quot;0&quot; *&gt; pure Ins.up
+</td></tr><tr><td>17</td><td>def tree := many &lt;| left &lt;|&gt; right &lt;|&gt; up
+</td></tr><tr><td>18</td><td>
+</td></tr><tr><td>19</td><td>end Parser
+</td></tr><tr><td>20</td><td>
+</td></tr><tr><td><mark>21</mark></td><td><mark>def toIns (s : String) : List Ins :=
+</mark></td></tr><tr><td><mark>22</mark></td><td><mark>  ((Parser.tree.run s).toOption.map (·.toList)).getD []
+</mark></td></tr></span></tbody></table></code></pre>
+<p>正常的二叉树 <code>Tree α</code> 带有 <code>α</code> 类型的结点数据, 
+本文并不关心结点数据具体为何, 故如下 <code>Tree</code> 只会记录树的结构信息. 
+这里和上文的 <code>Repr</code> 都是调试用途. <code>Inhabited</code> 则是后文顺序树 <code>SeqTree</code> 中的部分函数 <code>toTree</code> 所需, 
+对于这个经典的过程, 这里省略了其终止性证明.</p>
+<pre data-linenos class="z-code"><code><table><tbody><tr><td>23</td><td><span class="z-text z-plain">                                                                  
+</td></tr><tr><td>24</td><td>inductive Tree where
+</td></tr><tr><td>25</td><td>  | nil : Tree
+</td></tr><tr><td>26</td><td>  | node : Tree → Tree → Tree
+</td></tr><tr><td>27</td><td>deriving Repr, Inhabited
+</td></tr></span></tbody></table></code></pre>
+<p>从编码恢复树的核心策略在于使用树的顺序存储, 可以看出, 仅使用结点的相对关系难以处理连续的回溯操作 <code>Ins.up</code>. 
+现在, 顺序存储使每个结点有一个绝对表示 <code>id</code>, 且可以通过 <code>id</code> 索引到结点信息, 
+前文定义的二叉树 <code>Tree</code> 并不带有 <code>α</code>, 因此这些信息 <code>Nat × Bool ≃ Array Bool</code> 只描述结点是否非空. 
+此处虽不关心, 但对于带有数据的结点而言这相当必要. </p>
+<div>
+$$\begin{gathered}
+  &   &     0     &   &   \\
+  & 1 &           & 2 &   \\
+3 &   & 4 \quad 5 &   & 6 \\
+  &   &   \vdots  &   &
+\end{gathered}$$
+</div>
+<p>对任意一个 <code>action : Ins</code> 和当前待操作的节点索引 $i$, 其的左右子节点索引分别为 $2i+1$ 与 $2i+2$. 
+将相应的 <code>nodes[-]</code> 与 <code>currId</code> 更新后即可完成 <code>Ins.lchild</code> 与 <code>Ins.rchild</code> 指令的处理. 
+<code>Ins.up</code> 自然不更新 <code>nodes</code>, 仅仅只是调整节点索引 $i$ 到它的双亲节点索引 $\lfloor\frac{i-1}2\rfloor$. 
+对于 <code>i &gt;= nodes.size</code> 的访问, 自然是填充 <code>i - nodes.size</code> 个 <code>false</code>, 
+随后再添加 <code>i</code> 位置的 <code>true</code>. </p>
+<pre data-linenos class="z-code"><code><table><tbody><tr><td>28</td><td><span class="z-text z-plain">
+</td></tr><tr><td>29</td><td>namespace SeqTree
+</td></tr><tr><td>30</td><td>
+</td></tr><tr><td>31</td><td>def toRootedSTree (tails : List Ins) : Array Bool := Id.run do
+</td></tr><tr><td>32</td><td>  let mut nodes : Array Bool := #[true]
+</td></tr><tr><td>33</td><td>  let mut currId := 0
+</td></tr><tr><td>34</td><td>  for action in tails do
+</td></tr><tr><td><mark>35</mark></td><td><mark>    match action with
+</mark></td></tr><tr><td><mark>36</mark></td><td><mark>    | .lchild =&gt; (nodes, currId) := update nodes (2 * currId + 1)
+</mark></td></tr><tr><td><mark>37</mark></td><td><mark>    | .rchild =&gt; (nodes, currId) := update nodes (2 * currId + 2)
+</mark></td></tr><tr><td><mark>38</mark></td><td><mark>    | .up =&gt; currId := (currId - 1) /2
+</mark></td></tr><tr><td>39</td><td>  nodes
+</td></tr><tr><td>40</td><td>where
+</td></tr><tr><td><mark>41</mark></td><td><mark>  update (nodes : Array Bool) (id : Nat) :=
+</mark></td></tr><tr><td><mark>42</mark></td><td><mark>    (ite (id &gt;= nodes.size)
+</mark></td></tr><tr><td><mark>43</mark></td><td><mark>         (fill nodes id) (nodes.setD id true), id)
+</mark></td></tr><tr><td><mark>44</mark></td><td><mark>  fill (nodes : Array Bool) (i : Nat) :=
+</mark></td></tr><tr><td><mark>45</mark></td><td><mark>    (nodes.append (mkArray (i - nodes.size) false)).push true
+</mark></td></tr><tr><td>46</td><td>
+</td></tr><tr><td>47</td><td>def toSTree : List Ins → Array Bool
+</td></tr><tr><td>48</td><td>  | .lchild :: xs =&gt; toRootedSTree xs
+</td></tr><tr><td>49</td><td>  | _ =&gt; #[]
+</td></tr><tr><td>50</td><td>
+</td></tr><tr><td>51</td><td>partial def toTree (seq : Array Bool) : Tree :=
+</td></tr><tr><td>52</td><td>  go seq 0
+</td></tr><tr><td>53</td><td>where
+</td></tr><tr><td><mark>54</mark></td><td><mark>  go (seq : Array Bool) (i : Nat) : Tree :=
+</mark></td></tr><tr><td><mark>55</mark></td><td><mark>    ite (i &lt; seq.size &amp;&amp; seq.get! i)
+</mark></td></tr><tr><td><mark>56</mark></td><td><mark>        (.node (go seq (2 * i + 1)) (go seq (2 * i + 2)))
+</mark></td></tr><tr><td><mark>57</mark></td><td><mark>        .nil
+</mark></td></tr><tr><td>58</td><td>
+</td></tr><tr><td>59</td><td>end SeqTree
+</td></tr></span></tbody></table></code></pre>
+<p>树的编码相当于从树的链式结构转换到线性结构, 此处 <code>toCode</code> 仍采用类似于前序遍历的过程, 但通过引入 <code>Tree × Ins</code> 类型的栈正确记录了树的信息. </p>
+<pre data-linenos class="z-code"><code><table><tbody><tr><td>60</td><td><span class="z-text z-plain">
+</td></tr><tr><td>61</td><td>namespace Tree
+</td></tr><tr><td>62</td><td>
+</td></tr><tr><td>63</td><td>def fromCode := SeqTree.toTree ∘ SeqTree.toSTree ∘ toIns
+</td></tr><tr><td>64</td><td>
+</td></tr><tr><td><mark>65</mark></td><td><mark>def toCode (t : Tree) : String := Id.run do
+</mark></td></tr><tr><td><mark>66</mark></td><td><mark>  let mut stack : List (Tree × Ins) := [(t, Ins.lchild)]
+</mark></td></tr><tr><td><mark>67</mark></td><td><mark>  let mut result : String := &quot;&quot;
+</mark></td></tr><tr><td><mark>68</mark></td><td><mark>  repeat do
+</mark></td></tr><tr><td><mark>69</mark></td><td><mark>    let head := stack.head?
+</mark></td></tr><tr><td><mark>70</mark></td><td><mark>    if h : head.isSome then
+</mark></td></tr><tr><td><mark>71</mark></td><td><mark>      let (tree, action) := head.get h
+</mark></td></tr><tr><td><mark>72</mark></td><td><mark>      stack := stack.tail!
+</mark></td></tr><tr><td><mark>73</mark></td><td><mark>      match tree with
+</mark></td></tr><tr><td><mark>74</mark></td><td><mark>      | .nil =&gt; continue
+</mark></td></tr><tr><td><mark>75</mark></td><td><mark>      | .node l r =&gt;
+</mark></td></tr><tr><td><mark>76</mark></td><td><mark>        match action with
+</mark></td></tr><tr><td><mark>77</mark></td><td><mark>        | .lchild =&gt; (result, stack) := (result ++ &quot;1&quot;, update tree l r stack)
+</mark></td></tr><tr><td><mark>78</mark></td><td><mark>        | .rchild =&gt; (result, stack) := (result ++ &quot;01&quot;, update tree l r stack)
+</mark></td></tr><tr><td><mark>79</mark></td><td><mark>        | .up =&gt; result := result ++ &quot;0&quot;
+</mark></td></tr><tr><td><mark>80</mark></td><td><mark>    else
+</mark></td></tr><tr><td><mark>81</mark></td><td><mark>      break
+</mark></td></tr><tr><td><mark>82</mark></td><td><mark>  result
+</mark></td></tr><tr><td><mark>83</mark></td><td><mark>where
+</mark></td></tr><tr><td><mark>84</mark></td><td><mark>  update (tree l r : Tree) (stack : List (Tree × Ins)) :=
+</mark></td></tr><tr><td><mark>85</mark></td><td><mark>    (l, Ins.lchild) :: (r, Ins.rchild) :: (tree, Ins.up) :: stack
+</mark></td></tr><tr><td>86</td><td>
+</td></tr><tr><td>87</td><td>end Tree
+</td></tr><tr><td>88</td><td>
+</td></tr></span></tbody></table></code></pre>
+<!-- 
+<details >
+  <summary><span>完整程序</span></summary>
+  <p><img src="/figure/stack-tree-code.svg" alt="code" /></p>
+
+</details>
+ 
+-->
+
+        
+      </article>
+
+      
+      
+      <div class="giscus"></div>
+      
+      
+    </div>
+
+    <footer>
+  <div class="copyright">
+    <p>2021 - inf © kokic</p>
+
+  </div>
+  
+  <div class="credits">
+    powered by
+    <a href="https://www.getzola.org" target="_blank" rel='noreferrer noopener'>zola</a>
+    and
+    <a href="https://github.com/isunjn/serene" target="_blank" rel='noreferrer noopener'>serene</a>
+  </div>
+  
+</footer>
+  </main>
+</div>
+
+  
+<script src="/js/lightense.min.js"></script>
+
+
+  <script src="/js/main.js"></script>
+</body>
+ 
+</html>
