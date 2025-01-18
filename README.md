@@ -2,5 +2,5 @@
 # Build
 
 ```
-kodama c index.md -b=https://kokic.github.io/echo/
+kodama c index.md
 ```
