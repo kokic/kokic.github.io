@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+      <details id=tutorials-link-rules open><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules.html">[tutorials/link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
+<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
+<p><section class="block hide-metadata" data-taxon="">
+      <details id=tutorials-embed-syntax open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax.html">[tutorials/embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
+<ul>
+<li><code>.md#:embed</code>, 嵌入 Markdown.</li>
+<li><code>.typ#:block</code>, 嵌入 Typst 编译后的 SVG, 并居中展示为块级元素.</li>
+<li><code>.typ#:span</code>, 嵌入 Typst 编译后的 SVG, 并展示为行间元素 (不常用).</li>
+<li><code>.typ#:shared</code>, 在当前文件的上下文中导入该 Typst 文件, 此时 <code>text</code> 用于提供被导入的定义范围, 如所有定义 <code>*</code>. 配合内联 Typst 语法使用.</li>
+</ul>
+<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
+<p>大部分时候, 嵌入语法的 <code>text</code> 都是空着的, 不过由于只有 Markdown 的嵌入才会产生子 <code>section</code>, 此时 <code>text</code> 能用于设置 <code>section</code> 默认是否展开以及在目录中的状态. 这些设置由一系列特定字符构成, 它们对应的功能彼此独立, 因此书写的先后顺序可以任意.</p>
+<ul>
+<li><code>+</code>, 表示当前 <code>section</code> 使用计数器.</li>
+<li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
+<li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
+</ul>
+<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup>
+<p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code">Visual Studio Code</a></span>.</p>
+</div>
+</details>
+    </section></p>
+<p>很多时候, 对于相当简单的 Typst 文本, 用户会希望有一种方式在展示上对应于 $\KaTeX$ 语境下的行内公式, 这就是内联 Typst.</p>
+<p><section class="block hide-metadata" data-taxon="">
+      <details id=tutorials-inline-syntax open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
+<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="链接类语法">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
+<ul>
+<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
+<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
+<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
+</ul>
+</details>
+    </section></p>
+<div class="footnote-definition" id="embed-link"><sup class="footnote-definition-label">1</sup>
+<p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
+</div>
+<div class="footnote-definition" id="local-link"><sup class="footnote-definition-label">2</sup>
+<p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
+</div>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="tutorials/embed-syntax.html" title="嵌入语法 [tutorials/embed-syntax]">■</a><span class="link"><a href="#tutorials-embed-syntax"><span class="taxon"></span>嵌入语法</a></span></li><li class=""><a class="bullet" href="tutorials/inline-syntax.html" title="内联语法 [tutorials/inline-syntax]">■</a><span class="link"><a href="#tutorials-inline-syntax"><span class="taxon"></span>内联语法</a></span></li></ul></div></nav></div></body></html>

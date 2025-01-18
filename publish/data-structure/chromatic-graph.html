@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
+      <details id=data-structure-chromatic-graph open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
+<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer">Kummer</a></span> 的理想理论之于费马大定理.</p>
+<p><section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id=data-structure-deletion-contraction open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\without{\setminus}$</p>
+<p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
+<p>$$ \pi(G) \eqq \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
+<p><section class="block hide-metadata" data-taxon="Proof. ">
+      <details id=data-structure-deletion-contraction-proof open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\without{\setminus}$</p>
+<p>$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
+$$\begin{aligned} 
+\pi(G \without e) 
+&\eqq \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~+ \\
+& \kern{3.3em} \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\eqq \pi(G / e) + \pi(G)
+\end{aligned}$$</p>
+</details>
+    </section></p>
+<p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
+<p>这个结果可等价地叙述成连接的版本, 可称为 “连接-收缩公式”. 对于简单图 $G = (V, E)$</p>
+<p>$$ \pi(G) \eqq \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
+<p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
+</details>
+    </section></p>
+<p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
+<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 21.007874 L 39.20733 21.007874 L 39.20733 0 Z "/>
+    <g>
+        <g transform="translate(0 2)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g30267E90AF33476939FA790BF2CFA4B6" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(9.179065 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#gE7D1B761E699FF1AF896F60E9A8F0E23" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(15.689258999999998 0)">
+                        <g class="typst-group">
+                            <g>
+                                <g transform="translate(0 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(0 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 1.4173228346456674)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 11.338583 0.000000000000009441266 11.338583 0.000000000000009441266 "/>
+                                </g>
+                                <g transform="translate(15.590551181102361 2.8346456692913424)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0.0000000000000031470889 0 C 0.0000000000000031470889 0 0 11.338583 0 11.338583 "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 15.590551181102365)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 11.338583 0 C 11.338583 0 0 0 0 0 "/>
+                                </g>
+                                <g transform="translate(1.4173228346456674 2.8346456692913424)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 11.338583 C 0 11.338583 0.0000000000000037371682 0 0.0000000000000037371682 0 "/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(32.69713301574804 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g721639AFC4A0843B1FF64FCE5C7F61DE" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs id="glyph">
+        <symbol id="g30267E90AF33476939FA790BF2CFA4B6" overflow="visible">
+            <path d="M 8.083748 6.649037 L 2.992838 6.649037 C 2.360331 6.649037 1.8049589 6.402205 1.357576 5.923968 C 1.141598 5.692563 0.416529 4.705235 0.416529 4.504684 C 0.478237 4.396695 0.478237 4.304133 0.663361 4.304133 C 0.77134997 4.304133 0.863912 4.365841 0.956474 4.504684 C 1.450138 5.260607 2.082645 5.646282 2.838568 5.646282 L 3.625345 5.646282 C 3.270524 4.304133 2.62259 2.653444 1.69697 0.694215 C 1.619835 0.509091 1.573554 0.370248 1.573554 0.293113 C 1.573554 -0.015427 1.743251 -0.169697 2.067218 -0.169697 C 2.360331 -0.169697 2.576309 0 2.715152 0.323967 C 2.992838 1.203306 3.193389 1.882094 3.301378 2.344904 L 4.149863 5.646282 L 5.738844 5.646282 C 5.3223147 3.810469 5.106337 2.5300279 5.106337 1.8049589 C 5.106337 1.049036 5.276034 -0.169697 5.8468328 -0.169697 C 6.1707997 -0.169697 6.525621 0.138843 6.525621 0.46281 C 6.525621 0.539945 6.494767 0.663361 6.4330587 0.817631 C 6.139946 1.5426999 6.001103 2.360331 6.001103 3.301378 C 6.001103 4.026447 6.093665 4.813224 6.263362 5.646282 L 7.944905 5.646282 C 8.48485 5.646282 8.747109 5.831406 8.747109 6.217081 C 8.747109 6.571902 8.469423 6.649037 8.083748 6.649037 Z "/>
+        </symbol>
+        <symbol id="gE7D1B761E699FF1AF896F60E9A8F0E23" overflow="visible">
+            <path d="M 5.368596 -4.581819 C 5.507439 -4.581819 5.5845737 -4.504684 5.5845737 -4.365841 C 5.5845737 -4.288706 5.55372 -4.242425 5.507439 -4.196144 C 4.643527 -3.532783 3.949312 -2.422039 3.424794 -0.863912 C 2.977411 0.478237 2.746006 1.774105 2.746006 3.0545459 L 2.746006 4.658954 C 2.746006 5.939395 2.977411 7.235263 3.424794 8.577412 C 3.949312 10.135539 4.643527 11.246283 5.507439 11.909644 C 5.55372 11.955925 5.5845737 12.002206 5.5845737 12.079341 C 5.5845737 12.2181835 5.507439 12.295319 5.368596 12.295319 C 5.306888 12.295319 5.260607 12.279892 5.24518 12.249038 C 4.242425 11.477688 3.409367 10.33609 2.746006 8.808817 C 2.113499 7.358679 1.789532 5.970249 1.789532 4.658954 L 1.789532 3.0545459 C 1.789532 1.743251 2.113499 0.354821 2.746006 -1.095317 C 3.409367 -2.62259 4.242425 -3.764188 5.24518 -4.535538 C 5.260607 -4.566392 5.306888 -4.581819 5.368596 -4.581819 Z "/>
+        </symbol>
+        <symbol id="g721639AFC4A0843B1FF64FCE5C7F61DE" overflow="visible">
+            <path d="M 1.2650139 -4.535538 C 2.267769 -3.764188 3.100827 -2.62259 3.764188 -1.095317 C 4.396695 0.354821 4.720662 1.743251 4.720662 3.0545459 L 4.720662 4.658954 C 4.720662 5.970249 4.396695 7.358679 3.764188 8.808817 C 3.100827 10.33609 2.267769 11.477688 1.2650139 12.249038 C 1.2495869 12.279892 1.203306 12.295319 1.141598 12.295319 C 1.002755 12.295319 0.92562 12.2181835 0.92562 12.079341 C 0.92562 12.002206 0.956474 11.955925 1.002755 11.909644 C 1.866667 11.246283 2.560882 10.135539 3.0853999 8.577412 C 3.532783 7.235263 3.764188 5.939395 3.764188 4.658954 L 3.764188 3.0545459 C 3.764188 1.774105 3.532783 0.478237 3.0853999 -0.863912 C 2.560882 -2.422039 1.866667 -3.532783 1.002755 -4.196144 C 0.956474 -4.242425 0.92562 -4.288706 0.92562 -4.365841 C 0.92562 -4.504684 1.002755 -4.581819 1.141598 -4.581819 C 1.203306 -4.581819 1.2495869 -4.566392 1.2650139 -4.535538 Z "/>
+        </symbol>
+    </defs>
+</svg>
+</span>
+.</p>
+<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除-收缩公式">删除-收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
+<p><div style="text-align: center"><img src = "/data-structure/chromatic-0001.svg" /></div></p>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="data-structure/deletion-contraction.html" title="删除-收缩公式 [data-structure/deletion-contraction]">■</a><span class="link"><a href="#data-structure-deletion-contraction"><span class="taxon">Theorem. </span>删除-收缩公式</a></span><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/deletion-contraction-proof.html" title=" [data-structure/deletion-contraction-proof]">■</a><span class="link"><a href="#data-structure-deletion-contraction-proof"><span class="taxon">Proof. </span></a></span></li></ul></li></ul></div></nav></div></body></html>

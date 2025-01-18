@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+      <details id=mille-plateaux-rational-points open><summary><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points.html">[mille-plateaux/rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-26</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解:</p>
+<p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
+<p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$.</p>
+<p><div style="text-align: center"><img src = "/mille-plateaux/8P.svg" /></div></p>
+<p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
+<p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
+<p><section class="block hide-metadata" data-taxon="Lemma. ">
+      <details id=mille-plateaux-canterbury open><summary><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury.html">[mille-plateaux/canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-27</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
+<p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
+<p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
+<p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$</p>
+<p>解这个关于 $x,y$ 的方程. 这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 只需要解这个线性方程, 故</p>
+<p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
+</details>
+    </section></p>
+<p>反复利用 <span class="link local"><a href="/mille-plateaux/canterbury" title="该映射">该映射</a></span> 即可得到前文的 $8P$. 当然, 这也给出某个经典的恒等式</p>
+<p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
+<p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
+<p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
+<p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
+\in \Q $$</p>
+<p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+      <details id=mille-plateaux-circular-parameterization open><summary><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization.html">[mille-plateaux/circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-28</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>我们对于 $\R$ 上的单位圆周曲线 $C(\R):x^2+y^2=1$ 和它关于角度 $\theta$ 的参数化 $\theta \mapsto (\cos\theta, \sin\theta)$ 是不陌生的. 通过计算这类统称为三角函数或者圆函数的映射, 很容易就能发现圆上的一些不同寻常的点</p>
+<p>$$ (\tfrac1{\sqrt2}, \tfrac1{\sqrt2}), \quad (\tfrac{1+\sqrt5}4, \sqrt{\tfrac58 - \tfrac{\sqrt5}8}), \quad (\tfrac{\sqrt3}2, \tfrac12) $$</p>
+<p>但是如果我们希望找到 $C(\Q)$ 上的点, 这个参数化就没有那么有用了. 考虑 $C(\Q):x^2+y^2=r^2$, 我们从点 $P(-r, 0)$ 出发, 任选一个 $t \in \R$ 作为过 $P$ 点直线的斜率, 即 $y = t(x+r)$, 随后联立之.</p>
+<p>$$ (1+t^2)x^2 + 2rt^2x + r^2t^2 - r^2 = 0 $$</p>
+<p>由于我们已经知道它的一个根 $x_1 = -r$. 且根与系数的关系给出</p>
+<p>$$ x_1 + x_2 = -\frac{2rt^2}{1+t^2} $$</p>
+<p>立得 $x_2 = r \cdot \frac{1-t^2}{1+t^2}$. 从而给出一个熟知的有理参数化</p>
+<p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
+<p>这样一种寻找点的方式, 通常被称为弦切法.</p>
+<p><div style="text-align: center"><img src = "/mille-plateaux/chord-tangent.svg" /></div></p>
+</details>
+    </section></p>
+<p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id=mille-plateaux-circular-curve open><summary><header><h1><span class="taxon">Definition. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[mille-plateaux/circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-30</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\E{\operatorname{E}}$
+$\gdef\arc{\text{arc}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="长度">长度</a></span> 为</p>
+<p>$$
+L 
+\spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
+\spaces= r\arcsin\dfrac{x}{r}\bigg|_{-r}^r
+\spaces= \pi r
+$$</p>
+<p>因而圆的弧长定义了反正弦函数，即</p>
+<p>$$
+\arcsin x \spaces= \int_0^x\dfrac{1}{\sqrt{1-t^2}}\d t
+$$</p>
+<p>其反函数被称为正弦函数，统称圆函数或者三角函数.</p>
+<p>现在, 注意到 $\cot(x)$ 和 $\cot^\prime(x)$ 满足   $\cot^2(x) + \cot^\prime(x) = 1$, 令 $(\cot(x), \cot^\prime(x)) \mapsto (x,y)$, 即 $y=c-x^2$.</p>
+<p>其他三角函数及其导数也有类似的关系, 以下列出.</p>
+<p>$$\def\arraystretch{1.5}\begin{array}{|c|c|c|} 
+\hline
+u & (u, u^\prime) \mapsto (x,y) & g \\
+\hline
+\cot & y = -x^2-1 & 0 \\ 
+\hline
+\tan & y = x^2 + 1 & 0 \\ 
+\hline
+\cos, \sin & y^2 = 1-x^2 & 0 \\
+\hline
+\sec, \csc & y^2 = x^4-x^2 & 0 \\
+\hline
+\end{array}$$</p>
+<p>现在取 $C(\Q): y=x^2+1$ 上一定点 $(0, 1)$, 固定斜率 $t$ 从而有直线 $\ell(\Q): y=tx+1$, 类似地求曲线 $\ell(\Q) \cdot C(\Q) = 0$ 的交点, 得到 $(t, t^2+1)$.</p>
+<p>如果我们对抛物线 $C(\R)$ 求弧长, 所得到的将是 $\log$ 或 $\sinh^{-1}$ 的代数函数. 当然, $\sinh^{-1}$ 实际上也是 $\log$ 的代数函数.
+$$
+\begin{aligned} 
+s
+&\spaces= \int\sqrt{1+(2x)^2}\d x \\
+&\spaces= \frac12 \sqrt{1+4x^2} + \frac14\sinh^{-1}(2x)
+\end{aligned}
+$$</p>
+<p>现在重新回顾</p>
+<p>$$
+\int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
+$$</p>
+<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="有理参数化">有理参数化</a></span>, 也就是说</p>
+<p>$$
+\begin{aligned}
+\int\dfrac{\d x}{y} 
+&\spaces= \int \frac{\d{(\frac{1-t^2}{1+t^2})}}{\frac{2t}{1+t^2}} \\
+&\spaces= \int -\frac{4t}{(1+t^2)^2} \cdot \frac{1+t^2}{2t} \d t \\
+&\spaces= \int -\frac{2}{1+t^2} \d t \\
+&\spaces= -2\tan^{-1} t
+\end{aligned}
+$$</p>
+<p>另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有</p>
+<p>$$
+\arcsin x \spaces= \frac{\pi}2-2\arctan\frac{\sqrt{1-x}}{\sqrt{1+x}}
+$$</p>
+<p>双曲线时的情况略有不同. 考虑 $C(\R):x^2-y^2=1$, 如果朴素地计算平面直角坐标系上的积分, 将得到一个会被归类为椭圆积分的表达式</p>
+<p>$$ 
+\int \sqrt{\frac{2x^2-1}{x^2-1}} \d x 
+\spaces= \int \frac{4x^4-1}{\sqrt{x^2-1}\sqrt{2x^2+1}} \d x
+$$</p>
+<p>由于分子部分的 $4x^4-1$ 是多项式函数, 因此整个积分的核心就在于下面这一项</p>
+<p>$$
+\int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
+\tag{1}
+$$</p>
+<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分的经验">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
+<p>现在考虑双曲线 $C(\R)$ 的一个参数化
+$$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
+<p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
+<p>$$
+\begin{aligned}
+\int \sqrt{\sinh^2 t + \cosh^2 t} \d t
+&\spaces= \int \sqrt{\cosh 2t} \d t \\
+&\spaces= -i \E(it \mid 2) \\
+&\spaces= -i \E(i \cosh^{-1}x \mid 2) \\
+&\spaces= \E(\sin^{-1}x \mid 2) \\
+\end{aligned}
+$$</p>
+</details>
+    </section></p>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="mille-plateaux/canterbury.html" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">■</a><span class="link"><a href="#mille-plateaux-canterbury"><span class="taxon">Lemma.  1. </span>Canterbury 曲线的切线与自身的交点</a></span></li><li class=""><a class="bullet" href="mille-plateaux/circular-parameterization.html" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link"><a href="#mille-plateaux-circular-parameterization"><span class="taxon">Exegesis.  2. </span>圆的参数化</a></span></li><li class=""><a class="bullet" href="mille-plateaux/circular-curve.html" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link"><a href="#mille-plateaux-circular-curve"><span class="taxon">Definition.  3. </span>圆曲线</a></span></li></ul></div></nav></div></body></html>

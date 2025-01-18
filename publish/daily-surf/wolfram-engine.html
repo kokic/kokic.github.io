@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+      <details id=daily-surf-wolfram-engine open><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine.html">[daily-surf/wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-29</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook">Wolfram Notebook</a></span>.</p>
+<p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
+<p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference"><a href="#immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
+<div class="footnote-definition" id="wolfram-engine-size"><sup class="footnote-definition-label">1</sup>
+<p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath">Sagemath</a></span> 还是大了不少.</p>
+</div>
+<div class="footnote-definition" id="immortal-edition"><sup class="footnote-definition-label">2</sup>
+<p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition">The immortal edition</a></span>.</p>
+</div>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"></ul></div></nav></div></body></html>

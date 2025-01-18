@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+      <details id=data-structure open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure.html">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id=data-structure-binary-tree open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree.html">[data-structure/binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
+<p><div style="text-align: center"><img src = "/data-structure/tree-def.svg" /></div></p>
+<p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
+<p><div style="text-align: center"><img src = "/data-structure/binary-tree.svg" /></div></p>
+<p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
+<!-- 记二叉树上所有度为 $d$ 的结点为集合 $N_d$, $n_d = |N_d|$. 对于每个叶结点 $\ell \in N_0$, 它总是有一个双亲节点, 而非叶结点 $N_{>0} = N_1 \cup N_2$ 至少有一个子节点.   -->
+</details>
+    </section>
+<section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id=data-structure-blass-lawvere open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere.html">[data-structure/blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p>记 $B$ 是二叉树类型, 则存在一个 “极精确的双射” $B \xrightarrow{\sim} B^7$.</p>
+<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 Fiore–Leinster 定理回答.</p>
+<p><section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id=data-structure-fiore-leinster open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[data-structure/fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><a class="link external" href="https://arxiv.org/abs/math/0211454">https://arxiv.org/abs/math/0211454</a></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
+</details>
+    </section></p>
+<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
+<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 Fiore–Leinster 定理, 存在 “极精确的双射” $T \cong T^5$.</p>
+<h4>参考文献</h4>
+<ol>
+<li>
+<p>Trevor Hyde, “Seven Trees in One”, <span class="link external"><a href="http://math.uchicago.edu/~farbgroup/2020-summer/2020-09-10-trevor-hyde.pdf" title="http://math.uchicago.edu/~farbgroup/2020-summer/2020-09-10-trevor-hyde.pdf">http://math.uchicago.edu/~farbgroup/2020-summer/2020-09-10-trevor-hyde.pdf</a></span></p>
+</li>
+<li>
+<p>Andreas Blass, “SEVEN TREES IN ONE”, <span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></p>
+</li>
+</ol>
+</details>
+    </section></p>
+<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+      <details id=data-structure-synthetic-differential open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential.html">[data-structure/synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p>我们首先观察朴素的数值微分的计算过程. 待微分函数为 $(x+3)^2$, 此处不妨取 $x=-2$, $h=10^{-5}$, 这一位置的导数 $A$ 近似为</p>
+<p>$$ 
+A \quads\approx \frac{f(x+h)-f(x)}h \eqq \frac{(1 + 10^{-5})^2 - 1^2}{10^{-5}} \eqq 2.00001 
+$$</p>
+<p>并且如果试图得到与预期的 $A=2$ 更接近的结果, 则须将无穷小近似 $h$ 选取为更靠近 $0$ 的数值, 这对于浮点精度有限的计算机来说极为不利.</p>
+<p>而朴素的符号微分视表达式为树结构, 通过遍历树并对符合模式的节点应用求导规则. 即</p>
+<p>$$
+\begin{aligned}
+(x+3)^2 
+& \spaces\to (x+3)'(x+3) + (x+3)(x+3)' \\
+& \spaces\to 1 \cdot (x+3) + (x+3) \cdot 1 \\
+& \spaces\to 2x+6 
+\end{aligned}
+$$</p>
+<p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
+<p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+      <details id=data-structure-complex-step open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step.html">[data-structure/complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">3</a></sup>, 注意</p>
+<p>$$
+f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
+$$</p>
+<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="后续">后续</a></span> 的计算中也会继续用到. 如此便有
+$$ 
+\frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
+\frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
+$$</p>
+<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="符号微分">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
+<div class="footnote-definition" id="distinguish"><sup class="footnote-definition-label">1</sup>
+<p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
+</div>
+<div class="footnote-definition" id="publish-time"><sup class="footnote-definition-label">2</sup>
+<p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
+</div>
+<div class="footnote-definition" id="complex-step"><sup class="footnote-definition-label">3</sup>
+<p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+</div>
+</details>
+    </section></p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 Cleve
+方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>$$
+\frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
+$$</p>
+<p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将</p>
+<p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
+<p>当中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法.</p>
+<p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id=data-structure-dual-number open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
+<p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="矛盾">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
+<p><section class="block hide-metadata" data-taxon="Axiom. ">
+      <details id=data-structure-kock-lawvere open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="William Lawvere">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p><div style="text-align: center"><img src = "/data-structure/similar-triangle.svg" /></div></p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
+<p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
+<p>$$ 
+f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
+$$</p>
+<p>将这里的 $a$ 换成 $f(0)$, 并完全使用量词叙述, 则是</p>
+<p>$$ 
+\forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
+$$</p>
+<p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary. ">
+      <details id=data-structure-kock-lawvere-000A open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
+<p>$$
+f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
+$$</p>
+<p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
+<p><div style="text-align: center"><img src = "/data-structure/kock-lawvere-0001.svg" /></div></p>
+</details>
+    </section></p>
+<blockquote>
+<p>Axiom is incompatible with the law of excluded middle.
+Either the one or the other has to leave the scene.
+In Part I of this book, the law of excluded middle has to leave,
+being incompatible with the natural synthetic reasoning
+on smooth geometry to be presented here.
+In the terms which the logicians use, this means that
+the logic employed is ‘constructive’ or ‘intuitionistic’.
+We prefer to think of it just as ‘that reasoning
+which can be carried out in all sufficiently good
+cartesian closed categories’. <p style="text-align: right;">— Anders Kock, Synthetic Differential Geometry</p></p>
+</blockquote>
+</details>
+    </section></p>
+<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="公理">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block hide-metadata" data-taxon="Definition. ">
+      <details id=data-structure-chromatic-graph open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
+<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer">Kummer</a></span> 的理想理论之于费马大定理.</p>
+<p><section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id=data-structure-deletion-contraction open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\without{\setminus}$</p>
+<p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
+<p>$$ \pi(G) \eqq \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
+<p><section class="block hide-metadata" data-taxon="Proof. ">
+      <details id=data-structure-deletion-contraction-proof open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\without{\setminus}$</p>
+<p>$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
+$$\begin{aligned} 
+\pi(G \without e) 
+&\eqq \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~+ \\
+& \kern{3.3em} \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\eqq \pi(G / e) + \pi(G)
+\end{aligned}$$</p>
+</details>
+    </section></p>
+<p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
+<p>这个结果可等价地叙述成连接的版本, 可称为 “连接-收缩公式”. 对于简单图 $G = (V, E)$</p>
+<p>$$ \pi(G) \eqq \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
+<p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
+</details>
+    </section></p>
+<p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
+<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 21.007874 L 39.20733 21.007874 L 39.20733 0 Z "/>
+    <g>
+        <g transform="translate(0 2)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g30267E90AF33476939FA790BF2CFA4B6" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(9.179065 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#gE7D1B761E699FF1AF896F60E9A8F0E23" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(15.689258999999998 0)">
+                        <g class="typst-group">
+                            <g>
+                                <g transform="translate(0 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(0 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 2.199379 0 2.8346457 0.6352668 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 2.199379 2.199379 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 0.6352668 2.8346457 0 2.199379 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 0.6352668 0.6352668 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 1.4173228346456674)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 11.338583 0.000000000000009441266 11.338583 0.000000000000009441266 "/>
+                                </g>
+                                <g transform="translate(15.590551181102361 2.8346456692913424)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0.0000000000000031470889 0 C 0.0000000000000031470889 0 0 11.338583 0 11.338583 "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 15.590551181102365)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 11.338583 0 C 11.338583 0 0 0 0 0 "/>
+                                </g>
+                                <g transform="translate(1.4173228346456674 2.8346456692913424)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 11.338583 C 0 11.338583 0.0000000000000037371682 0 0.0000000000000037371682 0 "/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(32.69713301574804 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g721639AFC4A0843B1FF64FCE5C7F61DE" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs id="glyph">
+        <symbol id="g30267E90AF33476939FA790BF2CFA4B6" overflow="visible">
+            <path d="M 8.083748 6.649037 L 2.992838 6.649037 C 2.360331 6.649037 1.8049589 6.402205 1.357576 5.923968 C 1.141598 5.692563 0.416529 4.705235 0.416529 4.504684 C 0.478237 4.396695 0.478237 4.304133 0.663361 4.304133 C 0.77134997 4.304133 0.863912 4.365841 0.956474 4.504684 C 1.450138 5.260607 2.082645 5.646282 2.838568 5.646282 L 3.625345 5.646282 C 3.270524 4.304133 2.62259 2.653444 1.69697 0.694215 C 1.619835 0.509091 1.573554 0.370248 1.573554 0.293113 C 1.573554 -0.015427 1.743251 -0.169697 2.067218 -0.169697 C 2.360331 -0.169697 2.576309 0 2.715152 0.323967 C 2.992838 1.203306 3.193389 1.882094 3.301378 2.344904 L 4.149863 5.646282 L 5.738844 5.646282 C 5.3223147 3.810469 5.106337 2.5300279 5.106337 1.8049589 C 5.106337 1.049036 5.276034 -0.169697 5.8468328 -0.169697 C 6.1707997 -0.169697 6.525621 0.138843 6.525621 0.46281 C 6.525621 0.539945 6.494767 0.663361 6.4330587 0.817631 C 6.139946 1.5426999 6.001103 2.360331 6.001103 3.301378 C 6.001103 4.026447 6.093665 4.813224 6.263362 5.646282 L 7.944905 5.646282 C 8.48485 5.646282 8.747109 5.831406 8.747109 6.217081 C 8.747109 6.571902 8.469423 6.649037 8.083748 6.649037 Z "/>
+        </symbol>
+        <symbol id="gE7D1B761E699FF1AF896F60E9A8F0E23" overflow="visible">
+            <path d="M 5.368596 -4.581819 C 5.507439 -4.581819 5.5845737 -4.504684 5.5845737 -4.365841 C 5.5845737 -4.288706 5.55372 -4.242425 5.507439 -4.196144 C 4.643527 -3.532783 3.949312 -2.422039 3.424794 -0.863912 C 2.977411 0.478237 2.746006 1.774105 2.746006 3.0545459 L 2.746006 4.658954 C 2.746006 5.939395 2.977411 7.235263 3.424794 8.577412 C 3.949312 10.135539 4.643527 11.246283 5.507439 11.909644 C 5.55372 11.955925 5.5845737 12.002206 5.5845737 12.079341 C 5.5845737 12.2181835 5.507439 12.295319 5.368596 12.295319 C 5.306888 12.295319 5.260607 12.279892 5.24518 12.249038 C 4.242425 11.477688 3.409367 10.33609 2.746006 8.808817 C 2.113499 7.358679 1.789532 5.970249 1.789532 4.658954 L 1.789532 3.0545459 C 1.789532 1.743251 2.113499 0.354821 2.746006 -1.095317 C 3.409367 -2.62259 4.242425 -3.764188 5.24518 -4.535538 C 5.260607 -4.566392 5.306888 -4.581819 5.368596 -4.581819 Z "/>
+        </symbol>
+        <symbol id="g721639AFC4A0843B1FF64FCE5C7F61DE" overflow="visible">
+            <path d="M 1.2650139 -4.535538 C 2.267769 -3.764188 3.100827 -2.62259 3.764188 -1.095317 C 4.396695 0.354821 4.720662 1.743251 4.720662 3.0545459 L 4.720662 4.658954 C 4.720662 5.970249 4.396695 7.358679 3.764188 8.808817 C 3.100827 10.33609 2.267769 11.477688 1.2650139 12.249038 C 1.2495869 12.279892 1.203306 12.295319 1.141598 12.295319 C 1.002755 12.295319 0.92562 12.2181835 0.92562 12.079341 C 0.92562 12.002206 0.956474 11.955925 1.002755 11.909644 C 1.866667 11.246283 2.560882 10.135539 3.0853999 8.577412 C 3.532783 7.235263 3.764188 5.939395 3.764188 4.658954 L 3.764188 3.0545459 C 3.764188 1.774105 3.532783 0.478237 3.0853999 -0.863912 C 2.560882 -2.422039 1.866667 -3.532783 1.002755 -4.196144 C 0.956474 -4.242425 0.92562 -4.288706 0.92562 -4.365841 C 0.92562 -4.504684 1.002755 -4.581819 1.141598 -4.581819 C 1.203306 -4.581819 1.2495869 -4.566392 1.2650139 -4.535538 Z "/>
+        </symbol>
+    </defs>
+</svg>
+</span>
+.</p>
+<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除-收缩公式">删除-收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
+<p><div style="text-align: center"><img src = "/data-structure/chromatic-0001.svg" /></div></p>
+</details>
+    </section></p>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="data-structure/binary-tree.html" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link"><a href="#data-structure-binary-tree"><span class="taxon">Definition. </span>二叉树类型</a></span></li><li class=""><a class="bullet" href="data-structure/blass-lawvere.html" title="七树合一定理 [data-structure/blass-lawvere]">■</a><span class="link"><a href="#data-structure-blass-lawvere"><span class="taxon">Theorem. </span>七树合一定理</a></span><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">■</a><span class="link"><a href="#data-structure-fiore-leinster"><span class="taxon">Theorem. </span>Fiore–Leinster</a></span></li></ul></li><li class=""><a class="bullet" href="data-structure/synthetic-differential.html" title="综合微分法 [data-structure/synthetic-differential]">■</a><span class="link"><a href="#data-structure-synthetic-differential"><span class="taxon">Exegesis. </span>综合微分法</a></span><ul class="block"><li class=""><a class="bullet" href="data-structure/complex-step.html" title="复步微分法 [data-structure/complex-step]">■</a><span class="link"><a href="#data-structure-complex-step"><span class="taxon">Exegesis. </span>复步微分法</a></span></li><li class=""><a class="bullet" href="data-structure/dual-number.html" title="对偶数 [data-structure/dual-number]">■</a><span class="link"><a href="#data-structure-dual-number"><span class="taxon">Definition. </span>对偶数</a></span><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/kock-lawvere.html" title="Kock–Lawvere [data-structure/kock-lawvere]">■</a><span class="link"><a href="#data-structure-kock-lawvere"><span class="taxon">Axiom. </span>Kock–Lawvere</a></span><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/kock-lawvere-000A.html" title="所有函数都光滑 [data-structure/kock-lawvere-000A]">■</a><span class="link"><a href="#data-structure-kock-lawvere-000A"><span class="taxon">Corollary. </span>所有函数都光滑</a></span></li></ul></li></ul></li></ul></li><li class=""><a class="bullet" href="data-structure/chromatic-graph.html" title="染色图 [data-structure/chromatic-graph]">■</a><span class="link"><a href="#data-structure-chromatic-graph"><span class="taxon">Definition. </span>染色图</a></span><ul class="block"><li class=""><a class="bullet" href="data-structure/deletion-contraction.html" title="删除-收缩公式 [data-structure/deletion-contraction]">■</a><span class="link"><a href="#data-structure-deletion-contraction"><span class="taxon">Theorem. </span>删除-收缩公式</a></span><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/deletion-contraction-proof.html" title=" [data-structure/deletion-contraction-proof]">■</a><span class="link"><a href="#data-structure-deletion-contraction-proof"><span class="taxon">Proof. </span></a></span></li></ul></li></ul></li></ul></div></nav></div></body></html>
