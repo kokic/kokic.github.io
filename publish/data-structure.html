@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,23 +366,23 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=data-structure open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure.html">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id=data-structure-binary-tree open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree.html">[data-structure/binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="data-structure" open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure.html">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree.html">[data-structure/binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
-<p><div style="text-align: center"><img src = "/data-structure/tree-def.svg" /></div></p>
+<p><figure><img src = "/data-structure/tree-def.svg" /></figure></p>
 <p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
-<p><div style="text-align: center"><img src = "/data-structure/binary-tree.svg" /></div></p>
+<p><figure><img src = "/data-structure/binary-tree.svg" /></figure></p>
 <p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
 <!-- 记二叉树上所有度为 $d$ 的结点为集合 $N_d$, $n_d = |N_d|$. 对于每个叶结点 $\ell \in N_0$, 它总是有一个双亲节点, 而非叶结点 $N_{>0} = N_1 \cup N_2$ 至少有一个子节点.   -->
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id=data-structure-blass-lawvere open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere.html">[data-structure/blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere.html">[data-structure/blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 “极精确的双射” $B \xrightarrow{\sim} B^7$.</p>
 <p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 Fiore–Leinster 定理回答.</p>
 <p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id=data-structure-fiore-leinster open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[data-structure/fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><a class="link external" href="https://arxiv.org/abs/math/0211454">https://arxiv.org/abs/math/0211454</a></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="data-structure-fiore-leinster" open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[data-structure/fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><a class="link external" href="https://arxiv.org/abs/math/0211454">https://arxiv.org/abs/math/0211454</a></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
 </details>
@@ -396,7 +401,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 </details>
     </section></p>
 <p><section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id=data-structure-synthetic-differential open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential.html">[data-structure/synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-synthetic-differential" open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential.html">[data-structure/synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>$\gdef\R{\mathbf{R}}$
@@ -418,7 +423,7 @@ $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
 <p><section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id=data-structure-complex-step open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step.html">[data-structure/complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step.html">[data-structure/complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">3</a></sup>, 注意</p>
 <p>$$
@@ -450,17 +455,17 @@ $$</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
 <p>当中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法.</p>
 <p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id=data-structure-dual-number open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+      <details id="data-structure-dual-number" open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
 <p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="矛盾">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
 <p><section class="block hide-metadata" data-taxon="Axiom. ">
-      <details id=data-structure-kock-lawvere open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="William Lawvere">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
-<p><div style="text-align: center"><img src = "/data-structure/similar-triangle.svg" /></div></p>
+<p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
 <p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
@@ -472,14 +477,14 @@ $$</p>
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
 <p><section class="block hide-metadata" data-taxon="Corollary. ">
-      <details id=data-structure-kock-lawvere-000A open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-kock-lawvere-000A" open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
 <p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
-<p><div style="text-align: center"><img src = "/data-structure/kock-lawvere-0001.svg" /></div></p>
+<p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
 </details>
     </section></p>
 <blockquote>
@@ -502,17 +507,17 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, S
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Definition. ">
-      <details id=data-structure-chromatic-graph open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
+      <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
 <p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer">Kummer</a></span> 的理想理论之于费马大定理.</p>
 <p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id=data-structure-deletion-contraction open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \eqq \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <p><section class="block hide-metadata" data-taxon="Proof. ">
-      <details id=data-structure-deletion-contraction-proof open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
@@ -603,7 +608,7 @@ $$\begin{aligned}
 </span>
 .</p>
 <p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除-收缩公式">删除-收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
-<p><div style="text-align: center"><img src = "/data-structure/chromatic-0001.svg" /></div></p>
+<p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
 </details>
     </section></p>
 </details>

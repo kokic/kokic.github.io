@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,17 +366,17 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
-      <details id=data-structure-chromatic-graph open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
+      <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph.html">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
 <p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer">Kummer</a></span> 的理想理论之于费马大定理.</p>
 <p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id=data-structure-deletion-contraction open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \eqq \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <p><section class="block hide-metadata" data-taxon="Proof. ">
-      <details id=data-structure-deletion-contraction-proof open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
@@ -462,7 +467,7 @@ $$\begin{aligned}
 </span>
 .</p>
 <p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除-收缩公式">删除-收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
-<p><div style="text-align: center"><img src = "/data-structure/chromatic-0001.svg" /></div></p>
+<p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
 </details>
     </section></article>
 

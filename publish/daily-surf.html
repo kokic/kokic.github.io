@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,8 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=daily-surf open><summary><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf.html">[daily-surf]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-9</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="">
-      <details id=daily-surf-nvidia-fps-gpu-cpu open><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu.html">[daily-surf/nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-9</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题">这个 Reddit 问题</a></span>.</p>
+      <details id="daily-surf" open><summary><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf.html">[daily-surf]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-9</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="">
+      <details id="daily-surf-nvidia-fps-gpu-cpu" ><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu.html">[daily-surf/nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-9</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题">这个 Reddit 问题</a></span>.</p>
 <p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference"><a href="#concept-name">1</a></sup>
 AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
 <div class="footnote-definition" id="concept-name"><sup class="footnote-definition-label">1</sup>
@@ -371,7 +376,7 @@ AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在�
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id=daily-surf-wolfram-engine open><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine.html">[daily-surf/wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-29</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook">Wolfram Notebook</a></span>.</p>
+      <details id="daily-surf-wolfram-engine" ><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine.html">[daily-surf/wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-29</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook">Wolfram Notebook</a></span>.</p>
 <p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
 <p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference"><a href="#immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
 <div class="footnote-definition" id="wolfram-engine-size"><sup class="footnote-definition-label">1</sup>
@@ -385,4 +390,4 @@ AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在�
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="daily-surf/nvidia-fps-gpu-cpu.html" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link"><a href="#daily-surf-nvidia-fps-gpu-cpu"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</a></span></li><li class=""><a class="bullet" href="daily-surf/wolfram-engine.html" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link"><a href="#daily-surf-wolfram-engine"><span class="taxon"></span>Wolfram 引擎与 WLJS</a></span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="daily-surf/nvidia-fps-gpu-cpu.html" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link"><a href="#daily-surf-nvidia-fps-gpu-cpu"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</a></span></li><li class="item-summary"><a class="bullet" href="daily-surf/wolfram-engine.html" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link"><a href="#daily-surf-wolfram-engine"><span class="taxon"></span>Wolfram 引擎与 WLJS</a></span></li></ul></div></nav></div></body></html>

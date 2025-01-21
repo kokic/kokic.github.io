@@ -45,8 +45,9 @@ const renderLinksTable = (...rows) => {
 
 <script>
 renderLinksTable(
-    [ "Liang Xiao", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
+    [ "肖梁", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
   , [ "李文威的数学主页", "www.wwli.asia", "https://www.wwli.asia/index.php/zh" ]
+  , [ "蒋炎岩", "jyywiki.cn", "https://jyywiki.cn" ]
   , [ "望月新一＠数理研", "www.kurims.kyoto-u.ac.jp/~motizuki", "https://www.kurims.kyoto-u.ac.jp/~motizuki" ]
   , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
   , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]

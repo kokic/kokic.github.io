@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,17 +366,17 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
-      <details id=data-structure-dual-number open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+      <details id="data-structure-dual-number" open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
 <p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="矛盾">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
 <p><section class="block hide-metadata" data-taxon="Axiom. ">
-      <details id=data-structure-kock-lawvere open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="William Lawvere">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
-<p><div style="text-align: center"><img src = "/data-structure/similar-triangle.svg" /></div></p>
+<p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
 <p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
@@ -383,14 +388,14 @@ $$</p>
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
 <p><section class="block hide-metadata" data-taxon="Corollary. ">
-      <details id=data-structure-kock-lawvere-000A open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-kock-lawvere-000A" open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
 <p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
-<p><div style="text-align: center"><img src = "/data-structure/kock-lawvere-0001.svg" /></div></p>
+<p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
 </details>
     </section></p>
 <blockquote>

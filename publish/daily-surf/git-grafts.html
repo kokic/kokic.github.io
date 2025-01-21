@@ -366,13 +366,56 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
-<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="链接类语法">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
+      <details id="daily-surf-git-grafts" open><summary><header><h1><span class="taxon"></span>Git 毀滅術 <a class="slug" href="/daily-surf/git-grafts.html">[daily-surf/git-grafts]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-8-21</li></ul></div></header></summary><pre><code>hint: Support for &lt;GIT_DIR&gt;/info/grafts is deprecated
+hint: and will be removed in a future Git version.
+hint:
+hint: Please use "git replace --convert-graft-file"
+hint: to convert the grafts into replace refs.
+hint:
+hint: Turn this message off by running
+hint: "git config advice.graftFileDeprecated false"
+</code></pre>
+<p>版本管理工具 Git 以 “绝不丢失用户的提交” 的理念 <sup class="footnote-reference"><a href="#git-philosophy">1</a></sup> 而著称. 但在 Git 中也存在着「确实地」将 commit 与 log 中的记录 “毁尸灭迹” 的办法. 并且操作起来非常简单, 实际步骤只有两步.</p>
+<blockquote>
+<p>警告: 本文作者对本文提供的方法不负任何责任, 读者通过本文的方法所造成的任何超出读者预期的行为, 均由读者自行负责.</p>
+</blockquote>
+<blockquote>
+<p>特别声明: 本文的方法可以用于删除已经提交至 Github 仓库托管平台的 commit 历史.</p>
+</blockquote>
+<hr />
+<pre><code>⋯ → A → B → C (目标 commit) → D → E → ⋯
+</code></pre>
+<p>本文提供的方法将会删除目标 commit “C” 之前的所有 commit 信息.</p>
+<h3>准备工作</h3>
+<p>阅读「警告」与「特别声明」.</p>
+<p><code>git log</code> 查看 commit 历史及对应的 SHA1 值, 复制目标 commit 的 SHA1.</p>
+<h3>Step 1</h3>
+<p>新建 <code>.git/info/grafts</code>, 写入 SHA1.</p>
+<h3>检查</h3>
+<blockquote>
+<p>这一步显然不是必要的, 只是为了确定前面的操作是否正常.</p>
+</blockquote>
+<p>此时 <code>git log</code> 会发现只能看到目标 commit 之后的历史了.</p>
+<h3>Step 2</h3>
+<p>执行 <code>git filter-branch -f</code> 后, 如果只有当前分支, 则直接强推 (<code>git push --force</code>), 如果有新的 detached 的分支, 为当前分支新建临时分支, 然后临时分支推送到远程仓库. 结束.</p>
+<hr />
+<h3>附录</h3>
+<h4>关于 <code> filter-branch</code> 的注记</h4>
+<blockquote>
+<p>让你可以通过重写 &lt;rev-list 选项&gt; 中提到的分支来重写 Git 修订历史, 并对每个修订应用自定义过滤器. 这些过滤器可以修改每棵树 (例如删除文件或在所有文件上运行 perl 重写) 或每个提交的信息. 否则, 所有信息 (包括原始提交时间或合并信息) 都将被保留.</p>
+</blockquote>
+<blockquote>
+<p>该命令只会重写命令行中提到的 positive refs (例如, 如果您传递 a..b, 则只会重写 b). 如果不指定过滤器, 提交将在不做任何改动的情况下重新提交, 这通常不会产生任何影响. 不过, 这在将来补偿某些 Git bug 或类似问题时可能会有用, 因此允许使用这种方法.</p>
+</blockquote>
+<blockquote>
+<p>注意: 此命令尊重 <code>.git/info/grafts</code> 文件和 <code>refs/replace/</code> 命名空间中的引用. 如果您定义了任何移植物或替换引用, 运行此命令将使其永久生效.</p>
+</blockquote>
 <ul>
-<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
-<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
-<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
+<li><span class="link external"><a href="https://git-scm.com/docs/git-filter-branch/zh_HANS-CN" title="git-scm.com/docs/git-filter-branch/zh_HANS-CN">git-scm.com/docs/git-filter-branch/zh_HANS-CN</a></span></li>
 </ul>
+<div class="footnote-definition" id="git-philosophy"><sup class="footnote-definition-label">1</sup>
+<p>也有人称之为 Git 哲学.</p>
+</div>
 </details>
     </section></article>
 

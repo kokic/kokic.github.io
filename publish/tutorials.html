@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,8 +366,8 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=tutorials open><summary><header><h1><span class="taxon"></span>Kodama Tutorials <a class="slug" href="/tutorials.html">[tutorials]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-install open><summary><header><h1><span class="taxon"></span>安装 <a class="slug" href="/tutorials/install.html">[tutorials/install]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p>你可以根据目标设备的架构直接从 <span class="link external"><a href="https://github.com/kokic/kodama/releases" title="Github Release">Github Release</a></span> 页面下载二进制文件.
+      <details id="tutorials" open><summary><header><h1><span class="taxon"></span>Kodama Tutorials <a class="slug" href="/tutorials.html">[tutorials]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="">
+      <details id="tutorials-install" open><summary><header><h1><span class="taxon"></span>安装 <a class="slug" href="/tutorials/install.html">[tutorials/install]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p>你可以根据目标设备的架构直接从 <span class="link external"><a href="https://github.com/kokic/kodama/releases" title="Github Release">Github Release</a></span> 页面下载二进制文件.
 在 Termux 等 Android 环境中使用请选择 <code>aarch64-unknown-linux-musl</code> 架构.</p>
 <ul>
 <li>确保 Kodama 位于可执行目录.</li>
@@ -374,10 +379,10 @@ document.addEventListener("DOMContentLoaded", () => {
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-compile open><summary><header><h1><span class="taxon"></span>编译 <a class="slug" href="/tutorials/compile.html">[tutorials/compile]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-4</li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将输入的 Markdown 文件构建成 HTML 文件.
+      <details id="tutorials-compile" open><summary><header><h1><span class="taxon"></span>编译 <a class="slug" href="/tutorials/compile.html">[tutorials/compile]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-4</li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将输入的 Markdown 文件构建成 HTML 文件.
 尽管有 <code>--root</code> 参数, 但仍然建议所有用户在 <code>index.md</code> 文件所在的目录下执行 <code>kodama c</code>.</p>
 <p><section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-compile-help open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help.html">[tutorials/compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
+      <details id="tutorials-compile-help" open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help.html">[tutorials/compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
 Compiles an input markdown file into HTML format
 
 Usage: kodama.exe compile [OPTIONS] &lt;INPUT&gt;
@@ -400,16 +405,16 @@ Options:
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-publish open><summary><header><h1><span class="taxon"></span>本地预览 <a class="slug" href="/tutorials/publish.html">[tutorials/publish]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p>如果你希望在本地查看生成页面 <code>publish/</code> 的效果, 通常你需要一个本地 http 服务器. 你可以使用任何你熟悉的工具完成这件事. 此处推荐 <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve">miniserve</a></span>, 安装后在 Kodama 项目的根路径执行如下指令即可.</p>
+      <details id="tutorials-publish" open><summary><header><h1><span class="taxon"></span>本地预览 <a class="slug" href="/tutorials/publish.html">[tutorials/publish]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p>如果你希望在本地查看生成页面 <code>publish/</code> 的效果, 通常你需要一个本地 http 服务器. 你可以使用任何你熟悉的工具完成这件事. 此处推荐 <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve">miniserve</a></span>, 安装后在 Kodama 项目的根路径执行如下指令即可.</p>
 <pre><code class="language-sh">miniserve ./publish --index=index.html --pretty-urls
 </code></pre>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-link-rules open><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules.html">[tutorials/link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
+      <details id="tutorials-link-rules" open><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules.html">[tutorials/link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
 <p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
 <p><section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-embed-syntax open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax.html">[tutorials/embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
+      <details id="tutorials-embed-syntax" open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax.html">[tutorials/embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
 <li><code>.md#:embed</code>, 嵌入 Markdown.</li>
 <li><code>.typ#:block</code>, 嵌入 Typst 编译后的 SVG, 并居中展示为块级元素.</li>
@@ -430,7 +435,7 @@ Options:
     </section></p>
 <p>很多时候, 对于相当简单的 Typst 文本, 用户会希望有一种方式在展示上对应于 $\KaTeX$ 语境下的行内公式, 这就是内联 Typst.</p>
 <p><section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-inline-syntax open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
+      <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
 <p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="链接类语法">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
 <ul>
 <li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
@@ -448,11 +453,11 @@ Options:
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-github-workflow open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow.html">[tutorials/github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="如下">如下</a></span> <sup class="footnote-reference"><a href="#hongjr03-workflow">1</a></sup>.
+      <details id="tutorials-github-workflow" open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow.html">[tutorials/github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="如下">如下</a></span> <sup class="footnote-reference"><a href="#hongjr03-workflow">1</a></sup>.
 唯一需要注意的是环境变量 <code>$PAGE_URL</code>, 用于 <span class="link local"><a href="/tutorials/compile" title="指定待部署页面的 URL">指定待部署页面的 URL</a></span>,
 你可以在仓库的 <code>settings/variables/actions</code> 设置 <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="它们">它们</a></span>.</p>
 <p><section class="block hide-metadata" data-taxon="">
-      <details id=tutorials-workflow-yml ><summary><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml.html">[tutorials/workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
+      <details id="tutorials-workflow-yml" ><summary><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml.html">[tutorials/workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
 
 on:
   # Runs on pushes targeting the default branch

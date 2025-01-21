@@ -365,14 +365,47 @@ document.addEventListener("DOMContentLoaded", () => {
       .innerHTML = taxon;
   })
 });
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
-<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="链接类语法">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
-<ul>
-<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
-<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
-<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
-</ul>
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Example. ">
+      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000B.html">[linear-algebra/rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
+将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}$,
+相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}$.
+注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
+来计算 $Q^*MQ$ <sup class="footnote-reference"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
+<p>$$
+\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \eqq \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \eqq \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+$$</p>
+<p>那么, 这就得到了 $M$ 的 Rayleigh 商的值域</p>
+<p>$$
+\frac{a^{2} + 4ab + b^{2}}{a^{2} + b^{2}}
+\quads\to
+\frac{3a^{2} - b^{2}}{a^{2} + b^{2}}
+\quads\in \lbrack - 1,3\rbrack
+$$</p>
+<p>下面讨论 $A = \scriptsize\begin{pmatrix} p & q \\ q & p \end{pmatrix}$ 的对角化问题.
+依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &~~~1 \\ 1 & -1 \end{pmatrix}$, 相应的
+$Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故</p>
+<p>$$
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to 
+\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}}
+\quads\in
+[p-q, p + q]
+$$</p>
+<p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bx + cy^2$. 其对角化为</p>
+<p>$$
+\begin{pmatrix} a & b \\ b & c \end{pmatrix}
+\quads\mapsto
+\frac12 \begin{pmatrix}
+r - \sqrt{s} & 0 \\
+0 & r + \sqrt{s}
+\end{pmatrix}
+$$</p>
+<p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
+<div class="footnote-definition" id="rayleigh-quotient-000B-1"><sup class="footnote-definition-label">1</sup>
+<p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+</div>
 </details>
     </section></article>
 

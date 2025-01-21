@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,12 +366,11 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=linear-algebra-index open><summary><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index.html">[linear-algebra/index]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id=linear-algebra-rayleigh-quotient open><summary><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient.html">[linear-algebra/rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$</p>
+      <details id="linear-algebra-index" open><summary><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index.html">[linear-algebra/index]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id="linear-algebra-rayleigh-quotient" open><summary><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient.html">[linear-algebra/rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
 <p>$$
-M \eqq \begin{pmatrix}
+M \spaces= \begin{pmatrix}
 \lambda_{1} \\
   & \ddots \\
   & & \lambda_{n}
@@ -376,21 +380,105 @@ $$</p>
 有如下结果:</p>
 <p>$$
 \min\limits_{1 \leqslant i \leqslant n}\lambda_{i}
-\quads\leqslant \frac{x^{\ast}Mx}{x^{\ast}x} 
-\quads\leqslant \max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
+\spaces\leqslant \frac{x^{\ast}Mx}{x^{\ast}x} 
+\spaces\leqslant \max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
 $$</p>
 <p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+      <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A.html">[linear-algebra/rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
+<p>$$
+x^{\ast}Mx \spaces= \sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2},\quad 
+x^{\ast}x \spaces= \sum_{1 \leqslant i \leqslant n}x_{i}^{2}
+$$</p>
+<p>Rayleigh 商定理正是在说</p>
+<p>$$
+\min\limits_{1 \leqslant i \leqslant n}\lambda_{i} 
+\spaces\leqslant 
+\frac{\sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2}}{\sum_{1 \leqslant i \leqslant n}x_{i}^{2}} 
+\spaces\leqslant 
+\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
+$$</p>
+</details>
+    </section></p>
+<p>Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 <sup class="footnote-reference"><a href="#hermite-matrix">1</a></sup>, 也即 $M$ 是共轭对称的方阵 $M^* = M$, 对实数而言这当然就是对称矩阵. 稍稍回忆线性代数, 有限维谱定理说:</p>
+<ul>
+<li>任何实对称矩阵都可以由正交矩阵对角化.</li>
+<li>任何复对称矩阵都可以由酉矩阵对角化 (Autonne–Takagi 分解).</li>
+</ul>
+<p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
+<p><section class="block hide-metadata" data-taxon="Example. ">
+      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B.html">[linear-algebra/rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
+将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}$,
+相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}$.
+注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
+来计算 $Q^*MQ$ <sup class="footnote-reference"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
+<p>$$
+\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \eqq \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \eqq \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+$$</p>
+<p>那么, 这就得到了 $M$ 的 Rayleigh 商的值域</p>
+<p>$$
+\frac{a^{2} + 4ab + b^{2}}{a^{2} + b^{2}}
+\quads\to
+\frac{3a^{2} - b^{2}}{a^{2} + b^{2}}
+\quads\in \lbrack - 1,3\rbrack
+$$</p>
+<p>下面讨论 $A = \scriptsize\begin{pmatrix} p & q \\ q & p \end{pmatrix}$ 的对角化问题.
+依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &~~~1 \\ 1 & -1 \end{pmatrix}$, 相应的
+$Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故</p>
+<p>$$
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to 
+\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}}
+\quads\in
+[p-q, p + q]
+$$</p>
+<p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bx + cy^2$. 其对角化为</p>
+<p>$$
+\begin{pmatrix} a & b \\ b & c \end{pmatrix}
+\quads\mapsto
+\frac12 \begin{pmatrix}
+r - \sqrt{s} & 0 \\
+0 & r + \sqrt{s}
+\end{pmatrix}
+$$</p>
+<p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
+<div class="footnote-definition" id="rayleigh-quotient-000B-1"><sup class="footnote-definition-label">1</sup>
+<p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+</div>
+</details>
+    </section></p>
+<p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
+<p><section class="block hide-metadata" data-taxon="Example. ">
+      <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C.html">[linear-algebra/rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要求解问题可以叙述成下面的形式</p>
+<p>$$
+F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
+$$</p>
+<p>这里相应的 $A = \scriptsize\begin{pmatrix} 3 & 2 \\ 2 & 3 \end{pmatrix}$, $B = \scriptsize\begin{pmatrix} 4 & ~~6 \\ 6 & 34 \end{pmatrix}$. 我们首先对 $B$ 进行 Cholesky 分解, 得到 $C = \scriptsize\begin{pmatrix} 2 & 0 \\ 3 & 5 \end{pmatrix}$ 使得 $B = CC^*$. 接下来通过 $C^{-1} A C^*{}^{-1}$ 求出 $D$ 及其对角化 $E$, 这样就结束了此问题.</p>
+<p>$$
+D \spaces= \frac14 \begin{pmatrix} ~~~3 & -1 \\ -1 & ~~~\frac35 \end{pmatrix}, ~~ 
+E \spaces=\frac1{20} \begin{pmatrix} 9-\sqrt{61} & 0 \\ 0 & 9+\sqrt{61} \end{pmatrix} \spaces= \begin{pmatrix} \min_\R F & 0 \\ 0 & \max_\R F \end{pmatrix} 
+$$</p>
+</details>
+    </section></p>
+<!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
+<div class="footnote-definition" id="hermite-matrix"><sup class="footnote-definition-label">1</sup>
+<p>自伴随矩阵, 复对称矩阵.</p>
+</div>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id=linear-algebra-permutation-matrix open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[linear-algebra/permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[linear-algebra/permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="此处">此处</a></span> 的结论及证明提供直观.</p>
-<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始.</p>
+<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
 <p>$$
 \begin{pmatrix} 0 & 1 \\ 1 & 0 \\ \end{pmatrix}
 \begin{pmatrix} x_1 \\ x_2 \\ \end{pmatrix}
@@ -401,22 +489,32 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 \spaces\hookrightarrow 
 (1 ~~ 2)
 $$</p>
-<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个.</p>
-<p>$$ I_n \sstr{交换垂直方向的} i ~ j \sstr{列得到的方阵} $$</p>
+<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference"><a href="#horizontal-exchange">1</a></sup>.</p>
+<p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
 <p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
-我们在这里强调垂直方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
+我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
 <p>$$
 \underbrace{\begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}}_{(2 ~ 3) ~ \curvearrowright ~ I_3}
 \spaces\cdot
 \underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}}_{(1 ~ 2) ~ \curvearrowright ~ I_3}
 \eqq
-\underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
+\underbrace{\begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
 $$</p>
-<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符.</p>
-<!-- $S_n \curvearrowright (x_1, x_2, \cdots, x_n)$ -->
+<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符. 也就是说</p>
+<p>$$
+\sigma_2\sigma_1 \quads\cong (\sigma_2 \curvearrowright I) \cdot (\sigma_1 \curvearrowright I)
+$$</p>
+<!-- 
+$$ 
+\sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
+$$ 
+-->
+<div class="footnote-definition" id="horizontal-exchange"><sup class="footnote-definition-label">1</sup>
+<p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+</div>
 </details>
     </section></p>
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient.html" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient"><span class="taxon">Theorem.  1. </span>Rayleigh 商定理</a></span></li><li class=""><a class="bullet" href="linear-algebra/permutation-matrix.html" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link"><a href="#linear-algebra-permutation-matrix"><span class="taxon">Exegesis.  2. </span>置换矩阵构造</a></span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient.html" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient"><span class="taxon">Theorem.  1. </span>Rayleigh 商定理</a></span><ul class="block"><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000A.html" title="某类二次型的商 [linear-algebra/rayleigh-quotient-000A]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000A"><span class="taxon">Exegesis.  1.1. </span>某类二次型的商</a></span></li><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000B.html" title="二阶情形 [linear-algebra/rayleigh-quotient-000B]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000B"><span class="taxon">Example.  1.2. </span>二阶情形</a></span></li><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000C.html" title="一般二次型的商 [linear-algebra/rayleigh-quotient-000C]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000C"><span class="taxon">Example.  1.3. </span>一般二次型的商</a></span></li></ul></li><li class=""><a class="bullet" href="linear-algebra/permutation-matrix.html" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link"><a href="#linear-algebra-permutation-matrix"><span class="taxon">Exegesis.  2. </span>置换矩阵构造</a></span></li></ul></div></nav></div></body></html>

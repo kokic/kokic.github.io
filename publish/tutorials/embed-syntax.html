@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=tutorials-embed-syntax open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax.html">[tutorials/embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
+      <details id="tutorials-embed-syntax" open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax.html">[tutorials/embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
 <li><code>.md#:embed</code>, 嵌入 Markdown.</li>
 <li><code>.typ#:block</code>, 嵌入 Typst 编译后的 SVG, 并居中展示为块级元素.</li>
