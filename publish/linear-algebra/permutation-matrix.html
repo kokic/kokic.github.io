@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,14 +366,14 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis. ">
-      <details id=linear-algebra-permutation-matrix open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[linear-algebra/permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[linear-algebra/permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="此处">此处</a></span> 的结论及证明提供直观.</p>
-<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始.</p>
+<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
 <p>$$
 \begin{pmatrix} 0 & 1 \\ 1 & 0 \\ \end{pmatrix}
 \begin{pmatrix} x_1 \\ x_2 \\ \end{pmatrix}
@@ -379,19 +384,29 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 \spaces\hookrightarrow 
 (1 ~~ 2)
 $$</p>
-<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个.</p>
-<p>$$ I_n \sstr{交换垂直方向的} i ~ j \sstr{列得到的方阵} $$</p>
+<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference"><a href="#horizontal-exchange">1</a></sup>.</p>
+<p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
 <p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
-我们在这里强调垂直方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
+我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
 <p>$$
 \underbrace{\begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}}_{(2 ~ 3) ~ \curvearrowright ~ I_3}
 \spaces\cdot
 \underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}}_{(1 ~ 2) ~ \curvearrowright ~ I_3}
 \eqq
-\underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
+\underbrace{\begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
 $$</p>
-<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符.</p>
-<!-- $S_n \curvearrowright (x_1, x_2, \cdots, x_n)$ -->
+<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符. 也就是说</p>
+<p>$$
+\sigma_2\sigma_1 \quads\cong (\sigma_2 \curvearrowright I) \cdot (\sigma_1 \curvearrowright I)
+$$</p>
+<!-- 
+$$ 
+\sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
+$$ 
+-->
+<div class="footnote-definition" id="horizontal-exchange"><sup class="footnote-definition-label">1</sup>
+<p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+</div>
 </details>
     </section></article>
 

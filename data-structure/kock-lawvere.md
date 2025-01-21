@@ -13,7 +13,7 @@ $\gdef\R{\mathbf{R}}$
 
 我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$. 
 
-[](/data-structure/similar-triangle.typ#:block)
+[Methods in Algebra - Volume 1, p. 369](/data-structure/similar-triangle.typ#:block)
 
 因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型. 
 

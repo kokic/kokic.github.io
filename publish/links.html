@@ -149,6 +149,11 @@ details>summary {
   list-style-type: none;
 }
 
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
 section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
@@ -361,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id=links open><summary><header><h1><span class="taxon"></span>链接 <a class="slug" href="/links.html">[links]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://www.lozumi.com" title="洛衣博客">洛衣博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.oyyko.com" title="Colin’s Blog">Colin’s Blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://reinhardthk.github.io" title="Reinhardt的魔法小屋">Reinhardt的魔法小屋</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.shigure.fun" title="废紙时雨">废紙时雨</a></span></li><li class="meta-item"><span class="link external"><a href="http://home.ustc.edu.cn/~xuxuayame" title="徐诩绫目 | Xuxuayame">徐诩绫目 | Xuxuayame</a></span></li><li class="meta-item"><span class="link external"><a href="https://kono-dada.github.io" title="dada 的研究站">dada 的研究站</a></span></li><li class="meta-item"><span class="link external"><a href="https://m1ting.github.io" title="迷亭的日记">迷亭的日记</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.xtlsoft.top" title="徐天乐 :: 个人博客">徐天乐 :: 个人博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://ashitemaru.github.io" title="Ashitemaru">Ashitemaru</a></span></li><li class="meta-item"><span class="link external"><a href="https://studyingfather.com" title="Studying Father’s blog">Studying Father’s blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://tonyxty.github.io" title="Lambdaiae">Lambdaiae</a></span></li><li class="meta-item"><span class="link external"><a href="https://xinyu-yi.github.io" title="Xinyu Yi">Xinyu Yi</a></span></li><li class="meta-item"><span class="link external"><a href="https://web.math.princeton.edu/~longket" title="唐珑珂">唐珑珂</a></span></li><li class="meta-item"><span class="link external"><a href="https://sites.google.com/view/gubao" title="辜开源">辜开源</a></span></li><li class="meta-item"><span class="link external"><a href="https://www.llddeddym.site" title="张峻铭">张峻铭</a></span></li></ul></div></header></summary><script>
+      <details id="links" open><summary><header><h1><span class="taxon"></span>链接 <a class="slug" href="/links.html">[links]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://www.lozumi.com" title="洛衣博客">洛衣博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.oyyko.com" title="Colin’s Blog">Colin’s Blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://reinhardthk.github.io" title="Reinhardt的魔法小屋">Reinhardt的魔法小屋</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.shigure.fun" title="废紙时雨">废紙时雨</a></span></li><li class="meta-item"><span class="link external"><a href="http://home.ustc.edu.cn/~xuxuayame" title="徐诩绫目 | Xuxuayame">徐诩绫目 | Xuxuayame</a></span></li><li class="meta-item"><span class="link external"><a href="https://kono-dada.github.io" title="dada 的研究站">dada 的研究站</a></span></li><li class="meta-item"><span class="link external"><a href="https://m1ting.github.io" title="迷亭的日记">迷亭的日记</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.xtlsoft.top" title="徐天乐 :: 个人博客">徐天乐 :: 个人博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://ashitemaru.github.io" title="Ashitemaru">Ashitemaru</a></span></li><li class="meta-item"><span class="link external"><a href="https://studyingfather.com" title="Studying Father’s blog">Studying Father’s blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://tonyxty.github.io" title="Lambdaiae">Lambdaiae</a></span></li><li class="meta-item"><span class="link external"><a href="https://xinyu-yi.github.io" title="Xinyu Yi">Xinyu Yi</a></span></li><li class="meta-item"><span class="link external"><a href="https://web.math.princeton.edu/~longket" title="唐珑珂">唐珑珂</a></span></li><li class="meta-item"><span class="link external"><a href="https://sites.google.com/view/gubao" title="辜开源">辜开源</a></span></li><li class="meta-item"><span class="link external"><a href="https://www.llddeddym.site" title="张峻铭">张峻铭</a></span></li></ul></div></header></summary><script>
 
 const content = document.querySelector("details");
 
@@ -387,8 +392,9 @@ const renderLinksTable = (...rows) => {
 </script>
 <script>
 renderLinksTable(
-    [ "Liang Xiao", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
+    [ "肖梁", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
   , [ "李文威的数学主页", "www.wwli.asia", "https://www.wwli.asia/index.php/zh" ]
+  , [ "蒋炎岩", "jyywiki.cn", "https://jyywiki.cn" ]
   , [ "望月新一＠数理研", "www.kurims.kyoto-u.ac.jp/~motizuki", "https://www.kurims.kyoto-u.ac.jp/~motizuki" ]
   , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
   , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]

@@ -366,13 +366,53 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax.html">[tutorials/inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
-<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="链接类语法">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
+      <details id="daily-surf-wsl-clean-help" open><summary><header><h1><span class="taxon"></span>WSL 清理支援 <a class="slug" href="/daily-surf/wsl-clean-help.html">[daily-surf/wsl-clean-help]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-6</li></ul></div></header></summary><p>注: 本文的 WSL 特指 WSL2.</p>
+<h3>准备工作</h3>
+<p>Step 1. 通过以下两种方式之一关闭目标 WSL.</p>
 <ul>
-<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
-<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
-<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
+<li><code>wsl --shutdown</code>, 立即终止所有正在运行的分发版和 WSL 2 轻型实用工具虚拟机.</li>
+<li><code>wsl --terminate, -t &lt;Distro&gt;</code>, 终止指定的分发版.</li>
 </ul>
+<p>Step 2. 找到该 WSL 的硬盘映像文件 <code>ext4.vhdx</code>.</p>
+<p>Step 3. 在终端打开 Windows 的磁盘管理工具 <code>diskpart</code>. 并通过</p>
+<pre><code>SELECT VDISK file="\path\to\ext4.vhdx"
+</code></pre>
+<p>选择该虚拟磁盘文件.</p>
+<h3>压缩</h3>
+<p>在 <code>diskpart</code> 中继续操作, 此步骤可能会耗费一定的时间</p>
+<pre><code>compact vdisk
+</code></pre>
+<p>注:</p>
+<ol>
+<li>在部分设备上, <code>compact</code> 前后有时还需要 <code>attach vdisk readonly</code>, <code>detach vdisk</code>.</li>
+<li>对于非 Windows 家庭版, 也可以直接使用
+<pre><code>optimize-vhd -Path path\to\ext4.vhdx -Mode full
+</code></pre>
+</li>
+<li>压缩磁盘主要解决的是 “Linux 清理后 vhdx 尺寸不会主动减小” 的问题,
+而对于具体的 Linux 发行版以及各路包管理器如何清理则不在本文的讨论范围内.</li>
+</ol>
+<h3>WSL 迁移</h3>
+<p>有时 WSL 本身就很大, 无法通过 <code>compact vdisk</code> 腾出可用空间. 此时更有效的方法是移动 <code>vhdx</code> 文件至其他空间充裕的分区或磁盘. 这个方法实施起来更加复杂, 但所幸已有封装好的工具: <span class="link external"><a href="https://github.com/pxlrbt/move-wsl" title="Move WSL">Move WSL</a></span>.</p>
+<hr />
+<p>微软商店能安装的 WSL 虽然包括了主流的 Linux 发行版, 但如果是奔着 Arch 来的又不想在安装和基础配置上折腾, 那这个仓库可能是一个好选择: <span class="link external"><a href="https://github.com/yuk7/ArchWSL" title="https://github.com/yuk7/ArchWSL">https://github.com/yuk7/ArchWSL</a></span>.</p>
+<h3>Linux 内部清理</h3>
+<p>Windows 上有一些优秀的磁盘扫描工具, 通常能够为用户找到大文件所在的位置.
+但可以预见的是, 这些工具并不能直接扫描 WSL 内部的文件系统,
+此时用户可以使用完全 Linux 的方法来处理这个问题. 以下仅举一例</p>
+<pre><code>sudo du -xh --max-depth=1 /
+</code></pre>
+<p>这会输出形如下面的内容</p>
+<pre><code>12G     /root
+24K     /snap
+2.0G    /usr
+12K     /mnt
+1.7G    /var
+177M    /home
+481M    /nix
+72K     /tmp
+16G     /
+</code></pre>
 </details>
     </section></article>
 
