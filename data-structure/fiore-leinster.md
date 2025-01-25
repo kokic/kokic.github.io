@@ -4,7 +4,7 @@ title: Fiore–Leinster
 author: kokic
 taxon: theorem
 date: 2024-9-24
-link: <a class="link external" href="https://arxiv.org/abs/math/0211454">https://arxiv.org/abs/math/0211454</a>
+link: <https://arxiv.org/pdf/math/9405205>
 ---
 
 $\gdef\N{\mathbf{N}}$

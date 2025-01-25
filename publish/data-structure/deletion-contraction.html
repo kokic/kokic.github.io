@@ -366,30 +366,28 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem. ">
-      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除-收缩公式 <a class="slug" href="/data-structure/deletion-contraction.html">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
-<p>$$ \pi(G) \eqq \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
+<p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <p><section class="block hide-metadata" data-taxon="Proof. ">
-      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
+      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
 <p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
 $$\begin{aligned} 
 \pi(G \without e) 
-&\eqq \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~+ \\
-& \kern{3.3em} \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
-&\eqq \pi(G / e) + \pi(G)
+&\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}$$</p>
 </details>
     </section></p>
 <p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
-<p>这个结果可等价地叙述成连接的版本, 可称为 “连接-收缩公式”. 对于简单图 $G = (V, E)$</p>
-<p>$$ \pi(G) \eqq \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
+<p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
+<p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
 </details>
     </section></article>

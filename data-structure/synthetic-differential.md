@@ -9,6 +9,7 @@ date: 2024-5-9
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
+$\gdef\str#1{{\footnotesize #1}}$
 
 $\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$
@@ -52,3 +53,7 @@ $$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$
 当中的近似 "$\approx$" 修正为严格等于 "$=$", 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法. 
 
 [](/data-structure/dual-number.md#:embed)
+
+这样一来, 我们所说的 "将近似修正为严格等于" 就可以精确表示为
+
+$$ \frac{\partial f}{\partial x} \quads= f(x+\epsilon) ~ \str{中} ~ \epsilon ~ \str{项的系数} $$

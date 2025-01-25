@@ -14,6 +14,6 @@ date: 2024-7-21
 
 利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 [pi(#chroma.rect)](inline-math-0pt-2pt). 
 
-现在, 由于 [删除-收缩公式](/data-structure/deletion-contraction), 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即
+现在, 由于 [删除--收缩公式](/data-structure/deletion-contraction), 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即
 
 [](/data-structure/chromatic-0001.typ#:block)
