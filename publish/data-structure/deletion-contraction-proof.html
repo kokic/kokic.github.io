@@ -366,17 +366,16 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Proof. ">
-      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof.html">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
+      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
 <p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
 $$\begin{aligned} 
 \pi(G \without e) 
-&\eqq \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~+ \\
-& \kern{3.3em} \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
-&\eqq \pi(G / e) + \pi(G)
+&\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}$$</p>
 </details>
     </section></article>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"> 
+<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><style>
+:root {
+  --content-gap: 15px;
+  --radius: 5px;
+}
+
+body {
+  font-family: "Source Serif 4", serif;
+  font-optical-sizing: auto;
+  hyphens: auto;
+}
+
+pre, code {
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: .5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: rgba(0, 100, 100, 0.04);
+  padding: 0.2em;
+  font-size: 0.9em;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: .5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: #444;
+  font-weight: 500;
+}
+
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: 13pt;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: 1.5em;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: .5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: .9em;
+  color: #888;
+  padding-bottom: 5pt;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  width: fit-content;
+  border-radius: var(--radius)
+}
+
+.block:hover {
+  background-color: rgba(0, 100, 255, 0.04);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: rgb(255, 255, 151);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gainsboro;
+  border: 0 none;
+  width: 100%;
+  height: 2px;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: rgba(0, 100, 255, .1);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: gray;
+  font-weight: 200;
+}
+
+#grid-wrapper>article {
+  max-width: 90ex;
+  margin-right: auto;
+  grid-column: 1;
+}
+
+#grid-wrapper>nav {
+  grid-column: 2;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: .5em;
+    margin-right: .5em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper>nav {
+    display: none;
+    transition: ease all .2s;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all .2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-template-columns: 90ex;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: #555;
+}
+
+nav {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}</style><script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.title = [...document.querySelector("article h1").childNodes]
+    .find(x => x.nodeType == Node.TEXT_NODE)
+    .textContent
+    .trim();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
+    const targetId = e.href.substring(e.href.lastIndexOf("#"));
+    const taxon = e.querySelector("span.taxon").innerHTML;
+    document.querySelector("article")
+      .querySelector(targetId)
+      .querySelector("span.taxon")
+      .innerHTML = taxon;
+  })
+});
+</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis. ">
+      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[data-structure/stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">2024-11-06</li></ul></div></header></summary><p></a></p>
+<p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[data-structure/stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+</details>
+    </section></p>
+<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="开创性工作">开创性工作</a></span> 来自 R. F. Hille.</p>
+<p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[data-structure/hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+<ul>
+<li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
+<li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
+<li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(⋅ (⋅) (⋅))</code>.</li>
+</ul>
+<p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
+</details>
+    </section></p>
+<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码">Hille 编码</a></span> 刻画二叉树的构建.</p>
+<p><section class="block hide-metadata" data-taxon="Example. ">
+      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[data-structure/stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+二进制序列按栈弹空补充末尾的零.</p>
+<p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
+</details>
+    </section></p>
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Hille 原始文献">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></p>
+<p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
+<p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
+<p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
+<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 22.106485696 20.672179999999997" width="22.106485696pt" height="20.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 20.67218 L 22.106485 20.67218 L 22.106485 0 Z "/>
+    <g>
+        <g transform="translate(-16.579864272000002 -15.504135)">
+            <g class="typst-group">
+                <g transform="matrix(0.4 0 0 0.4 16.579864272000002 15.504135)">
+                    <g transform="translate(0 0)">
+                        <g class="typst-group">
+                            <g>
+                                <g transform="translate(0 0)">
+                                    <g class="typst-group">
+                                        <g>
+                                            <g transform="translate(0 0)">
+                                                <g class="typst-group">
+                                                    <g>
+                                                        <g transform="translate(21.493161119999996 0)">
+                                                            <g class="typst-group">
+                                                                <g>
+                                                                    <g transform="translate(0 0)">
+                                                                        <g class="typst-group">
+                                                                            <g>
+                                                                                <g transform="translate(0 9.132784)">
+                                                                                    <g class="typst-text" transform="scale(1, -1)">
+                                                                                        <use xlink:href="#gEA3164C7BC261A36E0AD132BDCCCF994" x="0" fill="#000000" fill-rule="nonzero"/>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g transform="translate(0.0000000000000008951719505639057 20.87114448000001)">
+                                                            <g class="typst-group">
+                                                                <g>
+                                                                    <g transform="translate(0 0)">
+                                                                        <g class="typst-group">
+                                                                            <g>
+                                                                                <g transform="translate(0 9.132784)">
+                                                                                    <g class="typst-text" transform="scale(1, -1)">
+                                                                                        <use xlink:href="#gEA3164C7BC261A36E0AD132BDCCCF994" x="0" fill="#000000" fill-rule="nonzero"/>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g transform="translate(21.493161119999996 41.74228896)">
+                                                            <g class="typst-group">
+                                                                <g>
+                                                                    <g transform="translate(0 0)">
+                                                                        <g class="typst-group">
+                                                                            <g>
+                                                                                <g transform="translate(0 9.132784)">
+                                                                                    <g class="typst-text" transform="scale(1, -1)">
+                                                                                        <use xlink:href="#gEA3164C7BC261A36E0AD132BDCCCF994" x="0" fill="#000000" fill-rule="nonzero"/>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g transform="translate(42.98632223999999 20.87114448000001)">
+                                                            <g class="typst-group">
+                                                                <g>
+                                                                    <g transform="translate(0 0)">
+                                                                        <g class="typst-group">
+                                                                            <g>
+                                                                                <g transform="translate(0 9.132784)">
+                                                                                    <g class="typst-text" transform="scale(1, -1)">
+                                                                                        <use xlink:href="#gEA3164C7BC261A36E0AD132BDCCCF994" x="0" fill="#000000" fill-rule="nonzero"/>
+                                                                                    </g>
+                                                                                </g>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                        <g transform="translate(9.965008844444132 8.912761631733094)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 13.843036 0 C 13.843036 0 0 13.59769 0 13.59769 "/>
+                                                        </g>
+                                                        <g transform="translate(9.965008844444124 29.78390611173309)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 13.843036 13.59769 13.843036 13.59769 "/>
+                                                        </g>
+                                                        <g transform="translate(31.458169964444117 8.912761631733083)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 13.843036 13.59769 13.843036 13.59769 "/>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs id="glyph">
+        <symbol id="gEA3164C7BC261A36E0AD132BDCCCF994" overflow="visible">
+            <path d="M 6.139946 -1.419284 C 7.6055107 -1.419284 8.855098 -0.894766 9.87328 0.123416 C 10.891462 1.141598 11.41598 2.391185 11.41598 3.85675 C 11.41598 4.705235 11.354272 5.3223147 11.215429 5.692563 C 11.030305 6.247935 10.582922 6.880442 9.87328 7.590084 C 8.839671 8.6236925 7.6055107 9.132784 6.139946 9.132784 C 4.674381 9.132784 3.424794 8.608266 2.406612 7.590084 C 1.38843 6.571902 0.863912 5.3223147 0.863912 3.85675 C 0.863912 2.391185 1.38843 1.141598 2.406612 0.123416 C 3.424794 -0.894766 4.674381 -1.419284 6.139946 -1.419284 Z M 6.139946 8.407715 C 7.40496 8.407715 8.48485 7.960332 9.364189 7.080993 C 10.243528 6.201654 10.690911 5.121764 10.690911 3.85675 C 10.690911 3.131681 10.629203 2.607163 10.521214 2.283196 C 10.351517 1.8049589 9.965842 1.2495869 9.348762 0.647934 C 8.469423 -0.246832 7.389533 -0.694215 6.139946 -0.694215 C 4.874932 -0.694215 3.795042 -0.246832 2.915703 0.63250697 C 2.036364 1.511846 1.588981 2.591736 1.588981 3.85675 C 1.588981 5.121764 2.036364 6.201654 2.915703 7.080993 C 3.795042 7.960332 4.874932 8.407715 6.139946 8.407715 Z "/>
+        </symbol>
+    </defs>
+</svg>
+</span>
+, 其正确的 Hille 编码应该为 <code>1101000100</code>. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码, 首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p>$$
+\begin{CD}
+B @>>> S \\
+  @VVV @VVV \\
+H @>>> C
+\end{CD}
+$$</p>
+<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 现在利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
+<div class="footnote-definition" id="hille-order"><sup class="footnote-definition-label">1</sup>
+<p>即按照 Hille 编码逐步添加节点的顺序.</p>
+</div>
+<div class="footnote-definition" id="inorder-sequence"><sup class="footnote-definition-label">2</sup>
+<p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
+</div>
+</details>
+    </section></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="data-structure/stack-permutation.html" title="栈置换 [data-structure/stack-permutation]">■</a><span class="link"><a href="#data-structure-stack-permutation"><span class="taxon">Definition. </span>栈置换</a></span></li><li class=""><a class="bullet" href="data-structure/hille-encode.html" title="Hille 编码 [data-structure/hille-encode]">■</a><span class="link"><a href="#data-structure-hille-encode"><span class="taxon">Definition. </span>Hille 编码</a></span></li><li class=""><a class="bullet" href="data-structure/stack-permutation-000A.html" title="$n=3$ [data-structure/stack-permutation-000A]">■</a><span class="link"><a href="#data-structure-stack-permutation-000A"><span class="taxon">Example. </span>$n=3$</a></span></li></ul></div></nav></div></body></html>
