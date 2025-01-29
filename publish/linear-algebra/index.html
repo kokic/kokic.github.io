@@ -422,7 +422,7 @@ $\gdef\eqq{\quads=}$</p>
 注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
 来计算 $Q^*MQ$ <sup class="footnote-reference"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
 <p>$$
-\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \eqq \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \eqq \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
 $$</p>
 <p>那么, 这就得到了 $M$ 的 Rayleigh 商的值域</p>
 <p>$$
@@ -435,10 +435,11 @@ $$</p>
 依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &~~~1 \\ 1 & -1 \end{pmatrix}$, 相应的
 $Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故</p>
 <p>$$
-\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to 
-\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}}
-\quads\in
-[p-q, p + q]
+\begin{aligned}
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to &
+\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}} \\
+\quads\in & [p-q, p + q]
+\end{aligned}
 $$</p>
 <p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bx + cy^2$. 其对角化为</p>
 <p>$$
@@ -464,8 +465,10 @@ F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad
 $$</p>
 <p>这里相应的 $A = \scriptsize\begin{pmatrix} 3 & 2 \\ 2 & 3 \end{pmatrix}$, $B = \scriptsize\begin{pmatrix} 4 & ~~6 \\ 6 & 34 \end{pmatrix}$. 我们首先对 $B$ 进行 Cholesky 分解, 得到 $C = \scriptsize\begin{pmatrix} 2 & 0 \\ 3 & 5 \end{pmatrix}$ 使得 $B = CC^*$. 接下来通过 $C^{-1} A C^*{}^{-1}$ 求出 $D$ 及其对角化 $E$, 这样就结束了此问题.</p>
 <p>$$
-D \spaces= \frac14 \begin{pmatrix} ~~~3 & -1 \\ -1 & ~~~\frac35 \end{pmatrix}, ~~ 
-E \spaces=\frac1{20} \begin{pmatrix} 9-\sqrt{61} & 0 \\ 0 & 9+\sqrt{61} \end{pmatrix} \spaces= \begin{pmatrix} \min_\R F & 0 \\ 0 & \max_\R F \end{pmatrix} 
+\begin{aligned}
+D \spaces= \frac14 \begin{pmatrix} ~~~3 & -1 \\ -1 & ~~~\frac35 \end{pmatrix}, ~~
+E \spaces= & \begin{pmatrix} 9-\sqrt{61} & 0 \\ 0 & 9+\sqrt{61} \end{pmatrix} \cdot \frac1{20}  \\ \spaces= &\begin{pmatrix} \min_\R F & 0 \\ 0 & \max_\R F \end{pmatrix} 
+\end{aligned}
 $$</p>
 </details>
     </section></p>

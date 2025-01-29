@@ -15,7 +15,7 @@ $\gdef\eqq{\quads=}$
 来计算 $Q^*MQ$ [^rayleigh-quotient-000B-1]:
 
 $$
-\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \eqq \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \eqq \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
 $$
 
 那么, 这就得到了 $M$ 的 Rayleigh 商的值域
@@ -32,10 +32,11 @@ $$
 $Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故
 
 $$
-\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to 
-\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}}
-\quads\in
-[p-q, p + q]
+\begin{aligned}
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to &
+\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}} \\
+\quads\in & [p-q, p + q]
+\end{aligned}
 $$
 
 最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bx + cy^2$. 其对角化为
