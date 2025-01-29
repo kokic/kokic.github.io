@@ -229,6 +229,11 @@ hr {
   height: 2px;
 }
 
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
 .metadata ul {
   padding-left: 0;
   display: inline;
@@ -366,14 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
-      <details id="mille-plateaux-circular-curve" open><summary><header><h1><span class="taxon">Definition. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[mille-plateaux/circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-30</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="mille-plateaux-circular-curve" open><summary><header><h1><span class="taxon">Definition. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-30</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\E{\operatorname{E}}$
 $\gdef\arc{\text{arc}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$</p>
-<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="长度">长度</a></span> 为</p>
+<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="长度 [/mille-plateaux/arc-length]">长度</a></span> 为</p>
 <p>$$
 L 
 \spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
@@ -413,7 +418,7 @@ $$</p>
 <p>$$
 \int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
 $$</p>
-<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="有理参数化">有理参数化</a></span>, 也就是说</p>
+<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="有理参数化 [/mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
 <p>$$
 \begin{aligned}
 \int\dfrac{\d x}{y} 
@@ -437,7 +442,7 @@ $$</p>
 \int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
 \tag{1}
 $$</p>
-<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分的经验">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
+<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分的经验 [/mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [/mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
 <p>现在考虑双曲线 $C(\R)$ 的一个参数化
 $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 <p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
@@ -453,4 +458,4 @@ $$</p>
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"></ul></div></nav></div></body></html>
+<nav id="toc"></nav></div></body></html>

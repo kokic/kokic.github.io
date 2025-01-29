@@ -6,3 +6,4 @@ author: kokic
 
 [+](/linear-algebra/rayleigh-quotient.md#:embed)
 [+](/linear-algebra/permutation-matrix.md#:embed)
+[+](/linear-algebra/automata-matrix.md#:embed)
