@@ -229,6 +229,11 @@ hr {
   height: 2px;
 }
 
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
 .metadata ul {
   padding-left: 0;
   display: inline;
@@ -367,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="data-structure-index" open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[data-structure/binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
 <p><figure><img src = "/data-structure/tree-def.svg" /></figure></p>
 <p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
@@ -377,29 +382,29 @@ document.addEventListener("DOMContentLoaded", () => {
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere">[data-structure/blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205 [https://arxiv.org/abs/math/9405205]">https://arxiv.org/abs/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 “极精确的双射” $B \xrightarrow{\sim} B^7$.</p>
-<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理">Fiore–Leinster 定理</a></span> 回答.</p>
+<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理 [/data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
 <p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id="data-structure-fiore-leinster" open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[data-structure/fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="data-structure-fiore-leinster" open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205 [https://arxiv.org/pdf/math/9405205]">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
 </details>
     </section></p>
-<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
-<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
+<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理 [/data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
+<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster 定理 [/data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[data-structure/stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">2024-11-06</li></ul></div></header></summary><p></a></p>
+      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">2024-11-06</li></ul></div></header></summary><p></a></p>
 <p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[data-structure/stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details>
     </section></p>
-<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="开创性工作">开创性工作</a></span> 来自 R. F. Hille.</p>
+<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="开创性工作 [/bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
 <p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[data-structure/hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [/bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
 <li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
@@ -408,14 +413,14 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
 </details>
     </section></p>
-<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码">Hille 编码</a></span> 刻画二叉树的构建.</p>
+<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [/data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
 <p><section class="block hide-metadata" data-taxon="Example. ">
-      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[data-structure/stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 二进制序列按栈弹空补充末尾的零.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
 </details>
     </section></p>
-<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Hille 原始文献">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Hille 原始文献 [/bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
 <p><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
@@ -540,7 +545,7 @@ B @>>> S \\
 H @>>> C
 \end{CD}
 $$</p>
-<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [/data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
 <div class="footnote-definition" id="hille-order"><sup class="footnote-definition-label">1</sup>
 <p>即按照 Hille 编码逐步添加节点的顺序.</p>
@@ -551,7 +556,7 @@ $$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id="data-structure-synthetic-differential" open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[data-structure/synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-synthetic-differential" open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$</p>
@@ -574,18 +579,18 @@ $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
 <p><section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[data-structure/complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">3</a></sup>, 注意</p>
+<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">3</a></sup>, 注意</p>
 <p>$$
 f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
 $$</p>
-<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="后续">后续</a></span> 的计算中也会继续用到. 如此便有
+<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="后续 [/data-structure/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
 $$ 
 \frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
 \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
 $$</p>
-<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="符号微分">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
+<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="符号微分 [/data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
 <div class="footnote-definition" id="distinguish"><sup class="footnote-definition-label">1</sup>
 <p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
 </div>
@@ -606,15 +611,15 @@ $$</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
 <p>当中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法.</p>
 <p><section class="block hide-metadata" data-taxon="Definition. ">
-      <details id="data-structure-dual-number" open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[data-structure/dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+      <details id="data-structure-dual-number" open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
-<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="矛盾">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="矛盾 [/data-structure/schanuel-lavendhomme]">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
 <p><section class="block hide-metadata" data-taxon="Axiom. ">
-      <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[data-structure/kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
-<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="William Lawvere">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
+<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="William Lawvere [/person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
 <p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
 <p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
@@ -628,13 +633,13 @@ $$</p>
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
 <p><section class="block hide-metadata" data-taxon="Corollary. ">
-      <details id="data-structure-kock-lawvere-000A" open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[data-structure/kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-kock-lawvere-000A" open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
-<p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
+<p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理 [/data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
 <p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
 </details>
     </section></p>
@@ -652,7 +657,7 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, S
 </blockquote>
 </details>
     </section></p>
-<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="公理">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="公理 [/data-structure/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
 </details>
     </section></p>
 <p>这样一来, 我们所说的 “将近似修正为严格等于” 就可以精确表示为</p>
@@ -660,16 +665,16 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, S
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Definition. ">
-      <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[data-structure/chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
-<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer">Kummer</a></span> 的理想理论之于费马大定理.</p>
+      <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
+<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George. D. Birkhoff [/person/george-david-birkhoff]">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Kummer [/person/ernst-kummer]">Kummer</a></span> 的理想理论之于费马大定理.</p>
 <p><section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[data-structure/deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <p><section class="block hide-metadata" data-taxon="Proof. ">
-      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[data-structure/deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
@@ -758,17 +763,17 @@ $$\begin{aligned}
 </svg>
 </span>
 .</p>
-<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
+<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式 [/data-structure/deletion-contraction]">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
 <p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Theorem. ">
-      <details id="data-structure-expand-coefficient" open><summary><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/data-structure/expand-coefficient">[data-structure/expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>$\gdef\Z{\mathbf{Z}}$</p>
+      <details id="data-structure-expand-coefficient" open><summary><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/data-structure/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>$\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
 求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
 在 $\Z_{\ge 0}$ 上解的个数.</p>
 <p><section class="block hide-metadata" data-taxon="Solution. ">
-      <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[data-structure/expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="$(1-q)^{-n}$ 的系数">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+      <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="$(1-q)^{-n}$ 的系数 [/data-structure/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
 </details>
     </section></p>
 </details>
