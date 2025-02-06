@@ -228,9 +228,31 @@ hr {
   height: 2px;
 }
 
+.logo a {
+  color: #666;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #aaa;
+}
+
 .logo {
   font-weight: 600;
   font-size: 24px;
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
 }
 
 .metadata ul {
@@ -283,6 +305,10 @@ a.slug {
 .orcid {
   color: gray;
   font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
 }
 
 #grid-wrapper>article {
@@ -351,9 +377,9 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/mille-plateaux/index" title="千高原">« 千高原</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="mille-plateaux-bubble-compose" open><summary><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-26</li></ul></div></header></summary><p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block hide-metadata" data-taxon="Proof. ">
+<p><section class="block hide-metadata" data-taxon="Proof">
       <details id="mille-plateaux-bubble-compose-proof" open><summary><header><h1><span class="taxon">Proof. </span>(笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-27</li></ul></div></header></summary><p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src = "/mille-plateaux/bubble-compose.svg" /></figure></p>
 </details>

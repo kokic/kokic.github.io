@@ -228,9 +228,31 @@ hr {
   height: 2px;
 }
 
+.logo a {
+  color: #666;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #aaa;
+}
+
 .logo {
   font-weight: 600;
   font-size: 24px;
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
 }
 
 .metadata ul {
@@ -283,6 +305,10 @@ a.slug {
 .orcid {
   color: gray;
   font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
 }
 
 #grid-wrapper>article {
@@ -356,7 +382,7 @@ nav#toc a.bullet {
 <p><section class="block hide-metadata" data-taxon="">
       <details id="mille-plateaux-index" ><summary><header><h1><span class="taxon"> 1. </span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="">
       <details id="mille-plateaux-bubble-compose" open><summary><header><h1><span class="taxon"> 1.1. </span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-26</li></ul></div></header></summary><p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block hide-metadata" data-taxon="Proof. ">
+<p><section class="block hide-metadata" data-taxon="Proof">
       <details id="mille-plateaux-bubble-compose-proof" open><summary><header><h1><span class="taxon">Proof. </span>(笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-27</li></ul></div></header></summary><p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src = "/mille-plateaux/bubble-compose.svg" /></figure></p>
 </details>
@@ -376,7 +402,7 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p><figure><img src = "/mille-plateaux/8P.svg" /></figure></p>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
 <p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block hide-metadata" data-taxon="Lemma. ">
+<p><section class="block hide-metadata" data-taxon="Lemma">
       <details id="mille-plateaux-canterbury" open><summary><header><h1><span class="taxon">Lemma 1.2.1. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-27</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
 <p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
 <p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
@@ -392,7 +418,7 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
 \in \Q $$</p>
 <p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+<p><section class="block hide-metadata" data-taxon="Exegesis">
       <details id="mille-plateaux-circular-parameterization" open><summary><header><h1><span class="taxon">Exegesis 1.2.2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-28</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -408,7 +434,7 @@ $\gdef\R{\mathbf{R}}$</p>
 <p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
 </details>
     </section></p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="mille-plateaux-circular-curve" open><summary><header><h1><span class="taxon">Definition 1.2.3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-30</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
@@ -512,7 +538,7 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="data-structure-index" ><summary><header><h1><span class="taxon"> 2. </span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition. ">
+      <details id="data-structure-index" ><summary><header><h1><span class="taxon"> 2. </span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-7</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
 <p><figure><img src = "/data-structure/tree-def.svg" /></figure></p>
@@ -522,12 +548,12 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <!-- 记二叉树上所有度为 $d$ 的结点为集合 $N_d$, $n_d = |N_d|$. 对于每个叶结点 $\ell \in N_0$, 它总是有一个双亲节点, 而非叶结点 $N_{>0} = N_1 \cup N_2$ 至少有一个子节点.   -->
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Theorem. ">
+<section class="block hide-metadata" data-taxon="Theorem">
       <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 “极精确的双射” $B \xrightarrow{\sim} B^7$.</p>
 <p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
-<p><section class="block hide-metadata" data-taxon="Theorem. ">
+<p><section class="block hide-metadata" data-taxon="Theorem">
       <details id="data-structure-fiore-leinster" open><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-9-24</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
@@ -537,14 +563,14 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis. ">
+<section class="block hide-metadata" data-taxon="Exegesis">
       <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">2024-11-06</li></ul></div></header></summary><p></a></p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details>
     </section></p>
 <p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
@@ -555,7 +581,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 </details>
     </section></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
-<p><section class="block hide-metadata" data-taxon="Example. ">
+<p><section class="block hide-metadata" data-taxon="Example">
       <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-06</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 二进制序列按栈弹空补充末尾的零.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
@@ -694,7 +720,7 @@ $$</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis. ">
+<section class="block hide-metadata" data-taxon="Exegesis">
       <details id="data-structure-synthetic-differential" open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
@@ -717,7 +743,7 @@ $$</p>
 $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+<p><section class="block hide-metadata" data-taxon="Exegesis">
       <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">1</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">1</a></sup>, 注意</p>
@@ -746,13 +772,13 @@ $$</p>
 <p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
 <p>当中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法.</p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-dual-number" open><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-14</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
 <p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
-<p><section class="block hide-metadata" data-taxon="Axiom. ">
+<p><section class="block hide-metadata" data-taxon="Axiom">
       <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
@@ -768,7 +794,7 @@ $$</p>
 \forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
-<p><section class="block hide-metadata" data-taxon="Corollary. ">
+<p><section class="block hide-metadata" data-taxon="Corollary">
       <details id="data-structure-kock-lawvere-000A" open><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-13</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
@@ -800,16 +826,16 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, S
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\epsilon) ~ \str{中} ~ \epsilon ~ \str{项的系数} $$</p>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Definition. ">
+<section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p></a></p>
 <p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George David Birkhoff [person/george-david-birkhoff]">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 的理想理论之于费马大定理.</p>
-<p><section class="block hide-metadata" data-taxon="Theorem. ">
+<p><section class="block hide-metadata" data-taxon="Theorem">
       <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof. ">
+<p><section class="block hide-metadata" data-taxon="Proof">
       <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-21</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
@@ -903,12 +929,12 @@ $$\begin{aligned}
 <p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Theorem. ">
+<section class="block hide-metadata" data-taxon="Theorem">
       <details id="data-structure-expand-coefficient" open><summary><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/data-structure/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>$\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
 求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
 在 $\Z_{\ge 0}$ 上解的个数.</p>
-<p><section class="block hide-metadata" data-taxon="Solution. ">
+<p><section class="block hide-metadata" data-taxon="Solution">
       <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="$\footnotesize (1-q)^{-m}$ 的系数 [data-structure/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
 </details>
     </section></p>
@@ -917,7 +943,7 @@ $$\begin{aligned}
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="linear-algebra-index" ><summary><header><h1><span class="taxon"> 3. </span>线性代数杂记 <a class="slug" href="/linear-algebra/index">[linear-algebra]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Theorem. ">
+      <details id="linear-algebra-index" ><summary><header><h1><span class="taxon"> 3. </span>线性代数杂记 <a class="slug" href="/linear-algebra/index">[linear-algebra]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Theorem">
       <details id="linear-algebra-rayleigh-quotient" open><summary><header><h1><span class="taxon">Theorem 3.1. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
 <p>$$
@@ -935,7 +961,7 @@ $$</p>
 \spaces\leqslant \max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
 $$</p>
 <p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+<p><section class="block hide-metadata" data-taxon="Exegesis">
       <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis 3.1.1. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
 <p>$$
@@ -958,7 +984,7 @@ $$</p>
 <li>任何复对称矩阵都可以由酉矩阵对角化 (Autonne–Takagi 分解).</li>
 </ul>
 <p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
-<p><section class="block hide-metadata" data-taxon="Example. ">
+<p><section class="block hide-metadata" data-taxon="Example">
       <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example 3.1.2. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
@@ -1002,7 +1028,7 @@ $$</p>
 </details>
     </section></p>
 <p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
-<p><section class="block hide-metadata" data-taxon="Example. ">
+<p><section class="block hide-metadata" data-taxon="Example">
       <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example 3.1.3. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要求解问题可以叙述成下面的形式</p>
 <p>$$
@@ -1022,7 +1048,7 @@ $$</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis. ">
+<section class="block hide-metadata" data-taxon="Exegesis">
       <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis 3.2. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
@@ -1065,13 +1091,13 @@ $$
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis. ">
+<section class="block hide-metadata" data-taxon="Exegesis">
       <details id="linear-algebra-automata-matrix" open><summary><header><h1><span class="taxon">Exegesis 3.3. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="linear-algebra-regular-language" open><summary><header><h1><span class="taxon">Definition 3.3.1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
@@ -1107,7 +1133,7 @@ $$</p>
 <p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis. ">
+<section class="block hide-metadata" data-taxon="Exegesis">
       <details id="linear-algebra-semiring" open><summary><header><h1><span class="taxon">Exegesis 3.3.2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
@@ -1122,7 +1148,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Definition. ">
+<section class="block hide-metadata" data-taxon="Definition">
       <details id="linear-algebra-star-semiring" open><summary><header><h1><span class="taxon">Definition 3.3.3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$

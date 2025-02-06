@@ -228,9 +228,31 @@ hr {
   height: 2px;
 }
 
+.logo a {
+  color: #666;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #aaa;
+}
+
 .logo {
   font-weight: 600;
   font-size: 24px;
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
 }
 
 .metadata ul {
@@ -283,6 +305,10 @@ a.slug {
 .orcid {
   color: gray;
   font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
 }
 
 #grid-wrapper>article {
@@ -351,7 +377,7 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/mille-plateaux/index" title="千高原">« 千高原</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="mille-plateaux-rational-points" open><summary><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-26</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
@@ -364,7 +390,7 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p><figure><img src = "/mille-plateaux/8P.svg" /></figure></p>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
 <p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block hide-metadata" data-taxon="Lemma. ">
+<p><section class="block hide-metadata" data-taxon="Lemma">
       <details id="mille-plateaux-canterbury" open><summary><header><h1><span class="taxon">Lemma 1. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-27</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
 <p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
 <p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
@@ -380,7 +406,7 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
 \in \Q $$</p>
 <p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis. ">
+<p><section class="block hide-metadata" data-taxon="Exegesis">
       <details id="mille-plateaux-circular-parameterization" open><summary><header><h1><span class="taxon">Exegesis 2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-28</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -396,7 +422,7 @@ $\gdef\R{\mathbf{R}}$</p>
 <p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
 </details>
     </section></p>
-<p><section class="block hide-metadata" data-taxon="Definition. ">
+<p><section class="block hide-metadata" data-taxon="Definition">
       <details id="mille-plateaux-circular-curve" open><summary><header><h1><span class="taxon">Definition 3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-30</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
