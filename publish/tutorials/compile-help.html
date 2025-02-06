@@ -228,9 +228,31 @@ hr {
   height: 2px;
 }
 
+.logo a {
+  color: #666;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: #aaa;
+}
+
 .logo {
   font-weight: 600;
   font-size: 24px;
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
 }
 
 .metadata ul {
@@ -283,6 +305,10 @@ a.slug {
 .orcid {
   color: gray;
   font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
 }
 
 #grid-wrapper>article {
@@ -351,7 +377,7 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/tutorials/compile" title="Kodama 编译指令">« Kodama 编译指令</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="tutorials-compile-help" open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
 Compile current workspace dir to HTMLs
 
