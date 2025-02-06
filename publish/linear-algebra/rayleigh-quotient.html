@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Rayleigh 商定理</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,25 +351,7 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem. ">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem. ">
       <details id="linear-algebra-rayleigh-quotient" open><summary><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
 <p>$$
@@ -389,7 +370,7 @@ $$</p>
 $$</p>
 <p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
 <p><section class="block hide-metadata" data-taxon="Exegesis. ">
-      <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis 1. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
 <p>$$
 x^{\ast}Mx \spaces= \sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2},\quad 
@@ -412,7 +393,7 @@ $$</p>
 </ul>
 <p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
 <p><section class="block hide-metadata" data-taxon="Example. ">
-      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example 2. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
@@ -450,14 +431,13 @@ r - \sqrt{s} & 0 \\
 \end{pmatrix}
 $$</p>
 <p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
-<div class="footnote-definition" id="rayleigh-quotient-000B-1"><sup class="footnote-definition-label">1</sup>
-<p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+<div class="footnote-definition" id="rayleigh-quotient-000B-1"><sup class="footnote-definition-label">1</sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
 </div>
 </details>
     </section></p>
 <p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
 <p><section class="block hide-metadata" data-taxon="Example. ">
-      <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example 3. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-5</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要求解问题可以叙述成下面的形式</p>
 <p>$$
 F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
@@ -472,10 +452,9 @@ $$</p>
 </details>
     </section></p>
 <!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
-<div class="footnote-definition" id="hermite-matrix"><sup class="footnote-definition-label">1</sup>
-<p>自伴随矩阵, 复对称矩阵.</p>
+<div class="footnote-definition" id="hermite-matrix"><sup class="footnote-definition-label">1</sup><p>自伴随矩阵, 复对称矩阵.</p>
 </div>
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000A" title="某类二次型的商 [linear-algebra/rayleigh-quotient-000A]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000A"><span class="taxon">Exegesis.  1. </span>某类二次型的商</a></span></li><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000B" title="二阶情形 [linear-algebra/rayleigh-quotient-000B]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000B"><span class="taxon">Example.  2. </span>二阶情形</a></span></li><li class=""><a class="bullet" href="linear-algebra/rayleigh-quotient-000C" title="一般二次型的商 [linear-algebra/rayleigh-quotient-000C]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000C"><span class="taxon">Example.  3. </span>一般二次型的商</a></span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000A" title="某类二次型的商 [linear-algebra/rayleigh-quotient-000A]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000A"><span class="taxon">Exegesis 1. </span>某类二次型的商</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000B" title="二阶情形 [linear-algebra/rayleigh-quotient-000B]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000B"><span class="taxon">Example 2. </span>二阶情形</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000C" title="一般二次型的商 [linear-algebra/rayleigh-quotient-000C]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000C"><span class="taxon">Example 3. </span>一般二次型的商</a></span></li></ul></div></nav></div></body></html>

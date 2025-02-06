@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>生成函数系数</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,34 +351,16 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem. ">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem. ">
       <details id="data-structure-expand-coefficient" open><summary><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/data-structure/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>$\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
 求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
 在 $\Z_{\ge 0}$ 上解的个数.</p>
 <p><section class="block hide-metadata" data-taxon="Solution. ">
-      <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="$(1-q)^{-n}$ 的系数 [/data-structure/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+      <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2021-8-15</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="$\footnotesize (1-q)^{-m}$ 的系数 [data-structure/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
 </details>
     </section></p>
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="display-none"><a class="bullet" href="data-structure/expand-coefficient-000B" title=" [data-structure/expand-coefficient-000B]">■</a><span class="link"><a href="#data-structure-expand-coefficient-000B"><span class="taxon">Solution. </span></a></span></li></ul></div></nav></div></body></html>
+</div></body></html>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Schanuel–Lavendhomme 构造</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,41 +351,22 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
       <details id="data-structure-schanuel-lavendhomme" open><summary><header><h1><span class="taxon">Definition. </span>Schanuel–Lavendhomme 构造 <a class="slug" href="/data-structure/schanuel-lavendhomme">[schanuel-lavendhomme]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-11-18</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>Schanuel 和 Lavendhomme 给出了一个例子, 用于说明 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理 [/data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 实际上与排中律矛盾. 定义一个 $D \to R$ 的函数如下</p>
+<p>Schanuel 和 Lavendhomme 给出了一个例子, 用于说明 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 实际上与排中律矛盾. 定义一个 $D \to R$ 的函数如下</p>
 <p>$$ 
 g(d) \spaces= \begin{cases}
 1 & \text{if} ~ d \neq 0 \\
 0 & \text{if} ~ d = 0
 \end{cases}
 $$</p>
-<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理 [/data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference"><a href="#impossible">1</a></sup>. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere 公理 [/data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
+<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference"><a href="#impossible">1</a></sup>. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
 <p>$$ 1 \spaces= g(d_0) \spaces= b d_0 + g(0) \spaces= b d_0 $$</p>
 <p>再两边平方, 有 $1 = 0$, 矛盾.</p>
-<div class="footnote-definition" id="impossible"><sup class="footnote-definition-label">1</sup>
-<p>尽管这个陈述是比较显然的, 不过我们还是说明一下, 这里在表达的是 $|D\smallsetminus\{0\}| > 0$ 这样的意思.</p>
+<div class="footnote-definition" id="impossible"><sup class="footnote-definition-label">1</sup><p>尽管这个陈述是比较显然的, 不过我们还是说明一下, 这里在表达的是 $|D\smallsetminus\{0\}| > 0$ 这样的意思.</p>
 </div>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>

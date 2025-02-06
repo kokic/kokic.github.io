@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Hille 编码</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,26 +351,8 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
-      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [/bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
+      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
 <li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
@@ -381,4 +362,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>

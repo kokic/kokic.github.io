@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>置换矩阵构造</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,32 +351,14 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis. ">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis. ">
       <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
-<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="此处 [/mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
+<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
 <p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
 <p>$$
 \begin{pmatrix} 0 & 1 \\ 1 & 0 \\ \end{pmatrix}
@@ -409,10 +390,9 @@ $$
 \sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
 $$ 
 -->
-<div class="footnote-definition" id="horizontal-exchange"><sup class="footnote-definition-label">1</sup>
-<p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+<div class="footnote-definition" id="horizontal-exchange"><sup class="footnote-definition-label">1</sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
 </div>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>
