@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>星半环</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,30 +351,12 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Definition. ">
       <details id="linear-algebra-star-semiring" open><summary><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-5-9</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
-<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language" title="Kleene 代数 [/linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language" title="Kleene 代数 [/linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language" title="Kleene 代数 [/linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
+<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
 <p>下面来介绍一个重要的例子. 非负扩展实数集 $\R_{\ge 0} \cup \{\infty\}$ 连同实数的通常加法和乘法构成闭半环, 其中 $a \lt 1$ 时 $a^* = \frac1{1-a}$, 否则 $a^* = \infty$. 注意这个结构中不存在非零的加法逆 $-a$, 而乘法逆 $a^{-1}$ 则是未必存在. $\frac1{1-a}$ 应当被认为是一个整体记号, 或者说它实际上是无穷和 $1 + a + a^2 + \cdots$ 在 $\R_{\ge 0}$ 被添入全体非零加法逆 $\R_{\lt0}$ 后所得的环 $\R$ 中于 $(-1,1)$ 处收敛的结果. 然后由于</p>
 <p>$$
 \R_{\ge 0} ~ \cap ~ \{a <  1 : a \in \R_{\ge 0}\} \quads= [0, 1) \spaces\subset (-1,1)
@@ -385,4 +366,4 @@ $$</p>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>

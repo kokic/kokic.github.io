@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>shell</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,40 +351,21 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="tutorials-compile-help" open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
-Compiles an input markdown file into HTML format
+Compile current workspace dir to HTMLs
 
-Usage: kodama.exe compile [OPTIONS] &lt;INPUT&gt;
-
-Arguments:
-  &lt;INPUT&gt;  Path to input Typst file
+Usage: kodama.exe compile [OPTIONS]
 
 Options:
-  -b, --base &lt;BASE&gt;      Base URL or publish URL (e.g. https://www.example.com/) [default: /]
-  -o, --output &lt;OUTPUT&gt;  Path to output dir [default: ./publish]
-  -r, --root &lt;ROOT&gt;      Configures the project root (for absolute paths) [default: ./] 
-  -h, --help             Print help
+  -b, --base &lt;BASE&gt;          Base URL or publish URL (e.g. https://www.example.com/) [default: /]       
+  -o, --output &lt;OUTPUT&gt;      Path to output dir [default: ./publish]
+  -r, --root &lt;ROOT&gt;          Configures the project root (for absolute paths) [default: ./]
+  -d, --disable-pretty-urls  Disable pretty urls (`/page` to `/page.html`)
+  -s, --short-slug           Hide parents part in slug (e.g. `tutorials/install` to `install`)
+  -h, --help                 Print help
 </code></pre>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>

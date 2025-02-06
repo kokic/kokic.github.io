@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>周期函数的构造</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,29 +351,11 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="mille-plateaux-periodic-functions" open><summary><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-12-31</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve" title="圆函数 [/mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
+<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
 <p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
 <p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
 <p>因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一来, 如果 $x$ 被选定为任意一个整数, 总会存在 $n-x$ 为零的项使整个级数发散, 这就要求 $x \notin \Z$. 同样的, $f(x)$ 在映射 $x \mapsto x + k$, $k \in \Z$ 下不变, 这就意味着 $f(x)$ 以 $1$ 为周期. 现在我们当然知道这个 $f(x)$ 其实就是 $\pi^2\csc^2(\pi x)$.</p>
@@ -383,4 +364,4 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>

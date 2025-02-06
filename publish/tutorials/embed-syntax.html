@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"> 
-<title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>嵌入语法</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
@@ -352,25 +351,7 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = [...document.querySelector("article h1").childNodes]
-    .find(x => x.nodeType == Node.TEXT_NODE)
-    .textContent
-    .trim();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector("#toc").querySelectorAll("a:not(.bullet)").forEach(e => {
-    const targetId = e.href.substring(e.href.lastIndexOf("#"));
-    const taxon = e.querySelector("span.taxon").innerHTML;
-    document.querySelector("article")
-      .querySelector(targetId)
-      .querySelector("span.taxon")
-      .innerHTML = taxon;
-  })
-});
-</script><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="tutorials-embed-syntax" open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-15</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
 <li><code>.md#:embed</code>, 嵌入 Markdown.</li>
@@ -385,10 +366,9 @@ document.addEventListener("DOMContentLoaded", () => {
 <li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
 <li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
 </ul>
-<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup>
-<p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
+<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
 </div>
 </details>
     </section></article>
 
-<nav id="toc"></nav></div></body></html>
+</div></body></html>
