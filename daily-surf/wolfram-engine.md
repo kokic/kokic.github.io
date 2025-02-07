@@ -2,7 +2,7 @@
 ---
 title: Wolfram 引擎与 WLJS
 author: kokic
-date: 2024-7-29
+!date: July 29, 2024
 ---
 
 Wolfram 把 Mathematica 的内核 [Wolfram Engine](https://www.wolfram.com/engine) 单独拆出来并作为免费软件 [^wolfram-engine-size] 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 [Wolfram Notebook](https://www.wolfram.com/notebooks). 

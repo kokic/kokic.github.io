@@ -3,7 +3,7 @@
 title: Kock–Lawvere
 author: kokic
 taxon: axiom
-date: 2024-5-13
+!date: May 13, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
@@ -42,4 +42,4 @@ In the terms which the logicians use, this means that
 the logic employed is ‘constructive’ or ‘intuitionistic’. 
 We prefer to think of it just as ‘that reasoning 
 which can be carried out in all sufficiently good 
-cartesian closed categories’. <p style="text-align: right;">--- Anders Kock, Synthetic Differential Geometry</p>
+cartesian closed categories’. <p style="text-align: right;">--- Anders Kock, [Synthetic Differential Geometry](/bib/kock2006synthetic.md)</p>

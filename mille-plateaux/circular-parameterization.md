@@ -3,7 +3,7 @@
 title: 圆的参数化
 taxon: exegesis
 author: kokic
-date: 2024-12-28
+!date: December 28, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

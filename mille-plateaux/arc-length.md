@@ -2,7 +2,7 @@
 ---
 title: 曲线弧长计算
 author: kokic
-date: 2025-1-12
+!date: January 12, 2025
 ---
 
 $\gdef\d{\operatorname{d}}$

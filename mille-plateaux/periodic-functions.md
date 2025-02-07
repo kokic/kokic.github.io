@@ -2,7 +2,7 @@
 ---
 title: 周期函数的构造
 author: kokic
-date: 2024-12-31
+!date: December 31, 2024
 ---
 
 $\gdef\R{\mathbf{R}}$

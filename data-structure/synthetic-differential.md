@@ -3,7 +3,7 @@
 title: 综合微分法
 author: kokic
 taxon: exegesis
-date: 2024-5-9
+!date: May 9, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

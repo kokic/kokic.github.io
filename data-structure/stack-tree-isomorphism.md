@@ -1,7 +1,7 @@
 
 ---
 title: 栈置换--二叉树同构
-date: 2024-11-06
+!date: November 06, 2024
 taxon: exegesis
 ---
 

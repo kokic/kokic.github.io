@@ -2,7 +2,7 @@
 title: 所有函数都光滑
 author: kokic
 taxon: corollary
-date: 2024-5-13
+!date: May 13, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

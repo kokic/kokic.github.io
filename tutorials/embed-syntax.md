@@ -2,7 +2,7 @@
 ---
 title: 嵌入语法
 author: kokic
-date: 2025-1-15
+!date: January 15, 2025
 ---
 
 嵌入语法和标准链接语法 `[text](url)` 的区别在于, 嵌入的 `url` 带有特殊的后缀, 并且只能是以下几种: 

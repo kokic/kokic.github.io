@@ -1,7 +1,7 @@
 ---
 title: 联系
 author: kokic
-date: 2025-1-18
+!date: January 18, 2025
 email-1: [kokicplus@gmail.com](mailto:kokicplus@gmail.com)
 email-2: [kokicplus@126.com](mailto:kokicplus@126.com)
 platform-1-zhihu: [知乎](https://www.zhihu.com/people/kokic-86)

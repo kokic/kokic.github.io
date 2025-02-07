@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Complex step 微分法</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Seven trees in one</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -390,25 +390,18 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/data-structure/synthetic-differential" title="综合微分法">« 综合微分法</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis">
-      <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">1</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">1</a></sup>, 注意</p>
-<p>$$
-f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
-$$</p>
-<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
-$$ 
-\frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
-\frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
-$$</p>
-<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
-<div class="footnote-definition" id="distinguish"><sup class="footnote-definition-label">1</sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
-</div>
-<div class="footnote-definition" id="publish-time"><sup class="footnote-definition-label">1</sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
-</div>
-<div class="footnote-definition" id="complex-step"><sup class="footnote-definition-label">1</sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
-</div>
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Reference">
+      <details id="bib-blass1995seven" open><summary><header><h1><span class="taxon">Reference. </span>Seven trees in one <a class="slug" href="/bib/blass1995seven">[blass1995seven]</a></h1><div class="metadata"><ul><li class="meta-item">May 20, 1994</li><li class="meta-item">Andreas Blass</li><li class="meta-item">Journal of Pure and Applied Algebra, Volume 103</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li></ul></div></header></summary><pre><code>@article{blass1995seven,
+  title={Seven trees in one},
+  author={Blass, Andreas},
+  journal={Journal of Pure and Applied Algebra},
+  volume={103},
+  number={1},
+  pages={1--21},
+  year={1995},
+  publisher={Elsevier}
+}
+</code></pre>
 </details>
     </section></article>
 

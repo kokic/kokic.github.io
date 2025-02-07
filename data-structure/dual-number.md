@@ -3,7 +3,7 @@
 title: 对偶数
 author: kokic
 taxon: definition
-date: 2024-5-14
+!date: May 14, 2024
 ---
 
 

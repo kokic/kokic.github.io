@@ -3,7 +3,7 @@
 title: 闭半环的 Conway 条件
 author: kokic
 taxon: exegesis
-date: 2025-1-29
+!date: January 29, 2025
 ---
 
 Conway 证明了闭半环矩阵可替换的条件为, 至少满足以下三个等式

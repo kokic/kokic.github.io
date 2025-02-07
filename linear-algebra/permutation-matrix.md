@@ -3,7 +3,7 @@
 title: 置换矩阵构造
 author: kokic
 taxon: exegesis
-date: 2025-1-16
+!date: January 16, 2025
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

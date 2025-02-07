@@ -3,7 +3,7 @@
 title: Canterbury 曲线的切线与自身的交点
 taxon: lemma
 author: kokic
-date: 2024-12-27
+!date: December 27, 2024
 ---
 
 对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即

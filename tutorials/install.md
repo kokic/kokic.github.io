@@ -2,7 +2,7 @@
 ---
 title: 如何安装 Kodama
 author: kokic
-date: 2024-12-31
+!date: December 31, 2024
 ---
 
 你可以根据目标设备的架构直接从 [Github Release](https://github.com/kokic/kodama/releases) 页面下载二进制文件. 

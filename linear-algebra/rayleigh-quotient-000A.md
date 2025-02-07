@@ -1,7 +1,7 @@
 ---
 author: kokic
 taxon: exegesis
-date: 2024-11-5
+!date: November 5, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

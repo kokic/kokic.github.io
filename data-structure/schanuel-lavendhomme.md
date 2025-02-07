@@ -3,7 +3,7 @@
 title: Schanuel–Lavendhomme 构造
 author: kokic
 taxon: definition
-date: 2024-11-18
+!date: November 18, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

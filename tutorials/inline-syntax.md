@@ -2,7 +2,7 @@
 ---
 title: 内联语法
 author: kokic
-date: 2025-1-15
+!date: January 15, 2025
 ---
 
 内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价. 

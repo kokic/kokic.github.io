@@ -2,7 +2,7 @@
 ---
 title: 屏幕右上角的 "FPS GPU CPU 延时"
 author: kokic
-date: 2025-1-9
+!date: January 9, 2025
 ---
 
 根据 [这个 Reddit 问题](https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen). 

@@ -3,7 +3,7 @@
 title: 关于半环的注释
 author: kokic
 taxon: exegesis
-date: 2024-5-9
+!date: May 9, 2024
 ---
 
 $\gdef\N{\mathbf{N}}$

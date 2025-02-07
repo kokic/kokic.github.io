@@ -3,7 +3,7 @@
 title: Rayleigh 商定理
 author: kokic
 taxon: theorem
-date: 2024-11-5
+!date: November 5, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

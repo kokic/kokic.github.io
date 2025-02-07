@@ -3,14 +3,13 @@
 title: Blass–Lawvere 定理
 author: kokic
 taxon: theorem
-date: 2024-9-24
-link: <https://arxiv.org/abs/math/9405205>
+!date: September 24, 2024
 ---
 
 $\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 
-记 $B$ 是二叉树类型, 则存在一个 "极精确的双射" $B \xrightarrow{\sim} B^7$. 
+记 $B$ 是二叉树类型, 则存在一个 ["极精确的双射"](/bib/blass1995seven.md) $B \xrightarrow{\sim} B^7$. 
 
 显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 [Fiore--Leinster 定理](/data-structure/fiore-leinster.md) 回答. 
 
