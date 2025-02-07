@@ -2,7 +2,7 @@
 ---
 title: 有理点
 author: kokic
-date: 2024-12-26
+!date: December 26, 2024
 ---
 
 $\gdef\ul#1{\underline{#1}}$

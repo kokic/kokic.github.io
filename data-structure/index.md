@@ -2,7 +2,7 @@
 ---
 title: 数据与可计算结构
 author: kokic
-date: 2025-1-7
+!date: January 7, 2025
 ---
 
 [](/data-structure/binary-tree.md#:embed)

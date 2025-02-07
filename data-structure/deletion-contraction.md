@@ -3,7 +3,7 @@
 title: 删除--收缩公式
 author: kokic
 taxon: theorem
-date: 2024-7-21
+!date: July 21, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

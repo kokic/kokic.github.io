@@ -4,9 +4,10 @@
 <meta name="viewport" content="width=device-width"><title>Wolfram 引擎与 WLJS</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       renderMathInElement(document.body, {
@@ -171,6 +172,18 @@ article>section>details>summary>header>h1>.taxon {
   font-size: .9em;
   color: #888;
   padding-bottom: 5pt;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list>section.block>details {
+  margin-bottom: .25em;
 }
 
 /* class */
@@ -378,7 +391,7 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="daily-surf-wolfram-engine" open><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2024-7-29</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
+      <details id="daily-surf-wolfram-engine" open><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
 <p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
 <p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference"><a href="#immortal-edition">1</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
 <div class="footnote-definition" id="wolfram-engine-size"><sup class="footnote-definition-label">1</sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>

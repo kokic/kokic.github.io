@@ -3,7 +3,7 @@
 title: 二叉树类型
 author: kokic
 taxon: definition
-date: 2024-9-24
+!date: September 24, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

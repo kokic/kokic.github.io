@@ -3,7 +3,7 @@
 title: 
 author: kokic
 taxon: proof
-date: 2024-7-21
+!date: July 21, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

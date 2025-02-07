@@ -1,9 +1,10 @@
 
 ---
 title: $\footnotesize (1-q)^{-m}$ 的系数
+page-title: 特殊有理函数展开式的系数
 author: kokic
 taxon: exegesis
-date: 2021-8-15
+!date: August 15, 2021
 ---
 
 $\gdef\d{\operatorname{d}}$

@@ -3,7 +3,7 @@
 title: 正则语言集
 author: kokic
 taxon: definition
-date: 2024-5-9
+!date: May 9, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

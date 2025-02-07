@@ -3,7 +3,7 @@
 title: 染色图
 author: kokic
 taxon: definition
-date: 2024-7-21
+!date: July 21, 2024
 ---
 
 [*](/typst/chroma.typ#:shared)

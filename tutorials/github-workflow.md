@@ -2,7 +2,7 @@
 ---
 title: Github Workflow
 author: kokic
-date: 2025-1-15
+!date: January 15, 2025
 ---
 
 一个可供参考的 Github Workflow 配置 [如下](/tutorials/workflow-yml.md) [^hongjr03-workflow]. 

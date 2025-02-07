@@ -3,7 +3,7 @@
 title: Fiore–Leinster
 author: kokic
 taxon: theorem
-date: 2024-9-24
+!date: September 24, 2024
 link: <https://arxiv.org/pdf/math/9405205>
 ---
 

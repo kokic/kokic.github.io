@@ -3,7 +3,7 @@
 title: 星半环
 author: kokic
 taxon: definition
-date: 2024-5-9
+!date: May 9, 2024
 wiki: 
 ---
 

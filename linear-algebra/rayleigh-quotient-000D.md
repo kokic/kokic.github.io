@@ -1,5 +1,5 @@
 ---
 author: kokic
 taxon: example
-date: 2024-11-6
+!date: November 6, 2024
 ---

@@ -3,7 +3,7 @@
 title: Complex step 微分法
 author: kokic
 taxon: exegesis
-date: 2024-5-13
+!date: May 13, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

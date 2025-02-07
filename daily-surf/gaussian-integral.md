@@ -2,7 +2,7 @@
 ---
 title: 极坐标出现前人们怎样计算高斯积分
 author: kokic
-date: 2024-11-2
+!date: November 2, 2024
 ---
 
 这一证明最早似乎来自 Michael Rozman. 除此之外 MSE 上也有极类似的回答, 见 [此处](https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick). 

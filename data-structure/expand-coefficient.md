@@ -3,7 +3,7 @@
 title: 生成函数系数
 author: kokic
 taxon: theorem
-date: 2021-8-15
+!date: August 15, 2021
 ---
 
 $\gdef\Z{\mathbf{Z}}$

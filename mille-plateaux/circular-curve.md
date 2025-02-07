@@ -3,7 +3,7 @@
 title: 圆曲线
 taxon: definition
 author: kokic
-date: 2024-12-30
+!date: December 30, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

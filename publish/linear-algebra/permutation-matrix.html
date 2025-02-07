@@ -4,9 +4,10 @@
 <meta name="viewport" content="width=device-width"><title>置换矩阵构造</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       renderMathInElement(document.body, {
@@ -171,6 +172,18 @@ article>section>details>summary>header>h1>.taxon {
   font-size: .9em;
   color: #888;
   padding-bottom: 5pt;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list>section.block>details {
+  margin-bottom: .25em;
 }
 
 /* class */
@@ -378,7 +391,7 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/linear-algebra/index" title="线性代数杂记">« 线性代数杂记</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis">
-      <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-16</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$

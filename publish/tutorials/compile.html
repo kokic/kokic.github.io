@@ -4,9 +4,10 @@
 <meta name="viewport" content="width=device-width"><title>Kodama 编译指令</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.css" integrity="sha384-Htz9HMhiwV8GuQ28Xr9pEs1B4qJiYu/nYLLwlDklR53QibDfmQzi7rYxXhMH/5/u" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/katex.min.js" integrity="sha384-bxmi2jLGCvnsEqMuYLKE/KsVCxV3PqmKeK6Y6+lmNXBry6+luFkEOsmp5vD9I/7+" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.15/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       renderMathInElement(document.body, {
@@ -171,6 +172,18 @@ article>section>details>summary>header>h1>.taxon {
   font-size: .9em;
   color: #888;
   padding-bottom: 5pt;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list>section.block>details {
+  margin-bottom: .25em;
 }
 
 /* class */
@@ -378,7 +391,8 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/tutorials/index" title="Kodama Tutorials">« Kodama Tutorials</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-compile" open><summary><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item">2025-1-4</li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将输入的 Markdown 文件构建成 HTML 文件.
+      <details id="tutorials-compile" open><summary><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
+默认位于工作区路径的 <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> 文件夹下.<br />
 尽管有 <code>--root</code> 参数, 但仍然建议所有用户在 <code>index.md</code> 文件所在的目录下执行 <code>kodama c</code>.</p>
 <p><section class="block hide-metadata" data-taxon="">
       <details id="tutorials-compile-help" open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
@@ -396,8 +410,9 @@ Options:
 </code></pre>
 </details>
     </section></p>
-<p>举例来说, 如果最终部署到的 URL 为 <span class="link external"><a href="https://www.example.com/blog" title="https://www.example.com/blog">https://www.example.com/blog</a></span>, 并非该域名的根目录, 为了保证生成链接的正确性, 用户应该指定 <code>--base</code> 这一编译参数, 即</p>
-<pre><code class="language-sh">kodama c index.md -b=https://www.example.com/blog
+<p>举例来说, 如果最终部署到的 URL 为 <span class="link external"><a href="https://www.example.com/blog" title="https://www.example.com/blog">https://www.example.com/blog</a></span>, 这并非该域名的根目录,
+为了保证生成链接的正确性, 用户应该指定 <code>--base</code> 这一编译参数, 即</p>
+<pre><code class="language-sh">kodama c -b=https://www.example.com/blog
 </code></pre>
 <p>注意. 当然, 如果用户只是在本地使用, 就不必考虑这个问题了.</p>
 </details>

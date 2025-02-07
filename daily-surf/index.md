@@ -1,7 +1,7 @@
 ---
 title: Daily Surf
 author: kokic
-date: 2025-1-9
+!date: January 9, 2025
 ---
 
 [-](/daily-surf/fibonacci-flip.md#:embed)
