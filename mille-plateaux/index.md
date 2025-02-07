@@ -2,6 +2,7 @@
 ---
 title: 千高原
 author: kokic
+!date: December 26, 2024
 ---
 
 [+](/mille-plateaux/bubble-compose.md#:embed)
