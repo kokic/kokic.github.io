@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -400,10 +405,11 @@ g(d) \spaces= \begin{cases}
 0 & \text{if} ~ d = 0
 \end{cases}
 $$</p>
-<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference"><a href="#impossible">1</a></sup>. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
+<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference" id="impossible-back"><a href="#impossible">1</a></sup>. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
 <p>$$ 1 \spaces= g(d_0) \spaces= b d_0 + g(0) \spaces= b d_0 $$</p>
 <p>再两边平方, 有 $1 = 0$, 矛盾.</p>
-<div class="footnote-definition" id="impossible"><sup class="footnote-definition-label">1</sup><p>尽管这个陈述是比较显然的, 不过我们还是说明一下, 这里在表达的是 $|D\smallsetminus\{0\}| > 0$ 这样的意思.</p>
+<div class="footnote-definition" id="impossible">
+  <sup class="footnote-definition-label"><a href="\#impossible-back">1</a></sup><p>尽管这个陈述是比较显然的, 不过我们还是说明一下, 这里在表达的是 $|D\smallsetminus\{0\}| > 0$ 这样的意思.</p>
 </div>
 </details>
     </section></article>

@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -400,9 +405,9 @@ $\gdef\C{\mathbf{C}}$</p>
       <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
-<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
 <p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
-<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
 f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
@@ -419,7 +424,7 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
-<p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="data-structure/kock-lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/kock-lawvere" title="data-structure/kock-lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
 <p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
 </details>
     </section></p>
@@ -452,6 +457,24 @@ and language by which such study can be communicated.</p>
   volume={333},
   year={2006},
   publisher={Cambridge University Press}
+}
+</code></pre>
+</details>
+    </section><section class="block" data-taxon="Reference">
+      <details id="bib-methods-of-algebra-1" ><summary><header><h1><span class="taxon">Reference. </span>代数学方法 卷一：基础架构 <a class="slug" href="/bib/methods-of-algebra-1">[methods-of-algebra-1]</a></h1><div class="metadata"><ul><li class="meta-item">November 16, 2018</li><li class="meta-item">李文威</li><li class="meta-item"><span class="link external"><a href="https://wwli.asia/downloads/books/Al-jabr-1.pdf" title="电子版 [https://wwli.asia/downloads/books/Al-jabr-1.pdf]">电子版</a></span></li><li class="meta-item">高等教育出版社</li><li class="meta-item">现代数学基础系列</li></ul></div></header></summary><p>本书主题有时也称为 “近世代数” 或 “抽象代数”. 所谓近世, 总是相对于当时当世而论,
+早在 1955 年 van der Waerden 发表《代数学》第四版时便已舍弃此词, 于今更无必要.
+至于说抽象, 充其量是初学者的错觉, 作为课名或书名完全不得要领, 而且似乎有恫吓读者之嫌.
+本书题为 “代数学方法”, 一则是因为当代代数学范围过广, 本书仅择有趣有用者而述, 不求体系大而全.
+第二也是最关键的一点, 则是因为数学的本质存在于交融互摄, 只为授课与学科分画方便才打包于一词.
+所以本书绝不视代数为疆界分明的学科; 与分析, 拓扑学等脱钩的纯代数即便存在, 也仅是千万种研究方向之一.
+《庄子·应帝王》中有混沌凿七窍的故事, 强凿疆界同样令数学趋于停滞消亡.</p>
+<pre><code>@article{wwli2019method,
+  title={代数学方法 卷一：基础架构},
+  author={李文威},
+  series={现代数学基础},
+  year={2019},
+  isbn={978-7-04-050725-6},
+  publisher={高等教育出版社}
 }
 </code></pre>
 </details>

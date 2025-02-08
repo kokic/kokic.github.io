@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -398,14 +403,15 @@ nav#toc a.bullet {
 <li><code>.typ#:span</code>, 嵌入 Typst 编译后的 SVG, 并展示为行间元素 (不常用).</li>
 <li><code>.typ#:shared</code>, 在当前文件的上下文中导入该 Typst 文件, 此时 <code>text</code> 用于提供被导入的定义范围, 如所有定义 <code>*</code>. 配合内联 Typst 语法使用.</li>
 </ul>
-<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
+<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference" id="markdown-editor-back"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
 <p>大部分时候, 嵌入语法的 <code>text</code> 都是空着的, 不过由于只有 Markdown 的嵌入才会产生子 <code>section</code>, 此时 <code>text</code> 能用于设置 <code>section</code> 默认是否展开以及在目录中的状态. 这些设置由一系列特定字符构成, 它们对应的功能彼此独立, 因此书写的先后顺序可以任意.</p>
 <ul>
 <li><code>+</code>, 表示当前 <code>section</code> 使用计数器.</li>
 <li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
 <li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
 </ul>
-<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
+<div class="footnote-definition" id="markdown-editor">
+  <sup class="footnote-definition-label"><a href="\#markdown-editor-back">1</a></sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
 </div>
 </details>
     </section></article>
