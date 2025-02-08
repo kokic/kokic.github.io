@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -414,7 +419,7 @@ nav#toc a.bullet {
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
 </details>
     </section></p>
-<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference"><a href="#inorder-sequence">1</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
 <p><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
@@ -541,9 +546,11 @@ H @>>> C
 $$</p>
 <p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
-<div class="footnote-definition" id="hille-order"><sup class="footnote-definition-label">1</sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
+<div class="footnote-definition" id="hille-order">
+  <sup class="footnote-definition-label"><a href="\#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
-<div class="footnote-definition" id="inorder-sequence"><sup class="footnote-definition-label">1</sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
+<div class="footnote-definition" id="inorder-sequence">
+  <sup class="footnote-definition-label"><a href="\#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
 </details>
     </section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference">

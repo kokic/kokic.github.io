@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -600,7 +605,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
 </details>
     </section></p>
-<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference"><a href="#inorder-sequence">1</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
 <p><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
@@ -727,9 +732,11 @@ H @>>> C
 $$</p>
 <p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
-<div class="footnote-definition" id="hille-order"><sup class="footnote-definition-label">1</sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
+<div class="footnote-definition" id="hille-order">
+  <sup class="footnote-definition-label"><a href="\#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
-<div class="footnote-definition" id="inorder-sequence"><sup class="footnote-definition-label">1</sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
+<div class="footnote-definition" id="inorder-sequence">
+  <sup class="footnote-definition-label"><a href="\#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
 </details>
     </section>
@@ -759,7 +766,7 @@ $$</p>
 <p><section class="block hide-metadata" data-taxon="Exegesis">
       <details id="data-structure-complex-step" open><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference"><a href="#publish-time">1</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference"><a href="#complex-step">1</a></sup>, 注意</p>
+<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="distinguish-back"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="publish-time-back"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="complex-step-back"><a href="#complex-step">3</a></sup>, 注意</p>
 <p>$$
 f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
 $$</p>
@@ -769,11 +776,14 @@ $$
 \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
 $$</p>
 <p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
-<div class="footnote-definition" id="distinguish"><sup class="footnote-definition-label">1</sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
+<div class="footnote-definition" id="distinguish">
+  <sup class="footnote-definition-label"><a href="\#distinguish-back">1</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
 </div>
-<div class="footnote-definition" id="publish-time"><sup class="footnote-definition-label">1</sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
+<div class="footnote-definition" id="publish-time">
+  <sup class="footnote-definition-label"><a href="\#publish-time-back">2</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
 </div>
-<div class="footnote-definition" id="complex-step"><sup class="footnote-definition-label">1</sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+<div class="footnote-definition" id="complex-step">
+  <sup class="footnote-definition-label"><a href="\#complex-step-back">3</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
 </div>
 </details>
     </section></p>
@@ -795,9 +805,9 @@ $\gdef\C{\mathbf{C}}$</p>
       <details id="data-structure-kock-lawvere" open><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
-<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的相似三角形能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
 <p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
-<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型.</p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
 f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
@@ -814,7 +824,7 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
-<p>这个一般认为是 <span class="link local"><a href="/data-structure/kock-lawvere" title="data-structure/kock-lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 或者说, 是为了恢复牛顿时期 “幂零无穷小量” 计算上的直观.</p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/kock-lawvere" title="data-structure/kock-lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
 <p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
 </details>
     </section></p>
@@ -991,7 +1001,7 @@ $$</p>
 $$</p>
 </details>
     </section></p>
-<p>Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 <sup class="footnote-reference"><a href="#hermite-matrix">1</a></sup>, 也即 $M$ 是共轭对称的方阵 $M^* = M$, 对实数而言这当然就是对称矩阵. 稍稍回忆线性代数, 有限维谱定理说:</p>
+<p>Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 <sup class="footnote-reference" id="hermite-matrix-back"><a href="#hermite-matrix">1</a></sup>, 也即 $M$ 是共轭对称的方阵 $M^* = M$, 对实数而言这当然就是对称矩阵. 稍稍回忆线性代数, 有限维谱定理说:</p>
 <ul>
 <li>任何实对称矩阵都可以由正交矩阵对角化.</li>
 <li>任何复对称矩阵都可以由酉矩阵对角化 (Autonne–Takagi 分解).</li>
@@ -1005,7 +1015,7 @@ $\gdef\eqq{\quads=}$</p>
 将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}$,
 相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}$.
 注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
-来计算 $Q^*MQ$ <sup class="footnote-reference"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
+来计算 $Q^*MQ$ <sup class="footnote-reference" id="rayleigh-quotient-000B-1-back"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
 <p>$$
 \frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
 $$</p>
@@ -1036,7 +1046,8 @@ r - \sqrt{s} & 0 \\
 \end{pmatrix}
 $$</p>
 <p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
-<div class="footnote-definition" id="rayleigh-quotient-000B-1"><sup class="footnote-definition-label">1</sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+<div class="footnote-definition" id="rayleigh-quotient-000B-1">
+  <sup class="footnote-definition-label"><a href="\#rayleigh-quotient-000B-1-back">1</a></sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
 </div>
 </details>
     </section></p>
@@ -1057,7 +1068,8 @@ $$</p>
 </details>
     </section></p>
 <!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
-<div class="footnote-definition" id="hermite-matrix"><sup class="footnote-definition-label">1</sup><p>自伴随矩阵, 复对称矩阵.</p>
+<div class="footnote-definition" id="hermite-matrix">
+  <sup class="footnote-definition-label"><a href="\#hermite-matrix-back">1</a></sup><p>自伴随矩阵, 复对称矩阵.</p>
 </div>
 </details>
     </section>
@@ -1080,7 +1092,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 \spaces\hookrightarrow 
 (1 ~~ 2)
 $$</p>
-<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference"><a href="#horizontal-exchange">1</a></sup>.</p>
+<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference" id="horizontal-exchange-back"><a href="#horizontal-exchange">1</a></sup>.</p>
 <p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
 <p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
 我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
@@ -1100,7 +1112,8 @@ $$
 \sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
 $$ 
 -->
-<div class="footnote-definition" id="horizontal-exchange"><sup class="footnote-definition-label">1</sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+<div class="footnote-definition" id="horizontal-exchange">
+  <sup class="footnote-definition-label"><a href="\#horizontal-exchange-back">1</a></sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
 </div>
 </details>
     </section>
@@ -1156,8 +1169,9 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>半环取消了环中加法逆的存在, 仅仅从定义上来看, 可能很难认识到半环的作用, 并轻率地认为半环是一种性质不够好的结构, 哪怕考虑一些具体的例子如布尔代数和 $\N$ 也难以影响这样的印象. 但是人们对于环的印象就完全不同, 因为环总是与域紧密关联着, 为此人们可能会列举出下面的证据:</p>
 <p>$\quad (i)$ 整数环 $\Z$ 处于数论研究的中心位置, 它的分式域是有理数域 $\Q$, 这种构造适用于任何整环 $R$, 通过商 $(R \times R \smallsetminus \{0\})/\sim$ 来完成, 此处 $(a,b) \sim (c,d) \iff ad = bc$. 从域 $\Q$ 出发, 构造以它为系数的多项式, 这些多项式将形成一个新的环结构 $\Q[x]$. 现在我们从中取一个不可约多项式 $p(x)$, 然后再利用 $\Q[x]$ 对 $p$ 生成的理想 $(p)$ 的商, 于是我们又得到一个新的域 $\Q[x]/(p)$. 另一方面, 记 $p(x)$ 在商环中的一个根为 $r$, 能够验证 $\Q[r] \cong \Q[x]/(p)$. $\Q[r]$ 的重要之处在于, 它是包含 $\Q$ 和 $r$ 的最小的域. 如果我们把这个步骤中的 $\Q$ 换成 $\R$ 并让 $p(x) = x^2+1$, 我们就得到了 $\C$.</p>
 <p>$\quad (ii)$ 同样从域 $\Q$ 出发, 另一种从域中产生环的方法是考虑以它为元素的矩阵. 类似的, 所有的这些矩阵构成矩阵环 $\Mat(\Q)$. 不同于一般是交换环的多项式环, 矩阵环往往非交换. 仅从统计的意义上说, 在数学之外的领域, 恐怕很少有什么结构能够比矩阵更为重要.</p>
-<p>现在请回忆, 正如我们可以把 $(i)$ 当中用于构造多项式环的域 $\Q$ 更换为一般的交换环 $R$, 这个时候 $R[x]$ 仍然是交换环. 当我们把 $(ii)$ 的域 $\Q$ 更换为半环 $\mathcal{Q}$ 时, $\Mat_{n \times n}(\mathcal{Q})$ 能够恰好地成为半环. 这个事实导致了半环上能够操作相当一部分的线性代数, 并且在很多场景下激发了半环结构的用途 <sup class="footnote-reference"><a href="#semiring-applications">1</a></sup>. 另外值得注意的一点是, 矩阵半环上可以通过 Leibniz 律定义导子.</p>
-<div class="footnote-definition" id="semiring-applications"><sup class="footnote-definition-label">1</sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
+<p>现在请回忆, 正如我们可以把 $(i)$ 当中用于构造多项式环的域 $\Q$ 更换为一般的交换环 $R$, 这个时候 $R[x]$ 仍然是交换环. 当我们把 $(ii)$ 的域 $\Q$ 更换为半环 $\mathcal{Q}$ 时, $\Mat_{n \times n}(\mathcal{Q})$ 能够恰好地成为半环. 这个事实导致了半环上能够操作相当一部分的线性代数, 并且在很多场景下激发了半环结构的用途 <sup class="footnote-reference" id="semiring-applications-back"><a href="#semiring-applications">1</a></sup>. 另外值得注意的一点是, 矩阵半环上可以通过 Leibniz 律定义导子.</p>
+<div class="footnote-definition" id="semiring-applications">
+  <sup class="footnote-definition-label"><a href="\#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
 </details>
     </section>
@@ -1252,7 +1266,7 @@ Options:
     </section>
 <section class="block hide-metadata" data-taxon="">
       <details id="tutorials-link-rules" open><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules">[link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
-<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference"><a href="#local-link">1</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
+<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference" id="embed-link-back"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference" id="local-link-back"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
 <p><section class="block hide-metadata" data-taxon="">
       <details id="tutorials-embed-syntax" open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
@@ -1261,14 +1275,15 @@ Options:
 <li><code>.typ#:span</code>, 嵌入 Typst 编译后的 SVG, 并展示为行间元素 (不常用).</li>
 <li><code>.typ#:shared</code>, 在当前文件的上下文中导入该 Typst 文件, 此时 <code>text</code> 用于提供被导入的定义范围, 如所有定义 <code>*</code>. 配合内联 Typst 语法使用.</li>
 </ul>
-<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
+<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference" id="markdown-editor-back"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
 <p>大部分时候, 嵌入语法的 <code>text</code> 都是空着的, 不过由于只有 Markdown 的嵌入才会产生子 <code>section</code>, 此时 <code>text</code> 能用于设置 <code>section</code> 默认是否展开以及在目录中的状态. 这些设置由一系列特定字符构成, 它们对应的功能彼此独立, 因此书写的先后顺序可以任意.</p>
 <ul>
 <li><code>+</code>, 表示当前 <code>section</code> 使用计数器.</li>
 <li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
 <li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
 </ul>
-<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
+<div class="footnote-definition" id="markdown-editor">
+  <sup class="footnote-definition-label"><a href="\#markdown-editor-back">1</a></sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
 </div>
 </details>
     </section></p>
@@ -1283,14 +1298,16 @@ Options:
 </ul>
 </details>
     </section></p>
-<div class="footnote-definition" id="embed-link"><sup class="footnote-definition-label">1</sup><p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
+<div class="footnote-definition" id="embed-link">
+  <sup class="footnote-definition-label"><a href="\#embed-link-back">1</a></sup><p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
 </div>
-<div class="footnote-definition" id="local-link"><sup class="footnote-definition-label">1</sup><p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
+<div class="footnote-definition" id="local-link">
+  <sup class="footnote-definition-label"><a href="\#local-link-back">2</a></sup><p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
 </div>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="tutorials-github-workflow" open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference"><a href="#hongjr03-workflow">1</a></sup>.
+      <details id="tutorials-github-workflow" open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>.
 唯一需要注意的是环境变量 <code>$PAGE_URL</code>, 用于 <span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">指定待部署页面的 URL</a></span>,
 你可以在仓库的 <code>settings/variables/actions</code> 设置 <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="它们 [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">它们</a></span>.</p>
 <p><section class="block hide-metadata" data-taxon="">
@@ -1359,7 +1376,8 @@ jobs:
 </code></pre>
 </details>
     </section></p>
-<div class="footnote-definition" id="hongjr03-workflow"><sup class="footnote-definition-label">1</sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
+<div class="footnote-definition" id="hongjr03-workflow">
+  <sup class="footnote-definition-label"><a href="\#hongjr03-workflow-back">1</a></sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
 </div>
 </details>
     </section></p>
@@ -1372,9 +1390,10 @@ jobs:
     </section>
 <section class="block hide-metadata" data-taxon="">
       <details id="daily-surf-nvidia-fps-gpu-cpu" ><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
-<p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference"><a href="#concept-name">1</a></sup>
+<p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="concept-name-back"><a href="#concept-name">1</a></sup>
 AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
-<div class="footnote-definition" id="concept-name"><sup class="footnote-definition-label">1</sup><p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
+<div class="footnote-definition" id="concept-name">
+  <sup class="footnote-definition-label"><a href="\#concept-name-back">1</a></sup><p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
 </div>
 </details>
     </section>
@@ -1404,12 +1423,14 @@ $$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="daily-surf-wolfram-engine" ><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
+      <details id="daily-surf-wolfram-engine" ><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference" id="wolfram-engine-size-back"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
 <p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
-<p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference"><a href="#immortal-edition">1</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
-<div class="footnote-definition" id="wolfram-engine-size"><sup class="footnote-definition-label">1</sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
+<p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference" id="immortal-edition-back"><a href="#immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
+<div class="footnote-definition" id="wolfram-engine-size">
+  <sup class="footnote-definition-label"><a href="\#wolfram-engine-size-back">1</a></sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
 </div>
-<div class="footnote-definition" id="immortal-edition"><sup class="footnote-definition-label">1</sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
+<div class="footnote-definition" id="immortal-edition">
+  <sup class="footnote-definition-label"><a href="\#immortal-edition-back">2</a></sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
 </div>
 </details>
     </section></p>

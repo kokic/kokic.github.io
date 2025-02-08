@@ -83,6 +83,11 @@ pre>code {
   display: inline;
 }
 
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
 .display-none {
   display: none;
 }
@@ -438,7 +443,7 @@ Options:
     </section>
 <section class="block hide-metadata" data-taxon="">
       <details id="tutorials-link-rules" open><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules">[link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
-<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference"><a href="#local-link">1</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
+<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference" id="embed-link-back"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference" id="local-link-back"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
 <p><section class="block hide-metadata" data-taxon="">
       <details id="tutorials-embed-syntax" open><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
@@ -447,14 +452,15 @@ Options:
 <li><code>.typ#:span</code>, 嵌入 Typst 编译后的 SVG, 并展示为行间元素 (不常用).</li>
 <li><code>.typ#:shared</code>, 在当前文件的上下文中导入该 Typst 文件, 此时 <code>text</code> 用于提供被导入的定义范围, 如所有定义 <code>*</code>. 配合内联 Typst 语法使用.</li>
 </ul>
-<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
+<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference" id="markdown-editor-back"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
 <p>大部分时候, 嵌入语法的 <code>text</code> 都是空着的, 不过由于只有 Markdown 的嵌入才会产生子 <code>section</code>, 此时 <code>text</code> 能用于设置 <code>section</code> 默认是否展开以及在目录中的状态. 这些设置由一系列特定字符构成, 它们对应的功能彼此独立, 因此书写的先后顺序可以任意.</p>
 <ul>
 <li><code>+</code>, 表示当前 <code>section</code> 使用计数器.</li>
 <li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
 <li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
 </ul>
-<div class="footnote-definition" id="markdown-editor"><sup class="footnote-definition-label">1</sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
+<div class="footnote-definition" id="markdown-editor">
+  <sup class="footnote-definition-label"><a href="\#markdown-editor-back">1</a></sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
 </div>
 </details>
     </section></p>
@@ -469,14 +475,16 @@ Options:
 </ul>
 </details>
     </section></p>
-<div class="footnote-definition" id="embed-link"><sup class="footnote-definition-label">1</sup><p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
+<div class="footnote-definition" id="embed-link">
+  <sup class="footnote-definition-label"><a href="\#embed-link-back">1</a></sup><p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
 </div>
-<div class="footnote-definition" id="local-link"><sup class="footnote-definition-label">1</sup><p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
+<div class="footnote-definition" id="local-link">
+  <sup class="footnote-definition-label"><a href="\#local-link-back">2</a></sup><p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
 </div>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="tutorials-github-workflow" open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference"><a href="#hongjr03-workflow">1</a></sup>.
+      <details id="tutorials-github-workflow" open><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>.
 唯一需要注意的是环境变量 <code>$PAGE_URL</code>, 用于 <span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">指定待部署页面的 URL</a></span>,
 你可以在仓库的 <code>settings/variables/actions</code> 设置 <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="它们 [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">它们</a></span>.</p>
 <p><section class="block hide-metadata" data-taxon="">
@@ -545,7 +553,8 @@ jobs:
 </code></pre>
 </details>
     </section></p>
-<div class="footnote-definition" id="hongjr03-workflow"><sup class="footnote-definition-label">1</sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
+<div class="footnote-definition" id="hongjr03-workflow">
+  <sup class="footnote-definition-label"><a href="\#hongjr03-workflow-back">1</a></sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
 </div>
 </details>
     </section></p>
