@@ -401,7 +401,7 @@ nav#toc a.bullet {
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="">
-      <details id="daily-surf-nvidia-fps-gpu-cpu" ><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
+      <details id="daily-surf-nvidia-fps-gpu-cpu" ><summary><header><h1><span class="taxon"></span>屏幕右上角的 "FPS GPU CPU 延时" <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
 <p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="concept-name-back"><a href="#concept-name">1</a></sup>
 AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
 <div class="footnote-definition" id="concept-name">
@@ -445,8 +445,37 @@ $$</p>
   <sup class="footnote-definition-label"><a href="\#immortal-edition-back">2</a></sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
 </div>
 </details>
+    </section>
+<section class="block hide-metadata" data-taxon="Lemma">
+      <details id="daily-surf-young-lemma" ><summary><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
+我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
+并展示 Young 不等式与加权算术平均-几何平均不等式如何作为此结果的直接推论.</p>
+<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p>现在对右侧使用对数的线性化, 得到</p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000A" open><summary><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details>
+    </section></p>
+</details>
     </section></p>
 </details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link"><a href="#daily-surf-fibonacci-flip"><span class="taxon"></span>Fibonacci 抛硬币</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link"><a href="#daily-surf-nvidia-fps-gpu-cpu"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link"><a href="#daily-surf-gaussian-integral"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link"><a href="#daily-surf-wolfram-engine"><span class="taxon"></span>Wolfram 引擎与 WLJS</a></span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link"><a href="#daily-surf-fibonacci-flip"><span class="taxon"></span>Fibonacci 抛硬币</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 "FPS GPU CPU 延时" [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link"><a href="#daily-surf-nvidia-fps-gpu-cpu"><span class="taxon"></span>屏幕右上角的 "FPS GPU CPU 延时"</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link"><a href="#daily-surf-gaussian-integral"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link"><a href="#daily-surf-wolfram-engine"><span class="taxon"></span>Wolfram 引擎与 WLJS</a></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">■</a><span class="link"><a href="#daily-surf-young-lemma"><span class="taxon">Lemma. </span>Young 引理</a></span><ul class="block"><li class=""><a class="bullet" href="/daily-surf/young-lemma-000A" title="Young 不等式 [daily-surf/young-lemma-000A]">■</a><span class="link"><a href="#daily-surf-young-lemma-000A"><span class="taxon">Corollary. </span>Young 不等式</a></span></li></ul></li></ul></div></nav></div></body></html>

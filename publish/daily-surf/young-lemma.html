@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Hille 编码</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Young 引理</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -395,15 +395,34 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/data-structure/stack-tree-isomorphism" title="栈置换--二叉树同构">« 栈置换--二叉树同构</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Definition">
-      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
-<ul>
-<li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
-<li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
-<li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(⋅ (⋅) (⋅))</code>.</li>
-</ul>
-<p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Lemma">
+      <details id="daily-surf-young-lemma" open><summary><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
+我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
+并展示 Young 不等式与加权算术平均-几何平均不等式如何作为此结果的直接推论.</p>
+<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p>现在对右侧使用对数的线性化, 得到</p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000A" open><summary><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details>
+    </section></p>
 </details>
     </section></article>
 
-</div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/daily-surf/young-lemma-000A" title="Young 不等式 [daily-surf/young-lemma-000A]">■</a><span class="link"><a href="#daily-surf-young-lemma-000A"><span class="taxon">Corollary. </span>Young 不等式</a></span></li></ul></div></nav></div></body></html>
