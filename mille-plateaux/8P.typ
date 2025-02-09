@@ -1,5 +1,5 @@
 
-#import "@preview/cetz:0.3.1" as cetz: canvas, draw
+#import "@preview/cetz:0.3.2" as cetz: canvas, draw
 #import "@preview/cetz-plot:0.1.0": plot
 
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0)); 

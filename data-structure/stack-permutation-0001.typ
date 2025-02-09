@@ -2,7 +2,7 @@
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0)); 
 #set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
 
-#import "@preview/fletcher:0.4.1" as fletcher: node, edge
+#import "@preview/fletcher:0.5.4" as fletcher: node, edge
 
 #show raw: set text(font: ("Jetbrains Mono", "FandolSong"))
 
