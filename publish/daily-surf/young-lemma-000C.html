@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Young 引理</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>加权算术平均–几何平均不等式</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -395,50 +395,8 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Lemma">
-      <details id="daily-surf-young-lemma" open><summary><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
-我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
-并展示 Young 不等式与其他常见不等式如何作为此结果的直接推论.</p>
-<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
-<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
-<p>现在对右侧使用对数的线性化, 得到</p>
-<p>$$ 
-\begin{aligned}
-\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
-&\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
-&\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
-\end{aligned}
-$$</p>
-<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
-<p>$$
-p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
-$$</p>
-<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果. 有时我们也写成</p>
-<p>$$
-p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
-$$</p>
-<p>用完全相同的步骤, 也可以证明任意多个 $p_i$ 和 $f_i$ 时的情况.</p>
-<p><section class="block hide-metadata" data-taxon="Corollary">
-      <details id="daily-surf-young-lemma-000A" open><summary><header><h1><span class="taxon">Corollary 1. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
-<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
-<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
-</details>
-    </section>
-<section class="block hide-metadata" data-taxon="Corollary">
-      <details id="daily-surf-young-lemma-000B" open><summary><header><h1><span class="taxon">Corollary 2. </span>Bernoulli 不等式 <a class="slug" href="/daily-surf/young-lemma-000B">[young-lemma-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
-<p>$$ x^n + n-1 \ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
-<p>在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
-<p>$$
-\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
-$$</p>
-<p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
-</details>
-    </section>
-<section class="block hide-metadata" data-taxon="Corollary">
-      <details id="daily-surf-young-lemma-000C" open><summary><header><h1><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/young-lemma" title="Young 引理">« Young 引理</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000C" open><summary><header><h1><span class="taxon">Corollary. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要证的结果可以写成下面的样子</p>
 <p>$$
 \Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
@@ -453,8 +411,6 @@ $$</p>
 $$</p>
 <p>而这应该是很容易的. $\quad\Box$</p>
 </details>
-    </section></p>
-</details>
     </section></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/daily-surf/young-lemma-000A" title="Young 不等式 [daily-surf/young-lemma-000A]">■</a><span class="link"><a href="#daily-surf-young-lemma-000A"><span class="taxon">Corollary 1. </span>Young 不等式</a></span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">■</a><span class="link"><a href="#daily-surf-young-lemma-000B"><span class="taxon">Corollary 2. </span>Bernoulli 不等式</a></span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000C" title="加权算术平均–几何平均不等式 [daily-surf/young-lemma-000C]">■</a><span class="link"><a href="#daily-surf-young-lemma-000C"><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式</a></span></li></ul></div></nav></div></body></html>
+</div></body></html>
