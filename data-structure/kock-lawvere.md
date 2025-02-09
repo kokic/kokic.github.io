@@ -1,6 +1,6 @@
 
 ---
-title: Kock–Lawvere
+title: Kock--Lawvere
 author: kokic
 taxon: axiom
 !date: May 13, 2024

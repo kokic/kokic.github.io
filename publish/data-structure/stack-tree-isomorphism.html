@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>栈置换--二叉树同构</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>栈置换–二叉树同构</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -396,7 +396,7 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/data-structure/index" title="数据与可计算结构">« 数据与可计算结构</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis">
-      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换--二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
+      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
 <p><section class="block hide-metadata" data-taxon="Definition">
       <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$, $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details>
@@ -415,7 +415,7 @@ nav#toc a.bullet {
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
 <p><section class="block hide-metadata" data-taxon="Example">
       <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
-二进制序列按栈弹空补充末尾的零.</p>
+此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
 </details>
     </section></p>
