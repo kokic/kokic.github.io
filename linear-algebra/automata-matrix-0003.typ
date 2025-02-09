@@ -3,4 +3,4 @@
 #set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
 
 #import "/typst/shared.typ": *
-#import "@preview/fletcher:0.4.1" as fletcher: node, edge
+#import "@preview/fletcher:0.5.4" as fletcher: node, edge
