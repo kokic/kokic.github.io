@@ -10,4 +10,3 @@ author: kokic
 [](/data-structure/stack-tree-isomorphism.md#:embed)
 [](/data-structure/synthetic-differential.md#:embed)
 [](/data-structure/chromatic-graph.md#:embed)
-[](/data-structure/expand-coefficient.md#:embed)

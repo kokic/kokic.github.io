@@ -39,7 +39,7 @@ $$
 \end{aligned}
 $$
 
-最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bx + cy^2$. 其对角化为
+最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bxy + cy^2$. 其对角化为
 
 $$
 \begin{pmatrix} a & b \\ b & c \end{pmatrix}

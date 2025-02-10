@@ -9,7 +9,7 @@ taxon: axiom
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$
 
-首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于意象理论, 而相关基础的严格性保证基本上在 1970 年之前就已经由 [William Lawvere](/person/william-lawvere) 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭. 
+首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 [意象理论](/bib/jin2024topos), 而相关基础的严格性保证基本上在 1970 年之前就已经由 [William Lawvere](/person/william-lawvere) 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭. 
 
 我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 [相似三角形](/bib/methods-of-algebra-1.md) 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$. 
 

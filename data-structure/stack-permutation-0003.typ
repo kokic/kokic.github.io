@@ -7,11 +7,10 @@
 
 #show raw: set text(font: ("Jetbrains Mono", "FandolSong"))
 
-#let u = 0.4
 #let gap = 3em
 #let cx = 1
 
-#let tree4 = box(fletcher.diagram(
+#let tree4(u) = box(fletcher.diagram(
   node-inset: 0pt, 
   node-stroke: 0.8pt,
   crossing-fill: rgb(0, 0, 0, 0), 
@@ -28,8 +27,7 @@
   node((0, y + u), radius: 0.4em), 
 ), height: 3.35em, baseline: 1.2em)
 
-
-#let tree2 = box(fletcher.diagram(
+#let tree2(u) = box(fletcher.diagram(
   node-inset: 0pt, 
   node-stroke: 0.8pt,
   crossing-fill: rgb(0, 0, 0, 0), 
@@ -45,8 +43,8 @@
 #let splus = spaces(`++`)
 
 $ 
-#enc\(#tree4) 
-&eqq #`"1"` splus #enc\(#tree2) splus #enc\(circle) \
+#enc\(#tree4(0.4)) 
+&eqq #`"1"` splus #enc\(#tree2(0.4)) splus #enc\(circle) \
 &eqq #`"1"` splus #`"1"` splus #`"0"` splus 2 dot #enc \(circle) \ \ \
 &eqq #`"110"` splus 2 dot #`"100"` \ \ \
 &eqq #`"110100100"`
