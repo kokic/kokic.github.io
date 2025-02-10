@@ -53,7 +53,7 @@ $$
 
 $q^{u}$ 的系数从 $u = 0$ 开始, 则系数可再一次简化为组合数
 
-[](/data-structure/expand-coefficient-0001.typ#:block)
+[](/daily-surf/expand-coefficient-0001.typ#:block)
 
 即 
 

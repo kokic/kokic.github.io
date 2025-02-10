@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title></title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>特殊有理函数展开式的系数</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -395,8 +395,49 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/data-structure/expand-coefficient" title="生成函数系数">« 生成函数系数</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Solution">
-      <details id="data-structure-expand-coefficient-000B" open><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/data-structure/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item">kokic</li></ul></div></header></summary><p>在 <span class="link local"><a href="/data-structure/expand-coefficient-000A" title="特殊有理函数展开式的系数 [data-structure/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis">
+      <details id="daily-surf-expand-coefficient-000A" open><summary><header><h1><span class="taxon">Exegesis. </span>$\footnotesize (1-q)^{-m}$ 的系数 <a class="slug" href="/daily-surf/expand-coefficient-000A">[expand-coefficient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\d{\operatorname{d}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$</p>
+<p>对于 $(1-q)^{-m}$ 这类特殊的有理函数, 注意到
+$((1-q)^{-1})' = (1 - q)^{- 2}$. 归纳地, 可以得到</p>
+<p>$$
+\frac{\d^{n}}{\d q^{n}}(1 - q)^{- 1} 
+\spaces= \frac{n!}{(1 - q)^{n + 1}} 
+\quads\Longrightarrow \frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{dq^{n - 1}}(1 - q)^{- 1}
+$$</p>
+<p>另一方面, 我们知道
+$\frac{1}{1 - q} = 1 + q + q^2 + \cdots = \sum_{u \geq 0}q^{u}$, 这样就得到</p>
+<p>$$
+\frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}
+$$</p>
+<p>现在我们再使用</p>
+<p>$$ 
+\frac{\d^n}{\d x^n} x^m
+\spaces=
+\begin{cases}
+  x^{m-n} \prod_{0 \le k \le n-1}(m-k) & n \le m \\
+  0 & \text{otherwise} 
+\end{cases}
+$$</p>
+<p>就可以得到</p>
+<p>$$
+\begin{aligned}
+\frac{1}{(1 - q)^{n}} 
+&\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq n - 1}q^{u - (n - 1)}\prod_{0 \leq k \leq n - 2}(u - k) \\
+&\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}\prod_{0 \leq k \leq n - 2}(u + n - k - 1) \\
+&\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}(u + n - 1)(u + n - 2) \spaces\cdots (u + 1)
+\end{aligned}
+$$</p>
+<p>$q^{u}$ 的系数从 $u = 0$ 开始, 则系数可再一次简化为组合数</p>
+<p><figure><img src = "/daily-surf/expand-coefficient-0001.svg" /></figure></p>
+<p>即</p>
+<p>$$
+\frac{1}{(1 - q)^{n}} 
+\spaces= \sum_{u \geq 0}\binom{n + u - 1}{u}q^{u}
+$$</p>
 </details>
     </section></article>
 

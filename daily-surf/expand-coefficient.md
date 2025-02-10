@@ -12,4 +12,4 @@ $\gdef\Z{\mathbf{Z}}$
 求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$ 
 在 $\Z_{\ge 0}$ 上解的个数. 
 
-[.](/data-structure/expand-coefficient-000B.md#:embed)
+[.](/daily-surf/expand-coefficient-000B.md#:embed)
