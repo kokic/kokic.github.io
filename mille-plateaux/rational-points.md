@@ -30,8 +30,6 @@ $$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267
 
 $$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$
 
-我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 [The Canterbury Puzzles](https://en.wikipedia.org/wiki/The_Canterbury_Puzzles) 的书, 这是其中的 “The Puzzle of the Doctor of Physic”. 
-
 考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出 
 
 $$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
