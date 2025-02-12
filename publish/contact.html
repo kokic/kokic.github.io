@@ -395,9 +395,1071 @@ nav#toc a.bullet {
   padding-left: 0.2em;
   padding-right: 0.2em;
   text-decoration: none;
-}</style><body><div id="grid-wrapper"><article><section class="block" data-taxon="">
+}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="contact" open><summary><header><h1><span class="taxon"></span>联系 <a class="slug" href="/contact">[contact]</a></h1><div class="metadata"><ul><li class="meta-item">January 18, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><a href="mailto:kokicplus@gmail.com">kokicplus@gmail.com</a></li><li class="meta-item"><a href="mailto:kokicplus@126.com">kokicplus@126.com</a></li><li class="meta-item"><span class="link external"><a href="https://www.zhihu.com/people/kokic-86" title="知乎 [https://www.zhihu.com/people/kokic-86]">知乎</a></span></li><li class="meta-item"><span class="link external"><a href="https://music.163.com/#/user/home?id=411742542" title="网易云音乐 [https://music.163.com/#/user/home?id=411742542]">网易云音乐</a></span></li><li class="meta-item"><span class="link external"><a href="https://space.bilibili.com/14411894" title="bilibili [https://space.bilibili.com/14411894]">bilibili</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathstodon.xyz/@kokic" title="mastodon [https://mathstodon.xyz/@kokic]">mastodon</a></span></li></ul></div></header></summary><p>付费咨询请通过邮件联系. For paid consultation, please contact us via email.</p>
 </details>
-    </section></article>
+    </section><footer><section class="block"><details open><summary><header><h1>Related</h1></header></summary><section class="block" data-taxon="">
+      <details id="index" ><summary><header><h1><span class="taxon"></span>回声 <a class="slug" href="/index">[index]</a></h1><div class="metadata"><ul><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/contact" title="联系 [contact]">contact</a></span></li><li class="meta-item"><span class="link local"><a href="/links" title="链接 [links]">links</a></span></li></ul></div></header></summary><p>你可以在 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span> 查看网页的源文件, 以便了解相关细节. 旧文章会不定期恢复.</p>
+<p><section class="block" data-taxon="">
+      <details id="mille-plateaux-index" ><summary><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block" data-taxon="">
+      <details id="mille-plateaux-bubble-compose" ><summary><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
+<p><section class="block" data-taxon="Proof">
+      <details id="mille-plateaux-bubble-compose-proof" ><summary><header><h1><span class="taxon">Proof. </span>(笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
+<p><figure><img src = "/mille-plateaux/bubble-compose.svg" /></figure></p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="mille-plateaux-rational-points" ><summary><header><h1><span class="taxon"></span>平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解:</p>
+<p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
+<p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$.</p>
+<p><figure><img src = "/mille-plateaux/8P.svg" /></figure></p>
+<p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
+<p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
+<p><section class="block" data-taxon="Lemma">
+      <details id="mille-plateaux-canterbury" ><summary><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
+<p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
+<p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
+<p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$</p>
+<p>随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到</p>
+<p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
+<p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
+</details>
+    </section></p>
+<p>反复利用 <span class="link local"><a href="/mille-plateaux/canterbury" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">该映射</a></span> 即可得到前文的 $8P$. 当然, 这也给出某个经典的恒等式</p>
+<p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
+<p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
+<p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
+\in \Q $$</p>
+<p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
+<p><section class="block" data-taxon="Exegesis">
+      <details id="mille-plateaux-circular-parameterization" ><summary><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>我们对于 $\R$ 上的单位圆周曲线 $C(\R):x^2+y^2=1$ 和它关于角度 $\theta$ 的参数化 $\theta \mapsto (\cos\theta, \sin\theta)$ 是不陌生的. 通过计算这类统称为三角函数或者圆函数的映射, 很容易就能发现圆上的一些不同寻常的点</p>
+<p>$$ (\tfrac1{\sqrt2}, \tfrac1{\sqrt2}), \quad (\tfrac{1+\sqrt5}4, \sqrt{\tfrac58 - \tfrac{\sqrt5}8}), \quad (\tfrac{\sqrt3}2, \tfrac12) $$</p>
+<p>但是如果我们希望找到 $C(\Q)$ 上的点, 这个参数化就没有那么有用了. 考虑 $C(\Q):x^2+y^2=r^2$, 我们从点 $P(-r, 0)$ 出发, 任选一个 $t \in \R$ 作为过 $P$ 点直线的斜率, 即 $y = t(x+r)$, 随后联立之.</p>
+<p>$$ (1+t^2)x^2 + 2rt^2x + r^2t^2 - r^2 = 0 $$</p>
+<p>由于我们已经知道它的一个根 $x_1 = -r$. 且根与系数的关系给出</p>
+<p>$$ x_1 + x_2 = -\frac{2rt^2}{1+t^2} $$</p>
+<p>立得 $x_2 = r \cdot \frac{1-t^2}{1+t^2}$. 从而给出一个熟知的有理参数化</p>
+<p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
+<p>这样一种寻找点的方式, 通常被称为弦切法.</p>
+<p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
+</details>
+    </section></p>
+<p><section class="block" data-taxon="Definition">
+      <details id="mille-plateaux-circular-curve" ><summary><header><h1><span class="taxon">Definition. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\E{\operatorname{E}}$
+$\gdef\arc{\text{arc}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
+<p>$$
+L 
+\spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
+\spaces= r\arcsin\dfrac{x}{r}\bigg|_{-r}^r
+\spaces= \pi r
+$$</p>
+<p>因而圆的弧长定义了反正弦函数，即</p>
+<p>$$
+\arcsin x \spaces= \int_0^x\dfrac{1}{\sqrt{1-t^2}}\d t
+$$</p>
+<p>其反函数被称为正弦函数，统称圆函数或者三角函数.</p>
+<p>现在, 注意到 $\cot(x)$ 和 $\cot^\prime(x)$ 满足   $\cot^2(x) + \cot^\prime(x) = 1$, 令 $(\cot(x), \cot^\prime(x)) \mapsto (x,y)$, 即 $y=c-x^2$.</p>
+<p>其他三角函数及其导数也有类似的关系, 以下列出.</p>
+<p>$$\def\arraystretch{1.5}\begin{array}{|c|c|c|} 
+\hline
+u & (u, u^\prime) \mapsto (x,y) & g \\
+\hline
+\cot & y = -x^2-1 & 0 \\ 
+\hline
+\tan & y = x^2 + 1 & 0 \\ 
+\hline
+\cos, \sin & y^2 = 1-x^2 & 0 \\
+\hline
+\sec, \csc & y^2 = x^4-x^2 & 0 \\
+\hline
+\end{array}$$</p>
+<p>现在取 $C(\Q): y=x^2+1$ 上一定点 $(0, 1)$, 固定斜率 $t$ 从而有直线 $\ell(\Q): y=tx+1$, 类似地求曲线 $\ell(\Q) \cdot C(\Q) = 0$ 的交点, 得到 $(t, t^2+1)$.</p>
+<p>如果我们对抛物线 $C(\R)$ 求弧长, 所得到的将是 $\log$ 或 $\sinh^{-1}$ 的代数函数. 当然, $\sinh^{-1}$ 实际上也是 $\log$ 的代数函数.
+$$
+\begin{aligned} 
+s
+&\spaces= \int\sqrt{1+(2x)^2}\d x \\
+&\spaces= \frac12 \sqrt{1+4x^2} + \frac14\sinh^{-1}(2x)
+\end{aligned}
+$$</p>
+<p>现在重新回顾</p>
+<p>$$
+\int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
+$$</p>
+<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
+<p>$$
+\begin{aligned}
+\int\dfrac{\d x}{y} 
+&\spaces= \int \frac{\d{(\frac{1-t^2}{1+t^2})}}{\frac{2t}{1+t^2}} \\
+&\spaces= \int -\frac{4t}{(1+t^2)^2} \cdot \frac{1+t^2}{2t} \d t \\
+&\spaces= \int -\frac{2}{1+t^2} \d t \\
+&\spaces= -2\tan^{-1} t
+\end{aligned}
+$$</p>
+<p>另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有</p>
+<p>$$
+\arcsin x \spaces= \frac{\pi}2-2\arctan\frac{\sqrt{1-x}}{\sqrt{1+x}}
+$$</p>
+<p>双曲线时的情况略有不同. 考虑 $C(\R):x^2-y^2=1$, 如果朴素地计算平面直角坐标系上的积分, 将得到一个会被归类为椭圆积分的表达式</p>
+<p>$$ 
+\int \sqrt{\frac{2x^2-1}{x^2-1}} \d x 
+\spaces= \int \frac{4x^4-1}{\sqrt{x^2-1}\sqrt{2x^2+1}} \d x
+$$</p>
+<p>由于分子部分的 $4x^4-1$ 是多项式函数, 因此整个积分的核心就在于下面这一项</p>
+<p>$$
+\int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
+\tag{1}
+$$</p>
+<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
+<p>现在考虑双曲线 $C(\R)$ 的一个参数化
+$$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
+<p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
+<p>$$
+\begin{aligned}
+\int \sqrt{\sinh^2 t + \cosh^2 t} \d t
+&\spaces= \int \sqrt{\cosh 2t} \d t \\
+&\spaces= -i \E(it \mid 2) \\
+&\spaces= -i \E(i \cosh^{-1}x \mid 2) \\
+&\spaces= \E(\sin^{-1}x \mid 2) \\
+\end{aligned}
+$$</p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="mille-plateaux-periodic-functions" ><summary><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
+<p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
+<p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
+<p>因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一来, 如果 $x$ 被选定为任意一个整数, 总会存在 $n-x$ 为零的项使整个级数发散, 这就要求 $x \notin \Z$. 同样的, $f(x)$ 在映射 $x \mapsto x + k$, $k \in \Z$ 下不变, 这就意味着 $f(x)$ 以 $1$ 为周期. 现在我们当然知道这个 $f(x)$ 其实就是 $\pi^2\csc^2(\pi x)$.</p>
+<p>由于 $(n-x)^2 \ge x^2-n^2$, 这使得如下级数也是收敛的</p>
+<p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="data-structure-index" ><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">January 7, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block" data-taxon="Definition">
+      <details id="data-structure-binary-tree" ><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
+<p><figure><img src = "/data-structure/tree-def.svg" /></figure></p>
+<p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
+<p><figure><img src = "/data-structure/binary-tree.svg" /></figure></p>
+<p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
+<!-- 记二叉树上所有度为 $d$ 的结点为集合 $N_d$, $n_d = |N_d|$. 对于每个叶结点 $\ell \in N_0$, 它总是有一个双亲节点, 而非叶结点 $N_{>0} = N_1 \cup N_2$ 至少有一个子节点.   -->
+</details>
+    </section>
+<section class="block" data-taxon="Theorem">
+      <details id="data-structure-blass-lawvere" ><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
+<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
+<p><section class="block" data-taxon="Theorem">
+      <details id="data-structure-fiore-leinster" ><summary><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
+</details>
+    </section></p>
+<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
+<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
+</details>
+    </section>
+<section class="block" data-taxon="Exegesis">
+      <details id="data-structure-stack-tree-isomorphism" ><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
+<p><section class="block" data-taxon="Definition">
+      <details id="data-structure-stack-permutation" ><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+</details>
+    </section></p>
+<p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
+<p><section class="block" data-taxon="Definition">
+      <details id="data-structure-hille-encode" ><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+<ul>
+<li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
+<li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
+<li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(⋅ (⋅) (⋅))</code>.</li>
+</ul>
+<p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
+</details>
+    </section></p>
+<p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
+<p><section class="block" data-taxon="Example">
+      <details id="data-structure-stack-permutation-000A" ><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
+<p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
+</details>
+    </section></p>
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></p>
+<p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
+<p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
+<p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
+<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 18.044079999999997 22.672179999999997" width="18.044079999999997pt" height="22.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 22.67218 L 18.04408 22.67218 L 18.04408 0 Z "/>
+    <g>
+        <g transform="translate(-11.033059999999999 -14.504135)">
+            <g class="typst-group">
+                <g transform="matrix(0.4 0 0 0.4 12.033059999999999 15.504135)">
+                    <g transform="translate(0 0)">
+                        <g class="typst-group">
+                            <g>
+                                <g transform="translate(0 0)">
+                                    <g class="typst-group">
+                                        <g>
+                                            <g transform="translate(0 0)">
+                                                <g class="typst-group">
+                                                    <g>
+                                                        <g transform="translate(10.533055765200158 10.533055765199913)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 5.1597886 0 C 5.1597886 0 0 5.1597886 0 5.1597886 "/>
+                                                        </g>
+                                                        <g transform="translate(10.533055648846556 24.417355900815053)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
+                                                        </g>
+                                                        <g transform="translate(24.41735564884644 10.533055900814961)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
+                                                        </g>
+                                                        <g transform="translate(13.884300000000003 0)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
+                                                        </g>
+                                                        <g transform="translate(0 13.88429999999999)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
+                                                        </g>
+                                                        <g transform="translate(13.884300000000003 27.768599999999996)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
+                                                        </g>
+                                                        <g transform="translate(27.7686 13.88429999999999)">
+                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+</span>
+, 其正确的 Hille 编码应该为 <code>1101000100</code>. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码.</p>
+<p><section class="block" data-taxon="Proof">
+      <details id="data-structure-stack-permutation-000B" ><summary><header><h1><span class="taxon">Proof. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p>$$
+\begin{CD}
+B @>>> S \\
+  @VVV @VVV \\
+H @>>> C
+\end{CD}
+$$</p>
+<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
+</details>
+    </section></p>
+<p>另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 <code>0</code> 后所得的字符串长度.
+固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$, 而最长也不会超过 $\max(0, 2n-1, 3n-4)$, 即 $n\le L_n \le \max(0, 2n-1, 3n-4)$.</p>
+<div class="footnote-definition" id="hille-order">
+  <sup class="footnote-definition-label"><a href="\#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
+</div>
+<div class="footnote-definition" id="inorder-sequence">
+  <sup class="footnote-definition-label"><a href="\#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="Exegesis">
+      <details id="data-structure-synthetic-differential" ><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\str#1{{\footnotesize #1}}$</p>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p>我们首先观察朴素的数值微分的计算过程. 待微分函数为 $(x+3)^2$, 此处不妨取 $x=-2$, $h=10^{-5}$, 这一位置的导数 $A$ 近似为</p>
+<p>$$ 
+A \quads\approx \frac{f(x+h)-f(x)}h \eqq \frac{(1 + 10^{-5})^2 - 1^2}{10^{-5}} \eqq 2.00001 
+$$</p>
+<p>并且如果试图得到与预期的 $A=2$ 更接近的结果, 则须将无穷小近似 $h$ 选取为更靠近 $0$ 的数值, 这对于浮点精度有限的计算机来说极为不利.</p>
+<p>而朴素的符号微分视表达式为树结构, 通过遍历树并对符合模式的节点应用求导规则. 即</p>
+<p>$$
+\begin{aligned}
+(x+3)^2 
+& \spaces\to (x+3)'(x+3) + (x+3)(x+3)' \\
+& \spaces\to 1 \cdot (x+3) + (x+3) \cdot 1 \\
+& \spaces\to 2x+6 
+\end{aligned}
+$$</p>
+<p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
+<p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
+<p><section class="block" data-taxon="Exegesis">
+      <details id="data-structure-complex-step" ><summary><header><h1><span class="taxon">Exegesis. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="distinguish-back"><a href="#distinguish">1</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="publish-time-back"><a href="#publish-time">2</a></sup> 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="complex-step-back"><a href="#complex-step">3</a></sup>, 注意</p>
+<p>$$
+f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
+$$</p>
+<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
+$$ 
+\frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
+\frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
+$$</p>
+<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
+<div class="footnote-definition" id="distinguish">
+  <sup class="footnote-definition-label"><a href="\#distinguish-back">1</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
+</div>
+<div class="footnote-definition" id="publish-time">
+  <sup class="footnote-definition-label"><a href="\#publish-time-back">2</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
+</div>
+<div class="footnote-definition" id="complex-step">
+  <sup class="footnote-definition-label"><a href="\#complex-step-back">3</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+</div>
+</details>
+    </section></p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 Cleve
+方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>$$
+\frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
+$$</p>
+<p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将</p>
+<p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
+<p>当中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会动摇经典逻辑中对于排中律的看法.</p>
+<p><section class="block" data-taxon="Definition">
+      <details id="data-structure-dual-number" ><summary><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
+<p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
+<p><section class="block" data-taxon="Axiom">
+      <details id="data-structure-kock-lawvere" ><summary><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
+<p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
+<p>$$ 
+f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
+$$</p>
+<p>将这里的 $a$ 换成 $f(0)$, 并完全使用量词叙述, 则是</p>
+<p>$$ 
+\forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
+$$</p>
+<p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
+<p><section class="block" data-taxon="Corollary">
+      <details id="data-structure-kock-lawvere-000A" ><summary><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
+<p>$$
+f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
+$$</p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
+<p><figure><img src = "/data-structure/kock-lawvere-0001.svg" /></figure></p>
+</details>
+    </section></p>
+<blockquote>
+<p>Axiom is incompatible with the law of excluded middle.
+Either the one or the other has to leave the scene.
+In Part I of this book, the law of excluded middle has to leave,
+being incompatible with the natural synthetic reasoning
+on smooth geometry to be presented here.
+In the terms which the logicians use, this means that
+the logic employed is ‘constructive’ or ‘intuitionistic’.
+We prefer to think of it just as ‘that reasoning
+which can be carried out in all sufficiently good
+cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
+</blockquote>
+</details>
+    </section></p>
+<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+</details>
+    </section></p>
+<p>这样一来, 我们所说的 “将近似修正为严格等于” 就可以精确表示为</p>
+<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\epsilon) ~ \str{中} ~ \epsilon ~ \str{项的系数} $$</p>
+</details>
+    </section>
+<section class="block" data-taxon="Definition">
+      <details id="data-structure-chromatic-graph" ><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p></a></p>
+<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George David Birkhoff [person/george-david-birkhoff]">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 的理想理论之于费马大定理.</p>
+<p><section class="block" data-taxon="Theorem">
+      <details id="data-structure-deletion-contraction" ><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\without{\setminus}$</p>
+<p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
+<p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
+<p><section class="block" data-taxon="Proof">
+      <details id="data-structure-deletion-contraction-proof" ><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\without{\setminus}$</p>
+<p>$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
+$$\begin{aligned} 
+\pi(G \without e) 
+&\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\spaces= \pi(G / e) ~ + ~ \pi(G)
+\end{aligned}$$</p>
+</details>
+    </section></p>
+<p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
+<p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
+<p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
+<p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
+</details>
+    </section></p>
+<p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
+<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 21.007874 L 39.20733 21.007874 L 39.20733 0 Z "/>
+    <g>
+        <g transform="translate(0 2)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g30267E90AF33476939FA790BF2CFA4B6" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(9.179065 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#gE7D1B761E699FF1AF896F60E9A8F0E23" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                    <g transform="translate(15.689258999999998 0)">
+                        <g class="typst-group">
+                            <g>
+                                <g transform="translate(0 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 0)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(14.173228346456693 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(0 14.173228346456693)">
+                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 1.417322834645672)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 11.338583 0 11.338583 0 "/>
+                                </g>
+                                <g transform="translate(15.590551181102361 2.834645669291341)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 0 11.338583 0 11.338583 "/>
+                                </g>
+                                <g transform="translate(2.8346456692913384 15.590551181102365)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 11.338583 0 C 11.338583 0 0 0 0 0 "/>
+                                </g>
+                                <g transform="translate(1.4173228346456674 2.8346456692913424)">
+                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0.0000000000000037371682 11.338583 C 0.0000000000000037371682 11.338583 0 0 0 0 "/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g transform="translate(32.69713301574804 12.360687007874018)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g721639AFC4A0843B1FF64FCE5C7F61DE" x="0" fill="#000000" fill-rule="nonzero"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+    <defs id="glyph">
+        <symbol id="g30267E90AF33476939FA790BF2CFA4B6" overflow="visible">
+            <path d="M 8.083748 6.649037 L 2.992838 6.649037 C 2.360331 6.649037 1.8049589 6.402205 1.357576 5.923968 C 1.141598 5.692563 0.416529 4.705235 0.416529 4.504684 C 0.478237 4.396695 0.478237 4.304133 0.663361 4.304133 C 0.77134997 4.304133 0.863912 4.365841 0.956474 4.504684 C 1.450138 5.260607 2.082645 5.646282 2.838568 5.646282 L 3.625345 5.646282 C 3.270524 4.304133 2.62259 2.653444 1.69697 0.694215 C 1.619835 0.509091 1.573554 0.370248 1.573554 0.293113 C 1.573554 -0.015427 1.743251 -0.169697 2.067218 -0.169697 C 2.360331 -0.169697 2.576309 0 2.715152 0.323967 C 2.992838 1.203306 3.193389 1.882094 3.301378 2.344904 L 4.149863 5.646282 L 5.738844 5.646282 C 5.3223147 3.810469 5.106337 2.5300279 5.106337 1.8049589 C 5.106337 1.049036 5.276034 -0.169697 5.8468328 -0.169697 C 6.1707997 -0.169697 6.525621 0.138843 6.525621 0.46281 C 6.525621 0.539945 6.494767 0.663361 6.4330587 0.817631 C 6.139946 1.5426999 6.001103 2.360331 6.001103 3.301378 C 6.001103 4.026447 6.093665 4.813224 6.263362 5.646282 L 7.944905 5.646282 C 8.48485 5.646282 8.747109 5.831406 8.747109 6.217081 C 8.747109 6.571902 8.469423 6.649037 8.083748 6.649037 Z "/>
+        </symbol>
+        <symbol id="gE7D1B761E699FF1AF896F60E9A8F0E23" overflow="visible">
+            <path d="M 5.368596 -4.581819 C 5.507439 -4.581819 5.5845737 -4.504684 5.5845737 -4.365841 C 5.5845737 -4.288706 5.55372 -4.242425 5.507439 -4.196144 C 4.643527 -3.532783 3.949312 -2.422039 3.424794 -0.863912 C 2.977411 0.478237 2.746006 1.774105 2.746006 3.0545459 L 2.746006 4.658954 C 2.746006 5.939395 2.977411 7.235263 3.424794 8.577412 C 3.949312 10.135539 4.643527 11.246283 5.507439 11.909644 C 5.55372 11.955925 5.5845737 12.002206 5.5845737 12.079341 C 5.5845737 12.2181835 5.507439 12.295319 5.368596 12.295319 C 5.306888 12.295319 5.260607 12.279892 5.24518 12.249038 C 4.242425 11.477688 3.409367 10.33609 2.746006 8.808817 C 2.113499 7.358679 1.789532 5.970249 1.789532 4.658954 L 1.789532 3.0545459 C 1.789532 1.743251 2.113499 0.354821 2.746006 -1.095317 C 3.409367 -2.62259 4.242425 -3.764188 5.24518 -4.535538 C 5.260607 -4.566392 5.306888 -4.581819 5.368596 -4.581819 Z "/>
+        </symbol>
+        <symbol id="g721639AFC4A0843B1FF64FCE5C7F61DE" overflow="visible">
+            <path d="M 1.2650139 -4.535538 C 2.267769 -3.764188 3.100827 -2.62259 3.764188 -1.095317 C 4.396695 0.354821 4.720662 1.743251 4.720662 3.0545459 L 4.720662 4.658954 C 4.720662 5.970249 4.396695 7.358679 3.764188 8.808817 C 3.100827 10.33609 2.267769 11.477688 1.2650139 12.249038 C 1.2495869 12.279892 1.203306 12.295319 1.141598 12.295319 C 1.002755 12.295319 0.92562 12.2181835 0.92562 12.079341 C 0.92562 12.002206 0.956474 11.955925 1.002755 11.909644 C 1.866667 11.246283 2.560882 10.135539 3.0853999 8.577412 C 3.532783 7.235263 3.764188 5.939395 3.764188 4.658954 L 3.764188 3.0545459 C 3.764188 1.774105 3.532783 0.478237 3.0853999 -0.863912 C 2.560882 -2.422039 1.866667 -3.532783 1.002755 -4.196144 C 0.956474 -4.242425 0.92562 -4.288706 0.92562 -4.365841 C 0.92562 -4.504684 1.002755 -4.581819 1.141598 -4.581819 C 1.203306 -4.581819 1.2495869 -4.566392 1.2650139 -4.535538 Z "/>
+        </symbol>
+    </defs>
+</svg>
+</span>
+.</p>
+<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式 [data-structure/deletion-contraction]">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
+<p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="linear-algebra-index" ><summary><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index">[linear-algebra]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block" data-taxon="Theorem">
+      <details id="linear-algebra-rayleigh-quotient" ><summary><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
+<p>$$
+M \spaces= \begin{pmatrix}
+\lambda_{1} \\
+  & \ddots \\
+  & & \lambda_{n}
+\end{pmatrix}
+$$</p>
+<p>则对非零向量 $x$ 和 $x$ 的共轭转置 $x^*$
+有如下结果:</p>
+<p>$$
+\min\limits_{1 \leqslant i \leqslant n}\lambda_{i}
+\spaces\leqslant \frac{x^{\ast}Mx}{x^{\ast}x} 
+\spaces\leqslant \max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
+$$</p>
+<p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
+<p><section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-rayleigh-quotient-000A" ><summary><header><h1><span class="taxon">Exegesis. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
+<p>$$
+x^{\ast}Mx \spaces= \sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2},\quad 
+x^{\ast}x \spaces= \sum_{1 \leqslant i \leqslant n}x_{i}^{2}
+$$</p>
+<p>Rayleigh 商定理正是在说</p>
+<p>$$
+\min\limits_{1 \leqslant i \leqslant n}\lambda_{i} 
+\spaces\leqslant 
+\frac{\sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2}}{\sum_{1 \leqslant i \leqslant n}x_{i}^{2}} 
+\spaces\leqslant 
+\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
+$$</p>
+</details>
+    </section></p>
+<p>Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 <sup class="footnote-reference" id="hermite-matrix-back"><a href="#hermite-matrix">1</a></sup>, 也即 $M$ 是共轭对称的方阵 $M^* = M$, 对实数而言这当然就是对称矩阵. 稍稍回忆线性代数, 有限维谱定理说:</p>
+<ul>
+<li>任何实对称矩阵都可以由正交矩阵对角化.</li>
+<li>任何复对称矩阵都可以由酉矩阵对角化 (Autonne–Takagi 分解).</li>
+</ul>
+<p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
+<p><section class="block" data-taxon="Example">
+      <details id="linear-algebra-rayleigh-quotient-000B" ><summary><header><h1><span class="taxon">Example. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
+将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}$,
+相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}$.
+注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
+来计算 $Q^*MQ$ <sup class="footnote-reference" id="rayleigh-quotient-000B-1-back"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
+<p>$$
+\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+$$</p>
+<p>那么, 这就得到了 $M$ 的 Rayleigh 商的值域</p>
+<p>$$
+\frac{a^{2} + 4ab + b^{2}}{a^{2} + b^{2}}
+\quads\to
+\frac{3a^{2} - b^{2}}{a^{2} + b^{2}}
+\quads\in \lbrack - 1,3\rbrack
+$$</p>
+<p>下面讨论 $A = \scriptsize\begin{pmatrix} p & q \\ q & p \end{pmatrix}$ 的对角化问题.
+依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &~~~1 \\ 1 & -1 \end{pmatrix}$, 相应的
+$Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故</p>
+<p>$$
+\begin{aligned}
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to &
+\frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}} \\
+\quads\in & [p-q, p + q]
+\end{aligned}
+$$</p>
+<p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bxy + cy^2$. 其对角化为</p>
+<p>$$
+\begin{pmatrix} a & b \\ b & c \end{pmatrix}
+\quads\mapsto
+\frac12 \begin{pmatrix}
+r - \sqrt{s} & 0 \\
+0 & r + \sqrt{s}
+\end{pmatrix}
+$$</p>
+<p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
+<div class="footnote-definition" id="rayleigh-quotient-000B-1">
+  <sup class="footnote-definition-label"><a href="\#rayleigh-quotient-000B-1-back">1</a></sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+</div>
+</details>
+    </section></p>
+<p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
+<p><section class="block" data-taxon="Example">
+      <details id="linear-algebra-rayleigh-quotient-000C" ><summary><header><h1><span class="taxon">Example. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要求解问题可以叙述成下面的形式</p>
+<p>$$
+F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
+$$</p>
+<p>这里相应的 $A = \scriptsize\begin{pmatrix} 3 & 2 \\ 2 & 3 \end{pmatrix}$, $B = \scriptsize\begin{pmatrix} 4 & ~~6 \\ 6 & 34 \end{pmatrix}$. 我们首先对 $B$ 进行 Cholesky 分解, 得到 $C = \scriptsize\begin{pmatrix} 2 & 0 \\ 3 & 5 \end{pmatrix}$ 使得 $B = CC^*$. 接下来通过 $C^{-1} A C^*{}^{-1}$ 求出 $D$ 及其对角化 $E$, 这样就结束了此问题.</p>
+<p>$$
+\begin{aligned}
+D \spaces= \frac14 \begin{pmatrix} ~~~3 & -1 \\ -1 & ~~~\frac35 \end{pmatrix}, ~~
+E \spaces= & \begin{pmatrix} 9-\sqrt{61} & 0 \\ 0 & 9+\sqrt{61} \end{pmatrix} \cdot \frac1{20}  \\ \spaces= &\begin{pmatrix} \min_\R F & 0 \\ 0 & \max_\R F \end{pmatrix} 
+\end{aligned}
+$$</p>
+</details>
+    </section></p>
+<!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
+<div class="footnote-definition" id="hermite-matrix">
+  <sup class="footnote-definition-label"><a href="\#hermite-matrix-back">1</a></sup><p>自伴随矩阵, 复对称矩阵.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-permutation-matrix" ><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
+<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
+<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
+<p>$$
+\begin{pmatrix} 0 & 1 \\ 1 & 0 \\ \end{pmatrix}
+\begin{pmatrix} x_1 \\ x_2 \\ \end{pmatrix}
+\spaces=
+\begin{pmatrix} x_2 \\ x_1 \\ \end{pmatrix}
+, \quad
+\begin{pmatrix} 0 & 1 \\ 1 & 0 \\ \end{pmatrix} 
+\spaces\hookrightarrow 
+(1 ~~ 2)
+$$</p>
+<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference" id="horizontal-exchange-back"><a href="#horizontal-exchange">1</a></sup>.</p>
+<p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
+<p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
+我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
+<p>$$
+\underbrace{\begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}}_{(2 ~ 3) ~ \curvearrowright ~ I_3}
+\spaces\cdot
+\underbrace{\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{pmatrix}}_{(1 ~ 2) ~ \curvearrowright ~ I_3}
+\eqq
+\underbrace{\begin{pmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
+$$</p>
+<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符. 也就是说</p>
+<p>$$
+\sigma_2\sigma_1 \quads\cong (\sigma_2 \curvearrowright I) \cdot (\sigma_1 \curvearrowright I)
+$$</p>
+<!-- 
+$$ 
+\sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
+$$ 
+-->
+<div class="footnote-definition" id="horizontal-exchange">
+  <sup class="footnote-definition-label"><a href="\#horizontal-exchange-back">1</a></sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-automata-matrix" ><summary><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p><section class="block" data-taxon="Definition">
+      <details id="linear-algebra-regular-language" ><summary><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
+<ul>
+<li>空集 $\varnothing$ 是正则语言, 作为加法单位 $0_\Sigma$.</li>
+<li>只包含空字符串的集合 $\{\epsilon\}$ 是正则语言, 作为乘法单位 $1_\Sigma$.</li>
+<li>对于 $a \in \Sigma$, $\{a\}$ 是正则语言.</li>
+<li>对于正则语言 $A$, $B$. $A \cup B$, $A \times_\Sigma B$ 和 $A^*$ 是正则语言.</li>
+<li>$\Sigma$ 上不存在其它正则语言.</li>
+</ul>
+<p>这里 $A \times_\Sigma B$ 基本就是
+$A \times B = \{ (a, b) : a \in A, b \in B \}$, 但将配对 $(a, b)$ 视为字符串拼接 $a b$.
+$A$ 的闭包 $A^*$ 定义为满足如下性质的最小集合.</p>
+<p>$\quad (i)$ 匹配空. 即 $\epsilon \in A^*$. $\quad (ii)$ 对拼接封闭. 即 $A \times_\Sigma A \times_\Sigma \cdots \times_\Sigma A \subset A^*$.</p>
+<p>这里的 $\square^*$ 通常被称为 Kleene 星运算, 按照数学的习惯, $A^*$ 也被称为集合 $A$ 的自由幺半群. 约定 $A^0 = \{\epsilon\}, A^1 = A, A^{i+1} = \{wv : w \in V^i, v \in V \}$, $i \ge 1$. 同样的, 如果 $A$ 是一个字母表或形式语言, $A^i$ 收集的就是所有长度为 $i$ 且字符属于 $V$ 的字符串. 于是 $A^*$ 也可以定义成如下形式</p>
+<p>$$
+A^* \eqq \bigcup_{i \ge 0} A^i
+$$</p>
+<p>从直觉上说, $A^*$ 是为了刻画 $A$ 的零次或多次重复. 如果读者熟悉正则表达式, 那么显然此处的 $\cup$ 就是 $+$ 的别名, 对应匹配器的或运算, 于是我们也用 $+_\Sigma$ 表示 $\cup$. 注意这里的 $\cup$ 有无穷多个, 从这个定义可以直接看出 $(A^*)^* = A^*$, 这样一来, $\square^*$ 就会是一个幂等运算.</p>
+<p>可以验证, 正则语言集 $\textbf{Reg}_\Sigma$ 连同其上的加法 $+_\Sigma$ 和乘法 $\times_\Sigma$ 构成一个半环 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, 0_\Sigma, 1_\Sigma)$. 从匹配的角度, 我们还能明白以下两点为何是必须的.</p>
+<p>$\quad (i)~$ 加法单位 $0_\Sigma$ 对于乘法运算 $\times_\Sigma$ 的吸收性. <br />
+$\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
+<p>现在, 从半环 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma)$ 出发, 在其上定义偏序 $a \le b$ $\iff$ $a+b=b$, 等价地 $\exists ~ x$ 使得 $a+x = b$. 最后, 可以验证 $\square^*$ 与定义的偏序还满足下面的公理.</p>
+<p>$$
+\begin{aligned}
+(1) &~~ 1+aa^* \le a^* \\
+(2) &~~ 1+a^*a \le a^* \\
+(3) &~~ ax \le x \implies a^* x \le x \\
+(4) &~~ xa \le x \implies xa^* \le x
+\end{aligned}
+$$</p>
+<p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
+</details>
+    </section>
+<section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-semiring" ><summary><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
+<p>半环取消了环中加法逆的存在, 仅仅从定义上来看, 可能很难认识到半环的作用, 并轻率地认为半环是一种性质不够好的结构, 哪怕考虑一些具体的例子如布尔代数和 $\N$ 也难以影响这样的印象. 但是人们对于环的印象就完全不同, 因为环总是与域紧密关联着, 为此人们可能会列举出下面的证据:</p>
+<p>$\quad (i)$ 整数环 $\Z$ 处于数论研究的中心位置, 它的分式域是有理数域 $\Q$, 这种构造适用于任何整环 $R$, 通过商 $(R \times R \smallsetminus \{0\})/\sim$ 来完成, 此处 $(a,b) \sim (c,d) \iff ad = bc$. 从域 $\Q$ 出发, 构造以它为系数的多项式, 这些多项式将形成一个新的环结构 $\Q[x]$. 现在我们从中取一个不可约多项式 $p(x)$, 然后再利用 $\Q[x]$ 对 $p$ 生成的理想 $(p)$ 的商, 于是我们又得到一个新的域 $\Q[x]/(p)$. 另一方面, 记 $p(x)$ 在商环中的一个根为 $r$, 能够验证 $\Q[r] \cong \Q[x]/(p)$. $\Q[r]$ 的重要之处在于, 它是包含 $\Q$ 和 $r$ 的最小的域. 如果我们把这个步骤中的 $\Q$ 换成 $\R$ 并让 $p(x) = x^2+1$, 我们就得到了 $\C$.</p>
+<p>$\quad (ii)$ 同样从域 $\Q$ 出发, 另一种从域中产生环的方法是考虑以它为元素的矩阵. 类似的, 所有的这些矩阵构成矩阵环 $\Mat(\Q)$. 不同于一般是交换环的多项式环, 矩阵环往往非交换. 仅从统计的意义上说, 在数学之外的领域, 恐怕很少有什么结构能够比矩阵更为重要.</p>
+<p>现在请回忆, 正如我们可以把 $(i)$ 当中用于构造多项式环的域 $\Q$ 更换为一般的交换环 $R$, 这个时候 $R[x]$ 仍然是交换环. 当我们把 $(ii)$ 的域 $\Q$ 更换为半环 $\mathcal{Q}$ 时, $\Mat_{n \times n}(\mathcal{Q})$ 能够恰好地成为半环. 这个事实导致了半环上能够操作相当一部分的线性代数, 并且在很多场景下激发了半环结构的用途 <sup class="footnote-reference" id="semiring-applications-back"><a href="#semiring-applications">1</a></sup>. 另外值得注意的一点是, 矩阵半环上可以通过 Leibniz 律定义导子.</p>
+<div class="footnote-definition" id="semiring-applications">
+  <sup class="footnote-definition-label"><a href="\#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="Definition">
+      <details id="linear-algebra-star-semiring" ><summary><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$</p>
+<p>$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
+<p>下面来介绍一个重要的例子. 非负扩展实数集 $\R_{\ge 0} \cup \{\infty\}$ 连同实数的通常加法和乘法构成闭半环, 其中 $a \lt 1$ 时 $a^* = \frac1{1-a}$, 否则 $a^* = \infty$. 注意这个结构中不存在非零的加法逆 $-a$, 而乘法逆 $a^{-1}$ 则是未必存在. $\frac1{1-a}$ 应当被认为是一个整体记号, 或者说它实际上是无穷和 $1 + a + a^2 + \cdots$ 在 $\R_{\ge 0}$ 被添入全体非零加法逆 $\R_{\lt0}$ 后所得的环 $\R$ 中于 $(-1,1)$ 处收敛的结果. 然后由于</p>
+<p>$$
+\R_{\ge 0} ~ \cap ~ \{a <  1 : a \in \R_{\ge 0}\} \quads= [0, 1) \spaces\subset (-1,1)
+$$</p>
+<p>从而在闭半环的 $a< 1$ 处继续沿用这个记号. 这样, 一旦当我们扩大到环 $\R$ 时, 闭半环 $\R_{\ge 0} \cup \{\infty\}$ 当中得出的结果仍然有效.</p>
+<p>我们的论证可以直接拓展到一般的闭半环 $(\mathcal{Q}, +, \times, \square^*)$. 当其中的半环 $(\mathcal{Q}, +, \times)$ 被替换为环 $(R, +, \times)$ 时, 如果 $R$ 当中的 $\frac1{1-a}$ 在 $\mathcal{Q}$ 当中存在, 则 $\mathcal{Q}$ 当中的 $a^*$ 对应于 $R$ 当中的 $\frac1{1-a}$. 当然, 隐含的条件是, $R$ 的加法和乘法与 $\mathcal{Q}$ 兼容.</p>
+</details>
+    </section></p>
+<p>记 $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. 从现在起, 我们对于 $\R_{\ge 0}^* ~ (= \mathcal{Q})$ 当中的许多有用的观察可以安全地转移到 $\R ~ (= R)$. 根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 我们优先考虑 $\Mat_{n \times n}(\mathcal{Q})$, 从最小的非平凡情况 $n=2$ 开始, 由于我们的目的是计算矩阵的逆, 故取这个半环的可逆子集也就是幺半群 $\Mat_{n \times n}(\mathcal{Q})^\times$,  其中的元素会形如</p>
+<p>$$
+M \spaces= \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad
+ad - bc \spaces\neq 0
+$$</p>
+<p>请注意, 接下来应该考虑的是 $\square^*$. 因为我们要利用 $X^* = \frac1{1-X}$ 这个关系间接地计算 $M^{-1}$. 只要取 $X = 1-M$, 我们就得到了</p>
+<p>$$
+(1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
+$$</p>
+<p>这个时候的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而不是 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 而 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径.</p>
+<p><figure><img src = "/linear-algebra/automata-matrix-0001.svg" /><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
+<p>具体的说, 固定 $i,j$, $(M^*)_{ij}$ 是以 $M$, $M^*$ 为结点, $M_{ij}$ 为箭头的 $G$ 中所有 $i \to j$ 的路径 $\hom(i,j)$. 从这些路径中我们能够写出 $\hom(i,j)$ 对应的正则表达式.</p>
+<p>$$\begin{aligned}
+  1 \longrightarrow 1 &: \quad (a+b d^*c)^* \\
+  1 \longrightarrow 2 &: \quad (a+b d^*c)^*b d^* \\
+  2 \longrightarrow 1 &: \quad d^* c(a+b d^*c)^* \\
+  2 \longrightarrow 2 &: \quad d^* + d^*c(a+b d^*c)^*b d^* \\
+\end{aligned}$$</p>
+<p>简单起见记 $\alpha = (a+b d^*c)^*$, 那么上一段的讨论就是在说</p>
+<p>$$
+M^* = \begin{pmatrix}
+\alpha & \alpha b d^* \\
+d^* c \alpha & \quad d^* + d^*c \alpha b d^*
+\end{pmatrix}
+$$</p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="tutorials-index" ><summary><header><h1><span class="taxon"></span>Kodama Tutorials <a class="slug" href="/tutorials/index">[tutorials]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block" data-taxon="">
+      <details id="tutorials-install" ><summary><header><h1><span class="taxon"></span>安装 <a class="slug" href="/tutorials/install">[install]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>你可以根据目标设备的架构直接从 <span class="link external"><a href="https://github.com/kokic/kodama/releases" title="Github Release [https://github.com/kokic/kodama/releases]">Github Release</a></span> 页面下载二进制文件.
+在 Termux 等 Android 环境中使用请选择 <code>aarch64-unknown-linux-musl</code> 架构.</p>
+<ul>
+<li>确保 Kodama 位于可执行目录.</li>
+<li>确保 Kodama 有可执行权限.</li>
+<li>如果你乐意, 将 Kodama 添加到环境变量.</li>
+<li>Kodama 不内置 <span class="link external"><a href="https://github.com/typst/typst" title="Typst [https://github.com/typst/typst]">Typst</a></span>, 因此如果你的内容涉及 Typst 文本, 你需要保证环境变量中有可用的 Typst 程序.</li>
+</ul>
+<p>当 <span class="link external"><a href="https://github.com/kokic/kodama/releases" title="Github Release [https://github.com/kokic/kodama/releases]">Github Release</a></span> 页面缺少适合你设备的文件时, 你可以从 <span class="link external"><a href="https://github.com/kokic/kodama" title="源代码 [https://github.com/kokic/kodama]">源代码</a></span> 开始自己构建, 这也很容易.</p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="tutorials-compile" ><summary><header><h1><span class="taxon"></span>编译 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
+默认位于工作区路径的 <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> 文件夹下.<br />
+尽管有 <code>--root</code> 参数, 但仍然建议所有用户在 <code>index.md</code> 文件所在的目录下执行 <code>kodama c</code>.</p>
+<p><section class="block" data-taxon="">
+      <details id="tutorials-compile-help" ><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
+Compile current workspace dir to HTMLs
+
+Usage: kodama.exe compile [OPTIONS]
+
+Options:
+  -b, --base &lt;BASE&gt;          Base URL or publish URL (e.g. https://www.example.com/) [default: /]       
+  -o, --output &lt;OUTPUT&gt;      Path to output dir [default: ./publish]
+  -r, --root &lt;ROOT&gt;          Configures the project root (for absolute paths) [default: ./]
+  -d, --disable-pretty-urls  Disable pretty urls (`/page` to `/page.html`)
+  -s, --short-slug           Hide parents part in slug (e.g. `tutorials/install` to `install`)
+  -h, --help                 Print help
+</code></pre>
+</details>
+    </section></p>
+<p>举例来说, 如果最终部署到的 URL 为 <span class="link external"><a href="https://www.example.com/blog" title="https://www.example.com/blog">https://www.example.com/blog</a></span>, 这并非该域名的根目录,
+为了保证生成链接的正确性, 用户应该指定 <code>--base</code> 这一编译参数, 即</p>
+<pre><code class="language-sh">kodama c -b=https://www.example.com/blog
+</code></pre>
+<p>注意. 当然, 如果用户只是在本地使用, 就不必考虑这个问题了.</p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="tutorials-publish" ><summary><header><h1><span class="taxon"></span>本地预览 <a class="slug" href="/tutorials/publish">[publish]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>如果你希望在本地查看生成页面 <code>publish/</code> 的效果, 通常你需要一个本地 http 服务器. 你可以使用任何你熟悉的工具完成这件事. 此处推荐 <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span>, 安装后在 Kodama 项目的根路径执行如下指令即可.</p>
+<pre><code class="language-sh">miniserve ./publish --index index.html --pretty-urls
+</code></pre>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="tutorials-link-rules" ><summary><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules">[link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
+<p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference" id="embed-link-back"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference" id="local-link-back"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
+<p><section class="block" data-taxon="">
+      <details id="tutorials-embed-syntax" ><summary><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
+<ul>
+<li><code>.md#:embed</code>, 嵌入 Markdown.</li>
+<li><code>.typ#:block</code>, 嵌入 Typst 编译后的 SVG, 并居中展示为块级元素.</li>
+<li><code>.typ#:span</code>, 嵌入 Typst 编译后的 SVG, 并展示为行间元素 (不常用).</li>
+<li><code>.typ#:shared</code>, 在当前文件的上下文中导入该 Typst 文件, 此时 <code>text</code> 用于提供被导入的定义范围, 如所有定义 <code>*</code>. 配合内联 Typst 语法使用.</li>
+</ul>
+<p>这些特殊后缀采用这种语法的一个原因是, 许多 Markdown 编辑器 <sup class="footnote-reference" id="markdown-editor-back"><a href="#markdown-editor">1</a></sup> 能够正确识别从而享受文件之间的跳转功能.</p>
+<p>大部分时候, 嵌入语法的 <code>text</code> 都是空着的, 不过由于只有 Markdown 的嵌入才会产生子 <code>section</code>, 此时 <code>text</code> 能用于设置 <code>section</code> 默认是否展开以及在目录中的状态. 这些设置由一系列特定字符构成, 它们对应的功能彼此独立, 因此书写的先后顺序可以任意.</p>
+<ul>
+<li><code>+</code>, 表示当前 <code>section</code> 使用计数器.</li>
+<li><code>-</code>, 默认折叠当前 <code>section</code>. 相应的, 如果这个 <code>section</code> 也有一系列子 <code>section</code>, 这些子 <code>section</code> 将不会出现在当前页面的目录里.</li>
+<li><code>.</code>, 在当前页面的目录里隐藏这个 <code>section</code>.</li>
+</ul>
+<div class="footnote-definition" id="markdown-editor">
+  <sup class="footnote-definition-label"><a href="\#markdown-editor-back">1</a></sup><p>如 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span>.</p>
+</div>
+</details>
+    </section></p>
+<p>很多时候, 对于相当简单的 Typst 文本, 用户会希望有一种方式在展示上对应于 $\KaTeX$ 语境下的行内公式, 这就是内联 Typst.</p>
+<p><section class="block" data-taxon="">
+      <details id="tutorials-inline-syntax" ><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
+<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
+<ul>
+<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
+<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
+<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
+</ul>
+</details>
+    </section></p>
+<div class="footnote-definition" id="embed-link">
+  <sup class="footnote-definition-label"><a href="\#embed-link-back">1</a></sup><p>被嵌入的文件是独立的 Markdown 或者 Typst, 嵌入这一操作会将被链接文件的内容合并到链接的位置, 对于 Markdown, 它将成为一个子 <code>section</code>.</p>
+</div>
+<div class="footnote-definition" id="local-link">
+  <sup class="footnote-definition-label"><a href="\#local-link-back">2</a></sup><p>内部链接用于链接当前 Kodama 项目的其他 Markdown 文件, 与外部链接相比, 内部链接使用一种特殊的样式.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="tutorials-github-workflow" ><summary><header><h1><span class="taxon"></span>持续集成 <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>.
+唯一需要注意的是环境变量 <code>$PAGE_URL</code>, 用于 <span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">指定待部署页面的 URL</a></span>,
+你可以在仓库的 <code>settings/variables/actions</code> 设置 <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="它们 [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">它们</a></span>.</p>
+<p><section class="block" data-taxon="">
+      <details id="tutorials-workflow-yml" ><summary><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml">[workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Kodama &amp; Typst
+        run: |
+          cargo install --git https://github.com/kokic/kodama.git
+          sudo snap install typst
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Build with Kodama
+        run: |
+          kodama c -b $PAGE_URL
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./publish
+
+# Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: $PAGE_URL
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+</code></pre>
+</details>
+    </section></p>
+<div class="footnote-definition" id="hongjr03-workflow">
+  <sup class="footnote-definition-label"><a href="\#hongjr03-workflow-back">1</a></sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
+</div>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="daily-surf-index" ><summary><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf/index">[daily-surf]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block" data-taxon="Exegesis">
+      <details id="daily-surf-baby-viewpoint" ><summary><header><h1><span class="taxon">Exegesis. </span>日经观点 <a class="slug" href="/daily-surf/baby-viewpoint">[baby-viewpoint]</a></h1><div class="metadata"><ul><li class="meta-item">February 11, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\vol{\operatorname{vol}}$
+$\gdef\diag{\operatorname{diag}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\R{\mathbf{R}}$</p>
+<ol>
+<li><p>一个矩阵 $A \in \Mat_{n \times n}(\R)$ 所确定的线性映射 $\alpha: \R^n \to \R^n$ 作用在 $X \in \R^n$ 上, 此映射对 $X$ 的体积 $\vol(X)$ 的缩放量为 $\det A$. 即 $\vol(\alpha X) = \det A \cdot \vol(X)$. 特别地取 $A = \diag(a,b)$, 然后乘单位圆 $u^2+v^2=1$ 上一点构成的向量 $(u,v)$, 得到满足椭圆方程 $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ 的 $(x,y)$, 这样便能看出椭圆的面积 $S = \det A \cdot \pi$.</p>
+</li>
+<li><p>设 $\omega$ 是一个 $k$-形式, 它的两次微分 $\d(\d \omega) = 0$. 另一方面, 考虑一个有向流形 $\Omega$ 和它的边缘 $\partial \Omega$, 我们知道 $\partial(\partial M) = \varnothing$. 这两件事相互对偶.</p>
+</li>
+</ol>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="daily-surf-fibonacci-flip" ><summary><header><h1><span class="taxon"></span>Fibonacci 抛硬币 <a class="slug" href="/daily-surf/fibonacci-flip">[fibonacci-flip]</a></h1><div class="metadata"><ul><li class="meta-item">January 24, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>抛一枚硬币 $n \ge 2$ 次且从不连续出现正面, 这样的可能共有 $F_{n+2}$ 种, 这里的 $F_{n+2}$ 是从零开始的 Fibonacci 数列. 我们把抛 $n$ 次不连续出现正面的可能数记为 $S_n$, 考虑相邻的两次抛硬币, 假设第 $i$ 次掷硬币为正面, 则第 $i+1$ 次掷硬币只能是反面, 这个时候的所有可能为 $S_{n-2}$. 假设第 $i$ 次掷硬币为反面, 则第 $i+1$ 次掷硬币的结果可任意. 因此 $S_n = S_{n-1} + S_{n-2}$, 再利用初值 $S_1$, $S_2$ 就能解出 $S_n$.</p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="daily-surf-nvidia-fps-gpu-cpu" ><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
+<p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="concept-name-back"><a href="#concept-name">1</a></sup>
+AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
+<div class="footnote-definition" id="concept-name">
+  <sup class="footnote-definition-label"><a href="\#concept-name-back">1</a></sup><p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="daily-surf-gaussian-integral" ><summary><header><h1><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分 <a class="slug" href="/daily-surf/gaussian-integral">[gaussian-integral]</a></h1><div class="metadata"><ul><li class="meta-item">November 2, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>这一证明最早似乎来自 Michael Rozman. 除此之外 MSE 上也有极类似的回答, 见 <span class="link external"><a href="https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick" title="此处 [https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick]">此处</a></span>.</p>
+<blockquote>
+<p>M. Rozman, Evaluate Gaussian integral using differentiation under the integral sign, Course notes for Physics 2400 (UConn), Spring 2016.</p>
+</blockquote>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$</p>
+<p>核心技巧来自一个函数 $F(t)$ 的构造. 对 $t \in \R$ 定义如下函数</p>
+<p>$$
+F(t) \spaces= \int_0^\infty \frac{e^{-t^2(1+x^2)}}{1+x^2} \d x
+$$</p>
+<p>容易验证 $F(t)$ 满足 $F(0)=\frac{\pi}{2}$, $F(\infty) = 0$, 以及最关键的</p>
+<p>$$
+F'(t) 
+\spaces= \int_0^\infty -2te^{-t^2(1+x^2)} \d x 
+\spaces= -2te^{-t^2} \int_0^\infty e^{-(tx)^2} \d x
+$$</p>
+<p>记高斯积分为 $I$. 这就有 $F'(t) = -2Ie^{-t^2}$, 此时再求 $F'(t)$ 于 $[0, \infty)$, 上的积分, 就能得到</p>
+<p>$$
+F(\infty)- F(0) \spaces= -2I \int_0^\infty e^{-t^2} \d t \spaces= -2I^2
+$$</p>
+<p>于是这给出 $I = \frac{\sqrt\pi}2$.</p>
+</details>
+    </section>
+<section class="block" data-taxon="">
+      <details id="daily-surf-wolfram-engine" ><summary><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference" id="wolfram-engine-size-back"><a href="#wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
+<p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
+<p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference" id="immortal-edition-back"><a href="#immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
+<div class="footnote-definition" id="wolfram-engine-size">
+  <sup class="footnote-definition-label"><a href="\#wolfram-engine-size-back">1</a></sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
+</div>
+<div class="footnote-definition" id="immortal-edition">
+  <sup class="footnote-definition-label"><a href="\#immortal-edition-back">2</a></sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
+</div>
+</details>
+    </section>
+<section class="block" data-taxon="Theorem">
+      <details id="daily-surf-expand-coefficient" ><summary><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/daily-surf/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\Z{\mathbf{Z}}$</p>
+<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
+求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
+在 $\Z_{\ge 0}$ 上解的个数.</p>
+<p><section class="block" data-taxon="Solution">
+      <details id="daily-surf-expand-coefficient-000B" ><summary><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item">kokic</li></ul></div></header></summary><p>在 <span class="link local"><a href="/daily-surf/expand-coefficient-000A" title="特殊有理函数展开式的系数 [daily-surf/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+</details>
+    </section></p>
+</details>
+    </section>
+<section class="block" data-taxon="Lemma">
+      <details id="daily-surf-young-lemma" ><summary><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
+我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
+并展示 Young 不等式与其他常见不等式如何作为此结果的直接推论.</p>
+<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p>现在对右侧使用对数的线性化, 得到</p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果. 有时我们也写成</p>
+<p>$$
+p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
+$$</p>
+<p>用完全相同的步骤, 也可以证明任意多个 $p_i$ 和 $f_i$ 时的情况.</p>
+<p><section class="block" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000A" ><summary><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details>
+    </section>
+<section class="block" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000B" ><summary><header><h1><span class="taxon">Corollary. </span>Bernoulli 不等式 <a class="slug" href="/daily-surf/young-lemma-000B">[young-lemma-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
+<p>$$ x^n + n-1 \ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
+<p>在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
+<p>$$
+\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
+$$</p>
+<p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
+</details>
+    </section>
+<section class="block" data-taxon="Corollary">
+      <details id="daily-surf-young-lemma-000C" ><summary><header><h1><span class="taxon">Corollary. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要证的结果可以写成下面的样子</p>
+<p>$$
+\Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
+\spaces\le 
+\Big(\sum_{i \in S}w_iz_i\Big) \Big(\sum_{i \in S}w_i\Big)^{-1}
+$$</p>
+<p>实际上可以利用对数的线性化对这个定理给出一个直接的证明, 不过这并非本文的重点. 我们在此处更关心如何将这些表达式调整为适合使用 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的形式. 我们先引入一些记号, 用 $\Sigma_w$ 表示 $\sum_{i \in S}w_{i}$, 用 $\omega_i$ 表示 $w_i\Sigma_w^{-1}$. 这样目标就变成了</p>
+<p>$$ \prod_{i \in S}z_i^{\omega_i} \spaces\le \sum_{i \in S}\omega_iz_i $$</p>
+<p>如果把这里的 $\omega_i$ 看作 $p_i$, $z_i$ 看作 $f_i$, $\sum_{i \in S}\omega_iz_i$ 看作 $g$. 那我们只要验证下面这件事</p>
+<p>$$
+\sum_{i \in S}\omega_iz_i \spaces\le \sum_{i \in S}\omega_iz_i
+$$</p>
+<p>而这应该是很容易的. $\quad\Box$</p>
+</details>
+    </section></p>
+</details>
+    </section></p>
+</details>
+    </section></p>
+</details>
+    </section></details></section></footer></article>
 
 </div></body></html>

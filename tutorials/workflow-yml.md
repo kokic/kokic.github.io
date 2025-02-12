@@ -49,7 +49,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build with Kodama
         run: |
-          kodama c index.md -b=$PAGE_URL
+          kodama c -b $PAGE_URL
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

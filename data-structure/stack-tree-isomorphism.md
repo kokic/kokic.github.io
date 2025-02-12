@@ -25,19 +25,12 @@ taxon: exegesis
 
 [](/data-structure/stack-permutation-0003.typ#:block)
 
-可以验证, 从 `110100100` 这个编码出发, 无法直接恢复原本的 [#scale(40%, reflow: true, tree4(0.25))](inline-1pt-1pt), 其正确的 Hille 编码应该为 `1101000100`. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码, 首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 `0`, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码. 
+可以验证, 从 `110100100` 这个编码出发, 无法直接恢复原本的 [#scale(40%, reflow: true, tree4(0.25))](inline-1pt-1pt), 其正确的 Hille 编码应该为 `1101000100`. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码.
 
-$$
-\begin{CD}
-B @>>> S \\
-  @VVV @VVV \\
-H @>>> C
-\end{CD}
-$$
+[-.](/data-structure/stack-permutation-000B.md#:embed)
 
-记 $B \to H$ 为 $f$, 根据 [Hille 编码](/data-structure/hille-encode.md) 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$. 
-
-现在, Hille 原文所使用的 `encode` 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.  
+另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 `0` 后所得的字符串长度. 
+固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$, 而最长也不会超过 $\max(0, 2n-1, 3n-4)$, 即 $n\le L_n \le \max(0, 2n-1, 3n-4)$.   
 
 [^hille-order]: 即按照 Hille 编码逐步添加节点的顺序. 
 

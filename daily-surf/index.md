@@ -5,6 +5,7 @@ author: kokic
 !date: January 9, 2025
 ---
 
+[-](/daily-surf/baby-viewpoint.md#:embed)
 [-](/daily-surf/fibonacci-flip.md#:embed)
 [-](/daily-surf/nvidia-fps-gpu-cpu.md#:embed)
 [-](/daily-surf/gaussian-integral.md#:embed)
