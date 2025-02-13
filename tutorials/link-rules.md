@@ -3,6 +3,7 @@
 title: 链接规则
 author: kokic
 !date: January 15, 2025
+en-US: [en-US](/tutorials/link-rules-en-US.md)
 ---
 
 虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 [CommonMark](https://commonmark.org) 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则. 

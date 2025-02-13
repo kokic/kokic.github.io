@@ -2,5 +2,5 @@
 # Build
 
 ```
-kodama c index.md
+kodama c --short-slug --footer-mode embed
 ```

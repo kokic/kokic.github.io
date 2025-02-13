@@ -3,6 +3,7 @@
 title: 嵌入语法
 author: kokic
 !date: January 15, 2025
+en-US: [en-US](/tutorials/embed-syntax-en-US.md)
 ---
 
 嵌入语法和标准链接语法 `[text](url)` 的区别在于, 嵌入的 `url` 带有特殊的后缀, 并且只能是以下几种: 

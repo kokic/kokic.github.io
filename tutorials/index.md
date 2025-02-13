@@ -3,6 +3,7 @@
 title: Kodama Tutorials
 author: kokic
 !date: December 31, 2024
+en-US: [en-US](/tutorials/index-en-US.md)
 ---
 
 [安装](/tutorials/install.md#:embed)
