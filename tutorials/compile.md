@@ -3,6 +3,7 @@
 title: Kodama 编译指令
 author: kokic
 !date: January 4, 2025
+en-US: [en-US](/tutorials/compile-en-US.md)
 ---
 
 指令 `kodama compile` 或缩写为 `kodama c` 将根据输入的 Markdown 工作区路径构建出 HTML 文件. 

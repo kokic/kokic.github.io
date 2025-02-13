@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>内联语法</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Preview</title><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -396,25 +396,14 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/index-en-US" title="Kodama Tutorials [tutorials/index-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
-<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
-<ul>
-<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
-<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
-<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
-</ul>
+      <details id="tutorials-publish-en-US" open><summary><header><h1><span class="taxon"></span>Preview <a class="slug" href="/tutorials/publish-en-US">[publish-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/publish" title="本地预览 [tutorials/publish]">zh-CN</a></span></li></ul></div></header></summary><p>If you want to view the generated pages in the <code>publish/</code> directory locally, you typically need a local HTTP server. You can use any tool you are familiar with to accomplish this. Here, <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> is recommended. After installing it, you can run the following command in the root path of your Kodama project to serve the pages locally.</p>
+<pre><code class="language-sh">miniserve ./publish --index index.html --pretty-urls
+</code></pre>
 </details>
     </section><footer><section class="block"><details open><summary><header><h1>Related</h1></header></summary><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax-en-US" ><summary><header><h1><span class="taxon"></span>Inline Syntax <a class="slug" href="/tutorials/inline-syntax-en-US">[inline-syntax-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax" title="内联语法 [tutorials/inline-syntax]">zh-CN</a></span></li></ul></div></header></summary><p>Inline Typst might be the true strength of Kodama, as the designers have made great efforts to make it behave just like or at least very close to $\KaTeX$ inline formulas, so that the inline formulas written in Typst do not appear inferior when mixed with $\KaTeX$.</p>
-<p>Inline Typst also uses <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">link-like syntax</a></span>, but in this case, no file is actually linked. The <code>url</code> part is used to specify the inline mode and the <code>margin</code> parameter. In most cases, users do not need to manually set the <code>margin</code> parameter to achieve a good presentation. The inline mode is a parameter designed for the convenience of the Markdown editor’s own preview feature. When the user enters <code>math</code>, the content of the <code>text</code> part is automatically enclosed with <code>${}$</code> before being compiled by Typst. Here are some examples:</p>
-<ul>
-<li><p><code>[$x^2$](inline)</code>, <code>x^2</code> is a valid formula for both $\KaTeX$ and Typst. In this case, the Markdown editor’s own preview feature can correctly display it as $x^2$. However, this example is so simple that there is no real reason to use Typst.</p>
-</li>
-<li><p><code>#</code> is a frequently used character in Typst. If you still write <code>${}$</code> manually, it would lead to a poor preview experience in the editor. This is where the inline mode parameter <code>math</code> comes into play. Now you can write the first example as <code>[x^2](inline-math)</code>.</p>
-</li>
-<li><p>Values of parameters are separated by <code>-</code>. The positions of <code>math</code> and <code>margin</code> are fixed, which means that if both parameters are present, you can only write <code>margin</code> after <code>math</code>. The <code>margin</code> is composed of text in the form of <code>{x}-{y}</code>, where <code>x</code> and <code>y</code> are any valid Typst length values, such as <code>0pt-2pt</code>. When <code>y</code> is missing, <code>y</code> will adopt the value of <code>x</code>.</p>
-</li>
-</ul>
+      <details id="tutorials-publish" ><summary><header><h1><span class="taxon"></span>本地预览 <a class="slug" href="/tutorials/publish">[publish]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/publish-en-US" title="Preview [tutorials/publish-en-US]">en-US</a></span></li></ul></div></header></summary><p>如果你希望在本地查看生成页面 <code>publish/</code> 的效果, 通常你需要一个本地 http 服务器. 你可以使用任何你熟悉的工具完成这件事. 此处推荐 <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span>, 安装后在 Kodama 项目的根路径执行如下指令即可.</p>
+<pre><code class="language-sh">miniserve ./publish --index index.html --pretty-urls
+</code></pre>
 </details>
     </section></details></section></footer></article>
 

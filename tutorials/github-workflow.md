@@ -3,6 +3,7 @@
 title: Github Workflow
 author: kokic
 !date: January 15, 2025
+en-US: [en-US](/tutorials/github-workflow-en-US.md)
 ---
 
 一个可供参考的 Github Workflow 配置 [如下](/tutorials/workflow-yml.md) [^hongjr03-workflow]. 
