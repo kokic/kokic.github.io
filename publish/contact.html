@@ -23,379 +23,8 @@
       });
   });
 </script>
-</head><style>
-:root {
-  --content-gap: 15px;
-  --radius: 5px;
-}
-
-body {
-  font-family: "Source Serif 4", serif;
-  font-optical-sizing: auto;
-  hyphens: auto;
-}
-
-pre, code {
-  font-family: "Source Code Pro", monospace;
-  font-optical-sizing: auto;
-}
-
-p,
-pre {
-  line-height: 1.55;
-}
-
-pre {
-  border-radius: var(--radius);
-  background-color: rgba(0, 100, 100, 0.04);
-  padding: .5em;
-  font-size: 11pt;
-  margin-top: 0em;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-}
-
-code {
-  border-radius: var(--radius);
-  background-color: rgba(0, 100, 100, 0.04);
-  padding: 0.2em;
-  font-size: 0.9em;
-}
-
-/* !forest */
-pre>code {
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-}
-
-/* !forest */
-.footnote-definition:last-child {
-  margin-bottom: 1em;
-}
-
-/* !forest */
-.footnote-definition>p {
-  display: inline;
-}
-
-/* !forest */
-.footnote-definition-label {
-  margin-right: 4px;
-}
-
-.display-none {
-  display: none;
-}
-
-blockquote {
-  font-style: italic;
-}
-
-blockquote {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-  unicode-bidi: isolate;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin-top: .5em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-  font-family: "Source Sans 3", sans-serif;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-details>summary {
-  list-style-type: none;
-  outline: none;
-}
-
-details>summary>header {
-  display: inline;
-}
-
-/* no effect */
-details>summary::marker,
-details>summary::-webkit-details-marker {
-  display: none;
-}
-
-details h1 {
-  font-size: 1.2em;
-  display: inline;
-}
-
-details>summary {
-  list-style-type: none;
-}
-
-span.taxon {
-  color: #444;
-  font-weight: 500;
-}
-
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
-}
-
-article>section>details>summary>header>h1 {
-  font-size: 1.5em;
-}
-
-article>section>details>summary>header {
-  display: block;
-  margin-bottom: .5em;
-}
-
-article>section>details>summary>header>h1>.taxon {
-  display: block;
-  font-size: .9em;
-  color: #888;
-  padding-bottom: 5pt;
-}
-
-section.block>details {
-  margin-bottom: 0.4em;
-}
-
-section.block>details[open] {
-  margin-bottom: 1em;
-}
-
-.link-list>section.block>details {
-  margin-bottom: .25em;
-}
-
-/* class */
-.inline-typst {
-  display: inline-block;
-  margin: 0 0;
-  line-height: 1em;
-  vertical-align: middle;
-}
-
-.block {
-  padding-left: 5px;
-  padding-right: 10px;
-  padding-bottom: 2px;
-  border-radius: 5px;
-}
-
-.block {
-  width: fit-content;
-  border-radius: var(--radius)
-}
-
-.block:hover {
-  background-color: rgba(0, 100, 255, 0.04);
-}
-
-.block.hide-metadata>details>summary>header>.metadata {
-  display: none;
-}
-
-img {
-  object-fit: cover;
-  max-width: 100%;
-}
-
-figure {
-  text-align: center;
-}
-
-figcaption {
-  font-style: italic;
-  padding: 3px;
-}
-
-mark {
-  background-color: rgb(255, 255, 151);
-}
-
-hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: gainsboro;
-  border: 0 none;
-  width: 100%;
-  height: 2px;
-}
-
-.logo a {
-  color: #666;
-  text-decoration: none;
-}
-
-.logo a:hover {
-  color: #aaa;
-}
-
-.logo {
-  font-weight: 600;
-  font-size: 24px;
-}
-
-section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
-section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
-  display: none;
-}
-
-footer>section {
-  margin-bottom: 1em;
-}
-
-footer h2 {
-  font-size: 14pt;
-}
-
-.metadata ul {
-  padding-left: 0;
-  display: inline;
-}
-
-.metadata li::after {
-  content: " · ";
-}
-
-.metadata li:last-child::after {
-  content: "";
-}
-
-.metadata * {
-  display: inline;
-}
-
-.link {
-  cursor: pointer;
-}
-
-a {
-  color: black;
-  text-decoration: inherit;
-}
-
-a.slug:hover,
-a.bullet:hover,
-.edit-button:hover,
-.link:hover {
-  background-color: rgba(0, 100, 255, .1);
-}
-
-.link.external {
-  text-decoration: underline;
-}
-
-a.link.local,
-.link.local a,
-a.slug {
-  box-shadow: none;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-}
-
-.slug,
-.doi,
-.orcid {
-  color: gray;
-  font-weight: 200;
-}
-
-body>header {
-  margin-bottom: 0.5em;
-}
-
-#grid-wrapper>article {
-  max-width: 90ex;
-  margin-right: auto;
-  grid-column: 1;
-}
-
-#grid-wrapper>nav {
-  grid-column: 2;
-}
-
-@media only screen and (max-width: 1000px) {
-  body {
-    margin-top: 1em;
-    margin-left: .5em;
-    margin-right: .5em;
-    transition: ease all .2s;
-  }
-
-  #grid-wrapper>nav {
-    display: none;
-    transition: ease all .2s;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  body {
-    margin-top: 2em;
-    margin-left: 2em;
-    transition: ease all .2s;
-  }
-
-  #grid-wrapper {
-    display: grid;
-    grid-template-columns: 90ex;
-  }
-}
-
-nav#toc li.item-summary li {
-  display: none;
-}
-
-nav#toc ul {
-  list-style-type: none;
-}
-
-nav#toc li>ul {
-  padding-left: 1em;
-}
-
-nav#toc,
-nav#toc a {
-  color: #555;
-}
-
-nav {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-}
-
-nav#toc a.bullet {
-  opacity: 0.7;
-  margin-left: 0.4em;
-  margin-right: 0.3em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  text-decoration: none;
-}</style><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
+</head><link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="contact" open><summary><header><h1><span class="taxon"></span>联系 <a class="slug" href="/contact">[contact]</a></h1><div class="metadata"><ul><li class="meta-item">January 18, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><a href="mailto:kokicplus@gmail.com">kokicplus@gmail.com</a></li><li class="meta-item"><a href="mailto:kokicplus@126.com">kokicplus@126.com</a></li><li class="meta-item"><span class="link external"><a href="https://www.zhihu.com/people/kokic-86" title="知乎 [https://www.zhihu.com/people/kokic-86]">知乎</a></span></li><li class="meta-item"><span class="link external"><a href="https://music.163.com/#/user/home?id=411742542" title="网易云音乐 [https://music.163.com/#/user/home?id=411742542]">网易云音乐</a></span></li><li class="meta-item"><span class="link external"><a href="https://space.bilibili.com/14411894" title="bilibili [https://space.bilibili.com/14411894]">bilibili</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathstodon.xyz/@kokic" title="mastodon [https://mathstodon.xyz/@kokic]">mastodon</a></span></li></ul></div></header></summary><p>付费咨询请通过邮件联系. For paid consultation, please contact us via email.</p>
 </details>
     </section><footer><section class="block"><details open><summary><header><h1>Related</h1></header></summary><section class="block" data-taxon="">
@@ -566,7 +195,6 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
 <p><figure><img src = "/data-structure/binary-tree.svg" /></figure></p>
 <p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
-<!-- 记二叉树上所有度为 $d$ 的结点为集合 $N_d$, $n_d = |N_d|$. 对于每个叶结点 $\ell \in N_0$, 它总是有一个双亲节点, 而非叶结点 $N_{>0} = N_1 \cup N_2$ 至少有一个子节点.   -->
 </details>
     </section>
 <section class="block" data-taxon="Theorem">
@@ -681,10 +309,10 @@ $$</p>
 <p>另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 <code>0</code> 后所得的字符串长度.
 固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$, 而最长也不会超过 $\max(0, 2n-1, 3n-4)$, 即 $n\le L_n \le \max(0, 2n-1, 3n-4)$.</p>
 <div class="footnote-definition" id="hille-order">
-  <sup class="footnote-definition-label"><a href="\#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
+  <sup class="footnote-definition-label"><a href="#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
 <div class="footnote-definition" id="inorder-sequence">
-  <sup class="footnote-definition-label"><a href="\#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
+  <sup class="footnote-definition-label"><a href="#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
 </details>
     </section>
@@ -725,13 +353,13 @@ $$
 $$</p>
 <p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
 <div class="footnote-definition" id="distinguish">
-  <sup class="footnote-definition-label"><a href="\#distinguish-back">1</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
+  <sup class="footnote-definition-label"><a href="#distinguish-back">1</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
 </div>
 <div class="footnote-definition" id="publish-time">
-  <sup class="footnote-definition-label"><a href="\#publish-time-back">2</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
+  <sup class="footnote-definition-label"><a href="#publish-time-back">2</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
 </div>
 <div class="footnote-definition" id="complex-step">
-  <sup class="footnote-definition-label"><a href="\#complex-step-back">3</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+  <sup class="footnote-definition-label"><a href="#complex-step-back">3</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
 </div>
 </details>
     </section></p>
@@ -984,7 +612,7 @@ r - \sqrt{s} & 0 \\
 $$</p>
 <p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
 <div class="footnote-definition" id="rayleigh-quotient-000B-1">
-  <sup class="footnote-definition-label"><a href="\#rayleigh-quotient-000B-1-back">1</a></sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+  <sup class="footnote-definition-label"><a href="#rayleigh-quotient-000B-1-back">1</a></sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
 </div>
 </details>
     </section></p>
@@ -1006,7 +634,7 @@ $$</p>
     </section></p>
 <!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
 <div class="footnote-definition" id="hermite-matrix">
-  <sup class="footnote-definition-label"><a href="\#hermite-matrix-back">1</a></sup><p>自伴随矩阵, 复对称矩阵.</p>
+  <sup class="footnote-definition-label"><a href="#hermite-matrix-back">1</a></sup><p>自伴随矩阵, 复对称矩阵.</p>
 </div>
 </details>
     </section>
@@ -1050,7 +678,7 @@ $$
 $$ 
 -->
 <div class="footnote-definition" id="horizontal-exchange">
-  <sup class="footnote-definition-label"><a href="\#horizontal-exchange-back">1</a></sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+  <sup class="footnote-definition-label"><a href="#horizontal-exchange-back">1</a></sup><p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
 </div>
 </details>
     </section>
@@ -1108,7 +736,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>$\quad (ii)$ 同样从域 $\Q$ 出发, 另一种从域中产生环的方法是考虑以它为元素的矩阵. 类似的, 所有的这些矩阵构成矩阵环 $\Mat(\Q)$. 不同于一般是交换环的多项式环, 矩阵环往往非交换. 仅从统计的意义上说, 在数学之外的领域, 恐怕很少有什么结构能够比矩阵更为重要.</p>
 <p>现在请回忆, 正如我们可以把 $(i)$ 当中用于构造多项式环的域 $\Q$ 更换为一般的交换环 $R$, 这个时候 $R[x]$ 仍然是交换环. 当我们把 $(ii)$ 的域 $\Q$ 更换为半环 $\mathcal{Q}$ 时, $\Mat_{n \times n}(\mathcal{Q})$ 能够恰好地成为半环. 这个事实导致了半环上能够操作相当一部分的线性代数, 并且在很多场景下激发了半环结构的用途 <sup class="footnote-reference" id="semiring-applications-back"><a href="#semiring-applications">1</a></sup>. 另外值得注意的一点是, 矩阵半环上可以通过 Leibniz 律定义导子.</p>
 <div class="footnote-definition" id="semiring-applications">
-  <sup class="footnote-definition-label"><a href="\#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
+  <sup class="footnote-definition-label"><a href="#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
 </details>
     </section>
@@ -1345,7 +973,7 @@ $\gdef\R{\mathbf{R}}$</p>
 <p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="concept-name-back"><a href="#concept-name">1</a></sup>
 AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
 <div class="footnote-definition" id="concept-name">
-  <sup class="footnote-definition-label"><a href="\#concept-name-back">1</a></sup><p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
+  <sup class="footnote-definition-label"><a href="#concept-name-back">1</a></sup><p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
 </div>
 </details>
     </section>
@@ -1379,10 +1007,10 @@ $$</p>
 <p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
 <p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference" id="immortal-edition-back"><a href="#immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
 <div class="footnote-definition" id="wolfram-engine-size">
-  <sup class="footnote-definition-label"><a href="\#wolfram-engine-size-back">1</a></sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
+  <sup class="footnote-definition-label"><a href="#wolfram-engine-size-back">1</a></sup><p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
 </div>
 <div class="footnote-definition" id="immortal-edition">
-  <sup class="footnote-definition-label"><a href="\#immortal-edition-back">2</a></sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
+  <sup class="footnote-definition-label"><a href="#immortal-edition-back">2</a></sup><p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
 </div>
 </details>
     </section>
