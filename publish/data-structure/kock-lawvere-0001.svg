@@ -720,4 +720,30 @@
             <path d="M 3.0668876 5.9285965 C 2.7969153 5.9285965 2.613334 5.820607 2.5161438 5.5938306 L 0.7019285 1.0366944 L 1.1878791 1.0366944 L 3.5852349 4.999891 C 3.6392295 5.097081 3.671626 5.20507 3.671626 5.323858 C 3.671626 5.647825 3.3908548 5.9285965 3.0668876 5.9285965 Z "/>
         </symbol>
     </defs>
+<style>
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+/* !forest .inline-typst */
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+/* !forest .inline-typst */
+.typst-group path[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+/* !forest .inline-typst */
+.typst-group path[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+</style>
 </svg>
