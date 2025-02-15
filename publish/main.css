@@ -3,22 +3,44 @@
   --content-gap: 15px;
   --radius: 5px;
 
-  --text-color: light-dark(black, white);
-  --background-color: light-dark(white, #2f2f2f);
+  --text-color: black;
+  --background-color: white;
 
-  --background-color-pre: light-dark(rgba(0, 100, 100, 0.04), rgba(100, 100, 100, 0.2));
-  --background-color-code: light-dark(rgba(0, 100, 100, 0.04), rgba(150, 150, 150, 0.2));
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
 
-  --hover-color-block: light-dark(rgba(0, 100, 255, 0.04), rgba(100, 162, 255, 0.06));
-  --hover-color-link: light-dark(rgba(0, 100, 255, .1), rgba(100, 162, 255, .2));
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, .1);
+  --target-color: rgb(67, 92, 255);
 
-  --link-color: light-dark(black, white);
-  --slug-color: light-dark(gray, #aeaeae);
-  --logo-color: light-dark(#666, #bbb);
-  --span-taxon-color: light-dark(#444, white);
-  --logo-hover-color: light-dark(#aaa, #eee);
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --span-taxon-color: #444;
+  --logo-hover-color: #aaa;
   --article-taxon-color: #888;
   --mark-color: rgb(255, 255, 151);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, .2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #bbb;
+    --span-taxon-color: white;
+    --logo-hover-color: #eee;
+  }
 }
 
 body {
@@ -80,6 +102,15 @@ pre>code {
 /* !forest */
 .footnote-definition-label {
   margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target>.footnote-definition-label {
+  border: 1px solid var(--target-color);
 }
 
 .display-none {
