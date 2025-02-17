@@ -5,6 +5,7 @@ author: kokic
 !date: January 9, 2025
 ---
 
+[-](/daily-surf/sagemath-theme.md#:embed)
 [-](/daily-surf/git-filter-branch.md#:embed)
 [-](/daily-surf/baby-viewpoint.md#:embed)
 [-](/daily-surf/fibonacci-flip.md#:embed)
