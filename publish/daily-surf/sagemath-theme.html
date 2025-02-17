@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Sagemath Jupyter Notebook 主题设置</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
+      <details id="daily-surf-sagemath-theme" open><summary><header><h1><span class="taxon"></span>Sagemath Jupyter Notebook 主题设置 <a class="slug" href="/daily-surf/sagemath-theme">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
+<ol>
+<li><p>Sagemath Jupyter Notebook 在 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 上几乎不能使用. 这是因为, 所有由 <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> 提供渲染的公式都无法呈现, 甚至连 Cell 也不出现. 于是最稳妥的做法就变成了使用浏览器访问 Jupyter Notebook.</p>
+</li>
+<li><p>Jupyter Notebook 的主题设计非常混乱, 常用主题位于 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 包, 但是这个包的文档和使用示例并不适用于 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span>.</p>
+</li>
+</ol>
+<p>这两点使得问题看上去不太容易. 因为一般的, 如果用户使用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 访问 Jupyter Notebook 就完全不需要担心主题问题, 于是相应的可能在互联网上存在的解决方案就会变少. 关于第二点, 如果尝试在 Jupyter Notebook 当中执行下面这样的程序</p>
+<pre><code class="language-python">from jupyterthemes import get_themes, jtplot
+import jupyterthemes as jt
+from jupyterthemes.stylefx import set_nb_theme
+
+set_nb_theme('monokai')
+</code></pre>
+<p>确实能够切换到 <code>monokai</code> 主题, 同时你还会发现当前使用的 Jupyter Notebook 的 <code>Header</code> 和 <code>Toolbar</code> 消失了 <sup class="footnote-reference" id="toolbar-display-none-back"><a href="#toolbar-display-none">1</a></sup>. 如果你尝试检索相关信息, 你会在 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 的文档中找到像是</p>
+<pre><code class="language-shell">jt -t monokai -T -N
+</code></pre>
+<p>这样的做法, 这里的 <code>-T</code> 是 Toolbar Visible, <code>-N</code> 是 Name &amp; Logo Visible. 然后遗憾地发现这不会对 Sagemath 的 Jupyter Notebook 造成任何作用. 同时, 这样的设置也是临时的, 如果希望将某个特定的主题作为默认主题, 就得另谋他法.</p>
+<p>最直接的方法是, 找到像下面这样的编译后的样式文件</p>
+<pre><code>sagemath/runtime/opt/sagemath-9.3/local/lib/python3.7/site-packages/jupyterthemes/styles/compiled/monokai.css
+</code></pre>
+<p>然后覆盖到</p>
+<pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
+</code></pre>
+<p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
+<div class="footnote-definition" id="toolbar-display-none">
+  <sup class="footnote-definition-label"><a href="#toolbar-display-none-back">1</a></sup><p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>
+</div>
+</details>
+    </section><footer></footer></article>
+
+</div></body></html>
