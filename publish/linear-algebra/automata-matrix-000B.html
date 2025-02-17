@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>分块矩阵的逆</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/linear-algebra/automata-matrix" title="自动机与矩阵求逆">« 自动机与矩阵求逆</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example">
+      <details id="linear-algebra-automata-matrix-000B" open><summary><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
+<p>$$
+M \spaces= \begin{pmatrix} A & B \\ C & D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A & -B \\ -C & 1-D \end{pmatrix}
+$$</p>
+<p>我们还是直接计算 $(1-M)^*$, 实际上这非常容易. 回顾 $M^*$</p>
+<p>$$
+M^* \spaces= \begin{pmatrix}
+(A+BD^*C)^* & (A+BD^*C)^*BD^* \\ 
+D^*C(A+BD^*C)^* & D^* + D^*C(A+BD^*C)^*BD^* 
+\end{pmatrix}
+$$</p>
+<p>类似的记 $\alpha_\square$ 为方阵 $\square$ 分为 $4$ 块后的左上角第 $1$ 部分. $\alpha_{M^*} = (A+BD^*C)^*$, $\alpha_{M^{-1}} = \alpha_{(1-M)^*}$, 则</p>
+<p>$$
+\begin{aligned}
+\alpha_{M^{-1}}
+&\spaces= (1 - A + B(1-D)^*C)^* \\
+&\spaces= (1 - A + BD^{-1}C)^* \\
+&\spaces= (1 - (A - BD^{-1}C))^* \\
+&\spaces= (A - BD^{-1}C)^{-1}
+\end{aligned}
+$$</p>
+<p>同样, 考虑分块的其他部分</p>
+<p>$$
+\begin{CD}
+M @>>> 1-M \\
+@VVV  @VVV \\
+M^* @>>> (1-M)^*
+\end{CD}
+$$</p>
+<p>在 $M \to 1-M$ 这个箭头下, $M$ 当中所有的 $D$ 会被替换为 $1-D$, 因此 $M^*$ 当中所有的 $D^*$ 可以直接替换为 $D^{-1}$. 而 $B, C$ 在 $M \to 1-M$ 下替换为 $-\square$, 于是现在立刻有</p>
+<p>$$
+\begin{aligned}
+M^{-1}
+&\spaces= \begin{pmatrix} \alpha_{M^{-1}} & -\alpha_{M^{-1}} BD^{-1} \\ -D^{-1}C \alpha_{M^{-1}} & D^{-1} + D^{-1}C \alpha_{M^{-1}} BD^{-1} \end{pmatrix} \\
+&\spaces= \begin{pmatrix} (A - BD^{-1}C)^{-1} & -(A - BD^{-1}C)^{-1} BD^{-1} \\ -D^{-1}C (A - BD^{-1}C)^{-1} & D^{-1} + D^{-1}C (A - BD^{-1}C)^{-1} BD^{-1} \end{pmatrix} \\
+\end{aligned}
+$$</p>
+<p>在这里, 我们得到了一个相当经典且重要的结果, 即分块求逆.</p>
+</details>
+    </section><footer></footer></article>
+
+</div></body></html>
