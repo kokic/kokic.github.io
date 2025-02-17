@@ -556,8 +556,13 @@ $$</p>
 &\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
 &\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
 &\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&\spaces= \det M \det(SI_2(M)S^T) \cdot M
+&\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
+&\spaces= \det M \det(I_2(M)) \cdot M
 \end{aligned}
+$$</p>
+<p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
+<p>$$
+\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
 $$</p>
 <div class="footnote-definition" id="kontsevich-hold">
   <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易验证. Iyudu 和 Shkarin 在他们的论文中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
