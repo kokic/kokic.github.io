@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Kontsevich 周期性猜想</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        strict: false, 
+        throwOnError : false, 
+        minRuleThickness: 0.05, 
+      });
+  });
+</script>
+</head><link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/linear-algebra/index" title="线性代数杂记">« 线性代数杂记</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Conjecture">
+      <details id="linear-algebra-kontsevich-periodicity" open><summary><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
+<p>$$
+(I_3 \circ I_2 \circ I_1)^3(M) \spaces= LMR
+$$</p>
+<p>且这里 $I,R$ 的分量是以 $M$ 的 $9$ 个分量 $M_{ij}$ 为变量的非交换有理函数.</p>
+<p><span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 已由 Natalia Iyudu 和 Stanislav Shkarin 于 2013 年 5 月 8 日 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="证明 [https://arxiv.org/abs/1305.1965v3]">证明</a></span>, 因此这一猜想有时也被称作 Iyudu–Shkarin 定理. 不过这个证明过于暴力, 也没有对于一般的矩阵 $M \in \Mat_{n \times n}$ 回答 $n>3$ 时的 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span></p>
+<p>$$
+(I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
+$$</p>
+<p>为何不成立 <sup class="footnote-reference" id="kontsevich-hold-back"><a href="#kontsevich-hold">1</a></sup>.</p>
+<p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
+<p>$$
+\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
+$$</p>
+<p>其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵. 现在我们来计算 $\varphi^2(M)$.</p>
+<p>$$
+\begin{aligned}
+\varphi^2(M) 
+&\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
+&\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
+&\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
+&\spaces= \det M \det(SI_2(M)S^T) \cdot M
+\end{aligned}
+$$</p>
+<div class="footnote-definition" id="kontsevich-hold">
+  <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易验证. Iyudu 和 Shkarin 在他们的论文中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
+</div>
+</details>
+    </section><footer></footer></article>
+
+</div></body></html>
