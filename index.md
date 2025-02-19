@@ -6,7 +6,11 @@ contact: [contact](/contact.md)
 link: [links](/links.md)
 ---
 
+本站点使用 [Kodama](https://github.com/kokic/kodama) 构建. 
 你可以在 [此处](https://github.com/kokic/kokic.github.io) 查看网页的源文件, 以便了解相关细节. 旧文章会不定期恢复. 
+
+This site is built using [Kodama](https://github.com/kokic/kodama).
+You can view the source file of this website [here](https://github.com/kokic/kokic.github.io) for more details. Old articles will be restored periodically.
 
 [+-](/mille-plateaux/index.md#:embed)
 [+-](/data-structure/index.md#:embed)
