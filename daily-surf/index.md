@@ -3,6 +3,7 @@
 title: Daily Surf
 author: kokic
 !date: January 9, 2025
+collect: true
 ---
 
 [-](/daily-surf/sagemath-theme.md#:embed)

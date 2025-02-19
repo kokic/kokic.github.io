@@ -1,6 +1,5 @@
 
 ---
-title: 
 author: kokic
 taxon: proof
 !date: July 21, 2024

@@ -1,3 +1,4 @@
+
 ---
 title: 所有函数都光滑
 author: kokic

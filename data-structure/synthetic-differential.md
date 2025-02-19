@@ -2,7 +2,6 @@
 ---
 title: 综合微分法
 author: kokic
-taxon: exegesis
 !date: May 9, 2024
 ---
 

@@ -25,8 +25,9 @@
 </script>
 </head><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="data-structure-index" open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul><li class="meta-item">January 7, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="data-structure-index" open><summary><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon="">
+      <details id="data-structure-seven-trees-in-one" ><summary><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition">
+      <details id="data-structure-binary-tree" open><summary><header><h1><span class="taxon">Definition 1. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
 <p><figure><img src = "/data-structure/tree-def.svg" /></figure></p>
 <p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
@@ -35,7 +36,7 @@
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Theorem">
-      <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem. </span>七树合一定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="data-structure-blass-lawvere" open><summary><header><h1><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
 <p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
@@ -48,16 +49,18 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
 <p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
 </details>
+    </section></p>
+</details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
+<section class="block" data-taxon="">
+      <details id="data-structure-stack-tree-isomorphism" ><summary><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
 <p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details>
     </section></p>
 <p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
 <p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition 2. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
 <li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
@@ -68,7 +71,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
     </section></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
 <p><section class="block hide-metadata" data-taxon="Example">
-      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
 </details>
@@ -130,8 +133,8 @@ $\gdef\Z{\mathbf{Z}}$</p>
 </svg>
 </span>
 , 其正确的 Hille 编码应该为 <code>1101000100</code>. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码.</p>
-<p><section class="block hide-metadata" data-taxon="Proof">
-      <details id="data-structure-stack-permutation-000B" ><summary><header><h1><span class="taxon">Proof. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis">
+      <details id="data-structure-stack-permutation-000B" open><summary><header><h1><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
 <p>$$
 \begin{CD}
 B @>>> S \\
@@ -139,12 +142,22 @@ B @>>> S \\
 H @>>> C
 \end{CD}
 $$</p>
-<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p><section class="block hide-metadata" data-taxon="Proof">
+      <details id="data-structure-stack-permutation-000C" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+</details>
+    </section></p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
 </details>
     </section></p>
+<p><section class="block hide-metadata" data-taxon="Exegesis">
+      <details id="data-structure-stack-permutation-000D" open><summary><header><h1><span class="taxon">Exegesis 5. </span>有效长度估计 <a class="slug" href="/data-structure/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 <code>0</code> 后所得的字符串长度.
-固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$, 而最长也不会超过 $\max(0, 2n-1, 3n-4)$, 即 $n\le L_n \le \max(0, 2n-1, 3n-4)$.</p>
+固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$. 当 $n=0$ 时 $L=0$, 当 $1 \le n \le 3$ 时 $L \le 2n-1$, 而当 $3 \le n$ 时 $L \le 3n-4$, 即</p>
+<p>$$
+n \spaces\le L_n \spaces\le \max(0, 2n-1, 3n-4)
+$$</p>
+</details>
+    </section></p>
 <div class="footnote-definition" id="hille-order">
   <sup class="footnote-definition-label"><a href="#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
@@ -153,8 +166,8 @@ $$</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="data-structure-synthetic-differential" open><summary><header><h1><span class="taxon">Exegesis. </span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon="">
+      <details id="data-structure-synthetic-differential" ><summary><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$</p>
@@ -261,187 +274,8 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <
 <p>这样一来, 我们所说的 “将近似修正为严格等于” 就可以精确表示为</p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\epsilon) ~ \str{中} ~ \epsilon ~ \str{项的系数} $$</p>
 </details>
-    </section>
-<section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-chromatic-graph" open><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p></a></p>
-<p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George David Birkhoff [person/george-david-birkhoff]">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 的理想理论之于费马大定理.</p>
-<p><section class="block hide-metadata" data-taxon="Theorem">
-      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\without{\setminus}$</p>
-<p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
-<p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof">
-      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\without{\setminus}$</p>
-<p>$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
-$$\begin{aligned} 
-\pi(G \without e) 
-&\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
-&\spaces= \pi(G / e) ~ + ~ \pi(G)
-\end{aligned}$$</p>
-</details>
-    </section></p>
-<p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
-<p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
-<p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
-<p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
-</details>
-    </section></p>
-<p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
-<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
-    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 21.007874 L 39.20733 21.007874 L 39.20733 0 Z "/>
-    <g>
-        <g transform="translate(0 2)">
-            <g class="typst-group">
-                <g>
-                    <g transform="translate(0 12.360687007874018)">
-                        <g class="typst-text" transform="scale(1, -1)">
-                            <use xlink:href="#g30267E90AF33476939FA790BF2CFA4B6" x="0" fill="#000000" fill-rule="nonzero"/>
-                        </g>
-                    </g>
-                    <g transform="translate(9.179065 12.360687007874018)">
-                        <g class="typst-text" transform="scale(1, -1)">
-                            <use xlink:href="#gE7D1B761E699FF1AF896F60E9A8F0E23" x="0" fill="#000000" fill-rule="nonzero"/>
-                        </g>
-                    </g>
-                    <g transform="translate(15.689258999999998 0)">
-                        <g class="typst-group">
-                            <g>
-                                <g transform="translate(0 0)">
-                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
-                                </g>
-                                <g transform="translate(14.173228346456693 0)">
-                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
-                                </g>
-                                <g transform="translate(14.173228346456693 14.173228346456693)">
-                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
-                                </g>
-                                <g transform="translate(0 14.173228346456693)">
-                                    <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 1.4173229 0 C 0.6352668 0 0 0.6352668 0 1.4173229 C 0 1.4173229 0 1.4173229 0 1.4173229 C 0 2.199379 0.6352668 2.8346457 1.4173229 2.8346457 C 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 C 2.199379 2.8346457 2.8346457 2.199379 2.8346457 1.4173229 C 2.8346457 1.4173229 2.8346457 1.4173229 2.8346457 1.4173229 C 2.8346457 0.6352668 2.199379 0 1.4173229 0 C 1.4173229 0 1.4173229 0 1.4173229 0 Z "/>
-                                </g>
-                                <g transform="translate(2.8346456692913384 1.417322834645672)">
-                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 11.338583 0 11.338583 0 "/>
-                                </g>
-                                <g transform="translate(15.590551181102361 2.834645669291341)">
-                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 0 11.338583 0 11.338583 "/>
-                                </g>
-                                <g transform="translate(2.8346456692913384 15.590551181102365)">
-                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 11.338583 0 C 11.338583 0 0 0 0 0 "/>
-                                </g>
-                                <g transform="translate(1.4173228346456674 2.8346456692913424)">
-                                    <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0.0000000000000037371682 11.338583 C 0.0000000000000037371682 11.338583 0 0 0 0 "/>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                    <g transform="translate(32.69713301574804 12.360687007874018)">
-                        <g class="typst-text" transform="scale(1, -1)">
-                            <use xlink:href="#g721639AFC4A0843B1FF64FCE5C7F61DE" x="0" fill="#000000" fill-rule="nonzero"/>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-    <defs id="glyph">
-        <symbol id="g30267E90AF33476939FA790BF2CFA4B6" overflow="visible">
-            <path d="M 8.083748 6.649037 L 2.992838 6.649037 C 2.360331 6.649037 1.8049589 6.402205 1.357576 5.923968 C 1.141598 5.692563 0.416529 4.705235 0.416529 4.504684 C 0.478237 4.396695 0.478237 4.304133 0.663361 4.304133 C 0.77134997 4.304133 0.863912 4.365841 0.956474 4.504684 C 1.450138 5.260607 2.082645 5.646282 2.838568 5.646282 L 3.625345 5.646282 C 3.270524 4.304133 2.62259 2.653444 1.69697 0.694215 C 1.619835 0.509091 1.573554 0.370248 1.573554 0.293113 C 1.573554 -0.015427 1.743251 -0.169697 2.067218 -0.169697 C 2.360331 -0.169697 2.576309 0 2.715152 0.323967 C 2.992838 1.203306 3.193389 1.882094 3.301378 2.344904 L 4.149863 5.646282 L 5.738844 5.646282 C 5.3223147 3.810469 5.106337 2.5300279 5.106337 1.8049589 C 5.106337 1.049036 5.276034 -0.169697 5.8468328 -0.169697 C 6.1707997 -0.169697 6.525621 0.138843 6.525621 0.46281 C 6.525621 0.539945 6.494767 0.663361 6.4330587 0.817631 C 6.139946 1.5426999 6.001103 2.360331 6.001103 3.301378 C 6.001103 4.026447 6.093665 4.813224 6.263362 5.646282 L 7.944905 5.646282 C 8.48485 5.646282 8.747109 5.831406 8.747109 6.217081 C 8.747109 6.571902 8.469423 6.649037 8.083748 6.649037 Z "/>
-        </symbol>
-        <symbol id="gE7D1B761E699FF1AF896F60E9A8F0E23" overflow="visible">
-            <path d="M 5.368596 -4.581819 C 5.507439 -4.581819 5.5845737 -4.504684 5.5845737 -4.365841 C 5.5845737 -4.288706 5.55372 -4.242425 5.507439 -4.196144 C 4.643527 -3.532783 3.949312 -2.422039 3.424794 -0.863912 C 2.977411 0.478237 2.746006 1.774105 2.746006 3.0545459 L 2.746006 4.658954 C 2.746006 5.939395 2.977411 7.235263 3.424794 8.577412 C 3.949312 10.135539 4.643527 11.246283 5.507439 11.909644 C 5.55372 11.955925 5.5845737 12.002206 5.5845737 12.079341 C 5.5845737 12.2181835 5.507439 12.295319 5.368596 12.295319 C 5.306888 12.295319 5.260607 12.279892 5.24518 12.249038 C 4.242425 11.477688 3.409367 10.33609 2.746006 8.808817 C 2.113499 7.358679 1.789532 5.970249 1.789532 4.658954 L 1.789532 3.0545459 C 1.789532 1.743251 2.113499 0.354821 2.746006 -1.095317 C 3.409367 -2.62259 4.242425 -3.764188 5.24518 -4.535538 C 5.260607 -4.566392 5.306888 -4.581819 5.368596 -4.581819 Z "/>
-        </symbol>
-        <symbol id="g721639AFC4A0843B1FF64FCE5C7F61DE" overflow="visible">
-            <path d="M 1.2650139 -4.535538 C 2.267769 -3.764188 3.100827 -2.62259 3.764188 -1.095317 C 4.396695 0.354821 4.720662 1.743251 4.720662 3.0545459 L 4.720662 4.658954 C 4.720662 5.970249 4.396695 7.358679 3.764188 8.808817 C 3.100827 10.33609 2.267769 11.477688 1.2650139 12.249038 C 1.2495869 12.279892 1.203306 12.295319 1.141598 12.295319 C 1.002755 12.295319 0.92562 12.2181835 0.92562 12.079341 C 0.92562 12.002206 0.956474 11.955925 1.002755 11.909644 C 1.866667 11.246283 2.560882 10.135539 3.0853999 8.577412 C 3.532783 7.235263 3.764188 5.939395 3.764188 4.658954 L 3.764188 3.0545459 C 3.764188 1.774105 3.532783 0.478237 3.0853999 -0.863912 C 2.560882 -2.422039 1.866667 -3.532783 1.002755 -4.196144 C 0.956474 -4.242425 0.92562 -4.288706 0.92562 -4.365841 C 0.92562 -4.504684 1.002755 -4.581819 1.141598 -4.581819 C 1.203306 -4.581819 1.2495869 -4.566392 1.2650139 -4.535538 Z "/>
-        </symbol>
-    </defs>
-</svg>
-</span>
-.</p>
-<p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式 [data-structure/deletion-contraction]">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
-<p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
-</details>
     </section></p>
 </details>
-    </section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference">
-      <details id="bib-blass1995seven" ><summary><header><h1><span class="taxon">Reference. </span>Seven trees in one <a class="slug" href="/bib/blass1995seven">[blass1995seven]</a></h1><div class="metadata"><ul><li class="meta-item">May 20, 1994</li><li class="meta-item">Andreas Blass</li><li class="meta-item">Journal of Pure and Applied Algebra, Volume 103</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li></ul></div></header></summary><p>Following a remark of Lawvere, we explicitly exhibit a particularly elementary bijection between the set $T$ of finite binary trees and the set $T^7$ of seven-tuples of such trees.
-“Particularly elementary” means that the application of the bijection to a seven-tuple of trees involves case distinctions only down to a fixed depth (namely four) in the given seven-tuple.
-We clarify how this and similar bijections are related to the free commutative semiring on one generator X subject to $X=1+X^2$. Finally, our main theorem is that the existence of particularly elementary bijections can be deduced from the provable existence, in intuitionistic type theory, of any bijections at all.</p>
-<pre><code>@article{blass1995seven,
-  title={Seven trees in one},
-  author={Blass, Andreas},
-  journal={Journal of Pure and Applied Algebra},
-  volume={103},
-  number={1},
-  pages={1--21},
-  year={1995},
-  publisher={Elsevier}
-}
-</code></pre>
-</details>
-    </section><section class="block" data-taxon="Reference">
-      <details id="bib-hille1982stack" ><summary><header><h1><span class="taxon">Reference. </span>Stack permutations and an order relation for binary trees <a class="slug" href="/bib/hille1982stack">[hille1982stack]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li></ul></div></header></summary><p>An isomorphism between stack permutations of a set of $n$ elements and ordered binary trees with $n$ vertices is presented. which allows the construction of simple linear time algorithms to compute a ranking function and its inverse for binary trees. No pre-processing of tables is required, as was the case with previously published methods.</p>
-<pre><code>@article{hille1982stack,
-  title={Stack permutations and an order relation for binary trees},
-  author={Hille, Reinhold Friedrich},
-  year={1982}
-}
-</code></pre>
-</details>
-    </section><section class="block" data-taxon="Reference">
-      <details id="bib-jin2024topos" ><summary><header><h1><span class="taxon">Reference. </span>意象理论讲义 <a class="slug" href="/bib/jin2024topos">[jin2024topos]</a></h1><div class="metadata"><ul><li class="meta-item">November 20, 2024</li><li class="meta-item">王进一</li><li class="meta-item"><span class="link external"><a href="https://github.com/SimplicialCat/topos/blob/main/topos.pdf" title="电子版 [https://github.com/SimplicialCat/topos/blob/main/topos.pdf]">电子版</a></span></li></ul></div></header></summary><p>本书对数学没有原创性的贡献, 其中几乎所有结果在 20 世纪已经为该领域的专家所熟知.
-但是大部分内容找不到成体系的中文资料 (除了李文威老师的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">代数学方法</a></span>),
-这是我编写本书的动机之一.
-内容的编排原则大致是使初学者最易接受, 并且提供启发性的观点, 从而使人能更快入门去看更多的资料.
-本书收录的论证都是十分简单而直观的; 阅读本书虽不能让人成为本领域的专家,
-但能让人发现一些事情并非想象的那样困难, 在将玄妙的概念祛魅的过程中产生信心和乐趣.
-书中许多内容的含入仅仅是由于个人的品味, 例子的选取受到了本人的微分几何与代数拓扑背景的影响.
-一些证明出自本人的思考, 因此错漏是难免的. 限于水平, 书中许多细节无法深究, 包括有关集合论的 “小” 性的问题,
-以及其它涉及到数学基础的问题. 许多术语没有通行的中文版本, 姑且使用了本人的翻译, 书后附有一个简短的术语表.</p>
-<pre><code>@book{jin2024topos, 
-  title={意象理论讲义}, 
-  author={王进一}, 
-  year={2024}
-}
-</code></pre>
-</details>
-    </section><section class="block" data-taxon="Reference">
-      <details id="bib-kock2006synthetic" ><summary><header><h1><span class="taxon">Reference. </span>Synthetic differential geometry <a class="slug" href="/bib/kock2006synthetic">[kock2006synthetic]</a></h1><div class="metadata"><ul><li class="meta-item">2006</li><li class="meta-item">Anders Kock</li><li class="meta-item">Cambridge University Press, Volume 333</li></ul></div></header></summary><p>The aim of the present book is to describe a foundation for
-synthetic reasoning in differential geometry.
-We hope that such a foundational treatise will put the reader in a position
-where he, in his study of differential geometry, can utilize
-the synthetic method freely and rigorously, and that it will give him notions
-and language by which such study can be communicated.</p>
-<pre><code>@book{kock2006synthetic,
-  title={Synthetic differential geometry},
-  author={Kock, Anders},
-  volume={333},
-  year={2006},
-  publisher={Cambridge University Press}
-}
-</code></pre>
-</details>
-    </section><section class="block" data-taxon="Reference">
-      <details id="bib-methods-of-algebra-1" ><summary><header><h1><span class="taxon">Reference. </span>代数学方法 卷一：基础架构 <a class="slug" href="/bib/methods-of-algebra-1">[methods-of-algebra-1]</a></h1><div class="metadata"><ul><li class="meta-item">November 16, 2018</li><li class="meta-item">李文威</li><li class="meta-item"><span class="link external"><a href="https://wwli.asia/downloads/books/Al-jabr-1.pdf" title="电子版 [https://wwli.asia/downloads/books/Al-jabr-1.pdf]">电子版</a></span></li><li class="meta-item">高等教育出版社</li><li class="meta-item">现代数学基础系列</li></ul></div></header></summary><p>本书主题有时也称为 “近世代数” 或 “抽象代数”. 所谓近世, 总是相对于当时当世而论,
-早在 1955 年 van der Waerden 发表《代数学》第四版时便已舍弃此词, 于今更无必要.
-至于说抽象, 充其量是初学者的错觉, 作为课名或书名完全不得要领, 而且似乎有恫吓读者之嫌.
-本书题为 “代数学方法”, 一则是因为当代代数学范围过广, 本书仅择有趣有用者而述, 不求体系大而全.
-第二也是最关键的一点, 则是因为数学的本质存在于交融互摄, 只为授课与学科分画方便才打包于一词.
-所以本书绝不视代数为疆界分明的学科; 与分析, 拓扑学等脱钩的纯代数即便存在, 也仅是千万种研究方向之一.
-《庄子·应帝王》中有混沌凿七窍的故事, 强凿疆界同样令数学趋于停滞消亡.</p>
-<pre><code>@article{wwli2019method,
-  title={代数学方法 卷一：基础架构},
-  author={李文威},
-  series={现代数学基础},
-  year={2019},
-  isbn={978-7-04-050725-6},
-  publisher={高等教育出版社}
-}
-</code></pre>
-</details>
-    </section></details></section></footer></article>
+    </section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link"><a href="#data-structure-binary-tree"><span class="taxon">Definition. </span>二叉树类型</a></span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="七树合一定理 [data-structure/blass-lawvere]">■</a><span class="link"><a href="#data-structure-blass-lawvere"><span class="taxon">Theorem. </span>七树合一定理</a></span></li><li class=""><a class="bullet" href="/data-structure/stack-tree-isomorphism" title="栈置换–二叉树同构 [data-structure/stack-tree-isomorphism]">■</a><span class="link"><a href="#data-structure-stack-tree-isomorphism"><span class="taxon">Exegesis. </span>栈置换–二叉树同构</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation" title="栈置换 [data-structure/stack-permutation]">■</a><span class="link"><a href="#data-structure-stack-permutation"><span class="taxon">Definition. </span>栈置换</a></span></li><li class=""><a class="bullet" href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">■</a><span class="link"><a href="#data-structure-hille-encode"><span class="taxon">Definition. </span>Hille 编码</a></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000A" title="$n=3$ [data-structure/stack-permutation-000A]">■</a><span class="link"><a href="#data-structure-stack-permutation-000A"><span class="taxon">Example. </span>$n=3$</a></span></li></ul></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential" title="综合微分法 [data-structure/synthetic-differential]">■</a><span class="link"><a href="#data-structure-synthetic-differential"><span class="taxon">Exegesis. </span>综合微分法</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/complex-step" title="复步微分法 [data-structure/complex-step]">■</a><span class="link"><a href="#data-structure-complex-step"><span class="taxon">Exegesis. </span>复步微分法</a></span></li><li class=""><a class="bullet" href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">■</a><span class="link"><a href="#data-structure-dual-number"><span class="taxon">Definition. </span>对偶数</a></span></li></ul></li><li class=""><a class="bullet" href="/data-structure/chromatic-graph" title="染色图 [data-structure/chromatic-graph]">■</a><span class="link"><a href="#data-structure-chromatic-graph"><span class="taxon">Definition. </span>染色图</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/deletion-contraction" title="删除–收缩公式 [data-structure/deletion-contraction]">■</a><span class="link"><a href="#data-structure-deletion-contraction"><span class="taxon">Theorem. </span>删除–收缩公式</a></span></li></ul></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link"><a href="#data-structure-seven-trees-in-one"><span class="taxon"></span>七树合一定理</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link"><a href="#data-structure-binary-tree"><span class="taxon">Definition 1. </span>二叉树类型</a></span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link"><a href="#data-structure-blass-lawvere"><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理</a></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-tree-isomorphism" title="栈置换–二叉树同构 [data-structure/stack-tree-isomorphism]">■</a><span class="link"><a href="#data-structure-stack-tree-isomorphism"><span class="taxon"></span>栈置换–二叉树同构</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation" title="栈置换 [data-structure/stack-permutation]">■</a><span class="link"><a href="#data-structure-stack-permutation"><span class="taxon">Definition 1. </span>栈置换</a></span></li><li class=""><a class="bullet" href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">■</a><span class="link"><a href="#data-structure-hille-encode"><span class="taxon">Definition 2. </span>Hille 编码</a></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000A" title="$n=3$ [data-structure/stack-permutation-000A]">■</a><span class="link"><a href="#data-structure-stack-permutation-000A"><span class="taxon">Example 3. </span>$n=3$</a></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation-000B]">■</a><span class="link"><a href="#data-structure-stack-permutation-000B"><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性</a></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000D" title="有效长度估计 [data-structure/stack-permutation-000D]">■</a><span class="link"><a href="#data-structure-stack-permutation-000D"><span class="taxon">Exegesis 5. </span>有效长度估计</a></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential" title="综合微分法 [data-structure/synthetic-differential]">■</a><span class="link"><a href="#data-structure-synthetic-differential"><span class="taxon"></span>综合微分法</a></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/complex-step" title="复步微分法 [data-structure/complex-step]">■</a><span class="link"><a href="#data-structure-complex-step"><span class="taxon">Exegesis. </span>复步微分法</a></span></li><li class=""><a class="bullet" href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">■</a><span class="link"><a href="#data-structure-dual-number"><span class="taxon">Definition. </span>对偶数</a></span></li></ul></li></ul></div></nav></div></body></html>

@@ -25,8 +25,8 @@
 </script>
 </head><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><body><header class="header"><nav class="nav"><div class="logo"><a href="/index" title="回声">« 回声</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="linear-algebra-index" open><summary><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index">[linear-algebra]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Conjecture">
-      <details id="linear-algebra-kontsevich-periodicity" open><summary><header><h1><span class="taxon">Conjecture 1. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-index" open><summary><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index">[linear-algebra]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon="Conjecture">
+      <details id="linear-algebra-kontsevich-periodicity" ><summary><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
@@ -39,11 +39,14 @@ $$</p>
 (I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
 $$</p>
 <p>为何不成立 <sup class="footnote-reference" id="kontsevich-hold-back"><a href="#kontsevich-hold">1</a></sup>.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis">
+      <details id="linear-algebra-kontsevich-periodicity-000A" open><summary><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
 <p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
 <p>$$
 \varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
 $$</p>
-<p>其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵. 现在我们来计算 $\varphi^2(M)$.</p>
+<p>其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="skew-adjoint-back"><a href="#skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
 <p>$$
 \begin{aligned}
 \varphi^2(M) 
@@ -58,13 +61,18 @@ $$</p>
 <p>$$
 \det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
 $$</p>
+<div class="footnote-definition" id="skew-adjoint">
+  <sup class="footnote-definition-label"><a href="#skew-adjoint-back">1</a></sup><p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
+</div>
+</details>
+    </section></p>
 <div class="footnote-definition" id="kontsevich-hold">
-  <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易验证. Iyudu 和 Shkarin 在他们的论文中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
+  <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity-000A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">验证</a></span>. Iyudu 和 Shkarin 在他们的 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="论文 [https://arxiv.org/abs/1305.1965v3]">论文</a></span> 中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Theorem">
-      <details id="linear-algebra-rayleigh-quotient" open><summary><header><h1><span class="taxon">Theorem 2. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block" data-taxon="Theorem">
+      <details id="linear-algebra-rayleigh-quotient" ><summary><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
 <p>$$
 M \spaces= \begin{pmatrix}
@@ -82,7 +90,7 @@ $$</p>
 $$</p>
 <p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
 <p><section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis 2.1. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-rayleigh-quotient-000A" open><summary><header><h1><span class="taxon">Exegesis 1. </span>某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
 <p>$$
 x^{\ast}Mx \spaces= \sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2},\quad 
@@ -105,7 +113,7 @@ $$</p>
 </ul>
 <p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
 <p><section class="block hide-metadata" data-taxon="Example">
-      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example 2.2. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-rayleigh-quotient-000B" open><summary><header><h1><span class="taxon">Example 2. </span>二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
@@ -150,7 +158,7 @@ $$</p>
     </section></p>
 <p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
 <p><section class="block hide-metadata" data-taxon="Example">
-      <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example 2.3. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-rayleigh-quotient-000C" open><summary><header><h1><span class="taxon">Example 3. </span>一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要求解问题可以叙述成下面的形式</p>
 <p>$$
 F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
@@ -170,8 +178,8 @@ $$</p>
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="linear-algebra-permutation-matrix" open><summary><header><h1><span class="taxon">Exegesis 3. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-permutation-matrix" ><summary><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
@@ -214,14 +222,14 @@ $$
 </div>
 </details>
     </section>
-<section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="linear-algebra-automata-matrix" open><summary><header><h1><span class="taxon">Exegesis 4. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon="Exegesis">
+      <details id="linear-algebra-automata-matrix" ><summary><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
 <p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="linear-algebra-regular-language" open><summary><header><h1><span class="taxon">Definition 4.1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+      <details id="linear-algebra-regular-language" open><summary><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
@@ -257,7 +265,7 @@ $$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="linear-algebra-semiring" open><summary><header><h1><span class="taxon">Exegesis 4.2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+      <details id="linear-algebra-semiring" open><summary><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$
@@ -273,7 +281,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Definition">
-      <details id="linear-algebra-star-semiring" open><summary><header><h1><span class="taxon">Definition 4.3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+      <details id="linear-algebra-star-semiring" open><summary><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -313,7 +321,7 @@ d^* c \alpha & \quad d^* + d^*c \alpha b d^* \tag{1.1}
 $$</p>
 <p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
 <p><section class="block hide-metadata" data-taxon="Example">
-      <details id="linear-algebra-automata-matrix-000A" open><summary><header><h1><span class="taxon">Example 4.4. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-automata-matrix-000A" open><summary><header><h1><span class="taxon">Example 4. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
 <p>$$
 \begin{aligned}
@@ -330,7 +338,7 @@ $$</p>
 </details>
     </section>
 <section class="block hide-metadata" data-taxon="Example">
-      <details id="linear-algebra-automata-matrix-000B" open><summary><header><h1><span class="taxon">Example 4.5. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+      <details id="linear-algebra-automata-matrix-000B" open><summary><header><h1><span class="taxon">Example 5. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
 M \spaces= \begin{pmatrix} A & B \\ C & D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A & -B \\ -C & 1-D \end{pmatrix}
@@ -376,4 +384,4 @@ $$</p>
 </details>
     </section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link"><a href="#linear-algebra-kontsevich-periodicity"><span class="taxon">Conjecture 1. </span>Kontsevich 周期性猜想</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient"><span class="taxon">Theorem 2. </span>Rayleigh 商定理</a></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000A" title="某类二次型的商 [linear-algebra/rayleigh-quotient-000A]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000A"><span class="taxon">Exegesis 2.1. </span>某类二次型的商</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000B" title="二阶情形 [linear-algebra/rayleigh-quotient-000B]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000B"><span class="taxon">Example 2.2. </span>二阶情形</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000C" title="一般二次型的商 [linear-algebra/rayleigh-quotient-000C]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000C"><span class="taxon">Example 2.3. </span>一般二次型的商</a></span></li></ul></li><li class=""><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link"><a href="#linear-algebra-permutation-matrix"><span class="taxon">Exegesis 3. </span>置换矩阵构造</a></span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix" title="自动机与矩阵求逆 [linear-algebra/automata-matrix]">■</a><span class="link"><a href="#linear-algebra-automata-matrix"><span class="taxon">Exegesis 4. </span>自动机与矩阵求逆</a></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link"><a href="#linear-algebra-regular-language"><span class="taxon">Definition 4.1. </span>正则语言集</a></span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link"><a href="#linear-algebra-semiring"><span class="taxon">Exegesis 4.2. </span>关于半环的注释</a></span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link"><a href="#linear-algebra-star-semiring"><span class="taxon">Definition 4.3. </span>星半环</a></span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000A" title="二阶矩阵的逆 [linear-algebra/automata-matrix-000A]">■</a><span class="link"><a href="#linear-algebra-automata-matrix-000A"><span class="taxon">Example 4.4. </span>二阶矩阵的逆</a></span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000B" title="分块矩阵的逆 [linear-algebra/automata-matrix-000B]">■</a><span class="link"><a href="#linear-algebra-automata-matrix-000B"><span class="taxon">Example 4.5. </span>分块矩阵的逆</a></span></li></ul></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link"><a href="#linear-algebra-kontsevich-periodicity"><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想</a></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-000A" title="$n=2$ 交换版本 [linear-algebra/kontsevich-periodicity-000A]">■</a><span class="link"><a href="#linear-algebra-kontsevich-periodicity-000A"><span class="taxon">Exegesis. </span>$n=2$ 交换版本</a></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient"><span class="taxon">Theorem. </span>Rayleigh 商定理</a></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000A" title="某类二次型的商 [linear-algebra/rayleigh-quotient-000A]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000A"><span class="taxon">Exegesis 1. </span>某类二次型的商</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000B" title="二阶情形 [linear-algebra/rayleigh-quotient-000B]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000B"><span class="taxon">Example 2. </span>二阶情形</a></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-000C" title="一般二次型的商 [linear-algebra/rayleigh-quotient-000C]">■</a><span class="link"><a href="#linear-algebra-rayleigh-quotient-000C"><span class="taxon">Example 3. </span>一般二次型的商</a></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link"><a href="#linear-algebra-permutation-matrix"><span class="taxon">Exegesis. </span>置换矩阵构造</a></span></li><li class="item-summary"><a class="bullet" href="/linear-algebra/automata-matrix" title="自动机与矩阵求逆 [linear-algebra/automata-matrix]">■</a><span class="link"><a href="#linear-algebra-automata-matrix"><span class="taxon">Exegesis. </span>自动机与矩阵求逆</a></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link"><a href="#linear-algebra-regular-language"><span class="taxon">Definition 1. </span>正则语言集</a></span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link"><a href="#linear-algebra-semiring"><span class="taxon">Exegesis 2. </span>关于半环的注释</a></span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link"><a href="#linear-algebra-star-semiring"><span class="taxon">Definition 3. </span>星半环</a></span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000A" title="二阶矩阵的逆 [linear-algebra/automata-matrix-000A]">■</a><span class="link"><a href="#linear-algebra-automata-matrix-000A"><span class="taxon">Example 4. </span>二阶矩阵的逆</a></span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000B" title="分块矩阵的逆 [linear-algebra/automata-matrix-000B]">■</a><span class="link"><a href="#linear-algebra-automata-matrix-000B"><span class="taxon">Example 5. </span>分块矩阵的逆</a></span></li></ul></li></ul></div></nav></div></body></html>
