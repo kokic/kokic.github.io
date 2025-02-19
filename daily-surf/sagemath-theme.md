@@ -1,6 +1,6 @@
 
 ---
-title: Sagemath Jupyter Notebook 主题设置
+title: Sagemath Jupyter 主题设置
 author: kokic
 !date: February 17, 2025
 ---

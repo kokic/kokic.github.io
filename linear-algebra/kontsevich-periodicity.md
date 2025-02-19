@@ -26,29 +26,6 @@ $$
 
 为何不成立 [^kontsevich-hold].  
 
-我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是
+[](/linear-algebra/kontsevich-periodicity-000A.md#:embed)
 
-$$
-\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
-$$
-
-其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵. 现在我们来计算 $\varphi^2(M)$. 
-
-$$
-\begin{aligned}
-\varphi^2(M) 
-&\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
-&\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
-&\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
-&\spaces= \det M \det(I_2(M)) \cdot M
-\end{aligned}
-$$
-
-也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是 
-
-$$
-\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
-$$ 
-
-[^kontsevich-hold]: 如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易验证. Iyudu 和 Shkarin 在他们的论文中首先验证了 [Kontsevich 周期性猜想](/linear-algebra/kontsevich-periodicity) 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本. 
+[^kontsevich-hold]: 如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 [验证](/linear-algebra/kontsevich-periodicity-000A). Iyudu 和 Shkarin 在他们的 [论文](https://arxiv.org/abs/1305.1965v3) 中首先验证了 [Kontsevich 周期性猜想](/linear-algebra/kontsevich-periodicity) 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本. 

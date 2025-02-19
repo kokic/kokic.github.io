@@ -42,8 +42,8 @@
 </ul>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
 </details>
-    </section><section class="block" data-taxon="Exegesis">
-      <details id="data-structure-stack-tree-isomorphism" ><summary><header><h1><span class="taxon">Exegesis. </span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
+    </section><section class="block" data-taxon="">
+      <details id="data-structure-stack-tree-isomorphism" ><summary><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p></a></p>
 <p><section class="block" data-taxon="Definition">
       <details id="data-structure-stack-permutation" ><summary><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details>
@@ -123,8 +123,8 @@
 </svg>
 </span>
 , 其正确的 Hille 编码应该为 <code>1101000100</code>. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码.</p>
-<p><section class="block" data-taxon="Proof">
-      <details id="data-structure-stack-permutation-000B" ><summary><header><h1><span class="taxon">Proof. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p><section class="block" data-taxon="Exegesis">
+      <details id="data-structure-stack-permutation-000B" ><summary><header><h1><span class="taxon">Exegesis. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
 <p>$$
 \begin{CD}
 B @>>> S \\
@@ -132,12 +132,22 @@ B @>>> S \\
 H @>>> C
 \end{CD}
 $$</p>
-<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p><section class="block" data-taxon="Proof">
+      <details id="data-structure-stack-permutation-000C" ><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+</details>
+    </section></p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
 </details>
     </section></p>
+<p><section class="block" data-taxon="Exegesis">
+      <details id="data-structure-stack-permutation-000D" ><summary><header><h1><span class="taxon">Exegesis. </span>有效长度估计 <a class="slug" href="/data-structure/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 <code>0</code> 后所得的字符串长度.
-固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$, 而最长也不会超过 $\max(0, 2n-1, 3n-4)$, 即 $n\le L_n \le \max(0, 2n-1, 3n-4)$.</p>
+固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$. 当 $n=0$ 时 $L=0$, 当 $1 \le n \le 3$ 时 $L \le 2n-1$, 而当 $3 \le n$ 时 $L \le 3n-4$, 即</p>
+<p>$$
+n \spaces\le L_n \spaces\le \max(0, 2n-1, 3n-4)
+$$</p>
+</details>
+    </section></p>
 <div class="footnote-definition" id="hille-order">
   <sup class="footnote-definition-label"><a href="#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
