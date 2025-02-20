@@ -16,8 +16,8 @@
   --link-color: black;
   --slug-color: gray;
   --logo-color: #666;
-  --span-taxon-color: #444;
   --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
   --article-taxon-color: #888;
   --mark-color: rgb(255, 255, 151);
 
@@ -37,9 +37,9 @@
 
     --link-color: white;
     --slug-color: #aeaeae;
-    --logo-color: #bbb;
-    --span-taxon-color: white;
+    --logo-color: #999;
     --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
   }
 }
 

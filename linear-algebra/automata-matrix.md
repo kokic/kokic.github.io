@@ -4,6 +4,7 @@ title: 自动机与矩阵求逆
 author: kokic
 taxon: exegesis
 !date: May 9, 2024 --- May 10, 2024
+license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
