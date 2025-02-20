@@ -259,7 +259,7 @@ OOptions:
     </section></p>
 <p>很多时候, 对于相当简单的 Typst 文本, 用户会希望有一种方式在展示上对应于 $\KaTeX$ 语境下的行内公式, 这就是内联 Typst.</p>
 <p><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" ><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/index-en-US" title="Kodama Tutorials [tutorials/index-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
+      <details id="tutorials-inline-syntax" ><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax-en-US" title="Inline Syntax [tutorials/inline-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
 <p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
 <ul>
 <li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
@@ -351,15 +351,6 @@ jobs:
 </div>
 </details>
     </section></p>
-</details>
-    </section><section class="block" data-taxon="">
-      <details id="tutorials-inline-syntax" ><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/index-en-US" title="Kodama Tutorials [tutorials/index-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
-<p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
-<ul>
-<li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>
-<li><code>#</code> 在 Typst 当中是一个高频率使用的字符, 此时如果依然手写 <code>${}$</code> 则会导致编辑器内 Markdown 预览的体验不佳, 这就是内联模式参数 <code>math</code> 的意义. 现在你可以将第一个例子写为 <code>[x^2](inline-math)</code>.</li>
-<li>各个参数的值之间使用 <code>-</code> 分隔. <code>math</code> 和 <code>margin</code> 的位置是固定的, 换言之, 如果这两个参数同时出现, 你只能将 <code>margin</code> 写在 <code>math</code> 之后. <code>margin</code> 由形如 <code>{x}-{y}</code> 的文本构成, <code>x</code> 和 <code>y</code> 是任何有效的 Typst 长度值, 如 <code>0pt-2pt</code>. 当 <code>y</code> 缺失时, <code>y</code> 会采用 <code>x</code> 的值.</li>
-</ul>
 </details>
     </section></details></section></footer></article>
 
