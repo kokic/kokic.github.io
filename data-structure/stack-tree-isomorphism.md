@@ -1,7 +1,9 @@
 
 ---
 title: 栈置换--二叉树同构
-!date: November 06, 2024
+!date: November 06, 2024 --- November 08, 2024 
+author: kokic
+license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 ---
 
 [*](/data-structure/stack-permutation-0003.typ#:shared)
