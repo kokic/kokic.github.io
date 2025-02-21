@@ -5,4 +5,4 @@ author: kokic
 collect: true
 ---
 
-[-](/smaragdina/photographic.md#:embed)
+[-](/smaragdina/celtic-myths.md#:embed)
