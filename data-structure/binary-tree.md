@@ -10,7 +10,7 @@ $\gdef\spaces#1{~ #1 ~}$
 
 二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出
 
-[](/data-structure/tree-def.typ#:block)
+[](/data-structure/tree-def.typ#:code)
 
 叶结点构造器 `leaf` 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$. 
 
