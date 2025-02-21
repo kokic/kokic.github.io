@@ -4,6 +4,7 @@ title: Daily Surf
 collect: true
 ---
 
+[-](/daily-surf/sublime-text-config#:embed)
 [-](/daily-surf/sagemath-theme.md#:embed)
 [-](/daily-surf/git-filter-branch.md#:embed)
 [-](/daily-surf/baby-viewpoint.md#:embed)
