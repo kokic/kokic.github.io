@@ -20,7 +20,7 @@ license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/dee
 
 这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 [^hille-order] 编号后的中序遍历序列 [^inorder-sequence]. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, [Hille 原始文献](/bib/hille1982stack.md) 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即
 
-[](/data-structure/stack-permutation-0002.typ#:block)
+[](/data-structure/stack-permutation-0002.typ#:code)
 
 只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历. 
 

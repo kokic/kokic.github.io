@@ -4,56 +4,62 @@
 <meta name="viewport" content="width=device-width"><title>屏幕右上角的 “FPS GPU CPU 延时”</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: "Source Serif 4", serif;
-}
+  body {
+    font-family: "Source Serif 4", "Noto Serif SC", serif;
+  }
 
-pre,
-code {
-  font-family: "Source Code Pro", monospace;
-}
+  pre,
+  code {
+    font-family: "Source Code Pro", monospace;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Source Sans 3", sans-serif;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Source Sans 3", sans-serif;
+  }
 
-nav {
-  font-family: "Source Sans 3", sans-serif;
-}
+  nav {
+    font-family: "Source Sans 3", sans-serif;
+  }
 
-thead {
-  font-family: "Source Sans 3", sans-serif;
-}
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+  thead {
+    font-family: "Source Sans 3", sans-serif;
+  }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '$', right: '$', display: false},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '\\[', right: '\\]', display: true}
-          ],
-          strict: false, 
-          throwOnError : false, 
-          minRuleThickness: 0.05, 
-        });
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
     });
-  </script>
-  </head><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><a href="/daily-surf/index" title="Daily Surf">« Daily Surf</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="daily-surf-nvidia-fps-gpu-cpu" open><summary><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
 <p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="concept-name-back"><a href="#concept-name">1</a></sup>
 AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>

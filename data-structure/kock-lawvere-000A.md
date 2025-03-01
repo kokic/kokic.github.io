@@ -17,4 +17,4 @@ $$
 
 这个通常作为 [Kock--Lawvere 公理](/data-structure/kock-lawvere) 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 "幂零无穷小量" 计算上的直观, 而不导致矛盾. 
 
-[](/data-structure/kock-lawvere-0001.typ#:block)
+[](/data-structure/kock-lawvere-0001.typ#:html)

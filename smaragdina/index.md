@@ -6,3 +6,4 @@ collect: true
 ---
 
 [-](/smaragdina/celtic-myths.md#:embed)
+[-](/smaragdina/mourn-lawvere.md#:embed)
