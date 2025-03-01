@@ -1,0 +1,1 @@
+miniserve ./publish --index index.html --pretty-urls
