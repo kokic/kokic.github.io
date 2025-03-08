@@ -8,7 +8,7 @@ author: kokic
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
 
 <style>
-.kaiti, blockquote {
+.kaiti {
   font-family: "LXGW WenKai TC", serif;
   font-style: normal;
 }

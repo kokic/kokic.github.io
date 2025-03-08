@@ -1,33 +1,16 @@
 
+#import "/typst/html.typ": *
+
+#show: html.elem.with("html")
+#show math.equation.where(block: true): elem-frame.with(tag: "span", attrs: ("style": "display: flex; justify-content: center; overflow: auto;"))
+#show math.equation.where(block: false): elem-frame.with(tag: "span", attrs: ("style": "display: inline;"))
+
 #let script-size = 10pt
 #let normal-size = 12pt
 
 #let text-font = ("New Computer Modern", "FandolSong")
 
 #set text(size: normal-size, font: text-font, lang: "en")
-
-#let light-pink(content) = {
-  let adhoc-color = rgb(237, 0, 140)
-  show text: html.elem.with("span", attrs: ("style": "color: " + adhoc-color.to-hex() + ";"))
-  text(fill: adhoc-color)[#content]
-}
-
-#let clink(s) = link(s)[#text(font: "Jetbrains Mono", size: 0.9em, s)]
-
-#let hint(content, fill: gray) = {
-  show text: html.elem.with("span", attrs: ("style": "color: " + fill.to-hex() + ";"))
-  text(fill: fill)[#content]
-}
-
-#let kai(content) = {
-  show text: html.elem.with("span", attrs: ("class": "kaiti"))
-  text(font: ("FandolKai"), content)
-}
-
-#show emph: it => {
-  show text: html.elem.with("em")
-  text(style: "italic", font: ("New Computer Modern"), it.body)
-}
 
 #set par(spacing: 1em, leading: 0.65em)
 #set par(first-line-indent: 2em, justify: true)
@@ -82,9 +65,9 @@ TML MONTHLY, Newspaper of the Communist Party of Canada (Marxist-Leninist). Volu
 为了说明他作为数学教育家的工作质量, 他解释手头问题并与那些对他的工作表现出兴趣的人讨论的直截了当的方法, 我们举了他对提供 “为什么范畴论可能如此有用的广泛理由” 的请求的回答的例子. 以下是比尔不得不说的话:
 
 #show quote: set pad(x: 3.5em)
-#quote(block: true)[
+#quote(block: true)[#kai[
   人类的日常活动, 如在溪流旁的山上建造房屋、铺设电话管道网络、在太阳系中航行, 都需要可行的计划. 规划任何此类工作都需要发展对空间的思考. 每个发展都涉及许多思考步骤和许多相关的空间几何结构. 由于思考空间的必要多步骤性质, 必须采取独特的数学措施来使其可靠. 只有明确的思维原则 (逻辑) 和明确的空间原则 (几何) 才能保证可靠性. 艾伦伯格和麦克莱恩 60 年前发明的理论所取得的巨大进步使逻辑和几何学的原则变得明确; 这是通过发现逻辑和几何学的常见形式来实现的, 因此两者之间关系的原则也是明确的. 他们解决了亚里士多德在 2300 年前提出的一个问题, 当时亚里士多德最初在明确概念范畴方面取得了进展. 在 21 世纪, 他们的解决方案不仅适用于平面几何和中世纪三段论, 还适用于无穷维变换空间、数据 “空间” 以及每天应用数千次的其他概念工具. 逻辑和几何原理的形式都是由分类论者发现的, 它建立在空间之间转换和内部转换的 “自然性” 之上.
-]
+]]
 
 以下是 Lawvere 教授去世时发布的讣告. 我们添加了 1971 年 1 月 22 日#kai[《达尔豪斯公报》]#hint[[_Dalhousie Gazette_]] 上关于他被达尔豪斯大学开除的文章的传真件. 我们还提供了 Lawvere 博士在 1996 年 2 月 9 日至 11 日在温莎大学举行的关于意识起源和社会变革的跨学科会议上发表的题为 “#kai[数学改革的历史和哲学]” #hint[[_The History and Philosophy of Mathematic Reform_]] 的论文. 最后, 我们提供了对 Lawvere 博士的采访, 他用自己的话解释了他的工作.
 

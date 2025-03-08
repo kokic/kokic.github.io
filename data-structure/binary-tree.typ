@@ -2,7 +2,7 @@
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0)); 
 #set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
 
-#import "@preview/syntree:0.2.0": syntree
+#import "@preview/syntree:0.2.1": syntree
 
 #align(center)[
 \
