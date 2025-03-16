@@ -59,7 +59,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><a href="/tutorials/index" title="Kodama 教程">« Kodama 教程</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index'" title="Kodama 教程">« Kodama 教程</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="tutorials-publish" open><summary><header><h1><span class="taxon"></span>本地预览 <a class="slug" href="/tutorials/publish">[publish]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/publish-en-US" title="Preview [tutorials/publish-en-US]">en-US</a></span></li></ul></div></header></summary><p>如果你希望在本地查看生成页面 <code>publish/</code> 的效果, 通常你需要一个本地 http 服务器. 你可以使用任何你熟悉的工具完成这件事. 此处推荐 <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span>, 安装后在 Kodama 项目的根路径执行如下指令即可.</p>
 <pre><code class="language-sh">miniserve ./publish --index index.html --pretty-urls
 </code></pre>

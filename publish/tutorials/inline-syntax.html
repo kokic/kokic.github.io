@@ -59,7 +59,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><a href="/tutorials/link-rules" title="链接规则">« 链接规则</a></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/link-rules'" title="链接规则">« 链接规则</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
       <details id="tutorials-inline-syntax" open><summary><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax-en-US" title="Inline Syntax [tutorials/inline-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
 <p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
 <ul>
