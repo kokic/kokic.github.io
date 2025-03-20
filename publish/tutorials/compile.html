@@ -59,12 +59,10 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index'" title="Kodama 教程">« Kodama 教程</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="tutorials-compile" open><summary><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">en-US</a></span></li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index'" title="Kodama 教程">« Kodama 教程</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="tutorials-compile"><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">en-US</a></span></li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
 默认位于工作区路径的 <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> 文件夹下.<br />
 尽管有 <code>--root</code> 参数, 但仍然建议所有用户在 <code>index.md</code> 文件所在的目录下执行 <code>kodama c</code>.</p>
-<p><section class="block hide-metadata" data-taxon="">
-      <details id="tutorials-compile-help" open><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
+<p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-compile-help"><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
 Compile current workspace dir to HTMLs
 
 Usage: kodama.exe compile [OPTIONS]
@@ -78,18 +76,14 @@ OOptions:
   -f, --footer-mode &lt;FOOTER_MODE&gt;  Specify the inline mode for the footer sections [default: link] [possible values: link, embed]
   -h, --help                       Print help
 </code></pre>
-</details>
-    </section></p>
+</details></section></p>
 <p>举例来说, 如果最终部署到的 URL 为 <span class="link external"><a href="https://www.example.com/blog" title="https://www.example.com/blog">https://www.example.com/blog</a></span>, 这并非该域名的根目录,
 为了保证生成链接的正确性, 用户应该指定 <code>--base</code> 这一编译参数, 即</p>
 <pre><code class="language-sh">kodama c -b=https://www.example.com/blog
 </code></pre>
 <p>注意. 当然, 如果用户只是在本地使用, 就不必考虑这个问题了.</p>
-</details>
-    </section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="">
-      <details id="tutorials-compile-en-US" ><summary><header><h1><span class="taxon"></span>Kodama Compilation Command <a class="slug" href="/tutorials/compile-en-US">[compile-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">zh-CN</a></span></li></ul></div></header></summary><p>The command <code>kodama compile</code> or its abbreviation <code>kodama c</code> will build HTML files based on the input Markdown workspace path. By default, these files are placed in the <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> folder within the workspace path. Even with the <code>--root</code> parameter, it is still recommended for all users to execute <code>kodama c</code> in the directory where the <code>index.md</code> file is located.</p>
-<p><section class="block" data-taxon="">
-      <details id="tutorials-compile-help" ><summary><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="tutorials-compile-en-US"><header><h1><span class="taxon"></span>Kodama Compilation Command <a class="slug" href="/tutorials/compile-en-US">[compile-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">zh-CN</a></span></li></ul></div></header></summary><p>The command <code>kodama compile</code> or its abbreviation <code>kodama c</code> will build HTML files based on the input Markdown workspace path. By default, these files are placed in the <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> folder within the workspace path. Even with the <code>--root</code> parameter, it is still recommended for all users to execute <code>kodama c</code> in the directory where the <code>index.md</code> file is located.</p>
+<p><section class="block" data-taxon=""><details ><summary id="tutorials-compile-help"><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
 Compile current workspace dir to HTMLs
 
 Usage: kodama.exe compile [OPTIONS]
@@ -103,20 +97,16 @@ OOptions:
   -f, --footer-mode &lt;FOOTER_MODE&gt;  Specify the inline mode for the footer sections [default: link] [possible values: link, embed]
   -h, --help                       Print help
 </code></pre>
-</details>
-    </section></p>
+</details></section></p>
 <p>For example, if the final deployment URL is <span class="link external"><a href="https://www.example.com/blog" title="https://www.example.com/blog">https://www.example.com/blog</a></span>, which is not the root directory of the domain, to ensure the correctness of the generated links, the user should specify the <code>--base</code> compilation parameter, like so:</p>
 <pre><code class="language-sh">kodama c -b=https://www.example.com/blog
 </code></pre>
 <p>Note that this is only necessary if you are deploying to a specific subdirectory.
 If you are using it locally, you don’t need to consider this issue.</p>
-</details>
-    </section><section class="block" data-taxon="">
-      <details id="tutorials-github-workflow" ><summary><header><h1><span class="taxon"></span>Github Workflow <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/github-workflow-en-US" title="Github Workflow [tutorials/github-workflow-en-US]">en-US</a></span></li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>.
+</details></section><section class="block" data-taxon=""><details ><summary id="tutorials-github-workflow"><header><h1><span class="taxon"></span>Github Workflow <a class="slug" href="/tutorials/github-workflow">[github-workflow]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/github-workflow-en-US" title="Github Workflow [tutorials/github-workflow-en-US]">en-US</a></span></li></ul></div></header></summary><p>一个可供参考的 Github Workflow 配置 <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">如下</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>.
 唯一需要注意的是环境变量 <code>$PAGE_URL</code>, 用于 <span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">指定待部署页面的 URL</a></span>,
 你可以在仓库的 <code>settings/variables/actions</code> 设置 <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="它们 [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">它们</a></span>.</p>
-<p><section class="block" data-taxon="">
-      <details id="tutorials-workflow-yml" ><summary><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml">[workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
+<p><section class="block" data-taxon=""><details ><summary id="tutorials-workflow-yml"><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml">[workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -179,12 +169,10 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 </code></pre>
-</details>
-    </section></p>
+</details></section></p>
 <div class="footnote-definition" id="hongjr03-workflow">
   <sup class="footnote-definition-label"><a href="#hongjr03-workflow-back">1</a></sup><p>由 <span class="link external"><a href="https://github.com/hongjr03" title="Hong Jiarong [https://github.com/hongjr03]">Hong Jiarong</a></span> 提供.</p>
 </div>
-</details>
-    </section></details></section></footer></article>
+</details></section></details></section></footer></article>
 
 </div></body></html>

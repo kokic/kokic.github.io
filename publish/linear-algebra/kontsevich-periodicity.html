@@ -59,8 +59,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/index'" title="线性代数杂记">« 线性代数杂记</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Conjecture">
-      <details id="linear-algebra-kontsevich-periodicity" open><summary><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/index'" title="线性代数杂记">« 线性代数杂记</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Conjecture"><details open><summary id="linear-algebra-kontsevich-periodicity"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
@@ -73,8 +72,7 @@ $$</p>
 (I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
 $$</p>
 <p>为何不成立 <sup class="footnote-reference" id="kontsevich-hold-back"><a href="#kontsevich-hold">1</a></sup>.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="linear-algebra-kontsevich-periodicity-000A" open><summary><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
 <p>$$
@@ -98,12 +96,10 @@ $$</p>
 <div class="footnote-definition" id="skew-adjoint">
   <sup class="footnote-definition-label"><a href="#skew-adjoint-back">1</a></sup><p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
 </div>
-</details>
-    </section></p>
+</details></section></p>
 <div class="footnote-definition" id="kontsevich-hold">
   <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity-000A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">验证</a></span>. Iyudu 和 Shkarin 在他们的 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="论文 [https://arxiv.org/abs/1305.1965v3]">论文</a></span> 中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
 </div>
-</details>
-    </section><footer></footer></article>
+</details></section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-000A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-000A'; document.getElementById('linear-algebra-kontsevich-periodicity-000A').open = true;"><span class="taxon">Exegesis. </span>$n=2$ 交换版本</span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-000A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-000A'"><span class="taxon">Exegesis. </span>$n=2$ 交换版本</span></li></ul></div></nav></div></body></html>

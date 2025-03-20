@@ -59,14 +59,12 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/chromatic-graph'" title="染色图">« 染色图</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem">
-      <details id="data-structure-deletion-contraction" open><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/chromatic-graph'" title="染色图">« 染色图</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem"><details open><summary id="data-structure-deletion-contraction"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof">
-      <details id="data-structure-deletion-contraction-proof" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-deletion-contraction-proof"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
@@ -77,24 +75,19 @@ $$\begin{aligned}
 &\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
 &\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}$$</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
 <p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
 <p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
-</details>
-    </section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition">
-      <details id="data-structure-chromatic-graph" ><summary><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p></a></p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition"><details ><summary id="data-structure-chromatic-graph"><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p></a></p>
 <p>图的染色多项式最早是由 <span class="link local"><a href="/person/george-david-birkhoff" title="George David Birkhoff [person/george-david-birkhoff]">George. D. Birkhoff</a></span> 为了解决四色问题而提出的, 当然我们现在知道他并没有完全成功, 就如同 <span class="link local"><a href="/person/ernst-kummer" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 的理想理论之于费马大定理.</p>
-<p><section class="block" data-taxon="Theorem">
-      <details id="data-structure-deletion-contraction" ><summary><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-deletion-contraction"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
-<p><section class="block" data-taxon="Proof">
-      <details id="data-structure-deletion-contraction-proof" ><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block" data-taxon="Proof"><details ><summary id="data-structure-deletion-contraction-proof"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-proof">[deletion-contraction-proof]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
@@ -105,14 +98,12 @@ $$\begin{aligned}
 &\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
 &\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}$$</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
 <p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
 <p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
 <span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
     <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 21.007874 L 39.20733 21.007874 L 39.20733 0 Z "/>
@@ -185,7 +176,6 @@ $$\begin{aligned}
 .</p>
 <p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式 [data-structure/deletion-contraction]">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
 <p><figure><img src = "/data-structure/chromatic-0001.svg" /></figure></p>
-</details>
-    </section></details></section></footer></article>
+</details></section></details></section></footer></article>
 
 </div></body></html>

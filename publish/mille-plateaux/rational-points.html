@@ -59,8 +59,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="mille-plateaux-rational-points" open><summary><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
@@ -72,24 +71,21 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p><figure><img src = "/mille-plateaux/8P.svg" /></figure></p>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
 <p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block hide-metadata" data-taxon="Lemma">
-      <details id="mille-plateaux-canterbury" open><summary><header><h1><span class="taxon">Lemma 1. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
+<p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Lemma 1. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
 <p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
 <p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
 <p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$</p>
 <p>随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到</p>
 <p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
 <p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>反复利用 <span class="link local"><a href="/mille-plateaux/canterbury" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">该映射</a></span> 即可得到前文的 $8P$. 当然, 这也给出某个经典的恒等式</p>
 <p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
 <p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
 <p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
 \in \Q $$</p>
 <p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="mille-plateaux-circular-parameterization" open><summary><header><h1><span class="taxon">Exegesis 2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis 2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>我们对于 $\R$ 上的单位圆周曲线 $C(\R):x^2+y^2=1$ 和它关于角度 $\theta$ 的参数化 $\theta \mapsto (\cos\theta, \sin\theta)$ 是不陌生的. 通过计算这类统称为三角函数或者圆函数的映射, 很容易就能发现圆上的一些不同寻常的点</p>
@@ -102,10 +98,8 @@ $\gdef\R{\mathbf{R}}$</p>
 <p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
 <p>这样一种寻找点的方式, 通常被称为弦切法.</p>
 <p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
-</details>
-    </section></p>
-<p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="mille-plateaux-circular-curve" open><summary><header><h1><span class="taxon">Definition 3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+</details></section></p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Definition 3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\E{\operatorname{E}}$
@@ -189,9 +183,7 @@ $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 &\spaces= \E(\sin^{-1}x \mid 2) \\
 \end{aligned}
 $$</p>
-</details>
-    </section></p>
-</details>
-    </section><footer></footer></article>
+</details></section></p>
+</details></section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'; document.getElementById('mille-plateaux-canterbury').open = true;"><span class="taxon">Lemma 1. </span>Canterbury 曲线的切线与自身的交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'; document.getElementById('mille-plateaux-circular-parameterization').open = true;"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'; document.getElementById('mille-plateaux-circular-curve').open = true;"><span class="taxon">Definition 3. </span>圆曲线</span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Lemma 1. </span>Canterbury 曲线的切线与自身的交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Definition 3. </span>圆曲线</span></li></ul></div></nav></div></body></html>

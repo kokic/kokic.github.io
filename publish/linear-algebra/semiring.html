@@ -59,8 +59,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/automata-matrix'" title="自动机与矩阵求逆">« 自动机与矩阵求逆</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis">
-      <details id="linear-algebra-semiring" open><summary><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/automata-matrix'" title="自动机与矩阵求逆">« 自动机与矩阵求逆</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$
@@ -73,15 +72,12 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <div class="footnote-definition" id="semiring-applications">
   <sup class="footnote-definition-label"><a href="#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
-</details>
-    </section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis">
-      <details id="linear-algebra-automata-matrix" ><summary><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p><section class="block" data-taxon="Definition">
-      <details id="linear-algebra-regular-language" ><summary><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
@@ -114,10 +110,8 @@ $\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
 \end{aligned}
 $$</p>
 <p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
-</details>
-    </section>
-<section class="block" data-taxon="Exegesis">
-      <details id="linear-algebra-semiring" ><summary><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+</details></section>
+<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$
@@ -130,10 +124,8 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <div class="footnote-definition" id="semiring-applications">
   <sup class="footnote-definition-label"><a href="#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
-</details>
-    </section>
-<section class="block" data-taxon="Definition">
-      <details id="linear-algebra-star-semiring" ><summary><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</details></section>
+<section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -144,8 +136,7 @@ $\gdef\R{\mathbf{R}}$</p>
 $$</p>
 <p>从而在闭半环的 $a < 1$ 处继续沿用这个记号. 这样, 一旦当我们扩大到环 $\R$ 时, 闭半环 $\R_{\ge 0} \cup \{\infty\}$ 当中得出的结果仍然有效. 我们在这里要求 $\R_{\ge 0} \cup \{\infty\}$ 还有另一个原因, 如果对所有 $a$ 都定义 $a^* = \frac1{1-a}$, 那么 $a^{***} = a$, 即 $\square^*$ 是 $3$-幂等的运算, 这会让 Kleene 闭包和正则表达式的概念无从谈起.</p>
 <p>我们的论证可以直接拓展到一般的闭半环 $(\mathcal{Q}, +, \times, \square^*)$. 当其中的半环 $(\mathcal{Q}, +, \times)$ 被替换为环 $(R, +, \times)$ 时, 如果 $R$ 当中的 $\frac1{1-a}$ 在 $\mathcal{Q}$ 当中存在, 则 $\mathcal{Q}$ 当中的 $a^*$ 对应于 $R$ 当中的 $\frac1{1-a}$. 当然, 隐含的条件是, $R$ 的加法和乘法与 $\mathcal{Q}$ 兼容.</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>记 $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. 从现在起, 我们对于 $\R_{\ge 0}^* ~ (= \mathcal{Q})$ 当中的许多有用的观察可以安全地转移到 $\R ~ (= R)$. 根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 我们优先考虑 $\Mat_{n \times n}(\mathcal{Q})$, 从最小的非平凡情况 $n=2$ 开始, 由于我们的目的是计算矩阵的逆, 故取这个半环的可逆子集也即幺半群 $\Mat_{n \times n}(\mathcal{Q})^\times$,  其中的元素会形如</p>
 <p>$$
 M \spaces= \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \quad
@@ -172,8 +163,7 @@ d^* c \alpha & \quad d^* + d^*c \alpha b d^* \tag{1.1}
 \end{pmatrix}
 $$</p>
 <p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
-<p><section class="block" data-taxon="Example">
-      <details id="linear-algebra-automata-matrix-000A" ><summary><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
 <p>$$
 \begin{aligned}
@@ -187,10 +177,8 @@ M^{-1}
 &\spaces= \frac{1}{a d - b c} \begin{pmatrix}d & -b \\ -c & a\end{pmatrix}
 \end{aligned}
 $$</p>
-</details>
-    </section>
-<section class="block" data-taxon="Example">
-      <details id="linear-algebra-automata-matrix-000B" ><summary><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+</details></section>
+<section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
 M \spaces= \begin{pmatrix} A & B \\ C & D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A & -B \\ -C & 1-D \end{pmatrix}
@@ -229,9 +217,7 @@ M^{-1}
 \end{aligned}
 $$</p>
 <p>在这里, 我们得到了一个相当经典且重要的结果, 即分块求逆.</p>
-</details>
-    </section></p>
-</details>
-    </section></details></section></footer></article>
+</details></section></p>
+</details></section></details></section></footer></article>
 
 </div></body></html>

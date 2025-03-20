@@ -59,30 +59,23 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/index'" title="数据与可计算结构">« 数据与可计算结构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="">
-      <details id="data-structure-stack-tree-isomorphism" open><summary><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p></a></p>
-<p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-stack-permutation" open><summary><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
-</details>
-    </section></p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/index'" title="数据与可计算结构">« 数据与可计算结构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-stack-tree-isomorphism"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p></a></p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation"><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和两个空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+</details></section></p>
 <p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
-<p><section class="block hide-metadata" data-taxon="Definition">
-      <details id="data-structure-hille-encode" open><summary><header><h1><span class="taxon">Definition 2. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-hille-encode"><header><h1><span class="taxon">Definition 2. </span>Hille 编码 <a class="slug" href="/data-structure/hille-encode">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
 <li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
 <li>而对于 <code>01</code> 前的 $k$ 个 <code>0</code>, 这些 <code>0</code> 用于表示将当前树节点回溯到前 $k$ 层. 例如 <code>11001</code> 表示的树为 <code>(⋅ (⋅) (⋅))</code>.</li>
 </ul>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
-</details>
-    </section></p>
+</details></section></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
-<p><section class="block hide-metadata" data-taxon="Example">
-      <details id="data-structure-stack-permutation-000A" open><summary><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-000A"><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
 <p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
-</details>
-    </section></p>
+</details></section></p>
 <p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来就要解释这到底不平凡在哪里. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
 <p><details><summary><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></summary><pre>def encode : Tree → String
   | .node l r => "1" ++ encode l ++ encode r
@@ -142,8 +135,7 @@
 </svg>
 </span>
 , 其正确的 Hille 编码应该为 <code>1101000100</code>. 同时我们也可以解释, 为何中序遍历在许多情况下能够得到正确的 Hille 编码.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="data-structure-stack-permutation-000B" open><summary><header><h1><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-000B"><header><h1><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
 <p>$$
 \begin{CD}
 B @>>> S \\
@@ -151,29 +143,23 @@ B @>>> S \\
 H @>>> C
 \end{CD}
 $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof">
-      <details id="data-structure-stack-permutation-000C" open><summary><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
-</details>
-    </section></p>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-000C"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+</details></section></p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
-</details>
-    </section></p>
-<p><section class="block hide-metadata" data-taxon="Exegesis">
-      <details id="data-structure-stack-permutation-000D" open><summary><header><h1><span class="taxon">Exegesis 5. </span>有效长度估计 <a class="slug" href="/data-structure/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+</details></section></p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-000D"><header><h1><span class="taxon">Exegesis 5. </span>有效长度估计 <a class="slug" href="/data-structure/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 <code>0</code> 后所得的字符串长度.
 固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$. 当 $n=0$ 时 $L=0$, 当 $1 \le n \le 3$ 时 $L \le 2n-1$, 而当 $3 \le n$ 时 $L \le 3n-4$, 即</p>
 <p>$$
 n \spaces\le L_n \spaces\le \max(0, 2n-1, 3n-4)
 $$</p>
-</details>
-    </section></p>
+</details></section></p>
 <div class="footnote-definition" id="hille-order">
   <sup class="footnote-definition-label"><a href="#hille-order-back">1</a></sup><p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
 <div class="footnote-definition" id="inorder-sequence">
   <sup class="footnote-definition-label"><a href="#inorder-sequence-back">2</a></sup><p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
-</details>
-    </section><footer></footer></article>
+</details></section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation" title="栈置换 [data-structure/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation'; document.getElementById('data-structure-stack-permutation').open = true;"><span class="taxon">Definition 1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-hille-encode'; document.getElementById('data-structure-hille-encode').open = true;"><span class="taxon">Definition 2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000A" title="$n=3$ [data-structure/stack-permutation-000A]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000A'; document.getElementById('data-structure-stack-permutation-000A').open = true;"><span class="taxon">Example 3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation-000B]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000B'; document.getElementById('data-structure-stack-permutation-000B').open = true;"><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000D" title="有效长度估计 [data-structure/stack-permutation-000D]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000D'; document.getElementById('data-structure-stack-permutation-000D').open = true;"><span class="taxon">Exegesis 5. </span>有效长度估计</span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation" title="栈置换 [data-structure/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation'"><span class="taxon">Definition 1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-hille-encode'"><span class="taxon">Definition 2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000A" title="$n=3$ [data-structure/stack-permutation-000A]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000A'"><span class="taxon">Example 3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation-000B]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000B'"><span class="taxon">Exegesis 4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation-000D" title="有效长度估计 [data-structure/stack-permutation-000D]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-000D'"><span class="taxon">Exegesis 5. </span>有效长度估计</span></li></ul></div></nav></div></body></html>
