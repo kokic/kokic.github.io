@@ -390,31 +390,4 @@
             <path d="M 2.961984 3.85675 C 2.961984 4.304133 2.591736 4.674381 2.144353 4.674381 C 1.69697 4.674381 1.326722 4.304133 1.326722 3.85675 C 1.326722 3.409367 1.69697 3.039119 2.144353 3.039119 C 2.591736 3.039119 2.961984 3.409367 2.961984 3.85675 Z "/>
         </symbol>
     </defs>
-<style>
-:root {
-  --typst-text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --typst-text-color: white;
-  }
-}
-
-.typst-text use[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group use[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group path[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group path[stroke="#000000"] {
-  stroke: var(--typst-text-color);
-}
-</style>
 </svg>

@@ -181,31 +181,4 @@
             <path d="M 7.0325427 3.1336095 L 5.278927 1.3799934 L 4.7365713 1.9223489 L 5.700759 2.8865364 L 0.39772737 2.8865364 L 0.39772737 3.8748286 L 5.700759 3.8748286 L 4.7365713 4.839016 L 5.278927 5.3813715 L 7.0325427 3.6277556 L 7.0325427 3.1336095 Z "/>
         </symbol>
     </defs>
-<style>
-:root {
-  --typst-text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --typst-text-color: white;
-  }
-}
-
-.typst-text use[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group use[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group path[fill="#000000"] {
-  fill: var(--typst-text-color);
-}
-
-.typst-group path[stroke="#000000"] {
-  stroke: var(--typst-text-color);
-}
-</style>
 </svg>
