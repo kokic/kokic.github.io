@@ -1,16 +1,18 @@
 
 ---
-title: 有效长度估计
+title: 相交数
 author: kokic
-taxon: exegesis
+taxon: proposition
 !date: November 06, 2024
 ---
 
+$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
 $\gdef\spaces#1{~ #1 ~}$
 
-另一个可供探究的问题是 Hille 编码的有效长度 $L$, 这里有效长度指的是 Hille 编码去除末尾连续的 `0` 后所得的字符串长度. 
-固定二叉树的节点个数 $n$, 这 $\frac1{n+1}{2n \choose n}$ 棵树的有效长度最短当然是 $n$. 当 $n=0$ 时 $L=0$, 当 $1 \le n \le 3$ 时 $L \le 2n-1$, 而当 $3 \le n$ 时 $L \le 3n-4$, 即 
+所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画. 
 
 $$
-n \spaces\le L_n \spaces\le \max(0, 2n-1, 3n-4)
-$$   
+a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \binom kj \binom{k+j+2}j
+$$
+
+记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 `UUDD` 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数. 

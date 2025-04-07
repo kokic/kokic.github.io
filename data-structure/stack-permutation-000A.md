@@ -1,6 +1,7 @@
 
 ---
 title: $n=3$
+page-title: 三节点二叉树
 author: kokic
 taxon: example
 !date: November 06, 2024

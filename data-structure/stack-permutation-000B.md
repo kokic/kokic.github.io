@@ -2,7 +2,7 @@
 ---
 title: 栈编码与 Hille 编码的等价性
 author: kokic
-taxon: exegesis
+taxon: proposition
 !date: November 06, 2024
 ---
 
