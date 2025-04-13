@@ -18,7 +18,7 @@ g(d) \spaces= \begin{cases}
 \end{cases}
 $$
 
-如果 [Kock--Lawvere 公理](/data-structure/kock-lawvere) 成立, 则不可能有 $D = \{0\}$ [^impossible]. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 [Kock--Lawvere 公理](/data-structure/kock-lawvere) 得
+如果 [Kock--Lawvere 公理](/data-structure/kock-lawvere) 成立, 则不可能有 $D = \{0\}$ [^impossible]. 因此我们可以使用排中律去假设存在非零的 $d_0 \in D$, 由 [Kock--Lawvere 公理](/data-structure/kock-lawvere) 得
 
 $$ 1 \spaces= g(d_0) \spaces= b d_0 + g(0) \spaces= b d_0 $$
 

@@ -68,7 +68,7 @@ g(d) \spaces= \begin{cases}
 0 & \text{if} ~ d = 0
 \end{cases}
 $$</p>
-<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference" id="impossible-back"><a href="#impossible">1</a></sup>. 因此我们可以 [使用排中律] 假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
+<p>如果 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 成立, 则不可能有 $D = \{0\}$ <sup class="footnote-reference" id="impossible-back"><a href="#impossible">1</a></sup>. 因此我们可以使用排中律去假设存在非零的 $d_0 \in D$, 由 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 得</p>
 <p>$$ 1 \spaces= g(d_0) \spaces= b d_0 + g(0) \spaces= b d_0 $$</p>
 <p>再两边平方, 有 $1 = 0$, 矛盾.</p>
 <div class="footnote-definition" id="impossible">
@@ -78,7 +78,7 @@ $$</p>
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
-<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 为此我们需要下面的准备工作.</p>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/data-structure/casus-irreducibilis" title="Casus irreducibilis [data-structure/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
 <p><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>

@@ -14,7 +14,7 @@ $\gdef\C{\mathbf{C}}$
 
 $$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$
 
-不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 [矛盾](/data-structure/schanuel-lavendhomme). 为此我们需要下面的准备工作. 
+不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 [矛盾](/data-structure/schanuel-lavendhomme). 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 [必须品](/data-structure/casus-irreducibilis.md). 为此我们需要下面的准备工作. 
 
 [.](/data-structure/kock-lawvere.md#:embed)
 

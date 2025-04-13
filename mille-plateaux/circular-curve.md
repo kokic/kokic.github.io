@@ -78,7 +78,7 @@ $$
 \end{aligned}
 $$
 
-另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有
+这是 [切线半角换元](https://en.wikipedia.org/wiki/Tangent_half-angle_substitution) 或者按俄罗斯与国内更流行的称呼则是万能三角换元. 另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有
 
 $$
 \arcsin x \spaces= \frac{\pi}2-2\arctan\frac{\sqrt{1-x}}{\sqrt{1+x}}
