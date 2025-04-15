@@ -1,7 +1,7 @@
 
 ---
 title: Schanuel–Lavendhomme 构造
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: November 18, 2024
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: 日经观点
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: February 11, 2025
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: 屏幕右上角的 "FPS GPU CPU 延时"
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 9, 2025
 ---
 

@@ -1,7 +1,7 @@
 
 ---
 title: Github Workflow
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 en-US: [en-US](/tutorials/github-workflow-en-US.md)
 ---

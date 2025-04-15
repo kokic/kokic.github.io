@@ -1,7 +1,7 @@
 
 ---
 title: 内联语法
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 en-US: [en-US](/tutorials/inline-syntax-en-US.md)
 ---

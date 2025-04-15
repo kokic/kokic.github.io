@@ -2,7 +2,6 @@
 ---
 backlinks: false
 title: 链接
-author: kokic
 link-1: [洛衣博客](https://www.lozumi.com)
 link-2: [Colin’s Blog](https://blog.oyyko.com)
 link-3: [Reinhardt的魔法小屋](https://reinhardthk.github.io)
@@ -20,9 +19,11 @@ link-F: [辜开源](https://sites.google.com/view/gubao)
 link-G: [张峻铭](https://www.llddeddym.site)
 ---
 
+<div class="links-placeholder"></div>
+
 <script>
 
-const content = document.querySelector("details");
+const content = document.querySelector(".links-placeholder");
 
 const appendLinksTableRow = (table, array) => {
   const row = table.appendChild(document.createElement("tr"));
@@ -43,9 +44,7 @@ const renderLinksTable = (...rows) => {
   tableElement.style.overflow = "scroll";
   rows.forEach(x => appendLinksTableRow(tableElement, x));
 }
-</script>
 
-<script>
 renderLinksTable(
     [ "肖梁", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
   , [ "李文威的数学主页", "www.wwli.asia", "https://www.wwli.asia/index.php/zh" ]

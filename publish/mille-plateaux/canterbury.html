@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Canterbury 曲线的切线与自身的交点</title><link rel="stylesheet" href="/main.css">
+<meta name="viewport" content="width=device-width"><title>Canterbury 物语</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
 <style>
   body {
-    font-family: "Source Serif 4", "Noto Serif SC", serif;
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
   }
 
   pre,
   code {
-    font-family: "Source Code Pro", monospace;
+    font-family: monospace;
   }
 
   h1,
@@ -26,15 +24,15 @@
   h4,
   h5,
   h6 {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   nav {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   thead {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -59,138 +57,39 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
-<p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
-<p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
-<p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$</p>
-<p>随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到</p>
-<p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
-<p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
-$\gdef\R{\mathbf{R}}$
-$\gdef\Q{\mathbf{Q}}$</p>
-<p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解:</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p><section class="block hide-metadata" data-taxon="Problem"><details open><summary id="mille-plateaux-canterbury-000A"><header><h1><span class="taxon">Problem 1. </span>Canterbury 谜题 <a class="slug" href="/mille-plateaux/canterbury-000A">[canterbury-000A]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
-<p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Solution"><details open><summary id="mille-plateaux-canterbury-000B"><header><h1><span class="taxon">Solution 2. </span>谜题的解答 <a class="slug" href="/mille-plateaux/canterbury-000B">[canterbury-000B]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
 <p><figure><img src = "/mille-plateaux/8P.svg" /></figure></p>
-<p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标</p>
-<p>$$ 8P = \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block" data-taxon="Lemma"><details ><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
-<p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$</p>
+<p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标.</p>
+<p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 3. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
+<p>$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 \spaces= x_\Box^3 + y_\Box^3 $$</p>
 <p>注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到</p>
-<p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$</p>
+<p>$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) \spaces= 0 $$</p>
 <p>随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到</p>
 <p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
 <p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
-</details></section></p>
-<p>反复利用 <span class="link local"><a href="/mille-plateaux/canterbury" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury]">该映射</a></span> 即可得到前文的 $8P$. 当然, 这也给出某个经典的恒等式</p>
+<p>反复利用映射 $2P$ 即可得到 <span class="link local"><a href="/mille-plateaux/canterbury-000B" title="Canterbury 谜题的解答 [mille-plateaux/canterbury-000B]">前文</a></span> 的 $8P$. 当然, 这也给出如下经典的恒等式. 最早亦可追溯到 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 和 Bacht.</p>
 <p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 4. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Q{\mathbf{Q}}$</p>
 <p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
 <p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 
 \in \Q $$</p>
 <p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\Q{\mathbf{Q}}$
-$\gdef\R{\mathbf{R}}$</p>
-<p>我们对于 $\R$ 上的单位圆周曲线 $C(\R):x^2+y^2=1$ 和它关于角度 $\theta$ 的参数化 $\theta \mapsto (\cos\theta, \sin\theta)$ 是不陌生的. 通过计算这类统称为三角函数或者圆函数的映射, 很容易就能发现圆上的一些不同寻常的点</p>
-<p>$$ (\tfrac1{\sqrt2}, \tfrac1{\sqrt2}), \quad (\tfrac{1+\sqrt5}4, \sqrt{\tfrac58 - \tfrac{\sqrt5}8}), \quad (\tfrac{\sqrt3}2, \tfrac12) $$</p>
-<p>但是如果我们希望找到 $C(\Q)$ 上的点, 这个参数化就没有那么有用了. 考虑 $C(\Q):x^2+y^2=r^2$, 我们从点 $P(-r, 0)$ 出发, 任选一个 $t \in \R$ 作为过 $P$ 点直线的斜率, 即 $y = t(x+r)$, 随后联立之.</p>
-<p>$$ (1+t^2)x^2 + 2rt^2x + r^2t^2 - r^2 = 0 $$</p>
-<p>由于我们已经知道它的一个根 $x_1 = -r$. 且根与系数的关系给出</p>
-<p>$$ x_1 + x_2 = -\frac{2rt^2}{1+t^2} $$</p>
-<p>立得 $x_2 = r \cdot \frac{1-t^2}{1+t^2}$. 从而给出一个熟知的有理参数化</p>
-<p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
-<p>这样一种寻找点的方式, 通常被称为弦切法.</p>
-<p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
 </details></section></p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Definition. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\d{\operatorname{d}}$
-$\gdef\E{\operatorname{E}}$
-$\gdef\arc{\text{arc}}$
-$\gdef\R{\mathbf{R}}$
-$\gdef\Q{\mathbf{Q}}$</p>
-<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
-<p>$$
-L 
-\spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
-\spaces= r\arcsin\dfrac{x}{r}\bigg|_{-r}^r
-\spaces= \pi r
-$$</p>
-<p>因而圆的弧长定义了反正弦函数，即</p>
-<p>$$
-\arcsin x \spaces= \int_0^x\dfrac{1}{\sqrt{1-t^2}}\d t
-$$</p>
-<p>其反函数被称为正弦函数，统称圆函数或者三角函数.</p>
-<p>现在, 注意到 $\cot(x)$ 和 $\cot^\prime(x)$ 满足   $\cot^2(x) + \cot^\prime(x) = 1$, 令 $(\cot(x), \cot^\prime(x)) \mapsto (x,y)$, 即 $y=c-x^2$.</p>
-<p>其他三角函数及其导数也有类似的关系, 以下列出.</p>
-<p>$$\def\arraystretch{1.5}\begin{array}{|c|c|c|} 
-\hline
-u & (u, u^\prime) \mapsto (x,y) & g \\
-\hline
-\cot & y = -x^2-1 & 0 \\ 
-\hline
-\tan & y = x^2 + 1 & 0 \\ 
-\hline
-\cos, \sin & y^2 = 1-x^2 & 0 \\
-\hline
-\sec, \csc & y^2 = x^4-x^2 & 0 \\
-\hline
-\end{array}$$</p>
-<p>现在取 $C(\Q): y=x^2+1$ 上一定点 $(0, 1)$, 固定斜率 $t$ 从而有直线 $\ell(\Q): y=tx+1$, 类似地求曲线 $\ell(\Q) \cdot C(\Q) = 0$ 的交点, 得到 $(t, t^2+1)$.</p>
-<p>如果我们对抛物线 $C(\R)$ 求弧长, 所得到的将是 $\log$ 或 $\sinh^{-1}$ 的代数函数. 当然, $\sinh^{-1}$ 实际上也是 $\log$ 的代数函数.
-$$
-\begin{aligned} 
-s
-&\spaces= \int\sqrt{1+(2x)^2}\d x \\
-&\spaces= \frac12 \sqrt{1+4x^2} + \frac14\sinh^{-1}(2x)
-\end{aligned}
-$$</p>
-<p>现在重新回顾</p>
-<p>$$
-\int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
-$$</p>
-<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
-<p>$$
-\begin{aligned}
-\int\dfrac{\d x}{y} 
-&\spaces= \int \frac{\d{(\frac{1-t^2}{1+t^2})}}{\frac{2t}{1+t^2}} \\
-&\spaces= \int -\frac{4t}{(1+t^2)^2} \cdot \frac{1+t^2}{2t} \d t \\
-&\spaces= \int -\frac{2}{1+t^2} \d t \\
-&\spaces= -2\tan^{-1} t
-\end{aligned}
-$$</p>
-<p>这是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Tangent_half-angle_substitution" title="切线半角换元 [https://en.wikipedia.org/wiki/Tangent_half-angle_substitution]">切线半角换元</a></span> 或者按俄罗斯与国内更流行的称呼则是万能三角换元. 另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有</p>
-<p>$$
-\arcsin x \spaces= \frac{\pi}2-2\arctan\frac{\sqrt{1-x}}{\sqrt{1+x}}
-$$</p>
-<p>双曲线时的情况略有不同. 考虑 $C(\R):x^2-y^2=1$, 如果朴素地计算平面直角坐标系上的积分, 将得到一个会被归类为椭圆积分的表达式</p>
-<p>$$ 
-\int \sqrt{\frac{2x^2-1}{x^2-1}} \d x 
-\spaces= \int \frac{4x^4-1}{\sqrt{x^2-1}\sqrt{2x^2+1}} \d x
-$$</p>
-<p>由于分子部分的 $4x^4-1$ 是多项式函数, 因此整个积分的核心就在于下面这一项</p>
-<p>$$
-\int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
-\tag{1}
-$$</p>
-<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
-<p>现在考虑双曲线 $C(\R)$ 的一个参数化
-$$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
-<p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
-<p>$$
-\begin{aligned}
-\int \sqrt{\sinh^2 t + \cosh^2 t} \d t
-&\spaces= \int \sqrt{\cosh 2t} \d t \\
-&\spaces= -i \E(it \mid 2) \\
-&\spaces= -i \E(i \cosh^{-1}x \mid 2) \\
-&\spaces= \E(\sin^{-1}x \mid 2) \\
-\end{aligned}
-$$</p>
-</details></section></p>
-</details></section></details></section></footer></article>
+</details></section><footer></footer></article>
 
-</div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-000A" title="Canterbury 谜题 [mille-plateaux/canterbury-000A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-000A'"><span class="taxon">Problem 1. </span>Canterbury 谜题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-000B" title="Canterbury 谜题的解答 [mille-plateaux/canterbury-000B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-000B'"><span class="taxon">Solution 2. </span>谜题的解答</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-000C" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-000C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-000C'"><span class="taxon">Lemma 3. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 4. </span>Fermat 提升法</span></li></ul></div></nav></div></body></html>

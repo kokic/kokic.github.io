@@ -1,7 +1,7 @@
 
 ---
 title: Link rules
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 zh-CN: [zh-CN](/tutorials/link-rules.md)
 ---

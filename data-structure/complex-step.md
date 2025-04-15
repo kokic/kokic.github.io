@@ -1,7 +1,7 @@
 
 ---
 title: Complex step 微分法
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: May 13, 2024
 ---
@@ -9,7 +9,7 @@ taxon: exegesis
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 
-考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 [^distinguish] $f(a) + f'(a)(X-a) + \text{etc.}$, Mathworks 的创始人 Cleve Moler 约 60 年 [^publish-time] 前考虑了借用虚数单位 $i$ 的数值微分, 相关文献称为 [complex step 微分法](https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/) [^complex-step], 注意
+Mathworks 的创始人 Cleve Moler 约 60 年 [^publish-time] 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 [complex step 微分法](https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/) [^complex-step]. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 [^distinguish] $f(a) + f'(a)(X-a) + \text{etc.}$, 注意
 
 $$
 f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots

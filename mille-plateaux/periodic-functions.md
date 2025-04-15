@@ -1,7 +1,7 @@
 
 ---
 title: 周期函数的构造
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 31, 2024
 ---
 

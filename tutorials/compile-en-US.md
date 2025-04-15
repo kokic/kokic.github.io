@@ -1,7 +1,7 @@
 
 ---
 title: Kodama Compilation Command
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 4, 2025
 zh-CN: [zh-CN](/tutorials/compile.md)
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: Rayleigh 商定理
-author: kokic
+author: [kokic](/kokic.md)
 taxon: theorem
 !date: November 5, 2024
 ---

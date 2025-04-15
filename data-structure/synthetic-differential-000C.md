@@ -1,7 +1,7 @@
 
 ---
 title: [复步微分法](/data-structure/complex-step.md) 对数值微分误差的修正
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: May 9, 2024
 ---

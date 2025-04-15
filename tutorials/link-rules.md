@@ -1,7 +1,7 @@
 
 ---
 title: 链接规则
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 en-US: [en-US](/tutorials/link-rules-en-US.md)
 ---

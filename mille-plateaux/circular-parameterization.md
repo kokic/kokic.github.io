@@ -2,7 +2,7 @@
 ---
 title: 圆的参数化
 taxon: exegesis
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 28, 2024
 ---
 

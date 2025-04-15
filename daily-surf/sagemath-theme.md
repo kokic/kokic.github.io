@@ -1,7 +1,7 @@
 
 ---
 title: Sagemath Jupyter 主题设置
-author: kokic
+author: [kokic](/kokic.md)
 !date: February 17, 2025
 ---
 

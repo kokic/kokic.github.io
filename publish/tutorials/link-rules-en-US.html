@@ -4,20 +4,18 @@
 <meta name="viewport" content="width=device-width"><title>Link rules</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
 <style>
   body {
-    font-family: "Source Serif 4", "Noto Serif SC", serif;
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
   }
 
   pre,
   code {
-    font-family: "Source Code Pro", monospace;
+    font-family: monospace;
   }
 
   h1,
@@ -26,15 +24,15 @@
   h4,
   h5,
   h6 {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   nav {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   thead {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -59,9 +57,9 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index-en-US'" title="Kodama Tutorials">« Kodama Tutorials</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="tutorials-link-rules-en-US"><header><h1><span class="taxon"></span>Link rules <a class="slug" href="/tutorials/link-rules-en-US">[link-rules-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/link-rules" title="链接规则 [tutorials/link-rules]">zh-CN</a></span></li></ul></div></header></summary><p>Although the Markdown files processed by Kodama are syntactically compliant with the <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> standard, it implements many features beyond CommonMark. To distinguish these additional features syntactically, users must follow the rules below when using these extra functionalities.</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index-en-US'" title="Kodama Tutorials">« Kodama Tutorials</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="tutorials-link-rules-en-US"><header><h1><span class="taxon"></span>Link rules <a class="slug" href="/tutorials/link-rules-en-US">[link-rules-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/link-rules" title="链接规则 [tutorials/link-rules]">zh-CN</a></span></li></ul></div></header></summary><p>Although the Markdown files processed by Kodama are syntactically compliant with the <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> standard, it implements many features beyond CommonMark. To distinguish these additional features syntactically, users must follow the rules below when using these extra functionalities.</p>
 <p>First and foremost, it is important to emphasize that paths for both embedded files <sup class="footnote-reference" id="embed-link-back"><a href="#embed-link">1</a></sup> and internal links <sup class="footnote-reference" id="local-link-back"><a href="#local-link">2</a></sup> should be absolute paths relative to the current workspace, starting with <code>/</code>.</p>
-<p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-embed-syntax-en-US"><header><h1><span class="taxon"></span>Embed Syntax <a class="slug" href="/tutorials/embed-syntax-en-US">[embed-syntax-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">zh-CN</a></span></li></ul></div></header></summary><p>The difference between the embed syntax and the standard link syntax <code>[text](url)</code> is that the <code>url</code> in the embed has a special suffix, and it can only be one of the following:</p>
+<p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-embed-syntax-en-US"><header><h1><span class="taxon"></span>Embed Syntax <a class="slug" href="/tutorials/embed-syntax-en-US">[embed-syntax-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">zh-CN</a></span></li></ul></div></header></summary><p>The difference between the embed syntax and the standard link syntax <code>[text](url)</code> is that the <code>url</code> in the embed has a special suffix, and it can only be one of the following:</p>
 <ul>
 <li><code>.md#:embed</code>, to embed Markdown.</li>
 <li><code>.typ#:block</code>, to embed the compiled SVG from Typst and display it as a block-level element centered.</li>
@@ -80,7 +78,7 @@
 </div>
 </details></section></p>
 <p>Often, for quite simple Typst text, users will want a way to display it inline, corresponding to the inline math context in $\KaTeX$. This is where inline Typst comes in.</p>
-<p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-inline-syntax-en-US"><header><h1><span class="taxon"></span>Inline Syntax <a class="slug" href="/tutorials/inline-syntax-en-US">[inline-syntax-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax" title="内联语法 [tutorials/inline-syntax]">zh-CN</a></span></li></ul></div></header></summary><p>Inline Typst might be the true strength of Kodama, as the designers have made great efforts to make it behave just like or at least very close to $\KaTeX$ inline formulas, so that the inline formulas written in Typst do not appear inferior when mixed with $\KaTeX$.</p>
+<p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-inline-syntax-en-US"><header><h1><span class="taxon"></span>Inline Syntax <a class="slug" href="/tutorials/inline-syntax-en-US">[inline-syntax-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax" title="内联语法 [tutorials/inline-syntax]">zh-CN</a></span></li></ul></div></header></summary><p>Inline Typst might be the true strength of Kodama, as the designers have made great efforts to make it behave just like or at least very close to $\KaTeX$ inline formulas, so that the inline formulas written in Typst do not appear inferior when mixed with $\KaTeX$.</p>
 <p>Inline Typst also uses <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">link-like syntax</a></span>, but in this case, no file is actually linked. The <code>url</code> part is used to specify the inline mode and the <code>margin</code> parameter. In most cases, users do not need to manually set the <code>margin</code> parameter to achieve a good presentation. The inline mode is a parameter designed for the convenience of the Markdown editor’s own preview feature. When the user enters <code>math</code>, the content of the <code>text</code> part is automatically enclosed with <code>${}$</code> before being compiled by Typst. Here are some examples:</p>
 <ul>
 <li><p><code>[$x^2$](inline)</code>, <code>x^2</code> is a valid formula for both $\KaTeX$ and Typst. In this case, the Markdown editor’s own preview feature can correctly display it as $x^2$. However, this example is so simple that there is no real reason to use Typst.</p>
@@ -97,9 +95,9 @@
 <div class="footnote-definition" id="local-link">
   <sup class="footnote-definition-label"><a href="#local-link-back">2</a></sup><p>Internal links are used to link to other Markdown files within the same Kodama project. Compared to external links, internal links use a special style.</p>
 </div>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="tutorials-link-rules"><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules">[link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/link-rules-en-US" title="Link rules [tutorials/link-rules-en-US]">en-US</a></span></li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="tutorials-link-rules"><header><h1><span class="taxon"></span>链接规则 <a class="slug" href="/tutorials/link-rules">[link-rules]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/link-rules-en-US" title="Link rules [tutorials/link-rules-en-US]">en-US</a></span></li></ul></div></header></summary><p>虽然 Kodama 所处理的 Markdown 文件从语法上说是完全符合 <span class="link external"><a href="https://commonmark.org" title="CommonMark [https://commonmark.org]">CommonMark</a></span> 标准的, 但是由于它实现了 CommonMark 之外的许多功能, 为了从语法上区分开来, 用户在使用这些额外的功能时, 请务必遵循下面的规则.</p>
 <p>首先需要强调的是, 无论是嵌入文件 <sup class="footnote-reference" id="embed-link-back"><a href="#embed-link">1</a></sup> 还是内部链接 <sup class="footnote-reference" id="local-link-back"><a href="#local-link">2</a></sup> 的路径, 都应该是以 <code>/</code> 开头的相对于当前工作区的绝对路径.</p>
-<p><section class="block" data-taxon=""><details ><summary id="tutorials-embed-syntax"><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/embed-syntax-en-US" title="Embed Syntax [tutorials/embed-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
+<p><section class="block" data-taxon=""><details ><summary id="tutorials-embed-syntax"><header><h1><span class="taxon"></span>嵌入语法 <a class="slug" href="/tutorials/embed-syntax">[embed-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/embed-syntax-en-US" title="Embed Syntax [tutorials/embed-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>嵌入语法和标准链接语法 <code>[text](url)</code> 的区别在于, 嵌入的 <code>url</code> 带有特殊的后缀, 并且只能是以下几种:</p>
 <ul>
 <li><code>.md#:embed</code>, 嵌入 Markdown.</li>
 <li><code>.typ#:block</code>, 嵌入 Typst 编译后的 SVG, 并居中展示为块级元素.</li>
@@ -118,7 +116,7 @@
 </div>
 </details></section></p>
 <p>很多时候, 对于相当简单的 Typst 文本, 用户会希望有一种方式在展示上对应于 $\KaTeX$ 语境下的行内公式, 这就是内联 Typst.</p>
-<p><section class="block" data-taxon=""><details ><summary id="tutorials-inline-syntax"><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax-en-US" title="Inline Syntax [tutorials/inline-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
+<p><section class="block" data-taxon=""><details ><summary id="tutorials-inline-syntax"><header><h1><span class="taxon"></span>内联语法 <a class="slug" href="/tutorials/inline-syntax">[inline-syntax]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/inline-syntax-en-US" title="Inline Syntax [tutorials/inline-syntax-en-US]">en-US</a></span></li></ul></div></header></summary><p>内联 Typst 也许是 Kodama 真正的优势所在, 因为设计者做了许多努力使其表现的就和 $\KaTeX$ 行内公式一样或者至少非常接近, 从而不会让 Typst 的那部分行内公式在与 $\KaTeX$ 混合编排时显得廉价.</p>
 <p>内联 Typst 也采用 <span class="link local"><a href="/tutorials/embed-syntax" title="嵌入语法 [tutorials/embed-syntax]">链接类语法</a></span>, 但是此时不会有任何文件被链接. <code>url</code> 部分用于指定内联模式和 <code>margin</code> 参数, 绝大部分情况下, 用户都不需要自己手动设置 <code>margin</code> 参数便可以取得较好的呈现效果. 内联模式是一个为了方便 Markdown 编辑器本身的预览功能而设计的参数, 当用户填入 <code>math</code> 时, <code>text</code> 部分的内容就会被自动加上 <code>${}$</code> 再交给 Typst 编译. 以下是一些例子:</p>
 <ul>
 <li><code>[$x^2$](inline)</code>, <code>x^2</code> 同时是合法的 $\KaTeX$ 公式和 Typst 公式, 此时 Markdown 编辑器本身的预览功能可将它正确呈现为 $x^2$. 虽然这个例子简单到根本没有任何理由使用 Typst.</li>

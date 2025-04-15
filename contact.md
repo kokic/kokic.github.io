@@ -2,7 +2,7 @@
 ---
 backlinks: false
 title: 联系
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 18, 2025
 email-1: [kokicplus@gmail.com](mailto:kokicplus@gmail.com)
 email-2: [kokicplus@126.com](mailto:kokicplus@126.com)

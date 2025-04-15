@@ -1,7 +1,7 @@
 
 ---
 title: 染色图
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: July 21, 2024
 ---

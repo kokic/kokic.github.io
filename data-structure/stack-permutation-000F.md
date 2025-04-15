@@ -1,7 +1,7 @@
 
 ---
 title: 有效长度的上下界
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: November 06, 2024
 ---

@@ -1,8 +1,8 @@
 
 ---
 title: 圆曲线
-taxon: definition
-author: kokic
+taxon: exegesis
+author: [kokic](/kokic.md)
 !date: December 30, 2024
 ---
 

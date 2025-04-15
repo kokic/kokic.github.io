@@ -4,20 +4,18 @@
 <meta name="viewport" content="width=device-width"><title>Kodama Compilation Command</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
 <style>
   body {
-    font-family: "Source Serif 4", "Noto Serif SC", serif;
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
   }
 
   pre,
   code {
-    font-family: "Source Code Pro", monospace;
+    font-family: monospace;
   }
 
   h1,
@@ -26,15 +24,15 @@
   h4,
   h5,
   h6 {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   nav {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   thead {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -59,13 +57,13 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index-en-US'" title="Kodama Tutorials">« Kodama Tutorials</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="tutorials-compile-en-US"><header><h1><span class="taxon"></span>Kodama Compilation Command <a class="slug" href="/tutorials/compile-en-US">[compile-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">zh-CN</a></span></li></ul></div></header></summary><p>The command <code>kodama compile</code> or its abbreviation <code>kodama c</code> will build HTML files based on the input Markdown workspace path. By default, these files are placed in the <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> folder within the workspace path. Even with the <code>--root</code> parameter, it is still recommended for all users to execute <code>kodama c</code> in the directory where the <code>index.md</code> file is located.</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/tutorials/index-en-US'" title="Kodama Tutorials">« Kodama Tutorials</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="tutorials-compile-en-US"><header><h1><span class="taxon"></span>Kodama Compilation Command <a class="slug" href="/tutorials/compile-en-US">[compile-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/compile" title="Kodama 编译指令 [tutorials/compile]">zh-CN</a></span></li></ul></div></header></summary><p>The command <code>kodama compile</code> or its abbreviation <code>kodama c</code> will build HTML files based on the input Markdown workspace path. By default, these files are placed in the <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> folder within the workspace path. Even with the <code>--root</code> parameter, it is still recommended for all users to execute <code>kodama c</code> in the directory where the <code>index.md</code> file is located.</p>
 <p><section class="block hide-metadata" data-taxon=""><details open><summary id="tutorials-compile-help"><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
 Compile current workspace dir to HTMLs
 
 Usage: kodama.exe compile [OPTIONS]
 
-OOptions:
+Options:
   -b, --base &lt;BASE&gt;                Base URL or publish URL (e.g. https://www.example.com/) [default: /] 
   -o, --output &lt;OUTPUT&gt;            Path to output dir [default: ./publish]
   -r, --root &lt;ROOT&gt;                Configures the project root (for absolute paths) [default: ./]       
@@ -80,7 +78,7 @@ OOptions:
 </code></pre>
 <p>Note that this is only necessary if you are deploying to a specific subdirectory.
 If you are using it locally, you don’t need to consider this issue.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="tutorials-compile"><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">en-US</a></span></li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="tutorials-compile"><header><h1><span class="taxon"></span>Kodama 编译指令 <a class="slug" href="/tutorials/compile">[compile]</a></h1><div class="metadata"><ul><li class="meta-item">January 4, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">en-US</a></span></li></ul></div></header></summary><p>指令 <code>kodama compile</code> 或缩写为 <code>kodama c</code> 将根据输入的 Markdown 工作区路径构建出 HTML 文件.
 默认位于工作区路径的 <span class="link local"><a href="/tutorials/compile-help" title="shell [tutorials/compile-help]"><code>publish</code></a></span> 文件夹下.<br />
 尽管有 <code>--root</code> 参数, 但仍然建议所有用户在 <code>index.md</code> 文件所在的目录下执行 <code>kodama c</code>.</p>
 <p><section class="block" data-taxon=""><details ><summary id="tutorials-compile-help"><header><h1><span class="taxon"></span>shell <a class="slug" href="/tutorials/compile-help">[compile-help]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>$ kodama c --help
@@ -88,7 +86,7 @@ Compile current workspace dir to HTMLs
 
 Usage: kodama.exe compile [OPTIONS]
 
-OOptions:
+Options:
   -b, --base &lt;BASE&gt;                Base URL or publish URL (e.g. https://www.example.com/) [default: /] 
   -o, --output &lt;OUTPUT&gt;            Path to output dir [default: ./publish]
   -r, --root &lt;ROOT&gt;                Configures the project root (for absolute paths) [default: ./]       
@@ -103,7 +101,7 @@ OOptions:
 <pre><code class="language-sh">kodama c -b=https://www.example.com/blog
 </code></pre>
 <p>注意. 当然, 如果用户只是在本地使用, 就不必考虑这个问题了.</p>
-</details></section><section class="block" data-taxon=""><details ><summary id="tutorials-github-workflow-en-US"><header><h1><span class="taxon"></span>Github Workflow <a class="slug" href="/tutorials/github-workflow-en-US">[github-workflow-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link local"><a href="/tutorials/github-workflow" title="Github Workflow [tutorials/github-workflow]">zh-CN</a></span></li></ul></div></header></summary><p>A reference GitHub Workflow configuration can be found <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">here</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>. The only thing to note is the environment variable <code>$PAGE_URL</code>, which is used to <span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">specify the URL of the page to be deployed</a></span>. You can set <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="these [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">these</a></span> in the <code>settings/variables/actions</code> section of your repository.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="tutorials-github-workflow-en-US"><header><h1><span class="taxon"></span>Github Workflow <a class="slug" href="/tutorials/github-workflow-en-US">[github-workflow-en-US]</a></h1><div class="metadata"><ul><li class="meta-item">January 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/tutorials/github-workflow" title="Github Workflow [tutorials/github-workflow]">zh-CN</a></span></li></ul></div></header></summary><p>A reference GitHub Workflow configuration can be found <span class="link local"><a href="/tutorials/workflow-yml" title="workflow.yml [tutorials/workflow-yml]">here</a></span> <sup class="footnote-reference" id="hongjr03-workflow-back"><a href="#hongjr03-workflow">1</a></sup>. The only thing to note is the environment variable <code>$PAGE_URL</code>, which is used to <span class="link local"><a href="/tutorials/compile-en-US" title="Kodama Compilation Command [tutorials/compile-en-US]">specify the URL of the page to be deployed</a></span>. You can set <span class="link external"><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables" title="these [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/store-information-in-variables]">these</a></span> in the <code>settings/variables/actions</code> section of your repository.</p>
 <p><section class="block" data-taxon=""><details ><summary id="tutorials-workflow-yml"><header><h1><span class="taxon"></span>workflow.yml <a class="slug" href="/tutorials/workflow-yml">[workflow-yml]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>name: Deploy Kodama site to Pages
 
 on:

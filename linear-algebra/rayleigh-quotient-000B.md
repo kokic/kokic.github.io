@@ -1,5 +1,5 @@
 ---
-author: kokic
+author: [kokic](/kokic.md)
 taxon: example
 !date: November 5, 2024
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: 本地预览
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 31, 2024
 en-US: [en-US](/tutorials/publish-en-US.md)
 ---

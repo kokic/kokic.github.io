@@ -1,7 +1,7 @@
 
 ---
 title: 闭半环的 Conway 条件
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: January 29, 2025
 ---

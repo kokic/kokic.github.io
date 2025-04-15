@@ -1,7 +1,7 @@
 
 ---
 title: Wolfram 引擎与 WLJS
-author: kokic
+author: [kokic](/kokic.md)
 !date: July 29, 2024
 ---
 

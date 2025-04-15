@@ -1,7 +1,7 @@
 
 ---
 title: 分块矩阵的逆
-author: kokic
+author: [kokic](/kokic.md)
 taxon: example
 !date: May 10, 2024
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: 为民主提供现代定义 --- 悼念 F. William Lawvere
-author: kokic
+author: [kokic](/kokic.md)
 !date: October 28, 2024 --- November 2, 2024 
 ---
 
@@ -14,7 +14,7 @@ author: kokic
 }
 
 em {
-  font-family: "Source Serif 4", serif;
+  font-family: "Inria Sans", serif;
   font-style: italic;
 }
 </style>

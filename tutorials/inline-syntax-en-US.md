@@ -1,7 +1,7 @@
 
 ---
 title: Inline Syntax
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 zh-CN: [zh-CN](/tutorials/inline-syntax.md)
 ---

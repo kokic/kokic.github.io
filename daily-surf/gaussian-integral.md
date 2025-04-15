@@ -1,7 +1,7 @@
 
 ---
 title: 极坐标出现前人们怎样计算高斯积分
-author: kokic
+author: [kokic](/kokic.md)
 !date: November 2, 2024
 ---
 

@@ -1,7 +1,7 @@
 
 ---
 title: Kodama 教程
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 31, 2024
 en-US: [en-US](/tutorials/index-en-US.md)
 ---

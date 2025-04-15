@@ -1,7 +1,7 @@
 
 ---
 title: How to install Kodama
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 31, 2024
 zh-CN: [zh-CN](/tutorials/install.md)
 ---

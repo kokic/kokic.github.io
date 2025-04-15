@@ -1,7 +1,7 @@
 
 ---
 title: Kodama 编译指令
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 4, 2025
 en-US: [en-US](/tutorials/compile-en-US.md)
 ---

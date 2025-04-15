@@ -1,7 +1,7 @@
 
 ---
 title: 冒泡排序合成置换分解
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 26, 2024
 ---
 

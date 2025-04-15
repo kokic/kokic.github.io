@@ -1,7 +1,7 @@
 
 ---
 title: 二叉树类型
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: September 24, 2024
 ---

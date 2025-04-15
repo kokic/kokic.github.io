@@ -1,7 +1,7 @@
 
 ---
 title: 相交率
-author: kokic
+author: [kokic](/kokic.md)
 taxon: corollary
 !date: November 06, 2024
 ---

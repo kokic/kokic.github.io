@@ -1,7 +1,7 @@
 
 ---
 title: 关于半环的注释
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: May 9, 2024
 ---

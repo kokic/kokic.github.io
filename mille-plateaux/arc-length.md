@@ -1,7 +1,7 @@
 
 ---
 title: 曲线弧长计算
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 12, 2025
 ---
 

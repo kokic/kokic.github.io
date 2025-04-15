@@ -1,7 +1,7 @@
 
 ---
 title: 回声
-author: kokic
+author: [kokic](/kokic.md)
 contact: [contact](/contact.md)
 link: [links](/links.md)
 ---

@@ -2,7 +2,7 @@
 ---
 title: $n=2$ 交换版本
 page-title: 二阶矩阵交换版本
-author: kokic
+author: [kokic](/kokic.md)
 taxon: exegesis
 !date: February 18, 2025
 ---

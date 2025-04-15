@@ -1,7 +1,7 @@
 
 ---
 title: 复数
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: April 11, 2025
 ---

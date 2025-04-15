@@ -1,7 +1,7 @@
 
 ---
 title: Young 引理
-author: kokic
+author: [kokic](/kokic.md)
 taxon: lemma
 !date: May 14, 2019
 ---

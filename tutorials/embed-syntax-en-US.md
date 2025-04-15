@@ -1,7 +1,7 @@
 
 ---
 title: Embed Syntax
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 zh-CN: [zh-CN](/tutorials/embed-syntax.md)
 ---

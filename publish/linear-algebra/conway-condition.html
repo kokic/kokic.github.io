@@ -4,20 +4,18 @@
 <meta name="viewport" content="width=device-width"><title>闭半环的 Conway 条件</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
 <style>
   body {
-    font-family: "Source Serif 4", "Noto Serif SC", serif;
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
   }
 
   pre,
   code {
-    font-family: "Source Code Pro", monospace;
+    font-family: monospace;
   }
 
   h1,
@@ -26,15 +24,15 @@
   h4,
   h5,
   h6 {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   nav {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 
   thead {
-    font-family: "Source Sans 3", sans-serif;
+    font-family: "Inria Sans", sans-serif;
   }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -59,7 +57,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\Q{\mathbf{Q}}$</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Q{\mathbf{Q}}$</p>
 <p>Conway 证明了星半环矩阵可替换的条件为, 至少满足以下三个等式</p>
 <p>$\quad 1.$ $a \cdot 0 = 0 \cdot a = 0$. <br />
 $\quad 2.$ $(ab)^* = 1 + a(ba)^*b$. <br />
@@ -68,12 +66,12 @@ $\quad 3.$ $(a+b)^* = (a^* b)^* a^*$.</p>
 <p>$\quad (i).~$ 对于星半环 $S$, 星半环矩阵 $a \in S^{2\times 2}$ 满足不动点方程 $1+aa^* = a^*$. 并且这里实际上只需要对上三角或下三角矩阵验证即可. <br />
 $\quad (ii).$ 对于星半环 $S$ 和每个 $n \ge 0$, 星半环矩阵 $a \in S^{n\times n}$ 满足不动点方程 $1+aa^* = a^*$.</p>
 <p>每个闭半环都是 Conway 半环, 反过来则未必, 如 Conway 半环 $\Q_{\ge 0}\cup \{\infty\}$ 就不是闭半环.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item">kokic</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
@@ -107,7 +105,7 @@ $\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
 $$</p>
 <p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
 </details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$
@@ -121,7 +119,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
   <sup class="footnote-definition-label"><a href="#semiring-applications-back">1</a></sup><p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
 </details></section>
-<section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon="Definition"><details ><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -159,7 +157,7 @@ d^* c \alpha & \quad d^* + d^*c \alpha b d^* \tag{1.1}
 \end{pmatrix}
 $$</p>
 <p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
-<p><section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
 <p>$$
 \begin{aligned}
@@ -174,7 +172,7 @@ M^{-1}
 \end{aligned}
 $$</p>
 </details></section>
-<section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item">kokic</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block" data-taxon="Example"><details ><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
 M \spaces= \begin{pmatrix} A & B \\ C & D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A & -B \\ -C & 1-D \end{pmatrix}

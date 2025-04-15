@@ -2,7 +2,7 @@
 ---
 title: 置换分解的构造证明
 taxon: proof
-author: kokic
+author: [kokic](/kokic.md)
 !date: December 27, 2024
 ---
 

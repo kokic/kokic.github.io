@@ -1,7 +1,7 @@
 
 ---
 title: 生成函数系数
-author: kokic
+author: [kokic](/kokic.md)
 taxon: theorem
 !date: August 15, 2021
 ---

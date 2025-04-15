@@ -2,7 +2,7 @@
 ---
 title: 栈置换--二叉树同构
 !date: November 06, 2024 --- November 08, 2024 
-author: kokic
+author: [kokic](/kokic.md)
 license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 ---
 

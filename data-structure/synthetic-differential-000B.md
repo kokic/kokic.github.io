@@ -1,11 +1,12 @@
 
 ---
 title: 矩阵表示给出的微分运算
-author: kokic
+author: [kokic](/kokic.md)
 !date: May 9, 2024
 taxon: example
 ---
 
+$\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$
 
 设 $u, v \in R^R$, $n \in \Z$. 记 $A(u, u') = (\begin{smallmatrix} u & u' \\ 0 & u \end{smallmatrix})$. 从矩阵运算中立刻得到 

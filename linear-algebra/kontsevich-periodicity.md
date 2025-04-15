@@ -1,7 +1,7 @@
 
 ---
 title: Kontsevich 周期性猜想
-author: kokic
+author: [kokic](/kokic.md)
 taxon: conjecture
 !date: February 16, 2025
 ---

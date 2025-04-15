@@ -1,21 +1,15 @@
 
 ---
-title: Canterbury 曲线的切线与自身的交点
-taxon: lemma
-author: kokic
-!date: December 27, 2024
+title: Canterbury 物语
+author: [kokic](/kokic.md)
+taxon: exegesis
+!date: December 26, 2024
 ---
 
-对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 我们任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
 
-$$ x^3 + (y_\Box-\frac{x_\Box^2}{y_\Box^2}(x - x_\Box))^3 = x_\Box^3 + y_\Box^3 $$
-
-注意这里有一个 $(\frac1{y_\Box^2})^3$, 我们将其提出其即可得到
-
-$$ y_\Box^{-6}(x-x_\Box)^2(y_\Box^6x - x_\Box^6x + x_\Box^7 + 3x_\Box^4y_\Box^3+2x_\Box y_\Box^6) = 0 $$ 
-
-随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到
-
-$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$
-
-我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 [The Canterbury Puzzles](https://en.wikipedia.org/wiki/The_Canterbury_Puzzles) 的书, 这是其中的 “The Puzzle of the Doctor of Physic”. 
+[+](/mille-plateaux/canterbury-000A.md#:embed)
+[+谜题的解答](/mille-plateaux/canterbury-000B.md#:embed)
+[+切线与交点](/mille-plateaux/canterbury-000C.md#:embed)
+[+](/mille-plateaux/fermat-ascent.md#:embed)

@@ -1,7 +1,7 @@
 
 ---
 title: 正则语言集
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: May 9, 2024
 ---

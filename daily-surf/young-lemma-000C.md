@@ -1,7 +1,7 @@
 
 ---
 title: 加权算术平均--几何平均不等式
-author: kokic
+author: [kokic](/kokic.md)
 taxon: corollary
 !date: May 15, 2019
 ---

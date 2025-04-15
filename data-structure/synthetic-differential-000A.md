@@ -1,7 +1,7 @@
 
 ---
 title: 数值微分的误差
-author: kokic
+author: [kokic](/kokic.md)
 !date: May 9, 2024
 taxon: exegesis
 ---

@@ -9,7 +9,7 @@ Compile current workspace dir to HTMLs
 
 Usage: kodama.exe compile [OPTIONS]
 
-OOptions:
+Options:
   -b, --base <BASE>                Base URL or publish URL (e.g. https://www.example.com/) [default: /] 
   -o, --output <OUTPUT>            Path to output dir [default: ./publish]
   -r, --root <ROOT>                Configures the project root (for absolute paths) [default: ./]       

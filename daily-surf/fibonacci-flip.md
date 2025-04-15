@@ -1,7 +1,7 @@
 
 ---
 title: Fibonacci 抛硬币
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 24, 2025
 ---
 

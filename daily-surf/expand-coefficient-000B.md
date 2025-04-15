@@ -1,6 +1,6 @@
 
 ---
-author: kokic
+author: [kokic](/kokic.md)
 taxon: solution
 !date: August 15, 2021
 ---

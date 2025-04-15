@@ -1,6 +1,6 @@
 
 ---
-author: kokic
+author: [kokic](/kokic.md)
 taxon: proof
 !date: November 06, 2024
 ---

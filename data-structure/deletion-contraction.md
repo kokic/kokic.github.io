@@ -1,7 +1,7 @@
 
 ---
 title: 删除--收缩公式
-author: kokic
+author: [kokic](/kokic.md)
 taxon: theorem
 !date: July 21, 2024
 ---

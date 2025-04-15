@@ -1,7 +1,7 @@
 
 ---
 title: Sublime Text 4 高分屏设置
-author: kokic
+author: [kokic](/kokic.md)
 !date: February 21, 2025
 ---
 

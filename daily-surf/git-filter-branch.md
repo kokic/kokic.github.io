@@ -1,7 +1,7 @@
 
 ---
 title: Git 过滤分支
-author: kokic
+author: [kokic](/kokic.md)
 !date: February 15, 2025
 ---
 

@@ -1,7 +1,7 @@
 
 ---
 title: 所有函数都光滑
-author: kokic
+author: [kokic](/kokic.md)
 taxon: corollary
 !date: May 13, 2024
 ---

@@ -1,7 +1,7 @@
 
 ---
 title: Young 不等式
-author: kokic
+author: [kokic](/kokic.md)
 taxon: corollary
 !date: May 14, 2019
 ---

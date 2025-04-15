@@ -1,7 +1,7 @@
 
 ---
 title: 对偶数
-author: kokic
+author: [kokic](/kokic.md)
 taxon: definition
 !date: May 14, 2024
 ---

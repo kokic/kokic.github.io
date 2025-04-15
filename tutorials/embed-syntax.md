@@ -1,7 +1,7 @@
 
 ---
 title: 嵌入语法
-author: kokic
+author: [kokic](/kokic.md)
 !date: January 15, 2025
 en-US: [en-US](/tutorials/embed-syntax-en-US.md)
 ---
