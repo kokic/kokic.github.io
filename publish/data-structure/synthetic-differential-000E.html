@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>栈置换</title><link rel="stylesheet" href="/main.css">
+<meta name="viewport" content="width=device-width"><title>链式法则</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -69,7 +69,23 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-tree-isomorphism'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation"><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/dual-number'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
+<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
+<p>$$
+A(u)_x \spaces\eqdef \begin{pmatrix} u_x & u'_x \\ 0 & u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
+$$</p>
+<p>对于 $u: Y \to Z$, $v: X \to Y$. $A$ 上的复合 $A(u) \circ A(v)$ 可定义为 $A(u)_{v_x}$, $(v_x, v'_x) \in A(v)_x$. 我们来验证 $A(u) \circ A(v) = A(u \circ v)$.</p>
+<p>$$
+\begin{aligned}
+A(u)_{v_x} 
+&\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
+&\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
+&\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
+\end{aligned}
+$$</p>
 </details></section><footer></footer></article>
 
 </div></body></html>

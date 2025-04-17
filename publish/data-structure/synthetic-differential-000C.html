@@ -4,7 +4,9 @@
 <meta name="viewport" content="width=device-width"><title>复步微分法 对数值微分误差的修正</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
@@ -34,6 +36,16 @@
   thead {
     font-family: "Inria Sans", sans-serif;
   }
+
+
+  .katex .hdashline,
+  .katex .hline,
+  .katex .mfrac .frac-line,
+  .katex .overline .overline-line,
+  .katex .rule,
+  .katex .underline .underline-line {
+    min-height: 1.5px
+  }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
@@ -60,14 +72,37 @@
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/synthetic-differential'" title="综合微分法">« 综合微分法</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p>选取同样的 $h=10^{-5}$, 以下计算表明 Moler
-的方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-number" title="复数 [data-structure/complex-number]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
 <p>$$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
 $$</p>
 <p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将 <span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
 <p>中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">动摇</a></span> 经典逻辑中对于排中律的看法.</p>
-</details></section><footer></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
+<p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a & -b \\
+b & ~~~a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
+$$</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a & a' \\
+0 & a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
+$$</p>
+</details></section></details></section></footer></article>
 
 </div></body></html>

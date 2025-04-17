@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>闭半环的 Conway 条件</title><link rel="stylesheet" href="/main.css">
+<meta name="viewport" content="width=device-width"><title>矩阵闭包</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -69,16 +69,7 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Q{\mathbf{Q}}$</p>
-<p>Conway 证明了星半环矩阵可替换的条件为, 至少满足以下三个等式</p>
-<p>$\quad 1.$ $a \cdot 0 = 0 \cdot a = 0$. <br />
-$\quad 2.$ $(ab)^* = 1 + a(ba)^*b$. <br />
-$\quad 3.$ $(a+b)^* = (a^* b)^* a^*$.</p>
-<p>闭半环和 Conway 半环都自然地满足这些条件. 实际上这也是星半环构成 Conway 半环的条件, 这些条件可以等价地叙述为:</p>
-<p>$\quad (i).~$ 对于星半环 $S$, 星半环矩阵 $a \in S^{2\times 2}$ 满足不动点方程 $1+aa^* = a^*$. 并且这里实际上只需要对上三角或下三角矩阵验证即可. <br />
-$\quad (ii).$ 对于星半环 $S$ 和每个 $n \ge 0$, 星半环矩阵 $a \in S^{n\times n}$ 满足不动点方程 $1+aa^* = a^*$.</p>
-<p>每个闭半环都是 Conway 半环, 反过来则未必, 如 Conway 半环 $\Q_{\ge 0}\cup \{\infty\}$ 就不是闭半环.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/automata-matrix'" title="自动机与矩阵求逆">« 自动机与矩阵求逆</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
@@ -109,6 +100,6 @@ d^* c \alpha & \quad d^* + d^*c \alpha b d^* \tag{1.1}
 \end{pmatrix}
 $$</p>
 <p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
-</details></section></details></section></footer></article>
+</details></section><footer></footer></article>
 
 </div></body></html>

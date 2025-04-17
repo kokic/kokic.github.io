@@ -11,7 +11,7 @@ $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$
 
-这样一来, 我们所说的 ["将近似修正为严格等于"](/data-structure/synthetic-differential-000B.md) 就可以精确表示为
+这样一来, 我们所说的 ["将近似修正为严格等于"](/data-structure/synthetic-differential-000C.md) 就可以精确表示为
 
 $$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$
 

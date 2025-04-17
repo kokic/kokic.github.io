@@ -6,7 +6,6 @@ taxon: definition
 !date: May 14, 2024
 ---
 
-
 $\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$
 
@@ -16,7 +15,10 @@ $$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$
 
 不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 [矛盾](/data-structure/schanuel-lavendhomme). 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 [必须品](/data-structure/casus-irreducibilis.md). 为此我们需要下面的准备工作. 
 
-[.](/data-structure/kock-lawvere.md#:embed)
+[+](/data-structure/kock-lawvere.md#:embed)
 
 无论是单纯接受这个 [公理](/data-structure/kock-lawvere) 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题. 
 
+[+](/data-structure/synthetic-differential-000D.md#:embed)
+[+导出微分运算](/data-structure/synthetic-differential-000B.md#:embed)
+[+](/data-structure/synthetic-differential-000E.md#:embed)

@@ -2,7 +2,7 @@
 ---
 title: 综合微分法
 author: [kokic](/kokic.md)
-!date: May 9, 2024
+!date: May 9, 2024 --- May 14, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
@@ -17,5 +17,3 @@ $\gdef\C{\mathbf{C}}$
 [+复步微分法](/data-structure/complex-step.md#:embed)
 [+误差修正](/data-structure/synthetic-differential-000C.md#:embed)
 [+](/data-structure/dual-number.md#:embed)
-[+](/data-structure/synthetic-differential-000D.md#:embed)
-[+导出微分运算](/data-structure/synthetic-differential-000B.md#:embed)

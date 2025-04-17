@@ -4,7 +4,9 @@
 <meta name="viewport" content="width=device-width"><title>Complex step 微分法</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
@@ -33,6 +35,16 @@
 
   thead {
     font-family: "Inria Sans", sans-serif;
+  }
+
+
+  .katex .hdashline,
+  .katex .hline,
+  .katex .mfrac .frac-line,
+  .katex .overline .overline-line,
+  .katex .rule,
+  .katex .underline .underline-line {
+    min-height: 1.5px
   }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
@@ -69,20 +81,19 @@ $$
 \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
 $$</p>
 <p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
-<div class="footnote-definition" id="distinguish">
-  <sup class="footnote-definition-label"><a href="#distinguish-back">3</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
-</div>
 <div class="footnote-definition" id="publish-time">
   <sup class="footnote-definition-label"><a href="#publish-time-back">1</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
 </div>
 <div class="footnote-definition" id="complex-step">
   <sup class="footnote-definition-label"><a href="#complex-step-back">2</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
 </div>
+<div class="footnote-definition" id="distinguish">
+  <sup class="footnote-definition-label"><a href="#distinguish-back">3</a></sup><p><span class="link local"><a href="/data-structure/free-bound-denote" title="自由–绑定记号 [data-structure/free-bound-denote]">习惯上</a></span> 会混淆 $x$ 与 $X$, 这里做出区分.</p>
+</div>
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p>选取同样的 $h=10^{-5}$, 以下计算表明 Moler
-的方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-number" title="复数 [data-structure/complex-number]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
 <p>$$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
 $$</p>
@@ -93,7 +104,7 @@ $$</p>
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
 <p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
 <p>$$

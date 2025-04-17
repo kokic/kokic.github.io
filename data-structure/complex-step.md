@@ -23,6 +23,6 @@ $$
 
 这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 [符号微分](/data-structure/dual-number) 时, 所取得的优势是更精简的中间表达式和非递归的计算过程. 
 
-[^distinguish]: 习惯上会混淆 $x$ 与 $X$, 这里做出区分. 
 [^publish-time]: 即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.
 [^complex-step]: 按方法的内容来说, "complex step 微分" 可以翻译为 "复步微分". 
+[^distinguish]: [习惯上](/data-structure/free-bound-denote.md) 会混淆 $x$ 与 $X$, 这里做出区分. 

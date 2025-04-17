@@ -10,8 +10,7 @@ $\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 
-选取同样的 $h=10^{-5}$, 以下计算表明 Moler
-的方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失. 
+选取同样的 $h=10^{-5}$, 以下计算表明 [Moler 的方法](/data-structure/complex-number.md) 相比 [此处](/data-structure/synthetic-differential-000A.md) 基于有限差分的数值微分方法能够很好的避免精度损失. 
 
 $$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2

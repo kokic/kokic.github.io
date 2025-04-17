@@ -4,7 +4,9 @@
 <meta name="viewport" content="width=device-width"><title>对偶数</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
 
@@ -34,6 +36,16 @@
   thead {
     font-family: "Inria Sans", sans-serif;
   }
+
+
+  .katex .hdashline,
+  .katex .hline,
+  .katex .mfrac .frac-line,
+  .katex .overline .overline-line,
+  .katex .rule,
+  .katex .underline .underline-line {
+    min-height: 1.5px
+  }
 </style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
@@ -62,7 +74,7 @@ $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
 <p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/data-structure/casus-irreducibilis" title="Casus irreducibilis [data-structure/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
-<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom 1. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
@@ -818,6 +830,63 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <
 </blockquote>
 </details></section></p>
 <p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis 2. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
+<p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a & -b \\
+b & ~~~a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
+$$</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a & a' \\
+0 & a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
+$$</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example 3. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $u, v \in R^R$, $n \in \Z$. 记 $A(u, u') = (\begin{smallmatrix} u & u' \\ 0 & u \end{smallmatrix})$. 从矩阵运算中立刻得到</p>
+<ol>
+<li>$A(u, u') + A(v, v') \spaces= A(u+v, u'+v')$</li>
+<li>$A(u, u') - A(v, v') \spaces= A(u-v, u'-v')$</li>
+<li>$A(u, u') \cdot A(v, v') \spaces= A(uv, u'v + uv')$</li>
+<li>$A(u, u') \cdot (A(v, v'))^{-1} \spaces= A(uv^{-1}, (u'v - uv')v^{-2})$</li>
+<li>$(A(u, u'))^n = A(u^n, nu^{n-1}u')$</li>
+</ol>
+<p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可 <span class="link local"><a href="/data-structure/synthetic-differential-000F" title="对数的验证 [data-structure/synthetic-differential-000F]">验证</a></span>.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis 4. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
+<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
+<p>$$
+A(u)_x \spaces\eqdef \begin{pmatrix} u_x & u'_x \\ 0 & u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
+$$</p>
+<p>对于 $u: Y \to Z$, $v: X \to Y$. $A$ 上的复合 $A(u) \circ A(v)$ 可定义为 $A(u)_{v_x}$, $(v_x, v'_x) \in A(v)_x$. 我们来验证 $A(u) \circ A(v) = A(u \circ v)$.</p>
+<p>$$
+\begin{aligned}
+A(u)_{v_x} 
+&\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
+&\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
+&\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
+\end{aligned}
+$$</p>
+</details></section></p>
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-complex-step"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="publish-time-back"><a href="#publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="complex-step-back"><a href="#complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="distinguish-back"><a href="#distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>
@@ -830,20 +899,19 @@ $$
 \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
 $$</p>
 <p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
-<div class="footnote-definition" id="distinguish">
-  <sup class="footnote-definition-label"><a href="#distinguish-back">3</a></sup><p>习惯上会混淆 $x$ 与 $X$, 这里做出区分.</p>
-</div>
 <div class="footnote-definition" id="publish-time">
   <sup class="footnote-definition-label"><a href="#publish-time-back">1</a></sup><p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
 </div>
 <div class="footnote-definition" id="complex-step">
   <sup class="footnote-definition-label"><a href="#complex-step-back">2</a></sup><p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
 </div>
+<div class="footnote-definition" id="distinguish">
+  <sup class="footnote-definition-label"><a href="#distinguish-back">3</a></sup><p><span class="link local"><a href="/data-structure/free-bound-denote" title="自由–绑定记号 [data-structure/free-bound-denote]">习惯上</a></span> 会混淆 $x$ 与 $X$, 这里做出区分.</p>
+</div>
 </details></section><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p>选取同样的 $h=10^{-5}$, 以下计算表明 Moler
-的方法相比前文基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-number" title="复数 [data-structure/complex-number]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
 <p>$$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
 $$</p>
@@ -854,7 +922,7 @@ $$</p>
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
 <p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
 <p>$$
@@ -876,4 +944,4 @@ a & a' \\
 $$</p>
 </details></section></details></section></footer></article>
 
-</div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-kock-lawvere'"><span class="taxon">Axiom 1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000D" title="矩阵表示 [data-structure/synthetic-differential-000D]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000D'"><span class="taxon">Exegesis 2. </span>矩阵表示</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000B'"><span class="taxon">Example 3. </span>导出微分运算</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000E" title="链式法则 [data-structure/synthetic-differential-000E]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000E'"><span class="taxon">Exegesis 4. </span>链式法则</span></li></ul></div></nav></div></body></html>
