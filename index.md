@@ -4,6 +4,7 @@ title: 回声
 author: [kokic](/kokic.md)
 contact: [contact](/contact.md)
 link: [links](/links.md)
+projects: [projects](/projects/index.md)
 ---
 
 本站点使用 [Kodama](https://github.com/kokic/kodama) 构建. 
