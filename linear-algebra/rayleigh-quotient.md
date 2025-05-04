@@ -44,6 +44,4 @@ Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 [^hermite-m
 
 [+ 一般二次型的商](/linear-algebra/rayleigh-quotient-000C.md#:embed)
 
-<!-- [+ 含一次项的情况](/linear-algebra/rayleigh-quotient-000D.md#:embed) -->
-
 [^hermite-matrix]: 自伴随矩阵, 复对称矩阵. 
