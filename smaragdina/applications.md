@@ -19,8 +19,6 @@ author: [kokic](/kokic.md)
 - 评价: macOS 的剪贴板也是残废
 - 链接: <https://github.com/Clipy/Clipy>
 
----
-
 ### Android
 
 #### Authenticator
