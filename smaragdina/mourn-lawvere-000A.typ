@@ -15,7 +15,6 @@
 #set par(spacing: 1em, leading: 0.65em)
 #set par(first-line-indent: 2em, justify: true)
 
-// Contents
 #[
 #show align: html.elem.with("div", attrs: ("style": "text-align: center; display: block;"))
 #align(center)[
@@ -29,7 +28,6 @@
 #show align: html.elem.with("div", attrs: ("style": "padding: 0 46px;"))
 #align(left)[
 #text(script-size)[
-// #show: pad.with(x: 35pt)
 
 *原文:* Central Committee, Communist Party of Canada (Marxist-Leninist), *Providing Democracy with a Modern Definition*. 
 TML MONTHLY, Newspaper of the Communist Party of Canada (Marxist-Leninist). Volume 53 Number 1 - January 2023. #light-pink(clink("https://cpcml.ca/Tmlm2023/Articles/M530010.HTM")). 

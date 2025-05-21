@@ -1,6 +1,6 @@
 
 ---
-title: Respond to people saying your movie doesn't make sense. 
+title: Lynch 对于人们说 "你的电影没有意义" 的回应 
 author: David Lynch
 !date: February 21, 2025
 youtube: [Youtube](https://www.youtube.com/watch?v=YtlrDGRCAb8)
