@@ -20,16 +20,22 @@ em {
 </style>
 
 <script type="module">
-  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+function loadHypodoxia() {
   const hypodoxia = new Hypodoxia([
     {
-      name: "Kokic", 
-      link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json", 
+      name: "Kokic",
+      link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
     }
   ]);
-  document.addEventListener("DOMContentLoaded", async () => {
-    document.querySelector('article').appendChild(await hypodoxia.toElement());
-  });
+  document.addEventListener("DOMContentLoaded", async () =>
+    document.querySelector('article').appendChild(await hypodoxia.toElement()));
+}
+
+const href = document.location.href;
+(href.startsWith("https://kokic.github.io/smaragdina/") &&
+  href != "https://kokic.github.io/smaragdina/index") && loadHypodoxia();
 </script>
 
 [](/smaragdina/mourn-lawvere-000A.typ#:html)
