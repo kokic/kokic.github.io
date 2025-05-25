@@ -29,7 +29,7 @@ async function loadHypodoxia() {
       link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
     }
   ]);
-  await hypodoxia.appendTo(document.querySelector('article'));
+  await hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
 }
 
 const href = document.location.href;
