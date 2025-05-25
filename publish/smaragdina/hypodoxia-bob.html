@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>如何为使用 Hypodoxia 的网站提交评论</title><link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/smaragdina/index'" title="翠玉录">« 翠玉录</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="smaragdina-hypodoxia-bob"><header><h1><span class="taxon"></span>如何为使用 Hypodoxia 的网站提交评论 <a class="slug" href="/smaragdina/hypodoxia-bob">[hypodoxia-bob]</a></h1><div class="metadata"><ul><li class="meta-item">May 25, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\textbf{Remark.}$ 这不是一篇技术性的文章, 所以它只介绍操作流程而不探讨原理等细节. 它面向的是想要发送评论的用户, 对于希望为网站添加 Hypodoxia 支持的维护者, 请参考还在编写中的 <span class="link local"><a href="/smaragdina/hypodoxia-alice" title="如何使用 Hypodoxia [smaragdina/hypodoxia-alice]">Alice 篇</a></span>.</p>
+<p><span class="link external"><a href="https://github.com/kokic/hypodoxia" title="Hypodoxia [https://github.com/kokic/hypodoxia]">Hypodoxia</a></span> 是一个实验性的评论系统, 它通过改变「评论」这一实体的数据归属方式 $—$ 即以另一种角度回答 “评论数据储存于何处?” 来为目标提供评论服务. 举例来说, 对用户 Bob 而言, Bob 对 Alice 的评论永远属于 Bob, Alice 只能决定 Bob 或者其他用户的评论以何种方式呈现在自己的页面上, 而不能像许多中心化平台那样真正地删除一条评论. 或者用更形象的说法, Alice 只是「订阅」了 Bob 的评论数据.</p>
+<p>目前, 本站和 <span class="link external"><a href="https://kirisamemagicshop.github.io" title="Kirisame Magic Shop [https://kirisamemagicshop.github.io]">Kirisame Magic Shop</a></span> 目前均使用着 Hypodoxia, 对于希望在这两个网站上发表评论的用户 $X$, 唯一的前提是, $X$ 需要能够在公网上提供一份能够被正确响应的评论数据, 如 <span class="link external"><a href="https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json" title="comments.json [https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json]">comments.json</a></span>. 为了做到这一点, 没有服务器的 $X$ 可以简单地创建一个 Github 公开仓库, 在其中新建 JSON 文件 <sup class="footnote-reference" id="comment-format-back"><a href="#comment-format">1</a></sup> 并写下</p>
+<pre><code class="language-json">[
+    {
+        "href": "&lt;target-href&gt;", 
+        "text": "&lt;your-comment&gt;" 
+    }, 
+]
+</code></pre>
+<p>这里的 <code>&lt;target-href&gt;</code> 确定了 $X$ 要对哪个页面作出评论, $X$ 只需要在他想评论的页面上用浏览器进入控制台并执行<code>document.location.href</code> 便能精确无误地获得 <code>&lt;target-href&gt;</code>, 通常这份信息也会显示在浏览器的地址栏.</p>
+<p>做完这一切后, $X$ 只需要向使用了 Hypodoxia 的网站维护者 $A$ 提交他的评论数据链接, 如</p>
+<pre><code>https://raw.githubusercontent.com/x/repos/refs/heads/main/comments.json
+</code></pre>
+<p>在 $A$ 将此链接加入订阅列表后, $X$ 的评论就能正常展示了. 显而易见, 这种提交然后等待订阅的流程只会发生一次, $X$ 日后若是想要修改或者为其他页面添加评论, 所需做的仅仅只是更新 <code>comment.json</code>.</p>
+<div class="footnote-definition" id="comment-format">
+  <sup class="footnote-definition-label"><a href="#comment-format-back">1</a></sup><p>Hypodoxia 目前只支持 JSON.</p>
+</div>
+</details></section><footer></footer></article>
+
+</div></body></html>
