@@ -22,15 +22,14 @@ em {
 <script type="module">
 import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
 
-function loadHypodoxia() {
+async function loadHypodoxia() {
   const hypodoxia = new Hypodoxia([
     {
       name: "Kokic",
       link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
     }
   ]);
-  document.addEventListener("DOMContentLoaded", async () =>
-    document.querySelector('article').appendChild(await hypodoxia.toElement()));
+  await hypodoxia.appendTo(document.querySelector('article'));
 }
 
 const href = document.location.href;
