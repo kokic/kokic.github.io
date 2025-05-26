@@ -36,7 +36,24 @@
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+</style>
+
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
@@ -71,23 +88,6 @@ em {
   font-style: italic;
 }
 </style>
-<script type="module">
-import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-async function loadHypodoxia() {
-  const hypodoxia = new Hypodoxia([
-    {
-      name: "Kokic",
-      link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-    }
-  ]);
-  await hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-}
-
-const href = document.location.href;
-(href.startsWith("https://kokic.github.io/smaragdina/") &&
-  href != "https://kokic.github.io/smaragdina/index") && loadHypodoxia();
-</script>
 <p>
   <div style="text-align: center; display: block;">Central Committee, CPC<br>译者: Kokic Hydrangea</div>
   <p><br></p>

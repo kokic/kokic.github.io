@@ -4,7 +4,7 @@ title: 翠玉录
 collect: true
 ---
 
-[-](/smaragdina/hypodoxia-bob.md#:embed)
+[-](/smaragdina/hypodoxia.md#:embed)
 [-](/smaragdina/applications.md#:embed)
 [-](/smaragdina/lynch-movie.md#:embed)
 [-](/smaragdina/celtic-myths.md#:embed)

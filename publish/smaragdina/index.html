@@ -36,7 +36,24 @@
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+</style>
+
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
@@ -59,24 +76,10 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="smaragdina-index"><header><h1><span class="taxon"></span>翠玉录 <a class="slug" href="/smaragdina/index">[smaragdina]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon=""><details ><summary id="smaragdina-hypodoxia-bob"><header><h1><span class="taxon"></span>如何为使用 Hypodoxia 的网站提交评论 <a class="slug" href="/smaragdina/hypodoxia-bob">[hypodoxia-bob]</a></h1><div class="metadata"><ul><li class="meta-item">May 25, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\textbf{Remark.}$ 这不是一篇技术性的文章, 所以它只介绍操作流程而不探讨原理等细节. 它面向的是想要发送评论的用户, 对于希望为网站添加 Hypodoxia 支持的维护者, 请参考还在编写中的 <span class="link local"><a href="/smaragdina/hypodoxia-alice" title="如何使用 Hypodoxia [smaragdina/hypodoxia-alice]">Alice 篇</a></span>.</p>
-<p><span class="link external"><a href="https://github.com/kokic/hypodoxia" title="Hypodoxia [https://github.com/kokic/hypodoxia]">Hypodoxia</a></span> 是一个实验性的评论系统, 它通过改变「评论」这一实体的数据归属方式 $—$ 即以另一种角度回答 “评论数据储存于何处?” 来为目标提供评论服务. 举例来说, 对用户 Bob 而言, Bob 对 Alice 的评论永远属于 Bob, Alice 只能决定 Bob 或者其他用户的评论以何种方式呈现在自己的页面上, 而不能像许多中心化平台那样真正地删除一条评论. 或者用更形象的说法, Alice 只是「订阅」了 Bob 的评论数据.</p>
-<p>目前, 本站和 <span class="link external"><a href="https://kirisamemagicshop.github.io" title="Kirisame Magic Shop [https://kirisamemagicshop.github.io]">Kirisame Magic Shop</a></span> 目前均使用着 Hypodoxia, 对于希望在这两个网站上发表评论的用户 $X$, 唯一的前提是, $X$ 需要能够在公网上提供一份能够被正确响应的评论数据, 如 <span class="link external"><a href="https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json" title="comments.json [https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json]">comments.json</a></span>. 为了做到这一点, 没有服务器的 $X$ 可以简单地创建一个 Github 公开仓库, 在其中新建 JSON 文件 <sup class="footnote-reference" id="comment-format-back"><a href="#comment-format">1</a></sup> 并写下</p>
-<pre><code class="language-json">[
-    {
-        "href": "&lt;target-href&gt;", 
-        "text": "&lt;your-comment&gt;" 
-    }, 
-]
-</code></pre>
-<p>这里的 <code>&lt;target-href&gt;</code> 确定了 $X$ 要对哪个页面作出评论, $X$ 只需要在他想评论的页面上用浏览器进入控制台并执行<code>document.location.href</code> 便能精确无误地获得 <code>&lt;target-href&gt;</code>, 通常这份信息也会显示在浏览器的地址栏.</p>
-<p>做完这一切后, $X$ 只需要向使用了 Hypodoxia 的网站维护者 $A$ 提交他的评论数据链接, 如</p>
-<pre><code>https://raw.githubusercontent.com/x/repos/refs/heads/main/comments.json
-</code></pre>
-<p>在 $A$ 将此链接加入订阅列表后, $X$ 的评论就能正常展示了. 显而易见, 这种提交然后等待订阅的流程只会发生一次, $X$ 日后若是想要修改或者为其他页面添加评论, 所需做的仅仅只是更新 <code>comment.json</code>.</p>
-<div class="footnote-definition" id="comment-format">
-  <sup class="footnote-definition-label"><a href="#comment-format-back">1</a></sup><p>Hypodoxia 目前只支持 JSON.</p>
-</div>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="smaragdina-index"><header><h1><span class="taxon"></span>翠玉录 <a class="slug" href="/smaragdina/index">[smaragdina]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon=""><details ><summary id="smaragdina-hypodoxia"><header><h1><span class="taxon"></span>何谓 Hypodoxia <a class="slug" href="/smaragdina/hypodoxia">[hypodoxia]</a></h1><div class="metadata"><ul><li class="meta-item">May 26, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><ul>
+<li><span class="link local"><a href="/smaragdina/hypodoxia-alice" title="如何使用 Hypodoxia [smaragdina/hypodoxia-alice]">如何使用 Hypodoxia</a></span></li>
+<li><span class="link local"><a href="/smaragdina/hypodoxia-bob" title="如何为使用了 Hypodoxia 的网站提交评论 [smaragdina/hypodoxia-bob]">如何为使用了 Hypodoxia 的网站提交评论</a></span></li>
+</ul>
 </details></section>
 <section class="block" data-taxon=""><details ><summary id="smaragdina-applications"><header><h1><span class="taxon"></span>应用清单 <a class="slug" href="/smaragdina/applications">[applications]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>记录各个平台我在用的工具.</p>
 <p><section class="block hide-metadata" data-taxon=""><details open><summary id="smaragdina-applications-mac"><header><h1><span class="taxon"></span>macOS <a class="slug" href="/smaragdina/applications-mac">[applications-mac]</a></h1><div class="metadata"><ul></ul></div></header></summary><h4>Dust</h4>
@@ -181,23 +184,6 @@ em {
   font-style: italic;
 }
 </style>
-<script type="module">
-import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-async function loadHypodoxia() {
-  const hypodoxia = new Hypodoxia([
-    {
-      name: "Kokic",
-      link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-    }
-  ]);
-  await hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-}
-
-const href = document.location.href;
-(href.startsWith("https://kokic.github.io/smaragdina/") &&
-  href != "https://kokic.github.io/smaragdina/index") && loadHypodoxia();
-</script>
 <p>
   <div style="text-align: center; display: block;">Central Committee, CPC<br>译者: Kokic Hydrangea</div>
   <p><br></p>
@@ -224,4 +210,4 @@ const href = document.location.href;
 </details></section></p>
 </details></section><footer></footer></article>
 
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/hypodoxia-bob" title="如何为使用 Hypodoxia 的网站提交评论 [smaragdina/hypodoxia-bob]">■</a><span class="link local" onclick="window.location.href='#smaragdina-hypodoxia-bob'"><span class="taxon"></span>如何为使用 Hypodoxia 的网站提交评论</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/applications" title="应用清单 [smaragdina/applications]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications'"><span class="taxon"></span>应用清单</span><ul class="block"><li class=""><a class="bullet" href="/smaragdina/applications-mac" title="macOS [smaragdina/applications-mac]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications-mac'"><span class="taxon"></span>macOS</span></li><li class=""><a class="bullet" href="/smaragdina/applications-android" title="Android [smaragdina/applications-android]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications-android'"><span class="taxon"></span>Android</span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 “你的电影没有意义” 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch 对于人们说 “你的电影没有意义” 的回应</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon"></span>The Celtic Myths 摘录</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/mourn-lawvere" title="为民主提供现代定义 — 悼念 F. William Lawvere [smaragdina/mourn-lawvere]">■</a><span class="link local" onclick="window.location.href='#smaragdina-mourn-lawvere'"><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere</span></li></ul></div></nav></div></body></html>
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/hypodoxia" title="何谓 Hypodoxia [smaragdina/hypodoxia]">■</a><span class="link local" onclick="window.location.href='#smaragdina-hypodoxia'"><span class="taxon"></span>何谓 Hypodoxia</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/applications" title="应用清单 [smaragdina/applications]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications'"><span class="taxon"></span>应用清单</span><ul class="block"><li class=""><a class="bullet" href="/smaragdina/applications-mac" title="macOS [smaragdina/applications-mac]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications-mac'"><span class="taxon"></span>macOS</span></li><li class=""><a class="bullet" href="/smaragdina/applications-android" title="Android [smaragdina/applications-android]">■</a><span class="link local" onclick="window.location.href='#smaragdina-applications-android'"><span class="taxon"></span>Android</span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 “你的电影没有意义” 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch 对于人们说 “你的电影没有意义” 的回应</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon"></span>The Celtic Myths 摘录</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/mourn-lawvere" title="为民主提供现代定义 — 悼念 F. William Lawvere [smaragdina/mourn-lawvere]">■</a><span class="link local" onclick="window.location.href='#smaragdina-mourn-lawvere'"><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere</span></li></ul></div></nav></div></body></html>
