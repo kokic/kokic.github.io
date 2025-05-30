@@ -1,6 +1,6 @@
 
 ---
-title: Blass–Lawvere 定理
+title: Blass--Lawvere 定理
 author: [kokic](/kokic.md)
 taxon: theorem
 !date: September 24, 2024
