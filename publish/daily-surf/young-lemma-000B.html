@@ -2,7 +2,28 @@
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width"><title>Bernoulli 不等式</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -37,23 +58,7 @@
     font-family: "Inria Sans", sans-serif;
   }
 </style>
-
-<script type="module">
-  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-  if (!window.hypodoxia) {
-    window.hypodoxia = new Hypodoxia([
-      {
-        name: "Kokic",
-        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-      }
-    ]);
-    const href = document.location.href;
-    if (!href.endsWith("/index")) {
-      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-    }
-  }
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
@@ -84,6 +89,21 @@
 \frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
 $$</p>
 <p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
-</details></section><footer></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Example"><details ><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $0  <  x_1, x_2, \cdots, x_n  <  1$. 试证</p>
+<p>$$
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} > 1
+$$</p>
+<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} > \frac{1}{y}$ 得到 $1+\frac{x}{y} > \frac{1}{y^x}$, 即 $y^x > \frac{1}{1+\frac{x}{y}}$.</p>
+<p>$$
+\begin{aligned}
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
+&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
+&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
+&\spaces= 1
+\end{aligned}
+$$</p>
+<p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>
+</details></section></details></section></footer></article>
 
 </div></body></html>

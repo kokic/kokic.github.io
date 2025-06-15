@@ -2,7 +2,28 @@
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width"><title>增函数的 Young 不等式</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -37,23 +58,7 @@
     font-family: "Inria Sans", sans-serif;
   }
 </style>
-
-<script type="module">
-  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-  if (!window.hypodoxia) {
-    window.hypodoxia = new Hypodoxia([
-      {
-        name: "Kokic",
-        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-      }
-    ]);
-    const href = document.location.href;
-    if (!href.endsWith("/index")) {
-      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-    }
-  }
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
   integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
@@ -95,7 +100,7 @@ $$</p>
 \text{Area}(D_2) \spaces= \int_0^a f(x) \d x
 $$</p>
 <p>无论哪种情况, $\text{Area}(D_i)$ 相加都可以得到 Young 不等式. 而当 $b = f(a)$ 时, $\text{Area}(D_i)$ 与相应方向的积分总是相等.</p>
-<p>$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 Young 不等式: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.</p>
+<p>$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 <span class="link local"><a href="/daily-surf/young-lemma-000A" title="Young 不等式 [daily-surf/young-lemma-000A]">Young 不等式</a></span>: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.</p>
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\d{\operatorname{d}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 <span class="link local"><a href="/mille-plateaux/young-inequality" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 右侧使用 <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> 的一个 <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]">简单结论</a></span>:</p>

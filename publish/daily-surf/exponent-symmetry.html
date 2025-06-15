@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>周期函数的构造</title><link rel="stylesheet" href="/main.css">
+<meta name="viewport" content="width=device-width"><title>经典对称幂指数不等式</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><style>
   .katex .mfrac .frac-line {
     font-size: 1.25em;
@@ -81,15 +81,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
-<p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
-<p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
-<p>因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一来, 如果 $x$ 被选定为任意一个整数, 总会存在 $n-x$ 为零的项使整个级数发散, 这就要求 $x \notin \Z$. 同样的, $f(x)$ 在映射 $x \mapsto x + k$, $k \in \Z$ 下不变, 这就意味着 $f(x)$ 以 $1$ 为周期. 现在我们当然知道这个 $f(x)$ 其实就是 $\pi^2\csc^2(\pi x)$.</p>
-<p>由于 $(n-x)^2 \ge x^2-n^2$, 这使得如下级数也是收敛的</p>
-<p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $0  <  x_1, x_2, \cdots, x_n  <  1$. 试证</p>
+<p>$$
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} > 1
+$$</p>
+<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} > \frac{1}{y}$ 得到 $1+\frac{x}{y} > \frac{1}{y^x}$, 即 $y^x > \frac{1}{1+\frac{x}{y}}$.</p>
+<p>$$
+\begin{aligned}
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
+&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
+&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
+&\spaces= 1
+\end{aligned}
+$$</p>
+<p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>
 </details></section><footer></footer></article>
 
 </div></body></html>

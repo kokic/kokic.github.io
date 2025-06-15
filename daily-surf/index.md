@@ -13,4 +13,5 @@ collect: true
 [-](/daily-surf/gaussian-integral.md#:embed)
 [-](/daily-surf/wolfram-engine.md#:embed)
 [-](/daily-surf/expand-coefficient.md#:embed)
+[-](/daily-surf/exponent-symmetry.md#:embed)
 [-](/daily-surf/young-lemma.md#:embed)

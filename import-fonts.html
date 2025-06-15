@@ -33,20 +33,3 @@
     font-family: "Inria Sans", sans-serif;
   }
 </style>
-
-<script type="module">
-  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-  if (!window.hypodoxia) {
-    window.hypodoxia = new Hypodoxia([
-      {
-        name: "Kokic",
-        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-      }
-    ]);
-    const href = document.location.href;
-    if (!href.endsWith("/index")) {
-      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-    }
-  }
-</script>

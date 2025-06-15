@@ -33,4 +33,4 @@ $$
 
 无论哪种情况, $\text{Area}(D_i)$ 相加都可以得到 Young 不等式. 而当 $b = f(a)$ 时, $\text{Area}(D_i)$ 与相应方向的积分总是相等.  
 
-$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 Young 不等式: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$. 
+$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 [Young 不等式](/daily-surf/young-lemma-000A.md): $ab \le \frac{a^p}{p} + \frac{b^q}{q}$. 
