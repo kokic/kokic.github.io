@@ -14,7 +14,7 @@ Open Source Project. [Kodama](https://github.com/kokic/kodama), A [Typst](https:
 
 Lecture Note. ["A Correspondence between Stack Permutations and Binary Trees via Hille Encoding"](https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf) In December 10, 2025. 
 
-Lecture Note. ["A Brief Survey of UMAP"](https://kokic.github.io/assets/publications/assets/publications/A%20Brief%20Survey%20of%20UMAP.pdf). In  November 9, 2024. 
+Lecture Note. ["A Brief Survey of UMAP"](https://kokic.github.io/assets/publications/A%20Brief%20Survey%20of%20UMAP.pdf). In  November 9, 2024. 
 
 Competitive Programming. [Codewars Rank 2 kyu](https://www.codewars.com/users/kokic). Top 1.659%. In October 2024. 
 
