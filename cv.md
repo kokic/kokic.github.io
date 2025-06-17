@@ -6,6 +6,8 @@ status: Undergraduate
 major: Computer Science
 ---
 
+<link link rel="stylesheet" href="./assets/cv-style.css">
+
 > Seeking Research Opportunities
 
 Open Source Project. [Kodama](https://github.com/kokic/kodama), A [Typst](https://typst.app/)-friendly static Zettelkästen site generator. Inspired by [Jon Sterling](https://www.jonmsterling.com/index/index.xml)'s [Forester](https://www.forester-notes.org/index/index.xml). In January 19, 2025 - $\infty$. 

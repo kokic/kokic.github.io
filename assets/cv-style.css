@@ -1,0 +1,11 @@
+blockquote {
+    margin: 0.5em;
+    padding: 0.5em;
+    outline: 1px solid #ccc;
+    border-radius: 0.2em;
+    font-style: normal;
+}
+
+blockquote p {
+    margin: 0;
+}
