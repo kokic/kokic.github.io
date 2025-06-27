@@ -35,17 +35,17 @@ $$
 
 其他三角函数及其导数也有类似的关系, 以下列出.
 
-$$\def\arraystretch{1.5}\begin{array}{|c|c|c|} 
+$$\def\arraystretch{2}\begin{array}{|c|c|c|c|} 
 \hline
-u & (u, u^\prime) \mapsto (x,y) & g \\
+u & (u, u^\prime) \mapsto (x,y) & g & \int \frac{\d x}{y} \\
 \hline
-\cot & y = -x^2-1 & 0 \\ 
+\cot & y = -x^2-1 & 0 & -\tan^{-1} x \\ 
 \hline
-\tan & y = x^2 + 1 & 0 \\ 
+\tan & y = x^2 + 1 & 0 & \tan^{-1} x \\ 
 \hline
-\cos, \sin & y^2 = 1-x^2 & 0 \\
+\cos, \sin & y^2 = 1-x^2 & 0 & \tan^{-1}\dfrac{x}{\sqrt{1-x^2}} \\
 \hline
-\sec, \csc & y^2 = x^4-x^2 & 0 \\
+\sec, \csc & y^2 = x^4-x^2 & 0 & \dfrac{x\sqrt{x^2-1} \tan^{-1}(\sqrt{x^2-1})}{\sqrt{x^4-x^2}} \\
 \hline
 \end{array}$$
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Canterbury 谜题</title>
+<meta name="viewport" content="width=device-width"><title>双周期函数</title>
 <script type="module">
   import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
 
@@ -82,10 +82,19 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/canterbury'" title="Canterbury 物语">« Canterbury 物语</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Problem"><details open><summary id="mille-plateaux-canterbury-000A"><header><h1><span class="taxon">Problem. </span>Canterbury 谜题 <a class="slug" href="/mille-plateaux/canterbury-000A">[canterbury-000A]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$</p>
-<p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
-<p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/periodic-functions'" title="周期函数的构造">« 周期函数的构造</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要求两个 $\R$-周期 $T_1,T_2$ 是 $\R$-线性无关的, 否则周期之比 $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, 这意味着 $T_i$ 生成的周期集合退化</p>
+<p>$$
+\begin{aligned}
+\{ nT_1 + mT_2 : n,m \in \Z \} 
+&\spaces= \left\{ \left(\frac{np}{q} + m \right) T_2 : n,m \in \Z \right\} \\
+&\spaces= \left\{ (np + mq) \cdot \frac{T_2}{q} : n,m \in \Z \right\}
+\end{aligned}
+$$</p>
+<p>此时 $np + mq \in \Z$, 所以该集合被周期 $\frac{T_2}{q}$ 生成, 矛盾.</p>
 </details></section><footer></footer></article>
 
 </div></body></html>

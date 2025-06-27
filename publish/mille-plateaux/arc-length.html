@@ -120,17 +120,17 @@ $$</p>
 <p>其反函数被称为正弦函数，统称圆函数或者三角函数.</p>
 <p>现在, 注意到 $\cot(x)$ 和 $\cot^\prime(x)$ 满足   $\cot^2(x) + \cot^\prime(x) = 1$, 令 $(\cot(x), \cot^\prime(x)) \mapsto (x,y)$, 即 $y=c-x^2$.</p>
 <p>其他三角函数及其导数也有类似的关系, 以下列出.</p>
-<p>$$\def\arraystretch{1.5}\begin{array}{|c|c|c|} 
+<p>$$\def\arraystretch{2}\begin{array}{|c|c|c|c|} 
 \hline
-u & (u, u^\prime) \mapsto (x,y) & g \\
+u & (u, u^\prime) \mapsto (x,y) & g & \int \frac{\d x}{y} \\
 \hline
-\cot & y = -x^2-1 & 0 \\ 
+\cot & y = -x^2-1 & 0 & -\tan^{-1} x \\ 
 \hline
-\tan & y = x^2 + 1 & 0 \\ 
+\tan & y = x^2 + 1 & 0 & \tan^{-1} x \\ 
 \hline
-\cos, \sin & y^2 = 1-x^2 & 0 \\
+\cos, \sin & y^2 = 1-x^2 & 0 & \tan^{-1}\dfrac{x}{\sqrt{1-x^2}} \\
 \hline
-\sec, \csc & y^2 = x^4-x^2 & 0 \\
+\sec, \csc & y^2 = x^4-x^2 & 0 & \dfrac{x\sqrt{x^2-1} \tan^{-1}(\sqrt{x^2-1})}{\sqrt{x^4-x^2}} \\
 \hline
 \end{array}$$</p>
 <p>现在取 $C(\Q): y=x^2+1$ 上一定点 $(0, 1)$, 固定斜率 $t$ 从而有直线 $\ell(\Q): y=tx+1$, 类似地求曲线 $\ell(\Q) \cdot C(\Q) = 0$ 的交点, 得到 $(t, t^2+1)$.</p>
