@@ -21,7 +21,7 @@ $$ j(\tau) \spaces= j(\tau + 1) \spaces= j(-\frac{1}{\tau}) $$
 $j(\tau)$ 有渐进估计 
 
 $$
-j(\tau) \spaces\sim \frac {e^{4\pi {\sqrt {n}}}}{{\sqrt {2}}\,n^{3/4}} \cdot q^n
+j(\tau) \spaces\sim \frac{e^{4\pi\sqrt{n}}}{\sqrt2n^{3/4}} \cdot q^n
 $$ 
 
 和 Fourier 展开 
