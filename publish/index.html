@@ -86,7 +86,7 @@
 你可以在 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span> 查看网页的源文件, 以便了解相关细节. 提交评论请参考 <span class="link external"><a href="https://kokic.github.io/smaragdina/hypodoxia-bob" title="本文 [https://kokic.github.io/smaragdina/hypodoxia-bob]">本文</a></span>, 提交评论订阅链接请通过 <span class="link local"><a href="/contact" title="联系 [contact]">邮件</a></span>, 旧文章会不定期恢复.</p>
 <p><section class="block hide-metadata" data-taxon=""><details ><summary id="mille-plateaux-index"><header><h1><span class="taxon"> 1. </span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
 <p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span>(笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
-<p><figure><img src = "/mille-plateaux/bubble-compose.svg" /></figure></p>
+<p><figure><img src="/mille-plateaux/bubble-compose.svg" class="color-invert"/></figure></p>
 </details></section></p>
 </details></section>
 <section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span>平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\ul#1{\underline{#1}}$
@@ -100,7 +100,7 @@ $\gdef\eqq{\quads=}$</p>
 <p>$\textbf{Problem.}$ 有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
 <p>$\textbf{Solution.}$ 我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
-<figure style="text-align: center;"><img src="../assets/8P.svg" style="border-radius: 0.2em; width: 500px;"></figure>
+<figure style="text-align: center;"><img src="../assets/8P.svg" class="color-invert" style="border-radius: 0.2em; width: 500px;"></figure>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x > 0,y > 0$ 的区域, 现在写出其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
 <p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 1.1.1. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
@@ -136,7 +136,7 @@ $\gdef\R{\mathbf{R}}$</p>
 <p>立得 $x_2 = r \cdot \frac{1-t^2}{1+t^2}$. 从而给出一个熟知的有理参数化</p>
 <p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
 <p>这样一种寻找点的方式, 通常被称为弦切法.</p>
-<p><figure><img src = "/mille-plateaux/chord-tangent.svg" /></figure></p>
+<p><figure><img src="/mille-plateaux/chord-tangent.svg" class="color-invert"/></figure></p>
 </details></section>
 <section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis 1.3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
@@ -277,11 +277,11 @@ $$</p>
 </details></section>
 <section class="block hide-metadata" data-taxon=""><details ><summary id="data-structure-index"><header><h1><span class="taxon"> 2. </span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon=""><details ><summary id="data-structure-seven-trees-in-one"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-binary-tree"><header><h1><span class="taxon">Definition 2.1. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
-<p><details><summary><figure><img src = "/data-structure/tree-def.svg" /></figure></summary><pre>inductive Tree α
+<p><details><summary><figure><img src="/data-structure/tree-def.svg" class="color-invert"/></figure></summary><pre>inductive Tree α
   | leaf : Tree α
   | node : α → Tree α → Tree α → Tree α</pre></details></p>
 <p>叶结点构造器 <code>leaf</code> 用于构造出一棵空树, 空树作为某个结点的所有子结点时, 该结点正是叶结点. 相应的, 二叉树的值存储在非叶结点中. 每个 (非空, 无标记) 二叉树类型的值要么是一个单结点 $\{\text{pt}\} = 1$, 要么等价于二叉树的有序配对 $B \times B = B^2$. 即 $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
-<p><figure><img src = "/data-structure/binary-tree.svg" /></figure></p>
+<p><figure><img src="/data-structure/binary-tree.svg" class="color-invert"/></figure></p>
 <p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
 </details></section>
 <section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem 2.2. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
@@ -309,18 +309,18 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
 </details></section></p>
 <p>相应的, 可以据此定义 Hille 编码的解析规则, 用于将这样一段有效的二进制序列转换为构造一颗二叉树的若干操作. 我们使用一种类 BNF 文法来定义这个解析器, 仅供读者理解.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0004.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0004.svg" class="color-invert"/></figure></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
 <p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-000A"><header><h1><span class="taxon">Example 2.3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0001.svg" class="color-invert"/></figure></p>
 </details></section></p>
 <p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来将解释其中的不平凡之处, 以及这一巧合发生的 <span class="link local"><a href="/data-structure/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation-000B]">具体条件</a></span>. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
-<p><details><summary><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></summary><pre>def encode : Tree → String
+<p><details><summary><figure><img src="/data-structure/stack-permutation-0002.svg"/></figure></summary><pre>def encode : Tree → String
   | .node l r => "1" ++ encode l ++ encode r
   | _ => "0"</pre></details></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0003.svg" class="color-invert"/></figure></p>
 <p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
 <span class="inline-typst"><svg class="typst-doc" viewBox="0 0 18.044079999999997 22.672179999999997" width="18.044079999999997pt" height="22.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
     <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 22.67218 L 18.04408 22.67218 L 18.04408 0 Z "/>
@@ -405,11 +405,11 @@ $$</p>
 <p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000G">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
 同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="1-back"><a href="#1">1</a></sup>. $(ii)$
 该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="2-back"><a href="#2">2</a></sup>. 如下图所示</p>
-<p><figure><img src = "/data-structure/stack-permutation-0005.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0005.svg" class="color-invert"/></figure></p>
 <p>由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即</p>
-<p><figure><img src = "/data-structure/stack-permutation-0006.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0006.svg" class="color-invert"/></figure></p>
 <p>下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$</p>
-<p><figure><img src = "/data-structure/stack-permutation-0007.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0007.svg" class="color-invert"/></figure></p>
 <p>立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.</p>
 <div class="footnote-definition" id="1">
   <sup class="footnote-definition-label"><a href="#1-back">1</a></sup><p>如若不然, 这颗二叉树只会形如 <code>1010101</code>$\cdots$, 其长度为 $2n - 1$.</p>
@@ -495,7 +495,7 @@ $\gdef\C{\mathbf{C}}$</p>
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
-<p><figure><img src = "/data-structure/similar-triangle.svg" /><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
+<p><figure><img src="/data-structure/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
 <p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
@@ -1564,7 +1564,7 @@ $$</p>
 (1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
 $$</p>
 <p>此处的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而非 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 此时 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径.</p>
-<p><figure><img src = "/linear-algebra/automata-matrix-0001.svg" /><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
+<p><figure><img src="/linear-algebra/automata-matrix-0001.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
 <p>具体的说, 固定下标 $i,j$, 分量 $(M^*)_{ij}$ 的值会等于以 $M$, $M^*$ 为结点, $M_{ij}$ 为箭头的 $G$ 中所有 $i \to j$ 的路径 $\hom(i,j)$ 的正则表达式. 并且从这些路径中我们也能够写出 $\hom(i,j)$ 对应的正则表达式, 这就为计算 $(M^*)_{ij}$ 提供了可能.</p>
 <p>$$\begin{aligned}
   1 \longrightarrow 1 &: \quad (a+b d^*c)^* \\

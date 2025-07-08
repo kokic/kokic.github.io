@@ -106,18 +106,18 @@ $$</p>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
 </details></section></p>
 <p>相应的, 可以据此定义 Hille 编码的解析规则, 用于将这样一段有效的二进制序列转换为构造一颗二叉树的若干操作. 我们使用一种类 BNF 文法来定义这个解析器, 仅供读者理解.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0004.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0004.svg" class="color-invert"/></figure></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/hille-encode" title="Hille 编码 [data-structure/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
 <p><section class="block" data-taxon="Example"><details ><summary id="data-structure-stack-permutation-000A"><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0001.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0001.svg" class="color-invert"/></figure></p>
 </details></section></p>
 <p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="hille-order-back"><a href="#hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="inorder-sequence-back"><a href="#inorder-sequence">2</a></sup>. 我们接下来将解释其中的不平凡之处, 以及这一巧合发生的 <span class="link local"><a href="/data-structure/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation-000B]">具体条件</a></span>. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
-<p><details><summary><figure><img src = "/data-structure/stack-permutation-0002.svg" /></figure></summary><pre>def encode : Tree → String
+<p><details><summary><figure><img src="/data-structure/stack-permutation-0002.svg"/></figure></summary><pre>def encode : Tree → String
   | .node l r => "1" ++ encode l ++ encode r
   | _ => "0"</pre></details></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
-<p><figure><img src = "/data-structure/stack-permutation-0003.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0003.svg" class="color-invert"/></figure></p>
 <p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
 <span class="inline-typst"><svg class="typst-doc" viewBox="0 0 18.044079999999997 22.672179999999997" width="18.044079999999997pt" height="22.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
     <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 22.67218 L 18.04408 22.67218 L 18.04408 0 Z "/>
@@ -202,11 +202,11 @@ $$</p>
 <p><section class="block" data-taxon="Proof"><details ><summary id="data-structure-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000G">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
 同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="1-back"><a href="#1">1</a></sup>. $(ii)$
 该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="2-back"><a href="#2">2</a></sup>. 如下图所示</p>
-<p><figure><img src = "/data-structure/stack-permutation-0005.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0005.svg" class="color-invert"/></figure></p>
 <p>由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即</p>
-<p><figure><img src = "/data-structure/stack-permutation-0006.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0006.svg" class="color-invert"/></figure></p>
 <p>下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$</p>
-<p><figure><img src = "/data-structure/stack-permutation-0007.svg" /></figure></p>
+<p><figure><img src="/data-structure/stack-permutation-0007.svg" class="color-invert"/></figure></p>
 <p>立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.</p>
 <div class="footnote-definition" id="1">
   <sup class="footnote-definition-label"><a href="#1-back">1</a></sup><p>如若不然, 这颗二叉树只会形如 <code>1010101</code>$\cdots$, 其长度为 $2n - 1$.</p>
