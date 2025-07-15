@@ -1,0 +1,16 @@
+[kodama]
+trees = "trees"
+assets = "assets"
+url = "/"
+
+[build]
+typst-root = "./"
+short-slug = true
+pretty-urls = false
+footer-mode = "link"
+inline-css = false
+output = "./publish"
+
+[serve]
+edit = "vscode://file/"
+output = "./.cache/publish"

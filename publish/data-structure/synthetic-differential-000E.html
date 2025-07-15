@@ -82,21 +82,22 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/dual-number'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/dual-number.html'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E.html">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
-<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
+<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential-000B.html" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
 <p>$$
-A(u)_x \spaces\eqdef \begin{pmatrix} u_x & u'_x \\ 0 & u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
+A(u)_x \spaces\eqdef \begin{pmatrix} u_x &amp; u'_x \\ 0 &amp; u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
 $$</p>
 <p>对于 $u: Y \to Z$, $v: X \to Y$. $A$ 上的复合 $A(u) \circ A(v)$ 可定义为 $A(u)_{v_x}$, $(v_x, v'_x) \in A(v)_x$. 我们来验证 $A(u) \circ A(v) = A(u \circ v)$.</p>
 <p>$$
 \begin{aligned}
 A(u)_{v_x} 
-&\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
-&\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
-&\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
+&amp;\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
+&amp;\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
+&amp;\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
 \end{aligned}
 $$</p>
 </details></section><footer></footer></article>

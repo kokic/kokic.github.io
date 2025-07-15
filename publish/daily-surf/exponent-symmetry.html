@@ -82,18 +82,19 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>设 $0  <  x_1, x_2, \cdots, x_n  <  1$. 试证</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry.html">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">June 20, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $0 &lt; x_1, x_2, \cdots, x_n &lt; 1$. 试证</p>
 <p>$$
-x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} > 1
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} &gt; 1
 $$</p>
-<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} > \frac{1}{y}$ 得到 $1+\frac{x}{y} > \frac{1}{y^x}$, 即 $y^x > \frac{1}{1+\frac{x}{y}}$.</p>
+<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B.html" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ 得到 $1+\frac{x}{y} &gt; \frac{1}{y^x}$, 即 $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
 <p>$$
 \begin{aligned}
 x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
-&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
-&\spaces> \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
-&\spaces= 1
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
+&amp;\spaces= 1
 \end{aligned}
 $$</p>
 <p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>

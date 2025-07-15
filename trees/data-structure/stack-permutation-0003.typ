@@ -3,7 +3,7 @@
 #set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
 
 #import "../typst/shared.typ": *
-#import "/typst/binary-tree.typ": *
+#import "../typst/binary-tree.typ": *
 
 #show raw: set text(font: ("Jetbrains Mono"))
 

@@ -82,16 +82,17 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/rayleigh-quotient'" title="Rayleigh 商定理">« Rayleigh 商定理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000C"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/rayleigh-quotient.html'" title="Rayleigh 商定理">« Rayleigh 商定理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000C"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000C.html">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要求解问题可以叙述成下面的形式</p>
 <p>$$
 F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
 $$</p>
-<p>这里相应的 $A = \scriptsize\begin{pmatrix} 3 & 2 \\ 2 & 3 \end{pmatrix}$, $B = \scriptsize\begin{pmatrix} 4 & ~~6 \\ 6 & 34 \end{pmatrix}$. 我们首先对 $B$ 进行 Cholesky 分解, 得到 $C = \scriptsize\begin{pmatrix} 2 & 0 \\ 3 & 5 \end{pmatrix}$ 使得 $B = CC^*$. 接下来通过 $C^{-1} A C^*{}^{-1}$ 求出 $D$ 及其对角化 $E$, 这样就结束了此问题.</p>
+<p>这里相应的 $A = \scriptsize\begin{pmatrix} 3 &amp; 2 \\ 2 &amp; 3 \end{pmatrix}$, $B = \scriptsize\begin{pmatrix} 4 &amp; ~~6 \\ 6 &amp; 34 \end{pmatrix}$. 我们首先对 $B$ 进行 Cholesky 分解, 得到 $C = \scriptsize\begin{pmatrix} 2 &amp; 0 \\ 3 &amp; 5 \end{pmatrix}$ 使得 $B = CC^*$. 接下来通过 $C^{-1} A C^*{}^{-1}$ 求出 $D$ 及其对角化 $E$, 这样就结束了此问题.</p>
 <p>$$
 \begin{aligned}
-D \spaces= \frac14 \begin{pmatrix} ~~~3 & -1 \\ -1 & ~~~\frac35 \end{pmatrix}, ~~
-E \spaces= & \begin{pmatrix} 9-\sqrt{61} & 0 \\ 0 & 9+\sqrt{61} \end{pmatrix} \cdot \frac1{20}  \\ \spaces= &\begin{pmatrix} \min_\R F & 0 \\ 0 & \max_\R F \end{pmatrix} 
+D \spaces= \frac14 \begin{pmatrix} ~~~3 &amp; -1 \\ -1 &amp; ~~~\frac35 \end{pmatrix}, ~~
+E \spaces= &amp; \begin{pmatrix} 9-\sqrt{61} &amp; 0 \\ 0 &amp; 9+\sqrt{61} \end{pmatrix} \cdot \frac1{20}  \\ \spaces= &amp;\begin{pmatrix} \min_\R F &amp; 0 \\ 0 &amp; \max_\R F \end{pmatrix} 
 \end{aligned}
 $$</p>
 </details></section><footer></footer></article>

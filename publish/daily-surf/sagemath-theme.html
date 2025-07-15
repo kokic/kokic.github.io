@@ -82,11 +82,14 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme.html">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 17, 2025</li></ul></div></header></summary>
+<p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
 <ol>
-<li><p>Sagemath Jupyter Notebook 在 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 上几乎不能使用. 这是因为, 所有由 <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> 提供渲染的公式都无法呈现, 甚至连 Cell 也不出现. 于是最稳妥的做法就变成了使用浏览器访问 Jupyter Notebook.</p>
+<li>
+<p>Sagemath Jupyter Notebook 在 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 上几乎不能使用. 这是因为, 所有由 <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> 提供渲染的公式都无法呈现, 甚至连 Cell 也不出现. 于是最稳妥的做法就变成了使用浏览器访问 Jupyter Notebook.</p>
 </li>
-<li><p>Jupyter Notebook 的主题设计非常混乱, 常用主题位于 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 包, 但是这个包的文档和使用示例并不适用于 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span>.</p>
+<li>
+<p>Jupyter Notebook 的主题设计非常混乱, 常用主题位于 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 包, 但是这个包的文档和使用示例并不适用于 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span>.</p>
 </li>
 </ol>
 <p>这两点使得问题看上去不太容易. 因为一般的, 如果用户使用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 访问 Jupyter Notebook 就完全不需要担心主题问题, 于是相应的可能在互联网上存在的解决方案就会变少. 关于第二点, 如果尝试在 Jupyter Notebook 当中执行下面这样的程序</p>
@@ -108,7 +111,8 @@ set_nb_theme('monokai')
 </code></pre>
 <p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
 <div class="footnote-definition" id="toolbar-display-none">
-  <sup class="footnote-definition-label"><a href="#toolbar-display-none-back">1</a></sup><p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>
+  <sup class="footnote-definition-label"><a href="#toolbar-display-none-back">1</a></sup>
+<p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>
 </div>
 </details></section><footer></footer></article>
 

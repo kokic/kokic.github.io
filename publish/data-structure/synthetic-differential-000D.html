@@ -82,26 +82,27 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/dual-number'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/dual-number.html'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D.html">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C.html" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
-<p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p><span class="link local"><a href="/data-structure/complex-step.html" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
 <p>$$
 A \spaces= \begin{pmatrix}
-a & -b \\
-b & ~~~a \\
+a &amp; -b \\
+b &amp; ~~~a \\
 \end{pmatrix}
 ,\quad
 \det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
 $$</p>
-<p>我们也可以构造 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/dual-number.html" title="对偶数 [data-structure/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
 <p>$$
 A \spaces= \begin{pmatrix}
-a & a' \\
-0 & a \\
+a &amp; a' \\
+0 &amp; a \\
 \end{pmatrix}
 ,\quad
 \det A \spaces= (a+b\varepsilon)(a-b\varepsilon)

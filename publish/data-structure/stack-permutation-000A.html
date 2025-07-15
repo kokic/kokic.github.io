@@ -82,32 +82,10 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-tree-isomorphism'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-000A"><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-tree-isomorphism.html'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-000A"><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation-000A.html">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
+<p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
 <p><figure><img src="/data-structure/stack-permutation-0001.svg" class="color-invert"/></figure></p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-stack-permutation-000F"><header><h1><span class="taxon">Exegesis. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation-000F">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>一个可供探究的问题是, 给定 $n$ 节点二叉树, 询问其 Hille 编码 $H_n$ 有效长度 $\ell(H_n)$ 的范围. 这里的有效不外乎是指去除末尾连续的 <code>0</code>. 我们将对此问题给出确切的回答.</p>
-<p>任意 $n$ 节点二叉树的 Hille 编码的有效长度满足下面的不等式</p>
-<p>$$n \spaces\leqslant \ell_{n} \spaces\leqslant \max(0,2n - 1,3n - 4)$$</p>
-<p>下界 $n$ 的验证是容易的, 构造一棵 $n$ 节点二叉树最少也需要 $n$ 个 <code>1</code>.
-由于 <span class="link local"><a href="/data-structure/stack-permutation-000A" title="三节点二叉树 [data-structure/stack-permutation-000A]">此处</a></span> 的讨论, 我们只需要验证 $n \geqslant 3$ 时 Hille 编码的有效长度至多是 $3n - 4$.</p>
-<p><section class="block" data-taxon="Proof"><details ><summary id="data-structure-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation-000G">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
-同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="1-back"><a href="#1">1</a></sup>. $(ii)$
-该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="2-back"><a href="#2">2</a></sup>. 如下图所示</p>
-<p><figure><img src="/data-structure/stack-permutation-0005.svg" class="color-invert"/></figure></p>
-<p>由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即</p>
-<p><figure><img src="/data-structure/stack-permutation-0006.svg" class="color-invert"/></figure></p>
-<p>下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$</p>
-<p><figure><img src="/data-structure/stack-permutation-0007.svg" class="color-invert"/></figure></p>
-<p>立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.</p>
-<div class="footnote-definition" id="1">
-  <sup class="footnote-definition-label"><a href="#1-back">1</a></sup><p>如若不然, 这颗二叉树只会形如 <code>1010101</code>$\cdots$, 其长度为 $2n - 1$.</p>
-</div>
-<div class="footnote-definition" id="2">
-  <sup class="footnote-definition-label"><a href="#2-back">2</a></sup><p>否则回溯贡献的长度便不是最大值 $n-2$.</p>
-</div>
-</details></section></p>
-<p>反过来, 从树 $M$ 出发, 也可以验证任何使得节点总数不变的操作都不会增加其 Hille 编码的有效长度. 更进一步, 我们可以断言任何使得节点总数不变的操作都将严格减小其 Hille 编码的有效长度. 换言之, 使得 $\ell(B) = 3n-4$ 的二叉树 $B$ 的结构是唯一的, 即 $M$.</p>
-</details></section></details></section></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation-000F.html">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></section></details></section></footer></article>
 
 </div></body></html>

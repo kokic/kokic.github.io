@@ -82,16 +82,17 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/rayleigh-quotient'" title="Rayleigh 商定理">« Rayleigh 商定理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000B"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/rayleigh-quotient.html'" title="Rayleigh 商定理">« Rayleigh 商定理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000B"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000B.html">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p>考虑 $M = \scriptsize\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}$,
-将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}$,
-相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}$.
+<p>考虑 $M = \scriptsize\begin{pmatrix} 1 &amp; 2 \\ 2 &amp; 1 \end{pmatrix}$,
+将 $M$ 对角化得到 $D = \scriptsize\begin{pmatrix} 3 &amp; ~~~0 \\ 0 &amp; -1 \end{pmatrix}$,
+相应的正交矩阵是 $\frac1{\sqrt{2}}\scriptsize\begin{pmatrix} 1 &amp; ~~~1 \\ 1 &amp; -1 \end{pmatrix}$.
 注意, $(uP)^*M(uP) = u^{2}P^*MP$, 因此我们通过 $P^*MP$
 来计算 $Q^*MQ$ <sup class="footnote-reference" id="rayleigh-quotient-000B-1-back"><a href="#rayleigh-quotient-000B-1">1</a></sup>:</p>
 <p>$$
-\frac12 \begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix}^*\begin{pmatrix} 1 & 2 \\ 2 & 1 \end{pmatrix}\begin{pmatrix} 1 & ~~~1 \\ 1 & -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 & ~~~0 \\ 0 & -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 & ~~~0 \\ 0 & -1 \end{pmatrix}
+\frac12 \begin{pmatrix} 1 &amp; ~~~1 \\ 1 &amp; -1 \end{pmatrix}^*\begin{pmatrix} 1 &amp; 2 \\ 2 &amp; 1 \end{pmatrix}\begin{pmatrix} 1 &amp; ~~~1 \\ 1 &amp; -1 \end{pmatrix} \spaces= \frac12 \begin{pmatrix} 6 &amp; ~~~0 \\ 0 &amp; -2 \end{pmatrix} \spaces= \begin{pmatrix} 3 &amp; ~~~0 \\ 0 &amp; -1 \end{pmatrix}
 $$</p>
 <p>那么, 这就得到了 $M$ 的 Rayleigh 商的值域</p>
 <p>$$
@@ -100,28 +101,29 @@ $$</p>
 \frac{3a^{2} - b^{2}}{a^{2} + b^{2}}
 \quads\in \lbrack - 1,3\rbrack
 $$</p>
-<p>下面讨论 $A = \scriptsize\begin{pmatrix} p & q \\ q & p \end{pmatrix}$ 的对角化问题.
-依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &~~~1 \\ 1 & -1 \end{pmatrix}$, 相应的
-$Q^*AQ = \scriptsize\begin{pmatrix} p + q & 0 \\ 0 & p - q \end{pmatrix}$. 故</p>
+<p>下面讨论 $A = \scriptsize\begin{pmatrix} p &amp; q \\ q &amp; p \end{pmatrix}$ 的对角化问题.
+依然取正交矩阵 $Q = \frac1{\sqrt2} \scriptsize\begin{pmatrix} 1 &amp;~~~1 \\ 1 &amp; -1 \end{pmatrix}$, 相应的
+$Q^*AQ = \scriptsize\begin{pmatrix} p + q &amp; 0 \\ 0 &amp; p - q \end{pmatrix}$. 故</p>
 <p>$$
 \begin{aligned}
-\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to &
+\frac{pa^{2} + 2qab + pb^{2}}{a^{2} + b^{2}} \quads\to &amp;
 \frac{(p + q)a^{2} + (p - q)b^{2}}{a^{2} + b^{2}} \\
-\quads\in & [p-q, p + q]
+\quads\in &amp; [p-q, p + q]
 \end{aligned}
 $$</p>
-<p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bxy + cy^2$. 其对角化为</p>
+<p>最后, 对于对称矩阵 $\scriptsize\begin{pmatrix} a &amp; b \\ b &amp; c \end{pmatrix}$ 也就是二次形 $ax^2 + 2bxy + cy^2$. 其对角化为</p>
 <p>$$
-\begin{pmatrix} a & b \\ b & c \end{pmatrix}
+\begin{pmatrix} a &amp; b \\ b &amp; c \end{pmatrix}
 \quads\mapsto
 \frac12 \begin{pmatrix}
-r - \sqrt{s} & 0 \\
-0 & r + \sqrt{s}
+r - \sqrt{s} &amp; 0 \\
+0 &amp; r + \sqrt{s}
 \end{pmatrix}
 $$</p>
 <p>这里 $r = a + c$, $s = (a-c)^2 + 4b^2$.</p>
 <div class="footnote-definition" id="rayleigh-quotient-000B-1">
-  <sup class="footnote-definition-label"><a href="#rayleigh-quotient-000B-1-back">1</a></sup><p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
+  <sup class="footnote-definition-label"><a href="#rayleigh-quotient-000B-1-back">1</a></sup>
+<p>由此, 其实不需要真的找一个正交矩阵 $Q$ 使得 $M = Q^*MQ$, 只需让 $P$ 满足 $MP = PD$.</p>
 </div>
 </details></section><footer></footer></article>
 

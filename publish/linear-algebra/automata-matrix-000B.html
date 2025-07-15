@@ -82,42 +82,43 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/automata-matrix'" title="自动机与矩阵求逆">« 自动机与矩阵求逆</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/automata-matrix.html'" title="自动机与矩阵求逆">« 自动机与矩阵求逆</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B.html">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
-M \spaces= \begin{pmatrix} A & B \\ C & D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A & -B \\ -C & 1-D \end{pmatrix}
+M \spaces= \begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A &amp; -B \\ -C &amp; 1-D \end{pmatrix}
 $$</p>
 <p>我们还是直接计算 $(1-M)^*$, 实际上这非常容易. 回顾 $M^*$</p>
 <p>$$
 M^* \spaces= \begin{pmatrix}
-(A+BD^*C)^* & (A+BD^*C)^*BD^* \\ 
-D^*C(A+BD^*C)^* & D^* + D^*C(A+BD^*C)^*BD^* 
+(A+BD^*C)^* &amp; (A+BD^*C)^*BD^* \\ 
+D^*C(A+BD^*C)^* &amp; D^* + D^*C(A+BD^*C)^*BD^* 
 \end{pmatrix}
 $$</p>
 <p>类似的记 $\alpha_\square$ 为方阵 $\square$ 分为 $4$ 块后的左上角第 $1$ 部分. $\alpha_{M^*} = (A+BD^*C)^*$, $\alpha_{M^{-1}} = \alpha_{(1-M)^*}$, 则</p>
 <p>$$
 \begin{aligned}
 \alpha_{M^{-1}}
-&\spaces= (1 - A + B(1-D)^*C)^* \\
-&\spaces= (1 - A + BD^{-1}C)^* \\
-&\spaces= (1 - (A - BD^{-1}C))^* \\
-&\spaces= (A - BD^{-1}C)^{-1}
+&amp;\spaces= (1 - A + B(1-D)^*C)^* \\
+&amp;\spaces= (1 - A + BD^{-1}C)^* \\
+&amp;\spaces= (1 - (A - BD^{-1}C))^* \\
+&amp;\spaces= (A - BD^{-1}C)^{-1}
 \end{aligned}
 $$</p>
 <p>同样, 考虑分块的其他部分</p>
 <p>$$
 \begin{CD}
-M @>>> 1-M \\
+M @&gt;&gt;&gt; 1-M \\
 @VVV  @VVV \\
-M^* @>>> (1-M)^*
+M^* @&gt;&gt;&gt; (1-M)^*
 \end{CD}
 $$</p>
 <p>在 $M \to 1-M$ 这个箭头下, $M$ 当中所有的 $D$ 会被替换为 $1-D$, 因此 $M^*$ 当中所有的 $D^*$ 可以直接替换为 $D^{-1}$. 而 $B, C$ 在 $M \to 1-M$ 下替换为 $-\square$, 于是现在立刻有</p>
 <p>$$
 \begin{aligned}
 M^{-1}
-&\spaces= \begin{pmatrix} \alpha_{M^{-1}} & -\alpha_{M^{-1}} BD^{-1} \\ -D^{-1}C \alpha_{M^{-1}} & D^{-1} + D^{-1}C \alpha_{M^{-1}} BD^{-1} \end{pmatrix} \\
-&\spaces= \begin{pmatrix} (A - BD^{-1}C)^{-1} & -(A - BD^{-1}C)^{-1} BD^{-1} \\ -D^{-1}C (A - BD^{-1}C)^{-1} & D^{-1} + D^{-1}C (A - BD^{-1}C)^{-1} BD^{-1} \end{pmatrix} \\
+&amp;\spaces= \begin{pmatrix} \alpha_{M^{-1}} &amp; -\alpha_{M^{-1}} BD^{-1} \\ -D^{-1}C \alpha_{M^{-1}} &amp; D^{-1} + D^{-1}C \alpha_{M^{-1}} BD^{-1} \end{pmatrix} \\
+&amp;\spaces= \begin{pmatrix} (A - BD^{-1}C)^{-1} &amp; -(A - BD^{-1}C)^{-1} BD^{-1} \\ -D^{-1}C (A - BD^{-1}C)^{-1} &amp; D^{-1} + D^{-1}C (A - BD^{-1}C)^{-1} BD^{-1} \end{pmatrix} \\
 \end{aligned}
 $$</p>
 <p>在这里, 我们得到了一个相当经典且重要的结果, 即分块求逆.</p>

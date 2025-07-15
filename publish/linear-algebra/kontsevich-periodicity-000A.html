@@ -82,21 +82,22 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/kontsevich-periodicity'" title="Kontsevich 周期性猜想">« Kontsevich 周期性猜想</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/kontsevich-periodicity.html'" title="Kontsevich 周期性猜想">« Kontsevich 周期性猜想</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A.html">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 18, 2025</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
 <p>$$
 \varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
 $$</p>
-<p>其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="skew-adjoint-back"><a href="#skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
+<p>其中 $S = (\begin{smallmatrix}0 &amp; -1 \\ 1 &amp; ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="skew-adjoint-back"><a href="#skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
 <p>$$
 \begin{aligned}
 \varphi^2(M) 
-&\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
-&\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
-&\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
-&\spaces= \det M \det(I_2(M)) \cdot M
+&amp;\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
+&amp;\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
+&amp;\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
+&amp;\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
+&amp;\spaces= \det M \det(I_2(M)) \cdot M
 \end{aligned}
 $$</p>
 <p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
@@ -104,49 +105,9 @@ $$</p>
 \det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
 $$</p>
 <div class="footnote-definition" id="skew-adjoint">
-  <sup class="footnote-definition-label"><a href="#skew-adjoint-back">1</a></sup><p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
+  <sup class="footnote-definition-label"><a href="#skew-adjoint-back">1</a></sup>
+<p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
 </div>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Conjecture"><details ><summary id="linear-algebra-kontsevich-periodicity"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\Mat{\operatorname{Mat}}$
-$\gdef\Q{\mathbf{Q}}$</p>
-<p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
-<p>$$
-(I_3 \circ I_2 \circ I_1)^3(M) \spaces= LMR
-$$</p>
-<p>且这里 $I,R$ 的分量是以 $M$ 的 $9$ 个分量 $M_{ij}$ 为变量的非交换有理函数.</p>
-<p><span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 已由 Natalia Iyudu 和 Stanislav Shkarin 于 2013 年 5 月 8 日 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="证明 [https://arxiv.org/abs/1305.1965v3]">证明</a></span>, 因此这一猜想有时也被称作 Iyudu–Shkarin 定理. 不过这个证明过于暴力, 也没有对于一般的矩阵 $M \in \Mat_{n \times n}$ 回答 $n>3$ 时的 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span></p>
-<p>$$
-(I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
-$$</p>
-<p>为何不成立 <sup class="footnote-reference" id="kontsevich-hold-back"><a href="#kontsevich-hold">1</a></sup>.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\Mat{\operatorname{Mat}}$</p>
-<p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
-<p>$$
-\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
-$$</p>
-<p>其中 $S = (\begin{smallmatrix}0 & -1 \\ 1 & ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="skew-adjoint-back"><a href="#skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
-<p>$$
-\begin{aligned}
-\varphi^2(M) 
-&\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
-&\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
-&\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
-&\spaces= \det M \det(I_2(M)) \cdot M
-\end{aligned}
-$$</p>
-<p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
-<p>$$
-\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
-$$</p>
-<div class="footnote-definition" id="skew-adjoint">
-  <sup class="footnote-definition-label"><a href="#skew-adjoint-back">1</a></sup><p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
-</div>
-</details></section></p>
-<div class="footnote-definition" id="kontsevich-hold">
-  <sup class="footnote-definition-label"><a href="#kontsevich-hold-back">1</a></sup><p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity-000A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">验证</a></span>. Iyudu 和 Shkarin 在他们的 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="论文 [https://arxiv.org/abs/1305.1965v3]">论文</a></span> 中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
-</div>
-</details></section></details></section></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Conjecture" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity.html">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 16, 2025</li></ul></div></header></section></details></section></footer></article>
 
 </div></body></html>

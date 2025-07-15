@@ -82,7 +82,8 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization.html">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 28, 2024</li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>我们对于 $\R$ 上的单位圆周曲线 $C(\R):x^2+y^2=1$ 和它关于角度 $\theta$ 的参数化 $\theta \mapsto (\cos\theta, \sin\theta)$ 是不陌生的. 通过计算这类统称为三角函数或者圆函数的映射, 很容易就能发现圆上的一些不同寻常的点</p>
@@ -95,90 +96,6 @@ $\gdef\R{\mathbf{R}}$</p>
 <p>$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$</p>
 <p>这样一种寻找点的方式, 通常被称为弦切法.</p>
 <p><figure><img src="/mille-plateaux/chord-tangent.svg" class="color-invert"/></figure></p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\d{\operatorname{d}}$
-$\gdef\E{\operatorname{E}}$
-$\gdef\arc{\text{arc}}$
-$\gdef\R{\mathbf{R}}$
-$\gdef\Q{\mathbf{Q}}$</p>
-<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
-<p>$$
-L 
-\spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
-\spaces= r\arcsin\dfrac{x}{r}\bigg|_{-r}^r
-\spaces= \pi r
-$$</p>
-<p>因而圆的弧长定义了反正弦函数，即</p>
-<p>$$
-\arcsin x \spaces= \int_0^x\dfrac{1}{\sqrt{1-t^2}}\d t
-$$</p>
-<p>其反函数被称为正弦函数，统称圆函数或者三角函数.</p>
-<p>现在, 注意到 $\cot(x)$ 和 $\cot^\prime(x)$ 满足   $\cot^2(x) + \cot^\prime(x) = 1$, 令 $(\cot(x), \cot^\prime(x)) \mapsto (x,y)$, 即 $y=c-x^2$.</p>
-<p>其他三角函数及其导数也有类似的关系, 以下列出.</p>
-<p>$$\def\arraystretch{2}\begin{array}{|c|c|c|c|} 
-\hline
-u & (u, u^\prime) \mapsto (x,y) & g & \int \frac{\d x}{y} \\
-\hline
-\cot & y = -x^2-1 & 0 & -\tan^{-1} x \\ 
-\hline
-\tan & y = x^2 + 1 & 0 & \tan^{-1} x \\ 
-\hline
-\cos, \sin & y^2 = 1-x^2 & 0 & \tan^{-1}\dfrac{x}{\sqrt{1-x^2}} \\
-\hline
-\sec, \csc & y^2 = x^4-x^2 & 0 & \dfrac{x\sqrt{x^2-1} \tan^{-1}(\sqrt{x^2-1})}{\sqrt{x^4-x^2}} \\
-\hline
-\end{array}$$</p>
-<p>现在取 $C(\Q): y=x^2+1$ 上一定点 $(0, 1)$, 固定斜率 $t$ 从而有直线 $\ell(\Q): y=tx+1$, 类似地求曲线 $\ell(\Q) \cdot C(\Q) = 0$ 的交点, 得到 $(t, t^2+1)$.</p>
-<p>如果我们对抛物线 $C(\R)$ 求弧长, 所得到的将是 $\log$ 或 $\sinh^{-1}$ 的代数函数. 当然, $\sinh^{-1}$ 实际上也是 $\log$ 的代数函数.
-$$
-\begin{aligned} 
-s
-&\spaces= \int\sqrt{1+(2x)^2}\d x \\
-&\spaces= \frac12 \sqrt{1+4x^2} + \frac14\sinh^{-1}(2x)
-\end{aligned}
-$$</p>
-<p>现在重新回顾</p>
-<p>$$
-\int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
-$$</p>
-<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
-<p>$$
-\begin{aligned}
-\int\dfrac{\d x}{y} 
-&\spaces= \int \frac{\d{(\frac{1-t^2}{1+t^2})}}{\frac{2t}{1+t^2}} \\
-&\spaces= \int -\frac{4t}{(1+t^2)^2} \cdot \frac{1+t^2}{2t} \d t \\
-&\spaces= \int -\frac{2}{1+t^2} \d t \\
-&\spaces= -2\tan^{-1} t
-\end{aligned}
-$$</p>
-<p>这是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Tangent_half-angle_substitution" title="切线半角换元 [https://en.wikipedia.org/wiki/Tangent_half-angle_substitution]">切线半角换元</a></span> 或者按俄罗斯与国内更流行的称呼则是万能三角换元. 另一方面, 我们知道 $t = \pm\frac{\sqrt{1-x}}{\sqrt{1+x}}$. 这就意味着 $\arcsin x$ 和 $-2\tan^{-1} t$ 之间最多只相差一个常数, 容易计算这个常数正是 $\frac{\pi}2$, 则有</p>
-<p>$$
-\arcsin x \spaces= \frac{\pi}2-2\arctan\frac{\sqrt{1-x}}{\sqrt{1+x}}
-$$</p>
-<p>双曲线时的情况略有不同. 考虑 $C(\R):x^2-y^2=1$, 如果朴素地计算平面直角坐标系上的积分, 将得到一个会被归类为椭圆积分的表达式</p>
-<p>$$ 
-\int \sqrt{\frac{2x^2-1}{x^2-1}} \d x 
-\spaces= \int \frac{4x^4-1}{\sqrt{x^2-1}\sqrt{2x^2+1}} \d x
-$$</p>
-<p>由于分子部分的 $4x^4-1$ 是多项式函数, 因此整个积分的核心就在于下面这一项</p>
-<p>$$
-\int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
-\tag{1}
-$$</p>
-<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
-<p>现在考虑双曲线 $C(\R)$ 的一个参数化
-$$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
-<p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
-<p>$$
-\begin{aligned}
-\int \sqrt{\sinh^2 t + \cosh^2 t} \d t
-&\spaces= \int \sqrt{\cosh 2t} \d t \\
-&\spaces= -i \E(it \mid 2) \\
-&\spaces= -i \E(i \cosh^{-1}x \mid 2) \\
-&\spaces= \E(\sin^{-1}x \mid 2) \\
-\end{aligned}
-$$</p>
-</details></section></details></section></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 30, 2024</li></ul></div></header></section></details></section></footer></article>
 
 </div></body></html>
