@@ -2,5 +2,15 @@
 # Build
 
 ```
-kodama c --short-slug --footer-mode embed
+kodama build
+```
+
+# Serve
+
+Requirements:
+
+- [miniserve](https://github.com/svenstaro/miniserve)
+
+```
+kodama serve
 ```
