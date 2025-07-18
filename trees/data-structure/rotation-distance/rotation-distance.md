@@ -6,5 +6,5 @@ author: Daniel D. Sleator, Robert E. Tarjan, William P. Thurston
 pdf: [PDF](https://www.cs.cmu.edu/~sleator/papers/rotation-distance.pdf)
 ---
 
-[](/data-structure/rotation-distance-0.md#:embed)
-[+](/data-structure/rotation-distance-1.md#:embed)
+[](./rotation-distance-0.md#:embed)
+[+](./rotation-distance-1.md#:embed)

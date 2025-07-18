@@ -9,15 +9,15 @@ taxon: proof
 同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 [^1]. $(ii)$
 该二叉树必有一个位于根节点右侧的节点 [^2]. 如下图所示
 
-[](/data-structure/stack-permutation-0005.typ#:block)
+[](./stack-permutation-0005.typ#:block)
 
 由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即
 
-[](/data-structure/stack-permutation-0006.typ#:block)
+[](./stack-permutation-0006.typ#:block)
 
 下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$
 
-[](/data-structure/stack-permutation-0007.typ#:block)
+[](./stack-permutation-0007.typ#:block)
 
 立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.
 

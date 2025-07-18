@@ -16,6 +16,6 @@ H @>>> C
 \end{CD}
 $$
 
-[.](/data-structure/stack-permutation-000C.md#:embed)
+[.](./stack-permutation-000C.md#:embed)
 
 现在, Hille 原文所使用的 `encode` 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.  
