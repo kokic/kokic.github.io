@@ -7,7 +7,7 @@ url = "/"
 typst-root = "./"
 short-slug = true
 pretty-urls = false
-footer-mode = "link"
+footer-mode = "embed"
 inline-css = false
 output = "./publish"
 

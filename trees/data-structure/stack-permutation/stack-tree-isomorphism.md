@@ -7,7 +7,7 @@ license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/dee
 pdf: [PDF](https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf)
 ---
 
-[*](./stack-permutation-0003.typ#:shared)
+[*](/data-structure/stack-permutation/stack-permutation-0003.typ#:shared)
 
 [+](./stack-permutation.md#:embed)
 

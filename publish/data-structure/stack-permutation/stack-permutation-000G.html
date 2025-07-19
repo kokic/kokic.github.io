@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>相交数</title>
+<meta name="viewport" content="width=device-width"><title></title>
 <script type="module">
   import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
 
@@ -82,13 +82,24 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-tree-isomorphism.html'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-000D"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation-000D.html">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary><p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画.</p>
-<p>$$
-a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \binom kj \binom{k+j+2}j
-$$</p>
-<p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation-000E.html">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></section></details></section></footer></article>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/stack-permutation-000F.html'" title="有效长度的上下界">« 有效长度的上下界</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G.html">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
+<p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
+同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_1-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_1">1</a></sup>. $(ii)$
+该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_2-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_2">2</a></sup>. 如下图所示</p>
+<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0005.svg" class="color-invert"/></figure></p>
+<p>由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即</p>
+<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0006.svg" class="color-invert"/></figure></p>
+<p>下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$</p>
+<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0007.svg" class="color-invert"/></figure></p>
+<p>立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.</p>
+<div class="footnote-definition" id="data-structure_stack-permutation_stack-permutation-000G_1">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-permutation-000G_1-back">1</a></sup>
+<p>如若不然, 这颗二叉树只会形如 <code>1010101</code>$\cdots$, 其长度为 $2n - 1$.</p>
+</div>
+<div class="footnote-definition" id="data-structure_stack-permutation_stack-permutation-000G_2">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-permutation-000G_2-back">2</a></sup>
+<p>否则回溯贡献的长度便不是最大值 $n-2$.</p>
+</div>
+</details></section><footer></footer></article>
 
 </div></body></html>

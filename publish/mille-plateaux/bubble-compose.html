@@ -82,10 +82,55 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index.html'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose.html">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 26, 2024</li></ul></div></header></summary><p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof.html">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 27, 2024</li></ul></div></header></summary><p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index.html'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose.html">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 26, 2024</li></ul></div></header></summary>
+<p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof.html">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 27, 2024</li></ul></div></header></summary>
+<p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src="/mille-plateaux/bubble-compose.svg" class="color-invert"/></figure></p>
 </details></section></p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 16, 2025</li></ul></div></header></section></details></section></footer></article>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-permutation-matrix"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 16, 2025</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
+<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose.html" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
+<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
+<p>$$
+\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix}
+\begin{pmatrix} x_1 \\ x_2 \\ \end{pmatrix}
+\spaces=
+\begin{pmatrix} x_2 \\ x_1 \\ \end{pmatrix}
+, \quad
+\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix} 
+\spaces\hookrightarrow 
+(1 ~~ 2)
+$$</p>
+<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference" id="linear-algebra_permutation-matrix_horizontal-exchange-back"><a href="#linear-algebra_permutation-matrix_horizontal-exchange">1</a></sup>.</p>
+<p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
+<p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
+我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
+<p>$$
+\underbrace{\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}}_{(2 ~ 3) ~ \curvearrowright ~ I_3}
+\spaces\cdot
+\underbrace{\begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}}_{(1 ~ 2) ~ \curvearrowright ~ I_3}
+\eqq
+\underbrace{\begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
+$$</p>
+<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符. 也就是说</p>
+<p>$$
+\sigma_2\sigma_1 \quads\cong (\sigma_2 \curvearrowright I) \cdot (\sigma_1 \curvearrowright I)
+$$</p>
+<!-- 
+$$ 
+\sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
+$$ 
+-->
+<div class="footnote-definition" id="linear-algebra_permutation-matrix_horizontal-exchange">
+  <sup class="footnote-definition-label"><a href="#linear-algebra_permutation-matrix_horizontal-exchange-back">1</a></sup>
+<p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
+</div>
+</details></section></details></section></footer></article>
 
 </div></body></html>
