@@ -1,8 +1,8 @@
 
 ---
 title: 链式法则
+date: May 9, 2024
 author: [kokic](/kokic.md)
-!date: May 9, 2024
 taxon: exegesis
 ---
 

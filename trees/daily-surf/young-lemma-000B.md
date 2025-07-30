@@ -1,9 +1,9 @@
 
 ---
 title: Bernoulli 不等式
+date: May 15, 2019
 author: [kokic](/kokic.md)
 taxon: corollary
-!date: May 15, 2019
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

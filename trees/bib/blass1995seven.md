@@ -1,9 +1,9 @@
 
 ---
 title: Seven trees in one
+date: May 20, 1994
 author: Andreas Blass
 taxon: reference
-!date: May 20, 1994
 link: <https://arxiv.org/abs/math/9405205>
 journal: Journal of Pure and Applied Algebra, Volume 103
 ---

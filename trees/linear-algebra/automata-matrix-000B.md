@@ -1,9 +1,9 @@
 
 ---
 title: 分块矩阵的逆
+date: May 10, 2024
 author: [kokic](/kokic.md)
 taxon: example
-!date: May 10, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

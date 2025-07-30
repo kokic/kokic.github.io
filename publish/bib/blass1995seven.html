@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Reference"><details open><summary id="bib-blass1995seven"><header><h1><span class="taxon">Reference. </span>Seven trees in one <a class="slug" href="/bib/blass1995seven.html">[blass1995seven]</a></h1><div class="metadata"><ul><li class="meta-item">Andreas Blass</li><li class="meta-item">May 20, 1994</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li><li class="meta-item">Journal of Pure and Applied Algebra, Volume 103</li></ul></div></header></summary>
-<p>Following a remark of Lawvere, we explicitly exhibit a particularly elementary bijection between the set $T$ of finite binary trees and the set $T^7$ of seven-tuples of such trees.
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Reference"><details open><summary id="bib-blass1995seven"><header><h1><span class="taxon">Reference. </span>Seven trees in one <a class="slug" href="/bib/blass1995seven.html">[blass1995seven]</a></h1><div class="metadata"><ul><li class="meta-item">May 20, 1994</li><li class="meta-item">Andreas Blass</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/abs/math/9405205" title="https://arxiv.org/abs/math/9405205">https://arxiv.org/abs/math/9405205</a></span></li><li class="meta-item">Journal of Pure and Applied Algebra, Volume 103</li></ul></div></header></summary><p>Following a remark of Lawvere, we explicitly exhibit a particularly elementary bijection between the set $T$ of finite binary trees and the set $T^7$ of seven-tuples of such trees.
 “Particularly elementary” means that the application of the bijection to a seven-tuple of trees involves case distinctions only down to a fixed depth (namely four) in the given seven-tuple.
 We clarify how this and similar bijections are related to the free commutative semiring on one generator X subject to $X=1+X^2$. Finally, our main theorem is that the existence of particularly elementary bijections can be deduced from the provable existence, in intuitionistic type theory, of any bijections at all.</p>
 <pre><code>@article{blass1995seven,
@@ -97,13 +105,11 @@ We clarify how this and similar bijections are related to the free commutative s
   publisher={Elsevier}
 }
 </code></pre>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere.html">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li></ul></div></header></summary>
-<p>$\gdef\N{\mathbf{N}}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere.html">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven.html" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
 <p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
-<p><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary>
-<p>$\gdef\N{\mathbf{N}}$
+<p><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
 </details></section></p>

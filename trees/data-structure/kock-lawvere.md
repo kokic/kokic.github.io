@@ -1,9 +1,9 @@
 
 ---
 title: Kock--Lawvere
+date: May 13, 2024
 author: [kokic](/kokic.md)
 taxon: axiom
-!date: May 13, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

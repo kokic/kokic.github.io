@@ -2,8 +2,8 @@
 ---
 title: Laisant--Young 不等式
 author: [kokic](/kokic.md)
+date: May 19, 2019
 taxon: exegesis
-!date: May 19, 2019
 ---
 
 $\gdef\d{\operatorname{d}}$

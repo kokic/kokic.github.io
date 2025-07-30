@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,9 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="linear-algebra-index"><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index.html">[linear-algebra]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon="Conjecture"><details ><summary id="linear-algebra-kontsevich-periodicity"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity.html">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 16, 2025</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="linear-algebra-index"><header><h1><span class="taxon"></span>线性代数杂记 <a class="slug" href="/linear-algebra/index.html">[linear-algebra]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon="Conjecture"><details ><summary id="linear-algebra-kontsevich-periodicity"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity.html">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
@@ -97,8 +104,7 @@ $$</p>
 (I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
 $$</p>
 <p>为何不成立 <sup class="footnote-reference" id="linear-algebra_kontsevich-periodicity_kontsevich-hold-back"><a href="#linear-algebra_kontsevich-periodicity_kontsevich-hold">1</a></sup>.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A.html">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 18, 2025</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A.html">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
 <p>$$
@@ -129,8 +135,7 @@ $$</p>
 <p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity-000A.html" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">验证</a></span>. Iyudu 和 Shkarin 在他们的 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="论文 [https://arxiv.org/abs/1305.1965v3]">论文</a></span> 中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity.html" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
 </div>
 </details></section>
-<section class="block" data-taxon="Theorem"><details ><summary id="linear-algebra-rayleigh-quotient"><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient.html">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block" data-taxon="Theorem"><details ><summary id="linear-algebra-rayleigh-quotient"><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient.html">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>设矩阵 $M$ 是 $n$ 阶对角矩阵, 即</p>
 <p>$$
 M \spaces= \begin{pmatrix}
@@ -147,8 +152,7 @@ $$</p>
 \spaces\leqslant \max\limits_{1 \leqslant i \leqslant n}\lambda_{i}
 $$</p>
 <p>其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-rayleigh-quotient-000A"><header><h1><span class="taxon">Exegesis 1. </span> 某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A.html">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-rayleigh-quotient-000A"><header><h1><span class="taxon">Exegesis 1. </span> 某类二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000A.html">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>注意, $x^* M x$ 和 $x^*x = \|x\|$ 当然都是标准二次型. 特别的, 取 $x = \left( x_{1},\cdots,x_{n} \right)^{T}$, 则</p>
 <p>$$
 x^{\ast}Mx \spaces= \sum_{1 \leqslant i \leqslant n}\lambda_{i}x_{i}^{2},\quad 
@@ -169,8 +173,7 @@ $$</p>
 <li>任何复对称矩阵都可以由酉矩阵对角化, 即 Autonne–Takagi 分解.</li>
 </ul>
 <p>具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵.</p>
-<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000B"><header><h1><span class="taxon">Example 2. </span> 二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B.html">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000B"><header><h1><span class="taxon">Example 2. </span> 二阶情形 <a class="slug" href="/linear-algebra/rayleigh-quotient-000B.html">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>考虑 $M = \scriptsize\begin{pmatrix} 1 &amp; 2 \\ 2 &amp; 1 \end{pmatrix}$,
@@ -214,8 +217,7 @@ $$</p>
 </div>
 </details></section></p>
 <p>广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例.</p>
-<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000C"><header><h1><span class="taxon">Example 3. </span> 一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C.html">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 5, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-rayleigh-quotient-000C"><header><h1><span class="taxon">Example 3. </span> 一般二次型的商 <a class="slug" href="/linear-algebra/rayleigh-quotient-000C.html">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们要求解问题可以叙述成下面的形式</p>
 <p>$$
 F \spaces= \frac{3a^2 + 4ab + 3b^2}{4a^2 + 12ab + 34b^2}, \quad \min_\R F, \quad \max_\R F
@@ -233,8 +235,7 @@ $$</p>
 <p>自伴随矩阵, 复对称矩阵.</p>
 </div>
 </details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-permutation-matrix"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 16, 2025</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-permutation-matrix"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
@@ -277,9 +278,7 @@ $$
 <p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
 </div>
 </details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix.html">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary>
-<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language.html">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+<section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix.html">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language.html">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
@@ -313,8 +312,7 @@ $\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
 $$</p>
 <p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring.html">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\N{\mathbf{N}}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring.html">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$
@@ -329,8 +327,7 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
 </details></section>
-<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring.html">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li><li class="meta-item"></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring.html">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -342,8 +339,7 @@ $$</p>
 <p>从而在闭半环的 $a&lt;1$ 处继续沿用这个记号. 这样, 一旦当我们扩大到环 $\R$ 时, 闭半环 $\R_{\ge 0} \cup \{\infty\}$ 当中得出的结果仍然有效. 我们在这里要求 $\R_{\ge 0} \cup \{\infty\}$ 还有另一个原因, 如果对所有 $a$ 都定义 $a^* = \frac1{1-a}$, 那么 $a^{***} = a$, 即 $\square^*$ 是 $3$-幂等的运算, 这会让 Kleene 闭包和正则表达式的概念无从谈起.</p>
 <p>我们的论证可以直接拓展到一般的闭半环 $(\mathcal{Q}, +, \times, \square^*)$. 当其中的半环 $(\mathcal{Q}, +, \times)$ 被替换为环 $(R, +, \times)$ 时, 如果 $R$ 当中的 $\frac1{1-a}$ 在 $\mathcal{Q}$ 当中存在, 则 $\mathcal{Q}$ 当中的 $a^*$ 对应于 $R$ 当中的 $\frac1{1-a}$. 当然, 隐含的条件是, $R$ 的加法和乘法与 $\mathcal{Q}$ 兼容.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis 4. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis 4. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
@@ -375,8 +371,7 @@ d^* c \alpha &amp; \quad d^* + d^*c \alpha b d^* \tag{1.1}
 $$</p>
 <p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition.html" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example 5. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A.html">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example 5. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A.html">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
 <p>$$
 \begin{aligned}
@@ -391,8 +386,7 @@ M^{-1}
 \end{aligned}
 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example 6. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B.html">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example 6. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B.html">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
 M \spaces= \begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A &amp; -B \\ -C &amp; 1-D \end{pmatrix}

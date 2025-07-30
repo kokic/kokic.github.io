@@ -1,9 +1,9 @@
 
 ---
 title: 矩阵表示
+date: May 9, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 9, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

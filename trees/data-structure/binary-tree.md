@@ -1,9 +1,9 @@
 
 ---
 title: 二叉树类型
+date: September 24, 2024
 author: [kokic](/kokic.md)
 taxon: definition
-!date: September 24, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

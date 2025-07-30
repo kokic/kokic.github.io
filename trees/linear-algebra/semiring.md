@@ -1,9 +1,9 @@
 
 ---
 title: 关于半环的注释
+date: May 9, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 9, 2024
 ---
 
 $\gdef\N{\mathbf{N}}$

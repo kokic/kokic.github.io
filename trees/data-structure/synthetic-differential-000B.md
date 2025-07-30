@@ -1,8 +1,8 @@
 
 ---
 title: 矩阵表示给出的微分运算
+date: May 9, 2024
 author: [kokic](/kokic.md)
-!date: May 9, 2024
 taxon: example
 ---
 

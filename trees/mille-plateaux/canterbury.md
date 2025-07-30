@@ -1,9 +1,9 @@
 
 ---
 title: Canterbury 物语
+date: December 26, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: December 26, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

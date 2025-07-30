@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>屏幕右上角的 “FPS GPU CPU 延时”</title>
+<meta name="viewport" content="width=device-width"><title>文件互传</title>
 <script type="module">
   import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
 
@@ -91,13 +91,9 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-nvidia-fps-gpu-cpu"><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu.html">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
-<p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="daily-surf_nvidia-fps-gpu-cpu_concept-name-back"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name">1</a></sup>
-AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
-<div class="footnote-definition" id="daily-surf_nvidia-fps-gpu-cpu_concept-name">
-  <sup class="footnote-definition-label"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name-back">1</a></sup>
-<p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
-</div>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-file-transfer"><header><h1><span class="taxon"></span>文件互传 <a class="slug" href="/daily-surf/file-transfer.html">[file-transfer]</a></h1><div class="metadata"><ul><li class="meta-item">May 18, 2022</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>因为各种读者可以想象的原因, 基于网络的面对面文件互传其实是一件经常会遇到的事. 笔者先后尝试过依赖于特定品牌的互传功能, 但时不时会遇到因未知原因导致的传输无法开始的问题. 索性另求他法.</p>
+<p>我们假设有设备 $A$, $B$, 且 $A$ 将要发送文件 $F$ 给 $B$, 另可设文件 $F$ 充分大 (如 $\geqslant 1 \text{GB}$). 方案如下.</p>
+<p>$B$ 联网且开热点, $A$ 连接热点. 随后 $A$ 通过 <span class="link external"><a href="https://termux.dev" title="Termux [https://termux.dev]">Termux</a></span> + <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> 或其他等效软件在文件 $F$ 所在目录开启本地 <span class="link external"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" title="HTTP [https://developer.mozilla.org/zh-CN/docs/Web/HTTP]">HTTP</a></span> 服务器, 记下 IP. $B$ 使用浏览器访问 IP, 下载文件即可, 此时下载速率依赖于 $B$ 连接到的网络.</p>
 </details></section><footer></footer></article>
 
 </div></body></html>

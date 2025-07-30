@@ -1,9 +1,9 @@
 
 ---
 title: 复数
+date: April 11, 2025
 author: [kokic](/kokic.md)
 taxon: definition
-!date: April 11, 2025
 ---
 
 $\gdef\R{\mathbf{R}}$

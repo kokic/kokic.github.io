@@ -1,9 +1,9 @@
 
 ---
 title: Hille 编码
+date: 1982
 author: Reinhold Friedrich Hille
 taxon: definition
-!date: 1982
 ref: [Stack permutations and an order relation for binary trees](/bib/hille1982stack.md)
 ---
 

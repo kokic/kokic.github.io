@@ -1,8 +1,8 @@
 
 ---
 title: 周期函数的构造
+date: December 31, 2024
 author: [kokic](/kokic.md)
-!date: December 31, 2024
 ---
 
 $\gdef\R{\mathbf{R}}$

@@ -1,9 +1,9 @@
 
 ---
 title: 意象理论讲义
-author: 王进一
 taxon: reference
-!date: November 20, 2024
+date: November 20, 2024
+author: 王进一
 link: [电子版](https://github.com/SimplicialCat/topos/blob/main/topos.pdf)
 ---
 

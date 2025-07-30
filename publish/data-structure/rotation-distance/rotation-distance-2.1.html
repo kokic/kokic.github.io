@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/rotation-distance/rotation-distance-2.html'" title="Definitions and Equivalences">« Definitions and Equivalences</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-rotation-distance-rotation-distance-2.1"><header><h1><span class="taxon"></span>Binary Trees <a class="slug" href="/data-structure/rotation-distance/rotation-distance-2.1.html">[rotation-distance-2.1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>A binary tree is a collection of nodes of two types, external and internal, and three relations among these nodes: parent, left child and right child. Every node except a special one called the root has a parent, and every internal node has a left and a right child. External nodes have no children. A tree is said to be of size $n$ if it has $n$ internal nodes. A tree of size $n$ has $n + 1$ external nodes. (See [5,10] for a more complete description of binary trees and tree terminology.) The number of steps required to walk from the root of the tree to a node is the depth of that node. (Each step moves from a node to one of its children.)</p>
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/rotation-distance/rotation-distance-2.html'" title="Definitions and Equivalences">« Definitions and Equivalences</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-rotation-distance-rotation-distance-2.1"><header><h1><span class="taxon"></span>Binary Trees <a class="slug" href="/data-structure/rotation-distance/rotation-distance-2.1.html">[rotation-distance-2.1]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>A binary tree is a collection of nodes of two types, external and internal, and three relations among these nodes: parent, left child and right child. Every node except a special one called the root has a parent, and every internal node has a left and a right child. External nodes have no children. A tree is said to be of size $n$ if it has $n$ internal nodes. A tree of size $n$ has $n + 1$ external nodes. (See [5,10] for a more complete description of binary trees and tree terminology.) The number of steps required to walk from the root of the tree to a node is the depth of that node. (Each step moves from a node to one of its children.)</p>
 <p>A symmetric order traversal of the tree visits all of the nodes exactly once. This order can be described by a recursive algorithm as follows: If the node is an internal node, traverse its left subtree in symmetric order, visit the node itself, then traverse its right subtree in symmetric order. If the node is an external node, merely visit it. The order in which the nodes are visited is called the symmetric order permutation of the nodes (or simply the symmetric order of the nodes).</p>
 <p>In a common computer-related application of binary trees the tree is used to store an ordered collection of pieces of information (called items). Each internal node of the tree is labeled with an item, and the order of the items is represented by the symmetric order of the nodes.</p>
 <p>A rotation is an operation that changes one binary tree into another. In a tree of size $n$ there are $n - 1$ possible rotations, one corresponding to each non-root internal node. Figure 1 shows the general rotation rule and the effect of a particular rotation on a particular tree. The rotation corresponding to a node changes the structure of the tree near that node, but leaves the structure elsewhere intact. A rotation maintains the symmetric order of the nodes, but changes the depths of some of them. Rotations are the primitives used by most schemes that maintain “balance” in binary trees [5,10].</p>

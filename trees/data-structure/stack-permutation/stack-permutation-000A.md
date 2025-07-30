@@ -2,9 +2,9 @@
 ---
 title: $n=3$
 page-title: 三节点二叉树
+date: November 06, 2024
 author: [kokic](/kokic.md)
 taxon: example
-!date: November 06, 2024
 ---
 
 以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换. 

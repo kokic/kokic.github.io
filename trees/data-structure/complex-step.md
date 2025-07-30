@@ -1,9 +1,9 @@
 
 ---
 title: Complex step 微分法
+date: May 13, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 13, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

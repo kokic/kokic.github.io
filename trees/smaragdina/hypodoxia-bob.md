@@ -1,8 +1,8 @@
 
 ---
 title: 如何为使用了 Hypodoxia 的网站提交评论
+date: May 25, 2025
 author: [kokic](/kokic.md)
-!date: May 25, 2025
 ---
 
 $\textbf{Remark.}$ 这不是一篇技术性的文章, 所以它只介绍操作流程而不探讨细节. 它面向的是想要发送评论的用户, 对于希望为网站添加 [Hypodoxia](https://github.com/kokic/hypodoxia) 支持的维护者, 请参考 [Alice 篇](/smaragdina/hypodoxia-alice.md).

@@ -1,9 +1,9 @@
 
 ---
 title: 代数学方法 卷一：基础架构
+date: November 16, 2018
 author: 李文威
 taxon: reference
-!date: November 16, 2018
 link: [电子版](https://wwli.asia/downloads/books/Al-jabr-1.pdf)
 publisher: 高等教育出版社
 series: 现代数学基础系列

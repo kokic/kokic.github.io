@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/stack-permutation-000F.html'" title="有效长度的上下界">« 有效长度的上下界</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G.html">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/stack-permutation-000F.html'" title="有效长度的上下界">« 有效长度的上下界</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G.html">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
 同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_1-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_1">1</a></sup>. $(ii)$
 该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_2-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_2">2</a></sup>. 如下图所示</p>
 <p><figure><img src="/data-structure/stack-permutation/stack-permutation-0005.svg" class="color-invert"/></figure></p>

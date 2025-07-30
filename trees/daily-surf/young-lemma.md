@@ -1,9 +1,9 @@
 
 ---
 title: Young 引理
+date: May 14, 2019
 author: [kokic](/kokic.md)
 taxon: lemma
-!date: May 14, 2019
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

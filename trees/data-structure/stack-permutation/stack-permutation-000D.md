@@ -1,9 +1,9 @@
 
 ---
 title: 相交数
+date: November 06, 2024
 author: [kokic](/kokic.md)
 taxon: proposition
-!date: November 06, 2024
 ---
 
 $\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$

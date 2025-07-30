@@ -1,9 +1,9 @@
 
 ---
 title: Fermat 提升法
-author: [kokic](/kokic.md)
 taxon: exegesis
-!date: December 26, 2024
+date: December 26, 2024
+author: [kokic](/kokic.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

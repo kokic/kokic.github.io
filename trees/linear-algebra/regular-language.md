@@ -1,9 +1,9 @@
 
 ---
 title: 正则语言集
+date: May 9, 2024
 author: [kokic](/kokic.md)
 taxon: definition
-!date: May 9, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

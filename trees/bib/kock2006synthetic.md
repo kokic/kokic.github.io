@@ -1,8 +1,8 @@
 ---
 title: Synthetic differential geometry
+date: 2006
 author: Anders Kock
 taxon: reference
-!date: 2006
 publisher: Cambridge University Press, Volume 333
 ---
 

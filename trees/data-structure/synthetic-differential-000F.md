@@ -1,7 +1,7 @@
 
 ---
 title: 对数的验证
-!date: May 9, 2024
+date: May 9, 2024
 taxon: exegesis
 ---
 

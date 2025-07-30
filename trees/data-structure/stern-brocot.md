@@ -1,9 +1,9 @@
 
 ---
 title: Stern -- Brocot 树
+date: May 4, 2025
 author: [kokic](/kokic.md)
 taxon: definition
-!date: May 4, 2025
 ---
 
 $\gdef\Q{\mathbf{Q}}$

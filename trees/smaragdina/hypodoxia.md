@@ -1,8 +1,8 @@
 
 ---
-title: 何谓 Hypodoxia 
+title: 何谓 Hypodoxia
+date: May 26, 2025
 author: [kokic](/kokic.md)
-!date: May 26, 2025
 ---
 
 - [](/smaragdina/hypodoxia-alice.md)

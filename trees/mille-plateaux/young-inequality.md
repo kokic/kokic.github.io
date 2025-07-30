@@ -1,9 +1,9 @@
 
 ---
 title: 增函数的 Young 不等式
+date: May 19, 2019
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 19, 2019
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

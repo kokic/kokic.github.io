@@ -2,8 +2,8 @@
 ---
 title: Canterbury 曲线的切线与自身的交点
 taxon: lemma
+date: December 27, 2024
 author: [kokic](/kokic.md)
-!date: December 27, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

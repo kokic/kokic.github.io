@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,15 +77,27 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000F"><header><h1><span class="taxon">Exegesis. </span>对数的验证 <a class="slug" href="/data-structure/synthetic-differential-000F.html">[synthetic-differential-000F]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000F"><header><h1><span class="taxon">Exegesis. </span>对数的验证 <a class="slug" href="/data-structure/synthetic-differential-000F.html">[synthetic-differential-000F]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>$$
 \begin{pmatrix} \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k &amp; \sum_{k \ge 0} (-1)^k (u-1)^k \cdot u'  \\ 0 &amp; \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k \end{pmatrix}
 \spaces= 
 \begin{pmatrix} \log u &amp; u'u^{-1} \\ 0 &amp; \log u \end{pmatrix}
 $$</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Example"><details ><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example. </span>矩阵表示给出的微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B.html">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\Mat{\operatorname{Mat}}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Example"><details ><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example. </span>矩阵表示给出的微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B.html">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>

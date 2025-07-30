@@ -1,9 +1,9 @@
 
 ---
 title: Schanuel–Lavendhomme 构造
+date: November 18, 2024
 author: [kokic](/kokic.md)
 taxon: definition
-!date: November 18, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

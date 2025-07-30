@@ -1,9 +1,9 @@
 
 ---
 title: 经典对称幂指数不等式
+date: June 20, 2019
 author: [kokic](/kokic.md)
 taxon: example
-!date: June 20, 2019
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

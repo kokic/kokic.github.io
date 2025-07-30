@@ -1,8 +1,8 @@
 
 ---
 title: Git 过滤分支
+date: February 15, 2025
 author: [kokic](/kokic.md)
-!date: February 15, 2025
 ---
 
 一个常见的需求是, 对已经存在的 [commit](https://git-scm.com/docs/git-commit) 历史作出修改. 如果目标 commits 都存在于本地分支, 那么一组 [`rebase`](https://git-scm.com/docs/git-rebase) 就能解决问题. 但若是要修改已经推送至远程仓库或托管平台 [^host-platform] 就没那么容易了, 而且对于真实的多人协作仓库来说, 这么做的潜在危害远高于修改 commits 历史所得到的短期好处 [^alternative-approach]. 因此我们接下来的讨论都是以接受这一点作为前提来进行.     

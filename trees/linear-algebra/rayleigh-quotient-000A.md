@@ -1,8 +1,8 @@
 
 ---
-author: [kokic](/kokic.md)
 taxon: exegesis
-!date: November 5, 2024
+date: November 5, 2024
+author: [kokic](/kokic.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

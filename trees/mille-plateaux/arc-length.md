@@ -1,8 +1,8 @@
 
 ---
 title: 曲线弧长计算
+date: January 12, 2025
 author: [kokic](/kokic.md)
-!date: January 12, 2025
 ---
 
 $\gdef\d{\operatorname{d}}$

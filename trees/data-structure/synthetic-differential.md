@@ -1,8 +1,8 @@
 
 ---
 title: 综合微分法
+date: May 9, 2024 --- May 14, 2024
 author: [kokic](/kokic.md)
-!date: May 9, 2024 --- May 14, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

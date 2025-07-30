@@ -1,9 +1,9 @@
 
 ---
 title: 对偶数
+date: May 14, 2024
 author: [kokic](/kokic.md)
 taxon: definition
-!date: May 14, 2024
 ---
 
 $\gdef\R{\mathbf{R}}$

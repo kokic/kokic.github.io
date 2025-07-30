@@ -1,9 +1,9 @@
 
 ---
 title: Kontsevich 周期性猜想
+date: February 16, 2025
 author: [kokic](/kokic.md)
 taxon: conjecture
-!date: February 16, 2025
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

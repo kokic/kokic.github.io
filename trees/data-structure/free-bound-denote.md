@@ -1,9 +1,9 @@
 
 ---
 title: 自由--绑定记号
+date: April 17, 2025
 author: [kokic](/kokic.md)
 taxon: definition
-!date: April 17, 2025
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

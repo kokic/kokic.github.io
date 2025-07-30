@@ -1,9 +1,9 @@
 
 ---
 title: 矩阵闭包
+date: May 10, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 10, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

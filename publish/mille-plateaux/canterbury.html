@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury.html">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 26, 2024</li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury.html">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>$\textbf{Problem.}$ 有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \eqq 9 \quad \color{gray}{(= \quad 1^3+2^3)} $$</p>
@@ -91,8 +99,7 @@ $\gdef\eqq{\quads=}$</p>
 <figure style="text-align: center;"><img src="../assets/8P.svg" class="color-invert" style="border-radius: 0.2em; width: 500px;"></figure>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在写出其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 1. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C.html">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 27, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 1. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C.html">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>对 $\Gamma: x^3+y^3=c$ 求导得 $3x^2 + 3y^2y^\prime = 0$, 故 $y^\prime = -\frac{x^2}{y^2}$. 任取 $\Gamma$ 上一个点 $P(x_\Box, y_\Box)$. 由此得到该点处的切线 $\ell_P: y - y_\Box = -\frac{x_\Box^2}{y_\Box^2}(x - x_\Box)$. 代入 $\Gamma$, 即</p>
@@ -105,8 +112,7 @@ $\gdef\eqq{\quads=}$</p>
 <p>反复利用映射 $2P$ 即可得到 <span class="link local"><a href="/mille-plateaux/canterbury-000B.html" title=" [mille-plateaux/canterbury-000B]">前文</a></span> 的 $8P$. 当然, 这也给出如下经典的恒等式. 最早亦可追溯到 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 和 Bacht.</p>
 <p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 2. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent.html">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">December 26, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 2. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent.html">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
 <p>$$ x(P) \spaces + x(Q) \spaces + x(S) \spaces 

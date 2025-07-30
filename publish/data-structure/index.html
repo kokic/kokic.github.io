@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,10 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-index"><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index.html">[data-structure]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon=""><details ><summary id="data-structure-seven-trees-in-one"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one.html">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></summary>
-<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-binary-tree"><header><h1><span class="taxon">Definition 1. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree.html">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-index"><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index.html">[data-structure]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><section class="block" data-taxon=""><details ><summary id="data-structure-seven-trees-in-one"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one.html">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></summary><p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-binary-tree"><header><h1><span class="taxon">Definition 1. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree.html">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>二叉树意味树的每个结点最多两个子树. 其类型由两个构造器归纳给出</p>
 <p><details><summary><figure><img src="/data-structure/tree-def.svg" class="color-invert"/></figure></summary><pre>inductive Tree α
   | leaf : Tree α
@@ -94,13 +100,11 @@
 <p><figure><img src="/data-structure/binary-tree.svg" class="color-invert"/></figure></p>
 <p>换言之, 二叉树可定义为某种满足 $B=1+B^2$ 的 (代数) 结构. 回顾 $6$ 次分圆多项式 $$ \Phi_6(x) \spaces= x^2-x+1 $$ 其复根 $\zeta_6$, $\zeta^{-1}_6$ 是所谓的 $6$ 次本原单位根.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere.html">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li></ul></div></header></summary>
-<p>$\gdef\N{\mathbf{N}}$
+<section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere.html">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven.html" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
 <p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
-<p><section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary>
-<p>$\gdef\N{\mathbf{N}}$
+<p><section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
 </details></section></p>
@@ -108,14 +112,11 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
 </details></section></p>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="data-structure-stack-permutation-stack-tree-isomorphism"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/stack-tree-isomorphism.html">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></summary>
-<p></p>
-<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation-stack-permutation"><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation/stack-permutation.html">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
+<section class="block" data-taxon=""><details ><summary id="data-structure-stack-permutation-stack-tree-isomorphism"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/stack-tree-isomorphism.html">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></summary><p></p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation-stack-permutation"><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation/stack-permutation.html">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
 </details></section></p>
 <p>不难发现, $A$ 的所有栈置换其实就是 $A$ 的所有出栈可能. 熟知 $n$ 元素栈共有 $\frac1{n+1}{2n \choose n}$ 种出栈情况. 另一方面, $n$ 个节点能构成 $\frac1{n+1}{2n \choose n}$ 种二叉树, 两者的计算都可以在 Catalan 数的相关条目中找到. 这表明两者作为集合同构, 一个可以考虑的问题是, 如何实现该同构? 即, 具体地写出这个双射. 这方面的 <span class="link local"><a href="/bib/hille1982stack.html" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">开创性工作</a></span> 来自 R. F. Hille.</p>
-<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation-hille-encode"><header><h1><span class="taxon">Definition 2. </span>Hille 编码 <a class="slug" href="/data-structure/stack-permutation/hille-encode.html">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item">1982</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack.html" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary>
-<p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation-hille-encode"><header><h1><span class="taxon">Definition 2. </span>Hille 编码 <a class="slug" href="/data-structure/stack-permutation/hille-encode.html">[hille-encode]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li><li class="meta-item"><span class="link local"><a href="/bib/hille1982stack.html" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Stack permutations and an order relation for binary trees</a></span></li></ul></div></header></summary><p>以下三条规则给出 Hille 编码到二叉树的转换过程. 同时不难验证, 任给一个二叉树, 可以通过这三条规则得到其 Hille 编码.</p>
 <ul>
 <li><code>1</code> 表示添加当前树节点的左子树. 例如 <code>111</code> 表示的树为 <code>(⋅ (⋅ (⋅)))</code>.</li>
 <li><code>01</code> 表示添加当前树节点的右子树. 例如 <code>10101</code> 表示的树为 <code>(⋅ _ (⋅ _ (⋅)))</code>.</li>
@@ -126,8 +127,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>相应的, 可以据此定义 Hille 编码的解析规则, 用于将这样一段有效的二进制序列转换为构造一颗二叉树的若干操作. 我们使用一种类 BNF 文法来定义这个解析器, 仅供读者理解.</p>
 <p><figure><img src="/data-structure/stack-permutation/stack-permutation-0004.svg" class="color-invert"/></figure></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/stack-permutation/hille-encode.html" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
-<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-stack-permutation-000A"><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000A.html">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
+<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-stack-permutation-000A"><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000A.html">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
 <p><figure><img src="/data-structure/stack-permutation/stack-permutation-0001.svg" class="color-invert"/></figure></p>
 </details></section></p>
@@ -153,13 +153,13 @@ $\gdef\Z{\mathbf{Z}}$</p>
                                             <g transform="translate(0 0)">
                                                 <g class="typst-group">
                                                     <g>
-                                                        <g transform="translate(10.533055765200158 10.533055765199913)">
+                                                        <g transform="translate(10.533055765200064 10.533055765199913)">
                                                             <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 5.1597886 0 C 5.1597886 0 0 5.1597886 0 5.1597886 "/>
                                                         </g>
                                                         <g transform="translate(10.533055648846556 24.417355900815053)">
                                                             <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
                                                         </g>
-                                                        <g transform="translate(24.41735564884644 10.533055900814961)">
+                                                        <g transform="translate(24.417355648846414 10.533055900814936)">
                                                             <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
                                                         </g>
                                                         <g transform="translate(13.884300000000003 0)">
@@ -190,8 +190,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 </svg>
 </span>
 , 其正确的 Hille 编码应该为 <code>1101000100</code>. 但是另一方面, 如果将序列 <code>110100100</code> 解释为栈的压入弹出操作, 即栈编码, 则可以得到正确的栈置换 <code>2314</code>. 这就意味着, 当二叉树的节点个数 $n &gt; 3$ 时, 存在二叉树使得其栈编码与 Hille 编码不同. 回忆二叉树和栈置换之间的双射关系, 这表明必然存在一套手续允许我们在两者之间互相转换, 下面我们将构造性地给出这个结果. 见 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000B.html" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/stack-permutation-000B]">栈编码与 Hille 编码的等价性</a></span>. 随后通过 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000E.html" title="相交率 [data-structure/stack-permutation/stack-permutation-000E]">相交率</a></span> 解释, 为何中序遍历在 $n$ 不大情况下能够频繁得到正确的 Hille 编码.</p>
-<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000B"><header><h1><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000B.html">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000B"><header><h1><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000B.html">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
 <p>$$
 \begin{CD}
 B @&gt;&gt;&gt; S \\
@@ -199,13 +198,11 @@ B @&gt;&gt;&gt; S \\
 H @&gt;&gt;&gt; C
 \end{CD}
 $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000C"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000C.html">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/stack-permutation/hille-encode.html" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000C"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000C.html">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/stack-permutation/hille-encode.html" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
 </details></section></p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000D"><header><h1><span class="taxon">Proposition 5. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D.html">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
+<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000D"><header><h1><span class="taxon">Proposition 5. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D.html">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画.</p>
 <p>$$
@@ -213,18 +210,15 @@ a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \
 $$</p>
 <p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-stack-permutation-stack-permutation-000E"><header><h1><span class="taxon">Corollary 6. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E.html">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000D.html" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-stack-permutation-stack-permutation-000E"><header><h1><span class="taxon">Corollary 6. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E.html">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000D.html" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-stack-permutation-000F"><header><h1><span class="taxon">Exegesis 7. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000F.html">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-stack-permutation-000F"><header><h1><span class="taxon">Exegesis 7. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000F.html">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>一个可供探究的问题是, 给定 $n$ 节点二叉树, 询问其 Hille 编码 $H_n$ 有效长度 $\ell(H_n)$ 的范围. 这里的有效不外乎是指去除末尾连续的 <code>0</code>. 我们将对此问题给出确切的回答.</p>
 <p>任意 $n$ 节点二叉树的 Hille 编码的有效长度满足下面的不等式</p>
 <p>$$n \spaces\leqslant \ell_{n} \spaces\leqslant \max(0,2n - 1,3n - 4)$$</p>
 <p>下界 $n$ 的验证是容易的, 构造一棵 $n$ 节点二叉树最少也需要 $n$ 个 <code>1</code>.
 由于 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000A.html" title="三节点二叉树 [data-structure/stack-permutation/stack-permutation-000A]">此处</a></span> 的讨论, 我们只需要验证 $n \geqslant 3$ 时 Hille 编码的有效长度至多是 $3n - 4$.</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G.html">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G.html">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
 同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_1-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_1">1</a></sup>. $(ii)$
 该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_2-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_2">2</a></sup>. 如下图所示</p>
 <p><figure><img src="/data-structure/stack-permutation/stack-permutation-0005.svg" class="color-invert"/></figure></p>
@@ -253,15 +247,13 @@ $$</p>
 <p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="data-structure-synthetic-differential"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential.html">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024 — May 14, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<section class="block" data-taxon=""><details ><summary id="data-structure-synthetic-differential"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential.html">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$</p>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000A"><header><h1><span class="taxon">Exegesis 1. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A.html">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000A"><header><h1><span class="taxon">Exegesis 1. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A.html">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>我们首先观察朴素的数值微分的计算过程. 待微分函数为 $(x+3)^2$, 此处不妨取 $x=-2$, $h=10^{-5}$, 这一位置的导数 $A$ 近似为</p>
@@ -281,8 +273,7 @@ $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 复合求导的中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-complex-step"><header><h1><span class="taxon">Exegesis 2. </span>复步微分法 <a class="slug" href="/data-structure/complex-step.html">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 13, 2024</li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-complex-step"><header><h1><span class="taxon">Exegesis 2. </span>复步微分法 <a class="slug" href="/data-structure/complex-step.html">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="data-structure_complex-step_publish-time-back"><a href="#data-structure_complex-step_publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="data-structure_complex-step_complex-step-back"><a href="#data-structure_complex-step_complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="data-structure_complex-step_distinguish-back"><a href="#data-structure_complex-step_distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>
 <p>$$
@@ -307,8 +298,7 @@ $$</p>
 <p><span class="link local"><a href="/data-structure/free-bound-denote.html" title="自由–绑定记号 [data-structure/free-bound-denote]">习惯上</a></span> 会混淆 $x$ 与 $X$, 这里做出区分.</p>
 </div>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis 3. </span>误差修正 <a class="slug" href="/data-structure/synthetic-differential-000C.html">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\C{\mathbf{C}}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis 3. </span>误差修正 <a class="slug" href="/data-structure/synthetic-differential-000C.html">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-step.html" title="Complex step 微分法 [data-structure/complex-step]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A.html" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
@@ -319,14 +309,12 @@ $$</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
 <p>中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会 <span class="link local"><a href="/data-structure/dual-number.html" title="对偶数 [data-structure/dual-number]">动摇</a></span> 经典逻辑中对于排中律的看法.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-dual-number"><header><h1><span class="taxon">Definition 4. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 14, 2024</li></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-dual-number"><header><h1><span class="taxon">Definition 4. </span>对偶数 <a class="slug" href="/data-structure/dual-number.html">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
 <p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme.html" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/data-structure/casus-irreducibilis.html" title="Casus irreducibilis [data-structure/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
-<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom 4.1. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 13, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom 4.1. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere.html">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos.html" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere.html" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1.html" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
@@ -341,8 +329,7 @@ $$</p>
 \forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
-<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-kock-lawvere-000A"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 13, 2024</li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-kock-lawvere-000A"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A.html">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
 <p>$$
@@ -1083,8 +1070,7 @@ cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <
 </blockquote>
 </details></section></p>
 <p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere.html" title="Kock–Lawvere [data-structure/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis 4.2. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D.html">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis 4.2. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D.html">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
@@ -1109,8 +1095,7 @@ a &amp; a' \\
 \det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example 4.3. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B.html">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\Mat{\operatorname{Mat}}$
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example 4.3. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B.html">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
@@ -1124,8 +1109,7 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 </ol>
 <p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可 <span class="link local"><a href="/data-structure/synthetic-differential-000F.html" title="对数的验证 [data-structure/synthetic-differential-000F]">验证</a></span>.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis 4.4. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E.html">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
-<p>$\gdef\Mat{\operatorname{Mat}}$
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis 4.4. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E.html">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>

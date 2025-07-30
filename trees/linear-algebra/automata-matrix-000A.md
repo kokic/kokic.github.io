@@ -1,9 +1,9 @@
 
 ---
 title: 二阶矩阵的逆
+date: May 9, 2024
 author: [kokic](/kokic.md)
 taxon: example
-!date: May 9, 2024
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

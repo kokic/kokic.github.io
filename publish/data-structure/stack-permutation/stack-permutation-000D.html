@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,16 +77,28 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/stack-tree-isomorphism.html'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000D"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D.html">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/stack-tree-isomorphism.html'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000D"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D.html">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画.</p>
 <p>$$
 a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \binom kj \binom{k+j+2}j
 $$</p>
 <p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-stack-permutation-stack-permutation-000E"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E.html">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 06, 2024</li></ul></div></header></summary>
-<p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000D.html" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-stack-permutation-stack-permutation-000E"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E.html">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000D.html" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
 </details></section></details></section></footer></article>
 
 </div></body></html>

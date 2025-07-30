@@ -1,8 +1,8 @@
 
 ---
 title: Sagemath Jupyter 主题设置
+date: February 17, 2025
 author: [kokic](/kokic.md)
-!date: February 17, 2025
 ---
 
 如果你是一个没有定制化需求的 [Sagemath](https://www.sagemath.org) 用户或者单纯地使用 Jupyter Notebook 连接一些与 [Sagemath](https://www.sagemath.org) 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因. 

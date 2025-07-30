@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition.html">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 29, 2025</li></ul></div></header></summary>
-<p>$\gdef\Q{\mathbf{Q}}$</p>
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition.html">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Q{\mathbf{Q}}$</p>
 <p>Conway 证明了星半环矩阵可替换的条件为, 至少满足以下三个等式</p>
 <p>$\quad 1.$ $a \cdot 0 = 0 \cdot a = 0$. <br />
 $\quad 2.$ $(ab)^* = 1 + a(ba)^*b$. <br />
@@ -92,8 +100,7 @@ $\quad 3.$ $(a+b)^* = (a^* b)^* a^*$.</p>
 <p>$\quad (i).~$ 对于星半环 $S$, 星半环矩阵 $a \in S^{2\times 2}$ 满足不动点方程 $1+aa^* = a^*$. 并且这里实际上只需要对上三角或下三角矩阵验证即可. <br />
 $\quad (ii).$ 对于星半环 $S$ 和每个 $n \ge 0$, 星半环矩阵 $a \in S^{n\times n}$ 满足不动点方程 $1+aa^* = a^*$.</p>
 <p>每个闭半环都是 Conway 半环, 反过来则未必, 如 Conway 半环 $\Q_{\ge 0}\cup \{\infty\}$ 就不是闭半环.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$

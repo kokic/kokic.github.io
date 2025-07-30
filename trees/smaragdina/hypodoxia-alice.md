@@ -1,8 +1,8 @@
 
 ---
 title: 如何使用 Hypodoxia
+date: May 26, 2025
 author: [kokic](/kokic.md)
-!date: May 26, 2025
 ---
 
 $\textbf{Remark.}$ 这不是一篇技术性的文章, 所以它只介绍操作流程而不探讨细节. 它面向的是想要配置 [Hypodoxia](https://github.com/kokic/hypodoxia) 的网站维护者, 对于想要发送评论的用户, 请参考 [Bob 篇](/smaragdina/hypodoxia-bob.md.md).

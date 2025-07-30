@@ -1,8 +1,8 @@
 
 ---
-author: [kokic](/kokic.md)
 taxon: proof
-!date: November 06, 2024
+date: November 06, 2024
+author: [kokic](/kokic.md)
 ---
 
 注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.

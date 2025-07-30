@@ -1,9 +1,9 @@
 
 ---
 title: 染色图
+date: July 21, 2024
 author: [kokic](/kokic.md)
 taxon: definition
-!date: July 21, 2024
 ---
 
 [*](/typst/chroma.typ#:shared)

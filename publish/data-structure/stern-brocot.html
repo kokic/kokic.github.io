@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Definition"><details open><summary id="data-structure-stern-brocot"><header><h1><span class="taxon">Definition. </span>Stern – Brocot 树 <a class="slug" href="/data-structure/stern-brocot.html">[stern-brocot]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 4, 2025</li></ul></div></header></summary>
-<p>$\gdef\Q{\mathbf{Q}}$
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Definition"><details open><summary id="data-structure-stern-brocot"><header><h1><span class="taxon">Definition. </span>Stern – Brocot 树 <a class="slug" href="/data-structure/stern-brocot.html">[stern-brocot]</a></h1><div class="metadata"><ul><li class="meta-item">May 4, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\N{\mathbf{N}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>Stern – Brocot 树是用于生成全体正有理数 $\Q_{\gt 0}$ 的二叉搜索树. 生成过程如下: 考虑 $\N^2$ 中的元素 $(a, b)$ 并形式地记为 $\frac{a}{b}$, 定义分量加法</p>

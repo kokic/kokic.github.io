@@ -1,9 +1,9 @@
 
 ---
 title: 所有函数都光滑
+date: May 13, 2024
 author: [kokic](/kokic.md)
 taxon: corollary
-!date: May 13, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

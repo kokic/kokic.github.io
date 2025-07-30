@@ -1,9 +1,9 @@
 
 ---
 title: 自动机与矩阵求逆
+date: May 9, 2024 --- May 10, 2024
 author: [kokic](/kokic.md)
 taxon: exegesis
-!date: May 9, 2024 --- May 10, 2024
 license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
 ---
 

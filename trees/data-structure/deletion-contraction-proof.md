@@ -1,8 +1,6 @@
 
 ---
-author: [kokic](/kokic.md)
 taxon: proof
-!date: July 21, 2024
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

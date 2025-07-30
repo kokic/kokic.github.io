@@ -19,12 +19,7 @@
   }
 </script>
 <link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><style>
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -82,8 +77,21 @@
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-young-inequality"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/mille-plateaux/young-inequality.html">[young-inequality]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
+</script>
+
+<style>
+  .katex {
+    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
+    line-height: 1.1em;
+    text-indent: 0;
+    text-rendering: auto
+  }
+
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-young-inequality"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/mille-plateaux/young-inequality.html">[young-inequality]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$</p>
 <p>若 $f$ 是 $[0, c \in \R_{&gt; 0}]$ 上的实值连续严格增函数, 且满足 $f(0) = 0$, $f$ 的反函数记为 $f^{-1}$, 则对于 $a \in [0, c]$, $b \in [0, f(c)]$, 总有</p>
 <p>$$
@@ -103,8 +111,7 @@ $$</p>
 $$</p>
 <p>无论哪种情况, $\text{Area}(D_i)$ 相加都可以得到 Young 不等式. 而当 $b = f(a)$ 时, $\text{Area}(D_i)$ 与相应方向的积分总是相等.</p>
 <p>$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 <span class="link local"><a href="/daily-surf/young-lemma-000A.html" title="Young 不等式 [daily-surf/young-lemma-000A]">Young 不等式</a></span>: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young.html">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
-<p>$\gdef\d{\operatorname{d}}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young.html">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary><p>$\gdef\d{\operatorname{d}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 <span class="link local"><a href="/mille-plateaux/young-inequality.html" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 右侧使用 <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> 的一个 <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]">简单结论</a></span>:</p>
 <p>$$

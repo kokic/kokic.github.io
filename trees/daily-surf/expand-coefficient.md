@@ -1,9 +1,9 @@
 
 ---
 title: 生成函数系数
+date: August 15, 2021
 author: [kokic](/kokic.md)
 taxon: theorem
-!date: August 15, 2021
 ---
 
 $\gdef\Z{\mathbf{Z}}$

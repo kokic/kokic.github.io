@@ -1,8 +1,8 @@
 
 ---
 title: 应用清单
+date: May 9, 2025
 author: [kokic](/kokic.md)
-!date: May 9, 2025
 ---
 
 记录各个平台我在用的工具. 

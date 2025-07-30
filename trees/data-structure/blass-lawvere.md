@@ -1,9 +1,9 @@
 
 ---
 title: Blass--Lawvere 定理
+date: September 24, 2024
 author: [kokic](/kokic.md)
 taxon: theorem
-!date: September 24, 2024
 ---
 
 $\gdef\N{\mathbf{N}}$
