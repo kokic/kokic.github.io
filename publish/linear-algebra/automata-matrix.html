@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>自动机与矩阵求逆</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/index.html'" title="线性代数杂记">« 线性代数杂记</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix.html">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language.html">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>固定有限字母表 $\Sigma$, 正则语言集 $\textbf{Reg}_\Sigma$ 可定义如下</p>
+<ul>
+<li>空集 $\varnothing$ 是正则语言, 作为加法单位 $0_\Sigma$.</li>
+<li>只包含空字符串的集合 $\{\epsilon\}$ 是正则语言, 作为乘法单位 $1_\Sigma$.</li>
+<li>对于 $a \in \Sigma$, $\{a\}$ 是正则语言.</li>
+<li>对于正则语言 $A$, $B$. $A \cup B$, $A \times_\Sigma B$ 和 $A^*$ 是正则语言.</li>
+<li>$\Sigma$ 上不存在其它正则语言.</li>
+</ul>
+<p>这里 $A \times_\Sigma B$ 基本就是
+$A \times B = \{ (a, b) : a \in A, b \in B \}$, 但将配对 $(a, b)$ 视为字符串拼接 $a b$.
+$A$ 的闭包 $A^*$ 定义为满足如下性质的最小集合.</p>
+<p>$\quad (i)$ 匹配空. 即 $\epsilon \in A^*$. $\quad (ii)$ 对拼接封闭. 即 $A \times_\Sigma A \times_\Sigma \cdots \times_\Sigma A \subset A^*$.</p>
+<p>这里的 $\square^*$ 通常被称为 Kleene 星运算, 按照数学的习惯, $A^*$ 也被称为集合 $A$ 的自由幺半群. 约定 $A^0 = \{\epsilon\}, A^1 = A, A^{i+1} = \{wv : w \in V^i, v \in V \}$, $i \ge 1$. 同样的, 如果 $A$ 是一个字母表或形式语言, $A^i$ 收集的就是所有长度为 $i$ 且字符属于 $V$ 的字符串. 于是 $A^*$ 也可以定义成如下形式</p>
+<p>$$
+A^* \eqq \bigcup_{i \ge 0} A^i
+$$</p>
+<p>从直觉上说, $A^*$ 是为了刻画 $A$ 的零次或多次重复. 如果读者熟悉正则表达式, 那么显然此处的 $\cup$ 就是 $+$ 的别名, 对应匹配器的或运算, 于是我们也用 $+_\Sigma$ 表示 $\cup$. 注意这里的 $\cup$ 有无穷多个, 从这个定义可以直接看出 $(A^*)^* = A^*$, 这样一来, $\square^*$ 就会是一个幂等运算.</p>
+<p>可以验证, 正则语言集 $\textbf{Reg}_\Sigma$ 连同其上的加法 $+_\Sigma$ 和乘法 $\times_\Sigma$ 构成一个半环 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, 0_\Sigma, 1_\Sigma)$. 从匹配的角度, 我们还能明白以下两点为何是必须的.</p>
+<p>$\quad (i)~$ 加法单位 $0_\Sigma$ 对于乘法运算 $\times_\Sigma$ 的吸收性. <br />
+$\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
+<p>现在, 从半环 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma)$ 出发, 在其上定义偏序 $a \le b$ $\iff$ $a+b=b$, 等价地 $\exists ~ x$ 使得 $a+x = b$. 最后, 可以验证 $\square^*$ 与定义的偏序还满足下面的公理.</p>
+<p>$$
+\begin{aligned}
+(1) &amp;~~ 1+aa^* \le a^* \\
+(2) &amp;~~ 1+a^*a \le a^* \\
+(3) &amp;~~ ax \le x \implies a^* x \le x \\
+(4) &amp;~~ xa \le x \implies xa^* \le x
+\end{aligned}
+$$</p>
+<p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring.html">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
+<p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
+<p>半环取消了环中加法逆的存在, 仅仅从定义上来看, 可能很难认识到半环的作用, 并轻率地认为半环是一种性质不够好的结构, 哪怕考虑一些具体的例子如布尔代数和 $\N$ 也难以影响这样的印象. 但是人们对于环的印象就完全不同, 因为环总是与域紧密关联着, 为此人们可能会列举出下面的证据:</p>
+<p>$\quad (i)$ 整数环 $\Z$ 处于数论研究的中心位置, 它的分式域是有理数域 $\Q$, 这种构造适用于任何整环 $R$, 通过商 $(R \times R \smallsetminus \{0\})/\sim$ 来完成, 此处 $(a,b) \sim (c,d) \iff ad = bc$. 从域 $\Q$ 出发, 构造以它为系数的多项式, 这些多项式将形成一个新的环结构 $\Q[x]$. 现在我们从中取一个不可约多项式 $p(x)$, 然后再利用 $\Q[x]$ 对 $p$ 生成的理想 $(p)$ 的商, 于是我们又得到一个新的域 $\Q[x]/(p)$. 另一方面, 记 $p(x)$ 在商环中的一个根为 $r$, 能够验证 $\Q[r] \cong \Q[x]/(p)$. $\Q[r]$ 的重要之处在于, 它是包含 $\Q$ 和 $r$ 的最小的域. 如果我们把这个步骤中的 $\Q$ 换成 $\R$ 并让 $p(x) = x^2+1$, 我们就得到了 $\C$.</p>
+<p>$\quad (ii)$ 同样从域 $\Q$ 出发, 另一种从域中产生环的方法是考虑以它为元素的矩阵. 类似的, 所有的这些矩阵构成矩阵环 $\Mat(\Q)$. 不同于一般是交换环的多项式环, 矩阵环往往非交换. 仅从统计的意义上说, 在数学之外的领域, 恐怕很少有什么结构能够比矩阵更为重要.</p>
+<p>现在请回忆, 正如我们可以把 $(i)$ 当中用于构造多项式环的域 $\Q$ 更换为一般的交换环 $R$, 这个时候 $R[x]$ 仍然是交换环. 当我们把 $(ii)$ 的域 $\Q$ 更换为半环 $\mathcal{Q}$ 时, $\Mat_{n \times n}(\mathcal{Q})$ 能够恰好地成为半环. 这个事实导致了半环上能够操作相当一部分的线性代数, 并且在很多场景下激发了半环结构的用途 <sup class="footnote-reference" id="linear-algebra_semiring_semiring-applications-back"><a href="#linear-algebra_semiring_semiring-applications">1</a></sup>. 另外值得注意的一点是, 矩阵半环上可以通过 Leibniz 律定义导子.</p>
+<div class="footnote-definition" id="linear-algebra_semiring_semiring-applications">
+  <sup class="footnote-definition-label"><a href="#linear-algebra_semiring_semiring-applications-back">1</a></sup>
+<p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
+</div>
+</details></section>
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring.html">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li><li class="meta-item"></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$</p>
+<p>$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
+<p>下面来介绍一个重要的例子. 非负扩展实数集 $\R_{\ge 0} \cup \{\infty\}$ 也即 $\R_{\ge 0}$ 的单点紧化连同实数的通常加法和乘法构成闭半环, 其中 $a \lt 1$ 时 $a^* = \frac1{1-a}$, 否则 $a^* = \infty$. 注意这个结构中不存在非零的加法逆 $-a$, 而乘法逆 $a^{-1}$ 则是未必存在. $\frac1{1-a}$ 应当被认为是一个整体记号, 或者说它实际上是无穷和 $1 + a + a^2 + \cdots$ 在 $\R_{\ge 0}$ 被添入全体非零加法逆 $\R_{\lt0}$ 后所得的环 $\R$ 中于 $(-1,1)$ 处收敛的结果. 然后由于</p>
+<p>$$
+\R_{\ge 0} ~ \cap ~ \{a &lt; 1 : a \in \R_{\ge 0}\} \quads= [0, 1) \spaces\subset (-1,1)
+$$</p>
+<p>从而在闭半环的 $a&lt;1$ 处继续沿用这个记号. 这样, 一旦当我们扩大到环 $\R$ 时, 闭半环 $\R_{\ge 0} \cup \{\infty\}$ 当中得出的结果仍然有效. 我们在这里要求 $\R_{\ge 0} \cup \{\infty\}$ 还有另一个原因, 如果对所有 $a$ 都定义 $a^* = \frac1{1-a}$, 那么 $a^{***} = a$, 即 $\square^*$ 是 $3$-幂等的运算, 这会让 Kleene 闭包和正则表达式的概念无从谈起.</p>
+<p>我们的论证可以直接拓展到一般的闭半环 $(\mathcal{Q}, +, \times, \square^*)$. 当其中的半环 $(\mathcal{Q}, +, \times)$ 被替换为环 $(R, +, \times)$ 时, 如果 $R$ 当中的 $\frac1{1-a}$ 在 $\mathcal{Q}$ 当中存在, 则 $\mathcal{Q}$ 当中的 $a^*$ 对应于 $R$ 当中的 $\frac1{1-a}$. 当然, 隐含的条件是, $R$ 的加法和乘法与 $\mathcal{Q}$ 兼容.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis 4. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>记 $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. 从现在起, 我们对于 $\R_{\ge 0}^* ~ (= \mathcal{Q})$ 当中的许多有用的观察可以安全地转移到 $\R ~ (= R)$. 根据 <span class="link local"><a href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 我们优先考虑 $\Mat_{n \times n}(\mathcal{Q})$, 从最小的非平凡情况 $n=2$ 开始, 由于我们的目的是计算矩阵的逆, 故取这个半环的可逆子集也即幺半群 $\Mat_{n \times n}(\mathcal{Q})^\times$,  其中的元素会形如</p>
+<p>$$
+M \spaces= \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}, \quad
+ad - bc \spaces\neq 0
+$$</p>
+<p>请注意, 接下来应该考虑的是 $\square^*$. 因为我们要利用 $X^* = \frac1{1-X}$ 这个关系间接地计算 $M^{-1}$. 只要取 $X = 1-M$, 我们就得到了</p>
+<p>$$
+(1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
+$$</p>
+<p>此处的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而非 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 <span class="link local"><a href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 此时 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径.</p>
+<p><figure><img src="/linear-algebra/automata-matrix-0001.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
+<p>具体的说, 固定下标 $i,j$, 分量 $(M^*)_{ij}$ 的值会等于以 $M$, $M^*$ 为结点, $M_{ij}$ 为箭头的 $G$ 中所有 $i \to j$ 的路径 $\hom(i,j)$ 的正则表达式. 并且从这些路径中我们也能够写出 $\hom(i,j)$ 对应的正则表达式, 这就为计算 $(M^*)_{ij}$ 提供了可能.</p>
+<p>$$\begin{aligned}
+  1 \longrightarrow 1 &amp;: \quad (a+b d^*c)^* \\
+  1 \longrightarrow 2 &amp;: \quad (a+b d^*c)^*b d^* \\
+  2 \longrightarrow 1 &amp;: \quad d^* c(a+b d^*c)^* \\
+  2 \longrightarrow 2 &amp;: \quad d^* + d^*c(a+b d^*c)^*b d^* \\
+\end{aligned}$$</p>
+<p>简单起见记 $\alpha = (a+b d^*c)^*$, 那么上一段的讨论就是在说</p>
+<p>$$
+M^* \spaces= \begin{pmatrix}
+\alpha &amp; \alpha b d^* \\
+d^* c \alpha &amp; \quad d^* + d^*c \alpha b d^* \tag{1.1}
+\end{pmatrix}
+$$</p>
+<p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition.html" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example 5. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A.html">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 9, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
+<p>$$
+\begin{aligned}
+M^{-1}
+&amp;\spaces= (1-M)^* \\
+&amp;\spaces= \begin{pmatrix}1 - a &amp; -b \\ -c &amp; 1 - d\end{pmatrix}^* \\
+&amp;\spaces= \begin{pmatrix}
+  (1 - a + b(1-d)^*c)^* &amp; \quad \cdots \quad \\ 
+  \quad \cdots \quad &amp; \quad \cdots \quad
+  \end{pmatrix} \\
+&amp;\spaces= \frac{1}{a d - b c} \begin{pmatrix}d &amp; -b \\ -c &amp; a\end{pmatrix}
+\end{aligned}
+$$</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example 6. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B.html">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 10, 2024</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
+<p>$$
+M \spaces= \begin{pmatrix} A &amp; B \\ C &amp; D \end{pmatrix}, \quad 1-M \spaces= \begin{pmatrix} 1-A &amp; -B \\ -C &amp; 1-D \end{pmatrix}
+$$</p>
+<p>我们还是直接计算 $(1-M)^*$, 实际上这非常容易. 回顾 $M^*$</p>
+<p>$$
+M^* \spaces= \begin{pmatrix}
+(A+BD^*C)^* &amp; (A+BD^*C)^*BD^* \\ 
+D^*C(A+BD^*C)^* &amp; D^* + D^*C(A+BD^*C)^*BD^* 
+\end{pmatrix}
+$$</p>
+<p>类似的记 $\alpha_\square$ 为方阵 $\square$ 分为 $4$ 块后的左上角第 $1$ 部分. $\alpha_{M^*} = (A+BD^*C)^*$, $\alpha_{M^{-1}} = \alpha_{(1-M)^*}$, 则</p>
+<p>$$
+\begin{aligned}
+\alpha_{M^{-1}}
+&amp;\spaces= (1 - A + B(1-D)^*C)^* \\
+&amp;\spaces= (1 - A + BD^{-1}C)^* \\
+&amp;\spaces= (1 - (A - BD^{-1}C))^* \\
+&amp;\spaces= (A - BD^{-1}C)^{-1}
+\end{aligned}
+$$</p>
+<p>同样, 考虑分块的其他部分</p>
+<p>$$
+\begin{CD}
+M @&gt;&gt;&gt; 1-M \\
+@VVV  @VVV \\
+M^* @&gt;&gt;&gt; (1-M)^*
+\end{CD}
+$$</p>
+<p>在 $M \to 1-M$ 这个箭头下, $M$ 当中所有的 $D$ 会被替换为 $1-D$, 因此 $M^*$ 当中所有的 $D^*$ 可以直接替换为 $D^{-1}$. 而 $B, C$ 在 $M \to 1-M$ 下替换为 $-\square$, 于是现在立刻有</p>
+<p>$$
+\begin{aligned}
+M^{-1}
+&amp;\spaces= \begin{pmatrix} \alpha_{M^{-1}} &amp; -\alpha_{M^{-1}} BD^{-1} \\ -D^{-1}C \alpha_{M^{-1}} &amp; D^{-1} + D^{-1}C \alpha_{M^{-1}} BD^{-1} \end{pmatrix} \\
+&amp;\spaces= \begin{pmatrix} (A - BD^{-1}C)^{-1} &amp; -(A - BD^{-1}C)^{-1} BD^{-1} \\ -D^{-1}C (A - BD^{-1}C)^{-1} &amp; D^{-1} + D^{-1}C (A - BD^{-1}C)^{-1} BD^{-1} \end{pmatrix} \\
+\end{aligned}
+$$</p>
+<p>在这里, 我们得到了一个相当经典且重要的结果, 即分块求逆.</p>
+</details></section></p>
+</details></section><footer></footer></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 1. </span>正则语言集</span></li><li class=""><a class="bullet" href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 2. </span>关于半环的注释</span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring.html" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3. </span>星半环</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000C.html" title="矩阵闭包 [linear-algebra/automata-matrix-000C]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000C'"><span class="taxon">Exegesis 4. </span>矩阵闭包</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000A.html" title="二阶矩阵的逆 [linear-algebra/automata-matrix-000A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000A'"><span class="taxon">Example 5. </span>二阶矩阵的逆</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000B.html" title="分块矩阵的逆 [linear-algebra/automata-matrix-000B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000B'"><span class="taxon">Example 6. </span>分块矩阵的逆</span></li></ul></div></nav></div></body></html>

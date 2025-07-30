@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Daily Surf</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-index"><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf/index.html">[daily-surf]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details ><summary id="daily-surf-sublime-text-config"><header><h1><span class="taxon"></span>Sublime Text 4 高分屏设置 <a class="slug" href="/daily-surf/sublime-text-config.html">[sublime-text-config]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 21, 2025</li></ul></div></header></summary>
+<p>装好 <span class="link external"><a href="https://github.com/SublimeText/PackageDev" title="<code>PackageDev</code> [https://github.com/SublimeText/PackageDev]"><code>PackageDev</code></a></span> <sup class="footnote-reference" id="daily-surf_sublime-text-config_package-resource-viewer-back"><a href="#daily-surf_sublime-text-config_package-resource-viewer">1</a></sup> 包后, 修改主题文件如 <code>Default.sublime-theme</code> 即可.</p>
+<p>侧边栏字体大小</p>
+<pre><code class="language-json">"class": "sidebar_label",
+"fg": "var(sidebar_label)",
+"font.face": "var(font_face)",
+"font.size": "var(font_size)"  // line 264
+</code></pre>
+<p>侧边栏文件树条目 <code>padding</code></p>
+<pre><code class="language-json">"class": "sidebar_tree",
+"platforms": ["windows"],
+"row_padding": [6, 5, 4, 5],  // line 226
+</code></pre>
+<p>文件 Tab 字体大小</p>
+<pre><code class="language-json">"class": "tab_label",
+"font.face": "var(font_face)",
+"font.size": "var(font_size_lg)",  // line 938
+</code></pre>
+<div class="footnote-definition" id="daily-surf_sublime-text-config_package-resource-viewer">
+  <sup class="footnote-definition-label"><a href="#daily-surf_sublime-text-config_package-resource-viewer-back">1</a></sup>
+<p><span class="link external"><a href="https://packagecontrol.io/packages/PackageResourceViewer" title="<code>PackageResourceViewer</code> [https://packagecontrol.io/packages/PackageResourceViewer]"><code>PackageResourceViewer</code></a></span> 这个包也能用, 不过相对而言太旧了.</p>
+</div>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme.html">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 17, 2025</li></ul></div></header></summary>
+<p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
+<ol>
+<li>
+<p>Sagemath Jupyter Notebook 在 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 上几乎不能使用. 这是因为, 所有由 <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> 提供渲染的公式都无法呈现, 甚至连 Cell 也不出现. 于是最稳妥的做法就变成了使用浏览器访问 Jupyter Notebook.</p>
+</li>
+<li>
+<p>Jupyter Notebook 的主题设计非常混乱, 常用主题位于 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 包, 但是这个包的文档和使用示例并不适用于 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span>.</p>
+</li>
+</ol>
+<p>这两点使得问题看上去不太容易. 因为一般的, 如果用户使用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 访问 Jupyter Notebook 就完全不需要担心主题问题, 于是相应的可能在互联网上存在的解决方案就会变少. 关于第二点, 如果尝试在 Jupyter Notebook 当中执行下面这样的程序</p>
+<pre><code class="language-python">from jupyterthemes import get_themes, jtplot
+import jupyterthemes as jt
+from jupyterthemes.stylefx import set_nb_theme
+
+set_nb_theme('monokai')
+</code></pre>
+<p>确实能够切换到 <code>monokai</code> 主题, 同时你还会发现当前使用的 Jupyter Notebook 的 <code>Header</code> 和 <code>Toolbar</code> 消失了 <sup class="footnote-reference" id="daily-surf_sagemath-theme_toolbar-display-none-back"><a href="#daily-surf_sagemath-theme_toolbar-display-none">1</a></sup>. 如果你尝试检索相关信息, 你会在 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 的文档中找到像是</p>
+<pre><code class="language-shell">jt -t monokai -T -N
+</code></pre>
+<p>这样的做法, 这里的 <code>-T</code> 是 Toolbar Visible, <code>-N</code> 是 Name &amp; Logo Visible. 然后遗憾地发现这不会对 Sagemath 的 Jupyter Notebook 造成任何作用. 同时, 这样的设置也是临时的, 如果希望将某个特定的主题作为默认主题, 就得另谋他法.</p>
+<p>最直接的方法是, 找到像下面这样的编译后的样式文件</p>
+<pre><code>sagemath/runtime/opt/sagemath-9.3/local/lib/python3.7/site-packages/jupyterthemes/styles/compiled/monokai.css
+</code></pre>
+<p>然后覆盖到</p>
+<pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
+</code></pre>
+<p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
+<div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
+  <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_toolbar-display-none-back">1</a></sup>
+<p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>
+</div>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-git-filter-branch"><header><h1><span class="taxon"></span>Git 过滤分支 <a class="slug" href="/daily-surf/git-filter-branch.html">[git-filter-branch]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 15, 2025</li></ul></div></header></summary>
+<p>一个常见的需求是, 对已经存在的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span> 历史作出修改. 如果目标 commits 都存在于本地分支, 那么一组 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span> 就能解决问题. 但若是要修改已经推送至远程仓库或托管平台 <sup class="footnote-reference" id="daily-surf_git-filter-branch_host-platform-back"><a href="#daily-surf_git-filter-branch_host-platform">1</a></sup> 就没那么容易了, 而且对于真实的多人协作仓库来说, 这么做的潜在危害远高于修改 commits 历史所得到的短期好处 <sup class="footnote-reference" id="daily-surf_git-filter-branch_alternative-approach-back"><a href="#daily-surf_git-filter-branch_alternative-approach">2</a></sup>. 因此我们接下来的讨论都是以接受这一点作为前提来进行.</p>
+<p>这里只说方法. 哪怕是对于已经提交的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span>, 修改 commits 还是一样的用 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>. 但现在肯定是不能直接推送了, 我们需要额外做一步 <span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span>.</p>
+<pre><code>git filter-branch --force     
+</code></pre>
+<p><span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span> 配合 <span class="link external"><a href="https://git-scm.com/docs/git-replace" title="<code>replace</code> [https://git-scm.com/docs/git-replace]"><code>replace</code></a></span> 或者 <code>&lt;GIT_DIR&gt;/info/grafts</code> 也能够用来快速清除某次 commit 之前的所有记录.</p>
+<p>虽然后者目前已经被标记为 deprecated.</p>
+<pre><code>hint: Support for &lt;GIT_DIR&gt;/info/grafts is deprecated
+hint: and will be removed in a future Git version.
+hint:
+hint: Please use "git replace --convert-graft-file"
+hint: to convert the grafts into replace refs.
+hint:
+hint: Turn this message off by running
+hint: "git config advice.graftFileDeprecated false"
+</code></pre>
+<div class="footnote-definition" id="daily-surf_git-filter-branch_host-platform">
+  <sup class="footnote-definition-label"><a href="#daily-surf_git-filter-branch_host-platform-back">1</a></sup>
+<p>如 <span class="link external"><a href="https://github.com" title="Github [https://github.com]">Github</a></span>, <span class="link external"><a href="https://about.gitlab.com" title="GitLab [https://about.gitlab.com]">GitLab</a></span>, <span class="link external"><a href="https://sourcehut.org" title="SourceHut [https://sourcehut.org]">SourceHut</a></span>, <span class="link external"><a href="https://codeberg.org" title="Codeberg [https://codeberg.org]">Codeberg</a></span> 等.</p>
+</div>
+<div class="footnote-definition" id="daily-surf_git-filter-branch_alternative-approach">
+  <sup class="footnote-definition-label"><a href="#daily-surf_git-filter-branch_alternative-approach-back">2</a></sup>
+<p>这就是为何你应该对每个任务都开新的 <span class="link external"><a href="https://git-scm.com/docs/git-branch" title="分支 [https://git-scm.com/docs/git-branch]">分支</a></span>, 同时在每次正式 <span class="link external"><a href="https://git-scm.com/docs/git-push" title="推送 [https://git-scm.com/docs/git-push]">推送</a></span> 之前都 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>, 来避免污染主分支的 commit 树.</p>
+</div>
+</details></section>
+<section class="block" data-taxon="Exegesis"><details ><summary id="daily-surf-baby-viewpoint"><header><h1><span class="taxon">Exegesis. </span>日经观点 <a class="slug" href="/daily-surf/baby-viewpoint.html">[baby-viewpoint]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 11, 2025</li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\vol{\operatorname{vol}}$
+$\gdef\diag{\operatorname{diag}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<ol>
+<li>
+<p>一个矩阵 $A \in \Mat_{n \times n}(\R)$ 所确定的线性映射 $\alpha: \R^n \to \R^n$ 作用在 $X \in \R^n$ 上, 此映射对 $X$ 的 (有向) 体积 $\vol(X)$ 的缩放量为 $\det A$. 即 $\vol(\alpha X) = \det A \cdot \vol(X)$. 特别地取 $A = \diag(a,b)$, 然后乘单位圆 $u^2+v^2=1$ 上一点构成的向量 $(u,v)$, 得到满足椭圆方程 $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ 的 $(x,y)$, 这样便能看出椭圆的面积 $S = \det A \cdot \pi$.</p>
+</li>
+<li>
+<p>设 $\omega$ 是一个 $k$-形式, 它的两次微分 $\d(\d \omega) = 0$. 另一方面, 考虑一个有向流形 $\Omega$ 和它的边缘 $\partial \Omega$, 我们知道 $\partial(\partial M) = \varnothing$. 这两件事相互对偶.</p>
+</li>
+<li>
+<p>考虑数域 $K=\Q(\alpha_1, \cdots, \alpha_i)$ 的一个存在于上的历史原因是, 在适当的 $K$ 中考虑能够使原本在 $\Q$ 上无法分解的 Diophantus 方程因式分解.  如 $\Q(\sqrt{-7})$ 能使 Ramanujan–Nagell 方程 $x^2=2^n-7$ 改写为 $(x+\sqrt{-7})(x-\sqrt{-7})=2^n$. Fermat 方程 $x^n+y^n=z^n$ 能够在 $\Q(\zeta_n)$ 上分解成 $x^n=(z-y)(z-\zeta_n y) \cdots (z-\zeta_n^{n-1} y)$, 这是 <span class="link local"><a href="/person/ernst-kummer.html" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 提出 <strong>理想数</strong> 概念的一个原因.</p>
+</li>
+</ol>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-fibonacci-flip"><header><h1><span class="taxon"></span>Fibonacci 抛硬币 <a class="slug" href="/daily-surf/fibonacci-flip.html">[fibonacci-flip]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 24, 2025</li></ul></div></header></summary>
+<p>抛一枚硬币 $n \ge 2$ 次且从不连续出现正面, 这样的可能共有 $F_{n+2}$ 种, 这里的 $F_{n+2}$ 是从零开始的 Fibonacci 数列. 我们把抛 $n$ 次不连续出现正面的可能数记为 $S_n$, 考虑相邻的两次抛硬币, 假设第 $i$ 次掷硬币为正面, 则第 $i+1$ 次掷硬币只能是反面, 这个时候的所有可能为 $S_{n-2}$. 假设第 $i$ 次掷硬币为反面, 则第 $i+1$ 次掷硬币的结果可任意. 因此 $S_n = S_{n-1} + S_{n-2}$, 再利用初值 $S_1$, $S_2$ 就能解出 $S_n$.</p>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-nvidia-fps-gpu-cpu"><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu.html">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">January 9, 2025</li></ul></div></header></summary>
+<p>根据 <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]">这个 Reddit 问题</a></span>.</p>
+<p>首先这项功能来自 <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel 用户可以通过 <code>Alt+R</code> 开启这个 “PC 统计数据”<sup class="footnote-reference" id="daily-surf_nvidia-fps-gpu-cpu_concept-name-back"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name">1</a></sup>
+AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在安装了 Nvidia APP (Beta) 或者 GeForce Experience 程序的设备上.</p>
+<div class="footnote-definition" id="daily-surf_nvidia-fps-gpu-cpu_concept-name">
+  <sup class="footnote-definition-label"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name-back">1</a></sup>
+<p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
+</div>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-gaussian-integral"><header><h1><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分 <a class="slug" href="/daily-surf/gaussian-integral.html">[gaussian-integral]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">November 2, 2024</li></ul></div></header></summary>
+<p>这一证明最早似乎来自 Michael Rozman. 除此之外 MSE 上也有极类似的回答, 见 <span class="link external"><a href="https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick" title="此处 [https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick]">此处</a></span>.</p>
+<blockquote>
+<p>M. Rozman, Evaluate Gaussian integral using differentiation under the integral sign, Course notes for Physics 2400 (UConn), Spring 2016.</p>
+</blockquote>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$</p>
+<p>核心技巧来自一个函数 $F(t)$ 的构造. 对 $t \in \R$ 定义如下函数</p>
+<p>$$
+F(t) \spaces= \int_0^\infty \frac{e^{-t^2(1+x^2)}}{1+x^2} \d x
+$$</p>
+<p>容易验证 $F(t)$ 满足 $F(0)=\frac{\pi}{2}$, $F(\infty) = 0$, 以及最关键的</p>
+<p>$$
+F'(t) 
+\spaces= \int_0^\infty -2te^{-t^2(1+x^2)} \d x 
+\spaces= -2te^{-t^2} \int_0^\infty e^{-(tx)^2} \d x
+$$</p>
+<p>记高斯积分为 $I$. 这就有 $F'(t) = -2Ie^{-t^2}$, 此时再求 $F'(t)$ 于 $[0, \infty)$, 上的积分, 就能得到</p>
+<p>$$
+F(\infty)- F(0) \spaces= -2I \int_0^\infty e^{-t^2} \d t \spaces= -2I^2
+$$</p>
+<p>于是这给出 $I = \frac{\sqrt\pi}2$.</p>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-wolfram-engine"><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine.html">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">July 29, 2024</li></ul></div></header></summary>
+<p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference" id="daily-surf_wolfram-engine_wolfram-engine-size-back"><a href="#daily-surf_wolfram-engine_wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
+<p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
+<p>要是用户不在乎多装一个浏览器以此换来更好的 Notebook 体验, 那么开源的 WLJS 会是一个可供考虑的选择. Augsburg 大学的物理学家 Kirill Vasin 在 2023 年 11 月 16 日发布了 <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> 的第一个长期版本 <sup class="footnote-reference" id="daily-surf_wolfram-engine_immortal-edition-back"><a href="#daily-surf_wolfram-engine_immortal-edition">2</a></sup>. WLJS 这几个字母是 Wolfram JS Frontend 的缩写, 从技术上说, 它是一个 <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, 如果用户的目的是对于 Mathematica 功能有高度依赖的科研用途, 那么多装一个浏览器的代价自然算不了什么. 另外 WLJS 的引导部分做的很不错, 也有不少很有意思但是 Wolfram Notebook 不具备的功能.</p>
+<div class="footnote-definition" id="daily-surf_wolfram-engine_wolfram-engine-size">
+  <sup class="footnote-definition-label"><a href="#daily-surf_wolfram-engine_wolfram-engine-size-back">1</a></sup>
+<p>Windows 上的 Wolfram Engine 安装完成之后能占用大约 6.5GB 的磁盘空间. 比起 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 还是大了不少.</p>
+</div>
+<div class="footnote-definition" id="daily-surf_wolfram-engine_immortal-edition">
+  <sup class="footnote-definition-label"><a href="#daily-surf_wolfram-engine_immortal-edition-back">2</a></sup>
+<p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
+</div>
+</details></section>
+<section class="block" data-taxon="Theorem"><details ><summary id="daily-surf-expand-coefficient"><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/daily-surf/expand-coefficient.html">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">August 15, 2021</li></ul></div></header></summary>
+<p>$\gdef\Z{\mathbf{Z}}$</p>
+<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
+求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
+在 $\Z_{\ge 0}$ 上解的个数.</p>
+<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="daily-surf-expand-coefficient-000B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/expand-coefficient-000B.html">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">August 15, 2021</li></ul></div></header></summary>
+<p>在 <span class="link local"><a href="/daily-surf/expand-coefficient-000A.html" title="特殊有理函数展开式的系数 [daily-surf/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+</details></section></p>
+</details></section>
+<section class="block" data-taxon="Example"><details ><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry.html">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">June 20, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $0 &lt; x_1, x_2, \cdots, x_n &lt; 1$. 试证</p>
+<p>$$
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} &gt; 1
+$$</p>
+<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B.html" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ 得到 $1+\frac{x}{y} &gt; \frac{1}{y^x}$, 即 $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
+<p>$$
+\begin{aligned}
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
+&amp;\spaces= 1
+\end{aligned}
+$$</p>
+<p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>
+</details></section>
+<section class="block" data-taxon="Lemma"><details ><summary id="daily-surf-young-lemma"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma.html">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 14, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
+我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
+并展示 Young 不等式与其他常见不等式如何作为此结果的直接推论.</p>
+<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p>现在对右侧使用对数的线性化, 得到</p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&amp;\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&amp;\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果. 有时我们也写成</p>
+<p>$$
+p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
+$$</p>
+<p>用完全相同的步骤, 也可以证明任意多个 $p_i$ 和 $f_i$ 时的情况.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000A"><header><h1><span class="taxon">Corollary 1. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A.html">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 14, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma.html" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000B"><header><h1><span class="taxon">Corollary 2. </span>Bernoulli 不等式 <a class="slug" href="/daily-surf/young-lemma-000B.html">[young-lemma-000B]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 15, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
+<p>$$ x^n + n-1 \ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
+<p>在 <span class="link local"><a href="/daily-surf/young-lemma.html" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
+<p>$$
+\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
+$$</p>
+<p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
+</details></section>
+<section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000C"><header><h1><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C.html">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 15, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要证的结果可以写成下面的样子</p>
+<p>$$
+\Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
+\spaces\le 
+\Big(\sum_{i \in S}w_iz_i\Big) \Big(\sum_{i \in S}w_i\Big)^{-1}
+$$</p>
+<p>实际上可以利用对数的线性化对这个定理给出一个直接的证明, 不过这并非本文的重点. 我们在此处更关心如何将这些表达式调整为适合使用 <span class="link local"><a href="/daily-surf/young-lemma.html" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的形式. 我们先引入一些记号, 用 $\Sigma_w$ 表示 $\sum_{i \in S}w_{i}$, 用 $\omega_i$ 表示 $w_i\Sigma_w^{-1}$. 这样目标就变成了</p>
+<p>$$ \prod_{i \in S}z_i^{\omega_i} \spaces\le \sum_{i \in S}\omega_iz_i $$</p>
+<p>如果把这里的 $\omega_i$ 看作 $p_i$, $z_i$ 看作 $f_i$, $\sum_{i \in S}\omega_iz_i$ 看作 $g$. 那我们只要验证下面这件事</p>
+<p>$$
+\sum_{i \in S}\omega_iz_i \spaces\le \sum_{i \in S}\omega_iz_i
+$$</p>
+<p>而这应该是很容易的. $\quad\Box$</p>
+</details></section></p>
+</details></section></p>
+</details></section><footer></footer></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config.html" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme.html" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch.html" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint.html" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip.html" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu.html" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral.html" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link local" onclick="window.location.href='#daily-surf-gaussian-integral'"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine.html" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/expand-coefficient.html" title="生成函数系数 [daily-surf/expand-coefficient]">■</a><span class="link local" onclick="window.location.href='#daily-surf-expand-coefficient'"><span class="taxon">Theorem. </span>生成函数系数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/exponent-symmetry.html" title="经典对称幂指数不等式 [daily-surf/exponent-symmetry]">■</a><span class="link local" onclick="window.location.href='#daily-surf-exponent-symmetry'"><span class="taxon">Example. </span>经典对称幂指数不等式</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/young-lemma.html" title="Young 引理 [daily-surf/young-lemma]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma'"><span class="taxon">Lemma. </span>Young 引理</span><ul class="block"><li class=""><a class="bullet" href="/daily-surf/young-lemma-000A.html" title="Young 不等式 [daily-surf/young-lemma-000A]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000A'"><span class="taxon">Corollary 1. </span>Young 不等式</span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000B.html" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000B'"><span class="taxon">Corollary 2. </span>Bernoulli 不等式</span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000C.html" title="加权算术平均–几何平均不等式 [daily-surf/young-lemma-000C]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000C'"><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式</span></li></ul></li></ul></div></nav></div></body></html>

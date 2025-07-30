@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Young 不等式</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/young-lemma.html'" title="Young 引理">« Young 引理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000A"><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A.html">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 14, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma.html" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-young-inequality"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/mille-plateaux/young-inequality.html">[young-inequality]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$</p>
+<p>若 $f$ 是 $[0, c \in \R_{&gt; 0}]$ 上的实值连续严格增函数, 且满足 $f(0) = 0$, $f$ 的反函数记为 $f^{-1}$, 则对于 $a \in [0, c]$, $b \in [0, f(c)]$, 总有</p>
+<p>$$
+ab \spaces\le \int_0^a f(x) \d x + \int_0^b f^{-1}(y) \d y
+$$</p>
+<p>当且仅当 $b=f(a)$ 时取等号. 从图像上看, 这就是说矩形区域 $[0, a] \times [0, b]$ 被 $f$ 分割为上下两部分 $D_1, D_2$. 一般的 $f$ 可能在点 $(a,b)$ 上方或下方, 此时要么满足</p>
+<p>$$
+\text{Area}(D_1) \spaces= \int_0^b f^{-1}(y) \d y
+\quad \land \quad 
+\text{Area}(D_2) \spaces\le \int_0^a f(x) \d x
+$$</p>
+<p>要么满足</p>
+<p>$$
+\text{Area}(D_1) \spaces\le \int_0^b f^{-1}(y) \d y
+\quad \land \quad 
+\text{Area}(D_2) \spaces= \int_0^a f(x) \d x
+$$</p>
+<p>无论哪种情况, $\text{Area}(D_i)$ 相加都可以得到 Young 不等式. 而当 $b = f(a)$ 时, $\text{Area}(D_i)$ 与相应方向的积分总是相等.</p>
+<p>$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 <span class="link local"><a href="/daily-surf/young-lemma-000A.html" title="Young 不等式 [daily-surf/young-lemma-000A]">Young 不等式</a></span>: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.</p>
+</details></section></details></section></footer></article>
+
+</div></body></html>

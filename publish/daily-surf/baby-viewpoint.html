@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>日经观点</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="daily-surf-baby-viewpoint"><header><h1><span class="taxon">Exegesis. </span>日经观点 <a class="slug" href="/daily-surf/baby-viewpoint.html">[baby-viewpoint]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 11, 2025</li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\vol{\operatorname{vol}}$
+$\gdef\diag{\operatorname{diag}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<ol>
+<li>
+<p>一个矩阵 $A \in \Mat_{n \times n}(\R)$ 所确定的线性映射 $\alpha: \R^n \to \R^n$ 作用在 $X \in \R^n$ 上, 此映射对 $X$ 的 (有向) 体积 $\vol(X)$ 的缩放量为 $\det A$. 即 $\vol(\alpha X) = \det A \cdot \vol(X)$. 特别地取 $A = \diag(a,b)$, 然后乘单位圆 $u^2+v^2=1$ 上一点构成的向量 $(u,v)$, 得到满足椭圆方程 $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ 的 $(x,y)$, 这样便能看出椭圆的面积 $S = \det A \cdot \pi$.</p>
+</li>
+<li>
+<p>设 $\omega$ 是一个 $k$-形式, 它的两次微分 $\d(\d \omega) = 0$. 另一方面, 考虑一个有向流形 $\Omega$ 和它的边缘 $\partial \Omega$, 我们知道 $\partial(\partial M) = \varnothing$. 这两件事相互对偶.</p>
+</li>
+<li>
+<p>考虑数域 $K=\Q(\alpha_1, \cdots, \alpha_i)$ 的一个存在于上的历史原因是, 在适当的 $K$ 中考虑能够使原本在 $\Q$ 上无法分解的 Diophantus 方程因式分解.  如 $\Q(\sqrt{-7})$ 能使 Ramanujan–Nagell 方程 $x^2=2^n-7$ 改写为 $(x+\sqrt{-7})(x-\sqrt{-7})=2^n$. Fermat 方程 $x^n+y^n=z^n$ 能够在 $\Q(\zeta_n)$ 上分解成 $x^n=(z-y)(z-\zeta_n y) \cdots (z-\zeta_n^{n-1} y)$, 这是 <span class="link local"><a href="/person/ernst-kummer.html" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> 提出 <strong>理想数</strong> 概念的一个原因.</p>
+</li>
+</ol>
+</details></section><footer></footer></article>
+
+</div></body></html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>自由–绑定记号</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Definition"><details open><summary id="data-structure-free-bound-denote"><header><h1><span class="taxon">Definition. </span>自由–绑定记号 <a class="slug" href="/data-structure/free-bound-denote.html">[free-bound-denote]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">April 17, 2025</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>此记号主要是为了简洁且清晰地表达一个自由变量以及与之相关的绑定, 特别是针对 $f(x)$ 这样的记号在同一个上下文中的混用. 如 $f: X \to Y, x \mapsto y(x)$ 在 ${\color{f97583}x}=x_\bullet$ 处的近似</p>
+<p>$$
+f({\color{c998f4}x}) \spaces\approx f(x_\bullet) + f'(x_\bullet)({\color{c998f4}x}-x_\bullet)
+$$</p>
+<p>这里的 ${\color{f97583}x}=x_\bullet$ 准确来说并不是在指替换 $f(x)$ 中所有的 $x$ 到 $x_\bullet$, 而是相对于 $f$ 而言取了一个定值 $x_\bullet \in X$, 并让 ${\color{f97583}x}: \square \to X$ 满足 ${\color{f97583}x}(-) = x_\bullet$. 而 $f({\color{c998f4}x})$ 又重新引入了一个自由变量 ${\color{c998f4}x}$ 用来区分被固定的 ${\color{f97583}x}$.</p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-complex-step"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/complex-step.html">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 13, 2024</li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="data-structure_complex-step_publish-time-back"><a href="#data-structure_complex-step_publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="data-structure_complex-step_complex-step-back"><a href="#data-structure_complex-step_complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="data-structure_complex-step_distinguish-back"><a href="#data-structure_complex-step_distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>
+<p>$$
+f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
+$$</p>
+<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere.html" title="Kock–Lawvere [data-structure/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
+$$ 
+\frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
+\frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
+$$</p>
+<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number.html" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
+<div class="footnote-definition" id="data-structure_complex-step_publish-time">
+  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_publish-time-back">1</a></sup>
+<p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
+</div>
+<div class="footnote-definition" id="data-structure_complex-step_complex-step">
+  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_complex-step-back">2</a></sup>
+<p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+</div>
+<div class="footnote-definition" id="data-structure_complex-step_distinguish">
+  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_distinguish-back">3</a></sup>
+<p><span class="link local"><a href="/data-structure/free-bound-denote.html" title="自由–绑定记号 [data-structure/free-bound-denote]">习惯上</a></span> 会混淆 $x$ 与 $X$, 这里做出区分.</p>
+</div>
+</details></section></details></section></footer></article>
+
+</div></body></html>
