@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Definitions and Equivalences</title>
+<script type="module">
+  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
+
+  if (!window.hypodoxia) {
+    window.hypodoxia = new Hypodoxia([
+      {
+        name: "Kokic",
+        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
+      }
+    ]);
+    const href = document.location.href;
+    if (!href.endsWith("/index")) {
+      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
+    }
+  }
+</script>
+<link rel="stylesheet" href="/main.css">
+<link rel="stylesheet" href="/typst.css"><style>
+  .katex .mfrac .frac-line {
+    font-size: 1.25em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+  }
+
+  pre,
+  code {
+    font-family: monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  nav {
+    font-family: "Inria Sans", sans-serif;
+  }
+
+  thead {
+    font-family: "Inria Sans", sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false },
+        { left: '\\[', right: '\\]', display: true }
+      ],
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/rotation-distance/rotation-distance.html'" title="Rotation Distance, Triangulations, and Hyperbolic Geometry 1">« Rotation Distance, Triangulations, and Hyperbolic Geometry 1</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="data-structure-rotation-distance-rotation-distance-2"><header><h1><span class="taxon"></span>Definitions and Equivalences <a class="slug" href="/data-structure/rotation-distance/rotation-distance-2.html">[rotation-distance-2]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon=""><details open><summary id="data-structure-rotation-distance-rotation-distance-2.1"><header><h1><span class="taxon"> 1. </span>Binary Trees <a class="slug" href="/data-structure/rotation-distance/rotation-distance-2.1.html">[rotation-distance-2.1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>A binary tree is a collection of nodes of two types, external and internal, and three relations among these nodes: parent, left child and right child. Every node except a special one called the root has a parent, and every internal node has a left and a right child. External nodes have no children. A tree is said to be of size $n$ if it has $n$ internal nodes. A tree of size $n$ has $n + 1$ external nodes. (See [5,10] for a more complete description of binary trees and tree terminology.) The number of steps required to walk from the root of the tree to a node is the depth of that node. (Each step moves from a node to one of its children.)</p>
+<p>A symmetric order traversal of the tree visits all of the nodes exactly once. This order can be described by a recursive algorithm as follows: If the node is an internal node, traverse its left subtree in symmetric order, visit the node itself, then traverse its right subtree in symmetric order. If the node is an external node, merely visit it. The order in which the nodes are visited is called the symmetric order permutation of the nodes (or simply the symmetric order of the nodes).</p>
+<p>In a common computer-related application of binary trees the tree is used to store an ordered collection of pieces of information (called items). Each internal node of the tree is labeled with an item, and the order of the items is represented by the symmetric order of the nodes.</p>
+<p>A rotation is an operation that changes one binary tree into another. In a tree of size $n$ there are $n - 1$ possible rotations, one corresponding to each non-root internal node. Figure 1 shows the general rotation rule and the effect of a particular rotation on a particular tree. The rotation corresponding to a node changes the structure of the tree near that node, but leaves the structure elsewhere intact. A rotation maintains the symmetric order of the nodes, but changes the depths of some of them. Rotations are the primitives used by most schemes that maintain “balance” in binary trees [5,10].</p>
+<p>A rotation is an invertible operation; that is, if tree $T$ can be changed into $T'$ by a rotation, then $T'$ can be changed back into $T$ by a rotation. The rotation graph for trees of size $n$ (denoted $RG(n)$) is an undirected graph with one vertex for each tree of size $n$, and an edge between vertices $T$ and $T'$ if there is a rotation that changes $T$ into $T'$.</p>
+</details></section></p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="data-structure-rotation-distance-rotation-distance-1"><header><h1><span class="taxon"></span>Introduction <a class="slug" href="/data-structure/rotation-distance/rotation-distance-1.html">[rotation-distance-1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>A <em>rotation</em> in a binary tree is a local restructuring of the tree that changes it into another tree. One can execute a rotation by collapsing an internal edge of the tree to a point, thereby obtaining a node with three children, and then re-expanding the node of order three in the alternative way into two nodes of order $2$. The <em>rotation distance</em> between a pair of trees is the minimum number of rotations needed to convert one tree into the other. The problem addressed in this paper is: what is the maximum rotation distance between any pair of n-node binary trees? We show that for all $n \geq 11$ this distance is at most $2n - 6$ and that for all sufficiently large $n$ this bound is tight. Culik and Wood [2] showed that the maximum rotation distance is at most $2n - 2$. Tom Leighton (private communication) showed that there exist trees whose rotation distance is at least $7n/4 - O(1)$. Pallo [7] proposed a heuristic search algorithm to compute the rotation distance between two given trees.
+Our interest in this problem stems from our attempt to solve the dynamic optimality conjecture concerning the performance of splaying [8,10]. Splaying is a heuristic for modifying the structure of a binary search tree in such a way that repeatedly accessing and updating the information in the tree is efficient. Although our solution to the problem of maximum rotation distance did not resolve the conjecture about splaying, the results in this paper are interesting for at least two other reasons. First, the combinatorial system of trees and their rotations is a fundamental one that is isomorphic to other natural combinatorial systems. Results concerning this system are of interest from a purely mathematical point of view. Second, the method we use to solve the problem is novel and interesting in its own right, and can potentially be applied to related problems.
+A system that is isomorphic to binary trees related by rotations is that of triangulations of a polygon related by the <em>diagonal flip</em> operation. This is the operation that converts one triangulation of a polygon into another by removing a diagonal in the triangulation and adding the diagonal that subdivides the resulting quadrilateral in the opposite way. This type of move was studied by Wagner [14] in the context of arbitrary triangulated planar graphs, and by Dewdney [3] in the case of graphs of genus one. They showed that any such graph can be transformed to any other by diagonal flips, but did not try to accurately estimate how many flips are necessary.
+Our approach to solving the rotation distance problem is based on the observation that any sequence of diagonal flips converting one triangulation of a polygon into another gives a way to dissect (into tetrahedra) a polyhedron formed from the two triangulations. Using hyperbolic geometry, we construct polyhedra that require many tetrahedra to triangulate them. (Here and hereafter we use the word “triangulation” in a general sense meaning a dissection into simplices of appropriate dimension. A more rigorous definition is given in section 2.4.) These polyhedra can be used to exhibit pairs of n-node trees (for all sufficiently large $n$) such that the rotation distance between them is $2n - 6$.</p>
+<p>In <span class="link local"><a href="/data-structure/rotation-distance/rotation-distance-2.html" title="Definitions and Equivalences [data-structure/rotation-distance/rotation-distance-2]">section 2</a></span> we define the problem on trees, make the connection between trees and triangulations of a polygon, and show that sequences of diagonal flips are related to triangulations of polyhedra. In section 3 we show how to use hyperbolic geometry to obtain a lower bound on the number of tetrahedra required to triangulate any polyhedron. We then construct particular polyhedra that require many tetrahedra to triangulate them. Section 4 contains remarks and some open problems.</p>
+</details></section></details></section></footer></article>
+
+<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/data-structure/rotation-distance/rotation-distance-2.1.html" title="Binary Trees [data-structure/rotation-distance/rotation-distance-2.1]">■</a><span class="link local" onclick="window.location.href='#data-structure-rotation-distance-rotation-distance-2.1'"><span class="taxon"> 1. </span>Binary Trees</span></li></ul></div></nav></div></body></html>
