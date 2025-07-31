@@ -14,5 +14,6 @@ collect: true
 [-](./wolfram-engine.md#:embed)
 [-](./file-transfer.md#:embed)
 [-](./expand-coefficient.md#:embed)
+[-](./count-algebraic-number.md#:embed)
 [-](./exponent-symmetry.md#:embed)
 [-](./young-lemma.md#:embed)

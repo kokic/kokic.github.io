@@ -3,7 +3,7 @@
 #import "@preview/cetz-plot:0.1.1": plot
 
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0)); 
-#set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
+#set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");
 
 #let plot_max_value = 10
 

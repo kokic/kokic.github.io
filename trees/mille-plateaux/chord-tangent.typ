@@ -3,7 +3,7 @@
 #import "@preview/cetz-plot:0.1.0": plot
 
 #set page(width: auto, height: auto, margin: (x: 2em, y: 2em), fill: rgb(0, 0, 0, 0)); 
-#set text(size: 15.427pt, top-edge: "bounds", bottom-edge: "bounds");
+#set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");
 
 #align(center)[#canvas(length: 1cm, {
   draw.set-style(
