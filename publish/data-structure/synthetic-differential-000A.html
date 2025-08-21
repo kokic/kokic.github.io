@@ -91,7 +91,8 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/synthetic-differential.html'" title="综合微分法">« 综合微分法</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000A"><header><h1><span class="taxon">Exegesis. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A.html">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/synthetic-differential.html'" title="综合微分法">« 综合微分法</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000A"><header><h1><span class="taxon">Exegesis. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A.html">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>我们首先观察朴素的数值微分的计算过程. 待微分函数为 $(x+3)^2$, 此处不妨取 $x=-2$, $h=10^{-5}$, 这一位置的导数 $A$ 近似为</p>
@@ -110,7 +111,8 @@ $$</p>
 $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 复合求导的中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step.html" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C.html">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step.html" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C.html">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-step.html" title="Complex step 微分法 [data-structure/complex-step]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A.html" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
