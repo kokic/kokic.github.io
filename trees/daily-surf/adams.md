@@ -2,7 +2,7 @@
 ---
 title: Adams 谱序列
 date: August 21, 2025
-author: Yuniversal Y. Creeper 🥐
+author: [](../person/yuni.md)
 taxon: poetry
 ---
 
