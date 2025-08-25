@@ -91,8 +91,7 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\E{\operatorname{E}}$
@@ -176,21 +175,18 @@ $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 &amp;\spaces= \E(\sin^{-1}x \mid 2) \\
 \end{aligned}
 $$</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions.html">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions.html">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve.html" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="slug" href="/mille-plateaux/periodic-functions-1.html">[periodic-functions-1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="slug" href="/mille-plateaux/periodic-functions-1.html">[periodic-functions-1]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
 <p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
 <p>因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一来, 如果 $x$ 被选定为任意一个整数, 总会存在 $n-x$ 为零的项使整个级数发散, 这就要求 $x \notin \Z$. 同样的, $f(x)$ 在映射 $x \mapsto x + k$, $k \in \Z$ 下不变, 这就意味着 $f(x)$ 以 $1$ 为周期. 现在我们当然知道这个 $f(x)$ 其实就是 $\pi^2\csc^2(\pi x)$.</p>
 <p>由于 $(n-x)^2 \ge x^2-n^2$, 这使得如下级数也是收敛的</p>
 <p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
 </details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2.html">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
+<section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2.html">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
