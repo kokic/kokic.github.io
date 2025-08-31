@@ -91,7 +91,8 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme.html">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary><p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme.html">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>如果你是一个没有定制化需求的 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 用户或者单纯地使用 Jupyter Notebook 连接一些与 <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> 无关的服务, 你遇到本文所关心问题的可能性是很低的, 这个主要有以下两个原因.</p>
 <ol>
 <li>
 <p>Sagemath Jupyter Notebook 在 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 上几乎不能使用. 这是因为, 所有由 <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> 提供渲染的公式都无法呈现, 甚至连 Cell 也不出现. 于是最稳妥的做法就变成了使用浏览器访问 Jupyter Notebook.</p>
@@ -108,7 +109,7 @@ from jupyterthemes.stylefx import set_nb_theme
 set_nb_theme('monokai')
 </code></pre>
 <p>确实能够切换到 <code>monokai</code> 主题, 同时你还会发现当前使用的 Jupyter Notebook 的 <code>Header</code> 和 <code>Toolbar</code> 消失了 <sup class="footnote-reference" id="daily-surf_sagemath-theme_toolbar-display-none-back"><a href="#daily-surf_sagemath-theme_toolbar-display-none">1</a></sup>. 如果你尝试检索相关信息, 你会在 <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> 的文档中找到像是</p>
-<pre><code class="language-shell">jt -t monokai -T -N
+<pre><code class="language-sh">jt -t monokai -T -N
 </code></pre>
 <p>这样的做法, 这里的 <code>-T</code> 是 Toolbar Visible, <code>-N</code> 是 Name &amp; Logo Visible. 然后遗憾地发现这不会对 Sagemath 的 Jupyter Notebook 造成任何作用. 同时, 这样的设置也是临时的, 如果希望将某个特定的主题作为默认主题, 就得另谋他法.</p>
 <p>最直接的方法是, 找到像下面这样的编译后的样式文件</p>
@@ -118,6 +119,7 @@ set_nb_theme('monokai')
 <pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
 </code></pre>
 <p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
+<p>$\textbf{Remark.}$ 一个无关正文的冷知识: 如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 <code>sagemath/runtime/bin</code> 目录下就有一个, 头文件位于 <code>sagemath/runtime/usr/include</code>.</p>
 <div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
   <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_toolbar-display-none-back">1</a></sup>
 <p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>

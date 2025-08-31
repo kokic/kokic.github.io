@@ -61,8 +61,9 @@ renderLinksTable(
   , [ "Don Zagier", "people.mpim-bonn.mpg.de/zagier", "https://people.mpim-bonn.mpg.de/zagier" ]
   , [ "Oleg Kiselyov", "okmij.org/ftp", "https://okmij.org/ftp" ]
 
+  , [ "Publication of Paul Erdös", "www.emis.de/classics/Erdos", "https://www.emis.de/classics/Erdos/" ]
   , [ "kerodon", "kerodon.net", "https://kerodon.net" ]
-  , [  "Gaitsgory's DAG", "https://people.mpim-bonn.mpg.de/gaitsgde/Book" ]
+  , [  "Gaitsgory's DAG", "people.mpim-bonn.mpg.de/gaitsgde/Book", "https://people.mpim-bonn.mpg.de/gaitsgde/Book" ]
   , [ "The Rising Sea", "math.stanford.edu/~vakil/216blog", "http://math.stanford.edu/~vakil/216blog" ]
   , [ "The Stacks project", "stacks.math.columbia.edu", "https://stacks.math.columbia.edu" ]
 

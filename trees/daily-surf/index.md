@@ -4,6 +4,7 @@ title: Daily Surf
 collect: true
 ---
 
+[-](./pftb-p5.md#:embed)
 [-](./bevy.md#:embed)
 [-](./adams.md#:embed)
 [-](./sublime-text-config#:embed)
