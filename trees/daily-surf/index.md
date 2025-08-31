@@ -4,6 +4,7 @@ title: Daily Surf
 collect: true
 ---
 
+[-](./bevy.md#:embed)
 [-](./adams.md#:embed)
 [-](./sublime-text-config#:embed)
 [-](./sagemath-theme.md#:embed)
