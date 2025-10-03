@@ -1,5 +1,5 @@
 
 ---
 title: Flat structuralism
-date: September 26, 2025
+date: September 29, 2025
 ---
