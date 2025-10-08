@@ -55,6 +55,7 @@ renderLinksTable(
   , [ "望月新一＠数理研", "www.kurims.kyoto-u.ac.jp/~motizuki", "https://www.kurims.kyoto-u.ac.jp/~motizuki" ]
   , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
   , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]
+  , [ "Dustin Clausen", "www.ihes.fr/~dustin", "https://www.ihes.fr/~dustin/" ]
   , [ "Jacob Lurie", "www.math.ias.edu/~lurie", "https://www.math.ias.edu/~lurie" ]
   , [ "Borcherds", "math.berkeley.edu/people/faculty/richard-e-borcherds", "https://math.berkeley.edu/people/faculty/richard-e-borcherds" ]
   , [ "Joseph Silverman", "www.math.brown.edu/johsilve", "https://www.math.brown.edu/johsilve" ]
