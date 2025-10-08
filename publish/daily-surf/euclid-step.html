@@ -1,24 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>macOS</title>
-<script type="module">
-  import Hypodoxia from "https://kokic.github.io/hypodoxia/target/hypodoxia.js";
-
-  if (!window.hypodoxia) {
-    window.hypodoxia = new Hypodoxia([
-      {
-        name: "Kokic",
-        link: "https://raw.githubusercontent.com/kokic/exhibit/refs/heads/main/comments.json",
-      }
-    ]);
-    const href = document.location.href;
-    if (!href.endsWith("/index")) {
-      hypodoxia.appendToIfNotEmpty(document.querySelector('article'));
-    }
-  }
-</script>
-<link rel="stylesheet" href="/main.css">
+<meta name="viewport" content="width=device-width"><title>辗转相除法步数估计</title><link rel="stylesheet" href="/main.css">
 <link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -91,25 +74,32 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/smaragdina/applications.html'" title="应用清单">« 应用清单</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="smaragdina-applications-mac"><header><h1><span class="taxon"></span>macOS <a class="slug" href="/smaragdina/applications-mac.html">[applications-mac]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<h4>Dust</h4>
-<ul>
-<li>功能: 在终端直观查看文件占用</li>
-<li>链接: <span class="link external"><a href="https://github.com/bootandy/dust" title="https://github.com/bootandy/dust">https://github.com/bootandy/dust</a></span></li>
-<li>安装: brew install dust</li>
-</ul>
-<h4>Commander One</h4>
-<ul>
-<li>功能: 文件管理器</li>
-<li>评价: 它会在这里充分说明 Finder 有多不可用</li>
-<li>链接: <span class="link external"><a href="https://commander-one.com" title="https://commander-one.com">https://commander-one.com</a></span></li>
-</ul>
-<h4>Clipy</h4>
-<ul>
-<li>功能: 剪贴板</li>
-<li>评价: macOS 的剪贴板也是残废</li>
-<li>链接: <span class="link external"><a href="https://github.com/Clipy/Clipy" title="https://github.com/Clipy/Clipy">https://github.com/Clipy/Clipy</a></span></li>
-</ul>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/daily-surf/index.html'" title="Daily Surf">« Daily Surf</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="daily-surf-euclid-step"><header><h1><span class="taxon"></span>辗转相除法步数估计 <a class="slug" href="/daily-surf/euclid-step.html">[euclid-step]</a></h1><div class="metadata"><ul><li class="meta-item">June 10, 2021</li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>1844 年, 49 岁的法国数学家 <span class="link external"><a href="https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9" title="Gabriel Lamé [https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9]">Gabriel Lamé</a></span> 发现, 设 $a,b$ 两数辗转相除至余数为零所用步数为 $n$, 则</p>
+<p>$$ n \spaces\le 1 + \log_\phi \min(a,b) $$</p>
+<p>其中 $\phi=\frac{1+\sqrt5}{2}$ 为黄金分割. 当然, 这也给出用递归实现 $\gcd$ 函数的时间复杂度. 如今认为, 此结果标志着计算复杂度理论的开始.</p>
+<p>我们首先来证明 $n\le\log_\phi\sqrt{5}\min(a,b)$.
+不妨设 $a\gt b$, 于是有 $a=qb+r_1,r_{k-1}=q_kr_k+r_{k+1}$, 其中 $1\le k\le n-1$, 显然一定有 $r_n=0$.
+还注意 $r_k$ 依次递减且有 $r_k-r_{k+1}\ge1$, 则 $r_{k-1}=q_kr_k+r_{k+1}\ge r_k+r_{k+1}$.
+将下标取反 $(s_k=r_{n-k})$ 即 $s_{k+1}\ge s_k+s_{k-1}$. 故考虑 Fibonacci 数列 $F_n$, 知 $s_k\ge F_k$, 即 $b\ge F_n$, 又 $F_n \sim \frac{\phi^n}{\sqrt5}$, 证毕.</p>
+<p>现在, 注意到此估计与待证估计之差为</p>
+<p>$$
+\begin{aligned}
+\log_{\phi}\sqrt5-1 \
+&amp;\spaces= \dfrac{\log\sqrt5}{\log\dfrac{1+\sqrt5}{2}}-1 \\ 
+&amp;\spaces= \dfrac{1}{2}\cdot\dfrac{\log5}{\log(1+\sqrt5)-\log2}-1\\ 
+&amp;\spaces\lt 2\cdot\dfrac{\log5}{\log5}-1 \\ 
+&amp;\spaces= 1
+\end{aligned}
+$$</p>
+<p>其中最后一个不等号是因为, 根据基本不等式 $1+\sqrt5 \ge 2\cdot5^{1/4}$, 于是</p>
+<p>$$
+\log(1+\sqrt5) - \log2 
+\spaces\gt\log(2\cdot5^{1/4})-\log2 
+\spaces=\tfrac{1}{4}\log5
+$$</p>
+<p>故 $n\le\log_{\phi}b+1$.</p>
 </details></section><footer></footer></article>
 
 </div></body></html>

@@ -18,6 +18,7 @@ link-E: [唐珑珂](https://web.math.princeton.edu/~longket)
 link-F: [辜开源](https://sites.google.com/view/gubao)
 link-G: [张峻铭](https://www.llddeddym.site)
 link-H: [Chang Wang](https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN)
+link-I: [Spore](https://blog.spore.ink/)
 ---
 
 <div class="links-placeholder"></div>
