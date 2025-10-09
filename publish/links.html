@@ -74,62 +74,60 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="links"><header><h1><span class="taxon"></span>链接 <a class="slug" href="/links.html">[links]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link external"><a href="https://www.lozumi.com" title="洛衣博客 [https://www.lozumi.com]">洛衣博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.oyyko.com" title="Colin’s Blog [https://blog.oyyko.com]">Colin’s Blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://reinhardthk.github.io" title="Reinhardt的魔法小屋 [https://reinhardthk.github.io]">Reinhardt的魔法小屋</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.shigure.fun" title="废紙时雨 [https://blog.shigure.fun]">废紙时雨</a></span></li><li class="meta-item"><span class="link external"><a href="http://home.ustc.edu.cn/~xuxuayame" title="徐诩绫目 | Xuxuayame [http://home.ustc.edu.cn/~xuxuayame]">徐诩绫目 | Xuxuayame</a></span></li><li class="meta-item"><span class="link external"><a href="https://kono-dada.github.io" title="dada 的研究站 [https://kono-dada.github.io]">dada 的研究站</a></span></li><li class="meta-item"><span class="link external"><a href="https://m1ting.github.io" title="迷亭的日记 [https://m1ting.github.io]">迷亭的日记</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.xtlsoft.top" title="徐天乐 :: 个人博客 [https://blog.xtlsoft.top]">徐天乐 :: 个人博客</a></span></li><li class="meta-item"><span class="link external"><a href="https://ashitemaru.github.io" title="Ashitemaru [https://ashitemaru.github.io]">Ashitemaru</a></span></li><li class="meta-item"><span class="link external"><a href="https://studyingfather.com" title="Studying Father’s blog [https://studyingfather.com]">Studying Father’s blog</a></span></li><li class="meta-item"><span class="link external"><a href="https://tonyxty.github.io" title="Lambdaiae [https://tonyxty.github.io]">Lambdaiae</a></span></li><li class="meta-item"><span class="link external"><a href="https://xinyu-yi.github.io" title="Xinyu Yi [https://xinyu-yi.github.io]">Xinyu Yi</a></span></li><li class="meta-item"><span class="link external"><a href="https://web.math.princeton.edu/~longket" title="唐珑珂 [https://web.math.princeton.edu/~longket]">唐珑珂</a></span></li><li class="meta-item"><span class="link external"><a href="https://sites.google.com/view/gubao" title="辜开源 [https://sites.google.com/view/gubao]">辜开源</a></span></li><li class="meta-item"><span class="link external"><a href="https://www.llddeddym.site" title="张峻铭 [https://www.llddeddym.site]">张峻铭</a></span></li><li class="meta-item"><span class="link external"><a href="https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN" title="Chang Wang [https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN]">Chang Wang</a></span></li><li class="meta-item"><span class="link external"><a href="https://blog.spore.ink/" title="Spore [https://blog.spore.ink/]">Spore</a></span></li></ul></div></header></summary>
-<div class="links-placeholder"></div>
-<script>
-
-const content = document.querySelector(".links-placeholder");
-
-const appendLinksTableRow = (table, array) => {
-  const row = table.appendChild(document.createElement("tr"));
-  const dataText = row.appendChild(document.createElement("td"));
-  const dataLink = row.appendChild(document.createElement("td"));
-  const anchor = dataLink.appendChild(document.createElement("a"));
-  row.style.fontSize = "1em";
-  row.style.whiteSpace = "nowrap";
-  dataText.style.textAlign = "right";
-  dataLink.style.padding = "0 1.5em";
-  [dataText.textContent, anchor.textContent, anchor.href] = array;
-}
-
-const renderLinksTable = (...rows) => {
-  const tableElement = document.createElement("table");
-  content.appendChild(tableElement);
-  tableElement.style.margin = "0";
-  tableElement.style.overflow = "scroll";
-  rows.forEach(x => appendLinksTableRow(tableElement, x));
-}
-
-renderLinksTable(
-    [ "肖梁", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
-  , [ "陈华一", "chenhuayi.lab.westlake.edu.cn", "https://chenhuayi.lab.westlake.edu.cn" ]
-  , [ "李文威的数学主页", "www.wwli.asia", "https://www.wwli.asia/index.php/zh" ]
-  , [ "李超", "www.math.columbia.edu/~chaoli", "https://www.math.columbia.edu/~chaoli" ]
-  , [ "蒋炎岩", "jyywiki.cn", "https://jyywiki.cn" ]
-  , [ "望月新一＠数理研", "www.kurims.kyoto-u.ac.jp/~motizuki", "https://www.kurims.kyoto-u.ac.jp/~motizuki" ]
-  , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
-  , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]
-  , [ "Dustin Clausen", "www.ihes.fr/~dustin", "https://www.ihes.fr/~dustin/" ]
-  , [ "Jacob Lurie", "www.math.ias.edu/~lurie", "https://www.math.ias.edu/~lurie" ]
-  , [ "Borcherds", "math.berkeley.edu/people/faculty/richard-e-borcherds", "https://math.berkeley.edu/people/faculty/richard-e-borcherds" ]
-  , [ "Joseph Silverman", "www.math.brown.edu/johsilve", "https://www.math.brown.edu/johsilve" ]
-  , [ "Don Zagier", "people.mpim-bonn.mpg.de/zagier", "https://people.mpim-bonn.mpg.de/zagier" ]
-  , [ "Oleg Kiselyov", "okmij.org/ftp", "https://okmij.org/ftp" ]
-
-  , [ "Publication of Paul Erdös", "www.emis.de/classics/Erdos", "https://www.emis.de/classics/Erdos/" ]
-  , [ "kerodon", "kerodon.net", "https://kerodon.net" ]
-  , [  "Gaitsgory's DAG", "people.mpim-bonn.mpg.de/gaitsgde/Book", "https://people.mpim-bonn.mpg.de/gaitsgde/Book" ]
-  , [ "The Rising Sea", "math.stanford.edu/~vakil/216blog", "http://math.stanford.edu/~vakil/216blog" ]
-  , [ "The Stacks project", "stacks.math.columbia.edu", "https://stacks.math.columbia.edu" ]
-
-  , [ "香蕉空间", "www.bananaspace.org", "https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5" ]
-  , [ "$n$Lab", "ncatlab.org", "https://ncatlab.org/nlab/show/HomePage" ]
-  , [ "1Lab", "1lab.dev", "https://1lab.dev" ]
-  , [ "LMFDB", "www.lmfdb.org", "https://www.lmfdb.org" ]
-  , [ "$\\beta$-LMFDB", "beta.lmfdb.org", "https://beta.lmfdb.org" ]
-  , [ "Math Genealogy", "www.genealogy.math.ndsu.nodak.edu", "https://www.genealogy.math.ndsu.nodak.edu/index.php" ]
-)
-</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="links"><header><h1><span class="taxon"></span>链接 <a class="slug" href="/links.html">[links]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<table><thead><tr><th style="text-align: right"></th><th></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: right">洛衣博客</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.lozumi.com" title="www.lozumi.com [https://www.lozumi.com]">www.lozumi.com</a></span></td></tr>
+<tr><td style="text-align: right">Colin’s Blog</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.oyyko.com" title="blog.oyyko.com [https://blog.oyyko.com]">blog.oyyko.com</a></span></td></tr>
+<tr><td style="text-align: right">废紙时雨</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.shigure.fun" title="blog.shigure.fun [https://blog.shigure.fun]">blog.shigure.fun</a></span></td></tr>
+<tr><td style="text-align: right">dada 的研究站</td><td></td><td style="text-align: left"><span class="link external"><a href="https://kono-dada.github.io" title="kono-dada.github.io [https://kono-dada.github.io]">kono-dada.github.io</a></span></td></tr>
+<tr><td style="text-align: right">迷亭的日记</td><td></td><td style="text-align: left"><span class="link external"><a href="https://m1ting.github.io" title="m1ting.github.io [https://m1ting.github.io]">m1ting.github.io</a></span></td></tr>
+<tr><td style="text-align: right">徐天乐 :: 个人博客</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.xtlsoft.top" title="blog.xtlsoft.top [https://blog.xtlsoft.top]">blog.xtlsoft.top</a></span></td></tr>
+<tr><td style="text-align: right">Xinyu Yi</td><td></td><td style="text-align: left"><span class="link external"><a href="https://xinyu-yi.github.io" title="xinyu-yi.github.io [https://xinyu-yi.github.io]">xinyu-yi.github.io</a></span></td></tr>
+<tr><td style="text-align: right">Ashitemaru</td><td></td><td style="text-align: left"><span class="link external"><a href="https://ashitemaru.github.io" title="ashitemaru.github.io [https://ashitemaru.github.io]">ashitemaru.github.io</a></span></td></tr>
+<tr><td style="text-align: right">Chang Wang</td><td></td><td style="text-align: left"><span class="link external"><a href="https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN" title="scholar.google.com/citations?… [https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN]">scholar.google.com/citations?…</a></span></td></tr>
+<tr><td style="text-align: right">Spore</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.spore.ink/" title="blog.spore.ink [https://blog.spore.ink/]">blog.spore.ink</a></span></td></tr>
+<tr><td style="text-align: right">Studying Father’s blog</td><td></td><td style="text-align: left"><span class="link external"><a href="https://studyingfather.com" title="studyingfather.com [https://studyingfather.com]">studyingfather.com</a></span></td></tr>
+<tr><td style="text-align: right">Lambdaiae</td><td></td><td style="text-align: left"><span class="link external"><a href="https://tonyxty.github.io" title="tonyxty.github.io [https://tonyxty.github.io]">tonyxty.github.io</a></span></td></tr>
+</tbody></table>
+<table><thead><tr><th style="text-align: right"></th><th></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: right">辜开源</td><td></td><td style="text-align: left"><span class="link external"><a href="https://sites.google.com/view/gubao" title="sites.google.com/view/gubao [https://sites.google.com/view/gubao]">sites.google.com/view/gubao</a></span></td></tr>
+<tr><td style="text-align: right">张峻铭</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.llddeddym.site" title="www.llddeddym.site [https://www.llddeddym.site]">www.llddeddym.site</a></span></td></tr>
+<tr><td style="text-align: right">唐珑珂</td><td></td><td style="text-align: left"><span class="link external"><a href="https://web.math.princeton.edu/~longket" title="web.math.princeton.edu/~longket [https://web.math.princeton.edu/~longket]">web.math.princeton.edu/~longket</a></span></td></tr>
+<tr><td style="text-align: right">Reinhardt 的魔法小屋</td><td></td><td style="text-align: left"><span class="link external"><a href="https://reinhardthk.github.io" title="reinhardthk.github.io [https://reinhardthk.github.io]">reinhardthk.github.io</a></span></td></tr>
+<tr><td style="text-align: right">徐诩绫目 Xuxuayame</td><td></td><td style="text-align: left"><span class="link external"><a href="http://home.ustc.edu.cn/~xuxuayame" title="home.ustc.edu.cn/~xuxuayame [http://home.ustc.edu.cn/~xuxuayame]">home.ustc.edu.cn/~xuxuayame</a></span></td></tr>
+</tbody></table>
+<hr />
+<table><thead><tr><th style="text-align: right"></th><th></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: right">肖梁</td><td></td><td style="text-align: left"><span class="link external"><a href="http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" title="faculty.bicmr.pku.edu.cn/~lxiao [http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm]">faculty.bicmr.pku.edu.cn/~lxiao</a></span></td></tr>
+<tr><td style="text-align: right">陈华一</td><td></td><td style="text-align: left"><span class="link external"><a href="https://chenhuayi.lab.westlake.edu.cn" title="chenhuayi.lab.westlake.edu.cn [https://chenhuayi.lab.westlake.edu.cn]">chenhuayi.lab.westlake.edu.cn</a></span></td></tr>
+<tr><td style="text-align: right">李文威的数学主页</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.wwli.asia/index.php/zh" title="www.wwli.asia [https://www.wwli.asia/index.php/zh]">www.wwli.asia</a></span></td></tr>
+<tr><td style="text-align: right">李超</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.math.columbia.edu/~chaoli" title="www.math.columbia.edu/~chaoli [https://www.math.columbia.edu/~chaoli]">www.math.columbia.edu/~chaoli</a></span></td></tr>
+<tr><td style="text-align: right">  望月新一＠数理研</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.kurims.kyoto-u.ac.jp/~motizuki" title="www.kurims.kyoto-u.ac.jp/~motizuki [https://www.kurims.kyoto-u.ac.jp/~motizuki]">www.kurims.kyoto-u.ac.jp/~motizuki</a></span></td></tr>
+<tr><td style="text-align: right">斎藤 毅</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" title="www.ms.u-tokyo.ac.jp/~t-saito [https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html]">www.ms.u-tokyo.ac.jp/~t-saito</a></span></td></tr>
+<tr><td style="text-align: right">James Milne</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.jmilne.org" title="www.jmilne.org [https://www.jmilne.org]">www.jmilne.org</a></span></td></tr>
+<tr><td style="text-align: right">Dustin Clausen</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.ihes.fr/~dustin/" title="www.ihes.fr/~dustin [https://www.ihes.fr/~dustin/]">www.ihes.fr/~dustin</a></span></td></tr>
+<tr><td style="text-align: right">Jacob Lurie</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.math.ias.edu/~lurie" title="www.math.ias.edu/~lurie [https://www.math.ias.edu/~lurie]">www.math.ias.edu/~lurie</a></span></td></tr>
+<tr><td style="text-align: right">Borcherds</td><td></td><td style="text-align: left"><span class="link external"><a href="https://math.berkeley.edu/people/faculty/richard-e-borcherds" title="math.berkeley.edu/people/faculty/richard-e-borcherds [https://math.berkeley.edu/people/faculty/richard-e-borcherds]">math.berkeley.edu/people/faculty/richard-e-borcherds</a></span></td></tr>
+<tr><td style="text-align: right">Joseph Silverman</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.math.brown.edu/johsilve" title="www.math.brown.edu/johsilve [https://www.math.brown.edu/johsilve]">www.math.brown.edu/johsilve</a></span></td></tr>
+<tr><td style="text-align: right">Don Zagier</td><td></td><td style="text-align: left"><span class="link external"><a href="https://people.mpim-bonn.mpg.de/zagier" title="people.mpim-bonn.mpg.de/zagier [https://people.mpim-bonn.mpg.de/zagier]">people.mpim-bonn.mpg.de/zagier</a></span></td></tr>
+</tbody></table>
+<table><thead><tr><th style="text-align: right"></th><th></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: right">Oleg Kiselyov - Index</td><td></td><td style="text-align: left"><span class="link external"><a href="https://okmij.org/ftp" title="okmij.org/ftp [https://okmij.org/ftp]">okmij.org/ftp</a></span></td></tr>
+<tr><td style="text-align: right">蒋炎岩</td><td></td><td style="text-align: left"><span class="link external"><a href="https://jyywiki.cn" title="jyywiki.cn [https://jyywiki.cn]">jyywiki.cn</a></span></td></tr>
+</tbody></table>
+<table><thead><tr><th style="text-align: right"></th><th></th><th style="text-align: left"></th></tr></thead><tbody>
+<tr><td style="text-align: right">Paul Erdös</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.emis.de/classics/Erdos/" title="www.emis.de/classics/Erdos [https://www.emis.de/classics/Erdos/]">www.emis.de/classics/Erdos</a></span></td></tr>
+<tr><td style="text-align: right">kerodon</td><td></td><td style="text-align: left"><span class="link external"><a href="https://kerodon.net" title="kerodon.net [https://kerodon.net]">kerodon.net</a></span></td></tr>
+<tr><td style="text-align: right">Gaitsgory’s DAG</td><td></td><td style="text-align: left"><span class="link external"><a href="https://people.mpim-bonn.mpg.de/gaitsgde/Book" title="people.mpim-bonn.mpg.de/gaitsgde/Book [https://people.mpim-bonn.mpg.de/gaitsgde/Book]">people.mpim-bonn.mpg.de/gaitsgde/Book</a></span></td></tr>
+<tr><td style="text-align: right">The Rising Sea</td><td></td><td style="text-align: left"><span class="link external"><a href="http://math.stanford.edu/~vakil/216blog" title="math.stanford.edu/~vakil/216blog [http://math.stanford.edu/~vakil/216blog]">math.stanford.edu/~vakil/216blog</a></span></td></tr>
+<tr><td style="text-align: right">  The Stacks project</td><td></td><td style="text-align: left"><span class="link external"><a href="https://stacks.math.columbia.edu" title="stacks.math.columbia.edu [https://stacks.math.columbia.edu]">stacks.math.columbia.edu</a></span></td></tr>
+<tr><td style="text-align: right">香蕉空间</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5" title="www.bananaspace.org [https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5]">www.bananaspace.org</a></span></td></tr>
+<tr><td style="text-align: right">$n$Lab</td><td></td><td style="text-align: left"><span class="link external"><a href="https://ncatlab.org/nlab/show/HomePage" title="ncatlab.org [https://ncatlab.org/nlab/show/HomePage]">ncatlab.org</a></span></td></tr>
+<tr><td style="text-align: right">1Lab</td><td></td><td style="text-align: left"><span class="link external"><a href="https://1lab.dev" title="1lab.dev [https://1lab.dev]">1lab.dev</a></span></td></tr>
+<tr><td style="text-align: right">LMFDB</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.lmfdb.org" title="www.lmfdb.org [https://www.lmfdb.org]">www.lmfdb.org</a></span></td></tr>
+<tr><td style="text-align: right">$\beta$-LMFDB</td><td></td><td style="text-align: left"><span class="link external"><a href="https://beta.lmfdb.org" title="beta.lmfdb.org [https://beta.lmfdb.org]">beta.lmfdb.org</a></span></td></tr>
+<tr><td style="text-align: right">Math Genealogy</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.genealogy.math.ndsu.nodak.edu/index.php" title="www.genealogy.math.ndsu.nodak.edu [https://www.genealogy.math.ndsu.nodak.edu/index.php]">www.genealogy.math.ndsu.nodak.edu</a></span></td></tr>
+</tbody></table>
 </details></section><footer></footer></article>
 
 </div></body></html>

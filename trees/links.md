@@ -2,78 +2,69 @@
 ---
 backlinks: false
 title: 链接
-link-1: [洛衣博客](https://www.lozumi.com)
-link-2: [Colin’s Blog](https://blog.oyyko.com)
-link-3: [Reinhardt的魔法小屋](https://reinhardthk.github.io)
-link-4: [废紙时雨](https://blog.shigure.fun)
-link-5: [徐诩绫目 | Xuxuayame](http://home.ustc.edu.cn/~xuxuayame)
-link-6: [dada 的研究站](https://kono-dada.github.io)
-link-7: [迷亭的日记](https://m1ting.github.io)
-link-8: [徐天乐 :: 个人博客](https://blog.xtlsoft.top)
-link-9: [Ashitemaru](https://ashitemaru.github.io)
-link-A: [Studying Father's blog](https://studyingfather.com)
-link-B: [Lambdaiae](https://tonyxty.github.io)
-link-C: [Xinyu Yi](https://xinyu-yi.github.io)
-link-E: [唐珑珂](https://web.math.princeton.edu/~longket)
-link-F: [辜开源](https://sites.google.com/view/gubao)
-link-G: [张峻铭](https://www.llddeddym.site)
-link-H: [Chang Wang](https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN)
-link-I: [Spore](https://blog.spore.ink/)
 ---
 
-<div class="links-placeholder"></div>
+|  | | |
+| -: | - | :- |
+| 洛衣博客 || [www.lozumi.com](https://www.lozumi.com) |
+| Colin’s Blog || [blog.oyyko.com](https://blog.oyyko.com) |
+| 废紙时雨 || [blog.shigure.fun](https://blog.shigure.fun) |
+| dada 的研究站 || [kono-dada.github.io](https://kono-dada.github.io) |
+| 迷亭的日记 || [m1ting.github.io](https://m1ting.github.io) |
+| 徐天乐 :: 个人博客 || [blog.xtlsoft.top](https://blog.xtlsoft.top) |
+| Xinyu Yi || [xinyu-yi.github.io](https://xinyu-yi.github.io) |
+| Ashitemaru || [ashitemaru.github.io](https://ashitemaru.github.io) |
+| Chang Wang || [scholar.google.com/citations?...](https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN) |
+| Spore || [blog.spore.ink](https://blog.spore.ink/) |
+| Studying Father's blog || [studyingfather.com](https://studyingfather.com) |
+| Lambdaiae || [tonyxty.github.io](https://tonyxty.github.io) |
 
-<script>
 
-const content = document.querySelector(".links-placeholder");
 
-const appendLinksTableRow = (table, array) => {
-  const row = table.appendChild(document.createElement("tr"));
-  const dataText = row.appendChild(document.createElement("td"));
-  const dataLink = row.appendChild(document.createElement("td"));
-  const anchor = dataLink.appendChild(document.createElement("a"));
-  row.style.fontSize = "1em";
-  row.style.whiteSpace = "nowrap";
-  dataText.style.textAlign = "right";
-  dataLink.style.padding = "0 1.5em";
-  [dataText.textContent, anchor.textContent, anchor.href] = array;
-}
+|  | | |
+| -: | - | :- |
+| 辜开源 || [sites.google.com/view/gubao](https://sites.google.com/view/gubao) |
+| 张峻铭 || [www.llddeddym.site](https://www.llddeddym.site) |
+| 唐珑珂 || [web.math.princeton.edu/~longket](https://web.math.princeton.edu/~longket) |
+| Reinhardt 的魔法小屋 || [reinhardthk.github.io](https://reinhardthk.github.io) |
+| 徐诩绫目 Xuxuayame || [home.ustc.edu.cn/~xuxuayame](http://home.ustc.edu.cn/~xuxuayame) |
 
-const renderLinksTable = (...rows) => {
-  const tableElement = document.createElement("table");
-  content.appendChild(tableElement);
-  tableElement.style.margin = "0";
-  tableElement.style.overflow = "scroll";
-  rows.forEach(x => appendLinksTableRow(tableElement, x));
-}
+---
 
-renderLinksTable(
-    [ "肖梁", "faculty.bicmr.pku.edu.cn/~lxiao", "http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm" ]
-  , [ "陈华一", "chenhuayi.lab.westlake.edu.cn", "https://chenhuayi.lab.westlake.edu.cn" ]
-  , [ "李文威的数学主页", "www.wwli.asia", "https://www.wwli.asia/index.php/zh" ]
-  , [ "李超", "www.math.columbia.edu/~chaoli", "https://www.math.columbia.edu/~chaoli" ]
-  , [ "蒋炎岩", "jyywiki.cn", "https://jyywiki.cn" ]
-  , [ "望月新一＠数理研", "www.kurims.kyoto-u.ac.jp/~motizuki", "https://www.kurims.kyoto-u.ac.jp/~motizuki" ]
-  , [ "斎藤 毅", "www.ms.u-tokyo.ac.jp/~t-saito", "https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html" ]
-  , [ "James Milne", "www.jmilne.org", "https://www.jmilne.org" ]
-  , [ "Dustin Clausen", "www.ihes.fr/~dustin", "https://www.ihes.fr/~dustin/" ]
-  , [ "Jacob Lurie", "www.math.ias.edu/~lurie", "https://www.math.ias.edu/~lurie" ]
-  , [ "Borcherds", "math.berkeley.edu/people/faculty/richard-e-borcherds", "https://math.berkeley.edu/people/faculty/richard-e-borcherds" ]
-  , [ "Joseph Silverman", "www.math.brown.edu/johsilve", "https://www.math.brown.edu/johsilve" ]
-  , [ "Don Zagier", "people.mpim-bonn.mpg.de/zagier", "https://people.mpim-bonn.mpg.de/zagier" ]
-  , [ "Oleg Kiselyov", "okmij.org/ftp", "https://okmij.org/ftp" ]
+|  | | |
+| -: | - | :- |
+| 肖梁 || [faculty.bicmr.pku.edu.cn/~lxiao](http://faculty.bicmr.pku.edu.cn/~lxiao/index.htm) |
+| 陈华一 || [chenhuayi.lab.westlake.edu.cn](https://chenhuayi.lab.westlake.edu.cn) |
+| 李文威的数学主页 || [www.wwli.asia](https://www.wwli.asia/index.php/zh) |
+| 李超 || [www.math.columbia.edu/~chaoli](https://www.math.columbia.edu/~chaoli) |
+| &emsp; 望月新一＠数理研 || [www.kurims.kyoto-u.ac.jp/~motizuki](https://www.kurims.kyoto-u.ac.jp/~motizuki) |
+| 斎藤 毅 || [www.ms.u-tokyo.ac.jp/~t-saito](https://www.ms.u-tokyo.ac.jp/~t-saito/j-index.html) |
+| James Milne || [www.jmilne.org](https://www.jmilne.org) |
+| Dustin Clausen || [www.ihes.fr/~dustin](https://www.ihes.fr/~dustin/) |
+| Jacob Lurie || [www.math.ias.edu/~lurie](https://www.math.ias.edu/~lurie) |
+| Borcherds || [math.berkeley.edu/people/faculty/richard-e-borcherds](https://math.berkeley.edu/people/faculty/richard-e-borcherds) |
+| Joseph Silverman || [www.math.brown.edu/johsilve](https://www.math.brown.edu/johsilve) |
+| Don Zagier || [people.mpim-bonn.mpg.de/zagier](https://people.mpim-bonn.mpg.de/zagier) |
 
-  , [ "Publication of Paul Erdös", "www.emis.de/classics/Erdos", "https://www.emis.de/classics/Erdos/" ]
-  , [ "kerodon", "kerodon.net", "https://kerodon.net" ]
-  , [  "Gaitsgory's DAG", "people.mpim-bonn.mpg.de/gaitsgde/Book", "https://people.mpim-bonn.mpg.de/gaitsgde/Book" ]
-  , [ "The Rising Sea", "math.stanford.edu/~vakil/216blog", "http://math.stanford.edu/~vakil/216blog" ]
-  , [ "The Stacks project", "stacks.math.columbia.edu", "https://stacks.math.columbia.edu" ]
 
-  , [ "香蕉空间", "www.bananaspace.org", "https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5" ]
-  , [ "$n$Lab", "ncatlab.org", "https://ncatlab.org/nlab/show/HomePage" ]
-  , [ "1Lab", "1lab.dev", "https://1lab.dev" ]
-  , [ "LMFDB", "www.lmfdb.org", "https://www.lmfdb.org" ]
-  , [ "$\\beta$-LMFDB", "beta.lmfdb.org", "https://beta.lmfdb.org" ]
-  , [ "Math Genealogy", "www.genealogy.math.ndsu.nodak.edu", "https://www.genealogy.math.ndsu.nodak.edu/index.php" ]
-)
-</script>
+
+|  | | |
+| -: | - | :- |
+| Oleg Kiselyov - Index || [okmij.org/ftp](https://okmij.org/ftp) |
+| 蒋炎岩 || [jyywiki.cn](https://jyywiki.cn) |
+
+
+
+|  | | |
+| -: | - | :- |
+| Paul Erdös || [www.emis.de/classics/Erdos](https://www.emis.de/classics/Erdos/) |
+| kerodon || [kerodon.net](https://kerodon.net) |
+| Gaitsgory's DAG || [people.mpim-bonn.mpg.de/gaitsgde/Book](https://people.mpim-bonn.mpg.de/gaitsgde/Book) |
+| The Rising Sea || [math.stanford.edu/~vakil/216blog](http://math.stanford.edu/~vakil/216blog) |
+| &emsp; The Stacks project || [stacks.math.columbia.edu](https://stacks.math.columbia.edu) |
+| 香蕉空间 || [www.bananaspace.org](https://www.bananaspace.org/wiki/%E9%A6%96%E9%A1%B5) |
+| $n$Lab || [ncatlab.org](https://ncatlab.org/nlab/show/HomePage) |
+| 1Lab || [1lab.dev](https://1lab.dev) |
+| LMFDB || [www.lmfdb.org](https://www.lmfdb.org) |
+| $\beta$-LMFDB || [beta.lmfdb.org](https://beta.lmfdb.org) |
+| Math Genealogy || [www.genealogy.math.ndsu.nodak.edu](https://www.genealogy.math.ndsu.nodak.edu/index.php) |
