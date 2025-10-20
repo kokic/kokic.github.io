@@ -19,4 +19,4 @@ em {
 }
 </style>
 
-[](/smaragdina/mourn-lawvere-000A.typ#:html)
+[](./mourn-lawvere.st#:html)

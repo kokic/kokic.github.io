@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Proofs from THE BOOK</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Proofs from THE BOOK</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,7 +628,24 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="/bib/pftb.html">[pftb]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="/bib/pftb">[pftb]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li></ul></div></header></summary>
 <pre><code>@article{aigner2018proofs,
   title={Proofs from the Book},
   author={Aigner, Martin and Ziegler, G{\"u}nter M},
@@ -82,35 +653,4 @@
   publisher={Springer}
 }
 </code></pre>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="daily-surf-pftb-p5"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5.html">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
-<style>
-.kaiti {
-  font-family: "LXGW WenKai TC", serif;
-  font-style: normal;
-}
-</style>
-<p>$\gdef\Z{\mathbf{Z}}$
-$\gdef\PP{\mathbf{P}}$</p>
-<p>此证明来自 <span class="link local"><a href="/bib/pftb.html" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> 第 5 页, 由 <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> 于 1955 年提出 <sup class="footnote-reference" id="daily-surf_pftb-p5_furstenberg-back"><a href="#daily-surf_pftb-p5_furstenberg">1</a></sup>. 这一页配图的说明文字也很有意思, 其写道</p>
-<blockquote>
-<p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span></p>
-</blockquote>
-<p>对 $a,b \in \Z, b &gt; 0$, 令 $N_{a,b} = \{ a + nb : n \in \Z \}$. 每个集合 $N_{a,b}$ 都是正负无界的算术级数. 如果集合 $O \subseteq \Z$ 满足以下条件之一:</p>
-<ol>
-<li>$O$ 是空集.</li>
-<li>对任意的 $a \in O$ 存在 $b &gt; 0$ 使得 $N_{a,b} \subseteq O$.</li>
-</ol>
-<p>则称 $O$ 是开集. 这些条件保证 $O$ 在 $a$ 点附近 “稠密”. 显然, 开集的并总是开集. 另外, 如果 $O_1$ 和 $O_2$ 开, 则对任意的 $a \in O_1 \cap O_2$, $N_{a,b_1} \subseteq O_1$ 及 $N_{a,b_2} \subseteq O_2$, 都有 $a \in N_{a,b_1b_2} \subseteq O_1 \cap O_2$. 所以开集的有限交也开. 从而此处定义的开集族的确导出了 $\Z$ 上的一个拓扑. 随后, 我们注意:</p>
-<p>   $(\text{A})$ 每个非空的开集都是无界的, 显然. <br />
-   $(\text{B})$ 每个 $N_{a,b}$ 都是既开又闭的. 因为 $N_{a,b} = \mathbb{Z} \setminus \bigcup_{i=1}^{b-1} N_{a+i,b}$, 这说明 $N_{a,b}$ 是开集的补, 因而闭.</p>
-<p>现在我们引出素数. 对于每个整数 $n \neq 1,-1$ 都有某个素因子 $p$ 使得 $n \in N_{0,p}$ 以及 $\Z \setminus \{\pm1\} = \bigcup_{p \in \PP} N_{0,p}$. 如果 $\PP$ 是有限的, 那么根据 $(\text B)$, $\bigcup_{p \in \PP} N_{0,p}$ 将是有限个闭集的并, 所以是闭的. 进而可以导出 $\{\pm1\}$ 是一个开集, 这与 $(\text A)$ 矛盾, 证毕.</p>
-<p>我们回顾证明, 不难发现核心是用拓扑解释 “每个整数都有素因子” 这件事, 进而 $\bigcup_{p \in \PP} N_{0,p} = \Z \setminus \{\pm1\}$ 在 $\Z$ 上稠密, 于是 $\PP$ 绝不可能有限. 此方法实质利用了算术级数的性质, 而非拓扑内涵. 所以也可以翻译成不使用拓扑的版本, 见 Idris D. Mercer 写的 
-<span class="link external"><a href="http://www.idmercer.com/monthly355-356-mercer.pdf" title="On Furstenberg’s Proof of theInfinitude of Primes [http://www.idmercer.com/monthly355-356-mercer.pdf]">On Furstenberg’s Proof of theInfinitude of Primes</a></span>.</p>
-<div class="footnote-definition" id="daily-surf_pftb-p5_furstenberg">
-  <sup class="footnote-definition-label"><a href="#daily-surf_pftb-p5_furstenberg-back">1</a></sup>
-<p>Furstenberg 当时是 Yeshiva 大学的本科生, 其在美国数学月刊上发表了 <span class="link external"><a href="https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes" title="“On the infinitude of primes” [https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes]">“On the infinitude of primes”</a></span>, 这才有了 <span class="link local"><a href="/bib/pftb.html" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> 对此证明的收录.</p>
-</div>
-</details></section></details></section></footer></article>
-
-</div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

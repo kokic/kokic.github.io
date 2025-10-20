@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>圆曲线</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>圆曲线</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,7 +628,24 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points.html'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
@@ -82,7 +653,7 @@ $\gdef\E{\operatorname{E}}$
 $\gdef\arc{\text{arc}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$</p>
-<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length.html" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
+<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
 <p>$$
 L 
 \spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
@@ -122,7 +693,7 @@ $$</p>
 <p>$$
 \int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
 $$</p>
-<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization.html" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
+<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
 <p>$$
 \begin{aligned}
 \int\dfrac{\d x}{y} 
@@ -146,7 +717,7 @@ $$</p>
 \int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
 \tag{1}
 $$</p>
-<p><span class="link local"><a href="/mille-plateaux/elliptic-integral.html" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions.html" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
+<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
 <p>现在考虑双曲线 $C(\R)$ 的一个参数化
 $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 <p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
@@ -159,34 +730,4 @@ $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 &amp;\spaces= \E(\sin^{-1}x \mid 2) \\
 \end{aligned}
 $$</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions.html">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve.html" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="slug" href="/mille-plateaux/periodic-functions-1.html">[periodic-functions-1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
-<p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
-<p>因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一来, 如果 $x$ 被选定为任意一个整数, 总会存在 $n-x$ 为零的项使整个级数发散, 这就要求 $x \notin \Z$. 同样的, $f(x)$ 在映射 $x \mapsto x + k$, $k \in \Z$ 下不变, 这就意味着 $f(x)$ 以 $1$ 为周期. 现在我们当然知道这个 $f(x)$ 其实就是 $\pi^2\csc^2(\pi x)$.</p>
-<p>由于 $(n-x)^2 \ge x^2-n^2$, 这使得如下级数也是收敛的</p>
-<p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
-</details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2.html">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\Q{\mathbf{Q}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们要求两个 $\R$-周期 $T_1,T_2$ 是 $\R$-线性无关的, 否则周期之比 $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, 这意味着 $T_i$ 生成的周期集合退化</p>
-<p>$$
-\begin{aligned}
-\{ nT_1 + mT_2 : n,m \in \Z \} 
-&amp;\spaces= \left\{ \left(\frac{np}{q} + m \right) T_2 : n,m \in \Z \right\} \\
-&amp;\spaces= \left\{ (np + mq) \cdot \frac{T_2}{q} : n,m \in \Z \right\}
-\end{aligned}
-$$</p>
-<p>此时 $np + mq \in \Z$, 所以该集合被周期 $\frac{T_2}{q}$ 生成, 矛盾.</p>
-</details></section></p>
-</details></section></details></section></footer></article>
-
-</div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

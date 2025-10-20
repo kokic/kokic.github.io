@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>冒泡排序合成置换分解</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>冒泡排序合成置换分解</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,55 +628,27 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index.html'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose.html">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/index'" title="千高原">« 千高原</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof.html">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src="/mille-plateaux/bubble-compose.svg" class="color-invert"/></figure></p>
 </details></section></p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-permutation-matrix"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix.html">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
-$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\sstr#1{~{\footnotesize #1}~}$
-$\gdef\Mat{\operatorname{Mat}}$</p>
-<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose.html" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
-<p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
-<p>$$
-\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix}
-\begin{pmatrix} x_1 \\ x_2 \\ \end{pmatrix}
-\spaces=
-\begin{pmatrix} x_2 \\ x_1 \\ \end{pmatrix}
-, \quad
-\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix} 
-\spaces\hookrightarrow 
-(1 ~~ 2)
-$$</p>
-<p>现在来考虑对换的复合, 为了通过矩阵去计算 $(2 ~~ 3)(1 ~~ 2)$, 我们实际上需要先对齐这两个方阵的阶. 换一种角度说, 对换记号 $(i ~~ j)$ 对应的并不是某个固定的方阵, 而是全体如下形式方阵当中的一个 <sup class="footnote-reference" id="linear-algebra_permutation-matrix_horizontal-exchange-back"><a href="#linear-algebra_permutation-matrix_horizontal-exchange">1</a></sup>.</p>
-<p>$$ I_n \sstr{交换水平方向的} i ~ j \sstr{列得到的方阵} $$</p>
-<p>当然, 如果我们固定 $n$, 这样的对应就是唯一的了.
-我们在这里强调水平方向是因为台湾等地区关于行列的称呼与大陆是相反的. 具体到矩阵乘法时, 从 $(i ~ ~ j)$ 对应的方阵中选取同阶方阵进行运算.</p>
-<p>$$
-\underbrace{\begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}}_{(2 ~ 3) ~ \curvearrowright ~ I_3}
-\spaces\cdot
-\underbrace{\begin{pmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}}_{(1 ~ 2) ~ \curvearrowright ~ I_3}
-\eqq
-\underbrace{\begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{pmatrix}}_{(3 ~ 1 ~ 2) ~ \curvearrowright ~ I_3}
-$$</p>
-<p>将矩阵乘法得到的结果翻译回置换，这当然就是 $(3 ~~ 1 ~~ 2)$, 与我们直接计算置换的复合相符. 也就是说</p>
-<p>$$
-\sigma_2\sigma_1 \quads\cong (\sigma_2 \curvearrowright I) \cdot (\sigma_1 \curvearrowright I)
-$$</p>
-<!-- 
-$$ 
-\sigma \curvearrowright \vec x \eqq (\sigma \curvearrowright I_{|\vec x|}) \cdot \vec x
-$$ 
--->
-<div class="footnote-definition" id="linear-algebra_permutation-matrix_horizontal-exchange">
-  <sup class="footnote-definition-label"><a href="#linear-algebra_permutation-matrix_horizontal-exchange-back">1</a></sup>
-<p>规定为垂直方向当然也可行, 但这样会使得 $A\vec x$ 当中的 $A$ 必须记为它的转置 $A^T$.</p>
-</div>
-</details></section></details></section></footer></article>
-
-</div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

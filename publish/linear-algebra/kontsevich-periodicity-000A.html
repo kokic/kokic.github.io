@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>二阶矩阵交换版本</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>二阶矩阵交换版本</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,77 +628,47 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/kontsevich-periodicity.html'" title="Kontsevich 周期性猜想">« Kontsevich 周期性猜想</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A.html">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\Mat{\operatorname{Mat}}$</p>
-<p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
-<p>$$
-\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
-$$</p>
-<p>其中 $S = (\begin{smallmatrix}0 &amp; -1 \\ 1 &amp; ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
-<p>$$
-\begin{aligned}
-\varphi^2(M) 
-&amp;\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
-&amp;\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
-&amp;\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&amp;\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
-&amp;\spaces= \det M \det(I_2(M)) \cdot M
-\end{aligned}
-$$</p>
-<p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
-<p>$$
-\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
-$$</p>
-<div class="footnote-definition" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint">
-  <sup class="footnote-definition-label"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back">1</a></sup>
-<p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
-</div>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Conjecture"><details ><summary id="linear-algebra-kontsevich-periodicity"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity.html">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\Mat{\operatorname{Mat}}$
-$\gdef\Q{\mathbf{Q}}$</p>
-<p>令 $(M_{ij})_{1 \le i,j \le 3}$ 是包含 $9$ 个非交换独立变量的矩阵. $I_1: M \to M^{-1}$ 是对矩阵求逆, $I_2: M_{ij} \to M_{ij}^{-1}$ 是对矩阵各分量求逆, $I_3: M \to M^T$ 是矩阵的转置. 则 Kontsevich 猜测, 存在两个 $3$ 阶对角矩阵 $L,R$ 使得</p>
-<p>$$
-(I_3 \circ I_2 \circ I_1)^3(M) \spaces= LMR
-$$</p>
-<p>且这里 $I,R$ 的分量是以 $M$ 的 $9$ 个分量 $M_{ij}$ 为变量的非交换有理函数.</p>
-<p><span class="link local"><a href="/linear-algebra/kontsevich-periodicity.html" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 已由 Natalia Iyudu 和 Stanislav Shkarin 于 2013 年 5 月 8 日 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="证明 [https://arxiv.org/abs/1305.1965v3]">证明</a></span>, 因此这一猜想有时也被称作 Iyudu–Shkarin 定理. 不过这个证明过于暴力, 也没有对于一般的矩阵 $M \in \Mat_{n \times n}$ 回答 $n&gt;3$ 时的 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity.html" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span></p>
-<p>$$
-(I_3 \circ I_2 \circ I_1)^n(M) \spaces= LMR
-$$</p>
-<p>为何不成立 <sup class="footnote-reference" id="linear-algebra_kontsevich-periodicity_kontsevich-hold-back"><a href="#linear-algebra_kontsevich-periodicity_kontsevich-hold">1</a></sup>.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A.html">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\Mat{\operatorname{Mat}}$</p>
-<p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
-<p>$$
-\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
-$$</p>
-<p>其中 $S = (\begin{smallmatrix}0 &amp; -1 \\ 1 &amp; ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
-<p>$$
-\begin{aligned}
-\varphi^2(M) 
-&amp;\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
-&amp;\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
-&amp;\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
-&amp;\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
-&amp;\spaces= \det M \det(I_2(M)) \cdot M
-\end{aligned}
-$$</p>
-<p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
-<p>$$
-\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
-$$</p>
-<div class="footnote-definition" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint">
-  <sup class="footnote-definition-label"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back">1</a></sup>
-<p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
-</div>
-</details></section></p>
-<div class="footnote-definition" id="linear-algebra_kontsevich-periodicity_kontsevich-hold">
-  <sup class="footnote-definition-label"><a href="#linear-algebra_kontsevich-periodicity_kontsevich-hold-back">1</a></sup>
-<p>如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity-000A.html" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-000A]">验证</a></span>. Iyudu 和 Shkarin 在他们的 <span class="link external"><a href="https://arxiv.org/abs/1305.1965v3" title="论文 [https://arxiv.org/abs/1305.1965v3]">论文</a></span> 中首先验证了 <span class="link local"><a href="/linear-algebra/kontsevich-periodicity.html" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">Kontsevich 周期性猜想</a></span> 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本.</p>
-</div>
-</details></section></details></section></footer></article>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
 
-</div></body></html>
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/kontsevich-periodicity'" title="Kontsevich 周期性猜想">« Kontsevich 周期性猜想</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-kontsevich-periodicity-000A"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\Mat{\operatorname{Mat}}$</p>
+<p>我们来观察对于交换环 $R$ 和对应的 $\Mat_{2\times 2}(R)$ 中的矩阵, $(I_3 \circ I_2 \circ I_1)^2$ 具体做了些什么. 令 $\varphi = I_3 \circ I_2 \circ I_1$, 则 $\varphi(M)$ 可以算出是</p>
+<p>$$
+\varphi: ~ M ~\leadsto~ \det M \cdot S I_2(M) S^T
+$$</p>
+<p>其中 $S = (\begin{smallmatrix}0 &amp; -1 \\ 1 &amp; ~~~0\end{smallmatrix})$ 是一个行列式为 $1$ 的反对称矩阵 <sup class="footnote-reference" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint">1</a></sup>, 记 $\tau: M \leadsto SI_2(M)S^T$, 可以验证 $\tau \circ \tau = \text{id}$. 现在我们来计算 $\varphi^2(M)$.</p>
+<p>$$
+\begin{aligned}
+\varphi^2(M) 
+&amp;\spaces= \varphi(\det M \cdot SI_2(M)S^T) \\
+&amp;\spaces= \det(\det M \cdot SI_2(M)S^T) \cdot S I_2(\det M \cdot SI_2(M)S^T) S^T \\
+&amp;\spaces= (\det M)^2 \det(SI_2(M)S^T) \cdot (\det M)^{-1}M \\
+&amp;\spaces= \det M \det(SI_2(M)S^T) \cdot M \\
+&amp;\spaces= \det M \det(I_2(M)) \cdot M
+\end{aligned}
+$$</p>
+<p>也就是说 $\varphi^2(M)$ 实际上会是 $M$ 的常数倍, 并且这个常数是</p>
+<p>$$
+\det M \det(I_2(M)) \spaces= (ad-bc)\Big(\frac1{ad}-\frac1{bc}\Big)
+$$</p>
+<div class="footnote-definition" id="linear-algebra_kontsevich-periodicity-000A_skew-adjoint">
+  <sup class="footnote-definition-label"><a href="#linear-algebra_kontsevich-periodicity-000A_skew-adjoint-back">1</a></sup>
+<p>当我们把 $S$ 看作线性映射 $A$ 的表示时, 在定义上 $A$ 就被称为反自伴算子.</p>
+</div>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Conjecture" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

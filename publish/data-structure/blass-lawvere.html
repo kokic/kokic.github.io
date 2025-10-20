@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Blass–Lawvere 定理</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Blass–Lawvere 定理</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,18 +628,33 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/seven-trees-in-one.html'" title="七树合一定理">« 七树合一定理</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere.html">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/seven-trees-in-one'" title="七树合一定理">« 七树合一定理</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
-<p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven.html" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
-<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
-<p><section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster.html">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary>
+<p>记 $B$ 是二叉树类型, 则存在一个 <span class="link local"><a href="/bib/blass1995seven" title="Seven trees in one [bib/blass1995seven]">“极精确的双射”</a></span> $B \xrightarrow{\sim} B^7$.</p>
+<p>显然并非所有 $\zeta_6$ 满足的等式都能提升到 $B$ 之间的同构, 如 $B^6 \ncong 1$. 自然的问题是, 哪些等式能提升到同构? 这个问题由下面的 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 回答.</p>
+<p><section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-fiore-leinster"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></summary>
 <p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$</p>
 <p>设 $f,g_1,g_2 \in \N[x]$, 其中 $f$ 有非零常数项且 $\deg f \ge 2$. 若 $f(x) - x$ 整除非常值的 $g_1-g_2$ (在 $\Z[x]$ 中), 则在 $\N[x]/(x=f(x))$ 中, $g_1(x)=g_2(x)$.</p>
 </details></section></p>
-<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
-<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster.html" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
-</details></section><footer></footer></article>
-
-</div></body></html>
+<p>特别的, 取 $f(x)=1+x^2$, <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span> 表明, 若在 $\N[x]/(x=1+x^2)$ 中成立  $f(x) = g(x)$, 则存在 “极精确的双射” $f(B) \cong g(B)$. 在 $\N[x]/(x=1+x^2)$ 中可以演绎得到 $x=x^7$ 但无法给出 $1=x^6$. 对于前者 $x^7-x = (x^2-x+1)(x^5+x^4-x^2-x) = 0$. 再看 $x^4 + x^2 + 1 = (x^2 + x + 1)(x^2 - x + 1)$, 这给出 $B^4+B^2+1 \ncong 0$, $B^4+B^2+B+1=B$.</p>
+<p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
+</details></section><footer></footer></article></div></body></html>

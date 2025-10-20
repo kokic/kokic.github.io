@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>自动机与矩阵求逆</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>自动机与矩阵求逆</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,8 +628,25 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/index.html'" title="线性代数杂记">« 线性代数杂记</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix.html">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary>
-<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language.html">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/linear-algebra/index'" title="线性代数杂记">« 线性代数杂记</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 1. </span>正则语言集</span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 2. </span>关于半环的注释</span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3. </span>星半环</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000C" title="矩阵闭包 [linear-algebra/automata-matrix-000C]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000C'"><span class="taxon">Exegesis 4. </span>矩阵闭包</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000A" title="二阶矩阵的逆 [linear-algebra/automata-matrix-000A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000A'"><span class="taxon">Example 5. </span>二阶矩阵的逆</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000B" title="分块矩阵的逆 [linear-algebra/automata-matrix-000B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000B'"><span class="taxon">Example 6. </span>分块矩阵的逆</span></li></ul></details></div></nav>
+
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-regular-language"><header><h1><span class="taxon">Definition 1. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\spaces#1{~ #1 ~}$</p>
@@ -110,7 +681,7 @@ $\quad (ii)$ 加法 $+_\Sigma$ 是幂等运算, 即 $a+a = a$.</p>
 $$</p>
 <p>这使 $\textbf{Reg}_\Sigma$ 成为 Kleene 代数 $(\textbf{Reg}_\Sigma, +_\Sigma, \times_\Sigma, \square^*)$. 反过来, 按照公理化定义的顺序, 从正则语言集的性质 $(1)\sim(4)$ 能够直接得出 Kleene 星运算 $\square^*$ 的定义, 正则语言集本身就是 Kleene 代数的一个模型. Kleene 代数的另一个简单例子是 Boole 代数, 其中的 $a^* = 1$. 而热带半环尽管有幂等加法, 但可以验证它并非 Kleene 代数.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring.html">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-semiring"><header><h1><span class="taxon">Exegesis 2. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\N{\mathbf{N}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\Q{\mathbf{Q}}$
@@ -126,12 +697,12 @@ $\gdef\Mat{\operatorname{Mat}}$</p>
 <p>例如: 求解最短路径问题的 Floyd 算法, 计算 Boole 矩阵传递闭包的 Warshall 算法, 求逆矩阵的 Gauss–Jordan 消元, 以及 Kleene 对 “每个正则语言都可被正则表达式定义” 的证明.</p>
 </div>
 </details></section>
-<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring.html">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition 3. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
-<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
+<p>仅仅只是为半环添加闭包或者说 Kleene 星运算, 所得到的结构称为星半环. 与 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 类似, 星半环也通过递归公理定义星运算. 但是 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 所要求的幂等加法对于很多数字系统如 $\Q, \R$ 而言都难以实现, 因为这破坏了 Archimedes 性. 如果我们取消幂等加法这一点, 此时所得到的结构是完备星半环或称为闭半环, 因为 <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene 代数</a></span> 本身还允许了无穷和 $\sum_{i \ge 0}a^i$ 以及 $a^*$ 的存在性, 这就是称它 “完备” 或者 “闭” 的原因.</p>
 <p>下面来介绍一个重要的例子. 非负扩展实数集 $\R_{\ge 0} \cup \{\infty\}$ 也即 $\R_{\ge 0}$ 的单点紧化连同实数的通常加法和乘法构成闭半环, 其中 $a \lt 1$ 时 $a^* = \frac1{1-a}$, 否则 $a^* = \infty$. 注意这个结构中不存在非零的加法逆 $-a$, 而乘法逆 $a^{-1}$ 则是未必存在. $\frac1{1-a}$ 应当被认为是一个整体记号, 或者说它实际上是无穷和 $1 + a + a^2 + \cdots$ 在 $\R_{\ge 0}$ 被添入全体非零加法逆 $\R_{\lt0}$ 后所得的环 $\R$ 中于 $(-1,1)$ 处收敛的结果. 然后由于</p>
 <p>$$
 \R_{\ge 0} ~ \cap ~ \{a &lt; 1 : a \in \R_{\ge 0}\} \quads= [0, 1) \spaces\subset (-1,1)
@@ -139,13 +710,13 @@ $$</p>
 <p>从而在闭半环的 $a&lt;1$ 处继续沿用这个记号. 这样, 一旦当我们扩大到环 $\R$ 时, 闭半环 $\R_{\ge 0} \cup \{\infty\}$ 当中得出的结果仍然有效. 我们在这里要求 $\R_{\ge 0} \cup \{\infty\}$ 还有另一个原因, 如果对所有 $a$ 都定义 $a^* = \frac1{1-a}$, 那么 $a^{***} = a$, 即 $\square^*$ 是 $3$-幂等的运算, 这会让 Kleene 闭包和正则表达式的概念无从谈起.</p>
 <p>我们的论证可以直接拓展到一般的闭半环 $(\mathcal{Q}, +, \times, \square^*)$. 当其中的半环 $(\mathcal{Q}, +, \times)$ 被替换为环 $(R, +, \times)$ 时, 如果 $R$ 当中的 $\frac1{1-a}$ 在 $\mathcal{Q}$ 当中存在, 则 $\mathcal{Q}$ 当中的 $a^*$ 对应于 $R$ 当中的 $\frac1{1-a}$. 当然, 隐含的条件是, $R$ 的加法和乘法与 $\mathcal{Q}$ 兼容.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis 4. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C.html">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="linear-algebra-automata-matrix-000C"><header><h1><span class="taxon">Exegesis 4. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p>记 $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. 从现在起, 我们对于 $\R_{\ge 0}^* ~ (= \mathcal{Q})$ 当中的许多有用的观察可以安全地转移到 $\R ~ (= R)$. 根据 <span class="link local"><a href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 我们优先考虑 $\Mat_{n \times n}(\mathcal{Q})$, 从最小的非平凡情况 $n=2$ 开始, 由于我们的目的是计算矩阵的逆, 故取这个半环的可逆子集也即幺半群 $\Mat_{n \times n}(\mathcal{Q})^\times$,  其中的元素会形如</p>
+<p>记 $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. 从现在起, 我们对于 $\R_{\ge 0}^* ~ (= \mathcal{Q})$ 当中的许多有用的观察可以安全地转移到 $\R ~ (= R)$. 根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 我们优先考虑 $\Mat_{n \times n}(\mathcal{Q})$, 从最小的非平凡情况 $n=2$ 开始, 由于我们的目的是计算矩阵的逆, 故取这个半环的可逆子集也即幺半群 $\Mat_{n \times n}(\mathcal{Q})^\times$,  其中的元素会形如</p>
 <p>$$
 M \spaces= \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}, \quad
 ad - bc \spaces\neq 0
@@ -154,7 +725,7 @@ $$</p>
 <p>$$
 (1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
 $$</p>
-<p>此处的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而非 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 <span class="link local"><a href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 此时 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径.</p>
+<p>此处的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而非 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">半环注释</a></span>, 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 此时 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径.</p>
 <p><figure><img src="/linear-algebra/automata-matrix-0001.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
 <p>具体的说, 固定下标 $i,j$, 分量 $(M^*)_{ij}$ 的值会等于以 $M$, $M^*$ 为结点, $M_{ij}$ 为箭头的 $G$ 中所有 $i \to j$ 的路径 $\hom(i,j)$ 的正则表达式. 并且从这些路径中我们也能够写出 $\hom(i,j)$ 对应的正则表达式, 这就为计算 $(M^*)_{ij}$ 提供了可能.</p>
 <p>$$\begin{aligned}
@@ -170,9 +741,9 @@ M^* \spaces= \begin{pmatrix}
 d^* c \alpha &amp; \quad d^* + d^*c \alpha b d^* \tag{1.1}
 \end{pmatrix}
 $$</p>
-<p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition.html" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
+<p>这里有两个不应忽视的问题. 其一, 虽然我们考虑的是 $\Mat_{n \times n}(\mathcal{Q})$ 上的 Kleene 星运算 $\square^*$, 但右侧的表达式中涉及了 $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ 上的 Kleene 星运算 $\square^*$, 根据之前的内容, 我们可以自然地确定它就是 $a \mapsto \frac1{1-a}$. 这允许我们从 $M$ 的各个分量 $M_{ij}$ 计算出 $M^*$. 更加重要的是, 由于 $\Mat_{n \times n}(\mathcal{Q})$ 也能通过这样的方式构成闭半环, 这实际上允许我们将 $(1.1)$ 的适用范围拓展到任意大小的方阵 $\Mat_{n \times n}(\mathcal{Q})$, 此时的 $a,b,c,d$ 能够选取为 $M$ 的分块矩阵. 其二, $d^* + d^*c \alpha b d^*$ 在一般的星半环中不能直接替换为 $(d+ca^*b)^*$, 可替换的前提被称为 <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway 条件</a></span>.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example 5. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A.html">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000A"><header><h1><span class="taxon">Example 5. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>作为热身运动, 我们现在来恢复一个经典的事实, 即二阶矩阵的逆. 对于二阶可逆矩阵 $M$, 其逆 $M^{-1}$ 可以由它的四个分量 $a,b,c,d$ 经由 $M \to 1-M \to (1-M)^*$ 这样的过程得到, 这里 $1$ 当然是单位矩阵.</p>
 <p>$$
@@ -188,7 +759,7 @@ M^{-1}
 \end{aligned}
 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example 6. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B.html">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="linear-algebra-automata-matrix-000B"><header><h1><span class="taxon">Example 6. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们下面来处理 $n \times n$ 矩阵 ($n \ge 3$) 的逆, 将其分块并假定后续要取逆的矩阵都是非奇异的</p>
 <p>$$
@@ -229,6 +800,4 @@ M^{-1}
 $$</p>
 <p>在这里, 我们得到了一个相当经典且重要的结果, 即分块求逆.</p>
 </details></section></p>
-</details></section><footer></footer></article>
-
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language.html" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 1. </span>正则语言集</span></li><li class=""><a class="bullet" href="/linear-algebra/semiring.html" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 2. </span>关于半环的注释</span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring.html" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3. </span>星半环</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000C.html" title="矩阵闭包 [linear-algebra/automata-matrix-000C]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000C'"><span class="taxon">Exegesis 4. </span>矩阵闭包</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000A.html" title="二阶矩阵的逆 [linear-algebra/automata-matrix-000A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000A'"><span class="taxon">Example 5. </span>二阶矩阵的逆</span></li><li class=""><a class="bullet" href="/linear-algebra/automata-matrix-000B.html" title="分块矩阵的逆 [linear-algebra/automata-matrix-000B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-automata-matrix-000B'"><span class="taxon">Example 6. </span>分块矩阵的逆</span></li></ul></div></nav></div></body></html>
+</details></section><footer></footer></article></div></body></html>

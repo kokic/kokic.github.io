@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Dustin Clausen</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>Dustin Clausen</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,79 +628,23 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon="人物"><details open><summary id="person-dustin-clausen"><header><h1><span class="taxon">人物</span>Dustin Clausen <a class="slug" href="/person/dustin-clausen.html">[dustin-clausen]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link external"><a href="https://www.ihes.fr/" title="Institut des Hautes Études Scientifiques [https://www.ihes.fr/]">Institut des Hautes Études Scientifiques</a></span></li><li class="meta-item">Permanent professor</li><li class="meta-item"><span class="link external"><a href="https://www.ihes.fr/~dustin/" title="www.ihes.fr/~dustin [https://www.ihes.fr/~dustin/]">www.ihes.fr/~dustin</a></span></li></ul></div></header></summary>
-<p>Mathematician with interests in algebraic K-theory, number theory, analytic geometry, functional analysis, and homotopy theory. PhD from MIT in 2013 under the supervision of Jacob Lurie.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="riemann-surfaces-index"><header><h1><span class="taxon"></span>Riemann Surfaces <a class="slug" href="/riemann-surfaces/index.html">[riemann-surfaces]</a></h1><div class="metadata"><ul><li class="meta-item">September 3, 2014 - June 24, 2015</li><li class="meta-item"><span class="link local"><a href="/person/dustin-clausen.html" title="Dustin Clausen [person/dustin-clausen]">Dustin Clausen</a></span></li></ul></div></header></summary>
-<p>This is a Markdown transcription of <span class="link local"><a href="/person/dustin-clausen.html" title="Dustin Clausen [person/dustin-clausen]">Dustin Clausen</a></span>’s <span class="link external"><a href="https://www.ihes.fr/~dustin/#pagenotes" title="course notes [https://www.ihes.fr/~dustin/#pagenotes]">course notes</a></span> on “Riemann Surfaces” (PDFs). All explanatory rights belong to <span class="link local"><a href="/person/dustin-clausen.html" title="Dustin Clausen [person/dustin-clausen]">Dustin Clausen</a></span>.</p>
-<p><section class="block" data-taxon="Lecture"><details ><summary id="riemann-surfaces-lecture-1"><header><h1><span class="taxon">Lecture. </span>Review of holomorphic functions <a class="slug" href="/riemann-surfaces/lecture-1.html">[lecture-1]</a></h1><div class="metadata"><ul><li class="meta-item">September 3, 2014</li><li class="meta-item"><span class="link local"><a href="/person/dustin-clausen.html" title="Dustin Clausen [person/dustin-clausen]">Dustin Clausen</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\CC{\mathbb{C}}$</p>
-<p>The subject of this course is Riemann surfaces. A one sentence “definition” of a Riemann surface is that is geometric object obtained by patching together pieces of the complex plane along <em>biholomorphic maps</em>. Before studying Riemann surfaces, it’s a good idea to understand the notion of a biholomorphic map, or more generally, just a holomorphic. In this lecture we’ll review the basic definitions and results on holomorphic maps, giving some intuitive explanations but no proofs. For the proofs you can see any basic text on complex analysis.</p>
-<p>First, some notations. The set of complex numbers is</p>
-<p>$$ \CC \spaces= \{ a + b \cdot i \mid a, b, \in \R \} $$</p>
-<p>For a complex number $z \in \CC$ and a positive real number $r$, the <em>open disk</em> of radius $r$ centered at $z$ is</p>
-<p>$$ D(z,r) \spaces= \{ w \in \CC \mid |w-z| &lt; r \} $$</p>
-<p>and the analogous <em>closed disk</em> is</p>
-<p>$$ \overline D(z,r) \spaces= \{ w \in \CC \mid |w-z| \le r \} $$</p>
-<p>Its <em>boundary</em> is the circle</p>
-<p>$$ \partial \overline D(z,r) \spaces= \{ w \in \CC \mid |w-z| = r \} $$</p>
-<p>Here is the first definition.</p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="riemann-surfaces-rmsf-0001"><header><h1><span class="taxon">Definition. </span>Open subset <a class="slug" href="/riemann-surfaces/rmsf-0001.html">[rmsf-0001]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\CC{\mathbb{C}}$</p>
-<p>A subset $U \in \CC$ is called open if for every $z \in U$, there exists a positive real number $r$ such that $D(z,r) \subset U$.</p>
-<p>It is equivalent to ask that $U$ be a union of <span class="link local"><a href="/riemann-surfaces/lecture-1.html" title="Review of holomorphic functions [riemann-surfaces/lecture-1]">open disks</a></span>.</p>
-<p>The reason we wnat to consider <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subsets</a></span> is that we want to differentiate. To differentiate, you need to know not just the values of your function at a point, but its value at all points sufficiently close to your point. An <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subset</a></span> is exactly a subset which, if it contains a point, contains all sufficiently close points as well.</p>
-</details></section></p>
-<p>Now we can say what is a <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic function</a></span>.</p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="riemann-surfaces-rmsf-0002"><header><h1><span class="taxon">Definition. </span>Holomorphic function <a class="slug" href="/riemann-surfaces/rmsf-0002.html">[rmsf-0002]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\CC{\mathbb{C}}$</p>
-<p>Let $U \in \CC$ be an <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subset</a></span>, and $f: U \to \CC$ a function. We say that $f$ is holomorphic if it is complex differentiable at $z_0$ for every $z_0 \in U$, i.e. for every $z_0 \in U$ the limit (of complex numbers)</p>
-<p>$$ \lim\limits_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} $$</p>
-<p>exists. (The limit value is denoted $f'(z_0)$, as usual.)</p>
-</details></section></p>
-<p>There are two ways of thinking about this definition. One is that it is the complex analog of the usual notion of a differentiable function of one real variable. So insofar as the complex numbers, with its algebraic operations and its notion of absolute value, the notion of a holomorphic function is like the notion of a real differentiable function.</p>
-<p>But this perspective hides the magic of <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic functions</a></span>, which in many ways are very different from real differentiable functions. To bring out the magic, its helpful to think geometrically, viewing the complex numbers as the plane $\R^2$ and thus thinking of $f$ as a function of two real variables.</p>
-<p>Then we can ask, what is it that distinguishes a <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic function</a></span> from an arbitrary real differentiable function of two variables? The anwser can be phrased as follows. Suppose give a real differentiable function $f: U \to \R^2$ and a point $p \in U$. The derivative of $f$ at $p$ is by definition a certain linear map</p>
-<p>$\gdef\d{\operatorname{d}}$</p>
-<p>$$ \d f|_p : \R^2 \to \R^2 $$</p>
-<p>where we think of the source (resp. target) as the vector emanating from $p$ (resp. $f(p)$). Then an immediate comparsion of the definitions shows that $f$ is <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic</a></span> if and only if $\d f|_p$ is given by multiplication by some complex number (which will be $f'(p)$).</p>
-<p>Now, it is only certain linear maps which are of that form. Multiplication by a complex number is either the zero map, or it is the composition of a rotation and a scaling. A particularly vivid consequence is that when $f$ is <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic</a></span>, $\d f|_p$ is either zero or it preserves oriented angles. Another consequence is a certain rigidity: the whole linear map $\d f|_p$ is determined by its value on any nonzero vector, since already that fixes the amount of rotation and scaling undergone by the whole map.</p>
-</details></section></p>
-</details></section><section class="block" data-taxon="Lecture"><details ><summary id="riemann-surfaces-lecture-1"><header><h1><span class="taxon">Lecture. </span>Review of holomorphic functions <a class="slug" href="/riemann-surfaces/lecture-1.html">[lecture-1]</a></h1><div class="metadata"><ul><li class="meta-item">September 3, 2014</li><li class="meta-item"><span class="link local"><a href="/person/dustin-clausen.html" title="Dustin Clausen [person/dustin-clausen]">Dustin Clausen</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\CC{\mathbb{C}}$</p>
-<p>The subject of this course is Riemann surfaces. A one sentence “definition” of a Riemann surface is that is geometric object obtained by patching together pieces of the complex plane along <em>biholomorphic maps</em>. Before studying Riemann surfaces, it’s a good idea to understand the notion of a biholomorphic map, or more generally, just a holomorphic. In this lecture we’ll review the basic definitions and results on holomorphic maps, giving some intuitive explanations but no proofs. For the proofs you can see any basic text on complex analysis.</p>
-<p>First, some notations. The set of complex numbers is</p>
-<p>$$ \CC \spaces= \{ a + b \cdot i \mid a, b, \in \R \} $$</p>
-<p>For a complex number $z \in \CC$ and a positive real number $r$, the <em>open disk</em> of radius $r$ centered at $z$ is</p>
-<p>$$ D(z,r) \spaces= \{ w \in \CC \mid |w-z| &lt; r \} $$</p>
-<p>and the analogous <em>closed disk</em> is</p>
-<p>$$ \overline D(z,r) \spaces= \{ w \in \CC \mid |w-z| \le r \} $$</p>
-<p>Its <em>boundary</em> is the circle</p>
-<p>$$ \partial \overline D(z,r) \spaces= \{ w \in \CC \mid |w-z| = r \} $$</p>
-<p>Here is the first definition.</p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="riemann-surfaces-rmsf-0001"><header><h1><span class="taxon">Definition. </span>Open subset <a class="slug" href="/riemann-surfaces/rmsf-0001.html">[rmsf-0001]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\CC{\mathbb{C}}$</p>
-<p>A subset $U \in \CC$ is called open if for every $z \in U$, there exists a positive real number $r$ such that $D(z,r) \subset U$.</p>
-<p>It is equivalent to ask that $U$ be a union of <span class="link local"><a href="/riemann-surfaces/lecture-1.html" title="Review of holomorphic functions [riemann-surfaces/lecture-1]">open disks</a></span>.</p>
-<p>The reason we wnat to consider <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subsets</a></span> is that we want to differentiate. To differentiate, you need to know not just the values of your function at a point, but its value at all points sufficiently close to your point. An <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subset</a></span> is exactly a subset which, if it contains a point, contains all sufficiently close points as well.</p>
-</details></section></p>
-<p>Now we can say what is a <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic function</a></span>.</p>
-<p><section class="block" data-taxon="Definition"><details ><summary id="riemann-surfaces-rmsf-0002"><header><h1><span class="taxon">Definition. </span>Holomorphic function <a class="slug" href="/riemann-surfaces/rmsf-0002.html">[rmsf-0002]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\CC{\mathbb{C}}$</p>
-<p>Let $U \in \CC$ be an <span class="link local"><a href="/riemann-surfaces/rmsf-0001.html" title="Open subset [riemann-surfaces/rmsf-0001]">open subset</a></span>, and $f: U \to \CC$ a function. We say that $f$ is holomorphic if it is complex differentiable at $z_0$ for every $z_0 \in U$, i.e. for every $z_0 \in U$ the limit (of complex numbers)</p>
-<p>$$ \lim\limits_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} $$</p>
-<p>exists. (The limit value is denoted $f'(z_0)$, as usual.)</p>
-</details></section></p>
-<p>There are two ways of thinking about this definition. One is that it is the complex analog of the usual notion of a differentiable function of one real variable. So insofar as the complex numbers, with its algebraic operations and its notion of absolute value, the notion of a holomorphic function is like the notion of a real differentiable function.</p>
-<p>But this perspective hides the magic of <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic functions</a></span>, which in many ways are very different from real differentiable functions. To bring out the magic, its helpful to think geometrically, viewing the complex numbers as the plane $\R^2$ and thus thinking of $f$ as a function of two real variables.</p>
-<p>Then we can ask, what is it that distinguishes a <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic function</a></span> from an arbitrary real differentiable function of two variables? The anwser can be phrased as follows. Suppose give a real differentiable function $f: U \to \R^2$ and a point $p \in U$. The derivative of $f$ at $p$ is by definition a certain linear map</p>
-<p>$\gdef\d{\operatorname{d}}$</p>
-<p>$$ \d f|_p : \R^2 \to \R^2 $$</p>
-<p>where we think of the source (resp. target) as the vector emanating from $p$ (resp. $f(p)$). Then an immediate comparsion of the definitions shows that $f$ is <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic</a></span> if and only if $\d f|_p$ is given by multiplication by some complex number (which will be $f'(p)$).</p>
-<p>Now, it is only certain linear maps which are of that form. Multiplication by a complex number is either the zero map, or it is the composition of a rotation and a scaling. A particularly vivid consequence is that when $f$ is <span class="link local"><a href="/riemann-surfaces/rmsf-0002.html" title="Holomorphic function [riemann-surfaces/rmsf-0002]">holomorphic</a></span>, $\d f|_p$ is either zero or it preserves oriented angles. Another consequence is a certain rigidity: the whole linear map $\d f|_p$ is determined by its value on any nonzero vector, since already that fixes the amount of rotation and scaling undergone by the whole map.</p>
-</details></section></details></section></footer></article>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
 
-</div></body></html>
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+
+<article><section class="block" data-taxon="人物"><details open><summary id="person-dustin-clausen"><header><h1><span class="taxon">人物</span>Dustin Clausen <a class="slug" href="/person/dustin-clausen">[dustin-clausen]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link external"><a href="https://www.ihes.fr/" title="Institut des Hautes Études Scientifiques [https://www.ihes.fr/]">Institut des Hautes Études Scientifiques</a></span></li><li class="meta-item">Permanent professor</li><li class="meta-item"><span class="link external"><a href="https://www.ihes.fr/~dustin/" title="www.ihes.fr/~dustin [https://www.ihes.fr/~dustin/]">www.ihes.fr/~dustin</a></span></li></ul></div></header></summary>
+<p>Mathematician with interests in algebraic K-theory, number theory, analytic geometry, functional analysis, and homotopy theory. PhD from MIT in 2013 under the supervision of Jacob Lurie.</p>
+</details></section><footer></footer></article></div></body></html>

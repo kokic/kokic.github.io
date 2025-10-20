@@ -1,5 +1,5 @@
 
-#import "/typst/html.typ": *
+#import "../_lib/html.typ": *
 
 #show: html.elem.with("html")
 #show math.equation.where(block: true): elem-frame.with(tag: "span", attrs: ("style": "display: flex; justify-content: center; overflow: auto;"))

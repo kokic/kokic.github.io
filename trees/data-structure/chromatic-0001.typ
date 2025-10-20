@@ -1,6 +1,6 @@
 
-#import "../typst/shared.typ": *
-#import "../typst/chroma.typ": *
+#import "../_lib/shared.typ": *
+#import "../_lib/chroma.typ": *
 
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0.1em), fill: rgb(0, 0, 0, 0)); 
 #set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");

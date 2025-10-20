@@ -1,8 +1,562 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>千高原</title><link rel="stylesheet" href="/main.css">
-<link rel="stylesheet" href="/typst.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="viewport" content="width=device-width"><title>千高原</title><style>:root {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+
+  --text-color: black;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+body {
+  font-optical-sizing: auto;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: 1.55;
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5em;
+  font-size: 11pt;
+  margin-top: 0em;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2em;
+  font-size: 1em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre > code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1em;
+}
+
+/* !forest */
+.footnote-definition > p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target > .footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details > summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details > summary > header {
+  display: inline;
+}
+
+/* no effect */
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: 1.2em;
+  display: inline;
+}
+
+details > summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+article > section > details > summary > header > h1 {
+  font-size: 1.5em;
+}
+
+article > section > details > summary > header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article > section > details > summary > header > h1 > .taxon {
+  display: block;
+  font-size: 0.9em;
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article > section > details > summary > header > h1 > .taxon:empty {
+  display: none;
+}
+
+section.block > details {
+  margin-bottom: 0.4em;
+}
+
+section.block > details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list > section.block > details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline-block;
+  margin: 0 0;
+  line-height: 1em;
+  vertical-align: middle;
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata > details > summary > header > .metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo > span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo > span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+section
+  section[data-taxon="Reference"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon,
+section
+  section[data-taxon="Person"]
+  > details
+  > summary
+  > header
+  > h1
+  > .taxon {
+  display: none;
+}
+
+section .block[data-taxon] > header > h1,
+section .block[data-taxon] details > summary > header > h1 {
+  font-size: 13pt;
+}
+
+footer > section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: 14pt;
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.bullet:hover,
+.edit-button:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+}
+
+.slug,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body > header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper > article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper > nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2em;
+    margin-left: 2em;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    margin-top: -2em;
+  }
+
+  .sticky-nav > div.block {
+    margin-top: 2em;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li > ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+nav#toc,
+nav#toc a {
+  color: light-dark(#555, white);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4em;
+  margin-right: 0.3em;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  text-decoration: none;
+}
+/* For embeded SVG source. */
+
+:root {
+  --typst-text-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --typst-text-color: white;
+  }
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--typst-text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--typst-text-color);
+}
+
+/* For external SVG files. */
+
+@media (prefers-color-scheme: dark) {
+  .color-invert {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
@@ -74,22 +628,39 @@
     font-size: 1.25em;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index.html'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper"><article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-index"><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index.html">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose.html">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<script>
+   function toggleDetailsOpen() {
+      const details = document.querySelector("#toc>div>details");
+      if (!details) return;
+
+      if (window.matchMedia("(max-width: 1000px)").matches) {
+         details.removeAttribute("open");
+      } else {
+         details.setAttribute("open", "");
+      }
+   }
+
+   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+   window.addEventListener("resize", toggleDetailsOpen);
+</script>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/bubble-compose" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-bubble-compose'"><span class="taxon"></span>冒泡排序合成置换分解</span></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-000C" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-000C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-000C'"><span class="taxon">Lemma 1.1. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.2. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-functions" title="周期函数的构造 [mille-plateaux/periodic-functions]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-functions-1" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-functions-1]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions-1'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-functions-2" title="双周期函数 [mille-plateaux/periodic-functions-2]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions-2'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/laisant-young" title="Laisant–Young 不等式 [mille-plateaux/laisant-young]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-laisant-young'"><span class="taxon">Exegesis. </span>Laisant–Young 不等式</span></li></ul></details></div></nav>
+
+<article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-index"><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof.html">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="mille-plateaux-bubble-compose-proof"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src="/mille-plateaux/bubble-compose.svg" class="color-invert"/></figure></p>
 </details></section></p>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points.html">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis 1. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury.html">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis 1. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
 <p>$\textbf{Problem.}$ 有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
@@ -98,7 +669,7 @@ $\gdef\eqq{\quads=}$</p>
 <figure style="text-align: center;"><img src="../assets/8P.svg" class="color-invert" style="border-radius: 0.2em; width: 500px;"></figure>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在写出其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-<p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 1.1. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C.html">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-000C"><header><h1><span class="taxon">Lemma 1.1. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-000C">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
@@ -109,10 +680,10 @@ $\gdef\eqq{\quads=}$</p>
 <p>随后解这个关于 $x,y$ 的方程. 注意这里 $(x-x_\Box)^2$ 当然来自于我们做的 $P$ 点切线, 也就是重根 $x_\Box$. $\Gamma$ 是一条三次曲线, 与直线的交点方程最多三个解, 因此最后一项关于 $x$ 是线性的, 故只需要解一个线性方程, 立刻得到</p>
 <p>$$ 2P: (x_\Box, y_\Box) \quad \leadsto \quad \left(\frac{x_\Box(x_\Box^3 + 2y_\Box^3)}{x_\Box^3 - y_\Box^3}, \frac{y_\Box(y_\Box^3 + 2x_\Box^3)}{y_\Box^3 - x_\Box^3}\right) $$</p>
 <p>我们称 $\Gamma$ 为 Canterbury 曲线, 因为这个问题来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 这是其中的 “The Puzzle of the Doctor of Physic”.</p>
-<p>反复利用映射 $2P$ 即可得到 <span class="link local"><a href="/mille-plateaux/canterbury-000B.html" title=" [mille-plateaux/canterbury-000B]">前文</a></span> 的 $8P$. 当然, 这也给出如下经典的恒等式. 最早亦可追溯到 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 和 Bacht.</p>
+<p>反复利用映射 $2P$ 即可得到 <span class="link local"><a href="/mille-plateaux/canterbury-000B" title=" [mille-plateaux/canterbury-000B]">前文</a></span> 的 $8P$. 当然, 这也给出如下经典的恒等式. 最早亦可追溯到 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 和 Bacht.</p>
 <p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 1.2. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent.html">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 1.2. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>
@@ -121,7 +692,7 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p>这使得 $x(S) \in \Q$. 我们也可以将这个想法直接应用到二次曲线上.</p>
 </details></section></p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis 2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization.html">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-parameterization"><header><h1><span class="taxon">Exegesis 2. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
@@ -136,7 +707,7 @@ $\gdef\R{\mathbf{R}}$</p>
 <p>这样一种寻找点的方式, 通常被称为弦切法.</p>
 <p><figure><img src="/mille-plateaux/chord-tangent.svg" class="color-invert"/></figure></p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis 3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve.html">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-circular-curve"><header><h1><span class="taxon">Exegesis 3. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
@@ -144,7 +715,7 @@ $\gdef\E{\operatorname{E}}$
 $\gdef\arc{\text{arc}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$</p>
-<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length.html" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
+<p>考虑半径为 $r$ 的实圆周 $x^2+y^2=r^2$，其在上半平面的轨迹可表为函数 $y=\sqrt{r^2-x^2},x\in[-r,r]$，<span class="link local"><a href="/mille-plateaux/arc-length" title="曲线弧长计算 [mille-plateaux/arc-length]">长度</a></span> 为</p>
 <p>$$
 L 
 \spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
@@ -184,7 +755,7 @@ $$</p>
 <p>$$
 \int\dfrac{\d x}{y}, \quad y = \sqrt{r^2-x^2}
 $$</p>
-<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization.html" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
+<p>积分号内的项是 $x,y$ 的有理函数, $y$ 是 $x$ 的代数函数, 同时我们已经知道 $x,y$ 满足的代数方程有一个 <span class="link local"><a href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">有理参数化</a></span>, 也就是说</p>
 <p>$$
 \begin{aligned}
 \int\dfrac{\d x}{y} 
@@ -208,7 +779,7 @@ $$</p>
 \int \frac1{\sqrt{(x^2-1)(2x^2+1)}} \d x
 \tag{1}
 $$</p>
-<p><span class="link local"><a href="/mille-plateaux/elliptic-integral.html" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions.html" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
+<p><span class="link local"><a href="/mille-plateaux/elliptic-integral" title="椭圆积分 [mille-plateaux/elliptic-integral]">椭圆积分的经验</a></span> 很容易让我们认为最后的结果当中势必会出现 <span class="link local"><a href="/mille-plateaux/elliptic-functions" title="椭圆函数 [mille-plateaux/elliptic-functions]">椭圆函数</a></span>. 事实正是如此, 注意这个时候 $y^2 = (x^2-1)(2x^2+1)$ 的 $g$ 是 $1$, 而且实际上在引入椭圆函数后, $(1)$ 的表达式要远比弧长的表达式复杂.</p>
 <p>现在考虑双曲线 $C(\R)$ 的一个参数化
 $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 <p>相应的, 关于 $x \in [a,b]$ 弧长积分变为 $t \in [\cosh^{-1}a, \cosh^{-1}b]$ 的积分</p>
@@ -223,12 +794,12 @@ $$ (x,y) \quads\mapsto (\cosh t, \sinh t) $$</p>
 $$</p>
 </details></section></p>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions.html">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon=""><details ><summary id="mille-plateaux-periodic-functions"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve.html" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-functions-1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="slug" href="/mille-plateaux/periodic-functions-1.html">[periodic-functions-1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, <span class="link local"><a href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">圆函数</a></span> 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-functions-1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="slug" href="/mille-plateaux/periodic-functions-1">[periodic-functions-1]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发</p>
 <p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
@@ -236,7 +807,7 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <p>由于 $(n-x)^2 \ge x^2-n^2$, 这使得如下级数也是收敛的</p>
 <p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2.html">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-functions-2"><header><h1><span class="taxon">Exegesis. </span>双周期函数 <a class="slug" href="/mille-plateaux/periodic-functions-2">[periodic-functions-2]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\Z{\mathbf{Z}}$
@@ -252,10 +823,10 @@ $$</p>
 <p>此时 $np + mq \in \Z$, 所以该集合被周期 $\frac{T_2}{q}$ 生成, 矛盾.</p>
 </details></section></p>
 </details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young.html">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic.html" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
+<section class="block" data-taxon="Exegesis"><details ><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
 <p>$\gdef\d{\operatorname{d}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 <span class="link local"><a href="/mille-plateaux/young-inequality.html" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 右侧使用 <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> 的一个 <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]">简单结论</a></span>:</p>
+<p>$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 <span class="link local"><a href="/mille-plateaux/young-inequality" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 右侧使用 <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> 的一个 <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]">简单结论</a></span>:</p>
 <p>$$
 \int f^{-1}(y) \d y \spaces= y f^{-1}(y) - (F \circ f^{-1})(y) + C
 $$</p>
@@ -263,7 +834,7 @@ $$</p>
 <p>$$
 ab \spaces\le \int_0^a f(x) \d x + b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x
 $$</p>
-<p>这是 <span class="link local"><a href="/mille-plateaux/young-inequality.html" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 的一个等价形式. 但是, $f(0) = 0$ 这个条件对于许多 $f$ 并不适用, 为此我们需要考虑不依赖于此的 Young 不等式.</p>
+<p>这是 <span class="link local"><a href="/mille-plateaux/young-inequality" title="增函数的 Young 不等式 [mille-plateaux/young-inequality]">Young 不等式</a></span> 的一个等价形式. 但是, $f(0) = 0$ 这个条件对于许多 $f$ 并不适用, 为此我们需要考虑不依赖于此的 Young 不等式.</p>
 <p>$\textbf{Theorem.}$ 可以一般地观察在 $[a_0, a]$ 上可逆严格增函数 $f$ 的图像, 我们发现 $f$ 将区域
 $$ ([0, a] \times [0, b])  \spaces\smallsetminus ([0, a_0] \times [0, b_0]) $$</p>
 <p>分割为两部分. 此时有</p>
@@ -277,6 +848,4 @@ ab \spaces\le \int_0^a e^x \d x + \int_1^b \log y \d y \spaces= e^a + b\log b - 
 $$</p>
 <p>读者可以通过取 $b \in \{1, e\}$ 得到 $e^x - 1 \ge x$ 和 $e^x \ge ex$ 来意识到这个结果的作用. 不过尽管 $f$ 并不经过原点, 但是通过取 $f(x) = e^x-1$, 经典的 Young 不等式也能给出此不等式, 这一点可行是因为我们恰好选择了 $a_0 = 0$. 而对于一般的 $(a_0,b_0)$, 通过平移配合经典的 Young 不等式并不能得到上面 Laisant–Young 陈述的结果.</p>
 </details></section></p>
-</details></section><footer></footer></article>
-
-<nav id="toc"><div class="block"><h1>Table of Contents</h1><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/bubble-compose.html" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-bubble-compose'"><span class="taxon"></span>冒泡排序合成置换分解</span></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points.html" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury.html" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-000C.html" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-000C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-000C'"><span class="taxon">Lemma 1.1. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent.html" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.2. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization.html" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve.html" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-functions.html" title="周期函数的构造 [mille-plateaux/periodic-functions]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-functions-1.html" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-functions-1]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions-1'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-functions-2.html" title="双周期函数 [mille-plateaux/periodic-functions-2]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-functions-2'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/laisant-young.html" title="Laisant–Young 不等式 [mille-plateaux/laisant-young]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-laisant-young'"><span class="taxon">Exegesis. </span>Laisant–Young 不等式</span></li></ul></div></nav></div></body></html>
+</details></section><footer></footer></article></div></body></html>
