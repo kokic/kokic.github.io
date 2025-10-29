@@ -27,7 +27,7 @@ $$
 
 此处的 $1-M$ 非常微妙, 因为一般情况下它只能存在于 $\Mat_{n \times n}(R)$ 而非 $\Mat_{n \times n}(\mathcal{Q})$.  如果我们暂时忽略这个问题, 那么根据 [半环注释](/linear-algebra/semiring.md), 由于矩阵的加法直接就是 $\mathcal{Q}$ 或者 $R$ 的加法, 而乘法来自线性空间. 此时 $M$ 与 $M^*$ 之间存在一种直接的关系, 可以说成 $(M^*)_{ij} = $ 有向图 $G$ 中所有 $i \to j$ 的路径. 
 
-[State diagram $G$ for $M \to M^*$](/linear-algebra/automata-matrix-0001.typ#:block)
+[State diagram $G$ for $M \to M^*$](./automata-matrix-0001.typ#:block)
 
 具体的说, 固定下标 $i,j$, 分量 $(M^*)_{ij}$ 的值会等于以 $M$, $M^*$ 为结点, $M_{ij}$ 为箭头的 $G$ 中所有 $i \to j$ 的路径 $\hom(i,j)$ 的正则表达式. 并且从这些路径中我们也能够写出 $\hom(i,j)$ 对应的正则表达式, 这就为计算 $(M^*)_{ij}$ 提供了可能. 
 
