@@ -2,7 +2,7 @@
 ---
 title: 星半环
 date: May 9, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: definition
 wiki: 
 ---

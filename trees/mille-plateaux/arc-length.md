@@ -2,7 +2,7 @@
 ---
 title: 曲线弧长计算
 date: January 12, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\d{\operatorname{d}}$

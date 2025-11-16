@@ -1,0 +1,116 @@
+<!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
+
+<style>
+  body:has(input[value="zen"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="zen"]:checked) {
+      --hover-primary-color: 34, 34, 34;
+      --link-primary-color: 150, 150, 150;
+
+      --text-color: rgb(222, 223, 231);
+      --toc-link-color: #555;
+      --background-color: rgb(25, 25, 25);
+
+      --background-color-pre: rgba(0, 100, 100, 0.04);
+      --background-color-code: rgba(0, 100, 100, 0.04);
+
+      --hover-color-block: rgba(var(--hover-primary-color));
+      --hover-color-link: rgb(64, 64, 64);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(var(--link-primary-color));
+      --slug-color: rgb(99, 99, 99);
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(var(--link-primary-color));
+      --em-color: rgb(139, 139, 139);
+    }
+  }
+
+  body:has(input[value="zen-light"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  body:has(input[value="zen-dark"]:checked) {
+    --hover-primary-color: 34, 34, 34;
+    --link-primary-color: 150, 150, 150;
+
+    --text-color: rgb(222, 223, 231);
+    --toc-link-color: #555;
+    --background-color: rgb(25, 25, 25);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(64, 64, 64, 0.3);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(139, 139, 139);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="zen-light">zen light</theme-option>
+<theme-option name="zen-dark">zen dark</theme-option>
+<theme-option name="zen">zen</theme-option>

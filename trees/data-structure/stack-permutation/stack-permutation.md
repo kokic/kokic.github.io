@@ -2,7 +2,7 @@
 ---
 title: 栈置换
 date: November 06, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: definition
 ---
 

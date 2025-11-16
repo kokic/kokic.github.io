@@ -1,6 +1,6 @@
 
-#import "@preview/cetz:0.3.2" as cetz: canvas, draw
-#import "@preview/cetz-plot:0.1.0": plot
+#import "@preview/cetz:0.4.2" as cetz: canvas, draw
+#import "@preview/cetz-plot:0.1.3": plot
 
 #set page(width: auto, height: auto, margin: (x: 2em, y: 2em), fill: rgb(0, 0, 0, 0)); 
 #set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");

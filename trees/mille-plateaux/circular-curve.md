@@ -3,7 +3,7 @@
 title: 圆曲线
 taxon: exegesis
 date: December 30, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$

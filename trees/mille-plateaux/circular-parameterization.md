@@ -3,7 +3,7 @@
 title: 圆的参数化
 taxon: exegesis
 date: December 28, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\quads#1{\quad #1 \quad}$
@@ -24,7 +24,7 @@ $$ x_1 + x_2 = -\frac{2rt^2}{1+t^2} $$
 
 立得 $x_2 = r \cdot \frac{1-t^2}{1+t^2}$. 从而给出一个熟知的有理参数化
 
-$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg)$$ 
+$$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg) $$
 
 这样一种寻找点的方式, 通常被称为弦切法. 
 

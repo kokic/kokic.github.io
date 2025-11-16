@@ -2,7 +2,7 @@
 ---
 title: 复数
 date: April 11, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: definition
 ---
 

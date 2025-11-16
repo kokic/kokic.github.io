@@ -2,7 +2,7 @@
 ---
 title: 有理点
 date: December 26, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\ul#1{\underline{#1}}$

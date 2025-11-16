@@ -1,7 +1,7 @@
 
 ---
 title: Fiore–Leinster
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: theorem
 date: September 24, 2024
 link: <https://arxiv.org/pdf/math/9405205>

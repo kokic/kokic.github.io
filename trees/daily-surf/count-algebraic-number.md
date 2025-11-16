@@ -2,7 +2,7 @@
 ---
 title: 代数数可数
 date: July 25, 2020
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\Q{\mathbf{Q}}$

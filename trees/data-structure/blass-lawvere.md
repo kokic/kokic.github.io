@@ -2,7 +2,7 @@
 ---
 title: Blass--Lawvere 定理
 date: September 24, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: theorem
 ---
 

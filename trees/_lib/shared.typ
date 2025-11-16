@@ -25,11 +25,9 @@
   (position.at(0) + offsetX, position.at(1) + offsetY)
 }
 
-
 // $stix(AA ZZ SS CC""PP^1)$
 // $lato(AA ZZ SS CC""PP^1)$
 // $latobb(AA ZZ SS CC""PP^1 A Z S C""P )$
-
 
 #let zh_numberings = ("一", "二", "三", "四", "五", "六", "七" , "八", "九", "十")
 

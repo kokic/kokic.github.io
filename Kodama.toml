@@ -2,6 +2,12 @@
 trees = "trees"
 assets = "assets"
 base-url = "/"
+themes = [
+  "themes/moon.html", 
+  "themes/default.html",
+  "themes/serena.html",
+  "themes/zenwritten.html",
+]
 
 [toc]
 placement = "right"

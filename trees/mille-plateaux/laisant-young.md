@@ -1,7 +1,7 @@
 
 ---
 title: Laisant--Young 不等式
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 date: May 19, 2019
 taxon: exegesis
 ---
@@ -9,7 +9,7 @@ taxon: exegesis
 $\gdef\d{\operatorname{d}}$
 $\gdef\spaces#1{~ #1 ~}$
 
-$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 [Young 不等式](/mille-plateaux/young-inequality.md) 右侧使用 [Charles-Ange Laisant](https://en.wikipedia.org/wiki/Charles-Ange_Laisant) 的一个 [简单结论](https://en.wikipedia.org/wiki/Integral_of_inverse_functions): 
+$\textbf{Remark.}$ 记 $F: t \mapsto (\int f(x) \d x)|_t$ 即 $f$ 的不定积分, 对 [Young 不等式](/trees/YL4A.md) 右侧使用 [Charles-Ange Laisant](https://en.wikipedia.org/wiki/Charles-Ange_Laisant) 的一个 [简单结论](https://en.wikipedia.org/wiki/Integral_of_inverse_functions): 
 
 $$
 \int f^{-1}(y) \d y \spaces= y f^{-1}(y) - (F \circ f^{-1})(y) + C
@@ -21,7 +21,7 @@ $$
 ab \spaces\le \int_0^a f(x) \d x + b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x
 $$
 
-这是 [Young 不等式](/mille-plateaux/young-inequality.md) 的一个等价形式. 但是, $f(0) = 0$ 这个条件对于许多 $f$ 并不适用, 为此我们需要考虑不依赖于此的 Young 不等式.
+这是 [Young 不等式](/trees/YL4A.md) 的一个等价形式. 但是, $f(0) = 0$ 这个条件对于许多 $f$ 并不适用, 为此我们需要考虑不依赖于此的 Young 不等式.
 
 $\textbf{Theorem.}$ 可以一般地观察在 $[a_0, a]$ 上可逆严格增函数 $f$ 的图像, 我们发现 $f$ 将区域 
 $$ ([0, a] \times [0, b])  \spaces\smallsetminus ([0, a_0] \times [0, b_0]) $$ 

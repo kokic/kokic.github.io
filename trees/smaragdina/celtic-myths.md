@@ -2,7 +2,7 @@
 ---
 title: The Celtic Myths 摘录
 date: February 21, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 douban: [豆瓣](https://book.douban.com/subject/31093378)
 ---
 

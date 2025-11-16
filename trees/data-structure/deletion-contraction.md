@@ -2,7 +2,7 @@
 ---
 title: 删除--收缩公式
 date: July 21, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: theorem
 ---
 
@@ -14,7 +14,7 @@ $\gdef\without{\setminus}$
 
 $$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$
 
-[.](/data-structure/deletion-contraction-proof.md#:embed)
+[.](./deletion-contraction-pf.md#:embed)
 
 此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个. 
 

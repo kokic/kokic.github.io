@@ -2,7 +2,7 @@
 ---
 title: Sublime Text 4 高分屏设置
 date: February 21, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 装好 [`PackageDev`](https://github.com/SublimeText/PackageDev) [^package-resource-viewer] 包后, 修改主题文件如 `Default.sublime-theme` 即可. 

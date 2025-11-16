@@ -2,7 +2,7 @@
 ---
 title: 置换矩阵构造
 date: January 16, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: exegesis
 ---
 

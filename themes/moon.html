@@ -1,0 +1,104 @@
+<!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic)  -->
+<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
+
+<style>
+  body:has(input[value="moon"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="moon"]:checked) {
+      --hover-primary-color: 196, 136, 193;
+
+      --text-color: rgb(187 176 169);
+      --toc-link-color: rgb(187 176 169);
+      --background-color: rgb(32, 28, 48);
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(255, 128, 165);
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(236, 230, 226);
+      --em-color: rgb(255, 219, 230);
+
+      .block:has(.block:hover) {
+        background-color: var(--background-color);
+      }
+    }
+  }
+
+  body:has(input[value="moon-light"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  body:has(input[value="moon-dark"]:checked) {
+    --hover-primary-color: 196, 136, 193;
+
+    --text-color: rgb(187 176 169);
+    --toc-link-color: rgb(187 176 169);
+    --background-color: rgb(32, 28, 48);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(255, 128, 165);
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(236, 230, 226);
+    --em-color: rgb(255, 219, 230);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="moon">朔望</theme-option>
+<theme-option name="moon-light">望月</theme-option>
+<theme-option name="moon-dark">朔月</theme-option>

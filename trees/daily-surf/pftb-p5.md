@@ -2,7 +2,7 @@
 ---
 title: 素数无限多与 Furstenberg 拓扑
 date: August 31, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>数据与可计算结构</title><link rel="icon" href="/assets/favicon.ico" /><style>:root {
+<meta name="viewport" content="width=device-width"><title>数据与可计算结构</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
   color-scheme: light dark;
   --content-gap: 15px;
   --radius: 5px;
@@ -9,6 +9,7 @@
   --toc-max-width: 90ex;
 
   --text-color: black;
+  --toc-link-color: #555;
   --background-color: white;
 
   --background-color-pre: rgba(0, 100, 100, 0.04);
@@ -25,11 +26,13 @@
   --span-taxon-color: #444;
   --article-taxon-color: #888;
   --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root body {
     --text-color: white;
+    --toc-link-color: white;
     --background-color: #2f2f2f;
 
     --background-color-pre: rgba(100, 100, 100, 0.2);
@@ -48,6 +51,7 @@
 }
 
 body {
+  color: var(--text-color);
   font-optical-sizing: auto;
   hyphens: auto;
   background-color: var(--background-color);
@@ -84,6 +88,10 @@ code {
   font-size: 1em;
 }
 
+em {
+  color: var(--em-color);
+}
+
 table {
   border-collapse: collapse;
 }
@@ -101,7 +109,7 @@ td {
 }
 
 /* !forest */
-pre > code {
+pre>code {
   border-radius: 0;
   background-color: transparent;
   padding: 0;
@@ -113,7 +121,7 @@ pre > code {
 }
 
 /* !forest */
-.footnote-definition > p {
+.footnote-definition>p {
   display: inline;
 }
 
@@ -127,7 +135,7 @@ pre > code {
   border: 1px solid var(--target-color);
 }
 
-.footnote-definition:target > .footnote-definition-label {
+.footnote-definition:target>.footnote-definition-label {
   border: 1px solid var(--target-color);
 }
 
@@ -191,18 +199,18 @@ p {
   margin-top: 0;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
   outline: none;
 }
 
-details > summary > header {
+details>summary>header {
   display: inline;
 }
 
 /* no effect */
-details > summary::marker,
-details > summary::-webkit-details-marker {
+details>summary::marker,
+details>summary::-webkit-details-marker {
   display: none;
 }
 
@@ -211,7 +219,7 @@ details h1 {
   display: inline;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
 }
 
@@ -220,39 +228,39 @@ span.taxon {
   font-weight: 500;
 }
 
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-article > section > details > summary > header > h1 {
+article>section>details>summary>header>h1 {
   font-size: 1.5em;
 }
 
-article > section > details > summary > header {
+article>section>details>summary>header {
   display: block;
   margin-bottom: 0.5em;
 }
 
-article > section > details > summary > header > h1 > .taxon {
+article>section>details>summary>header>h1>.taxon {
   display: block;
   font-size: 0.9em;
   color: var(--article-taxon-color);
   padding-bottom: 5pt;
 }
 
-article > section > details > summary > header > h1 > .taxon:empty {
+article>section>details>summary>header>h1>.taxon:empty {
   display: none;
 }
 
-section.block > details {
+section.block>details {
   margin-bottom: 0.4em;
 }
 
-section.block > details[open] {
+section.block>details[open] {
   margin-bottom: 1em;
 }
 
-.link-list > section.block > details {
+.link-list>section.block>details {
   margin-bottom: 0.25em;
 }
 
@@ -280,7 +288,7 @@ section.block > details[open] {
   background-color: var(--hover-color-block);
 }
 
-.block.hide-metadata > details > summary > header > .metadata {
+.block.hide-metadata>details>summary>header>.metadata {
   display: none;
 }
 
@@ -317,12 +325,12 @@ ol {
   margin-bottom: 1em;
 }
 
-.logo > span {
+.logo>span {
   color: var(--logo-color);
   text-decoration: none;
 }
 
-.logo > span:hover {
+.logo>span:hover {
   color: var(--logo-hover-color);
 }
 
@@ -331,29 +339,17 @@ ol {
   font-size: 24px;
 }
 
-section
-  section[data-taxon="Reference"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon,
-section
-  section[data-taxon="Person"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon {
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
   display: none;
 }
 
-section .block[data-taxon] > header > h1,
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-footer > section {
+footer>section {
   margin-bottom: 1em;
 }
 
@@ -421,11 +417,11 @@ a.slug {
   font-weight: 200;
 }
 
-body > header {
+body>header {
   margin-bottom: 0.5em;
 }
 
-#grid-wrapper > article {
+#grid-wrapper>article {
   max-width: var(--article-max-width);
   margin-right: auto;
   grid-area: article;
@@ -439,7 +435,7 @@ body > header {
     transition: ease all 0.2s;
   }
 
-  #grid-wrapper > nav {
+  #grid-wrapper>nav {
     transition: ease all 0.2s;
   }
 
@@ -485,14 +481,14 @@ nav#toc ul {
   list-style-type: none;
 }
 
-nav#toc li > ul {
+nav#toc li>ul {
   margin: 0;
   padding-left: 1em;
 }
 
 nav#toc,
 nav#toc a {
-  color: light-dark(#555, white);
+  color: var(--toc-link-color);
 }
 
 nav#toc {
@@ -511,42 +507,22 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }
-/* For embeded SVG source. */
-
-:root {
-  --typst-text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --typst-text-color: white;
-  }
-}
 
 .typst-text use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 .typst-group use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[stroke="#000000"] {
-  stroke: var(--typst-text-color);
-}
-
-/* For external SVG files. */
-
-@media (prefers-color-scheme: dark) {
-  .color-invert {
-    filter: invert(1) hue-rotate(180deg);
-  }
-}
-</style><style>
+  stroke: var(--text-color);
+}</style><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -638,7 +614,680 @@ path.typst-shape[stroke="#000000"] {
    document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
    window.addEventListener("resize", toggleDetailsOpen);
 </script>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span>七树合一定理</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 1. </span>二叉树类型</span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/stack-tree-isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/stack-tree-isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-tree-isomorphism'"><span class="taxon"></span>栈置换–二叉树同构</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation-000A" title="三节点二叉树 [data-structure/stack-permutation/stack-permutation-000A]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation-000A'"><span class="taxon">Example 3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/stack-permutation-000B]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation-000B'"><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation-000D" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation-000D'"><span class="taxon">Proposition 5. </span>相交数</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation-000E" title="相交率 [data-structure/stack-permutation/stack-permutation-000E]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation-000E'"><span class="taxon">Corollary 6. </span>相交率</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation-000F" title="有效长度的上下界 [data-structure/stack-permutation/stack-permutation-000F]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation-000F'"><span class="taxon">Exegesis 7. </span>有效长度的上下界</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential" title="综合微分法 [data-structure/synthetic-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential'"><span class="taxon"></span>综合微分法</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000A" title="数值微分的误差 [data-structure/synthetic-differential-000A]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000A'"><span class="taxon">Exegesis 1. </span>数值微分的误差</span></li><li class=""><a class="bullet" href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-complex-step'"><span class="taxon">Exegesis 2. </span>复步微分法</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000C'"><span class="taxon">Exegesis 3. </span>误差修正</span></li><li class=""><a class="bullet" href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-dual-number'"><span class="taxon">Definition 4. </span>对偶数</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-kock-lawvere'"><span class="taxon">Axiom 4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000D" title="矩阵表示 [data-structure/synthetic-differential-000D]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000D'"><span class="taxon">Exegesis 4.2. </span>矩阵表示</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000B'"><span class="taxon">Example 4.3. </span>导出微分运算</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential-000E" title="链式法则 [data-structure/synthetic-differential-000E]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-000E'"><span class="taxon">Exegesis 4.4. </span>链式法则</span></li></ul></li></ul></li></ul></details></div></nav>
+<style>
+  theme-option {
+    display: inline-block;
+  }
+
+  theme-option>input {
+    display: none;
+  }
+
+  theme-option>label {
+    color: var(--slug-color);
+  }
+
+  theme-option>label:hover {
+    background-color: var(--hover-color-link);
+  }
+
+  theme-option:has(input:checked)>label {
+    color: var(--link-color);
+  }
+
+  theme-option>label::before {
+    content: "[";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option>label::after {
+    content: "]";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option:has(input:checked)>label::before {
+    color: var(--link-color);
+  }
+
+  theme-option:has(input:checked)>label::after {
+    color: var(--link-color);
+  }
+</style>
+
+<template id="theme-option-template">
+  <input type="radio" name="theme" />
+  <label></label>
+</template>
+
+<script>
+  function storeSelectedTheme(name) {
+    localStorage.setItem(window.themeKey, name);
+  }
+
+  function getCurrentTheme() {
+    return localStorage.getItem(window.themeKey) || window.primaryTheme;
+  }
+
+  function selectTheme(themeName) {
+    storeSelectedTheme(themeName);
+    requestAnimationFrame(applyDynamicColorInvert);
+  }
+
+  function applyFavorTheme() {
+    const favoredTheme = getCurrentTheme();
+    if (favoredTheme) {
+      const selector = `input[type='radio'][id='${favoredTheme}']`;
+      const favoredOption = window.themeOptions.querySelector(selector);
+
+      if (favoredOption) {
+        favoredOption.checked = true;
+      } else if (window.primaryOption) {
+        // Fallback to primary theme, if the favored theme is not found
+        // e.g., when the theme options have changed, and the stored theme is no longer available.
+        window.primaryOption.checked = true;
+      }
+
+      applyDynamicColorInvert();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.themeOptions = document.getElementById("theme-options");
+    const templateContent = document.getElementById("theme-option-template").content;
+
+    customElements.define(
+      "theme-option",
+      class extends HTMLElement {
+        constructor() {
+          super();
+
+          const node = templateContent.cloneNode(true);
+          const themeName = this.getAttribute("name");
+
+          const input = node.querySelector("input");
+          input.setAttribute("id", themeName);
+          input.setAttribute("value", themeName);
+
+          const label = node.querySelector("label");
+          label.setAttribute("for", themeName);
+          label.addEventListener("click", () => selectTheme(themeName));
+
+          while (this.firstChild) {
+            label.appendChild(this.firstChild);
+          }
+          this.appendChild(node);
+        }
+      },
+    );
+
+    const baseUrl = document.getElementById("grid-wrapper").dataset.baseUrl;
+    window.themeKey = `${baseUrl}-kodama-theme`;
+
+    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
+    window.primaryTheme = primaryOption?.value;
+
+    applyFavorTheme();
+  });
+</script>
+
+<script>
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
+  const multiply = ([r, g, b], matrix) => {
+    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
+    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
+    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
+    return [nr, ng, nb];
+  };
+
+  const hueRotate = ([r, g, b], angle = 0) => {
+    const rad = (angle / 180) * Math.PI;
+    const sin = Math.sin(rad);
+    const cos = Math.cos(rad);
+    const matrix = [
+      0.213 + cos * 0.787 - sin * 0.213,
+      0.715 - cos * 0.715 - sin * 0.715,
+      0.072 - cos * 0.072 + sin * 0.928,
+      0.213 - cos * 0.213 + sin * 0.143,
+      0.715 + cos * 0.285 + sin * 0.140,
+      0.072 - cos * 0.072 - sin * 0.283,
+      0.213 - cos * 0.213 - sin * 0.787,
+      0.715 - cos * 0.715 + sin * 0.715,
+      0.072 + cos * 0.928 + sin * 0.072,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const grayscale = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.2126 + 0.7874 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 + 0.2848 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 + 0.9278 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const sepia = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.393 + 0.607 * (1 - value),
+      0.769 - 0.769 * (1 - value),
+      0.189 - 0.189 * (1 - value),
+      0.349 - 0.349 * (1 - value),
+      0.686 + 0.314 * (1 - value),
+      0.168 - 0.168 * (1 - value),
+      0.272 - 0.272 * (1 - value),
+      0.534 - 0.534 * (1 - value),
+      0.131 + 0.869 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const saturate = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.213 + 0.787 * value,
+      0.715 - 0.715 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 + 0.285 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 - 0.715 * value,
+      0.072 + 0.928 * value,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const linear = ([r, g, b], slope = 1, intercept = 0) => {
+    const scale = 255;
+    return [
+      clamp(r * slope + intercept * scale),
+      clamp(g * slope + intercept * scale),
+      clamp(b * slope + intercept * scale),
+    ];
+  };
+
+  const brightness = (rgb, value = 1) => linear(rgb, value);
+  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
+
+  const invert = ([r, g, b], value = 1) => {
+    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
+    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
+    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
+    return [clamp(nr), clamp(ng), clamp(nb)];
+  };
+
+  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
+  const rgbToHsl = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 100, s: s * 100, l: l * 100 };
+  };
+
+  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
+    let color = [...rgb];
+    color = invert(color, inv / 100);
+    color = sepia(color, sep / 100);
+    color = saturate(color, sat / 100);
+    color = hueRotate(color, hue * 3.6);
+    color = brightness(color, bri / 100);
+    color = contrast(color, con / 100);
+    return color;
+  };
+
+  const lossFn = (targetRgb, filters) => {
+    const resultRgb = applyFilters([0, 0, 0], filters);
+    const targetHsl = rgbToHsl(...targetRgb);
+    const resultHsl = rgbToHsl(...resultRgb);
+    return (
+      Math.abs(resultRgb[0] - targetRgb[0]) +
+      Math.abs(resultRgb[1] - targetRgb[1]) +
+      Math.abs(resultRgb[2] - targetRgb[2]) +
+      Math.abs(resultHsl.h - targetHsl.h) +
+      Math.abs(resultHsl.s - targetHsl.s) +
+      Math.abs(resultHsl.l - targetHsl.l)
+    );
+  };
+
+  const fix = (value, idx) => {
+    let max = 100;
+    if (idx === 2) max = 7500;                  // saturate
+    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
+    if (idx === 3) { // hue-rotate
+      if (value > max) return value % max;
+      if (value < 0) return max + (value % max);
+      return value;
+    }
+    return Math.max(0, Math.min(max, value));
+  };
+
+  const spsa = (targetRgb, A, a, c, initial, iters) => {
+    const alpha = 1;
+    const gamma = 1 / 6;
+    let values = [...initial];
+    let best = [...values];
+    let bestLoss = Infinity;
+
+    for (let k = 0; k < iters; k++) {
+      const ck = c / Math.pow(k + 1, gamma);
+      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
+      const highArgs = values.map((v, i) => v + ck * deltas[i]);
+      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
+      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
+
+      values = values.map((v, i) => {
+        const g = (lossDiff / (2 * ck)) * deltas[i];
+        const ak = a[i] / Math.pow(A + k + 1, alpha);
+        return fix(v - ak * g, i);
+      });
+
+      const loss = lossFn(targetRgb, values);
+      if (loss < bestLoss) {
+        best = [...values];
+        bestLoss = loss;
+      }
+    }
+    return { values: best, loss: bestLoss };
+  };
+
+  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
+  // A loss below this value is considered visually indistinguishable for most use cases.
+  // The value 25 was determined empirically to balance performance and color accuracy.
+  const ACCEPTABLE_COLOR_LOSS = 25;
+
+  const solveWide = (targetRgb) => {
+    const A = 5;
+    const c = 15;
+    const a = [60, 180, 18000, 600, 1.2, 1.2];
+    let best = { loss: Infinity, values: null };
+    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
+      const initial = [50, 20, 3750, 50, 100, 100];
+      const result = spsa(targetRgb, A, a, c, initial, 1000);
+      if (result.loss < best.loss) best = result;
+    }
+    return best;
+  };
+
+  const solveNarrow = (targetRgb, wideResult) => {
+    const A = wideResult.loss;
+    const c = 2;
+    const A1 = A + 1;
+    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
+    return spsa(targetRgb, A, a, c, wideResult.values, 500);
+  };
+
+  const cssFilterString = (filters) => {
+    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
+    const hueDeg = Math.round(hue * 3.6);
+    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
+  };
+
+  const solveColor = (targetRgb) => {
+    const wide = solveWide(targetRgb);
+    const narrow = solveNarrow(targetRgb, wide);
+    return {
+      values: narrow.values,
+      loss: narrow.loss,
+      filter: cssFilterString(narrow.values),
+    };
+  };
+
+  // Reuse a single canvas / context to avoid memory leaks
+  const colorParseCanvas = document.createElement('canvas');
+  colorParseCanvas.width = 1;
+  colorParseCanvas.height = 1;
+  const colorParseContext = colorParseCanvas.getContext('2d');
+  
+  const toRGBArray = (cssColor) => {
+    colorParseContext.fillStyle = cssColor;
+    colorParseContext.fillRect(0, 0, 1, 1);
+
+    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
+    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
+    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
+    return Array.from(rgba.slice(0, 3));
+  };
+
+  const dynamicStyleId = 'dynamic-color-invert-style';
+
+  function applyDynamicColorInvert() {
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
+    if (textColor && textColor.length > 0) {
+      const rgb = toRGBArray(textColor);
+      const result = solveColor(rgb);
+      const filter = result.filter;
+
+      const existingStyle = document.getElementById(dynamicStyleId);
+      if (existingStyle) {
+        existingStyle.textContent = `.color-invert {${filter}}`;
+      } else {
+        const style = document.createElement('style');
+        style.id = dynamicStyleId;
+        style.textContent = `.color-invert {${filter}}`;
+        document.head.appendChild(style);
+      }
+    }
+  }
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic)  -->
+<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
+
+<style>
+  body:has(input[value="moon"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="moon"]:checked) {
+      --hover-primary-color: 196, 136, 193;
+
+      --text-color: rgb(187 176 169);
+      --toc-link-color: rgb(187 176 169);
+      --background-color: rgb(32, 28, 48);
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(255, 128, 165);
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(236, 230, 226);
+      --em-color: rgb(255, 219, 230);
+
+      .block:has(.block:hover) {
+        background-color: var(--background-color);
+      }
+    }
+  }
+
+  body:has(input[value="moon-light"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  body:has(input[value="moon-dark"]:checked) {
+    --hover-primary-color: 196, 136, 193;
+
+    --text-color: rgb(187 176 169);
+    --toc-link-color: rgb(187 176 169);
+    --background-color: rgb(32, 28, 48);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(255, 128, 165);
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(236, 230, 226);
+    --em-color: rgb(255, 219, 230);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="moon">朔望</theme-option>
+<theme-option name="moon-light">望月</theme-option>
+<theme-option name="moon-dark">朔月</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
+
+<style>
+  body:has(input[value="zen"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="zen"]:checked) {
+      --hover-primary-color: 34, 34, 34;
+      --link-primary-color: 150, 150, 150;
+
+      --text-color: rgb(222, 223, 231);
+      --toc-link-color: #555;
+      --background-color: rgb(25, 25, 25);
+
+      --background-color-pre: rgba(0, 100, 100, 0.04);
+      --background-color-code: rgba(0, 100, 100, 0.04);
+
+      --hover-color-block: rgba(var(--hover-primary-color));
+      --hover-color-link: rgb(64, 64, 64);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(var(--link-primary-color));
+      --slug-color: rgb(99, 99, 99);
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(var(--link-primary-color));
+      --em-color: rgb(139, 139, 139);
+    }
+  }
+
+  body:has(input[value="zen-light"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  body:has(input[value="zen-dark"]:checked) {
+    --hover-primary-color: 34, 34, 34;
+    --link-primary-color: 150, 150, 150;
+
+    --text-color: rgb(222, 223, 231);
+    --toc-link-color: #555;
+    --background-color: rgb(25, 25, 25);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(64, 64, 64, 0.3);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(139, 139, 139);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="zen-light">zen light</theme-option>
+<theme-option name="zen-dark">zen dark</theme-option>
+<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span>七树合一定理</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 1. </span>二叉树类型</span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2. </span>Blass–Lawvere 定理</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-isomorphism'"><span class="taxon"></span>栈置换–二叉树同构</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-three-nodes'"><span class="taxon">Example 3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-equivalence'"><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-intersection'"><span class="taxon">Proposition 5. </span>相交数</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-ratio'"><span class="taxon">Corollary 6. </span>相交率</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/bounds" title="有效长度的上下界 [data-structure/stack-permutation/bounds]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-bounds'"><span class="taxon">Exegesis 7. </span>有效长度的上下界</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential/index" title="综合微分法 [data-structure/synthetic-differential/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-index'"><span class="taxon"></span>综合微分法</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-numerical'"><span class="taxon">Exegesis 1. </span>数值微分的误差</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-complex-step'"><span class="taxon">Exegesis 2. </span>复步微分法</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-moler-correction'"><span class="taxon">Exegesis 3. </span>误差修正</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-dual-number'"><span class="taxon">Definition 4. </span>对偶数</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-kock-lawvere'"><span class="taxon">Axiom 4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-matrix-represent'"><span class="taxon">Exegesis 4.2. </span>矩阵表示</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-derived-differential'"><span class="taxon">Example 4.3. </span>导出微分运算</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/chain-rule" title="链式法则 [data-structure/synthetic-differential/chain-rule]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-chain-rule'"><span class="taxon">Exegesis 4.4. </span>链式法则</span></li></ul></li></ul></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="data-structure-index"><header><h1><span class="taxon"></span>数据与可计算结构 <a class="slug" href="/data-structure/index">[data-structure]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><section class="block" data-taxon=""><details ><summary id="data-structure-seven-trees-in-one"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></summary>
@@ -666,7 +1315,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>这套想法亦可应用于其他树结构, 如有根平面树, 其每个结点有 $0$, $1$ 或 $2$ 个子结点, 即 $T \cong 1+T+T^2$. 由 <span class="link local"><a href="/data-structure/fiore-leinster" title="Fiore–Leinster [data-structure/fiore-leinster]">Fiore–Leinster 定理</a></span>, 存在 “极精确的双射” $T \cong T^5$.</p>
 </details></section></p>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="data-structure-stack-permutation-stack-tree-isomorphism"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon=""><details ><summary id="data-structure-stack-permutation-isomorphism"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/isomorphism">[isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://trees/kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://trees/kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></summary>
 <p></p>
 <p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-stack-permutation-stack-permutation"><header><h1><span class="taxon">Definition 1. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>栈置换 (<em>stack permutation</em>) 也称作栈混洗 (<em>stack shuffle</em>). 给定一个非空栈 $A$ 和空栈 $B$ 与 $S$, 每次只允许 $(i)$ 弹出 $A$ 并压入 $S$. $(ii)$ 弹出 $S$ 并压入 $B$. 可以想见, 最终 $A$ 的元素一定会全部进入 $B$. 这样的 $B$ 就称为 $A$ 的一个栈置换.</p>
@@ -682,60 +1331,38 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>注意到每个树节点的双亲 (<em>parent</em>) 节点是唯一的, 因此回溯操作良定, 一次回溯就是将当前节点改为其双亲.</p>
 </details></section></p>
 <p>相应的, 可以据此定义 Hille 编码的解析规则, 用于将这样一段有效的二进制序列转换为构造一颗二叉树的若干操作. 我们使用一种类 BNF 文法来定义这个解析器, 仅供读者理解.</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0004.svg" class="color-invert"/></figure></p>
+<p><figure><img src="/data-structure/stack-permutation/hille-parser.svg" class="color-invert"/></figure></p>
 <p>由于我们的讨论不涉及具体元素, 不失一般性, 可以固定栈置换的入栈顺序为 $123\cdots n$. 同时这些数字也是二叉树节点的标签. 影响出栈序列的只有压入和弹出两个操作, 而构建二叉树允许的操作粗看起来要多一些. 因此首先需要通过一些技巧将二叉树构建操作的表示简化. 我们将栈的压入和弹出分别编码为 <code>1</code> 和 <code>0</code>, 并将栈置换对应的二进制序列称为栈编码. 对应的, 以 <span class="link local"><a href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">Hille 编码</a></span> 刻画二叉树的构建.</p>
-<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-stack-permutation-000A"><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-stack-permutation-three-nodes"><header><h1><span class="taxon">Example 3. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/three-nodes">[three-nodes]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>以下写出三节点二叉树的所有 $5$ 种情况, 以展示这些树的二进制序列如何对应到栈置换.
 此处二进制序列按栈弹空为标准, 补充了末尾的零.</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0001.svg" class="color-invert"/></figure></p>
+<p><figure><img src="/data-structure/stack-permutation/three-nodes.svg" class="color-invert"/></figure></p>
 </details></section></p>
-<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-tree-isomorphism_hille-order-back"><a href="#data-structure_stack-permutation_stack-tree-isomorphism_hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-tree-isomorphism_inorder-sequence-back"><a href="#data-structure_stack-permutation_stack-tree-isomorphism_inorder-sequence">2</a></sup>. 我们接下来将解释其中的不平凡之处, 以及这一巧合发生的 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/stack-permutation-000B]">具体条件</a></span>. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
-<p><details><summary><figure><img src="/data-structure/stack-permutation/stack-permutation-0002.svg" class="color-invert"/></figure></summary><pre>def encode : Tree → String
+<p>这个过程的反向实际上并不平凡, 如果只考虑 $n=3$ 也就是上图的情况, 敏锐的读者可以发现, 这些栈置换其实就是二叉树按节点添加顺序 <sup class="footnote-reference" id="data-structure_stack-permutation_isomorphism_hille-order-back"><a href="#data-structure_stack-permutation_isomorphism_hille-order">1</a></sup> 编号后的中序遍历序列 <sup class="footnote-reference" id="data-structure_stack-permutation_isomorphism_inorder-sequence-back"><a href="#data-structure_stack-permutation_isomorphism_inorder-sequence">2</a></sup>. 我们接下来将解释其中的不平凡之处, 以及这一巧合发生的 <span class="link local"><a href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">具体条件</a></span>. 首先是对原始文献的一个观察, <span class="link local"><a href="/bib/hille1982stack" title="Stack permutations and an order relation for binary trees [bib/hille1982stack]">Hille 原始文献</a></span> 当中提出的算法实际上存在错误, 将之改写成 Lean4 语言, 即</p>
+<p><details><summary><figure><img src="/data-structure/stack-permutation/encode.svg" class="color-invert"/></figure></summary><pre>def encode : Tree → String
   | .node l r => "1" ++ encode l ++ encode r
   | _ => "0"</pre></details></p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0003.svg" class="color-invert"/></figure></p>
+<p><figure><img src="/data-structure/stack-permutation/counterexample.svg" class="color-invert"/></figure></p>
 <p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
 <span class="inline-typst"><svg class="typst-doc" viewBox="0 0 18.044079999999997 22.672179999999997" width="18.044079999999997pt" height="22.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
-    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0 L 0 22.67218 L 18.04408 22.67218 L 18.04408 0 Z "/>
+    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0v 22.67218 h 18.04408 v -22.67218 Z "/>
     <g>
-        <g transform="translate(-11.033059999999999 -14.504135)">
-            <g class="typst-group">
-                <g transform="matrix(0.4 0 0 0.4 12.033059999999999 15.504135)">
-                    <g transform="translate(0 0)">
+        <g class="typst-group">
+            <g>
+                <g class="typst-group" transform="matrix(0.4 0 0 0.4 1 1)">
+                    <g>
                         <g class="typst-group">
                             <g>
-                                <g transform="translate(0 0)">
-                                    <g class="typst-group">
-                                        <g>
-                                            <g transform="translate(0 0)">
-                                                <g class="typst-group">
-                                                    <g>
-                                                        <g transform="translate(10.533055765200158 10.533055765199913)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 5.1597886 0 C 5.1597886 0 0 5.1597886 0 5.1597886 "/>
-                                                        </g>
-                                                        <g transform="translate(10.533055648846556 24.417355900815053)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
-                                                        </g>
-                                                        <g transform="translate(24.41735564884644 10.533055900814961)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0 C 0 0 5.1597886 5.1597886 5.1597886 5.1597886 "/>
-                                                        </g>
-                                                        <g transform="translate(13.884300000000003 0)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
-                                                        </g>
-                                                        <g transform="translate(0 13.88429999999999)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
-                                                        </g>
-                                                        <g transform="translate(13.884300000000003 27.768599999999996)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
-                                                        </g>
-                                                        <g transform="translate(27.7686 13.88429999999999)">
-                                                            <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 6.1708 0 C 2.7658513 0 0 2.7658513 0 6.1708 C 0 6.1708 0 6.1708 0 6.1708 C 0 9.575748 2.7658513 12.3416 6.1708 12.3416 C 6.1708 12.3416 6.1708 12.3416 6.1708 12.3416 C 9.575748 12.3416 12.3416 9.575748 12.3416 6.1708 C 12.3416 6.1708 12.3416 6.1708 12.3416 6.1708 C 12.3416 2.7658513 9.575748 0 6.1708 0 C 6.1708 0 6.1708 0 6.1708 0 Z "/>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
+                                <g class="typst-group">
+                                    <g>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 10.533055765200158 10.533055765199913)" d="M 0 0m 5.1597886 0 l -5.1597886 5.1597886 "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 10.533055648846556 24.417355900815053)" d="M 0 0l 5.1597886 5.1597886 "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 24.41735564884644 10.533055900814961)" d="M 0 0l 5.1597886 5.1597886 "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 13.884300000000003 0)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 13.88429999999999)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 13.884300000000003 27.768599999999996)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
+                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 27.7686 13.88429999999999)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
                                     </g>
                                 </g>
                             </g>
@@ -747,8 +1374,8 @@ $\gdef\Z{\mathbf{Z}}$</p>
     </g>
 </svg>
 </span>
-, 其正确的 Hille 编码应该为 <code>1101000100</code>. 但是另一方面, 如果将序列 <code>110100100</code> 解释为栈的压入弹出操作, 即栈编码, 则可以得到正确的栈置换 <code>2314</code>. 这就意味着, 当二叉树的节点个数 $n &gt; 3$ 时, 存在二叉树使得其栈编码与 Hille 编码不同. 回忆二叉树和栈置换之间的双射关系, 这表明必然存在一套手续允许我们在两者之间互相转换, 下面我们将构造性地给出这个结果. 见 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000B" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/stack-permutation-000B]">栈编码与 Hille 编码的等价性</a></span>. 随后通过 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000E" title="相交率 [data-structure/stack-permutation/stack-permutation-000E]">相交率</a></span> 解释, 为何中序遍历在 $n$ 不大情况下能够频繁得到正确的 Hille 编码.</p>
-<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000B"><header><h1><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+, 其正确的 Hille 编码应该为 <code>1101000100</code>. 但是另一方面, 如果将序列 <code>110100100</code> 解释为栈的压入弹出操作, 即栈编码, 则可以得到正确的栈置换 <code>2314</code>. 这就意味着, 当二叉树的节点个数 $n &gt; 3$ 时, 存在二叉树使得其栈编码与 Hille 编码不同. 回忆二叉树和栈置换之间的双射关系, 这表明必然存在一套手续允许我们在两者之间互相转换, 下面我们将构造性地给出这个结果. 见 <span class="link local"><a href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">栈编码与 Hille 编码的等价性</a></span>. 随后通过 <span class="link local"><a href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">相交率</a></span> 解释, 为何中序遍历在 $n$ 不大情况下能够频繁得到正确的 Hille 编码.</p>
+<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-equivalence"><header><h1><span class="taxon">Proposition 4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/equivalence">[equivalence]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>
 <p>$$
 \begin{CD}
@@ -757,12 +1384,12 @@ B @&gt;&gt;&gt; S \\
 H @&gt;&gt;&gt; C
 \end{CD}
 $$</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000C"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-equivalence-pf"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/equivalence-pf">[equivalence-pf]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>记 $B \to H$ 为 $f$, 根据 <span class="link local"><a href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">Hille 编码</a></span> 的定义, $f$ 是一个双射. 根据二叉树的性质, $g: B \to S$ 是中序遍历, 前文已经固定栈置换的入栈顺序为 $123\cdots n$, 这样一来就固定了 $B$ 的层序遍历, 因此 $g$ 也是双射. 现在来看 $h: S \to C$, 这显然也是一个双射. 最后, 我们能够从 $h \in H$ 当中恢复出 $c \in C$ 的信息, 只要将 $h$ 序列视为栈编码, 并且忽略空栈的弹出, 这就意味着 $H \to C$ 是满射, 随后利用 $C \to S \to B \to H$, 这样就得到了 $H \cong C$.</p>
 </details></section></p>
 <p>现在, Hille 原文所使用的 <code>encode</code> 算法就是 $h \circ g: B \to C$, 而预期的正确实现则是 $f$, 因此两者在结果上相差一个同构.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-stack-permutation-000D"><header><h1><span class="taxon">Proposition 5. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-intersection"><header><h1><span class="taxon">Proposition 5. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/intersection">[intersection]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画.</p>
@@ -771,54 +1398,48 @@ a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \
 $$</p>
 <p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-stack-permutation-stack-permutation-000E"><header><h1><span class="taxon">Corollary 6. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000D" title="相交数 [data-structure/stack-permutation/stack-permutation-000D]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
+<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-stack-permutation-ratio"><header><h1><span class="taxon">Corollary 6. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
 </details></section></p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-stack-permutation-000F"><header><h1><span class="taxon">Exegesis 7. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000F">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-stack-permutation-bounds"><header><h1><span class="taxon">Exegesis 7. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/bounds">[bounds]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>一个可供探究的问题是, 给定 $n$ 节点二叉树, 询问其 Hille 编码 $H_n$ 有效长度 $\ell(H_n)$ 的范围. 这里的有效不外乎是指去除末尾连续的 <code>0</code>. 我们将对此问题给出确切的回答.</p>
 <p>任意 $n$ 节点二叉树的 Hille 编码的有效长度满足下面的不等式</p>
 <p>$$n \spaces\leqslant \ell_{n} \spaces\leqslant \max(0,2n - 1,3n - 4)$$</p>
 <p>下界 $n$ 的验证是容易的, 构造一棵 $n$ 节点二叉树最少也需要 $n$ 个 <code>1</code>.
-由于 <span class="link local"><a href="/data-structure/stack-permutation/stack-permutation-000A" title="三节点二叉树 [data-structure/stack-permutation/stack-permutation-000A]">此处</a></span> 的讨论, 我们只需要验证 $n \geqslant 3$ 时 Hille 编码的有效长度至多是 $3n - 4$.</p>
-<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-stack-permutation-000G"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+由于 <span class="link local"><a href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">此处</a></span> 的讨论, 我们只需要验证 $n \geqslant 3$ 时 Hille 编码的有效长度至多是 $3n - 4$.</p>
+<p><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="data-structure-stack-permutation-bounds-pf"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/bounds-pf">[bounds-pf]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>注意到为使有效长度最大, 相应的二叉树中的右节点个数和回溯次数要尽可能多.
-同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_1-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_1">1</a></sup>. $(ii)$
-该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="data-structure_stack-permutation_stack-permutation-000G_2-back"><a href="#data-structure_stack-permutation_stack-permutation-000G_2">2</a></sup>. 如下图所示</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0005.svg" class="color-invert"/></figure></p>
+同时满足这两个要求意味着 $(i)$ 除根节点外至少有一个左结点 <sup class="footnote-reference" id="data-structure_stack-permutation_bounds-pf_1-back"><a href="#data-structure_stack-permutation_bounds-pf_1">1</a></sup>. $(ii)$
+该二叉树必有一个位于根节点右侧的节点 <sup class="footnote-reference" id="data-structure_stack-permutation_bounds-pf_2-back"><a href="#data-structure_stack-permutation_bounds-pf_2">2</a></sup>. 如下图所示</p>
+<p><figure><img src="/data-structure/stack-permutation/tree-three.svg" class="color-invert"/></figure></p>
 <p>由此出发, 我们将剩余的所有 $n-3$ 个节点全部添加到树中唯一的左节点的右侧. 即</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0006.svg" class="color-invert"/></figure></p>
+<p><figure><img src="/data-structure/stack-permutation/tree-max.svg" class="color-invert"/></figure></p>
 <p>下面我们只需算出 $\ell(M)$, 便可得到 $\ell_n$ 的最大值. 不妨直接写出 $h(M)$</p>
-<p><figure><img src="/data-structure/stack-permutation/stack-permutation-0007.svg" class="color-invert"/></figure></p>
+<p><figure><img src="/data-structure/stack-permutation/hm-evaluate.svg" class="color-invert"/></figure></p>
 <p>立刻看出 $\ell(M) = 2 + 2(n-3) + (n-2) + 2 = 3n-4$.</p>
-<div class="footnote-definition" id="data-structure_stack-permutation_stack-permutation-000G_1">
-  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-permutation-000G_1-back">1</a></sup>
+<div class="footnote-definition" id="data-structure_stack-permutation_bounds-pf_1">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_bounds-pf_1-back">1</a></sup>
 <p>如若不然, 这颗二叉树只会形如 <code>1010101</code>$\cdots$, 其长度为 $2n - 1$.</p>
 </div>
-<div class="footnote-definition" id="data-structure_stack-permutation_stack-permutation-000G_2">
-  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-permutation-000G_2-back">2</a></sup>
+<div class="footnote-definition" id="data-structure_stack-permutation_bounds-pf_2">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_bounds-pf_2-back">2</a></sup>
 <p>否则回溯贡献的长度便不是最大值 $n-2$.</p>
 </div>
 </details></section></p>
 <p>反过来, 从树 $M$ 出发, 也可以验证任何使得节点总数不变的操作都不会增加其 Hille 编码的有效长度. 更进一步, 我们可以断言任何使得节点总数不变的操作都将严格减小其 Hille 编码的有效长度. 换言之, 使得 $\ell(B) = 3n-4$ 的二叉树 $B$ 的结构是唯一的, 即 $M$.</p>
 </details></section></p>
-<div class="footnote-definition" id="data-structure_stack-permutation_stack-tree-isomorphism_hille-order">
-  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-tree-isomorphism_hille-order-back">1</a></sup>
+<div class="footnote-definition" id="data-structure_stack-permutation_isomorphism_hille-order">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_isomorphism_hille-order-back">1</a></sup>
 <p>即按照 Hille 编码逐步添加节点的顺序.</p>
 </div>
-<div class="footnote-definition" id="data-structure_stack-permutation_stack-tree-isomorphism_inorder-sequence">
-  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_stack-tree-isomorphism_inorder-sequence-back">2</a></sup>
+<div class="footnote-definition" id="data-structure_stack-permutation_isomorphism_inorder-sequence">
+  <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_isomorphism_inorder-sequence-back">2</a></sup>
 <p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="data-structure-synthetic-differential"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\eqq{\quads=}$
-$\gdef\str#1{{\footnotesize #1}}$</p>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\C{\mathbf{C}}$</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000A"><header><h1><span class="taxon">Exegesis 1. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon=""><details ><summary id="data-structure-synthetic-differential-index"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential/index">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-numerical"><header><h1><span class="taxon">Exegesis 1. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential/numerical">[numerical]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
@@ -827,7 +1448,7 @@ $\gdef\eqq{\quads=}$</p>
 A \quads\approx \frac{f(x+h)-f(x)}h \eqq \frac{(1 + 10^{-5})^2 - 1^2}{10^{-5}} \eqq 2.00001 
 $$</p>
 <p>并且如果试图得到与预期的 $A=2$ 更接近的结果, 则须将无穷小近似 $h$ 选取为更靠近 $0$ 的数值, 这对于浮点精度有限的计算机来说极为不利.</p>
-<p>而朴素的符号微分视表达式为树结构, 通过遍历树并对符合模式的节点应用求导规则 $(uv)' = u'v+uv'$. 即</p>
+<p>而常规符号微分程序视表达式为树结构, 通过遍历树并对符合模式的节点应用求导规则 $(uv)' = u'v+uv'$. 即</p>
 <p>$$
 \begin{aligned}
 (x+3)^2 
@@ -839,56 +1460,56 @@ $$</p>
 <p>此时再应用 $x=-2$ 得到 $A=2$. 这个做法在结果上可行, 但处理复杂的表达式时, 复合求导的中间过程本身会产生大量新的结点, 使递归遍历的实际时间达到指数级 $\mathcal{O}(2^N)$.</p>
 <p>有没有方法可以既避免递归又减少中间结点呢? 我们先看一个涉及复数域的观察.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-complex-step"><header><h1><span class="taxon">Exegesis 2. </span>复步微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-complex-step"><header><h1><span class="taxon">Exegesis 2. </span>复步微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="data-structure_complex-step_publish-time-back"><a href="#data-structure_complex-step_publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="data-structure_complex-step_complex-step-back"><a href="#data-structure_complex-step_complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="data-structure_complex-step_distinguish-back"><a href="#data-structure_complex-step_distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>
+<p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_publish-time-back"><a href="#data-structure_synthetic-differential_complex-step_publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_complex-step-back"><a href="#data-structure_synthetic-differential_complex-step_complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_distinguish-back"><a href="#data-structure_synthetic-differential_complex-step_distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>
 <p>$$
 f(a+i h) \spaces= f(a) + i h f'(a) - \frac{h^2}{2!}f''(a) - \frac{ih^3}{3!}f'''(a) + \cdots
 $$</p>
-<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
+<p>这个其实就是将 Taylor 级数的每一项完全展开, 在 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">后续</a></span> 的计算中也会继续用到. 如此便有
 $$ 
 \frac{\partial f}{\partial x} \spaces= \frac{\Im f(x+ih)}{h} + \mathcal{O}(h^2) \quads\implies 
 \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} 
 $$</p>
-<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
-<div class="footnote-definition" id="data-structure_complex-step_publish-time">
-  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_publish-time-back">1</a></sup>
+<p>这个方法最初被设计用于处理数值微分问题, 但稍加思考就能发现, 该过程也适用于符号微分. 与前一个问题所改进的结果的精度不同, 用于 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">符号微分</a></span> 时, 所取得的优势是更精简的中间表达式和非递归的计算过程.</p>
+<div class="footnote-definition" id="data-structure_synthetic-differential_complex-step_publish-time">
+  <sup class="footnote-definition-label"><a href="#data-structure_synthetic-differential_complex-step_publish-time-back">1</a></sup>
 <p>即 1967 年. 不过这个名字要等到 1998 年, William Squire 和 George Trapp 才正式提出.</p>
 </div>
-<div class="footnote-definition" id="data-structure_complex-step_complex-step">
-  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_complex-step-back">2</a></sup>
-<p>按方法的内容来说, “complex step 微分” 可以翻译为 “复步微分”.</p>
+<div class="footnote-definition" id="data-structure_synthetic-differential_complex-step_complex-step">
+  <sup class="footnote-definition-label"><a href="#data-structure_synthetic-differential_complex-step_complex-step-back">2</a></sup>
+<p>按方法的流程看, <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">complex step 微分</a></span> 可以翻译为 “复步微分”.</p>
 </div>
-<div class="footnote-definition" id="data-structure_complex-step_distinguish">
-  <sup class="footnote-definition-label"><a href="#data-structure_complex-step_distinguish-back">3</a></sup>
-<p><span class="link local"><a href="/data-structure/free-bound-denote" title="自由–绑定记号 [data-structure/free-bound-denote]">习惯上</a></span> 会混淆 $x$ 与 $X$, 这里做出区分.</p>
+<div class="footnote-definition" id="data-structure_synthetic-differential_complex-step_distinguish">
+  <sup class="footnote-definition-label"><a href="#data-structure_synthetic-differential_complex-step_distinguish-back">3</a></sup>
+<p>习惯上会混淆 $x$ 与 $X$.</p>
 </div>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000C"><header><h1><span class="taxon">Exegesis 3. </span>误差修正 <a class="slug" href="/data-structure/synthetic-differential-000C">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-moler-correction"><header><h1><span class="taxon">Exegesis 3. </span>误差修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential-000A" title="数值微分的误差 [data-structure/synthetic-differential-000A]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
 <p>$$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
 $$</p>
-<p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将 <span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的</p>
+<p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将 <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的</p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
-<p>中的近似 “$\approx$” 修正为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">动摇</a></span> 经典逻辑中对于排中律的看法.</p>
+<p>中的近似 “$\approx$” <span class="link local"><a href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">修正</a></span> 为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">动摇</a></span> 经典逻辑中对于排中律的看法.</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-dual-number"><header><h1><span class="taxon">Definition 4. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="data-structure-synthetic-differential-dual-number"><header><h1><span class="taxon">Definition 4. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>
 <p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
 <p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
-<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/data-structure/casus-irreducibilis" title="Casus irreducibilis [data-structure/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
-<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-kock-lawvere"><header><h1><span class="taxon">Axiom 4.1. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/synthetic-differential/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/synthetic-differential/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/linear-algebra/casus-irreducibilis" title="Casus irreducibilis [linear-algebra/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
+<p><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom 4.1. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
 <p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
-<p><figure><img src="/data-structure/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
+<p><figure><img src="/data-structure/synthetic-differential/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
 <p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
 <p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
 <p>$$ 
@@ -899,15 +1520,15 @@ $$</p>
 \forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
 $$</p>
 <p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
-<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-kock-lawvere-000A"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="data-structure-synthetic-differential-smooths"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/synthetic-differential/smooths">[smooths]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
 <p>$$
 f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
 $$</p>
-<p>这个通常作为 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
-<p><figure><img src="/data-structure/kock-lawvere-0001.svg" class="color-invert"/></figure></p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
+<p><figure><img src="/data-structure/synthetic-differential/maclaurin.svg" class="color-invert"/></figure></p>
 </details></section></p>
 <blockquote>
 <p>Axiom is incompatible with the law of excluded middle.
@@ -922,15 +1543,15 @@ which can be carried out in all sufficiently good
 cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
 </blockquote>
 </details></section></p>
-<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/kock-lawvere" title="Kock–Lawvere [data-structure/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
-<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000D"><header><h1><span class="taxon">Exegesis 4.2. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis 4.2. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential-000C" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential-000C]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
-<p><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
 <p>$$
 A \spaces= \begin{pmatrix}
 a &amp; -b \\
@@ -939,7 +1560,7 @@ b &amp; ~~~a \\
 ,\quad
 \det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
 $$</p>
-<p>我们也可以构造 <span class="link local"><a href="/data-structure/dual-number" title="对偶数 [data-structure/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
 <p>$$
 A \spaces= \begin{pmatrix}
 a &amp; a' \\
@@ -949,7 +1570,7 @@ a &amp; a' \\
 \det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-synthetic-differential-000B"><header><h1><span class="taxon">Example 4.3. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="data-structure-synthetic-differential-derived-differential"><header><h1><span class="taxon">Example 4.3. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential/derived-differential">[derived-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\Z{\mathbf{Z}}$
@@ -962,14 +1583,19 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <li>$A(u, u') \cdot (A(v, v'))^{-1} \spaces= A(uv^{-1}, (u'v - uv')v^{-2})$</li>
 <li>$(A(u, u'))^n = A(u^n, nu^{n-1}u')$</li>
 </ol>
-<p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可 <span class="link local"><a href="/data-structure/synthetic-differential-000F" title="对数的验证 [data-structure/synthetic-differential-000F]">验证</a></span>.</p>
+<p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可验证:</p>
+<p>$$
+\begin{pmatrix} \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k &amp; \sum_{k \ge 0} (-1)^k (u-1)^k \cdot u'  \\ 0 &amp; \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k \end{pmatrix}
+\spaces= 
+\begin{pmatrix} \log u &amp; u'u^{-1} \\ 0 &amp; \log u \end{pmatrix}
+$$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-000E"><header><h1><span class="taxon">Exegesis 4.4. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-chain-rule"><header><h1><span class="taxon">Exegesis 4.4. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential/chain-rule">[chain-rule]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\Mat{\operatorname{Mat}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\d{\operatorname{d}}$
 $\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
-<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential-000B" title="矩阵表示给出的微分运算 [data-structure/synthetic-differential-000B]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
+<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
 <p>$$
 A(u)_x \spaces\eqdef \begin{pmatrix} u_x &amp; u'_x \\ 0 &amp; u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
 $$</p>

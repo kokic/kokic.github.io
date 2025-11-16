@@ -2,7 +2,7 @@
 ---
 title: 闭半环的 Conway 条件
 date: January 29, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: exegesis
 ---
 

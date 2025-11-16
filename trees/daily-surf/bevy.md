@@ -2,7 +2,7 @@
 ---
 title: [Bevy](https://github.com/bevyengine/bevy) 备注
 page-title: Bevy 备注
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 date: August 29, 2025
 ---
 

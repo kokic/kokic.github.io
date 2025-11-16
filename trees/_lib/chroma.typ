@@ -1,7 +1,7 @@
 
-#import "@preview/fletcher:0.5.4" as fletcher: node, edge, cetz
+#import "@preview/fletcher:0.5.8" as fletcher: node, edge, cetz
 #import fletcher.shapes: pill
-#import fletcher.cetz: canvas, plot, draw
+#import fletcher.cetz: canvas, draw
 
 #let regular(n: int) = {
 cetz.canvas(length: 1cm, {

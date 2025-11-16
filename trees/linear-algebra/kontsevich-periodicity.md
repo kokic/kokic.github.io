@@ -2,7 +2,7 @@
 ---
 title: Kontsevich 周期性猜想
 date: February 16, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: conjecture
 ---
 
@@ -26,6 +26,6 @@ $$
 
 为何不成立 [^kontsevich-hold].  
 
-[](/linear-algebra/kontsevich-periodicity-000A.md#:embed)
+[](./kontsevich-periodicity-2A.md#:embed)
 
-[^kontsevich-hold]: 如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 [验证](/linear-algebra/kontsevich-periodicity-000A). Iyudu 和 Shkarin 在他们的 [论文](https://arxiv.org/abs/1305.1965v3) 中首先验证了 [Kontsevich 周期性猜想](/linear-algebra/kontsevich-periodicity) 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本. 
+[^kontsevich-hold]: 如果矩阵的分量是交换元, 则 $n=1,2$ 情况很容易 [验证](/linear-algebra/kontsevich-periodicity-2A). Iyudu 和 Shkarin 在他们的 [论文](https://arxiv.org/abs/1305.1965v3) 中首先验证了 [Kontsevich 周期性猜想](/linear-algebra/kontsevich-periodicity) 对于 $n=2$ 非交换的情况也正确, 随后才讨论 $n=3$ 的版本. 

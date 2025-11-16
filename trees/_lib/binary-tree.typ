@@ -1,5 +1,5 @@
 
-#import "@preview/fletcher:0.5.4" as fletcher: node, edge, cetz
+#import "@preview/fletcher:0.5.8" as fletcher: node, edge, cetz
 
 #let gap = 3em
 #let cx = 1

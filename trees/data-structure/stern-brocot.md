@@ -2,7 +2,7 @@
 ---
 title: Stern -- Brocot 树
 date: May 4, 2025
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: definition
 ---
 
@@ -12,7 +12,7 @@ $\gdef\spaces#1{~ #1 ~}$
 
 Stern -- Brocot 树是用于生成全体正有理数 $\Q_{\gt 0}$ 的二叉搜索树. 生成过程如下: 考虑 $\N^2$ 中的元素 $(a, b)$ 并形式地记为 $\frac{a}{b}$, 定义分量加法 
 
-$$ \frac{a}{b} + \frac{c}{d} \spaces= \frac{a+c}{b+d} $$ 
+$$ \frac{a}{b} + \frac{c}{d} \spaces= \frac{a+c}{b+d} $$
 
 放置 $\frac{0}{1}$ 和 $\frac{1}{0}$ 于水平线两侧充分远处, 相加给出 $\frac{1}{1}$, 这是二叉树的根节点. 随后按邻近的两个上层节点值通过分量加法给出当前层的各节点值, 如图所示. 
 

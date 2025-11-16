@@ -5,5 +5,5 @@ collect: true
 ---
 
 [-](./seven-trees-in-one.md#:embed)
-[-](./stack-permutation/stack-tree-isomorphism.md#:embed)
-[-](./synthetic-differential.md#:embed)
+[-](./stack-permutation/isomorphism.md#:embed)
+[-](./synthetic-differential/index.md#:embed)

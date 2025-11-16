@@ -3,7 +3,7 @@
 title: Fermat 提升法
 taxon: exegesis
 date: December 26, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

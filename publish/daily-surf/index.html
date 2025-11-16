@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Daily Surf</title><link rel="icon" href="/assets/favicon.ico" /><style>:root {
+<meta name="viewport" content="width=device-width"><title>Daily Surf</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
   color-scheme: light dark;
   --content-gap: 15px;
   --radius: 5px;
@@ -9,6 +9,7 @@
   --toc-max-width: 90ex;
 
   --text-color: black;
+  --toc-link-color: #555;
   --background-color: white;
 
   --background-color-pre: rgba(0, 100, 100, 0.04);
@@ -25,11 +26,13 @@
   --span-taxon-color: #444;
   --article-taxon-color: #888;
   --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root body {
     --text-color: white;
+    --toc-link-color: white;
     --background-color: #2f2f2f;
 
     --background-color-pre: rgba(100, 100, 100, 0.2);
@@ -48,6 +51,7 @@
 }
 
 body {
+  color: var(--text-color);
   font-optical-sizing: auto;
   hyphens: auto;
   background-color: var(--background-color);
@@ -84,6 +88,10 @@ code {
   font-size: 1em;
 }
 
+em {
+  color: var(--em-color);
+}
+
 table {
   border-collapse: collapse;
 }
@@ -101,7 +109,7 @@ td {
 }
 
 /* !forest */
-pre > code {
+pre>code {
   border-radius: 0;
   background-color: transparent;
   padding: 0;
@@ -113,7 +121,7 @@ pre > code {
 }
 
 /* !forest */
-.footnote-definition > p {
+.footnote-definition>p {
   display: inline;
 }
 
@@ -127,7 +135,7 @@ pre > code {
   border: 1px solid var(--target-color);
 }
 
-.footnote-definition:target > .footnote-definition-label {
+.footnote-definition:target>.footnote-definition-label {
   border: 1px solid var(--target-color);
 }
 
@@ -191,18 +199,18 @@ p {
   margin-top: 0;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
   outline: none;
 }
 
-details > summary > header {
+details>summary>header {
   display: inline;
 }
 
 /* no effect */
-details > summary::marker,
-details > summary::-webkit-details-marker {
+details>summary::marker,
+details>summary::-webkit-details-marker {
   display: none;
 }
 
@@ -211,7 +219,7 @@ details h1 {
   display: inline;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
 }
 
@@ -220,39 +228,39 @@ span.taxon {
   font-weight: 500;
 }
 
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-article > section > details > summary > header > h1 {
+article>section>details>summary>header>h1 {
   font-size: 1.5em;
 }
 
-article > section > details > summary > header {
+article>section>details>summary>header {
   display: block;
   margin-bottom: 0.5em;
 }
 
-article > section > details > summary > header > h1 > .taxon {
+article>section>details>summary>header>h1>.taxon {
   display: block;
   font-size: 0.9em;
   color: var(--article-taxon-color);
   padding-bottom: 5pt;
 }
 
-article > section > details > summary > header > h1 > .taxon:empty {
+article>section>details>summary>header>h1>.taxon:empty {
   display: none;
 }
 
-section.block > details {
+section.block>details {
   margin-bottom: 0.4em;
 }
 
-section.block > details[open] {
+section.block>details[open] {
   margin-bottom: 1em;
 }
 
-.link-list > section.block > details {
+.link-list>section.block>details {
   margin-bottom: 0.25em;
 }
 
@@ -280,7 +288,7 @@ section.block > details[open] {
   background-color: var(--hover-color-block);
 }
 
-.block.hide-metadata > details > summary > header > .metadata {
+.block.hide-metadata>details>summary>header>.metadata {
   display: none;
 }
 
@@ -317,12 +325,12 @@ ol {
   margin-bottom: 1em;
 }
 
-.logo > span {
+.logo>span {
   color: var(--logo-color);
   text-decoration: none;
 }
 
-.logo > span:hover {
+.logo>span:hover {
   color: var(--logo-hover-color);
 }
 
@@ -331,29 +339,17 @@ ol {
   font-size: 24px;
 }
 
-section
-  section[data-taxon="Reference"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon,
-section
-  section[data-taxon="Person"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon {
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
   display: none;
 }
 
-section .block[data-taxon] > header > h1,
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-footer > section {
+footer>section {
   margin-bottom: 1em;
 }
 
@@ -421,11 +417,11 @@ a.slug {
   font-weight: 200;
 }
 
-body > header {
+body>header {
   margin-bottom: 0.5em;
 }
 
-#grid-wrapper > article {
+#grid-wrapper>article {
   max-width: var(--article-max-width);
   margin-right: auto;
   grid-area: article;
@@ -439,7 +435,7 @@ body > header {
     transition: ease all 0.2s;
   }
 
-  #grid-wrapper > nav {
+  #grid-wrapper>nav {
     transition: ease all 0.2s;
   }
 
@@ -485,14 +481,14 @@ nav#toc ul {
   list-style-type: none;
 }
 
-nav#toc li > ul {
+nav#toc li>ul {
   margin: 0;
   padding-left: 1em;
 }
 
 nav#toc,
 nav#toc a {
-  color: light-dark(#555, white);
+  color: var(--toc-link-color);
 }
 
 nav#toc {
@@ -511,42 +507,22 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }
-/* For embeded SVG source. */
-
-:root {
-  --typst-text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --typst-text-color: white;
-  }
-}
 
 .typst-text use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 .typst-group use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[stroke="#000000"] {
-  stroke: var(--typst-text-color);
-}
-
-/* For external SVG files. */
-
-@media (prefers-color-scheme: dark) {
-  .color-invert {
-    filter: invert(1) hue-rotate(180deg);
-  }
-}
-</style><style>
+  stroke: var(--text-color);
+}</style><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -638,7 +614,680 @@ path.typst-shape[stroke="#000000"] {
    document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
    window.addEventListener("resize", toggleDetailsOpen);
 </script>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/pftb-p5" title="素数无限多与 Furstenberg 拓扑 [daily-surf/pftb-p5]">■</a><span class="link local" onclick="window.location.href='#daily-surf-pftb-p5'"><span class="taxon"></span>素数无限多与 Furstenberg 拓扑</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link local" onclick="window.location.href='#daily-surf-gaussian-integral'"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/expand-coefficient" title="生成函数系数 [daily-surf/expand-coefficient]">■</a><span class="link local" onclick="window.location.href='#daily-surf-expand-coefficient'"><span class="taxon">Theorem. </span>生成函数系数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/euclid-step" title="辗转相除法步数估计 [daily-surf/euclid-step]">■</a><span class="link local" onclick="window.location.href='#daily-surf-euclid-step'"><span class="taxon"></span>辗转相除法步数估计</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/count-algebraic-number" title="代数数可数 [daily-surf/count-algebraic-number]">■</a><span class="link local" onclick="window.location.href='#daily-surf-count-algebraic-number'"><span class="taxon"></span>代数数可数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/exponent-symmetry" title="经典对称幂指数不等式 [daily-surf/exponent-symmetry]">■</a><span class="link local" onclick="window.location.href='#daily-surf-exponent-symmetry'"><span class="taxon">Example. </span>经典对称幂指数不等式</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma'"><span class="taxon">Lemma. </span>Young 引理</span><ul class="block"><li class=""><a class="bullet" href="/daily-surf/young-lemma-000A" title="Young 不等式 [daily-surf/young-lemma-000A]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000A'"><span class="taxon">Corollary 1. </span>Young 不等式</span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000B'"><span class="taxon">Corollary 2. </span>Bernoulli 不等式</span></li><li class=""><a class="bullet" href="/daily-surf/young-lemma-000C" title="加权算术平均–几何平均不等式 [daily-surf/young-lemma-000C]">■</a><span class="link local" onclick="window.location.href='#daily-surf-young-lemma-000C'"><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式</span></li></ul></li></ul></details></div></nav>
+<style>
+  theme-option {
+    display: inline-block;
+  }
+
+  theme-option>input {
+    display: none;
+  }
+
+  theme-option>label {
+    color: var(--slug-color);
+  }
+
+  theme-option>label:hover {
+    background-color: var(--hover-color-link);
+  }
+
+  theme-option:has(input:checked)>label {
+    color: var(--link-color);
+  }
+
+  theme-option>label::before {
+    content: "[";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option>label::after {
+    content: "]";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option:has(input:checked)>label::before {
+    color: var(--link-color);
+  }
+
+  theme-option:has(input:checked)>label::after {
+    color: var(--link-color);
+  }
+</style>
+
+<template id="theme-option-template">
+  <input type="radio" name="theme" />
+  <label></label>
+</template>
+
+<script>
+  function storeSelectedTheme(name) {
+    localStorage.setItem(window.themeKey, name);
+  }
+
+  function getCurrentTheme() {
+    return localStorage.getItem(window.themeKey) || window.primaryTheme;
+  }
+
+  function selectTheme(themeName) {
+    storeSelectedTheme(themeName);
+    requestAnimationFrame(applyDynamicColorInvert);
+  }
+
+  function applyFavorTheme() {
+    const favoredTheme = getCurrentTheme();
+    if (favoredTheme) {
+      const selector = `input[type='radio'][id='${favoredTheme}']`;
+      const favoredOption = window.themeOptions.querySelector(selector);
+
+      if (favoredOption) {
+        favoredOption.checked = true;
+      } else if (window.primaryOption) {
+        // Fallback to primary theme, if the favored theme is not found
+        // e.g., when the theme options have changed, and the stored theme is no longer available.
+        window.primaryOption.checked = true;
+      }
+
+      applyDynamicColorInvert();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.themeOptions = document.getElementById("theme-options");
+    const templateContent = document.getElementById("theme-option-template").content;
+
+    customElements.define(
+      "theme-option",
+      class extends HTMLElement {
+        constructor() {
+          super();
+
+          const node = templateContent.cloneNode(true);
+          const themeName = this.getAttribute("name");
+
+          const input = node.querySelector("input");
+          input.setAttribute("id", themeName);
+          input.setAttribute("value", themeName);
+
+          const label = node.querySelector("label");
+          label.setAttribute("for", themeName);
+          label.addEventListener("click", () => selectTheme(themeName));
+
+          while (this.firstChild) {
+            label.appendChild(this.firstChild);
+          }
+          this.appendChild(node);
+        }
+      },
+    );
+
+    const baseUrl = document.getElementById("grid-wrapper").dataset.baseUrl;
+    window.themeKey = `${baseUrl}-kodama-theme`;
+
+    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
+    window.primaryTheme = primaryOption?.value;
+
+    applyFavorTheme();
+  });
+</script>
+
+<script>
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
+  const multiply = ([r, g, b], matrix) => {
+    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
+    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
+    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
+    return [nr, ng, nb];
+  };
+
+  const hueRotate = ([r, g, b], angle = 0) => {
+    const rad = (angle / 180) * Math.PI;
+    const sin = Math.sin(rad);
+    const cos = Math.cos(rad);
+    const matrix = [
+      0.213 + cos * 0.787 - sin * 0.213,
+      0.715 - cos * 0.715 - sin * 0.715,
+      0.072 - cos * 0.072 + sin * 0.928,
+      0.213 - cos * 0.213 + sin * 0.143,
+      0.715 + cos * 0.285 + sin * 0.140,
+      0.072 - cos * 0.072 - sin * 0.283,
+      0.213 - cos * 0.213 - sin * 0.787,
+      0.715 - cos * 0.715 + sin * 0.715,
+      0.072 + cos * 0.928 + sin * 0.072,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const grayscale = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.2126 + 0.7874 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 + 0.2848 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 + 0.9278 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const sepia = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.393 + 0.607 * (1 - value),
+      0.769 - 0.769 * (1 - value),
+      0.189 - 0.189 * (1 - value),
+      0.349 - 0.349 * (1 - value),
+      0.686 + 0.314 * (1 - value),
+      0.168 - 0.168 * (1 - value),
+      0.272 - 0.272 * (1 - value),
+      0.534 - 0.534 * (1 - value),
+      0.131 + 0.869 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const saturate = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.213 + 0.787 * value,
+      0.715 - 0.715 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 + 0.285 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 - 0.715 * value,
+      0.072 + 0.928 * value,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const linear = ([r, g, b], slope = 1, intercept = 0) => {
+    const scale = 255;
+    return [
+      clamp(r * slope + intercept * scale),
+      clamp(g * slope + intercept * scale),
+      clamp(b * slope + intercept * scale),
+    ];
+  };
+
+  const brightness = (rgb, value = 1) => linear(rgb, value);
+  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
+
+  const invert = ([r, g, b], value = 1) => {
+    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
+    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
+    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
+    return [clamp(nr), clamp(ng), clamp(nb)];
+  };
+
+  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
+  const rgbToHsl = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 100, s: s * 100, l: l * 100 };
+  };
+
+  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
+    let color = [...rgb];
+    color = invert(color, inv / 100);
+    color = sepia(color, sep / 100);
+    color = saturate(color, sat / 100);
+    color = hueRotate(color, hue * 3.6);
+    color = brightness(color, bri / 100);
+    color = contrast(color, con / 100);
+    return color;
+  };
+
+  const lossFn = (targetRgb, filters) => {
+    const resultRgb = applyFilters([0, 0, 0], filters);
+    const targetHsl = rgbToHsl(...targetRgb);
+    const resultHsl = rgbToHsl(...resultRgb);
+    return (
+      Math.abs(resultRgb[0] - targetRgb[0]) +
+      Math.abs(resultRgb[1] - targetRgb[1]) +
+      Math.abs(resultRgb[2] - targetRgb[2]) +
+      Math.abs(resultHsl.h - targetHsl.h) +
+      Math.abs(resultHsl.s - targetHsl.s) +
+      Math.abs(resultHsl.l - targetHsl.l)
+    );
+  };
+
+  const fix = (value, idx) => {
+    let max = 100;
+    if (idx === 2) max = 7500;                  // saturate
+    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
+    if (idx === 3) { // hue-rotate
+      if (value > max) return value % max;
+      if (value < 0) return max + (value % max);
+      return value;
+    }
+    return Math.max(0, Math.min(max, value));
+  };
+
+  const spsa = (targetRgb, A, a, c, initial, iters) => {
+    const alpha = 1;
+    const gamma = 1 / 6;
+    let values = [...initial];
+    let best = [...values];
+    let bestLoss = Infinity;
+
+    for (let k = 0; k < iters; k++) {
+      const ck = c / Math.pow(k + 1, gamma);
+      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
+      const highArgs = values.map((v, i) => v + ck * deltas[i]);
+      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
+      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
+
+      values = values.map((v, i) => {
+        const g = (lossDiff / (2 * ck)) * deltas[i];
+        const ak = a[i] / Math.pow(A + k + 1, alpha);
+        return fix(v - ak * g, i);
+      });
+
+      const loss = lossFn(targetRgb, values);
+      if (loss < bestLoss) {
+        best = [...values];
+        bestLoss = loss;
+      }
+    }
+    return { values: best, loss: bestLoss };
+  };
+
+  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
+  // A loss below this value is considered visually indistinguishable for most use cases.
+  // The value 25 was determined empirically to balance performance and color accuracy.
+  const ACCEPTABLE_COLOR_LOSS = 25;
+
+  const solveWide = (targetRgb) => {
+    const A = 5;
+    const c = 15;
+    const a = [60, 180, 18000, 600, 1.2, 1.2];
+    let best = { loss: Infinity, values: null };
+    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
+      const initial = [50, 20, 3750, 50, 100, 100];
+      const result = spsa(targetRgb, A, a, c, initial, 1000);
+      if (result.loss < best.loss) best = result;
+    }
+    return best;
+  };
+
+  const solveNarrow = (targetRgb, wideResult) => {
+    const A = wideResult.loss;
+    const c = 2;
+    const A1 = A + 1;
+    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
+    return spsa(targetRgb, A, a, c, wideResult.values, 500);
+  };
+
+  const cssFilterString = (filters) => {
+    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
+    const hueDeg = Math.round(hue * 3.6);
+    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
+  };
+
+  const solveColor = (targetRgb) => {
+    const wide = solveWide(targetRgb);
+    const narrow = solveNarrow(targetRgb, wide);
+    return {
+      values: narrow.values,
+      loss: narrow.loss,
+      filter: cssFilterString(narrow.values),
+    };
+  };
+
+  // Reuse a single canvas / context to avoid memory leaks
+  const colorParseCanvas = document.createElement('canvas');
+  colorParseCanvas.width = 1;
+  colorParseCanvas.height = 1;
+  const colorParseContext = colorParseCanvas.getContext('2d');
+  
+  const toRGBArray = (cssColor) => {
+    colorParseContext.fillStyle = cssColor;
+    colorParseContext.fillRect(0, 0, 1, 1);
+
+    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
+    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
+    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
+    return Array.from(rgba.slice(0, 3));
+  };
+
+  const dynamicStyleId = 'dynamic-color-invert-style';
+
+  function applyDynamicColorInvert() {
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
+    if (textColor && textColor.length > 0) {
+      const rgb = toRGBArray(textColor);
+      const result = solveColor(rgb);
+      const filter = result.filter;
+
+      const existingStyle = document.getElementById(dynamicStyleId);
+      if (existingStyle) {
+        existingStyle.textContent = `.color-invert {${filter}}`;
+      } else {
+        const style = document.createElement('style');
+        style.id = dynamicStyleId;
+        style.textContent = `.color-invert {${filter}}`;
+        document.head.appendChild(style);
+      }
+    }
+  }
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic)  -->
+<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
+
+<style>
+  body:has(input[value="moon"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="moon"]:checked) {
+      --hover-primary-color: 196, 136, 193;
+
+      --text-color: rgb(187 176 169);
+      --toc-link-color: rgb(187 176 169);
+      --background-color: rgb(32, 28, 48);
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(255, 128, 165);
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(236, 230, 226);
+      --em-color: rgb(255, 219, 230);
+
+      .block:has(.block:hover) {
+        background-color: var(--background-color);
+      }
+    }
+  }
+
+  body:has(input[value="moon-light"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  body:has(input[value="moon-dark"]:checked) {
+    --hover-primary-color: 196, 136, 193;
+
+    --text-color: rgb(187 176 169);
+    --toc-link-color: rgb(187 176 169);
+    --background-color: rgb(32, 28, 48);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(255, 128, 165);
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(236, 230, 226);
+    --em-color: rgb(255, 219, 230);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="moon">朔望</theme-option>
+<theme-option name="moon-light">望月</theme-option>
+<theme-option name="moon-dark">朔月</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
+
+<style>
+  body:has(input[value="zen"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="zen"]:checked) {
+      --hover-primary-color: 34, 34, 34;
+      --link-primary-color: 150, 150, 150;
+
+      --text-color: rgb(222, 223, 231);
+      --toc-link-color: #555;
+      --background-color: rgb(25, 25, 25);
+
+      --background-color-pre: rgba(0, 100, 100, 0.04);
+      --background-color-code: rgba(0, 100, 100, 0.04);
+
+      --hover-color-block: rgba(var(--hover-primary-color));
+      --hover-color-link: rgb(64, 64, 64);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(var(--link-primary-color));
+      --slug-color: rgb(99, 99, 99);
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(var(--link-primary-color));
+      --em-color: rgb(139, 139, 139);
+    }
+  }
+
+  body:has(input[value="zen-light"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  body:has(input[value="zen-dark"]:checked) {
+    --hover-primary-color: 34, 34, 34;
+    --link-primary-color: 150, 150, 150;
+
+    --text-color: rgb(222, 223, 231);
+    --toc-link-color: #555;
+    --background-color: rgb(25, 25, 25);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(64, 64, 64, 0.3);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(139, 139, 139);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="zen-light">zen light</theme-option>
+<theme-option name="zen-dark">zen dark</theme-option>
+<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/pftb-p5" title="素数无限多与 Furstenberg 拓扑 [daily-surf/pftb-p5]">■</a><span class="link local" onclick="window.location.href='#daily-surf-pftb-p5'"><span class="taxon"></span>素数无限多与 Furstenberg 拓扑</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link local" onclick="window.location.href='#daily-surf-gaussian-integral'"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]">■</a><span class="link local" onclick="window.location.href='#daily-surf-GF2A'"><span class="taxon">Problem. </span>生成函数系数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/euclid-step" title="辗转相除法步数估计 [daily-surf/euclid-step]">■</a><span class="link local" onclick="window.location.href='#daily-surf-euclid-step'"><span class="taxon"></span>辗转相除法步数估计</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/count-algebraic-number" title="代数数可数 [daily-surf/count-algebraic-number]">■</a><span class="link local" onclick="window.location.href='#daily-surf-count-algebraic-number'"><span class="taxon"></span>代数数可数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/exponent-symmetry" title="经典对称幂指数不等式 [daily-surf/exponent-symmetry]">■</a><span class="link local" onclick="window.location.href='#daily-surf-exponent-symmetry'"><span class="taxon">Example. </span>经典对称幂指数不等式</span></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="daily-surf-index"><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf/index">[daily-surf]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><section class="block" data-taxon=""><details ><summary id="daily-surf-pftb-p5"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
@@ -763,12 +1412,12 @@ set_nb_theme('monokai')
 </div>
 </details></section>
 <section class="block" data-taxon=""><details ><summary id="daily-surf-git-filter-branch"><header><h1><span class="taxon"></span>Git 过滤分支 <a class="slug" href="/daily-surf/git-filter-branch">[git-filter-branch]</a></h1><div class="metadata"><ul><li class="meta-item">February 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>一个常见的需求是, 对已经存在的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span> 历史作出修改. 如果目标 commits 都存在于本地分支, 那么一组 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span> 就能解决问题. 但若是要修改已经推送至远程仓库或托管平台 <sup class="footnote-reference" id="daily-surf_git-filter-branch_host-platform-back"><a href="#daily-surf_git-filter-branch_host-platform">1</a></sup> 就没那么容易了, 而且对于真实的多人协作仓库来说, 这么做的潜在危害远高于修改 commits 历史所得到的短期好处 <sup class="footnote-reference" id="daily-surf_git-filter-branch_alternative-approach-back"><a href="#daily-surf_git-filter-branch_alternative-approach">2</a></sup>. 因此我们接下来的讨论都是以接受这一点作为前提来进行.</p>
-<p>这里只说方法. 哪怕是对于已经提交的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span>, 修改 commits 还是一样的用 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>. 但现在肯定是不能直接推送了, 我们需要额外做一步 <span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span>.</p>
+<p>一个常见的需求是对已经存在的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="git commit [https://git-scm.com/docs/git-commit]">git commit</a></span> 历史作出修改. 如果目标 commits 都存在于本地分支, 那么一组 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span> 就能解决问题. 但若是要修改已经推送至远程仓库或托管平台 <sup class="footnote-reference" id="daily-surf_git-filter-branch_host-platform-back"><a href="#daily-surf_git-filter-branch_host-platform">1</a></sup> 则没有一步到位的操作, 且对于真实的多人协作仓库来说, 这么做的潜在危害远高于 <span class="link local"><a href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">修改 commits 历史</a></span> 所得到的短期好处 <sup class="footnote-reference" id="daily-surf_git-filter-branch_alternative-approach-back"><a href="#daily-surf_git-filter-branch_alternative-approach">2</a></sup>. 因此, 接下来的讨论都是以接受 “潜在危害” 这一点作为前提而进行的.</p>
+<p>这里只说方法. 即便对于已经提交的 <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span>, 其修改仍然可用 <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="<code>rebase</code> [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>. 但此时不能直接推送, 我们需要额外做一步 <span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span>.</p>
 <pre><code>git filter-branch --force     
 </code></pre>
-<p><span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span> 配合 <span class="link external"><a href="https://git-scm.com/docs/git-replace" title="<code>replace</code> [https://git-scm.com/docs/git-replace]"><code>replace</code></a></span> 或者 <code>&lt;GIT_DIR&gt;/info/grafts</code> 也能够用来快速清除某次 commit 之前的所有记录.</p>
-<p>虽然后者目前已经被标记为 deprecated.</p>
+<p><span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="<code>filter-branch</code> [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span> 配合 <span class="link external"><a href="https://git-scm.com/docs/git-replace" title="<code>replace</code> [https://git-scm.com/docs/git-replace]"><code>replace</code></a></span> 或者 <code>&lt;GIT_DIR&gt;/info/grafts</code> 也能够用来快速清除某次 commit 之前的所有记录. <code>grafts</code> 文件内是 commit 的 hash 值, 可以通过 <code>git log</code> 查询.</p>
+<p>注意, <code>grafts</code> 目前已经被标记为 deprecated, 不过依旧可用.</p>
 <pre><code>hint: Support for &lt;GIT_DIR&gt;/info/grafts is deprecated
 hint: and will be removed in a future Git version.
 hint:
@@ -860,13 +1509,13 @@ $$</p>
 <p>我们假设有设备 $A$, $B$, 且 $A$ 将要发送文件 $F$ 给 $B$, 另可设文件 $F$ 充分大 (如 $\geqslant 1 \text{GB}$). 方案如下.</p>
 <p>$B$ 联网且开热点, $A$ 连接热点. 随后 $A$ 通过 <span class="link external"><a href="https://termux.dev" title="Termux [https://termux.dev]">Termux</a></span> + <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> 或其他等效软件在文件 $F$ 所在目录开启本地 <span class="link external"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" title="HTTP [https://developer.mozilla.org/zh-CN/docs/Web/HTTP]">HTTP</a></span> 服务器, 记下 IP. $B$ 使用浏览器访问 IP, 下载文件即可, 此时下载速率依赖于 $B$ 连接到的网络.</p>
 </details></section>
-<section class="block" data-taxon="Theorem"><details ><summary id="daily-surf-expand-coefficient"><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/daily-surf/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon="Problem"><details ><summary id="daily-surf-GF2A"><header><h1><span class="taxon">Problem. </span>生成函数系数 <a class="slug" href="/daily-surf/GF2A">[GF2A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\Z{\mathbf{Z}}$</p>
-<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$,
-求 $a_n$. 显然 $a_n$ 同时也是 $x_1+x_2+x_3 = n$
-在 $\Z_{\ge 0}$ 上解的个数.</p>
-<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="daily-surf-expand-coefficient-000B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>在 <span class="link local"><a href="/daily-surf/expand-coefficient-000A" title="特殊有理函数展开式的系数 [daily-surf/expand-coefficient-000A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$, 求 $a_n$.</p>
+<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="daily-surf-GF2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/GF2B">[GF2B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>不难发现, <span class="link local"><a href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]">此处 $a_n$</a></span> 同时也是 $x_1+x_2+x_3 = n$
+于 $\Z_{\ge 0}$ 上解的个数.
+在 <span class="link local"><a href="/daily-surf/GF3A" title="特殊有理函数展开式的系数 [daily-surf/GF3A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
 </details></section></p>
 </details></section>
 <section class="block" data-taxon=""><details ><summary id="daily-surf-euclid-step"><header><h1><span class="taxon"></span>辗转相除法步数估计 <a class="slug" href="/daily-surf/euclid-step">[euclid-step]</a></h1><div class="metadata"><ul><li class="meta-item">June 10, 2021</li></ul></div></header></summary>
@@ -926,7 +1575,7 @@ $$</p>
 <p>$$
 x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} &gt; 1
 $$</p>
-<p>利用 <span class="link local"><a href="/daily-surf/young-lemma-000B" title="Bernoulli 不等式 [daily-surf/young-lemma-000B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ 得到 $1+\frac{x}{y} &gt; \frac{1}{y^x}$, 即 $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
+<p>利用 <span class="link local"><a href="/daily-surf/YL3B" title=" [daily-surf/YL3B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ 得到 $1+\frac{x}{y} &gt; \frac{1}{y^x}$, 即 $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
 <p>$$
 \begin{aligned}
 x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
@@ -936,62 +1585,5 @@ x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1}
 \end{aligned}
 $$</p>
 <p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>
-</details></section>
-<section class="block" data-taxon="Lemma"><details ><summary id="daily-surf-young-lemma"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Young 不等式有许多风格迥然的证明, 最常见的办法可能是使用定积分.
-我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 Young 引理.
-并展示 Young 不等式与其他常见不等式如何作为此结果的直接推论.</p>
-<p>对数函数 $\log$ 最为特殊的性质可以说就是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
-<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
-<p>现在对右侧使用对数的线性化, 得到</p>
-<p>$$ 
-\begin{aligned}
-\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
-&amp;\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
-&amp;\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
-\end{aligned}
-$$</p>
-<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
-<p>$$
-p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
-$$</p>
-<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果. 有时我们也写成</p>
-<p>$$
-p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
-$$</p>
-<p>用完全相同的步骤, 也可以证明任意多个 $p_i$ 和 $f_i$ 时的情况.</p>
-<p><section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000A"><header><h1><span class="taxon">Corollary 1. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
-<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
-<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
-</details></section>
-<section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000B"><header><h1><span class="taxon">Corollary 2. </span>Bernoulli 不等式 <a class="slug" href="/daily-surf/young-lemma-000B">[young-lemma-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
-<p>$$ x^n + n-1 \ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
-<p>在 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
-<p>$$
-\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
-$$</p>
-<p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
-</details></section>
-<section class="block hide-metadata" data-taxon="Corollary"><details open><summary id="daily-surf-young-lemma-000C"><header><h1><span class="taxon">Corollary 3. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>我们要证的结果可以写成下面的样子</p>
-<p>$$
-\Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
-\spaces\le 
-\Big(\sum_{i \in S}w_iz_i\Big) \Big(\sum_{i \in S}w_i\Big)^{-1}
-$$</p>
-<p>实际上可以利用对数的线性化对这个定理给出一个直接的证明, 不过这并非本文的重点. 我们在此处更关心如何将这些表达式调整为适合使用 <span class="link local"><a href="/daily-surf/young-lemma" title="Young 引理 [daily-surf/young-lemma]">Young 引理</a></span> 的形式. 我们先引入一些记号, 用 $\Sigma_w$ 表示 $\sum_{i \in S}w_{i}$, 用 $\omega_i$ 表示 $w_i\Sigma_w^{-1}$. 这样目标就变成了</p>
-<p>$$ \prod_{i \in S}z_i^{\omega_i} \spaces\le \sum_{i \in S}\omega_iz_i $$</p>
-<p>如果把这里的 $\omega_i$ 看作 $p_i$, $z_i$ 看作 $f_i$, $\sum_{i \in S}\omega_iz_i$ 看作 $g$. 那我们只要验证下面这件事</p>
-<p>$$
-\sum_{i \in S}\omega_iz_i \spaces\le \sum_{i \in S}\omega_iz_i
-$$</p>
-<p>而这应该是很容易的. $\quad\Box$</p>
-</details></section></p>
 </details></section></p>
 </details></section><footer></footer></article></div></body></html>

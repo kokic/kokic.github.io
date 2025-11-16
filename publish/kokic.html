@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Kokic Liu</title><link rel="icon" href="/assets/favicon.ico" /><style>:root {
+<meta name="viewport" content="width=device-width"><title>Kokic Liu</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
   color-scheme: light dark;
   --content-gap: 15px;
   --radius: 5px;
@@ -9,6 +9,7 @@
   --toc-max-width: 90ex;
 
   --text-color: black;
+  --toc-link-color: #555;
   --background-color: white;
 
   --background-color-pre: rgba(0, 100, 100, 0.04);
@@ -25,11 +26,13 @@
   --span-taxon-color: #444;
   --article-taxon-color: #888;
   --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root body {
     --text-color: white;
+    --toc-link-color: white;
     --background-color: #2f2f2f;
 
     --background-color-pre: rgba(100, 100, 100, 0.2);
@@ -48,6 +51,7 @@
 }
 
 body {
+  color: var(--text-color);
   font-optical-sizing: auto;
   hyphens: auto;
   background-color: var(--background-color);
@@ -84,6 +88,10 @@ code {
   font-size: 1em;
 }
 
+em {
+  color: var(--em-color);
+}
+
 table {
   border-collapse: collapse;
 }
@@ -101,7 +109,7 @@ td {
 }
 
 /* !forest */
-pre > code {
+pre>code {
   border-radius: 0;
   background-color: transparent;
   padding: 0;
@@ -113,7 +121,7 @@ pre > code {
 }
 
 /* !forest */
-.footnote-definition > p {
+.footnote-definition>p {
   display: inline;
 }
 
@@ -127,7 +135,7 @@ pre > code {
   border: 1px solid var(--target-color);
 }
 
-.footnote-definition:target > .footnote-definition-label {
+.footnote-definition:target>.footnote-definition-label {
   border: 1px solid var(--target-color);
 }
 
@@ -191,18 +199,18 @@ p {
   margin-top: 0;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
   outline: none;
 }
 
-details > summary > header {
+details>summary>header {
   display: inline;
 }
 
 /* no effect */
-details > summary::marker,
-details > summary::-webkit-details-marker {
+details>summary::marker,
+details>summary::-webkit-details-marker {
   display: none;
 }
 
@@ -211,7 +219,7 @@ details h1 {
   display: inline;
 }
 
-details > summary {
+details>summary {
   list-style-type: none;
 }
 
@@ -220,39 +228,39 @@ span.taxon {
   font-weight: 500;
 }
 
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-article > section > details > summary > header > h1 {
+article>section>details>summary>header>h1 {
   font-size: 1.5em;
 }
 
-article > section > details > summary > header {
+article>section>details>summary>header {
   display: block;
   margin-bottom: 0.5em;
 }
 
-article > section > details > summary > header > h1 > .taxon {
+article>section>details>summary>header>h1>.taxon {
   display: block;
   font-size: 0.9em;
   color: var(--article-taxon-color);
   padding-bottom: 5pt;
 }
 
-article > section > details > summary > header > h1 > .taxon:empty {
+article>section>details>summary>header>h1>.taxon:empty {
   display: none;
 }
 
-section.block > details {
+section.block>details {
   margin-bottom: 0.4em;
 }
 
-section.block > details[open] {
+section.block>details[open] {
   margin-bottom: 1em;
 }
 
-.link-list > section.block > details {
+.link-list>section.block>details {
   margin-bottom: 0.25em;
 }
 
@@ -280,7 +288,7 @@ section.block > details[open] {
   background-color: var(--hover-color-block);
 }
 
-.block.hide-metadata > details > summary > header > .metadata {
+.block.hide-metadata>details>summary>header>.metadata {
   display: none;
 }
 
@@ -317,12 +325,12 @@ ol {
   margin-bottom: 1em;
 }
 
-.logo > span {
+.logo>span {
   color: var(--logo-color);
   text-decoration: none;
 }
 
-.logo > span:hover {
+.logo>span:hover {
   color: var(--logo-hover-color);
 }
 
@@ -331,29 +339,17 @@ ol {
   font-size: 24px;
 }
 
-section
-  section[data-taxon="Reference"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon,
-section
-  section[data-taxon="Person"]
-  > details
-  > summary
-  > header
-  > h1
-  > .taxon {
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
   display: none;
 }
 
-section .block[data-taxon] > header > h1,
-section .block[data-taxon] details > summary > header > h1 {
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
   font-size: 13pt;
 }
 
-footer > section {
+footer>section {
   margin-bottom: 1em;
 }
 
@@ -421,11 +417,11 @@ a.slug {
   font-weight: 200;
 }
 
-body > header {
+body>header {
   margin-bottom: 0.5em;
 }
 
-#grid-wrapper > article {
+#grid-wrapper>article {
   max-width: var(--article-max-width);
   margin-right: auto;
   grid-area: article;
@@ -439,7 +435,7 @@ body > header {
     transition: ease all 0.2s;
   }
 
-  #grid-wrapper > nav {
+  #grid-wrapper>nav {
     transition: ease all 0.2s;
   }
 
@@ -485,14 +481,14 @@ nav#toc ul {
   list-style-type: none;
 }
 
-nav#toc li > ul {
+nav#toc li>ul {
   margin: 0;
   padding-left: 1em;
 }
 
 nav#toc,
 nav#toc a {
-  color: light-dark(#555, white);
+  color: var(--toc-link-color);
 }
 
 nav#toc {
@@ -511,42 +507,22 @@ nav#toc a.bullet {
   padding-right: 0.2em;
   text-decoration: none;
 }
-/* For embeded SVG source. */
-
-:root {
-  --typst-text-color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --typst-text-color: white;
-  }
-}
 
 .typst-text use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 .typst-group use[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[fill="#000000"] {
-  fill: var(--typst-text-color);
+  fill: var(--text-color);
 }
 
 path.typst-shape[stroke="#000000"] {
-  stroke: var(--typst-text-color);
-}
-
-/* For external SVG files. */
-
-@media (prefers-color-scheme: dark) {
-  .color-invert {
-    filter: invert(1) hue-rotate(180deg);
-  }
-}
-</style><style>
+  stroke: var(--text-color);
+}</style><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -638,7 +614,704 @@ path.typst-shape[stroke="#000000"] {
    document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
    window.addEventListener("resize", toggleDetailsOpen);
 </script>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';">
+<style>
+  theme-option {
+    display: inline-block;
+  }
 
-<article><section class="block" data-taxon="人物"><details open><summary id="kokic"><header><h1><span class="taxon">人物</span>Kokic Liu <a class="slug" href="/kokic">[kokic]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link external"><a href="https://kokic.github.io" title=" [https://kokic.github.io]"></a></span></li></ul></div></header></summary>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>联系 <a class="slug" href="/contact">[contact]</a></h1><div class="metadata"><ul><li class="meta-item">January 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><a href="mailto:kokicplus@gmail.com">kokicplus@gmail.com</a></li><li class="meta-item"><a href="mailto:kokicplus@126.com">kokicplus@126.com</a></li><li class="meta-item"><span class="link external"><a href="https://www.zhihu.com/people/kokic-86" title="知乎 [https://www.zhihu.com/people/kokic-86]">知乎</a></span></li><li class="meta-item"><span class="link external"><a href="https://music.163.com/#/user/home?id=411742542" title="网易云音乐 [https://music.163.com/#/user/home?id=411742542]">网易云音乐</a></span></li><li class="meta-item"><span class="link external"><a href="https://space.bilibili.com/14411894" title="bilibili [https://space.bilibili.com/14411894]">bilibili</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathstodon.xyz/@kokic" title="mastodon [https://mathstodon.xyz/@kokic]">mastodon</a></span></li><li class="meta-item"><span class="link external"><a href="https://bangumi.tv/user/995735" title="bangumi [https://bangumi.tv/user/995735]">bangumi</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Curriculum Vitae <a class="slug" href="/cv">[cv]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">Kokic Liu</a></span></li><li class="meta-item">Undergraduate</li><li class="meta-item">Computer Science</li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>日经观点 <a class="slug" href="/daily-surf/baby-viewpoint">[baby-viewpoint]</a></h1><div class="metadata"><ul><li class="meta-item">February 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注 <a class="slug" href="/daily-surf/bevy">[bevy]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">August 29, 2025</li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>代数数可数 <a class="slug" href="/daily-surf/count-algebraic-number">[count-algebraic-number]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>生成函数系数 <a class="slug" href="/daily-surf/expand-coefficient">[expand-coefficient]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>$\footnotesize (1-q)^{-m}$ 的系数 <a class="slug" href="/daily-surf/expand-coefficient-000A">[expand-coefficient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Solution" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/expand-coefficient-000B">[expand-coefficient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Fibonacci 抛硬币 <a class="slug" href="/daily-surf/fibonacci-flip">[fibonacci-flip]</a></h1><div class="metadata"><ul><li class="meta-item">January 24, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>文件互传 <a class="slug" href="/daily-surf/file-transfer">[file-transfer]</a></h1><div class="metadata"><ul><li class="meta-item">May 18, 2022</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分 <a class="slug" href="/daily-surf/gaussian-integral">[gaussian-integral]</a></h1><div class="metadata"><ul><li class="meta-item">November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Git 过滤分支 <a class="slug" href="/daily-surf/git-filter-branch">[git-filter-branch]</a></h1><div class="metadata"><ul><li class="meta-item">February 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Sublime Text 4 高分屏设置 <a class="slug" href="/daily-surf/sublime-text-config">[sublime-text-config]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/daily-surf/young-lemma">[young-lemma]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/daily-surf/young-lemma-000A">[young-lemma-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>Bernoulli 不等式 <a class="slug" href="/daily-surf/young-lemma-000B">[young-lemma-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>加权算术平均–几何平均不等式 <a class="slug" href="/daily-surf/young-lemma-000C">[young-lemma-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/data-structure/casus-irreducibilis">[casus-irreducibilis]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/chromatic-graph">[chromatic-graph]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>复数 <a class="slug" href="/data-structure/complex-number">[complex-number]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>自由–绑定记号 <a class="slug" href="/data-structure/free-bound-denote">[free-bound-denote]</a></h1><div class="metadata"><ul><li class="meta-item">April 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Axiom" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/kock-lawvere-000A">[kock-lawvere-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>连分式 <a class="slug" href="/data-structure/linear-fractional-0001">[linear-fractional-0001]</a></h1><div class="metadata"><ul><li class="meta-item">November 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>Schanuel–Lavendhomme 构造 <a class="slug" href="/data-structure/schanuel-lavendhomme">[schanuel-lavendhomme]</a></h1><div class="metadata"><ul><li class="meta-item">November 18, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000A">[stack-permutation-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proposition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proposition. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000B">[stack-permutation-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000C">[stack-permutation-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proposition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000D">[stack-permutation-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000E">[stack-permutation-000E]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000F">[stack-permutation-000F]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/stack-permutation-000G">[stack-permutation-000G]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/stack-tree-isomorphism">[stack-tree-isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>Stern – Brocot 树 <a class="slug" href="/data-structure/stern-brocot">[stern-brocot]</a></h1><div class="metadata"><ul><li class="meta-item">May 4, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential-000A">[synthetic-differential-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>矩阵表示给出的微分运算 <a class="slug" href="/data-structure/synthetic-differential-000B">[synthetic-differential-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/complex-step" title="Complex step 微分法 [data-structure/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential-000C">[synthetic-differential-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential-000D">[synthetic-differential-000D]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential-000E">[synthetic-differential-000E]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>回声 <a class="slug" href="/index">[index]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/contact" title="联系 [contact]">contact</a></span></li><li class="meta-item"><span class="link local"><a href="/links" title="链接 [links]">links</a></span></li><li class="meta-item"><span class="link local"><a href="/projects/index" title="Projects [projects/index]">projects</a></span></li><li class="meta-item"><span class="link local"><a href="/cv" title="Curriculum Vitae [cv]">curriculum vitae</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/automata-matrix">[automata-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000A">[automata-matrix-000A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/automata-matrix-000B">[automata-matrix-000B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/automata-matrix-000C">[automata-matrix-000C]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Conjecture" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-000A">[kontsevich-periodicity-000A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000A">[rayleigh-quotient-000A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000B">[rayleigh-quotient-000B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000C">[rayleigh-quotient-000C]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-000D">[rayleigh-quotient-000D]</a></h1><div class="metadata"><ul><li class="meta-item">November 6, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>曲线弧长计算 <a class="slug" href="/mille-plateaux/arc-length">[arc-length]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span>置换分解的构造证明 <a class="slug" href="/mille-plateaux/bubble-compose-proof">[bubble-compose-proof]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury-000C">[canterbury-000C]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>椭圆函数 <a class="slug" href="/mille-plateaux/elliptic-functions">[elliptic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>椭圆积分 <a class="slug" href="/mille-plateaux/elliptic-integral">[elliptic-integral]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-functions">[periodic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/mille-plateaux/young-inequality">[young-inequality]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Projects <a class="slug" href="/projects/index">[projects]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>应用清单 <a class="slug" href="/smaragdina/applications">[applications]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>The Celtic Myths 摘录 <a class="slug" href="/smaragdina/celtic-myths">[celtic-myths]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://book.douban.com/subject/31093378" title="豆瓣 [https://book.douban.com/subject/31093378]">豆瓣</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere <a class="slug" href="/smaragdina/mourn-lawvere">[mourn-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">October 28, 2024 — November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+  theme-option>input {
+    display: none;
+  }
+
+  theme-option>label {
+    color: var(--slug-color);
+  }
+
+  theme-option>label:hover {
+    background-color: var(--hover-color-link);
+  }
+
+  theme-option:has(input:checked)>label {
+    color: var(--link-color);
+  }
+
+  theme-option>label::before {
+    content: "[";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option>label::after {
+    content: "]";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option:has(input:checked)>label::before {
+    color: var(--link-color);
+  }
+
+  theme-option:has(input:checked)>label::after {
+    color: var(--link-color);
+  }
+</style>
+
+<template id="theme-option-template">
+  <input type="radio" name="theme" />
+  <label></label>
+</template>
+
+<script>
+  function storeSelectedTheme(name) {
+    localStorage.setItem(window.themeKey, name);
+  }
+
+  function getCurrentTheme() {
+    return localStorage.getItem(window.themeKey) || window.primaryTheme;
+  }
+
+  function selectTheme(themeName) {
+    storeSelectedTheme(themeName);
+    requestAnimationFrame(applyDynamicColorInvert);
+  }
+
+  function applyFavorTheme() {
+    const favoredTheme = getCurrentTheme();
+    if (favoredTheme) {
+      const selector = `input[type='radio'][id='${favoredTheme}']`;
+      const favoredOption = window.themeOptions.querySelector(selector);
+
+      if (favoredOption) {
+        favoredOption.checked = true;
+      } else if (window.primaryOption) {
+        // Fallback to primary theme, if the favored theme is not found
+        // e.g., when the theme options have changed, and the stored theme is no longer available.
+        window.primaryOption.checked = true;
+      }
+
+      applyDynamicColorInvert();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.themeOptions = document.getElementById("theme-options");
+    const templateContent = document.getElementById("theme-option-template").content;
+
+    customElements.define(
+      "theme-option",
+      class extends HTMLElement {
+        constructor() {
+          super();
+
+          const node = templateContent.cloneNode(true);
+          const themeName = this.getAttribute("name");
+
+          const input = node.querySelector("input");
+          input.setAttribute("id", themeName);
+          input.setAttribute("value", themeName);
+
+          const label = node.querySelector("label");
+          label.setAttribute("for", themeName);
+          label.addEventListener("click", () => selectTheme(themeName));
+
+          while (this.firstChild) {
+            label.appendChild(this.firstChild);
+          }
+          this.appendChild(node);
+        }
+      },
+    );
+
+    const baseUrl = document.getElementById("grid-wrapper").dataset.baseUrl;
+    window.themeKey = `${baseUrl}-kodama-theme`;
+
+    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
+    window.primaryTheme = primaryOption?.value;
+
+    applyFavorTheme();
+  });
+</script>
+
+<script>
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
+  const multiply = ([r, g, b], matrix) => {
+    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
+    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
+    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
+    return [nr, ng, nb];
+  };
+
+  const hueRotate = ([r, g, b], angle = 0) => {
+    const rad = (angle / 180) * Math.PI;
+    const sin = Math.sin(rad);
+    const cos = Math.cos(rad);
+    const matrix = [
+      0.213 + cos * 0.787 - sin * 0.213,
+      0.715 - cos * 0.715 - sin * 0.715,
+      0.072 - cos * 0.072 + sin * 0.928,
+      0.213 - cos * 0.213 + sin * 0.143,
+      0.715 + cos * 0.285 + sin * 0.140,
+      0.072 - cos * 0.072 - sin * 0.283,
+      0.213 - cos * 0.213 - sin * 0.787,
+      0.715 - cos * 0.715 + sin * 0.715,
+      0.072 + cos * 0.928 + sin * 0.072,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const grayscale = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.2126 + 0.7874 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 + 0.2848 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 + 0.9278 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const sepia = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.393 + 0.607 * (1 - value),
+      0.769 - 0.769 * (1 - value),
+      0.189 - 0.189 * (1 - value),
+      0.349 - 0.349 * (1 - value),
+      0.686 + 0.314 * (1 - value),
+      0.168 - 0.168 * (1 - value),
+      0.272 - 0.272 * (1 - value),
+      0.534 - 0.534 * (1 - value),
+      0.131 + 0.869 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const saturate = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.213 + 0.787 * value,
+      0.715 - 0.715 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 + 0.285 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 - 0.715 * value,
+      0.072 + 0.928 * value,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const linear = ([r, g, b], slope = 1, intercept = 0) => {
+    const scale = 255;
+    return [
+      clamp(r * slope + intercept * scale),
+      clamp(g * slope + intercept * scale),
+      clamp(b * slope + intercept * scale),
+    ];
+  };
+
+  const brightness = (rgb, value = 1) => linear(rgb, value);
+  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
+
+  const invert = ([r, g, b], value = 1) => {
+    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
+    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
+    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
+    return [clamp(nr), clamp(ng), clamp(nb)];
+  };
+
+  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
+  const rgbToHsl = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 100, s: s * 100, l: l * 100 };
+  };
+
+  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
+    let color = [...rgb];
+    color = invert(color, inv / 100);
+    color = sepia(color, sep / 100);
+    color = saturate(color, sat / 100);
+    color = hueRotate(color, hue * 3.6);
+    color = brightness(color, bri / 100);
+    color = contrast(color, con / 100);
+    return color;
+  };
+
+  const lossFn = (targetRgb, filters) => {
+    const resultRgb = applyFilters([0, 0, 0], filters);
+    const targetHsl = rgbToHsl(...targetRgb);
+    const resultHsl = rgbToHsl(...resultRgb);
+    return (
+      Math.abs(resultRgb[0] - targetRgb[0]) +
+      Math.abs(resultRgb[1] - targetRgb[1]) +
+      Math.abs(resultRgb[2] - targetRgb[2]) +
+      Math.abs(resultHsl.h - targetHsl.h) +
+      Math.abs(resultHsl.s - targetHsl.s) +
+      Math.abs(resultHsl.l - targetHsl.l)
+    );
+  };
+
+  const fix = (value, idx) => {
+    let max = 100;
+    if (idx === 2) max = 7500;                  // saturate
+    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
+    if (idx === 3) { // hue-rotate
+      if (value > max) return value % max;
+      if (value < 0) return max + (value % max);
+      return value;
+    }
+    return Math.max(0, Math.min(max, value));
+  };
+
+  const spsa = (targetRgb, A, a, c, initial, iters) => {
+    const alpha = 1;
+    const gamma = 1 / 6;
+    let values = [...initial];
+    let best = [...values];
+    let bestLoss = Infinity;
+
+    for (let k = 0; k < iters; k++) {
+      const ck = c / Math.pow(k + 1, gamma);
+      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
+      const highArgs = values.map((v, i) => v + ck * deltas[i]);
+      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
+      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
+
+      values = values.map((v, i) => {
+        const g = (lossDiff / (2 * ck)) * deltas[i];
+        const ak = a[i] / Math.pow(A + k + 1, alpha);
+        return fix(v - ak * g, i);
+      });
+
+      const loss = lossFn(targetRgb, values);
+      if (loss < bestLoss) {
+        best = [...values];
+        bestLoss = loss;
+      }
+    }
+    return { values: best, loss: bestLoss };
+  };
+
+  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
+  // A loss below this value is considered visually indistinguishable for most use cases.
+  // The value 25 was determined empirically to balance performance and color accuracy.
+  const ACCEPTABLE_COLOR_LOSS = 25;
+
+  const solveWide = (targetRgb) => {
+    const A = 5;
+    const c = 15;
+    const a = [60, 180, 18000, 600, 1.2, 1.2];
+    let best = { loss: Infinity, values: null };
+    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
+      const initial = [50, 20, 3750, 50, 100, 100];
+      const result = spsa(targetRgb, A, a, c, initial, 1000);
+      if (result.loss < best.loss) best = result;
+    }
+    return best;
+  };
+
+  const solveNarrow = (targetRgb, wideResult) => {
+    const A = wideResult.loss;
+    const c = 2;
+    const A1 = A + 1;
+    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
+    return spsa(targetRgb, A, a, c, wideResult.values, 500);
+  };
+
+  const cssFilterString = (filters) => {
+    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
+    const hueDeg = Math.round(hue * 3.6);
+    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
+  };
+
+  const solveColor = (targetRgb) => {
+    const wide = solveWide(targetRgb);
+    const narrow = solveNarrow(targetRgb, wide);
+    return {
+      values: narrow.values,
+      loss: narrow.loss,
+      filter: cssFilterString(narrow.values),
+    };
+  };
+
+  // Reuse a single canvas / context to avoid memory leaks
+  const colorParseCanvas = document.createElement('canvas');
+  colorParseCanvas.width = 1;
+  colorParseCanvas.height = 1;
+  const colorParseContext = colorParseCanvas.getContext('2d');
+  
+  const toRGBArray = (cssColor) => {
+    colorParseContext.fillStyle = cssColor;
+    colorParseContext.fillRect(0, 0, 1, 1);
+
+    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
+    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
+    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
+    return Array.from(rgba.slice(0, 3));
+  };
+
+  const dynamicStyleId = 'dynamic-color-invert-style';
+
+  function applyDynamicColorInvert() {
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
+    if (textColor && textColor.length > 0) {
+      const rgb = toRGBArray(textColor);
+      const result = solveColor(rgb);
+      const filter = result.filter;
+
+      const existingStyle = document.getElementById(dynamicStyleId);
+      if (existingStyle) {
+        existingStyle.textContent = `.color-invert {${filter}}`;
+      } else {
+        const style = document.createElement('style');
+        style.id = dynamicStyleId;
+        style.textContent = `.color-invert {${filter}}`;
+        document.head.appendChild(style);
+      }
+    }
+  }
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic)  -->
+<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
+
+<style>
+  body:has(input[value="moon"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="moon"]:checked) {
+      --hover-primary-color: 196, 136, 193;
+
+      --text-color: rgb(187 176 169);
+      --toc-link-color: rgb(187 176 169);
+      --background-color: rgb(32, 28, 48);
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(255, 128, 165);
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(236, 230, 226);
+      --em-color: rgb(255, 219, 230);
+
+      .block:has(.block:hover) {
+        background-color: var(--background-color);
+      }
+    }
+  }
+
+  body:has(input[value="moon-light"]:checked) {
+    --hover-primary-color: 181, 140, 114;
+
+    --text-color: rgb(32, 28, 48);
+    --toc-link-color: #555;
+    --background-color: rgb(255, 238, 228);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+
+    --link-color: rgb(227, 66, 114);
+    --slug-color: rgb(184, 170, 161);
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: black;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+    --em-color: rgb(220, 121, 113);
+  }
+
+  body:has(input[value="moon-dark"]:checked) {
+    --hover-primary-color: 196, 136, 193;
+
+    --text-color: rgb(187 176 169);
+    --toc-link-color: rgb(187 176 169);
+    --background-color: rgb(32, 28, 48);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(255, 128, 165);
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(236, 230, 226);
+    --em-color: rgb(255, 219, 230);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="moon">朔望</theme-option>
+<theme-option name="moon-light">望月</theme-option>
+<theme-option name="moon-dark">朔月</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
+
+<style>
+  body:has(input[value="zen"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="zen"]:checked) {
+      --hover-primary-color: 34, 34, 34;
+      --link-primary-color: 150, 150, 150;
+
+      --text-color: rgb(222, 223, 231);
+      --toc-link-color: #555;
+      --background-color: rgb(25, 25, 25);
+
+      --background-color-pre: rgba(0, 100, 100, 0.04);
+      --background-color-code: rgba(0, 100, 100, 0.04);
+
+      --hover-color-block: rgba(var(--hover-primary-color));
+      --hover-color-link: rgb(64, 64, 64);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: rgb(var(--link-primary-color));
+      --slug-color: rgb(99, 99, 99);
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: rgb(var(--link-primary-color));
+      --em-color: rgb(139, 139, 139);
+    }
+  }
+
+  body:has(input[value="zen-light"]:checked) {
+    --hover-primary-color: 229, 229, 229;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: rgb(238, 238, 238);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+
+  body:has(input[value="zen-dark"]:checked) {
+    --hover-primary-color: 34, 34, 34;
+    --link-primary-color: 150, 150, 150;
+
+    --text-color: rgb(222, 223, 231);
+    --toc-link-color: #555;
+    --background-color: rgb(25, 25, 25);
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(64, 64, 64, 0.3);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(139, 139, 139);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="zen-light">zen light</theme-option>
+<theme-option name="zen-dark">zen dark</theme-option>
+<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="/contact" title="联系 [contact]">■</a><span class="link local" onclick="window.location.href='#contact'"><span class="taxon"></span>联系</span></li><li class=""><a class="bullet" href="/projects/index" title="Projects [projects/index]">■</a><span class="link local" onclick="window.location.href='#projects-index'"><span class="taxon"></span>Projects</span></li><li class=""><a class="bullet" href="/cv" title="Curriculum Vitae [cv]">■</a><span class="link local" onclick="window.location.href='#cv'"><span class="taxon"></span>Curriculum Vitae</span></li></ul></details></div></nav>
+
+<article><section class="block" data-taxon="人物"><details open><summary id="kokic"><header><h1><span class="taxon">人物</span>Kokic Liu <a class="slug" href="/kokic">[kokic]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link external"><a href="https://trees/kokic.github.io" title=" [https://trees/kokic.github.io]"></a></span></li></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details open><summary id="contact"><header><h1><span class="taxon"></span>联系 <a class="slug" href="/contact">[contact]</a></h1><div class="metadata"><ul><li class="meta-item">January 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="mailto:kokicplus@gmail.com" title="kokicplus@gmail.com [mailto:kokicplus@gmail.com]">kokicplus@gmail.com</a></span></li><li class="meta-item"><span class="link external"><a href="mailto:kokicplus@126.com" title="kokicplus@126.com [mailto:kokicplus@126.com]">kokicplus@126.com</a></span></li><li class="meta-item"><span class="link external"><a href="https://www.zhihu.com/people/trees/kokic-86" title="知乎 [https://www.zhihu.com/people/trees/kokic-86]">知乎</a></span></li><li class="meta-item"><span class="link external"><a href="https://music.163.com/#/user/home?id=411742542" title="网易云音乐 [https://music.163.com/#/user/home?id=411742542]">网易云音乐</a></span></li><li class="meta-item"><span class="link external"><a href="https://space.bilibili.com/14411894" title="bilibili [https://space.bilibili.com/14411894]">bilibili</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathstodon.xyz/@kokic" title="mastodon [https://mathstodon.xyz/@kokic]">mastodon</a></span></li><li class="meta-item"><span class="link external"><a href="https://bangumi.tv/user/995735" title="bangumi [https://bangumi.tv/user/995735]">bangumi</a></span></li></ul></div></header></summary>
+<p>付费咨询请通过邮件联系. For paid consultation, please contact me via email.</p>
+</details></section>
+<section class="block" data-taxon=""><details open><summary id="projects-index"><header><h1><span class="taxon"></span>Projects <a class="slug" href="/projects/index">[projects]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<ul>
+<li><span class="link external"><a href="https://github.com/trees/kokic/kodama" title="kodama [https://github.com/trees/kokic/kodama]">kodama</a></span> <img src="../assets/kodama.svg" title="kodama" style="height: 1em; vertical-align: middle;" /> — A Typst-friendly static Zettelkästen site generator. GPL-3.0.</li>
+<li><span class="link external"><a href="https://github.com/trees/kokic/algol" title="algol [https://github.com/trees/kokic/algol]">algol</a></span> <img src="../assets/algol.svg" title="kodama" style="height: 1em;vertical-align: middle;" /> — A experimental symbolic computation tool. MIT License.</li>
+<li><span class="link external"><a href="https://github.com/trees/kokic/UniTeX" title="unitex.ts [https://github.com/trees/kokic/UniTeX]">unitex.ts</a></span> — A transpiler that converts TeX into Unicode. <span class="link external"><a href="https://unitex-web.netlify.app" title="Try it here [https://unitex-web.netlify.app]">Try it here</a></span>. MIT License.</li>
+<li><span class="link external"><a href="https://github.com/indekkusu4/unitex-rs" title="unitex.rs [https://github.com/indekkusu4/unitex-rs]">unitex.rs</a></span> — Rewrite unitex in Rust. GPL-3.0. W.I.P.</li>
+<li><span class="link external"><a href="https://github.com/trees/kokic/maxima-android" title="maxima android [https://github.com/trees/kokic/maxima-android]">maxima android</a></span> — A neo fork of Yasuaki Honda’s Maxima on Android. AGPL-3.0.</li>
+</ul>
+</details></section>
+<section class="block" data-taxon=""><details open><summary id="cv"><header><h1><span class="taxon"></span>Curriculum Vitae <a class="slug" href="/cv">[cv]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">Kokic Liu</a></span></li><li class="meta-item">Undergraduate</li><li class="meta-item">Computer Science</li></ul></div></header></summary>
+<link link rel="stylesheet" href="./assets/cv-style.css">
+<p>Translation, <span class="link external"><a href="https://www.andiamo.co.uk/resources/iso-language-codes" title="en-GB to zh-CN [https://www.andiamo.co.uk/resources/iso-language-codes]">en-GB to zh-CN</a></span>. <span class="link asset"><a href="/assets/translations/Jon%20Sterling%20-%20数学排版工具之要求.pdf" title="“Jon Sterling - 数学排版工具之要求”">“Jon Sterling - 数学排版工具之要求”</a></span>. In October 7, 2025. Also see <span class="link external"><a href="https://www.forester-notes.org/tfmt-000E/index.xml" title="Requirements for typesetting mathematics [https://www.forester-notes.org/tfmt-000E/index.xml]">Requirements for typesetting mathematics</a></span>.</p>
+<p>Open Source Project. <span class="link external"><a href="https://github.com/trees/kokic/kodama" title="Kodama [https://github.com/trees/kokic/kodama]">Kodama</a></span>, A <span class="link external"><a href="https://typst.app/" title="Typst [https://typst.app/]">Typst</a></span>-friendly static Zettelkästen site generator. Inspired by <span class="link external"><a href="https://www.jonmsterling.com/index/index.xml" title="Jon Sterling [https://www.jonmsterling.com/index/index.xml]">Jon Sterling</a></span>’s <span class="link external"><a href="https://www.forester-notes.org/index/index.xml" title="Forester [https://www.forester-notes.org/index/index.xml]">Forester</a></span>. In January 19, 2025 - $\infty$.</p>
+<p>Lecture Note. <span class="link asset"><a href="/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="“A Correspondence between Stack Permutations and Binary Trees via Hille Encoding”">“A Correspondence between Stack Permutations and Binary Trees via Hille Encoding”</a></span>. In December 10, 2024.</p>
+<p>Lecture Note. <span class="link asset"><a href="/assets/publications/A%20Brief%20Survey%20of%20UMAP.pdf" title="“A Brief Survey of UMAP”">“A Brief Survey of UMAP”</a></span>. In  November 9, 2024.</p>
+<p>Competitive Programming. <span class="link external"><a href="https://www.codewars.com/users/trees/kokic" title="Codewars Rank 2 kyu [https://www.codewars.com/users/trees/kokic]">Codewars Rank 2 kyu</a></span>. Top 1.659%. In October 2024.</p>
+<p>Conference Participant. <span class="link external"><a href="https://ims.nus.edu.sg/events/formalproofslean/" title="Workshop on Formal Proofs and Lean [https://ims.nus.edu.sg/events/formalproofslean/]">Workshop on Formal Proofs and Lean</a></span>. In <span class="link external"><a href="https://www.nus.edu.sg/" title="National University of Singapore [https://www.nus.edu.sg/]">National University of Singapore</a></span>, <span class="link external"><a href="https://ims.nus.edu.sg/" title="The Institute for Mathematical Sciences [https://ims.nus.edu.sg/]">The Institute for Mathematical Sciences</a></span>, Apr 15, 2024 - Apr 26, 2024.</p>
+<p>Mini-Course Participant. <span class="link external"><a href="https://bicmr.pku.edu.cn/content/show/70-3167.html?catid=KiQhKyYs" title="Algebraic $K$-Theory and Prismatic Cohomology [https://bicmr.pku.edu.cn/content/show/70-3167.html?catid=KiQhKyYs]">Algebraic $K$-Theory and Prismatic Cohomology</a></span>.  <span class="link external"><a href="https://web.math.princeton.edu/~longket/" title="Longke Tang [https://web.math.princeton.edu/~longket/]">Longke Tang</a></span>. In <span class="link external"><a href="https://bicmr.pku.edu.cn" title="Beijing International Center for Mathematical Research [https://bicmr.pku.edu.cn]">Beijing International Center for Mathematical Research</a></span>, December 12, 2023 - January 3, 2024.</p>
+<p>Visiting Scholar. The integration of <span class="link external"><a href="https://lean-lang.org/" title="Lean4 theorem prover [https://lean-lang.org/]">Lean4 theorem prover</a></span> with large language models. Peking University. In <span class="link external"><a href="https://bicmr.pku.edu.cn" title="Beijing International Center for Mathematical Research [https://bicmr.pku.edu.cn]">Beijing International Center for Mathematical Research</a></span>, November 2023 - September 2024. Related Projects &amp; Papers: <span class="link external"><a href="https://arxiv.org/abs/2410.10878v2" title="“Herald: A Natural Language Annotated Lean 4 Dataset” [https://arxiv.org/abs/2410.10878v2]">“Herald: A Natural Language Annotated Lean 4 Dataset”</a></span>, Powered by <span class="link external"><a href="https://github.com/frenzymath/jixia" title="jixia [https://github.com/frenzymath/jixia]">jixia</a></span>, A static analysis tool for Lean 4. <span class="link external"><a href="https://arxiv.org/abs/2403.13310" title="“A Semantic Search Engine for Mathlib4” [https://arxiv.org/abs/2403.13310]">“A Semantic Search Engine for Mathlib4”</a></span>, Powered by <span class="link external"><a href="https://github.com/frenzymath/LeanSearch" title="LeanSearch [https://github.com/frenzymath/LeanSearch]">LeanSearch</a></span>, A semantic search engine for Lean 4 projects.</p>
+<p>Acknowledged Contributor. <span class="link external"><a href="https://dl.acm.org/doi/10.1145/3592099" title="“EgoLocate: Real-time Motion Capture, Localization, and Mapping with Sparse Body-mounted Sensors” [https://dl.acm.org/doi/10.1145/3592099]">“EgoLocate: Real-time Motion Capture, Localization, and Mapping with Sparse Body-mounted Sensors”</a></span>. In <span class="link external"><a href="https://s2023.siggraph.org/" title="ACM SIGGRAPH 2023 [https://s2023.siggraph.org/]">ACM SIGGRAPH 2023</a></span>.</p>
+</details></section></p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>应用清单 <a class="slug" href="/AP2A">[AP2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>连分式 <a class="slug" href="/LF2A">[LF2A]</a></h1><div class="metadata"><ul><li class="meta-item">November 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/YL2B">[YL2B]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/YL3A">[YL3A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>Bernoulli 不等式 <a class="slug" href="/YL3B">[YL3B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>加权算术平均–几何平均不等式 <a class="slug" href="/YL3C">[YL3C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/YL4A">[YL4A]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>联系 <a class="slug" href="/contact">[contact]</a></h1><div class="metadata"><ul><li class="meta-item">January 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="mailto:kokicplus@gmail.com" title="kokicplus@gmail.com [mailto:kokicplus@gmail.com]">kokicplus@gmail.com</a></span></li><li class="meta-item"><span class="link external"><a href="mailto:kokicplus@126.com" title="kokicplus@126.com [mailto:kokicplus@126.com]">kokicplus@126.com</a></span></li><li class="meta-item"><span class="link external"><a href="https://www.zhihu.com/people/trees/kokic-86" title="知乎 [https://www.zhihu.com/people/trees/kokic-86]">知乎</a></span></li><li class="meta-item"><span class="link external"><a href="https://music.163.com/#/user/home?id=411742542" title="网易云音乐 [https://music.163.com/#/user/home?id=411742542]">网易云音乐</a></span></li><li class="meta-item"><span class="link external"><a href="https://space.bilibili.com/14411894" title="bilibili [https://space.bilibili.com/14411894]">bilibili</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathstodon.xyz/@kokic" title="mastodon [https://mathstodon.xyz/@kokic]">mastodon</a></span></li><li class="meta-item"><span class="link external"><a href="https://bangumi.tv/user/995735" title="bangumi [https://bangumi.tv/user/995735]">bangumi</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Curriculum Vitae <a class="slug" href="/cv">[cv]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">Kokic Liu</a></span></li><li class="meta-item">Undergraduate</li><li class="meta-item">Computer Science</li></ul></div></header></section><section class="block" data-taxon="Problem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Problem. </span>生成函数系数 <a class="slug" href="/daily-surf/GF2A">[GF2A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Solution" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/GF2B">[GF2B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>$\footnotesize (1-q)^{-m}$ 的系数 <a class="slug" href="/daily-surf/GF3A">[GF3A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>日经观点 <a class="slug" href="/daily-surf/baby-viewpoint">[baby-viewpoint]</a></h1><div class="metadata"><ul><li class="meta-item">February 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注 <a class="slug" href="/daily-surf/bevy">[bevy]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">August 29, 2025</li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>代数数可数 <a class="slug" href="/daily-surf/count-algebraic-number">[count-algebraic-number]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Fibonacci 抛硬币 <a class="slug" href="/daily-surf/fibonacci-flip">[fibonacci-flip]</a></h1><div class="metadata"><ul><li class="meta-item">January 24, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>文件互传 <a class="slug" href="/daily-surf/file-transfer">[file-transfer]</a></h1><div class="metadata"><ul><li class="meta-item">May 18, 2022</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分 <a class="slug" href="/daily-surf/gaussian-integral">[gaussian-integral]</a></h1><div class="metadata"><ul><li class="meta-item">November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Git 过滤分支 <a class="slug" href="/daily-surf/git-filter-branch">[git-filter-branch]</a></h1><div class="metadata"><ul><li class="meta-item">February 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Sagemath Jupyter 主题设置 <a class="slug" href="/daily-surf/sagemath-theme">[sagemath-theme]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Sublime Text 4 高分屏设置 <a class="slug" href="/daily-surf/sublime-text-config">[sublime-text-config]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>染色图 <a class="slug" href="/data-structure/CG2A">[CG2A]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>二叉树类型 <a class="slug" href="/data-structure/binary-tree">[binary-tree]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Blass–Lawvere 定理 <a class="slug" href="/data-structure/blass-lawvere">[blass-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>复数 <a class="slug" href="/data-structure/complex-number">[complex-number]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Fiore–Leinster <a class="slug" href="/data-structure/fiore-leinster">[fiore-leinster]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link external"><a href="https://arxiv.org/pdf/math/9405205" title="https://arxiv.org/pdf/math/9405205">https://arxiv.org/pdf/math/9405205</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>七树合一定理 <a class="slug" href="/data-structure/seven-trees-in-one">[seven-trees-in-one]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://ncatlab.org/nlab/show/seven+trees+in+one" title="$n$Lab [https://ncatlab.org/nlab/show/seven+trees+in+one]">$n$Lab</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>有效长度的上下界 <a class="slug" href="/data-structure/stack-permutation/bounds">[bounds]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/bounds-pf">[bounds-pf]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proposition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proposition. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/equivalence">[equivalence]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/stack-permutation/equivalence-pf">[equivalence-pf]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proposition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/intersection">[intersection]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>栈置换–二叉树同构 <a class="slug" href="/data-structure/stack-permutation/isomorphism">[isomorphism]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024 — November 08, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" title="CC BY-NC-SA 4.0 [https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en]">CC BY-NC-SA 4.0</a></span></li><li class="meta-item"><span class="link external"><a href="https://trees/kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="PDF [https://trees/kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf]">PDF</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>栈置换 <a class="slug" href="/data-structure/stack-permutation/stack-permutation">[stack-permutation]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>$n=3$ <a class="slug" href="/data-structure/stack-permutation/three-nodes">[three-nodes]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>Stern – Brocot 树 <a class="slug" href="/data-structure/stern-brocot">[stern-brocot]</a></h1><div class="metadata"><ul><li class="meta-item">May 4, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential/chain-rule">[chain-rule]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>矩阵表示导出微分运算 <a class="slug" href="/data-structure/synthetic-differential/derived-differential">[derived-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>综合微分法 <a class="slug" href="/data-structure/synthetic-differential/index">[synthetic-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Axiom" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>数值微分的误差 <a class="slug" href="/data-structure/synthetic-differential/numerical">[numerical]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>Schanuel–Lavendhomme 构造 <a class="slug" href="/data-structure/synthetic-differential/schanuel-lavendhomme">[schanuel-lavendhomme]</a></h1><div class="metadata"><ul><li class="meta-item">November 18, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/synthetic-differential/smooths">[smooths]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>回声 <a class="slug" href="/index">[index]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/links" title="链接 [links]">links</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>自动机与矩阵求逆 <a class="slug" href="/linear-algebra/amtx">[amtx]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024 — May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/cc" title="CC BY-NC-SA 4.0 [cc]">CC BY-NC-SA 4.0</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵闭包 <a class="slug" href="/linear-algebra/amtx-2A">[amtx-2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>二阶矩阵的逆 <a class="slug" href="/linear-algebra/amtx-3A">[amtx-3A]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>分块矩阵的逆 <a class="slug" href="/linear-algebra/amtx-3B">[amtx-3B]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/linear-algebra/casus-irreducibilis">[casus-irreducibilis]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>闭半环的 Conway 条件 <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Conjecture" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想 <a class="slug" href="/linear-algebra/kontsevich-periodicity">[kontsevich-periodicity]</a></h1><div class="metadata"><ul><li class="meta-item">February 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>$n=2$ 交换版本 <a class="slug" href="/linear-algebra/kontsevich-periodicity-2A">[kontsevich-periodicity-2A]</a></h1><div class="metadata"><ul><li class="meta-item">February 18, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>置换矩阵构造 <a class="slug" href="/linear-algebra/permutation-matrix">[permutation-matrix]</a></h1><div class="metadata"><ul><li class="meta-item">January 16, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Theorem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Theorem. </span>Rayleigh 商定理 <a class="slug" href="/linear-algebra/rayleigh-quotient">[rayleigh-quotient]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-2A">[rayleigh-quotient-2A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-2B">[rayleigh-quotient-2B]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span> <a class="slug" href="/linear-algebra/rayleigh-quotient-3A">[rayleigh-quotient-3A]</a></h1><div class="metadata"><ul><li class="meta-item">November 5, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>正则语言集 <a class="slug" href="/linear-algebra/regular-language">[regular-language]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>关于半环的注释 <a class="slug" href="/linear-algebra/semiring">[semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>星半环 <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>曲线弧长计算 <a class="slug" href="/mille-plateaux/arc-length">[arc-length]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Proof" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Proof. </span>置换分解的构造证明 <a class="slug" href="/mille-plateaux/bubble-compose-pf">[bubble-compose-pf]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Problem" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Problem. </span>古代物理学博士问题 <a class="slug" href="/mille-plateaux/canterbury-2A">[canterbury-2A]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Solution" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/mille-plateaux/canterbury-2B">[canterbury-2B]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Canterbury 曲线的切线与自身的交点 <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>圆曲线 <a class="slug" href="/mille-plateaux/circular-curve">[circular-curve]</a></h1><div class="metadata"><ul><li class="meta-item">December 30, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>圆的参数化 <a class="slug" href="/mille-plateaux/circular-parameterization">[circular-parameterization]</a></h1><div class="metadata"><ul><li class="meta-item">December 28, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>椭圆函数 <a class="slug" href="/mille-plateaux/elliptic-functions">[elliptic-functions]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>椭圆积分 <a class="slug" href="/mille-plateaux/elliptic-integral">[elliptic-integral]</a></h1><div class="metadata"><ul><li class="meta-item">January 12, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young 不等式 <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>周期函数的构造 <a class="slug" href="/mille-plateaux/periodic-2A">[periodic-2A]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>Projects <a class="slug" href="/projects/index">[projects]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>The Celtic Myths 摘录 <a class="slug" href="/smaragdina/celtic-myths">[celtic-myths]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://book.douban.com/subject/31093378" title="豆瓣 [https://book.douban.com/subject/31093378]">豆瓣</a></span></li></ul></div></header></section><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere <a class="slug" href="/smaragdina/mourn-lawvere">[mourn-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">October 28, 2024 — November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

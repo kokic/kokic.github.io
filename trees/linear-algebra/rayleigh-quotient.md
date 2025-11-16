@@ -2,7 +2,7 @@
 ---
 title: Rayleigh 商定理
 date: November 5, 2024
-author: [kokic](/kokic.md)
+author: [kokic](/trees/kokic.md)
 taxon: theorem
 ---
 
@@ -29,7 +29,7 @@ $$
 
 其中 $\max\limits_{1 \leqslant i \leqslant n}\lambda_{i}$ 常被称作谱半径. 
 
-[+ 某类二次型的商](/linear-algebra/rayleigh-quotient-000A.md#:embed)
+[+ 某类二次型的商](./rayleigh-quotient-2A.md#:embed)
 
 Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 [^hermite-matrix], 也即 $M$ 是共轭对称的方阵 $M^* = M$, 对实数而言这当然就是对称矩阵. 稍稍回忆线性代数, 有限维谱定理说: 
 
@@ -38,10 +38,10 @@ Rayleigh 商定理中的对角矩阵 $M$ 可推广到 Hermite 矩阵 [^hermite-m
 
 具体而言, 对于每个实对称矩阵 [resp., 复对称矩阵] $A$, 都存在一个实正交矩阵 [resp., 酉矩阵] 使得 $Q^* A Q$ 是对角矩阵. 
 
-[+ 二阶情形](/linear-algebra/rayleigh-quotient-000B.md#:embed)
+[+ 二阶情形](./rayleigh-quotient-2B.md#:embed)
 
 广义 Rayleigh 商 $\frac{x^* A x}{x^* B x}$ 可以通过变换 $D = C^{-1} A C^*{}^{-1}$ 简化为 Rayleigh 商 $\frac{x^* D x}{(C^*x)^*(C^*x)}$, 其中 $C C^*$ 是 Hermite 正定矩阵的 Cholesky 分解. 对此, 我们也给出一例. 
 
-[+ 一般二次型的商](/linear-algebra/rayleigh-quotient-000C.md#:embed)
+[+ 一般二次型的商](./rayleigh-quotient-3A.md#:embed)
 
 [^hermite-matrix]: 自伴随矩阵, 复对称矩阵. 
