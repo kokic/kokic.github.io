@@ -11,7 +11,7 @@ title: 链接
 | 废紙时雨 || [blog.shigure.fun](https://blog.shigure.fun) |
 | dada 的研究站 || [kono-dada.github.io](https://kono-dada.github.io) |
 | 迷亭的日记 || [m1ting.github.io](https://m1ting.github.io) |
-| 徐天乐 :: 个人博客 || [blog.xtlsoft.top](https://blog.xtlsoft.top) |
+| 徐天乐 || [blog.xtlsoft.top](https://blog.xtlsoft.top) |
 | Xinyu Yi || [xinyu-yi.github.io](https://xinyu-yi.github.io) |
 | Ashitemaru || [ashitemaru.github.io](https://ashitemaru.github.io) |
 | Chang Wang || [scholar.google.com/citations?...](https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN) |
@@ -68,3 +68,9 @@ title: 链接
 | LMFDB || [www.lmfdb.org](https://www.lmfdb.org) |
 | $\beta$-LMFDB || [beta.lmfdb.org](https://beta.lmfdb.org) |
 | Math Genealogy || [www.genealogy.math.ndsu.nodak.edu](https://www.genealogy.math.ndsu.nodak.edu/index.php) |
+
+<style>
+  td a {
+    word-break: break-all;
+  }
+</style>

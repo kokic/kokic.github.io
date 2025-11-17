@@ -4,7 +4,7 @@ title: 栈置换--二叉树同构
 date: November 06, 2024 --- November 08, 2024 
 author: [kokic](/trees/kokic.md)
 license: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
-pdf: [PDF](https://trees/kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf)
+pdf: [PDF](https://kokic.github.io/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf)
 ---
 
 [*](/data-structure/stack-permutation/counterexample.typ#:shared)

@@ -48,7 +48,7 @@
     },
   )
 
-  draw.content((2, 2), text(text-size, fill: blue, $x^3+y^3=9$))
+  draw.content((2, 2), text(text-size, $x^3+y^3=9$))
 
   draw.content((5, 6.5), text(text-size, $P(1, 2)$))
   draw.content((1.2, 6), text(text-size, $2P(-17/7, 20/7)$))

@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1400,4 +1371,4 @@ A(u)_{v_x}
 \end{aligned}
 $$</p>
 </details></section></p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Reference. </span>意象理论讲义 <a class="slug" href="/bib/jin2024topos">[jin2024topos]</a></h1><div class="metadata"><ul><li class="meta-item">November 20, 2024</li><li class="meta-item">王进一</li><li class="meta-item"><span class="link external"><a href="https://github.com/SimplicialCat/topos/blob/main/topos.pdf" title="电子版 [https://github.com/SimplicialCat/topos/blob/main/topos.pdf]">电子版</a></span></li></ul></div></header></section><section class="block" data-taxon="Reference" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Reference. </span>Synthetic differential geometry <a class="slug" href="/bib/kock2006synthetic">[kock2006synthetic]</a></h1><div class="metadata"><ul><li class="meta-item">2006</li><li class="meta-item">Anders Kock</li><li class="meta-item">Cambridge University Press, Volume 333</li></ul></div></header></section><section class="block" data-taxon="Reference" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Reference. </span>代数学方法 卷一：基础架构 <a class="slug" href="/bib/methods-of-algebra-1">[methods-of-algebra-1]</a></h1><div class="metadata"><ul><li class="meta-item">November 16, 2018</li><li class="meta-item">李文威</li><li class="meta-item"><span class="link external"><a href="https://wwli.asia/downloads/books/Al-jabr-1.pdf" title="电子版 [https://wwli.asia/downloads/books/Al-jabr-1.pdf]">电子版</a></span></li><li class="meta-item">高等教育出版社</li><li class="meta-item">现代数学基础系列</li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>矩阵表示导出微分运算 <a class="slug" href="/data-structure/synthetic-differential/derived-differential">[derived-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Axiom" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>Schanuel–Lavendhomme 构造 <a class="slug" href="/data-structure/synthetic-differential/schanuel-lavendhomme">[schanuel-lavendhomme]</a></h1><div class="metadata"><ul><li class="meta-item">November 18, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/linear-algebra/casus-irreducibilis">[casus-irreducibilis]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="人物" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">人物</span>Francis William Lawvere <a class="slug" href="/person/william-lawvere">[william-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">February 9, 1937 – January 23, 2023</li><li class="meta-item"><span class="link external"><a href="https://en.wikipedia.org/wiki/William_Lawvere" title="Wikipedia [https://en.wikipedia.org/wiki/William_Lawvere]">Wikipedia</a></span></li></ul></div></header></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

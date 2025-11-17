@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1294,4 +1265,4 @@ path.typst-shape[stroke="#000000"] {
 <p>我们在 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
 <p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
 <p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/YL4A">[YL4A]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/YL2B">[YL2B]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/YL4A">[YL4A]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

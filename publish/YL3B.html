@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1292,10 +1263,10 @@ path.typst-shape[stroke="#000000"] {
 <article><section class="block" data-taxon="Corollary"><details open><summary id="YL3B"><header><h1><span class="taxon">Corollary. </span>Bernoulli 不等式 <a class="slug" href="/YL3B">[YL3B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
-<p>$$ x^n + n-1 \ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
+<p>$$ x^n + n-1 \spaces\ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
 <p>在 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
 <p>$$
 \frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
 $$</p>
 <p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
-</details></section><footer></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/YL2B">[YL2B]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Example" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Example. </span>循环幂和不等式 <a class="slug" href="/daily-surf/CPSI">[CPSI]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>

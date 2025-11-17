@@ -2,6 +2,8 @@
 ---
 title: 辗转相除法步数估计
 date: June 10, 2021
+author: [kokic](/trees/kokic.md)
+tag: [](/trees/pearls.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
@@ -10,7 +12,7 @@ $\gdef\spaces#1{~ #1 ~}$
 
 $$ n \spaces\le 1 + \log_\phi \min(a,b) $$
 
-其中 $\phi=\frac{1+\sqrt5}{2}$ 为黄金分割. 当然, 这也给出用递归实现 $\gcd$ 函数的时间复杂度. 如今认为, 此结果标志着计算复杂度理论的开始. 
+其中 $\phi = \frac{1+\sqrt5}{2}$ 为黄金分割. 当然, 这也给出用递归实现 $\gcd$ 函数的时间复杂度. 如今认为, 此结果标志着计算复杂度理论的开始. 
 
 我们首先来证明 $n\le\log_\phi\sqrt{5}\min(a,b)$. 
 不妨设 $a\gt b$, 于是有 $a=qb+r_1,r_{k-1}=q_kr_k+r_{k+1}$, 其中 $1\le k\le n-1$, 显然一定有 $r_n=0$.
@@ -37,4 +39,4 @@ $$
 \spaces=\tfrac{1}{4}\log5
 $$
 
-故 $n\le\log_{\phi}b+1$.
+故 $n \le \log_{\phi}b+1$.

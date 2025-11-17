@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1289,7 +1260,7 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="zen-dark">zen dark</theme-option>
 <theme-option name="zen">zen</theme-option></div></nav>
 
-<article><section class="block" data-taxon="Theorem"><details open><summary id="data-structure-deletion-contraction"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Theorem"><details open><summary id="data-structure-deletion-contraction"><header><h1><span class="taxon">Theorem. </span>删除–收缩公式 <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
@@ -1301,14 +1272,16 @@ $\gdef\spaces#1{~ #1 ~}$
 $\gdef\without{\setminus}$</p>
 <p>$\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
-$$\begin{aligned} 
+<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现</p>
+<p>$$
+\begin{aligned} 
 \pi(G \without e) 
 &amp;\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
 &amp;\spaces= \pi(G / e) ~ + ~ \pi(G)
-\end{aligned}$$</p>
-</details></section></p>
+\end{aligned}
+$$</p>
 <p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
+</details></section></p>
 <p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
 <p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>

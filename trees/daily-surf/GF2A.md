@@ -2,8 +2,9 @@
 ---
 title: 生成函数系数
 date: August 15, 2021
-author: [kokic](/trees/kokic.md)
 taxon: problem
+author: [kokic](/trees/kokic.md)
+tag: [](/trees/pearls.md)
 ---
 
 $\gdef\Z{\mathbf{Z}}$

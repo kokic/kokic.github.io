@@ -3,6 +3,8 @@
 title: 素数无限多与 Furstenberg 拓扑
 date: August 31, 2025
 author: [kokic](/trees/kokic.md)
+source: [Proofs from THE BOOK, p. 5](/trees/bib/pftb.md)
+tag: [](/trees/pearls.md)
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
@@ -17,7 +19,7 @@ author: [kokic](/trees/kokic.md)
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\PP{\mathbf{P}}$
 
-此证明来自 [Proofs from THE BOOK](../bib/pftb.md) 第 5 页, 由 [Hillel Furstenberg](https://en.wikipedia.org/wiki/Hillel_Furstenberg) 于 1955 年提出 [^furstenberg]. 这一页配图的说明文字也很有意思, 其写道 
+此证明由 [Hillel Furstenberg](https://en.wikipedia.org/wiki/Hillel_Furstenberg) 于 1955 年提出 [^furstenberg]. 这一页配图的说明文字也很有意思, 其写道 
 
 > Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span>
 

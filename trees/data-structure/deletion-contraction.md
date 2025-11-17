@@ -2,8 +2,9 @@
 ---
 title: 删除--收缩公式
 date: July 21, 2024
-author: [kokic](/trees/kokic.md)
 taxon: theorem
+author: [kokic](/trees/kokic.md)
+tag: [](/trees/pearls.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
@@ -15,8 +16,6 @@ $\gdef\without{\setminus}$
 $$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$
 
 [.](./deletion-contraction-pf.md#:embed)
-
-此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个. 
 
 这个结果可等价地叙述成连接的版本, 可称为 "连接--收缩公式". 对于简单图 $G = (V, E)$
 

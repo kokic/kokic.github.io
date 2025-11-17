@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1287,40 +1258,10 @@ path.typst-shape[stroke="#000000"] {
 
 <theme-option name="zen-light">zen light</theme-option>
 <theme-option name="zen-dark">zen dark</theme-option>
-<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/pftb-p5" title="素数无限多与 Furstenberg 拓扑 [daily-surf/pftb-p5]">■</a><span class="link local" onclick="window.location.href='#daily-surf-pftb-p5'"><span class="taxon"></span>素数无限多与 Furstenberg 拓扑</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/gaussian-integral" title="极坐标出现前人们怎样计算高斯积分 [daily-surf/gaussian-integral]">■</a><span class="link local" onclick="window.location.href='#daily-surf-gaussian-integral'"><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]">■</a><span class="link local" onclick="window.location.href='#daily-surf-GF2A'"><span class="taxon">Problem. </span>生成函数系数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/euclid-step" title="辗转相除法步数估计 [daily-surf/euclid-step]">■</a><span class="link local" onclick="window.location.href='#daily-surf-euclid-step'"><span class="taxon"></span>辗转相除法步数估计</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/count-algebraic-number" title="代数数可数 [daily-surf/count-algebraic-number]">■</a><span class="link local" onclick="window.location.href='#daily-surf-count-algebraic-number'"><span class="taxon"></span>代数数可数</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/exponent-symmetry" title="经典对称幂指数不等式 [daily-surf/exponent-symmetry]">■</a><span class="link local" onclick="window.location.href='#daily-surf-exponent-symmetry'"><span class="taxon">Example. </span>经典对称幂指数不等式</span></li></ul></details></div></nav>
+<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="daily-surf-index"><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf/index">[daily-surf]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon=""><details ><summary id="daily-surf-pftb-p5"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/daily-surf/pftb-p5">[pftb-p5]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
-<style>
-.kaiti {
-  font-family: "LXGW WenKai TC", serif;
-  font-style: normal;
-}
-</style>
-<p>$\gdef\Z{\mathbf{Z}}$
-$\gdef\PP{\mathbf{P}}$</p>
-<p>此证明来自 <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> 第 5 页, 由 <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> 于 1955 年提出 <sup class="footnote-reference" id="daily-surf_pftb-p5_furstenberg-back"><a href="#daily-surf_pftb-p5_furstenberg">1</a></sup>. 这一页配图的说明文字也很有意思, 其写道</p>
-<blockquote>
-<p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span></p>
-</blockquote>
-<p>对 $a,b \in \Z, b &gt; 0$, 令 $N_{a,b} = \{ a + nb : n \in \Z \}$. 每个集合 $N_{a,b}$ 都是正负无界的算术级数. 如果集合 $O \subseteq \Z$ 满足以下条件之一:</p>
-<ol>
-<li>$O$ 是空集.</li>
-<li>对任意的 $a \in O$ 存在 $b &gt; 0$ 使得 $N_{a,b} \subseteq O$.</li>
-</ol>
-<p>则称 $O$ 是开集. 这些条件保证 $O$ 在 $a$ 点附近 “稠密”. 显然, 开集的并总是开集. 另外, 如果 $O_1$ 和 $O_2$ 开, 则对任意的 $a \in O_1 \cap O_2$, $N_{a,b_1} \subseteq O_1$ 及 $N_{a,b_2} \subseteq O_2$, 都有 $a \in N_{a,b_1b_2} \subseteq O_1 \cap O_2$. 所以开集的有限交也开. 从而此处定义的开集族的确导出了 $\Z$ 上的一个拓扑. 随后, 我们注意:</p>
-<p>   $(\text{A})$ 每个非空的开集都是无界的, 显然. <br />
-   $(\text{B})$ 每个 $N_{a,b}$ 都是既开又闭的. 因为 $N_{a,b} = \mathbb{Z} \setminus \bigcup_{i=1}^{b-1} N_{a+i,b}$, 这说明 $N_{a,b}$ 是开集的补, 因而闭.</p>
-<p>现在我们引出素数. 对于每个整数 $n \neq 1,-1$ 都有某个素因子 $p$ 使得 $n \in N_{0,p}$ 以及 $\Z \setminus \{\pm1\} = \bigcup_{p \in \PP} N_{0,p}$. 如果 $\PP$ 是有限的, 那么根据 $(\text B)$, $\bigcup_{p \in \PP} N_{0,p}$ 将是有限个闭集的并, 所以是闭的. 进而可以导出 $\{\pm1\}$ 是一个开集, 这与 $(\text A)$ 矛盾, 证毕.</p>
-<p>我们回顾证明, 不难发现核心是用拓扑解释 “每个整数都有素因子” 这件事, 进而 $\bigcup_{p \in \PP} N_{0,p} = \Z \setminus \{\pm1\}$ 在 $\Z$ 上稠密, 于是 $\PP$ 绝不可能有限. 此方法实质利用了算术级数的性质, 而非拓扑内涵. 所以也可以翻译成不使用拓扑的版本, 见 Idris D. Mercer 写的 
-<span class="link external"><a href="http://www.idmercer.com/monthly355-356-mercer.pdf" title="On Furstenberg’s Proof of theInfinitude of Primes [http://www.idmercer.com/monthly355-356-mercer.pdf]">On Furstenberg’s Proof of theInfinitude of Primes</a></span>.</p>
-<div class="footnote-definition" id="daily-surf_pftb-p5_furstenberg">
-  <sup class="footnote-definition-label"><a href="#daily-surf_pftb-p5_furstenberg-back">1</a></sup>
-<p>Furstenberg 当时是 Yeshiva 大学的本科生, 其在美国数学月刊上发表了 <span class="link external"><a href="https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes" title="“On the infinitude of primes” [https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes]">“On the infinitude of primes”</a></span>, 这才有了 <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> 对此证明的收录.</p>
-</div>
-</details></section>
-<section class="block" data-taxon=""><details ><summary id="daily-surf-bevy"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注 <a class="slug" href="/daily-surf/bevy">[bevy]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">August 29, 2025</li></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details ><summary id="daily-surf-bevy"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注 <a class="slug" href="/daily-surf/bevy">[bevy]</a></h1><div class="metadata"><ul><li class="meta-item">August 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <h4>E0786</h4>
 <pre><code class="language-sh">error[E0786]: found invalid metadata files for crate `serde`                               
   --&gt; C:\Users\...\.cargo\registry\src\...\bevy_math-0.16.1\src\ray.rs:60:42
@@ -1467,30 +1408,6 @@ AMD 则是 <code>Ctrl + Shift + O</code>. 目前看来这个信息会出现在�
 <p>我们姑且按照该 Reddit 问题的某个回答这么称呼此信息.</p>
 </div>
 </details></section>
-<section class="block" data-taxon=""><details ><summary id="daily-surf-gaussian-integral"><header><h1><span class="taxon"></span>极坐标出现前人们怎样计算高斯积分 <a class="slug" href="/daily-surf/gaussian-integral">[gaussian-integral]</a></h1><div class="metadata"><ul><li class="meta-item">November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>这一证明最早似乎来自 Michael Rozman. 除此之外 MSE 上也有极类似的回答, 见 <span class="link external"><a href="https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick" title="此处 [https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick]">此处</a></span>.</p>
-<blockquote>
-<p>M. Rozman, Evaluate Gaussian integral using differentiation under the integral sign, Course notes for Physics 2400 (UConn), Spring 2016.</p>
-</blockquote>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\d{\operatorname{d}}$</p>
-<p>核心技巧来自一个函数 $F(t)$ 的构造. 对 $t \in \R$ 定义如下函数</p>
-<p>$$
-F(t) \spaces= \int_0^\infty \frac{e^{-t^2(1+x^2)}}{1+x^2} \d x
-$$</p>
-<p>容易验证 $F(t)$ 满足 $F(0)=\frac{\pi}{2}$, $F(\infty) = 0$, 以及最关键的</p>
-<p>$$
-F'(t) 
-\spaces= \int_0^\infty -2te^{-t^2(1+x^2)} \d x 
-\spaces= -2te^{-t^2} \int_0^\infty e^{-(tx)^2} \d x
-$$</p>
-<p>记高斯积分为 $I$. 这就有 $F'(t) = -2Ie^{-t^2}$, 此时再求 $F'(t)$ 于 $[0, \infty)$, 上的积分, 就能得到</p>
-<p>$$
-F(\infty)- F(0) \spaces= -2I \int_0^\infty e^{-t^2} \d t \spaces= -2I^2
-$$</p>
-<p>于是这给出 $I = \frac{\sqrt\pi}2$.</p>
-</details></section>
 <section class="block" data-taxon=""><details ><summary id="daily-surf-wolfram-engine"><header><h1><span class="taxon"></span>Wolfram 引擎与 WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>Wolfram 把 Mathematica 的内核 <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> 单独拆出来并作为免费软件 <sup class="footnote-reference" id="daily-surf_wolfram-engine_wolfram-engine-size-back"><a href="#daily-surf_wolfram-engine_wolfram-engine-size">1</a></sup> 提供已不是什么新鲜事. 如不考虑实际的交互体验, 至少对于开发者而言, 为最新版 Mathematica 付费这件事基本就意味着只购买了个带官方服务支持的 <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
 <p>Wolfram 引擎能直接使用 Homebrew 或 winget 等包管理器安装, 命令行功能由引擎自带的 <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> 提供. 虽然能用, 但可想而知体验不会太好. 最早的一个方案是用 <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> 和相关 Notebook 插件连接到 Wolfram 引擎, 这样一来比起纯命令行能好上不少, 但是对于习惯了 Mathematica 官方笔记本的用户来说还差点意思.</p>
@@ -1508,82 +1425,5 @@ $$</p>
 <p>因为各种读者可以想象的原因, 基于网络的面对面文件互传其实是一件经常会遇到的事. 笔者先后尝试过依赖于特定品牌的互传功能, 但时不时会遇到因未知原因导致的传输无法开始的问题. 索性另求他法.</p>
 <p>我们假设有设备 $A$, $B$, 且 $A$ 将要发送文件 $F$ 给 $B$, 另可设文件 $F$ 充分大 (如 $\geqslant 1 \text{GB}$). 方案如下.</p>
 <p>$B$ 联网且开热点, $A$ 连接热点. 随后 $A$ 通过 <span class="link external"><a href="https://termux.dev" title="Termux [https://termux.dev]">Termux</a></span> + <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> 或其他等效软件在文件 $F$ 所在目录开启本地 <span class="link external"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" title="HTTP [https://developer.mozilla.org/zh-CN/docs/Web/HTTP]">HTTP</a></span> 服务器, 记下 IP. $B$ 使用浏览器访问 IP, 下载文件即可, 此时下载速率依赖于 $B$ 连接到的网络.</p>
-</details></section>
-<section class="block" data-taxon="Problem"><details ><summary id="daily-surf-GF2A"><header><h1><span class="taxon">Problem. </span>生成函数系数 <a class="slug" href="/daily-surf/GF2A">[GF2A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\Z{\mathbf{Z}}$</p>
-<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$, 求 $a_n$.</p>
-<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="daily-surf-GF2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/GF2B">[GF2B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>不难发现, <span class="link local"><a href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]">此处 $a_n$</a></span> 同时也是 $x_1+x_2+x_3 = n$
-于 $\Z_{\ge 0}$ 上解的个数.
-在 <span class="link local"><a href="/daily-surf/GF3A" title="特殊有理函数展开式的系数 [daily-surf/GF3A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
-</details></section></p>
-</details></section>
-<section class="block" data-taxon=""><details ><summary id="daily-surf-euclid-step"><header><h1><span class="taxon"></span>辗转相除法步数估计 <a class="slug" href="/daily-surf/euclid-step">[euclid-step]</a></h1><div class="metadata"><ul><li class="meta-item">June 10, 2021</li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>1844 年, 49 岁的法国数学家 <span class="link external"><a href="https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9" title="Gabriel Lamé [https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9]">Gabriel Lamé</a></span> 发现, 设 $a,b$ 两数辗转相除至余数为零所用步数为 $n$, 则</p>
-<p>$$ n \spaces\le 1 + \log_\phi \min(a,b) $$</p>
-<p>其中 $\phi=\frac{1+\sqrt5}{2}$ 为黄金分割. 当然, 这也给出用递归实现 $\gcd$ 函数的时间复杂度. 如今认为, 此结果标志着计算复杂度理论的开始.</p>
-<p>我们首先来证明 $n\le\log_\phi\sqrt{5}\min(a,b)$.
-不妨设 $a\gt b$, 于是有 $a=qb+r_1,r_{k-1}=q_kr_k+r_{k+1}$, 其中 $1\le k\le n-1$, 显然一定有 $r_n=0$.
-还注意 $r_k$ 依次递减且有 $r_k-r_{k+1}\ge1$, 则 $r_{k-1}=q_kr_k+r_{k+1}\ge r_k+r_{k+1}$.
-将下标取反 $(s_k=r_{n-k})$ 即 $s_{k+1}\ge s_k+s_{k-1}$. 故考虑 Fibonacci 数列 $F_n$, 知 $s_k\ge F_k$, 即 $b\ge F_n$, 又 $F_n \sim \frac{\phi^n}{\sqrt5}$, 证毕.</p>
-<p>现在, 注意到此估计与待证估计之差为</p>
-<p>$$
-\begin{aligned}
-\log_{\phi}\sqrt5-1 \
-&amp;\spaces= \dfrac{\log\sqrt5}{\log\dfrac{1+\sqrt5}{2}}-1 \\ 
-&amp;\spaces= \dfrac{1}{2}\cdot\dfrac{\log5}{\log(1+\sqrt5)-\log2}-1\\ 
-&amp;\spaces\lt 2\cdot\dfrac{\log5}{\log5}-1 \\ 
-&amp;\spaces= 1
-\end{aligned}
-$$</p>
-<p>其中最后一个不等号是因为, 根据基本不等式 $1+\sqrt5 \ge 2\cdot5^{1/4}$, 于是</p>
-<p>$$
-\log(1+\sqrt5) - \log2 
-\spaces\gt\log(2\cdot5^{1/4})-\log2 
-\spaces=\tfrac{1}{4}\log5
-$$</p>
-<p>故 $n\le\log_{\phi}b+1$.</p>
-</details></section>
-<section class="block" data-taxon=""><details ><summary id="daily-surf-count-algebraic-number"><header><h1><span class="taxon"></span>代数数可数 <a class="slug" href="/daily-surf/count-algebraic-number">[count-algebraic-number]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\Q{\mathbf{Q}}$
-$\gdef\N{\mathbf{N}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\C{\mathbf{C}}$
-$\gdef\A{\mathbb{A}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>代数数即 $\Q$-系数首一多项式的根, 容易看出这也是任意整系数多项式方程的根. 1874 年, Cantor 在文章 <span class="link external"><a href="https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article" title="“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen” [https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article]">“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen”</a></span> 中运用多项式高度的概念证明了实代数数的可数性.</p>
-<p>Cantor 的思路很大程度上可以视为一种数论策略. 他首先想的是对多项式 $P$ 定义一个恰当的高度概念 $H(P) \in \N$, 使得一旦我们固定了正整数 $h$, 则只会存在有限个多项式 $P$ 满足 $H(P) = h$, 且任意多项式都能被某个高度覆盖. 即用高度分类全体多项式的同时又控制了多项式的复杂程度. 随后, 代数基本定理保证给定 $n$ 次多项式, 其根在 $\C$ 上至多只有 $n$ 个, 全体代数数便可以写为可数个有限集的并, 如此证得.</p>
-<p>遵循着这种思路, Cantor 给出的高度定义为:</p>
-<p>$$
-H(P) \spaces= \deg P - 1 + \sum_{0 \le i \le n} |a_i|
-$$</p>
-<p>反过来, 任给一个整系数多项式 $P$, 我们都能计算他的 $H(P) \in \N$.</p>
-<p>$\textbf{Lemma.}$ 固定 $h \in \N$, 则集合 $P_h = \{ P \in \Z[x] : H(P) = h \}$ 有限.</p>
-<p>$\textit{proof.}$ 注意到此时多项式的次数最多是 $H$, 因为至少有一个非零整系数 $a_i$ 使得 $|a_i| \ge 1$. 另一方面, 每个 $a_i$ 也满足 $|a_i| \le H$, 因此一个多项式的所有信息都被正整数 $H$ 控制, 故 $P_h$ 有限.</p>
-<p>$\textbf{Lemma.}$ 固定 $h \in \N$, 集合 $R_h = \{ z \in \C : P(z) = 0, P \in P_h \}$ 有限.</p>
-<p>$\textit{proof.}$ 对 $P \in P_h$ 处每一个固定的 $P$ 使用代数基本定理, 便可得到此时的 $z$ 也只有有限多个.</p>
-<p>$\textbf{Theorem.}$ 代数数只有可数多个. 根据代数数域 $\A$ 的定义之一, 我们知道</p>
-<p>$$
-\A \spaces= \bigcup_{h \in \N} R_h
-$$</p>
-<p>所以 $|\A| = |\N|$, 即可数.</p>
-</details></section>
-<section class="block" data-taxon="Example"><details ><summary id="daily-surf-exponent-symmetry"><header><h1><span class="taxon">Example. </span>经典对称幂指数不等式 <a class="slug" href="/daily-surf/exponent-symmetry">[exponent-symmetry]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>设 $0 &lt; x_1, x_2, \cdots, x_n &lt; 1$. 试证</p>
-<p>$$
-x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} &gt; 1
-$$</p>
-<p>利用 <span class="link local"><a href="/daily-surf/YL3B" title=" [daily-surf/YL3B]">Bernoulli 不等式</a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ 得到 $1+\frac{x}{y} &gt; \frac{1}{y^x}$, 即 $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
-<p>$$
-\begin{aligned}
-x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
-&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
-&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
-&amp;\spaces= 1
-\end{aligned}
-$$</p>
-<p>此处 $i+1$ 按照 $\Z/n\Z$ 处理.</p>
 </details></section></p>
 </details></section><footer></footer></article></div></body></html>

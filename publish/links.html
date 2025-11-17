@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1296,7 +1267,7 @@ path.typst-shape[stroke="#000000"] {
 <tr><td style="text-align: right">废紙时雨</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.shigure.fun" title="blog.shigure.fun [https://blog.shigure.fun]">blog.shigure.fun</a></span></td></tr>
 <tr><td style="text-align: right">dada 的研究站</td><td></td><td style="text-align: left"><span class="link external"><a href="https://kono-dada.github.io" title="kono-dada.github.io [https://kono-dada.github.io]">kono-dada.github.io</a></span></td></tr>
 <tr><td style="text-align: right">迷亭的日记</td><td></td><td style="text-align: left"><span class="link external"><a href="https://m1ting.github.io" title="m1ting.github.io [https://m1ting.github.io]">m1ting.github.io</a></span></td></tr>
-<tr><td style="text-align: right">徐天乐 :: 个人博客</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.xtlsoft.top" title="blog.xtlsoft.top [https://blog.xtlsoft.top]">blog.xtlsoft.top</a></span></td></tr>
+<tr><td style="text-align: right">徐天乐</td><td></td><td style="text-align: left"><span class="link external"><a href="https://blog.xtlsoft.top" title="blog.xtlsoft.top [https://blog.xtlsoft.top]">blog.xtlsoft.top</a></span></td></tr>
 <tr><td style="text-align: right">Xinyu Yi</td><td></td><td style="text-align: left"><span class="link external"><a href="https://xinyu-yi.github.io" title="xinyu-yi.github.io [https://xinyu-yi.github.io]">xinyu-yi.github.io</a></span></td></tr>
 <tr><td style="text-align: right">Ashitemaru</td><td></td><td style="text-align: left"><span class="link external"><a href="https://ashitemaru.github.io" title="ashitemaru.github.io [https://ashitemaru.github.io]">ashitemaru.github.io</a></span></td></tr>
 <tr><td style="text-align: right">Chang Wang</td><td></td><td style="text-align: left"><span class="link external"><a href="https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN" title="scholar.google.com/citations?… [https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN]">scholar.google.com/citations?…</a></span></td></tr>
@@ -1343,4 +1314,9 @@ path.typst-shape[stroke="#000000"] {
 <tr><td style="text-align: right">$\beta$-LMFDB</td><td></td><td style="text-align: left"><span class="link external"><a href="https://beta.lmfdb.org" title="beta.lmfdb.org [https://beta.lmfdb.org]">beta.lmfdb.org</a></span></td></tr>
 <tr><td style="text-align: right">Math Genealogy</td><td></td><td style="text-align: left"><span class="link external"><a href="https://www.genealogy.math.ndsu.nodak.edu/index.php" title="www.genealogy.math.ndsu.nodak.edu [https://www.genealogy.math.ndsu.nodak.edu/index.php]">www.genealogy.math.ndsu.nodak.edu</a></span></td></tr>
 </tbody></table>
+<style>
+  td a {
+    word-break: break-all;
+  }
+</style>
 </details></section><footer></footer></article></div></body></html>

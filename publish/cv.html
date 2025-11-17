@@ -527,6 +527,10 @@ path.typst-shape[stroke="#000000"] {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
 }
+</style><style>
+  footer section[data-taxon]:has(a[href="/index"]) {
+    display: none;
+  }
 </style><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
 <link
@@ -1142,39 +1146,6 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-
-<style>
-  body:has(input[value="serena"]:checked) {
-    --hover-primary-color: 246, 227, 220;
-    --link-primary-color: 182, 199, 233;
-
-    --text-color: white;
-    --toc-link-color: rgb(168 173 195);
-    --background-color: rgb(28, 30, 39);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(248, 202, 215);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
 
 <style>
@@ -1292,10 +1263,10 @@ path.typst-shape[stroke="#000000"] {
 <article><section class="block" data-taxon=""><details open><summary id="cv"><header><h1><span class="taxon"></span>Curriculum Vitae <a class="slug" href="/cv">[cv]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">Kokic Liu</a></span></li><li class="meta-item">Undergraduate</li><li class="meta-item">Computer Science</li></ul></div></header></summary>
 <link link rel="stylesheet" href="./assets/cv-style.css">
 <p>Translation, <span class="link external"><a href="https://www.andiamo.co.uk/resources/iso-language-codes" title="en-GB to zh-CN [https://www.andiamo.co.uk/resources/iso-language-codes]">en-GB to zh-CN</a></span>. <span class="link asset"><a href="/assets/translations/Jon%20Sterling%20-%20数学排版工具之要求.pdf" title="“Jon Sterling - 数学排版工具之要求”">“Jon Sterling - 数学排版工具之要求”</a></span>. In October 7, 2025. Also see <span class="link external"><a href="https://www.forester-notes.org/tfmt-000E/index.xml" title="Requirements for typesetting mathematics [https://www.forester-notes.org/tfmt-000E/index.xml]">Requirements for typesetting mathematics</a></span>.</p>
-<p>Open Source Project. <span class="link external"><a href="https://github.com/trees/kokic/kodama" title="Kodama [https://github.com/trees/kokic/kodama]">Kodama</a></span>, A <span class="link external"><a href="https://typst.app/" title="Typst [https://typst.app/]">Typst</a></span>-friendly static Zettelkästen site generator. Inspired by <span class="link external"><a href="https://www.jonmsterling.com/index/index.xml" title="Jon Sterling [https://www.jonmsterling.com/index/index.xml]">Jon Sterling</a></span>’s <span class="link external"><a href="https://www.forester-notes.org/index/index.xml" title="Forester [https://www.forester-notes.org/index/index.xml]">Forester</a></span>. In January 19, 2025 - $\infty$.</p>
+<p>Open Source Project. <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span>, A <span class="link external"><a href="https://typst.app/" title="Typst [https://typst.app/]">Typst</a></span>-friendly static Zettelkästen site generator. Inspired by <span class="link external"><a href="https://www.jonmsterling.com/index/index.xml" title="Jon Sterling [https://www.jonmsterling.com/index/index.xml]">Jon Sterling</a></span>’s <span class="link external"><a href="https://www.forester-notes.org/index/index.xml" title="Forester [https://www.forester-notes.org/index/index.xml]">Forester</a></span>. In January 19, 2025 - $\infty$.</p>
 <p>Lecture Note. <span class="link asset"><a href="/assets/publications/A%20Correspondence%20between%20Stack%20Permutations%20and%20Binary%20Trees%20via%20Hille%20Encoding.pdf" title="“A Correspondence between Stack Permutations and Binary Trees via Hille Encoding”">“A Correspondence between Stack Permutations and Binary Trees via Hille Encoding”</a></span>. In December 10, 2024.</p>
 <p>Lecture Note. <span class="link asset"><a href="/assets/publications/A%20Brief%20Survey%20of%20UMAP.pdf" title="“A Brief Survey of UMAP”">“A Brief Survey of UMAP”</a></span>. In  November 9, 2024.</p>
-<p>Competitive Programming. <span class="link external"><a href="https://www.codewars.com/users/trees/kokic" title="Codewars Rank 2 kyu [https://www.codewars.com/users/trees/kokic]">Codewars Rank 2 kyu</a></span>. Top 1.659%. In October 2024.</p>
+<p>Competitive Programming. <span class="link external"><a href="https://www.codewars.com/users/kokic" title="Codewars Rank 2 kyu [https://www.codewars.com/users/kokic]">Codewars Rank 2 kyu</a></span>. Top 1.659%. In October 2024.</p>
 <p>Conference Participant. <span class="link external"><a href="https://ims.nus.edu.sg/events/formalproofslean/" title="Workshop on Formal Proofs and Lean [https://ims.nus.edu.sg/events/formalproofslean/]">Workshop on Formal Proofs and Lean</a></span>. In <span class="link external"><a href="https://www.nus.edu.sg/" title="National University of Singapore [https://www.nus.edu.sg/]">National University of Singapore</a></span>, <span class="link external"><a href="https://ims.nus.edu.sg/" title="The Institute for Mathematical Sciences [https://ims.nus.edu.sg/]">The Institute for Mathematical Sciences</a></span>, Apr 15, 2024 - Apr 26, 2024.</p>
 <p>Mini-Course Participant. <span class="link external"><a href="https://bicmr.pku.edu.cn/content/show/70-3167.html?catid=KiQhKyYs" title="Algebraic $K$-Theory and Prismatic Cohomology [https://bicmr.pku.edu.cn/content/show/70-3167.html?catid=KiQhKyYs]">Algebraic $K$-Theory and Prismatic Cohomology</a></span>.  <span class="link external"><a href="https://web.math.princeton.edu/~longket/" title="Longke Tang [https://web.math.princeton.edu/~longket/]">Longke Tang</a></span>. In <span class="link external"><a href="https://bicmr.pku.edu.cn" title="Beijing International Center for Mathematical Research [https://bicmr.pku.edu.cn]">Beijing International Center for Mathematical Research</a></span>, December 12, 2023 - January 3, 2024.</p>
 <p>Visiting Scholar. The integration of <span class="link external"><a href="https://lean-lang.org/" title="Lean4 theorem prover [https://lean-lang.org/]">Lean4 theorem prover</a></span> with large language models. Peking University. In <span class="link external"><a href="https://bicmr.pku.edu.cn" title="Beijing International Center for Mathematical Research [https://bicmr.pku.edu.cn]">Beijing International Center for Mathematical Research</a></span>, November 2023 - September 2024. Related Projects &amp; Papers: <span class="link external"><a href="https://arxiv.org/abs/2410.10878v2" title="“Herald: A Natural Language Annotated Lean 4 Dataset” [https://arxiv.org/abs/2410.10878v2]">“Herald: A Natural Language Annotated Lean 4 Dataset”</a></span>, Powered by <span class="link external"><a href="https://github.com/frenzymath/jixia" title="jixia [https://github.com/frenzymath/jixia]">jixia</a></span>, A static analysis tool for Lean 4. <span class="link external"><a href="https://arxiv.org/abs/2403.13310" title="“A Semantic Search Engine for Mathlib4” [https://arxiv.org/abs/2403.13310]">“A Semantic Search Engine for Mathlib4”</a></span>, Powered by <span class="link external"><a href="https://github.com/frenzymath/LeanSearch" title="LeanSearch [https://github.com/frenzymath/LeanSearch]">LeanSearch</a></span>, A semantic search engine for Lean 4 projects.</p>

@@ -1,9 +1,10 @@
 
 ---
-title: 经典对称幂指数不等式
+title: 循环幂和不等式
 date: June 20, 2019
-author: [kokic](/trees/kokic.md)
 taxon: example
+author: [kokic](/trees/kokic.md)
+tag: [](/trees/pearls.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
@@ -14,7 +15,7 @@ $$
 x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} > 1
 $$
 
-利用 [Bernoulli 不等式](/daily-surf/YL3B.md), $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} > \frac{1}{y}$ 得到 $1+\frac{x}{y} > \frac{1}{y^x}$, 即 $y^x > \frac{1}{1+\frac{x}{y}}$. 
+利用 [Bernoulli 不等式](/trees/YL3B.md), $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} > \frac{1}{y}$ 得到 $1+\frac{x}{y} > \frac{1}{y^x}$, 即 $y^x > \frac{1}{1+\frac{x}{y}}$. 
 
 $$
 \begin{aligned}

@@ -4,7 +4,6 @@ title: Daily Surf
 collect: true
 ---
 
-[-](./pftb-p5.md#:embed)
 [-](./bevy.md#:embed)
 [-](./adams.md#:embed)
 [-](./sublime-text-config#:embed)
@@ -13,10 +12,5 @@ collect: true
 [-](./baby-viewpoint.md#:embed)
 [-](./fibonacci-flip.md#:embed)
 [-](./nvidia-fps-gpu-cpu.md#:embed)
-[-](./gaussian-integral.md#:embed)
 [-](./wolfram-engine.md#:embed)
 [-](./file-transfer.md#:embed)
-[-](./GF2A.md#:embed)
-[-](./euclid-step.md#:embed)
-[-](./count-algebraic-number.md#:embed)
-[-](./exponent-symmetry.md#:embed)
