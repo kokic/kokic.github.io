@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1265,4 +1271,83 @@ path.typst-shape[stroke="#000000"] {
 <p>我们在 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
 <p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
 <p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Lemma" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/YL2B">[YL2B]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/YL4A">[YL4A]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="YL2A"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p><span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span> 有许多风格迥然的证明, 最常见的办法可能是使用 <span class="link local"><a href="/trees/YL4A" title=" [trees/YL4A]">定积分</a></span>.</p>
+<p>我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young 引理</a></span>.
+并展示 Young 不等式与其他常见不等式如何作为此结果的直接推论.</p>
+<p><section class="block" data-taxon="Lemma"><details ><summary id="YL2B"><header><h1><span class="taxon">Lemma. </span>Young 引理 <a class="slug" href="/YL2B">[YL2B]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对数函数 $\log$ 的独特性质体现在 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑</p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p>现在对右侧使用对数的线性化, 得到</p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&amp;\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&amp;\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p>我们当然希望 $\log\frac\Box\Box \le 0$. 这就是说, 如果有关于加法和乘法的条件</p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p>那么可以推出 $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ 这样一个指数上的结果. 有时我们也写成</p>
+<p>$$
+p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
+$$</p>
+<p>用完全相同的步骤, 也可以证明任意多个 $p_i$ 和 $f_i$ 时的情况.</p>
+</details></section>
+<section class="block" data-taxon="Corollary"><details ><summary id="YL3A"><header><h1><span class="taxon">Corollary. </span>Young 不等式 <a class="slug" href="/YL3A">[YL3A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们在 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">此处</a></span> 的条件中再添一笔 $p_1+p_2=1$, 然后替换 $(p_1,p_2)$ 为 $(\frac1p, \frac1q)$, 替换 $(f_1,f_2)$ 为 $(a,b)$, 这样就有</p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p>立刻得出 $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, 当且仅当 $a=b$ 取得等号.</p>
+</details></section>
+<section class="block" data-taxon="Corollary"><details ><summary id="YL3B"><header><h1><span class="taxon">Corollary. </span>Bernoulli 不等式 <a class="slug" href="/YL3B">[YL3B]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Bernoulli 不等式是说 $(1+x)^n \ge 1+nx$. 这里 $n \ge 1$, $x \ge -1$. 等价地, 我们来证明</p>
+<p>$$ x^n + n-1 \spaces\ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
+<p>在 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young 引理</a></span> 的条件中令 $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, 这个时候以下条件显然成立</p>
+<p>$$
+\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
+$$</p>
+<p>于是可以得到 $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
+</details></section>
+<section class="block" data-taxon="Corollary"><details ><summary id="YL3C"><header><h1><span class="taxon">Corollary. </span>加权算术平均–几何平均不等式 <a class="slug" href="/YL3C">[YL3C]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>我们要证的结果可以写成下面的样子</p>
+<p>$$
+\Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
+\spaces\le 
+\Big(\sum_{i \in S}w_iz_i\Big) \Big(\sum_{i \in S}w_i\Big)^{-1}
+$$</p>
+<p>实际上可以利用对数的线性化对这个定理给出一个直接的证明, 不过这并非本文的重点. 我们在此处更关心如何将这些表达式调整为适合使用 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">此引理</a></span> 的形式. 先引入一些记号, 用 $\Sigma_w$ 表示 $\sum_{i \in S}w_{i}$, 用 $\omega_i$ 表示 $w_i\Sigma_w^{-1}$. 这样目标就变成了</p>
+<p>$$ \prod_{i \in S}z_i^{\omega_i} \spaces\le \sum_{i \in S}\omega_iz_i $$</p>
+<p>如果把这里的 $\omega_i$ 看作 $p_i$, $z_i$ 看作 $f_i$, $\sum_{i \in S}\omega_iz_i$ 看作 $g$. 那我们只要验证下面这件事</p>
+<p>$$
+\sum_{i \in S}\omega_iz_i \spaces\le \sum_{i \in S}\omega_iz_i
+$$</p>
+<p>而这应该是很容易的. $\quad\Box$</p>
+</details></section></p>
+</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="YL4A"><header><h1><span class="taxon">Exegesis. </span>增函数的 Young 不等式 <a class="slug" href="/YL4A">[YL4A]</a></h1><div class="metadata"><ul><li class="meta-item">May 19, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$</p>
+<p>若 $f$ 是 $[0, c \in \R_{&gt; 0}]$ 上的实值连续严格增函数, 且满足 $f(0) = 0$, $f$ 的反函数记为 $f^{-1}$, 则对于 $a \in [0, c]$, $b \in [0, f(c)]$, 总有</p>
+<p>$$
+ab \spaces\le \int_0^a f(x) \d x + \int_0^b f^{-1}(y) \d y
+$$</p>
+<p>当且仅当 $b=f(a)$ 时取等号. 从图像上看, 这就是说矩形区域 $[0, a] \times [0, b]$ 被 $f$ 分割为上下两部分 $D_1, D_2$. 一般的 $f$ 可能在点 $(a,b)$ 上方或下方, 此时要么满足</p>
+<p>$$
+\text{Area}(D_1) \spaces= \int_0^b f^{-1}(y) \d y
+\quad \land \quad 
+\text{Area}(D_2) \spaces\le \int_0^a f(x) \d x
+$$</p>
+<p>要么满足</p>
+<p>$$
+\text{Area}(D_1) \spaces\le \int_0^b f^{-1}(y) \d y
+\quad \land \quad 
+\text{Area}(D_2) \spaces= \int_0^a f(x) \d x
+$$</p>
+<p>无论哪种情况, $\text{Area}(D_i)$ 相加都可以得到 Young 不等式. 而当 $b = f(a)$ 时, $\text{Area}(D_i)$ 与相应方向的积分总是相等.</p>
+<p>$\textbf{Example.}$ 取 $f(x) = x^{p-1}$, $f: [0, a] \to [0, a^{p-1}]$, $f^{-1}: [0, b] \to [0, b^{\frac1{p-1}}]$. 我们有离散版本的 <span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span>: $ab \le \frac{a^p}{p} + \frac{b^q}{q}$.</p>
+</details></section></details></section></footer></article></div></body></html>

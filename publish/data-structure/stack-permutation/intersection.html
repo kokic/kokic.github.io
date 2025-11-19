@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1268,4 +1274,6 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \binom kj \binom{k+j+2}j
 $$</p>
 <p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-stack-permutation-ratio"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
+</details></section></details></section></footer></article></div></body></html>

@@ -24,9 +24,9 @@ backlinks = "Backlinks"
 typst-root = "trees"
 short-slug = true
 pretty-urls = true
-footer-mode = "link"
+footer-mode = "embed"
 inline-css = true
-asref = true
+asref = false
 output = "./publish"
 
 [serve]

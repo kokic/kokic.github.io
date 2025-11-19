@@ -8,7 +8,7 @@ taxon: lemma
 
 $\gdef\spaces#1{~ #1 ~}$
 
-对数函数 $\log$ 最为特殊的性质可以认为是 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑
+对数函数 $\log$ 的独特性质体现在 $\log a^b = b\log a$ 和 $\log a b = \log a + \log b$. 另一方面, 我们知道对于非负的 $X,Y$, 不等式 $X \le Y$ 等价于 $\log \frac XY \le 0$. 如果我们希望充分利用这三点, 那么就可以试着去考虑
 
 $$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$
 

@@ -21,7 +21,7 @@ L
 \spaces= \int_{-r}^r\dfrac{r}{\sqrt{r^2-x^2}}\d x
 \spaces= r\arcsin\dfrac{x}{r}\bigg|_{-r}^r
 \spaces= \pi r
-$$ 
+$$
 
 因而圆的弧长定义了反正弦函数，即 
 

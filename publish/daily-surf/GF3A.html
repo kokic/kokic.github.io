@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1304,4 +1310,10 @@ $$</p>
 <p>$q^{u}$ 的系数从 $u = 0$ 开始, 则系数可再一次简化为组合数</p>
 <p><figure><img src="/daily-surf/GF3B.svg" class="color-invert"/></figure></p>
 <p>于是明所欲证.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Solution" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/daily-surf/GF2B">[GF2B]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="daily-surf-GF2A"><header><h1><span class="taxon"></span>生成函数系数 <a class="slug" href="/daily-surf/GF2A">[GF2A]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\Z{\mathbf{Z}}$</p>
+<p>设 $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$, 求 $a_n$.</p>
+<p>不难发现, <span class="link local"><a href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]">此处 $a_n$</a></span> 同时也是 $x_1+x_2+x_3 = n$
+于 $\Z_{\ge 0}$ 上解的个数.
+在 <span class="link local"><a href="/daily-surf/GF3A" title="特殊有理函数展开式的系数 [daily-surf/GF3A]">$(1-q)^{-n}$ 的系数</a></span> 中取 $n = 3$, 得到 $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+</details></section></details></section></footer></article></div></body></html>

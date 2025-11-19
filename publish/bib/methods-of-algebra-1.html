@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1277,4 +1283,52 @@ path.typst-shape[stroke="#000000"] {
   publisher={高等教育出版社}
 }
 </code></pre>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Reference" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Reference. </span>意象理论讲义 <a class="slug" href="/bib/jin2024topos">[jin2024topos]</a></h1><div class="metadata"><ul><li class="meta-item">November 20, 2024</li><li class="meta-item">王进一</li><li class="meta-item"><span class="link external"><a href="https://github.com/SimplicialCat/topos/blob/main/topos.pdf" title="电子版 [https://github.com/SimplicialCat/topos/blob/main/topos.pdf]">电子版</a></span></li></ul></div></header></section><section class="block" data-taxon="Axiom" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Reference"><details ><summary id="bib-jin2024topos"><header><h1><span class="taxon">Reference. </span>意象理论讲义 <a class="slug" href="/bib/jin2024topos">[jin2024topos]</a></h1><div class="metadata"><ul><li class="meta-item">November 20, 2024</li><li class="meta-item">王进一</li><li class="meta-item"><span class="link external"><a href="https://github.com/SimplicialCat/topos/blob/main/topos.pdf" title="电子版 [https://github.com/SimplicialCat/topos/blob/main/topos.pdf]">电子版</a></span></li></ul></div></header></summary>
+<p>本书对数学没有原创性的贡献, 其中几乎所有结果在 20 世纪已经为该领域的专家所熟知. 但是大部分内容找不到成体系的中文资料 (除了李文威老师的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">代数学方法</a></span>), 这是我编写本书的动机之一.</p>
+<p>内容的编排原则大致是使初学者最易接受, 并且提供启发性的观点, 从而使人能更快入门去看更多的资料. 本书收录的论证都是十分简单而直观的; 阅读本书虽不能让人成为本领域的专家, 但能让人发现一些事情并非想象的那样困难, 在将玄妙的概念祛魅的过程中产生信心和乐趣.</p>
+<p>书中许多内容的含入仅仅是由于个人的品味, 例子的选取受到了本人的微分几何与代数拓扑背景的影响. 一些证明出自本人的思考, 因此错漏是难免的. 限于水平, 书中许多细节无法深究, 包括有关集合论的 “小” 性的问题, 以及其它涉及到数学基础的问题. 许多术语没有通行的中文版本, 姑且使用了本人的翻译, 书后附有一个简短的术语表.</p>
+<pre><code>@book{jin2024topos, 
+  title={意象理论讲义}, 
+  author={王进一}, 
+  year={2024}
+}
+</code></pre>
+</details></section><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p><figure><img src="/data-structure/synthetic-differential/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
+<p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
+<p>$$ 
+f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
+$$</p>
+<p>将这里的 $a$ 换成 $f(0)$, 并完全使用量词叙述, 则是</p>
+<p>$$ 
+\forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
+$$</p>
+<p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
+<p><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-synthetic-differential-smooths"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/synthetic-differential/smooths">[smooths]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
+<p>$$
+f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
+$$</p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
+<p><figure><img src="/data-structure/synthetic-differential/maclaurin.svg" class="color-invert"/></figure></p>
+</details></section></p>
+<blockquote>
+<p>Axiom is incompatible with the law of excluded middle.
+Either the one or the other has to leave the scene.
+In Part I of this book, the law of excluded middle has to leave,
+being incompatible with the natural synthetic reasoning
+on smooth geometry to be presented here.
+In the terms which the logicians use, this means that
+the logic employed is ‘constructive’ or ‘intuitionistic’.
+We prefer to think of it just as ‘that reasoning
+which can be carried out in all sufficiently good
+cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
+</blockquote>
+</details></section></details></section></footer></article></div></body></html>

@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1277,4 +1283,115 @@ $$</p>
   <sup class="footnote-definition-label"><a href="#data-structure_synthetic-differential_schanuel-lavendhomme_impossible-back">1</a></sup>
 <p>尽管这个陈述是比较显然的, 不过我们还是说明一下, 这里在表达的是 $|D\smallsetminus\{0\}| &gt; 0$ 这样的意思.</p>
 </div>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition"><details ><summary id="data-structure-synthetic-differential-dual-number"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
+<p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
+<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/synthetic-differential/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/synthetic-differential/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/linear-algebra/casus-irreducibilis" title="Casus irreducibilis [linear-algebra/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
+<p><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\R{\mathbf{R}}$</p>
+<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
+<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
+<p><figure><img src="/data-structure/synthetic-differential/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
+<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
+<p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
+<p>$$ 
+f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
+$$</p>
+<p>将这里的 $a$ 换成 $f(0)$, 并完全使用量词叙述, 则是</p>
+<p>$$ 
+\forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
+$$</p>
+<p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
+<p><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-synthetic-differential-smooths"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/synthetic-differential/smooths">[smooths]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
+<p>$$
+f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
+$$</p>
+<p>这个通常作为 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
+<p><figure><img src="/data-structure/synthetic-differential/maclaurin.svg" class="color-invert"/></figure></p>
+</details></section></p>
+<blockquote>
+<p>Axiom is incompatible with the law of excluded middle.
+Either the one or the other has to leave the scene.
+In Part I of this book, the law of excluded middle has to leave,
+being incompatible with the natural synthetic reasoning
+on smooth geometry to be presented here.
+In the terms which the logicians use, this means that
+the logic employed is ‘constructive’ or ‘intuitionistic’.
+We prefer to think of it just as ‘that reasoning
+which can be carried out in all sufficiently good
+cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
+</blockquote>
+</details></section></p>
+<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
+<p><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
+<p><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a &amp; -b \\
+b &amp; ~~~a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
+$$</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a &amp; a' \\
+0 &amp; a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
+$$</p>
+</details></section>
+<section class="block" data-taxon="Example"><details ><summary id="data-structure-synthetic-differential-derived-differential"><header><h1><span class="taxon">Example. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential/derived-differential">[derived-differential]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\Z{\mathbf{Z}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $u, v \in R^R$, $n \in \Z$. 记 $A(u, u') = (\begin{smallmatrix} u &amp; u' \\ 0 &amp; u \end{smallmatrix})$. 从矩阵运算中立刻得到</p>
+<ol>
+<li>$A(u, u') + A(v, v') \spaces= A(u+v, u'+v')$</li>
+<li>$A(u, u') - A(v, v') \spaces= A(u-v, u'-v')$</li>
+<li>$A(u, u') \cdot A(v, v') \spaces= A(uv, u'v + uv')$</li>
+<li>$A(u, u') \cdot (A(v, v'))^{-1} \spaces= A(uv^{-1}, (u'v - uv')v^{-2})$</li>
+<li>$(A(u, u'))^n = A(u^n, nu^{n-1}u')$</li>
+</ol>
+<p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可验证:</p>
+<p>$$
+\begin{pmatrix} \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k &amp; \sum_{k \ge 0} (-1)^k (u-1)^k \cdot u'  \\ 0 &amp; \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k \end{pmatrix}
+\spaces= 
+\begin{pmatrix} \log u &amp; u'u^{-1} \\ 0 &amp; \log u \end{pmatrix}
+$$</p>
+</details></section>
+<section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-chain-rule"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential/chain-rule">[chain-rule]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
+<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
+<p>$$
+A(u)_x \spaces\eqdef \begin{pmatrix} u_x &amp; u'_x \\ 0 &amp; u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
+$$</p>
+<p>对于 $u: Y \to Z$, $v: X \to Y$. $A$ 上的复合 $A(u) \circ A(v)$ 可定义为 $A(u)_{v_x}$, $(v_x, v'_x) \in A(v)_x$. 我们来验证 $A(u) \circ A(v) = A(u \circ v)$.</p>
+<p>$$
+\begin{aligned}
+A(u)_{v_x} 
+&amp;\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
+&amp;\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
+&amp;\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
+\end{aligned}
+$$</p>
+</details></section></p>
+</details></section></details></section></footer></article></div></body></html>

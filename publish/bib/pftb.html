@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1268,4 +1274,33 @@ path.typst-shape[stroke="#000000"] {
   publisher={Springer}
 }
 </code></pre>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="" style="margin-bottom: 0.4em;"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/pftb-P005">[pftb-P005]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK, p. 5</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="pftb-P005"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/pftb-P005">[pftb-P005]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK, p. 5</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<style>
+.kaiti {
+  font-family: "LXGW WenKai TC", serif;
+  font-style: normal;
+}
+</style>
+<p>$\gdef\Z{\mathbf{Z}}$
+$\gdef\PP{\mathbf{P}}$</p>
+<p>此证明由 <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> 于 1955 年提出 <sup class="footnote-reference" id="pftb-P005_furstenberg-back"><a href="#pftb-P005_furstenberg">1</a></sup>. 这一页配图的说明文字也很有意思, 其写道</p>
+<blockquote>
+<p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span></p>
+</blockquote>
+<p>对 $a,b \in \Z, b &gt; 0$, 令 $N_{a,b} = \{ a + nb : n \in \Z \}$. 每个集合 $N_{a,b}$ 都是正负无界的算术级数. 如果集合 $O \subseteq \Z$ 满足以下条件之一:</p>
+<ol>
+<li>$O$ 是空集.</li>
+<li>对任意的 $a \in O$ 存在 $b &gt; 0$ 使得 $N_{a,b} \subseteq O$.</li>
+</ol>
+<p>则称 $O$ 是开集. 这些条件保证 $O$ 在 $a$ 点附近 “稠密”. 显然, 开集的并总是开集. 另外, 如果 $O_1$ 和 $O_2$ 开, 则对任意的 $a \in O_1 \cap O_2$, $N_{a,b_1} \subseteq O_1$ 及 $N_{a,b_2} \subseteq O_2$, 都有 $a \in N_{a,b_1b_2} \subseteq O_1 \cap O_2$. 所以开集的有限交也开. 从而此处定义的开集族的确导出了 $\Z$ 上的一个拓扑. 随后, 我们注意:</p>
+<p>   $(\text{A})$ 每个非空的开集都是无界的, 显然. <br />
+   $(\text{B})$ 每个 $N_{a,b}$ 都是既开又闭的. 因为 $N_{a,b} = \mathbb{Z} \setminus \bigcup_{i=1}^{b-1} N_{a+i,b}$, 这说明 $N_{a,b}$ 是开集的补, 因而闭.</p>
+<p>现在我们引出素数. 对于每个整数 $n \neq 1,-1$ 都有某个素因子 $p$ 使得 $n \in N_{0,p}$ 以及 $\Z \setminus \{\pm1\} = \bigcup_{p \in \PP} N_{0,p}$. 如果 $\PP$ 是有限的, 那么根据 $(\text B)$, $\bigcup_{p \in \PP} N_{0,p}$ 将是有限个闭集的并, 所以是闭的. 进而可以导出 $\{\pm1\}$ 是一个开集, 这与 $(\text A)$ 矛盾, 证毕.</p>
+<p>我们回顾证明, 不难发现核心是用拓扑解释 “每个整数都有素因子” 这件事, 进而 $\bigcup_{p \in \PP} N_{0,p} = \Z \setminus \{\pm1\}$ 在 $\Z$ 上稠密, 于是 $\PP$ 绝不可能有限. 此方法实质利用了算术级数的性质, 而非拓扑内涵. 所以也可以翻译成不使用拓扑的版本, 见 Idris D. Mercer 写的 
+<span class="link external"><a href="http://www.idmercer.com/monthly355-356-mercer.pdf" title="On Furstenberg’s Proof of theInfinitude of Primes [http://www.idmercer.com/monthly355-356-mercer.pdf]">On Furstenberg’s Proof of theInfinitude of Primes</a></span>.</p>
+<div class="footnote-definition" id="pftb-P005_furstenberg">
+  <sup class="footnote-definition-label"><a href="#pftb-P005_furstenberg-back">1</a></sup>
+<p>Furstenberg 当时是 Yeshiva 大学的本科生, 其在美国数学月刊上发表了 <span class="link external"><a href="https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes" title="“On the infinitude of primes” [https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes]">“On the infinitude of primes”</a></span>, 这才有了 <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> 对此证明的收录.</p>
+</div>
+</details></section></details></section></footer></article></div></body></html>

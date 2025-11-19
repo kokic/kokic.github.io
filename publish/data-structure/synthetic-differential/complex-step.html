@@ -149,6 +149,18 @@ pre>code {
   content: "]";
 }
 
+.katex {
+  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
+  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
+  line-height: 1.1em;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: 1.25em;
+}
+
 p:has(span.katex-html:empty) {
   display: none;
 }
@@ -156,6 +168,12 @@ p:has(span.katex-html:empty) {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
 }
 
 .display-none {
@@ -531,17 +549,20 @@ path.typst-shape[stroke="#000000"] {
   footer section[data-taxon]:has(a[href="/index"]) {
     display: none;
   }
-</style><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+</style><link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@700&display=swap" rel="stylesheet">
+  rel="stylesheet" />
 
 <style>
   body {
-    font-family: "Inria Sans", "Noto Sans SC", sans-serif;
+    font-family: "Inria Sans", sans-serif;
+    line-height: 1.55;
+  }
+
+  .cjk_fallback {
+    font-family: "Inria Sans", sans-serif;
   }
 
   pre,
@@ -565,9 +586,8 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous">
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
   integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
@@ -579,46 +599,32 @@ path.typst-shape[stroke="#000000"] {
   document.addEventListener("DOMContentLoaded", function () {
     renderMathInElement(document.body, {
       delimiters: [
-        { left: '$$', right: '$$', display: true },
-        { left: '$', right: '$', display: false },
-        { left: '\\(', right: '\\)', display: false },
-        { left: '\\[', right: '\\]', display: true }
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
       ],
+      trust: true,
       strict: false,
       throwOnError: false,
       minRuleThickness: 0.05,
     });
   });
-</script>
+</script><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
 
-<style>
-  .katex {
-    font: normal 1.1em KaTeX_Main, Times New Roman, serif;
-    line-height: 1.1em;
-    text-indent: 0;
-    text-rendering: auto
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
   }
 
-  .katex .mfrac .frac-line {
-    font-size: 1.25em;
-  }
-</style>
-<script>
-   function toggleDetailsOpen() {
-      const details = document.querySelector("#toc>div>details");
-      if (!details) return;
-
-      if (window.matchMedia("(max-width: 1000px)").matches) {
-         details.removeAttribute("open");
-      } else {
-         details.setAttribute("open", "");
-      }
-   }
-
-   document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-   window.addEventListener("resize", toggleDetailsOpen);
-</script>
-<style>
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
   theme-option {
     display: inline-block;
   }
@@ -1285,4 +1291,40 @@ $$</p>
   <sup class="footnote-definition-label"><a href="#data-structure_synthetic-differential_complex-step_distinguish-back">3</a></sup>
 <p>习惯上会混淆 $x$ 与 $X$.</p>
 </div>
-</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Definition" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Axiom" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section><section class="block" data-taxon="Exegesis" style="margin-bottom: 0.4em;"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></section></details></section></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\C{\mathbf{C}}$
+$\gdef\spaces#1{~ #1 ~}$</p>
+<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
+<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
+<p><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a &amp; -b \\
+b &amp; ~~~a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
+$$</p>
+<p>我们也可以构造 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
+<p>$$
+A \spaces= \begin{pmatrix}
+a &amp; a' \\
+0 &amp; a \\
+\end{pmatrix}
+,\quad
+\det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
+$$</p>
+</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-moler-correction"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 对数值微分误差的修正 <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\C{\mathbf{C}}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\eqq{\quads=}$</p>
+<p>选取同样的 $h=10^{-5}$, 以下计算表明 <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">Moler 的方法</a></span> 相比 <span class="link local"><a href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">此处</a></span> 基于有限差分的数值微分方法能够很好的避免精度损失.</p>
+<p>$$
+\frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
+$$</p>
+<p>实际上此处 $h$ 的选取, 只要其非零, 从而带有 $i$ 的项不消失, 就不会影响到最终的结果. 换言之, 这个方法从根本上来说, 是无关于 $h \in \R\smallsetminus\{0\}$ 和 $i$ 的, 只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论. 一旦意识到这一点, 我们便可以将 <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的</p>
+<p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
+<p>中的近似 “$\approx$” <span class="link local"><a href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">修正</a></span> 为严格等于 “$=$”, 这只需要将 $\{z \in \C : z^2 = -1\}$ 替换为 $D = \{x \in R : x^2 = 0\}$, 问题就来到了如何构造这样的 $R$ 使得 $D$ 中有非零的元素, 这样的结构实际上会 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">动摇</a></span> 经典逻辑中对于排中律的看法.</p>
+</details></section></details></section></footer></article></div></body></html>
