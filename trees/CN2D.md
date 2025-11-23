@@ -13,3 +13,5 @@ $\gdef\spaces#1{~ #1 ~}$
 $$
 \Big(a_1b_1 - \sum_{k=2}^na_kb_k\Big)^2 \spaces\ge \Big(a_1^2 - \sum_{k=2}^na_k^2\Big) \Big(b_1^2 - \sum_{k=2}^nb_k^2\Big)
 $$
+
+由于 [](./CN2A.md), [](./CN2D.md) 实际上是 [](./CN2B.md) 的另一种表达形式. 

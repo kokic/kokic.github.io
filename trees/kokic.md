@@ -8,5 +8,5 @@ collect: true
 ---
 
 [](./contact.md#:embed)
-[](./projects/index.md#:embed)
 [](./cv.md#:embed)
+[](./links.md#:embed)

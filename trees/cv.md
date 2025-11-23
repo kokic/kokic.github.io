@@ -7,9 +7,6 @@ status: Undergraduate
 major: Computer Science
 ---
 
-<link link rel="stylesheet" href="./assets/cv-style.css">
-
-
 Translation, [en-GB to zh-CN][language-codes]. ["Jon Sterling - 数学排版工具之要求"](/assets/translations/Jon%20Sterling%20-%20数学排版工具之要求.pdf). In October 7, 2025. Also see [Requirements for typesetting mathematics](https://www.forester-notes.org/tfmt-000E/index.xml). 
 
 Open Source Project. [Kodama](https://github.com/kokic/kodama), A [Typst](https://typst.app/)-friendly static Zettelkästen site generator. Inspired by [Jon Sterling](https://www.jonmsterling.com/index/index.xml)'s [Forester](https://www.forester-notes.org/index/index.xml). In January 19, 2025 - $\infty$. 

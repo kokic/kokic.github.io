@@ -999,221 +999,16 @@ path.typst-shape[stroke="#000000"] {
   }
 </script></head><body><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic)  -->
-<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
-
-<style>
-  body:has(input[value="moon"]:checked) {
-    --hover-primary-color: 181, 140, 114;
-
-    --text-color: rgb(32, 28, 48);
-    --toc-link-color: #555;
-    --background-color: rgb(255, 238, 228);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-
-    --link-color: rgb(227, 66, 114);
-    --slug-color: rgb(184, 170, 161);
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: black;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-    --em-color: rgb(220, 121, 113);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="moon"]:checked) {
-      --hover-primary-color: 196, 136, 193;
-
-      --text-color: rgb(187 176 169);
-      --toc-link-color: rgb(187 176 169);
-      --background-color: rgb(32, 28, 48);
-
-      --background-color-pre: rgba(100, 100, 100, 0.2);
-      --background-color-code: rgba(150, 150, 150, 0.2);
-
-      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: rgb(255, 128, 165);
-      --slug-color: #aeaeae;
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: rgb(236, 230, 226);
-      --em-color: rgb(255, 219, 230);
-
-      .block:has(.block:hover) {
-        background-color: var(--background-color);
-      }
-    }
-  }
-
-  body:has(input[value="moon-light"]:checked) {
-    --hover-primary-color: 181, 140, 114;
-
-    --text-color: rgb(32, 28, 48);
-    --toc-link-color: #555;
-    --background-color: rgb(255, 238, 228);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-
-    --link-color: rgb(227, 66, 114);
-    --slug-color: rgb(184, 170, 161);
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: black;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-    --em-color: rgb(220, 121, 113);
-  }
-
-  body:has(input[value="moon-dark"]:checked) {
-    --hover-primary-color: 196, 136, 193;
-
-    --text-color: rgb(187 176 169);
-    --toc-link-color: rgb(187 176 169);
-    --background-color: rgb(32, 28, 48);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(255, 128, 165);
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(236, 230, 226);
-    --em-color: rgb(255, 219, 230);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="moon">朔望</theme-option>
-<theme-option name="moon-light">望月</theme-option>
-<theme-option name="moon-dark">朔月</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-<!-- Inspired by https://www.forester-notes.org/ -->
 
 <style>
-  body:has(input[value="default"]:checked) {
-    --text-color: black;
-    --toc-link-color: #555;
-    --background-color: white;
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(0, 100, 255, 0.04);
-    --hover-color-link: rgba(0, 100, 255, 0.1);
-    --target-color: rgb(67, 92, 255);
-
-    --link-color: black;
-    --slug-color: gray;
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: #444;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="default"]:checked) {
-      --text-color: white;
-      --toc-link-color: white;
-      --background-color: #2f2f2f;
-
-      --background-color-pre: rgba(100, 100, 100, 0.2);
-      --background-color-code: rgba(150, 150, 150, 0.2);
-
-      --hover-color-block: rgba(100, 162, 255, 0.06);
-      --hover-color-link: rgba(100, 162, 255, 0.2);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: white;
-      --slug-color: #aeaeae;
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: #bbb;
-    }
-  }
-</style>
-
-<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
-<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
-
-<style>
-  body:has(input[value="zen"]:checked) {
-    --hover-primary-color: 229, 229, 229;
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
     --link-primary-color: 115, 80, 87;
 
     --text-color: rgb(20, 22, 27);
     --toc-link-color: #555;
-    --background-color: rgb(238, 238, 238);
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(var(--hover-primary-color));
-    --hover-color-link: rgba(201, 201, 201);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: rgb(99, 99, 99);
-    --logo-color: #999;
-    --logo-hover-color: #666;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(53, 53, 53);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="zen"]:checked) {
-      --hover-primary-color: 34, 34, 34;
-      --link-primary-color: 150, 150, 150;
-
-      --text-color: rgb(222, 223, 231);
-      --toc-link-color: #555;
-      --background-color: rgb(25, 25, 25);
-
-      --background-color-pre: rgba(0, 100, 100, 0.04);
-      --background-color-code: rgba(0, 100, 100, 0.04);
-
-      --hover-color-block: rgba(var(--hover-primary-color));
-      --hover-color-link: rgb(64, 64, 64);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: rgb(var(--link-primary-color));
-      --slug-color: rgb(99, 99, 99);
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: rgb(var(--link-primary-color));
-      --em-color: rgb(139, 139, 139);
-    }
-  }
-
-  body:has(input[value="zen-light"]:checked) {
-    --hover-primary-color: 229, 229, 229;
-    --link-primary-color: 115, 80, 87;
-
-    --text-color: rgb(20, 22, 27);
-    --toc-link-color: #555;
-    --background-color: rgb(238, 238, 238);
+    --background-color: #ffffff;
 
     --background-color-pre: rgba(0, 100, 100, 0.04);
     --background-color-code: rgba(0, 100, 100, 0.04);
@@ -1233,42 +1028,13 @@ path.typst-shape[stroke="#000000"] {
       background-color: var(--background-color);
     }
   }
-
-  body:has(input[value="zen-dark"]:checked) {
-    --hover-primary-color: 34, 34, 34;
-    --link-primary-color: 150, 150, 150;
-
-    --text-color: rgb(222, 223, 231);
-    --toc-link-color: #555;
-    --background-color: rgb(25, 25, 25);
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(var(--hover-primary-color));
-    --hover-color-link: rgba(64, 64, 64, 0.3);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: rgb(99, 99, 99);
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(139, 139, 139);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
 </style>
 
-<theme-option name="zen-light">zen light</theme-option>
-<theme-option name="zen-dark">zen dark</theme-option>
-<theme-option name="zen">zen</theme-option></div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/index" title="千高原 [mille-plateaux/index]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-index'"><span class="taxon"> 1. </span>千高原</span><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1.1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1.1. </span>古代物理学博士问题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.1.2. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.1.3. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 1.2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 1.3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/index" title="数据与可计算结构 [data-structure/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-index'"><span class="taxon"> 2. </span>数据与可计算结构</span><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span>七树合一定理</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 2.1. </span>二叉树类型</span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2.2. </span>Blass–Lawvere 定理</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-isomorphism'"><span class="taxon"></span>栈置换–二叉树同构</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 2.1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2.2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-three-nodes'"><span class="taxon">Example 2.3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-equivalence'"><span class="taxon">Proposition 2.4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-intersection'"><span class="taxon">Proposition 2.5. </span>相交数</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-ratio'"><span class="taxon">Corollary 2.6. </span>相交率</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/bounds" title="有效长度的上下界 [data-structure/stack-permutation/bounds]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-bounds'"><span class="taxon">Exegesis 2.7. </span>有效长度的上下界</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential/index" title="综合微分法 [data-structure/synthetic-differential/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-index'"><span class="taxon"></span>综合微分法</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-numerical'"><span class="taxon">Exegesis 2.1. </span>数值微分的误差</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-complex-step'"><span class="taxon">Exegesis 2.2. </span>复步微分法</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-moler-correction'"><span class="taxon">Exegesis 2.3. </span>误差修正</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-dual-number'"><span class="taxon">Definition 2.4. </span>对偶数</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-kock-lawvere'"><span class="taxon">Axiom 2.4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-matrix-represent'"><span class="taxon">Exegesis 2.4.2. </span>矩阵表示</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-derived-differential'"><span class="taxon">Example 2.4.3. </span>导出微分运算</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/chain-rule" title="链式法则 [data-structure/synthetic-differential/chain-rule]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-chain-rule'"><span class="taxon">Exegesis 2.4.4. </span>链式法则</span></li></ul></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/index" title="线性代数杂记 [linear-algebra/index]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-index'"><span class="taxon"> 3. </span>线性代数杂记</span><ul class="block"><li class="item-summary"><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity'"><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-2A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-2A'"><span class="taxon">Exegesis. </span>$n=2$ 交换版本</span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient'"><span class="taxon">Theorem. </span>Rayleigh 商定理</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2A" title=" [linear-algebra/rayleigh-quotient-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2A'"><span class="taxon">Exegesis 3.1. </span> 某类二次型的商</span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2B" title=" [linear-algebra/rayleigh-quotient-2B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2B'"><span class="taxon">Example 3.2. </span> 二阶情形</span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-3A" title=" [linear-algebra/rayleigh-quotient-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-3A'"><span class="taxon">Example 3.3. </span> 一般二次型的商</span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-permutation-matrix'"><span class="taxon">Exegesis. </span>置换矩阵构造</span></li><li class="item-summary"><a class="bullet" href="/linear-algebra/amtx" title="自动机与矩阵求逆 [linear-algebra/amtx]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx'"><span class="taxon">Exegesis. </span>自动机与矩阵求逆</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 3.1. </span>正则语言集</span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 3.2. </span>关于半环的注释</span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3.3. </span>星半环</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-2A" title="矩阵闭包 [linear-algebra/amtx-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-2A'"><span class="taxon">Exegesis 3.4. </span>矩阵闭包</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3A" title="二阶矩阵的逆 [linear-algebra/amtx-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3A'"><span class="taxon">Example 3.5. </span>二阶矩阵的逆</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3B" title="分块矩阵的逆 [linear-algebra/amtx-3B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3B'"><span class="taxon">Example 3.6. </span>分块矩阵的逆</span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/index" title="Daily Surf [daily-surf/index]">■</a><span class="link local" onclick="window.location.href='#daily-surf-index'"><span class="taxon"> 4. </span>Daily Surf</span><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/index" title="翠玉录 [smaragdina/index]">■</a><span class="link local" onclick="window.location.href='#smaragdina-index'"><span class="taxon"> 5. </span>翠玉录</span><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 “你的电影没有意义” 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch 对于人们说 “你的电影没有意义” 的回应</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon"></span>The Celtic Myths 摘录</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/mourn-lawvere" title="为民主提供现代定义 — 悼念 F. William Lawvere [smaragdina/mourn-lawvere]">■</a><span class="link local" onclick="window.location.href='#smaragdina-mourn-lawvere'"><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere</span></li></ul></li></ul></details></div></nav>
+<theme-option name="printer" style="display: none;">printer</theme-option>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/index" title="千高原 [mille-plateaux/index]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-index'"><span class="taxon"> 1. </span>千高原</span><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1.1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1.1. </span>古代物理学博士问题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.1.2. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.1.3. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 1.2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 1.3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/index" title="数据与可计算结构 [data-structure/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-index'"><span class="taxon"> 2. </span>数据与可计算结构</span><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span>七树合一定理</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 2.1. </span>二叉树类型</span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2.2. </span>Blass–Lawvere 定理</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-isomorphism'"><span class="taxon"></span>栈置换–二叉树同构</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 2.1. </span>栈置换</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2.2. </span>Hille 编码</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-three-nodes'"><span class="taxon">Example 2.3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-equivalence'"><span class="taxon">Proposition 2.4. </span>栈编码与 Hille 编码的等价性</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-intersection'"><span class="taxon">Proposition 2.5. </span>相交数</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-ratio'"><span class="taxon">Corollary 2.6. </span>相交率</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/bounds" title="有效长度的上下界 [data-structure/stack-permutation/bounds]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-bounds'"><span class="taxon">Exegesis 2.7. </span>有效长度的上下界</span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential/index" title="综合微分法 [data-structure/synthetic-differential/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-index'"><span class="taxon"></span>综合微分法</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-numerical'"><span class="taxon">Exegesis 2.1. </span>数值微分的误差</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-complex-step'"><span class="taxon">Exegesis 2.2. </span>复步微分法</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-moler-correction'"><span class="taxon">Exegesis 2.3. </span>误差修正</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-dual-number'"><span class="taxon">Definition 2.4. </span>对偶数</span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-kock-lawvere'"><span class="taxon">Axiom 2.4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-matrix-represent'"><span class="taxon">Exegesis 2.4.2. </span>矩阵表示</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-derived-differential'"><span class="taxon">Example 2.4.3. </span>导出微分运算</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/chain-rule" title="链式法则 [data-structure/synthetic-differential/chain-rule]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-chain-rule'"><span class="taxon">Exegesis 2.4.4. </span>链式法则</span></li></ul></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/index" title="线性代数杂记 [linear-algebra/index]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-index'"><span class="taxon"> 3. </span>线性代数杂记</span><ul class="block"><li class="item-summary"><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity'"><span class="taxon">Conjecture. </span>Kontsevich 周期性猜想</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-2A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-2A'"><span class="taxon">Exegesis. </span>$n=2$ 交换版本</span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient'"><span class="taxon">Theorem. </span>Rayleigh 商定理</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2A" title=" [linear-algebra/rayleigh-quotient-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2A'"><span class="taxon">Exegesis 3.1. </span> 某类二次型的商</span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2B" title=" [linear-algebra/rayleigh-quotient-2B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2B'"><span class="taxon">Example 3.2. </span> 二阶情形</span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-3A" title=" [linear-algebra/rayleigh-quotient-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-3A'"><span class="taxon">Example 3.3. </span> 一般二次型的商</span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-permutation-matrix'"><span class="taxon">Exegesis. </span>置换矩阵构造</span></li><li class="item-summary"><a class="bullet" href="/linear-algebra/amtx" title="自动机与矩阵求逆 [linear-algebra/amtx]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx'"><span class="taxon">Exegesis. </span>自动机与矩阵求逆</span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 3.1. </span>正则语言集</span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 3.2. </span>关于半环的注释</span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3.3. </span>星半环</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-2A" title="矩阵闭包 [linear-algebra/amtx-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-2A'"><span class="taxon">Exegesis 3.4. </span>矩阵闭包</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3A" title="二阶矩阵的逆 [linear-algebra/amtx-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3A'"><span class="taxon">Example 3.5. </span>二阶矩阵的逆</span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3B" title="分块矩阵的逆 [linear-algebra/amtx-3B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3B'"><span class="taxon">Example 3.6. </span>分块矩阵的逆</span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/index" title="Daily Surf [daily-surf/index]">■</a><span class="link local" onclick="window.location.href='#daily-surf-index'"><span class="taxon"> 4. </span>Daily Surf</span><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> 备注</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams 谱序列</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 高分屏设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter 主题设置</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git 过滤分支</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span>日经观点</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci 抛硬币</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span>屏幕右上角的 “FPS GPU CPU 延时”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram 引擎与 WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span>文件互传</span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/index" title="翠玉录 [smaragdina/index]">■</a><span class="link local" onclick="window.location.href='#smaragdina-index'"><span class="taxon"> 5. </span>翠玉录</span><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 “你的电影没有意义” 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch 对于人们说 “你的电影没有意义” 的回应</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon"></span>The Celtic Myths 摘录</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/mourn-lawvere" title="为民主提供现代定义 — 悼念 F. William Lawvere [smaragdina/mourn-lawvere]">■</a><span class="link local" onclick="window.location.href='#smaragdina-mourn-lawvere'"><span class="taxon"></span>为民主提供现代定义 — 悼念 F. William Lawvere</span></li></ul></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="index"><header><h1><span class="taxon"></span>回声 <a class="slug" href="/index">[index]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>本站点使用 <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> 构建,
-可在 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span> 查看网页源文件.
+<p>本站使用 <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> 构建, 源文件位于 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span>.
 另有专栏 <span class="link local"><a href="/pearls" title="Pearls [pearls]">证明珠玑</a></span>.</p>
 <p><section class="block hide-metadata" data-taxon=""><details ><summary id="mille-plateaux-index"><header><h1><span class="taxon"> 1. </span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
@@ -2361,21 +2127,21 @@ em {
     <div><strong>原文:</strong> Central Committee, Communist Party of Canada (Marxist-Leninist), <strong>Providing Democracy with a Modern Definition</strong>. TML MONTHLY, Newspaper of the Communist Party of Canada (Marxist-Leninist). Volume 53 Number 1 - January 2023. <a href="https://cpcml.ca/Tmlm2023/Articles/M530010.HTM"><span style="color: #ed008c;">https://cpcml.ca/Tmlm2023/Articles/M530010.HTM</span></a>.</div>
   </div>
   <p><br></p>
-  <p>我们怀着深深的悲痛通知您, 著名数学家威廉·劳维尔 (William Lawvere) 博士于 2023 年 1 月 23 日去世. 劳维尔教授是加拿大共产党 (马列主义) 的好友, 他总在文明大道上前进, 致力于对抗并改变社会上的陈旧道德观念, 消除进步启蒙道路上的障碍.</p>
-  <p>从 1970 年代初开始, 他与 CPC (M-L) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即</span> <em><span style="color: #aaaaaa;">Communist Party of Canada</span> <span style="color: #aaaaaa;">(Marxist-Leninist)</span></em><span style="color: #aaaaaa;">, 加拿大共产党</span> <span style="color: #aaaaaa;">(马列主义)</span><span style="color: #aaaaaa;">]</span> 的创始人和领导人哈迪尔·贝恩斯 (Hardial Bains) 一起从事了几个与变革的必要性和辩证法相关的哲学和其他项目, 哈迪尔·贝恩斯本身就是一位科学家和哲学家. 从 1969 年到 1971 年, 他是哈利法克斯达尔豪斯大学 <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Halifax, Dalhousie University</span></em><span style="color: #aaaaaa;">]</span> 的 Killam 学者, 是一个著名的国际数学家团队的负责人, 他们来那里与他一起学习. 但在 1971 年, 当劳维尔教授抗议<span class="kaiti">《战争措施法》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">War Measures Act</span></em><span style="color: #aaaaaa;">]</span> 和皮埃尔·特鲁多政府因暂停公民自由而犯下的罪行时, 达尔豪斯拒绝续签合同, 尽管他自己的数学家团队提出了抗议. 1,000 多名学生在 Dal Student Union 大楼的大厅集会, 反对任意解雇劳维尔教授.</p>
-  <p>在许多场合, 劳维尔教授在加拿大与我们一起讨论重要话题, 并贡献了他对这些话题的全面而广泛的了解. 1996 年 2 月, 他在温莎大学举行的主题为 “<span class="kaiti">意识起源和社会变革</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The Origin of Consciousness and Social Change</span></em><span style="color: #aaaaaa;">]</span> 的跨学科会议上发表了演讲. 在那个场合发表的论文提出了对独立于我们而存在的意识、冷战史学、现代民主人格的出现等的重要见解. 劳维尔教授发表了一篇题为<span class="kaiti">《数学改革的历史和哲学》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文, 该论文研究了限制数学科学知识的教育学趋势的各个方面, 展示了这如何为促进神秘主义和盲目接受权威提供了有效的基础.</p>
-  <p>1997 年, 他与来自世界各地的学者一起参加了贝恩斯同志的葬礼. 他还参加了 1998 年的 CPC (M-L) 第七次代表大会, 在那里他对哈迪尔·贝恩斯的工作表示赞赏, 并为正在讨论的论文做出了贡献. 2005 年, 他参加了党的 35 周年庆典, 再次表达了对党在理论和现代定义方面的工作的赞赏. 他后来写道, 35 周年纪念日 “是一个非常有意义的时刻. […] 特别是, 这一场合使我的工作取得了进一步的进展, 特别是为纪念列宁哲学著作一百周年的项目, 详细介绍了它们如何从自然科学的角度以及从为启蒙而进行的阶级斗争的角度, 成为研究 19 世纪和 20 世纪哲学发展的有用指南. 自从 35 年前哈迪尔指出这些书的重要性以来, 它们一直是我的伴侣. […]”</p>
-  <p>听说劳维尔教授去世的消息后, 他的长期伙伴埃里克·霍夫曼 (Eric Hoffman) 在感谢哈迪尔·贝恩斯和比尔·劳维尔 (Bill Lawvere) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即 William Lawvere</span><span style="color: #aaaaaa;">]</span> 对他自己的生活和工作产生的深远影响时说:</p>
-  <p>“从他们在 1960 年代独立完成的最早的开创性工作发展起来, 出现了一种新的、令人惊讶的联系的最有力证据. 这种联系构成了人类与自然之间关系的一部分, 并嵌入其中. 比尔指出, 这种复合体的客观性迫使人们坚持不懈地坚持空间和数量研究的需要.</p>
-  <p>“在他博客上的一次采访中, 比尔说, ‘数学理论的核心是空间中数量的变化以及其中质量的出现.’ 无论考虑的是几何学、范畴、逻辑、政治形式的过渡、亲属关系还是任何其他因素, 比尔都证实了对立面的统一和同一性, 即辩证法, 是存在的.</p>
-  <p>“比尔的工作将作为扩大启蒙空间的贡献而经久不衰.”</p>
-  <p>在 CPC (M-L) 中央第一书记发给劳维尔教授家人的哀悼信中, 她写道:</p>
-  <p>“比尔在他的一生中做出了如此多的贡献, 我们非常感激. 他对发现新事物的热情和奉献精神总是令人鼓舞. 他的方法总是充满活力、专注、在许多方面都很新鲜. 他作为教师的耐心、他的论点的智慧和连贯性、他对年轻一代和教化他们的热情, 以及他对文明崇高道路的勇敢坚持, 都非常出色.</p>
-  <p>“与比尔会面总是非常高兴. 我们将永远珍惜他的友谊、慷慨的精神和对我们共同事业的奉献精神, 他为此毫不畏惧地大声疾呼. 这表明他是由特殊的东西组成的.</p>
-  <p>为了说明他作为数学教育家的工作质量, 他解释手头问题并与那些对他的工作表现出兴趣的人讨论的直截了当的方法, 我们举了他对提供 “为什么范畴论可能如此有用的广泛理由” 的请求的回答的例子. 以下是比尔不得不说的话:</p>
-  <blockquote><span class="kaiti">人类的日常活动, 如在溪流旁的山上建造房屋、铺设电话管道网络、在太阳系中航行, 都需要可行的计划. 规划任何此类工作都需要发展对空间的思考. 每个发展都涉及许多思考步骤和许多相关的空间几何结构. 由于思考空间的必要多步骤性质, 必须采取独特的数学措施来使其可靠. 只有明确的思维原则</span> <span class="kaiti">(逻辑) 和明确的空间原则</span> <span class="kaiti">(几何) 才能保证可靠性. 艾伦伯格和麦克莱恩 60 年前发明的理论所取得的巨大进步使逻辑和几何学的原则变得明确; 这是通过发现逻辑和几何学的常见形式来实现的, 因此两者之间关系的原则也是明确的. 他们解决了亚里士多德在 2300 年前提出的一个问题, 当时亚里士多德最初在明确概念范畴方面取得了进展. 在 21 世纪, 他们的解决方案不仅适用于平面几何和中世纪三段论, 还适用于无穷维变换空间、数据</span> <span class="kaiti">“空间” 以及每天应用数千次的其他概念工具. 逻辑和几何原理的形式都是由分类论者发现的, 它建立在空间之间转换和内部转换的</span> <span class="kaiti">“自然性” 之上.</span></blockquote>
-  <p>以下是 Lawvere 教授去世时发布的讣告. 我们添加了 1971 年 1 月 22 日<span class="kaiti">《达尔豪斯公报》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Dalhousie Gazette</span></em><span style="color: #aaaaaa;">]</span> 上关于他被达尔豪斯大学开除的文章的传真件. 我们还提供了 Lawvere 博士在 1996 年 2 月 9 日至 11 日在温莎大学举行的关于意识起源和社会变革的跨学科会议上发表的题为 “<span class="kaiti">数学改革的历史和哲学</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文. 最后, 我们提供了对 Lawvere 博士的采访, 他用自己的话解释了他的工作.</p>
-  <p>我们向比尔的终身伴侣和合作者、他的子女、孙子、兄弟姐妹以及许许多多的朋友和同事表示最深切的哀悼. 愿他们都在共同创造的回忆中找到慰藉.</p>
+  <p>怀着深切的悲痛, 我们谨此告知, 著名数学家 William Lawvere 博士于 2023 年 1 月 23 日与世长辞. Lawvere 教授是加拿大共产党 (马列主义) 的好友, 一位始终秉持人类文明崇高道路的同路人, 致力于对抗并改变社会上的陈旧道德观念, 扫除阻碍进步与启蒙的障碍.</p>
+  <p>从 1970 年代初开始, 他与 CPC (M-L) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即</span> <em><span style="color: #aaaaaa;">Communist Party of Canada</span> <span style="color: #aaaaaa;">(Marxist-Leninist)</span></em><span style="color: #aaaaaa;">, 加拿大共产党</span> <span style="color: #aaaaaa;">(马列主义)</span><span style="color: #aaaaaa;">]</span> 的创始人和领导人 Hardial Bains 在 “变革的必然性” 与辩证法等哲学及其他项目上展开合作, Hardial Bains 本身就是一位科学家和哲学家. 从 1969 年到 1971 年, 作为 Killam 学者任职于 Halifax Dalhousie 大学, 领导一支享有国际声誉的数学家团队. 但在 1971 年, 当 Lawvere 教授抗议 Pierre Trudeau 颁布<span class="kaiti">《战争措施法》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">War Measures Act</span></em><span style="color: #aaaaaa;">]</span> 并暂停公民自由、实施种种暴行时, Dalhousie 大学拒绝续聘用他. 尽管其本人领导的数学家团队强烈抗议. 时逾千名学生齐聚 Dalhousie 大学学生会大楼大厅声援劳威尔教授, 反对校方这一专横解雇决定.</p>
+  <p>多年来, Lawvere 教授多次在加拿大与我们一起讨论重要议题, 并以他深厚广博的学识作出卓越贡献. 1996 年 2 月, 他在温莎大学举行的主题为 “<span class="kaiti">意识起源和社会变革</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The Origin of Consciousness and Social Change</span></em><span style="color: #aaaaaa;">]</span> 的跨学科会议上发表了演讲. 该次会议所提交的论文, 对 “独立于人类之外的意识存在” “冷战史学” “现代民主人格的兴起” 等议题提出了深刻洞见. Lawvere 教授提交的论文为<span class="kaiti">《数学改革的历史和哲学》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span>, 该论文剖析了当时一种限制数学科学知识传播的教学趋势, 并指出除其他关切外, 这种趋势如何有效地助长了神秘主义与对权威的盲目服从.</p>
+  <p>1997 年, 他与来自世界各地的学者一起参加了 Bains 同志的葬礼. 他还参加了 1998 年的 CPC (M-L) 第七次代表大会, 会上他对 Hardial Bains 的工作表示赞赏, 并对大会讨论的论纲作出了贡献. 2005 年, 他参加了党的 35 周年庆典, 再次表达了对党在理论和现代定义方面的工作的赞赏. 他后来写道, 35 周年纪念日 “是一个非常有意义的时刻. […] 特别是, 这一场合使我的工作取得了进一步的进展, 特别是为纪念列宁哲学著作一百周年的项目, 详细介绍了它们如何从自然科学的角度以及从为启蒙而进行的阶级斗争的角度, 成为研究 19 世纪和 20 世纪哲学发展的有用指南. 自从 35 年前 Hardial 指出这些书的重要性以来, 它们一直是我的伴侣. […]”</p>
+  <p>获悉 Lawvere 教授逝世的消息后, 他的长期伙伴 Eric Hoffman 在感谢 Hardial Bains 和 Bill Lawvere <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即 William Lawvere</span><span style="color: #aaaaaa;">]</span> 对他自己的生活和工作产生的深远影响时说:</p>
+  <p>“他们各自在1960年代早期所开展的开创性工作, 如今交汇出一种崭新而令人惊讶的关联, 其最强有力的证据已然显现. 这种关联是人类与自然之间复杂关系网络的一个组成部分. Bill 说, 这一复杂整体所具有的客观性, 迫使我们必须坚定不移地关注对空间与数量的研究.</p>
+  <p>“在他博客上的一次采访中, Bill 说, ‘数学理论的核心, 在于空间中数量的变化, 以及在这种变化中质的飞跃.’ 无论考虑的是几何学、范畴、逻辑、政治形态的转变、亲属关系亦或其他领域, Bill 始终印证着对立面的统一与同一, 即辩证法的真实存在.</p>
+  <p>“Bill 的工作将作为扩大启蒙空间的贡献而经久不衰.”</p>
+  <p>在 CPC (M-L) 中央第一书记发给 Lawvere 教授家人的哀悼信中, 她写道:</p>
+  <p>“Bill 在他的一生中做出了如此多的贡献, 我们非常感激. 他对发现新事物的热情和奉献精神总是令人鼓舞. 他的方法总是充满活力、专注、在许多方面都很新鲜. 他作为教师的耐心、他的论点的智慧和连贯性、他对年轻一代和教化他们的热情, 以及他对文明崇高道路的勇敢坚持, 都非常出色.</p>
+  <p>“与 Bill 会面总是非常高兴. 我们将永远珍惜他的友谊、慷慨的精神和对我们共同事业的奉献精神, 他为此毫不畏惧地大声疾呼. 这正彰显了他非凡的品格.</p>
+  <p>为展示 Lawvere 教授作为数学教育者的风范, 其对问题直截了当的阐释方式, 以及对所有对其工作感兴趣者开放坦诚的讨论态度, 我们谨举一例: 他曾应请求就 “为何范畴论可能如此有用” 提供一个宽泛的论证. 以下是比尔的回答:</p>
+  <blockquote><span class="kaiti">人类的日常活动, 如在溪流旁的山上建造房屋、铺设电话管道网络、在太阳系中航行, 都需要可行的计划. 规划任何此类工作都需要发展对空间的思考. 每个发展都涉及许多思考步骤和许多相关的空间几何结构. 由于思考空间的必要多步骤性质, 必须采取独特的数学措施来使其可靠. 只有明确的思维原则</span> <span class="kaiti">(逻辑) 和明确的空间原则</span> <span class="kaiti">(几何) 才能保证可靠性. Eilenberg 和 Mac Lane 60 年前发明的理论所取得的巨大进步使逻辑和几何学的原则变得明确; 他们通过发现逻辑与几何的共同形式, 使得二者之间的关系原则也变得清晰可见. 他们解决了亚里士多德在 2300 年前提出的一个问题, 即初步尝试将</span> <span class="kaiti">“概念的范畴” 显式化. 在 21 世纪, 他们的解决方案不仅适用于平面几何和中世纪三段论, 还适用于无穷维变换空间、数据</span> <span class="kaiti">“空间” 以及其他每日被成千上万次应用的概念工具. 范畴学家发现, 逻辑与几何原则的形式, 根植于空间之间变换以及空间内部变换的</span> <span class="kaiti">“自然性” 之中.</span></blockquote>
+  <p>下文附上 Lawvere 教授逝世时发表的讣告 <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">讣告和后文的传真件等内容请前往原文查看.</span><span style="color: #aaaaaa;">]</span>. 我们添加了 1971 年 1 月 22 日<span class="kaiti">《达尔豪斯公报》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Dalhousie Gazette</span></em><span style="color: #aaaaaa;">]</span> 上关于他被 Dalhousie 大学开除的文章的传真件. 我们还提供了 Lawvere 博士在 1996 年 2 月 9 日至 11 日在温莎大学举行的关于意识起源和社会变革的跨学科会议上发表的题为 “<span class="kaiti">数学教育改革的历史与哲学</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文. 最后, 我们还提供一段 Lawvere 博士的访谈, 其中他亲自阐释了自己的学术工作.</p>
+  <p>我们向 Bill 的终身伴侣与合作者、他的子女、孙辈、兄弟姊妹, 以及无数朋友与同事致以最深切的哀悼. 愿他们从共同创造的美好回忆中获得慰藉.</p>
 </p>
 </details></section></p>
 </details></section></p>

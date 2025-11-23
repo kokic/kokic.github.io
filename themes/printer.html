@@ -1,0 +1,34 @@
+<!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: #ffffff;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="printer" style="display: none;">printer</theme-option>

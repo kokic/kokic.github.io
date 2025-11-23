@@ -3,9 +3,10 @@ trees = "trees"
 assets = "assets"
 base-url = "/"
 themes = [
-  "themes/moon.html", 
-  "themes/default.html",
-  "themes/zenwritten.html",
+  # "themes/moon.html", 
+  # "themes/default.html",
+  # "themes/zenwritten.html",
+  "themes/printer.html",
 ]
 
 [toc]

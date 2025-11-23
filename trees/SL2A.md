@@ -1,14 +1,15 @@
 
 ---
-title: 次线性归纳
+title: 次可加归纳
 taxon: lemma
+asref: true
 date: June 25, 2021
 author: [kokic](/trees/kokic.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
 
-如果 $f$ 满足 $\eta: f(x) + f(y) \ge f(x+y)$, 则成立 
+如果 $f$ 满足次可加性 $\eta: f(x) + f(y) \ge f(x+y)$, 则成立 
 
 $$ \eta_* \spaces: \sum_{i} f(x_i) \spaces\ge f\Big(\sum_i x_i\Big) $$
 

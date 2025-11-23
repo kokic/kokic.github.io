@@ -19,7 +19,7 @@ tag: [](/trees/pearls.md)
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\PP{\mathbf{P}}$
 
-此证明由 [Hillel Furstenberg](https://en.wikipedia.org/wiki/Hillel_Furstenberg) 于 1955 年提出 [^furstenberg]. 这一页配图的说明文字也很有意思, 其写道 
+此证明由 [Hillel Furstenberg](https://en.wikipedia.org/wiki/Hillel_Furstenberg) 于 1955 年提出 [^furstenberg], 收录于 [PFTB, p. 5](/trees/bib/pftb.md), 此页配图的说明文字写道
 
 > Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span>
 

@@ -2,6 +2,7 @@
 ---
 title: Titu 引理
 taxon: lemma
+asref: true
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

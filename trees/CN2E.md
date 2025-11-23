@@ -8,7 +8,9 @@ author: [kokic](/trees/kokic.md)
 
 $\gdef\spaces#1{~ #1 ~}$
 
-与 [](./CN2B.md) 具有 [Engel 形式](./CN2B.md) 类似, Aczél 不等式也有相应的 Engel 形式. 实行替换 $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, 得 
+[titu]: /trees/CN2C.md
+
+与 [](./CN2B.md) 具有 [Engel 形式][titu] 类似, Aczél 不等式也有相应的 [Engel 形式][titu]. 实行替换 $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, 得 
 
 $$
 \Big(x_1^2 - \sum_{k=2}^nx_k\Big)^2 \Big(\ell_1 - {\sum_{k=2}^n{\ell_k}}\Big)^{-1}

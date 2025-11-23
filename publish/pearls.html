@@ -999,221 +999,16 @@ path.typst-shape[stroke="#000000"] {
   }
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic)  -->
-<!-- Inspired by Pink Floyd - The Dark Side of the Moon -->
-
-<style>
-  body:has(input[value="moon"]:checked) {
-    --hover-primary-color: 181, 140, 114;
-
-    --text-color: rgb(32, 28, 48);
-    --toc-link-color: #555;
-    --background-color: rgb(255, 238, 228);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-
-    --link-color: rgb(227, 66, 114);
-    --slug-color: rgb(184, 170, 161);
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: black;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-    --em-color: rgb(220, 121, 113);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="moon"]:checked) {
-      --hover-primary-color: 196, 136, 193;
-
-      --text-color: rgb(187 176 169);
-      --toc-link-color: rgb(187 176 169);
-      --background-color: rgb(32, 28, 48);
-
-      --background-color-pre: rgba(100, 100, 100, 0.2);
-      --background-color-code: rgba(150, 150, 150, 0.2);
-
-      --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-      --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: rgb(255, 128, 165);
-      --slug-color: #aeaeae;
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: rgb(236, 230, 226);
-      --em-color: rgb(255, 219, 230);
-
-      .block:has(.block:hover) {
-        background-color: var(--background-color);
-      }
-    }
-  }
-
-  body:has(input[value="moon-light"]:checked) {
-    --hover-primary-color: 181, 140, 114;
-
-    --text-color: rgb(32, 28, 48);
-    --toc-link-color: #555;
-    --background-color: rgb(255, 238, 228);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.1);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-
-    --link-color: rgb(227, 66, 114);
-    --slug-color: rgb(184, 170, 161);
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: black;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-    --em-color: rgb(220, 121, 113);
-  }
-
-  body:has(input[value="moon-dark"]:checked) {
-    --hover-primary-color: 196, 136, 193;
-
-    --text-color: rgb(187 176 169);
-    --toc-link-color: rgb(187 176 169);
-    --background-color: rgb(32, 28, 48);
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
-    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(255, 128, 165);
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(236, 230, 226);
-    --em-color: rgb(255, 219, 230);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-</style>
-
-<theme-option name="moon">朔望</theme-option>
-<theme-option name="moon-light">望月</theme-option>
-<theme-option name="moon-dark">朔月</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
-<!-- Inspired by https://www.forester-notes.org/ -->
 
 <style>
-  body:has(input[value="default"]:checked) {
-    --text-color: black;
-    --toc-link-color: #555;
-    --background-color: white;
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(0, 100, 255, 0.04);
-    --hover-color-link: rgba(0, 100, 255, 0.1);
-    --target-color: rgb(67, 92, 255);
-
-    --link-color: black;
-    --slug-color: gray;
-    --logo-color: #666;
-    --logo-hover-color: #aaa;
-    --span-taxon-color: #444;
-    --article-taxon-color: #888;
-    --mark-color: rgb(255, 255, 151);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="default"]:checked) {
-      --text-color: white;
-      --toc-link-color: white;
-      --background-color: #2f2f2f;
-
-      --background-color-pre: rgba(100, 100, 100, 0.2);
-      --background-color-code: rgba(150, 150, 150, 0.2);
-
-      --hover-color-block: rgba(100, 162, 255, 0.06);
-      --hover-color-link: rgba(100, 162, 255, 0.2);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: white;
-      --slug-color: #aeaeae;
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: #bbb;
-    }
-  }
-</style>
-
-<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
-<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
-<!-- Authors: Kokic (@kokic) -->
-<!-- Inspired by https://github.com/zenbones-theme/zenbones.nvim - zenwritten -->
-
-<style>
-  body:has(input[value="zen"]:checked) {
-    --hover-primary-color: 229, 229, 229;
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
     --link-primary-color: 115, 80, 87;
 
     --text-color: rgb(20, 22, 27);
     --toc-link-color: #555;
-    --background-color: rgb(238, 238, 238);
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(var(--hover-primary-color));
-    --hover-color-link: rgba(201, 201, 201);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: rgb(99, 99, 99);
-    --logo-color: #999;
-    --logo-hover-color: #666;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(53, 53, 53);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body:has(input[value="zen"]:checked) {
-      --hover-primary-color: 34, 34, 34;
-      --link-primary-color: 150, 150, 150;
-
-      --text-color: rgb(222, 223, 231);
-      --toc-link-color: #555;
-      --background-color: rgb(25, 25, 25);
-
-      --background-color-pre: rgba(0, 100, 100, 0.04);
-      --background-color-code: rgba(0, 100, 100, 0.04);
-
-      --hover-color-block: rgba(var(--hover-primary-color));
-      --hover-color-link: rgb(64, 64, 64);
-      --target-color: rgb(255, 255, 151);
-
-      --link-color: rgb(var(--link-primary-color));
-      --slug-color: rgb(99, 99, 99);
-      --logo-color: #999;
-      --logo-hover-color: #eee;
-      --span-taxon-color: rgb(var(--link-primary-color));
-      --em-color: rgb(139, 139, 139);
-    }
-  }
-
-  body:has(input[value="zen-light"]:checked) {
-    --hover-primary-color: 229, 229, 229;
-    --link-primary-color: 115, 80, 87;
-
-    --text-color: rgb(20, 22, 27);
-    --toc-link-color: #555;
-    --background-color: rgb(238, 238, 238);
+    --background-color: #ffffff;
 
     --background-color-pre: rgba(0, 100, 100, 0.04);
     --background-color-code: rgba(0, 100, 100, 0.04);
@@ -1233,93 +1028,49 @@ path.typst-shape[stroke="#000000"] {
       background-color: var(--background-color);
     }
   }
-
-  body:has(input[value="zen-dark"]:checked) {
-    --hover-primary-color: 34, 34, 34;
-    --link-primary-color: 150, 150, 150;
-
-    --text-color: rgb(222, 223, 231);
-    --toc-link-color: #555;
-    --background-color: rgb(25, 25, 25);
-
-    --background-color-pre: rgba(0, 100, 100, 0.04);
-    --background-color-code: rgba(0, 100, 100, 0.04);
-
-    --hover-color-block: rgba(var(--hover-primary-color));
-    --hover-color-link: rgba(64, 64, 64, 0.3);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: rgb(var(--link-primary-color));
-    --slug-color: rgb(99, 99, 99);
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: rgb(var(--link-primary-color));
-    --em-color: rgb(139, 139, 139);
-
-    .block:has(.block:hover) {
-      background-color: var(--background-color);
-    }
-  }
 </style>
 
-<theme-option name="zen-light">zen light</theme-option>
-<theme-option name="zen-dark">zen dark</theme-option>
-<theme-option name="zen">zen</theme-option></div></nav>
+<theme-option name="printer" style="display: none;">printer</theme-option>
+</div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="pearls"><header><h1><span class="taxon"></span>Pearls <a class="slug" href="/pearls">[pearls]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p>Short, elegant, and enlightening proof that illustrate important principles or techniques.</p>
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="CN2A"><header><h1><span class="taxon">Exegesis. </span>Cauchy–Aczél 论证 <a class="slug" href="/CN2A">[CN2A]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Cauchy–Aczél 论证是 <span class="link local"><a href="/SL2A" title="次线性归纳 [SL2A]">次线性归纳</a></span> 的一个直接应用. 凭此能够同时证明以下四个不等式.</p>
-<p><section class="block" data-taxon="Theorem"><details ><summary id="CN2B"><header><h1><span class="taxon">Theorem. </span>Cauchy 不等式 <a class="slug" href="/CN2B">[CN2B]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathworld.wolfram.com/CauchysInequality.html" title="Cauchy’s Inequality [https://mathworld.wolfram.com/CauchysInequality.html]">Cauchy’s Inequality</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>$$
-\Big(\sum_{k=1}^na_k^2\Big) \Big(\sum_{k=1}^nb_k^2\Big) \spaces\ge \Big(\sum_{k=1}^na_kb_k\Big)^2
-$$</p>
-</details></section>
-<section class="block" data-taxon="Lemma"><details ><summary id="CN2C"><header><h1><span class="taxon">Lemma. </span>Titu 引理 <a class="slug" href="/CN2C">[CN2C]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>Titu 引理又名 <span class="link external"><a href="https://handwiki.org/wiki/Sedrakyan%27s_inequality" title="Sedrakyan 不等式 [https://handwiki.org/wiki/Sedrakyan%27s_inequality]">Sedrakyan 不等式</a></span>、Bergström 不等式、<span class="link external"><a href="https://artofproblemsolving.com/wiki/index.php/Cauchy-Schwarz_Inequality" title="Engel 形式 [https://artofproblemsolving.com/wiki/index.php/Cauchy-Schwarz_Inequality]">Engel 形式</a></span>. 在 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 中实行替换 $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, 随后移项即得</p>
-<p>$$
-\sum_{k=1}^n\dfrac{x_k^2}{\ell_k} 
-\spaces\ge \Big(\sum_{k=1}^nx_k\Big)^2 \Big({\sum_{k=1}^n{\ell_k}}\Big)^{-1} 
-$$</p>
-</details></section>
-<section class="block" data-taxon="Theorem"><details ><summary id="CN2D"><header><h1><span class="taxon">Theorem. </span>Aczél 不等式 <a class="slug" href="/CN2D">[CN2D]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>设 $\{a_i\}_{1\le i \le n}$ 满足 $a_1^2 \ge a_2^2 + a_3^2 + \cdots + a_n^2$, $\{b_i\}_{1 \le i \le n}$ 满足 $b_1^2 \ge b_2^2 + b_3^2 + \cdots + b_n^2$ 则</p>
-<p>$$
-\Big(a_1b_1 - \sum_{k=2}^na_kb_k\Big)^2 \spaces\ge \Big(a_1^2 - \sum_{k=2}^na_k^2\Big) \Big(b_1^2 - \sum_{k=2}^nb_k^2\Big)
-$$</p>
-</details></section>
-<section class="block" data-taxon="Theorem"><details ><summary id="CN2E"><header><h1><span class="taxon">Theorem. </span>Aczél 不等式 Engel 形式 <a class="slug" href="/CN2E">[CN2E]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>与 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 具有 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Engel 形式</a></span> 类似, Aczél 不等式也有相应的 Engel 形式. 实行替换 $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, 得</p>
-<p>$$
-\Big(x_1^2 - \sum_{k=2}^nx_k\Big)^2 \Big(\ell_1 - {\sum_{k=2}^n{\ell_k}}\Big)^{-1}
-\spaces\ge \frac{x_1^2}{\ell_1} - \sum_{k=2}^n\dfrac{x_k^2}{\ell_k} 
-$$</p>
-</details></section>
-<section class="block" data-taxon="Lemma"><details ><summary id="SL2A"><header><h1><span class="taxon">Lemma. </span>次线性归纳 <a class="slug" href="/SL2A">[SL2A]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p>如果 $f$ 满足 $\eta: f(x) + f(y) \ge f(x+y)$, 则成立</p>
-<p>$$ \eta_* \spaces: \sum_{i} f(x_i) \spaces\ge f\Big(\sum_i x_i\Big) $$</p>
-<p>证明只需反复使用已知条件即可. 这同时意味着 $\eta, \eta_*$ 等价. 另一方面, 在 $\eta$ 中置 $x \mapsto x-y$, 就有 $f(x-y) + f(y) \ge f(x)$, 也即 $\varphi: f(x-y) \ge f(x) - f(y)$. 类似的可知</p>
-<p>$$
-\varphi_* \spaces: f(x - \sum_i f(x_i)) \spaces\ge f(x) - \sum_i f(x_i)
-$$</p>
-<p>故此 $\eta \iff \eta_* \iff \varphi_* \iff \varphi$.</p>
-</details></section></p>
-<p>在 <span class="link local"><a href="/SL2A" title="次线性归纳 [SL2A]">次线性归纳</a></span> 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span> $\iff$ <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, 又因为 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 等价于 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价于 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 于是只需证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 中 $n=2$ 的情况, 现在做差</p>
+<p><span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span> 是 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 的一个直接应用. 凭此能够同时证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span>、<span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>、<span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 和 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 具体步骤如下.</p>
+<p>在 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span> $\iff$ <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, 又因为 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 等价于 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价于 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 于是只需证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 中 $n=2$ 的情况, 现在做差</p>
 <p>$$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_1)^2 $$</p>
 <p>右侧非负, 从而证毕. 读者也应留意到, 尝试直接说明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 和 <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价往往不容易看出, 而沿着下面的路径就要轻松的多.</p>
 <p>$$
 \begin{CD}
-\text{Cauchy} @&gt;\text{Engel}&gt;&gt; \text{Titu} \\
+\text{Cauchy} @&gt;s&gt;&gt; \text{Titu} \\
 @. @VV\text{次线性归纳}V \\
-\text{Aczél} @&lt;&lt;\text{Engel}&lt; \text{Aczél--Engel}
+\text{Aczél} @&lt;&lt;s^{-1}&lt; X_1
 \end{CD}
 $$</p>
+<p>此处 $X_1$ 即 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$.</p>
+</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="HP2E"><header><h1><span class="taxon">Exegesis. </span>Hölder–Popoviciu 论证 <a class="slug" href="/HP2E">[HP2E]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>类似 <span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span>, 也可以将 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 应用于 <span class="link local"><a href="/HP2A" title="Hölder 不等式 [HP2A]">Hölder 不等式</a></span> 和 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>.</p>
+<p>在 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 中取 $f(x, \ell) = \frac{x^p}{\ell^{p-1}}$, 此时 $\eta_*: \sum_i x_i^p / \ell_i^{p-1} \ge (\sum_i x_i)^p / (\sum_i \ell_i)^{p-1}$ 即 <span class="link local"><a href="/HP2B" title="Radon 不等式 [HP2B]">Radon 不等式</a></span>, $\varphi_*: (x - \sum_i x_i)^p / (\ell - \sum_i \ell_i)^{p-1} \ge x^p / \ell^{p-1} - \sum_i x_i^p / \ell_i^{p-1}$ 即 <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu 不等式 Engel 形式</a></span>. 沿下图</p>
+<p>$$
+\begin{CD}
+\text{Hölder} @&gt;s&gt;&gt; \text{Radon} \\
+@. @VV\text{次线性归纳}V \\
+A_2 @&lt;&lt;s^{-1}&lt; X_2
+\end{CD}
+$$</p>
+<p>此处 $A_2$ 为 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>, $X_2$ 为 <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt[q]\ell_k}, \sqrt[q]\ell_k)$. 证明这四个命题等价于证明 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">命题 $\eta$</a></span>, 即</p>
+<p>$$
+(a_1^p + a_2^p)^{\frac{1}{p}}(b_1^q + b_2^q)^{\frac{1}{q}} \spaces\ge a_1b_1+a_2b_2
+$$</p>
+<p>以下证明是标准的, 可见于任何一本泛函分析课本. 记</p>
+<p>$$ x_i = a_i /(a_1^p + a_2^p)^{\frac{1}{p}}, \quad y_i = b_i / (b_1^q + b_2^q)^{\frac{1}{q}}$$</p>
+<p>则 $x_1^p + x_2^p = 1, y_1^q + y_2^q = 1$. 欲证明 $x_1y_1 + x_2y_2 \le 1$, 只要对 $(x_i, y_i)$ 使用 <span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span>, 如此</p>
+<p>$$
+x_1y_1 + x_2y_2 \spaces\le \frac{x_1^p}{p} + \frac{y_1^q}{q} + \frac{x_2^p}{p} + \frac{y_2^q}{q}
+$$</p>
+<p>由加法交换律和 $\frac{1}{p} + \frac{1}{q} = 1$, 右侧当然 $=1$.</p>
 </details></section><section class="block" data-taxon="Exegesis"><details ><summary id="YL2A"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p><span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span> 有许多风格迥然的证明, 最常见的办法可能是使用 <span class="link local"><a href="/trees/YL4A" title=" [trees/YL4A]">定积分</a></span>.</p>
 <p>我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young 引理</a></span>.
@@ -1552,8 +1303,7 @@ $$</p>
 <p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
 </details></section><section class="block" data-taxon=""><details ><summary id="index"><header><h1><span class="taxon"></span>回声 <a class="slug" href="/index">[index]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>本站点使用 <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> 构建,
-可在 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span> 查看网页源文件.
+<p>本站使用 <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> 构建, 源文件位于 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span>.
 另有专栏 <span class="link local"><a href="/pearls" title="Pearls [pearls]">证明珠玑</a></span>.</p>
 <p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-index"><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
@@ -2646,21 +2396,21 @@ em {
     <div><strong>原文:</strong> Central Committee, Communist Party of Canada (Marxist-Leninist), <strong>Providing Democracy with a Modern Definition</strong>. TML MONTHLY, Newspaper of the Communist Party of Canada (Marxist-Leninist). Volume 53 Number 1 - January 2023. <a href="https://cpcml.ca/Tmlm2023/Articles/M530010.HTM"><span style="color: #ed008c;">https://cpcml.ca/Tmlm2023/Articles/M530010.HTM</span></a>.</div>
   </div>
   <p><br></p>
-  <p>我们怀着深深的悲痛通知您, 著名数学家威廉·劳维尔 (William Lawvere) 博士于 2023 年 1 月 23 日去世. 劳维尔教授是加拿大共产党 (马列主义) 的好友, 他总在文明大道上前进, 致力于对抗并改变社会上的陈旧道德观念, 消除进步启蒙道路上的障碍.</p>
-  <p>从 1970 年代初开始, 他与 CPC (M-L) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即</span> <em><span style="color: #aaaaaa;">Communist Party of Canada</span> <span style="color: #aaaaaa;">(Marxist-Leninist)</span></em><span style="color: #aaaaaa;">, 加拿大共产党</span> <span style="color: #aaaaaa;">(马列主义)</span><span style="color: #aaaaaa;">]</span> 的创始人和领导人哈迪尔·贝恩斯 (Hardial Bains) 一起从事了几个与变革的必要性和辩证法相关的哲学和其他项目, 哈迪尔·贝恩斯本身就是一位科学家和哲学家. 从 1969 年到 1971 年, 他是哈利法克斯达尔豪斯大学 <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Halifax, Dalhousie University</span></em><span style="color: #aaaaaa;">]</span> 的 Killam 学者, 是一个著名的国际数学家团队的负责人, 他们来那里与他一起学习. 但在 1971 年, 当劳维尔教授抗议<span class="kaiti">《战争措施法》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">War Measures Act</span></em><span style="color: #aaaaaa;">]</span> 和皮埃尔·特鲁多政府因暂停公民自由而犯下的罪行时, 达尔豪斯拒绝续签合同, 尽管他自己的数学家团队提出了抗议. 1,000 多名学生在 Dal Student Union 大楼的大厅集会, 反对任意解雇劳维尔教授.</p>
-  <p>在许多场合, 劳维尔教授在加拿大与我们一起讨论重要话题, 并贡献了他对这些话题的全面而广泛的了解. 1996 年 2 月, 他在温莎大学举行的主题为 “<span class="kaiti">意识起源和社会变革</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The Origin of Consciousness and Social Change</span></em><span style="color: #aaaaaa;">]</span> 的跨学科会议上发表了演讲. 在那个场合发表的论文提出了对独立于我们而存在的意识、冷战史学、现代民主人格的出现等的重要见解. 劳维尔教授发表了一篇题为<span class="kaiti">《数学改革的历史和哲学》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文, 该论文研究了限制数学科学知识的教育学趋势的各个方面, 展示了这如何为促进神秘主义和盲目接受权威提供了有效的基础.</p>
-  <p>1997 年, 他与来自世界各地的学者一起参加了贝恩斯同志的葬礼. 他还参加了 1998 年的 CPC (M-L) 第七次代表大会, 在那里他对哈迪尔·贝恩斯的工作表示赞赏, 并为正在讨论的论文做出了贡献. 2005 年, 他参加了党的 35 周年庆典, 再次表达了对党在理论和现代定义方面的工作的赞赏. 他后来写道, 35 周年纪念日 “是一个非常有意义的时刻. […] 特别是, 这一场合使我的工作取得了进一步的进展, 特别是为纪念列宁哲学著作一百周年的项目, 详细介绍了它们如何从自然科学的角度以及从为启蒙而进行的阶级斗争的角度, 成为研究 19 世纪和 20 世纪哲学发展的有用指南. 自从 35 年前哈迪尔指出这些书的重要性以来, 它们一直是我的伴侣. […]”</p>
-  <p>听说劳维尔教授去世的消息后, 他的长期伙伴埃里克·霍夫曼 (Eric Hoffman) 在感谢哈迪尔·贝恩斯和比尔·劳维尔 (Bill Lawvere) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即 William Lawvere</span><span style="color: #aaaaaa;">]</span> 对他自己的生活和工作产生的深远影响时说:</p>
-  <p>“从他们在 1960 年代独立完成的最早的开创性工作发展起来, 出现了一种新的、令人惊讶的联系的最有力证据. 这种联系构成了人类与自然之间关系的一部分, 并嵌入其中. 比尔指出, 这种复合体的客观性迫使人们坚持不懈地坚持空间和数量研究的需要.</p>
-  <p>“在他博客上的一次采访中, 比尔说, ‘数学理论的核心是空间中数量的变化以及其中质量的出现.’ 无论考虑的是几何学、范畴、逻辑、政治形式的过渡、亲属关系还是任何其他因素, 比尔都证实了对立面的统一和同一性, 即辩证法, 是存在的.</p>
-  <p>“比尔的工作将作为扩大启蒙空间的贡献而经久不衰.”</p>
-  <p>在 CPC (M-L) 中央第一书记发给劳维尔教授家人的哀悼信中, 她写道:</p>
-  <p>“比尔在他的一生中做出了如此多的贡献, 我们非常感激. 他对发现新事物的热情和奉献精神总是令人鼓舞. 他的方法总是充满活力、专注、在许多方面都很新鲜. 他作为教师的耐心、他的论点的智慧和连贯性、他对年轻一代和教化他们的热情, 以及他对文明崇高道路的勇敢坚持, 都非常出色.</p>
-  <p>“与比尔会面总是非常高兴. 我们将永远珍惜他的友谊、慷慨的精神和对我们共同事业的奉献精神, 他为此毫不畏惧地大声疾呼. 这表明他是由特殊的东西组成的.</p>
-  <p>为了说明他作为数学教育家的工作质量, 他解释手头问题并与那些对他的工作表现出兴趣的人讨论的直截了当的方法, 我们举了他对提供 “为什么范畴论可能如此有用的广泛理由” 的请求的回答的例子. 以下是比尔不得不说的话:</p>
-  <blockquote><span class="kaiti">人类的日常活动, 如在溪流旁的山上建造房屋、铺设电话管道网络、在太阳系中航行, 都需要可行的计划. 规划任何此类工作都需要发展对空间的思考. 每个发展都涉及许多思考步骤和许多相关的空间几何结构. 由于思考空间的必要多步骤性质, 必须采取独特的数学措施来使其可靠. 只有明确的思维原则</span> <span class="kaiti">(逻辑) 和明确的空间原则</span> <span class="kaiti">(几何) 才能保证可靠性. 艾伦伯格和麦克莱恩 60 年前发明的理论所取得的巨大进步使逻辑和几何学的原则变得明确; 这是通过发现逻辑和几何学的常见形式来实现的, 因此两者之间关系的原则也是明确的. 他们解决了亚里士多德在 2300 年前提出的一个问题, 当时亚里士多德最初在明确概念范畴方面取得了进展. 在 21 世纪, 他们的解决方案不仅适用于平面几何和中世纪三段论, 还适用于无穷维变换空间、数据</span> <span class="kaiti">“空间” 以及每天应用数千次的其他概念工具. 逻辑和几何原理的形式都是由分类论者发现的, 它建立在空间之间转换和内部转换的</span> <span class="kaiti">“自然性” 之上.</span></blockquote>
-  <p>以下是 Lawvere 教授去世时发布的讣告. 我们添加了 1971 年 1 月 22 日<span class="kaiti">《达尔豪斯公报》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Dalhousie Gazette</span></em><span style="color: #aaaaaa;">]</span> 上关于他被达尔豪斯大学开除的文章的传真件. 我们还提供了 Lawvere 博士在 1996 年 2 月 9 日至 11 日在温莎大学举行的关于意识起源和社会变革的跨学科会议上发表的题为 “<span class="kaiti">数学改革的历史和哲学</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文. 最后, 我们提供了对 Lawvere 博士的采访, 他用自己的话解释了他的工作.</p>
-  <p>我们向比尔的终身伴侣和合作者、他的子女、孙子、兄弟姐妹以及许许多多的朋友和同事表示最深切的哀悼. 愿他们都在共同创造的回忆中找到慰藉.</p>
+  <p>怀着深切的悲痛, 我们谨此告知, 著名数学家 William Lawvere 博士于 2023 年 1 月 23 日与世长辞. Lawvere 教授是加拿大共产党 (马列主义) 的好友, 一位始终秉持人类文明崇高道路的同路人, 致力于对抗并改变社会上的陈旧道德观念, 扫除阻碍进步与启蒙的障碍.</p>
+  <p>从 1970 年代初开始, 他与 CPC (M-L) <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即</span> <em><span style="color: #aaaaaa;">Communist Party of Canada</span> <span style="color: #aaaaaa;">(Marxist-Leninist)</span></em><span style="color: #aaaaaa;">, 加拿大共产党</span> <span style="color: #aaaaaa;">(马列主义)</span><span style="color: #aaaaaa;">]</span> 的创始人和领导人 Hardial Bains 在 “变革的必然性” 与辩证法等哲学及其他项目上展开合作, Hardial Bains 本身就是一位科学家和哲学家. 从 1969 年到 1971 年, 作为 Killam 学者任职于 Halifax Dalhousie 大学, 领导一支享有国际声誉的数学家团队. 但在 1971 年, 当 Lawvere 教授抗议 Pierre Trudeau 颁布<span class="kaiti">《战争措施法》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">War Measures Act</span></em><span style="color: #aaaaaa;">]</span> 并暂停公民自由、实施种种暴行时, Dalhousie 大学拒绝续聘用他. 尽管其本人领导的数学家团队强烈抗议. 时逾千名学生齐聚 Dalhousie 大学学生会大楼大厅声援劳威尔教授, 反对校方这一专横解雇决定.</p>
+  <p>多年来, Lawvere 教授多次在加拿大与我们一起讨论重要议题, 并以他深厚广博的学识作出卓越贡献. 1996 年 2 月, 他在温莎大学举行的主题为 “<span class="kaiti">意识起源和社会变革</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The Origin of Consciousness and Social Change</span></em><span style="color: #aaaaaa;">]</span> 的跨学科会议上发表了演讲. 该次会议所提交的论文, 对 “独立于人类之外的意识存在” “冷战史学” “现代民主人格的兴起” 等议题提出了深刻洞见. Lawvere 教授提交的论文为<span class="kaiti">《数学改革的历史和哲学》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span>, 该论文剖析了当时一种限制数学科学知识传播的教学趋势, 并指出除其他关切外, 这种趋势如何有效地助长了神秘主义与对权威的盲目服从.</p>
+  <p>1997 年, 他与来自世界各地的学者一起参加了 Bains 同志的葬礼. 他还参加了 1998 年的 CPC (M-L) 第七次代表大会, 会上他对 Hardial Bains 的工作表示赞赏, 并对大会讨论的论纲作出了贡献. 2005 年, 他参加了党的 35 周年庆典, 再次表达了对党在理论和现代定义方面的工作的赞赏. 他后来写道, 35 周年纪念日 “是一个非常有意义的时刻. […] 特别是, 这一场合使我的工作取得了进一步的进展, 特别是为纪念列宁哲学著作一百周年的项目, 详细介绍了它们如何从自然科学的角度以及从为启蒙而进行的阶级斗争的角度, 成为研究 19 世纪和 20 世纪哲学发展的有用指南. 自从 35 年前 Hardial 指出这些书的重要性以来, 它们一直是我的伴侣. […]”</p>
+  <p>获悉 Lawvere 教授逝世的消息后, 他的长期伙伴 Eric Hoffman 在感谢 Hardial Bains 和 Bill Lawvere <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">即 William Lawvere</span><span style="color: #aaaaaa;">]</span> 对他自己的生活和工作产生的深远影响时说:</p>
+  <p>“他们各自在1960年代早期所开展的开创性工作, 如今交汇出一种崭新而令人惊讶的关联, 其最强有力的证据已然显现. 这种关联是人类与自然之间复杂关系网络的一个组成部分. Bill 说, 这一复杂整体所具有的客观性, 迫使我们必须坚定不移地关注对空间与数量的研究.</p>
+  <p>“在他博客上的一次采访中, Bill 说, ‘数学理论的核心, 在于空间中数量的变化, 以及在这种变化中质的飞跃.’ 无论考虑的是几何学、范畴、逻辑、政治形态的转变、亲属关系亦或其他领域, Bill 始终印证着对立面的统一与同一, 即辩证法的真实存在.</p>
+  <p>“Bill 的工作将作为扩大启蒙空间的贡献而经久不衰.”</p>
+  <p>在 CPC (M-L) 中央第一书记发给 Lawvere 教授家人的哀悼信中, 她写道:</p>
+  <p>“Bill 在他的一生中做出了如此多的贡献, 我们非常感激. 他对发现新事物的热情和奉献精神总是令人鼓舞. 他的方法总是充满活力、专注、在许多方面都很新鲜. 他作为教师的耐心、他的论点的智慧和连贯性、他对年轻一代和教化他们的热情, 以及他对文明崇高道路的勇敢坚持, 都非常出色.</p>
+  <p>“与 Bill 会面总是非常高兴. 我们将永远珍惜他的友谊、慷慨的精神和对我们共同事业的奉献精神, 他为此毫不畏惧地大声疾呼. 这正彰显了他非凡的品格.</p>
+  <p>为展示 Lawvere 教授作为数学教育者的风范, 其对问题直截了当的阐释方式, 以及对所有对其工作感兴趣者开放坦诚的讨论态度, 我们谨举一例: 他曾应请求就 “为何范畴论可能如此有用” 提供一个宽泛的论证. 以下是比尔的回答:</p>
+  <blockquote><span class="kaiti">人类的日常活动, 如在溪流旁的山上建造房屋、铺设电话管道网络、在太阳系中航行, 都需要可行的计划. 规划任何此类工作都需要发展对空间的思考. 每个发展都涉及许多思考步骤和许多相关的空间几何结构. 由于思考空间的必要多步骤性质, 必须采取独特的数学措施来使其可靠. 只有明确的思维原则</span> <span class="kaiti">(逻辑) 和明确的空间原则</span> <span class="kaiti">(几何) 才能保证可靠性. Eilenberg 和 Mac Lane 60 年前发明的理论所取得的巨大进步使逻辑和几何学的原则变得明确; 他们通过发现逻辑与几何的共同形式, 使得二者之间的关系原则也变得清晰可见. 他们解决了亚里士多德在 2300 年前提出的一个问题, 即初步尝试将</span> <span class="kaiti">“概念的范畴” 显式化. 在 21 世纪, 他们的解决方案不仅适用于平面几何和中世纪三段论, 还适用于无穷维变换空间、数据</span> <span class="kaiti">“空间” 以及其他每日被成千上万次应用的概念工具. 范畴学家发现, 逻辑与几何原则的形式, 根植于空间之间变换以及空间内部变换的</span> <span class="kaiti">“自然性” 之中.</span></blockquote>
+  <p>下文附上 Lawvere 教授逝世时发表的讣告 <span style="color: #aaaaaa;">[</span><span style="color: #aaaaaa;">译注</span><span style="color: #aaaaaa;">:</span> <span style="color: #aaaaaa;">讣告和后文的传真件等内容请前往原文查看.</span><span style="color: #aaaaaa;">]</span>. 我们添加了 1971 年 1 月 22 日<span class="kaiti">《达尔豪斯公报》</span><span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">Dalhousie Gazette</span></em><span style="color: #aaaaaa;">]</span> 上关于他被 Dalhousie 大学开除的文章的传真件. 我们还提供了 Lawvere 博士在 1996 年 2 月 9 日至 11 日在温莎大学举行的关于意识起源和社会变革的跨学科会议上发表的题为 “<span class="kaiti">数学教育改革的历史与哲学</span>” <span style="color: #aaaaaa;">[</span><em><span style="color: #aaaaaa;">The History and Philosophy of Mathematic Reform</span></em><span style="color: #aaaaaa;">]</span> 的论文. 最后, 我们还提供一段 Lawvere 博士的访谈, 其中他亲自阐释了自己的学术工作.</p>
+  <p>我们向 Bill 的终身伴侣与合作者、他的子女、孙辈、兄弟姊妹, 以及无数朋友与同事致以最深切的哀悼. 愿他们从共同创造的美好回忆中获得慰藉.</p>
 </p>
 </details></section></p>
 </details></section></p>
@@ -2691,7 +2441,7 @@ em {
 </style>
 <p>$\gdef\Z{\mathbf{Z}}$
 $\gdef\PP{\mathbf{P}}$</p>
-<p>此证明由 <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> 于 1955 年提出 <sup class="footnote-reference" id="pftb-P005_furstenberg-back"><a href="#pftb-P005_furstenberg">1</a></sup>. 这一页配图的说明文字也很有意思, 其写道</p>
+<p>此证明由 <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> 于 1955 年提出 <sup class="footnote-reference" id="pftb-P005_furstenberg-back"><a href="#pftb-P005_furstenberg">1</a></sup>, 收录于 <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">PFTB, p. 5</a></span>, 此页配图的说明文字写道</p>
 <blockquote>
 <p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span></p>
 </blockquote>

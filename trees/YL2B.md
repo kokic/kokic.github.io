@@ -4,6 +4,7 @@ title: Young 引理
 date: May 14, 2019
 author: [kokic](/trees/kokic.md)
 taxon: lemma
+asref: true
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
