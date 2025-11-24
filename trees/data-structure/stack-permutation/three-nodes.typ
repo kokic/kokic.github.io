@@ -1,5 +1,5 @@
 
-#set page(width: auto, height: auto, margin: (x: 0em, y: 0.1em), fill: rgb(0, 0, 0, 0)); 
+#set page(width: auto, height: auto, margin: (x: 0.5em, y: 0.5em), fill: rgb(0, 0, 0, 0)); 
 #set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");
 
 #import "@preview/fletcher:0.5.8" as fletcher: node, edge
