@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1050,9 +1113,13 @@ $$</p>
 </details></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="CN2A"><header><h1><span class="taxon">Exegesis. </span>Cauchy–Aczél 论证 <a class="slug" href="/CN2A">[CN2A]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span> 是 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 的一个直接应用. 凭此能够同时证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span>、<span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>、<span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 和 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 具体步骤如下.</p>
+<proof>
 <p>在 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span> $\iff$ <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, 又因为 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 等价于 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价于 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 于是只需证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 中 $n=2$ 的情况, 现在做差</p>
 <p>$$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_1)^2 $$</p>
-<p>右侧非负, 从而证毕. 读者也应留意到, 尝试直接说明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 和 <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价往往不容易看出, 而沿着下面的路径就要轻松的多.</p>
+<p>右侧非负, 从而证毕.</p>
+</proof>
+<observation>
+<p>读者也应留意到, 尝试直接说明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 和 <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价往往不容易看出, 而沿着下面的路径就要轻松的多.</p>
 <p>$$
 \begin{CD}
 \text{Cauchy} @&gt;s&gt;&gt; \text{Titu} \\
@@ -1061,4 +1128,5 @@ $$</p>
 \end{CD}
 $$</p>
 <p>此处 $X_1$ 即 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$.</p>
+</observation>
 </details></section></details></section></footer></article></div></body></html>

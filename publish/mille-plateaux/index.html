@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1031,10 +1094,16 @@ path.typst-shape[stroke="#000000"] {
 </style>
 
 <theme-option name="printer" style="display: none;">printer</theme-option>
-</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1. </span>古代物理学博士问题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.2. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.3. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li></ul></details></div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/AC2A" title="何谓选择公理 [AC2A]">■</a><span class="link local" onclick="window.location.href='#AC2A'"><span class="taxon"></span>何谓选择公理</span><ul class="block"><li class=""><a class="bullet" href="/AC2B" title="历史背景 [AC2B]">■</a><span class="link local" onclick="window.location.href='#AC2B'"><span class="taxon">Exegesis 1. </span>历史背景</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> 平面曲线的有理点</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1. </span>Canterbury 物语</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1. </span>古代物理学博士问题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.2. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.3. </span>Fermat 提升法</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 2. </span>圆的参数化</span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 3. </span>圆曲线</span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span>周期函数的构造</span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源</span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span>双周期函数</span></li></ul></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="mille-plateaux-index"><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details ><summary id="AC2A"><header><h1><span class="taxon"></span>何谓选择公理 <a class="slug" href="/AC2A">[AC2A]</a></h1><div class="metadata"><ul><li class="meta-item">November 26, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>整理自 <span class="link local"><a href="/bib/blass2025choice" title="A Gentle Introduction to the Axiom of Choice [bib/blass2025choice]">A Gentle Introduction to the Axiom of Choice</a></span>.</p>
+<p><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="AC2B"><header><h1><span class="taxon">Exegesis 1. </span>历史背景 <a class="slug" href="/AC2B">[AC2B]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>1883 年, Georg Cantor 提出了 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">良序原理</a></span>. 由于他所谓的 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">法则</a></span> 并未立即得到接受, Cantor 发现自己不得不寻求证明. 为了提供这样的证明, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 在 1904 年由 Ernst Zermelo 首次明确表述出来.</p>
+</details></section></p>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$

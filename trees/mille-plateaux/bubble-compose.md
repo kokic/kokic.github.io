@@ -8,4 +8,10 @@ tag: [](/trees/pearls.md)
 
 任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射. 
 
-[. (笔者)](./bubble-compose-pf.md#:embed)
+<proof title="(笔者)">
+
+冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$. 
+
+[](/mille-plateaux/bubble-compose.typ#:block)
+
+</proof>

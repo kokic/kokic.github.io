@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/index'" title="数据与可计算结构">« 数据与可计算结构</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1155,4 +1218,12 @@ $$</p>
   <sup class="footnote-definition-label"><a href="#data-structure_stack-permutation_isomorphism_inorder-sequence-back">2</a></sup>
 <p>如二叉树 <code>1101000100</code> 按添加顺序对节点编号, 然后做中序遍历得到的是 <code>2314</code>.</p>
 </div>
-</details></section><footer></footer></article></div></body></html>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference"><details ><summary id="bib-hille1982stack"><header><h1><span class="taxon">Reference. </span>Stack permutations and an order relation for binary trees <a class="slug" href="/bib/hille1982stack">[hille1982stack]</a></h1><div class="metadata"><ul><li class="meta-item">1982</li><li class="meta-item">Reinhold Friedrich Hille</li></ul></div></header></summary>
+<p>An isomorphism between stack permutations of a set of $n$ elements and ordered binary trees with $n$ vertices is presented. which allows the construction of simple linear time algorithms to compute a ranking function and its inverse for binary trees. No pre-processing of tables is required, as was the case with previously published methods.</p>
+<pre><code>@article{hille1982stack,
+  title={Stack permutations and an order relation for binary trees},
+  author={Hille, Reinhold Friedrich},
+  year={1982}
+}
+</code></pre>
+</details></section></details></section></footer></article></div></body></html>

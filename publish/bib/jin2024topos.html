@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1043,7 +1106,24 @@ path.typst-shape[stroke="#000000"] {
   year={2024}
 }
 </code></pre>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference"><details ><summary id="bib-methods-of-algebra-1"><header><h1><span class="taxon">Reference. </span>代数学方法 卷一：基础架构 <a class="slug" href="/bib/methods-of-algebra-1">[methods-of-algebra-1]</a></h1><div class="metadata"><ul><li class="meta-item">November 16, 2018</li><li class="meta-item">李文威</li><li class="meta-item"><span class="link external"><a href="https://wwli.asia/downloads/books/Al-jabr-1.pdf" title="电子版 [https://wwli.asia/downloads/books/Al-jabr-1.pdf]">电子版</a></span></li><li class="meta-item">高等教育出版社</li><li class="meta-item">现代数学基础系列</li></ul></div></header></summary>
+<p>本书主题有时也称为 “近世代数” 或 “抽象代数”. 所谓近世, 总是相对于当时当世而论,
+早在 1955 年 van der Waerden 发表《代数学》第四版时便已舍弃此词, 于今更无必要.
+至于说抽象, 充其量是初学者的错觉, 作为课名或书名完全不得要领, 而且似乎有恫吓读者之嫌.
+本书题为 “代数学方法”, 一则是因为当代代数学范围过广, 本书仅择有趣有用者而述, 不求体系大而全.
+第二也是最关键的一点, 则是因为数学的本质存在于交融互摄, 只为授课与学科分画方便才打包于一词.
+所以本书绝不视代数为疆界分明的学科; 与分析, 拓扑学等脱钩的纯代数即便存在, 也仅是千万种研究方向之一.
+《庄子·应帝王》中有混沌凿七窍的故事, 强凿疆界同样令数学趋于停滞消亡.</p>
+<pre><code>@article{wwli2019method,
+  title={代数学方法 卷一：基础架构},
+  author={李文威},
+  series={现代数学基础},
+  year={2019},
+  isbn={978-7-04-050725-6},
+  publisher={高等教育出版社}
+}
+</code></pre>
+</details></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\R{\mathbf{R}}$</p>
 <p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>

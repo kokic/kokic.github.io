@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/synthetic-differential/dual-number'" title="对偶数">« 对偶数</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1071,7 +1134,49 @@ We prefer to think of it just as ‘that reasoning
 which can be carried out in all sufficiently good
 cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
 </blockquote>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-complex-step"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference"><details ><summary id="bib-jin2024topos"><header><h1><span class="taxon">Reference. </span>意象理论讲义 <a class="slug" href="/bib/jin2024topos">[jin2024topos]</a></h1><div class="metadata"><ul><li class="meta-item">November 20, 2024</li><li class="meta-item">王进一</li><li class="meta-item"><span class="link external"><a href="https://github.com/SimplicialCat/topos/blob/main/topos.pdf" title="电子版 [https://github.com/SimplicialCat/topos/blob/main/topos.pdf]">电子版</a></span></li></ul></div></header></summary>
+<p>本书对数学没有原创性的贡献, 其中几乎所有结果在 20 世纪已经为该领域的专家所熟知. 但是大部分内容找不到成体系的中文资料 (除了李文威老师的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">代数学方法</a></span>), 这是我编写本书的动机之一.</p>
+<p>内容的编排原则大致是使初学者最易接受, 并且提供启发性的观点, 从而使人能更快入门去看更多的资料. 本书收录的论证都是十分简单而直观的; 阅读本书虽不能让人成为本领域的专家, 但能让人发现一些事情并非想象的那样困难, 在将玄妙的概念祛魅的过程中产生信心和乐趣.</p>
+<p>书中许多内容的含入仅仅是由于个人的品味, 例子的选取受到了本人的微分几何与代数拓扑背景的影响. 一些证明出自本人的思考, 因此错漏是难免的. 限于水平, 书中许多细节无法深究, 包括有关集合论的 “小” 性的问题, 以及其它涉及到数学基础的问题. 许多术语没有通行的中文版本, 姑且使用了本人的翻译, 书后附有一个简短的术语表.</p>
+<pre><code>@book{jin2024topos, 
+  title={意象理论讲义}, 
+  author={王进一}, 
+  year={2024}
+}
+</code></pre>
+</details></section><section class="block" data-taxon="Reference"><details ><summary id="bib-kock2006synthetic"><header><h1><span class="taxon">Reference. </span>Synthetic differential geometry <a class="slug" href="/bib/kock2006synthetic">[kock2006synthetic]</a></h1><div class="metadata"><ul><li class="meta-item">2006</li><li class="meta-item">Anders Kock</li><li class="meta-item">Cambridge University Press, Volume 333</li></ul></div></header></summary>
+<p>The aim of the present book is to describe a foundation for
+synthetic reasoning in differential geometry.
+We hope that such a foundational treatise will put the reader in a position
+where he, in his study of differential geometry, can utilize
+the synthetic method freely and rigorously, and that it will give him notions
+and language by which such study can be communicated.</p>
+<pre><code>@book{kock2006synthetic,
+  title={Synthetic differential geometry},
+  author={Kock, Anders},
+  volume={333},
+  year={2006},
+  publisher={Cambridge University Press}
+}
+</code></pre>
+</details></section><section class="block" data-taxon="Reference"><details ><summary id="bib-methods-of-algebra-1"><header><h1><span class="taxon">Reference. </span>代数学方法 卷一：基础架构 <a class="slug" href="/bib/methods-of-algebra-1">[methods-of-algebra-1]</a></h1><div class="metadata"><ul><li class="meta-item">November 16, 2018</li><li class="meta-item">李文威</li><li class="meta-item"><span class="link external"><a href="https://wwli.asia/downloads/books/Al-jabr-1.pdf" title="电子版 [https://wwli.asia/downloads/books/Al-jabr-1.pdf]">电子版</a></span></li><li class="meta-item">高等教育出版社</li><li class="meta-item">现代数学基础系列</li></ul></div></header></summary>
+<p>本书主题有时也称为 “近世代数” 或 “抽象代数”. 所谓近世, 总是相对于当时当世而论,
+早在 1955 年 van der Waerden 发表《代数学》第四版时便已舍弃此词, 于今更无必要.
+至于说抽象, 充其量是初学者的错觉, 作为课名或书名完全不得要领, 而且似乎有恫吓读者之嫌.
+本书题为 “代数学方法”, 一则是因为当代代数学范围过广, 本书仅择有趣有用者而述, 不求体系大而全.
+第二也是最关键的一点, 则是因为数学的本质存在于交融互摄, 只为授课与学科分画方便才打包于一词.
+所以本书绝不视代数为疆界分明的学科; 与分析, 拓扑学等脱钩的纯代数即便存在, 也仅是千万种研究方向之一.
+《庄子·应帝王》中有混沌凿七窍的故事, 强凿疆界同样令数学趋于停滞消亡.</p>
+<pre><code>@article{wwli2019method,
+  title={代数学方法 卷一：基础架构},
+  author={李文威},
+  series={现代数学基础},
+  year={2019},
+  isbn={978-7-04-050725-6},
+  publisher={高等教育出版社}
+}
+</code></pre>
+</details></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-complex-step"><header><h1><span class="taxon">Exegesis. </span>Complex step 微分法 <a class="slug" href="/data-structure/synthetic-differential/complex-step">[complex-step]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>Mathworks 的创始人 Cleve Moler 约 60 年 <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_publish-time-back"><a href="#data-structure_synthetic-differential_complex-step_publish-time">1</a></sup> 前提出了借用虚数单位 $i$ 的数值微分, 相关文献称为 <span class="link external"><a href="https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/" title="complex step 微分法 [https://blogs.mathworks.com/cleve/2013/10/14/complex-step-differentiation/]">complex step 微分法</a></span> <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_complex-step-back"><a href="#data-structure_synthetic-differential_complex-step_complex-step">2</a></sup>. 考虑光滑函数 $f(x)$, 其在 $x=a$ 处可表为关于 $X$ 的 Taylor 级数 <sup class="footnote-reference" id="data-structure_synthetic-differential_complex-step_distinguish-back"><a href="#data-structure_synthetic-differential_complex-step_distinguish">3</a></sup> $f(a) + f'(a)(X-a) + \text{etc.}$, 注意</p>

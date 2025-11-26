@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,6 +998,68 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
@@ -1038,9 +1101,13 @@ path.typst-shape[stroke="#000000"] {
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="CN2A"><header><h1><span class="taxon">Exegesis. </span>Cauchy–Aczél 论证 <a class="slug" href="/CN2A">[CN2A]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span> 是 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 的一个直接应用. 凭此能够同时证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span>、<span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>、<span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 和 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 具体步骤如下.</p>
+<proof>
 <p>在 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span> $\iff$ <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, 又因为 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 等价于 <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu 引理</a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价于 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>. 于是只需证明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 中 $n=2$ 的情况, 现在做差</p>
 <p>$$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_1)^2 $$</p>
-<p>右侧非负, 从而证毕. 读者也应留意到, 尝试直接说明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 和 <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价往往不容易看出, 而沿着下面的路径就要轻松的多.</p>
+<p>右侧非负, 从而证毕.</p>
+</proof>
+<observation>
+<p>读者也应留意到, 尝试直接说明 <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy 不等式</a></span> 和 <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél 不等式</a></span> 等价往往不容易看出, 而沿着下面的路径就要轻松的多.</p>
 <p>$$
 \begin{CD}
 \text{Cauchy} @&gt;s&gt;&gt; \text{Titu} \\
@@ -1049,9 +1116,12 @@ path.typst-shape[stroke="#000000"] {
 \end{CD}
 $$</p>
 <p>此处 $X_1$ 即 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$.</p>
+</observation>
 </details></section><section class="block" data-taxon="Exegesis"><details ><summary id="HP2E"><header><h1><span class="taxon">Exegesis. </span>Hölder–Popoviciu 论证 <a class="slug" href="/HP2E">[HP2E]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>类似 <span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span>, 也可以将 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 应用于 <span class="link local"><a href="/HP2A" title="Hölder 不等式 [HP2A]">Hölder 不等式</a></span> 和 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>.</p>
+<proof>
+<block taxon="Step 1">
 <p>在 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 中取 $f(x, \ell) = \frac{x^p}{\ell^{p-1}}$, 此时 $\eta_*: \sum_i x_i^p / \ell_i^{p-1} \ge (\sum_i x_i)^p / (\sum_i \ell_i)^{p-1}$ 即 <span class="link local"><a href="/HP2B" title="Radon 不等式 [HP2B]">Radon 不等式</a></span>, $\varphi_*: (x - \sum_i x_i)^p / (\ell - \sum_i \ell_i)^{p-1} \ge x^p / \ell^{p-1} - \sum_i x_i^p / \ell_i^{p-1}$ 即 <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu 不等式 Engel 形式</a></span>. 沿下图</p>
 <p>$$
 \begin{CD}
@@ -1060,10 +1130,12 @@ $$</p>
 A_2 @&lt;&lt;s^{-1}&lt; X_2
 \end{CD}
 $$</p>
-<p>此处 $A_2$ 为 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>, $X_2$ 为 <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt[q]\ell_k}, \sqrt[q]\ell_k)$. 证明这四个命题等价于证明 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">命题 $\eta$</a></span>, 即</p>
+<p>证得这四个命题等价于证明 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">命题 $\eta$</a></span>, 此处 $A_2$ 为 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>, $X_2$ 为 <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt[q]\ell_k}, \sqrt[q]\ell_k)$, <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">命题 $\eta$</a></span> 为</p>
 <p>$$
 (a_1^p + a_2^p)^{\frac{1}{p}}(b_1^q + b_2^q)^{\frac{1}{q}} \spaces\ge a_1b_1+a_2b_2
 $$</p>
+</block>
+<block taxon="Step 2">
 <p>以下证明是标准的, 可见于任何一本泛函分析课本. 记</p>
 <p>$$ x_i = a_i /(a_1^p + a_2^p)^{\frac{1}{p}}, \quad y_i = b_i / (b_1^q + b_2^q)^{\frac{1}{q}}$$</p>
 <p>则 $x_1^p + x_2^p = 1, y_1^q + y_2^q = 1$. 欲证明 $x_1y_1 + x_2y_2 \le 1$, 只要对 $(x_i, y_i)$ 使用 <span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span>, 如此</p>
@@ -1071,6 +1143,8 @@ $$</p>
 x_1y_1 + x_2y_2 \spaces\le \frac{x_1^p}{p} + \frac{y_1^q}{q} + \frac{x_2^p}{p} + \frac{y_2^q}{q}
 $$</p>
 <p>由加法交换律和 $\frac{1}{p} + \frac{1}{q} = 1$, 右侧当然 $=1$.</p>
+</block>
+</proof>
 </details></section><section class="block" data-taxon="Exegesis"><details ><summary id="YL2A"><header><h1><span class="taxon">Exegesis. </span>Young 引理 <a class="slug" href="/YL2A">[YL2A]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p><span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young 不等式</a></span> 有许多风格迥然的证明, 最常见的办法可能是使用 <span class="link local"><a href="/trees/YL4A" title=" [trees/YL4A]">定积分</a></span>.</p>
 <p>我们在此介绍一种充分利用对数线性化 $\log x \le x -1 $ 的方法, 即 <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young 引理</a></span>.
@@ -1283,10 +1357,7 @@ $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
-<p><section class="block" data-taxon="Proof"><details ><summary id="data-structure-deletion-contraction-pf"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-pf">[deletion-contraction-pf]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\without{\setminus}$</p>
+<proof>
 <p>$\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
 <p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现</p>
@@ -1298,7 +1369,7 @@ $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
 \end{aligned}
 $$</p>
 <p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
-</details></section></p>
+</proof>
 <p>这个结果可等价地叙述成连接的版本, 可称为 “连接–收缩公式”. 对于简单图 $G = (V, E)$</p>
 <p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
@@ -1306,7 +1377,13 @@ $$</p>
 <p>本站使用 <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> 构建, 源文件位于 <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]">此处</a></span>.
 另有专栏 <span class="link local"><a href="/pearls" title="Pearls [pearls]">证明珠玑</a></span>.</p>
 <p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-index"><header><h1><span class="taxon"></span>千高原 <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block" data-taxon=""><details ><summary id="AC2A"><header><h1><span class="taxon"></span>何谓选择公理 <a class="slug" href="/AC2A">[AC2A]</a></h1><div class="metadata"><ul><li class="meta-item">November 26, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>整理自 <span class="link local"><a href="/bib/blass2025choice" title="A Gentle Introduction to the Axiom of Choice [bib/blass2025choice]">A Gentle Introduction to the Axiom of Choice</a></span>.</p>
+<p><section class="block" data-taxon="Exegesis"><details ><summary id="AC2B"><header><h1><span class="taxon">Exegesis. </span>历史背景 <a class="slug" href="/AC2B">[AC2B]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>1883 年, Georg Cantor 提出了 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">良序原理</a></span>. 由于他所谓的 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">法则</a></span> 并未立即得到接受, Cantor 发现自己不得不寻求证明. 为了提供这样的证明, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 在 1904 年由 Ernst Zermelo 首次明确表述出来.</p>
+</details></section></p>
+</details></section>
+<section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
@@ -2416,10 +2493,10 @@ em {
 </details></section></p>
 </details></section><section class="block" data-taxon=""><details ><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>任意置换 $\sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i ~ j)$ 则是交换元素 $i,j$ 位置的映射.</p>
-<p><section class="block" data-taxon="Proof"><details ><summary id="mille-plateaux-bubble-compose-pf"><header><h1><span class="taxon">Proof. </span> (笔者) <a class="slug" href="/mille-plateaux/bubble-compose-pf">[bubble-compose-pf]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<proof title="(笔者)">
 <p>冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $\sigma_X, \sigma_Y$. 现在观察下图, 写出 $\sigma_Y^{-1}\sigma_X$, 这当然就是 $\sigma$.</p>
 <p><figure><img src="/mille-plateaux/bubble-compose.svg" class="color-invert"/></figure></p>
-</details></section></p>
+</proof>
 </details></section><section class="block" data-taxon="Problem"><details ><summary id="mille-plateaux-canterbury-2A"><header><h1><span class="taxon">Problem. </span>古代物理学博士问题 <a class="slug" href="/mille-plateaux/canterbury-2A">[canterbury-2A]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>

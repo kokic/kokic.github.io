@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title></title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
+<meta name="viewport" content="width=device-width"><title>选择公理</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
   color-scheme: light dark;
   --content-gap: 15px;
   --radius: 5px;
@@ -94,6 +94,7 @@ em {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 }
 
 /* !forest */
@@ -997,7 +998,69 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/deletion-contraction'" title="删除–收缩公式">« 删除–收缩公式</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</script><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
+
+<script>
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || "";
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = `${taxon}. `;
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+    });
+  });
+</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/index'" title="回声">« 回声</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 
@@ -1033,19 +1096,8 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="printer" style="display: none;">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Proof"><details open><summary id="data-structure-deletion-contraction-pf"><header><h1><span class="taxon">Proof. </span> <a class="slug" href="/data-structure/deletion-contraction-pf">[deletion-contraction-pf]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\without{\setminus}$</p>
-<p>$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现</p>
-<p>$$
-\begin{aligned} 
-\pi(G \without e) 
-&amp;\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
-&amp;\spaces= \pi(G / e) ~ + ~ \pi(G)
-\end{aligned}
-$$</p>
-<p>此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个.</p>
-</details></section><footer></footer></article></div></body></html>
+<article><section class="block" data-taxon="Axiom"><details open><summary id="AC2C"><header><h1><span class="taxon">Axiom. </span>选择公理 $\textsf{AC}$ <a class="slug" href="/AC2C">[AC2C]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>对于任意一非空集合族 $\mathscr{F}$, 存在一个选择函数 $f$ 为每个成员 $A \in \mathscr{F}$ 分配一个元素 $f(A) \in A$.</p>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="AC2B"><header><h1><span class="taxon">Exegesis. </span>历史背景 <a class="slug" href="/AC2B">[AC2B]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>1883 年, Georg Cantor 提出了 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">良序原理</a></span>. 由于他所谓的 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">法则</a></span> 并未立即得到接受, Cantor 发现自己不得不寻求证明. 为了提供这样的证明, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 在 1904 年由 Ernst Zermelo 首次明确表述出来.</p>
+</details></section></details></section></footer></article></div></body></html>

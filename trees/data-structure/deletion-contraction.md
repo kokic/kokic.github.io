@@ -15,7 +15,24 @@ $\gdef\without{\setminus}$
 
 $$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$
 
-[.](./deletion-contraction-pf.md#:embed)
+<proof>
+
+$\gdef\str#1{{\footnotesize #1}}$
+$\gdef\sstr#1{~{\footnotesize #1}~}$
+
+假定边 $e$ 的两个端点分别为 $A,B$, 不难发现
+
+$$
+\begin{aligned} 
+\pi(G \without e) 
+&\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&\spaces= \pi(G / e) ~ + ~ \pi(G)
+\end{aligned}
+$$
+
+此处, $G \without e$ 是将 $G$ 的边 $e$ 删去, $G/e$ 是将 $e$ 两侧的顶点合并为一个. 
+
+</proof>
 
 这个结果可等价地叙述成连接的版本, 可称为 "连接--收缩公式". 对于简单图 $G = (V, E)$
 
