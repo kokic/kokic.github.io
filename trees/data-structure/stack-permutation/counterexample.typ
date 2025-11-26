@@ -5,7 +5,7 @@
 #import "../../_lib/shared.typ": *
 #import "../../_lib/binary-tree.typ": *
 
-#show raw: set text(font: ("Jetbrains Mono"))
+#show raw: set text(font: ("JetBrains Mono"))
 
 #let enc = `encode`
 #let splus = spaces(`++`)
