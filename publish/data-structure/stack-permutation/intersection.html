@@ -587,28 +587,66 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
-  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
-  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
-  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+</style><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    renderMathInElement(document.body, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false },
-        { left: "\\[", right: "\\]", display: true },
-      ],
-      trust: true,
-      strict: false,
-      throwOnError: false,
-      minRuleThickness: 0.05,
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || null;
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = taxon ? `${taxon}. ` : "";
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
     });
   });
 </script><script>
@@ -671,12 +709,14 @@ path.typst-shape[stroke="#000000"] {
 </template>
 
 <script>
+  const THEME_KEY = `kodama-theme`;
+
   function storeSelectedTheme(name) {
-    localStorage.setItem(window.themeKey, name);
+    localStorage.setItem(THEME_KEY, name);
   }
 
   function getCurrentTheme() {
-    return localStorage.getItem(window.themeKey) || window.primaryTheme;
+    return localStorage.getItem(THEME_KEY) || window.primaryTheme;
   }
 
   function selectTheme(themeName) {
@@ -697,9 +737,8 @@ path.typst-shape[stroke="#000000"] {
         // e.g., when the theme options have changed, and the stored theme is no longer available.
         window.primaryOption.checked = true;
       }
-
-      applyDynamicColorInvert();
     }
+    applyDynamicColorInvert();
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -730,9 +769,6 @@ path.typst-shape[stroke="#000000"] {
         }
       },
     );
-
-    const baseUrl = document.getElementById("grid-wrapper").dataset.baseUrl;
-    window.themeKey = `${baseUrl}-kodama-theme`;
 
     window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
     window.primaryTheme = primaryOption?.value;
@@ -967,7 +1003,7 @@ path.typst-shape[stroke="#000000"] {
   colorParseCanvas.width = 1;
   colorParseCanvas.height = 1;
   const colorParseContext = colorParseCanvas.getContext('2d');
-  
+
   const toRGBArray = (cssColor) => {
     colorParseContext.fillStyle = cssColor;
     colorParseContext.fillRect(0, 0, 1, 1);
@@ -978,89 +1014,145 @@ path.typst-shape[stroke="#000000"] {
     return Array.from(rgba.slice(0, 3));
   };
 
-  const dynamicStyleId = 'dynamic-color-invert-style';
+  const DYNAMIC_STYLE_ID = 'dynamic-color-invert-style';
+  const SOLVED_COLOR_KEY = "solved-";
+
+  function memorizedSolvedFilter(color) {
+    const colorKey = SOLVED_COLOR_KEY + color;
+    const storedFilterOption = localStorage.getItem(colorKey);
+    if (storedFilterOption) {
+      return storedFilterOption;
+    } else {
+      const filter = solveColor(color).filter;
+      localStorage.setItem(colorKey, filter);
+      return filter;
+    }
+  }
 
   function applyDynamicColorInvert() {
     const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
     if (textColor && textColor.length > 0) {
       const rgb = toRGBArray(textColor);
-      const result = solveColor(rgb);
-      const filter = result.filter;
+      const filter = memorizedSolvedFilter(rgb);
 
-      const existingStyle = document.getElementById(dynamicStyleId);
+      const existingStyle = document.getElementById(DYNAMIC_STYLE_ID);
       if (existingStyle) {
         existingStyle.textContent = `.color-invert {${filter}}`;
       } else {
         const style = document.createElement('style');
-        style.id = dynamicStyleId;
+        style.id = DYNAMIC_STYLE_ID;
         style.textContent = `.color-invert {${filter}}`;
         document.head.appendChild(style);
       }
     }
   }
-</script><template id="inline-section">
-  <section class="block" data-taxon="">
-    <details open="">
-      <summary>
-        <header>
-          <h1>
-            <span class="taxon"></span>
-            <div id="title"></div>
-          </h1>
-        </header>
-      </summary>
-      <div id="content"></div>
-    </details>
-  </section>
-</template>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 
 <script>
-  function inlineSection(template, section, taxon, title) {
-    taxon = taxon || section.getAttribute("taxon") || "";
-    title = title || section.getAttribute("title") || "";
-
-    const clone = template.content.cloneNode(true);
-    clone.querySelector("section").dataset.taxon = taxon;
-    clone.querySelector(".taxon").textContent = `${taxon}. `;
-    clone.querySelector("#title").replaceWith(title);
-    clone.querySelector("#content").replaceWith(...section.childNodes);
-
-    if (section.hasAttribute("close")) {
-      clone.querySelector("details").removeAttribute("open");
-    }
-    
-    section.replaceWith(clone);
-  }
-
-  const tagTaxonTable = {
-    "exegesis": "Exegesis",
-    "definition": "Definition",
-    "proposition": "Proposition",
-    "remark": "Remark",
-    "conjecture": "Conjecture",
-    "postulate": "Postulate",
-    "claim": "Claim",
-    "observation": "Observation",
-    "fact": "Fact",
-    "hypothesis": "Hypothesis",
-    "axiom": "Axiom",
-    "lemma": "Lemma",
-    "theorem": "Theorem",
-    "corollary": "Corollary",
-    "example": "Example", 
-    "proof": "Proof",
-  };
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const template = document.getElementById("inline-section");
-
-    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
-
-    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
-      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
+      ],
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
     });
   });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/stack-permutation/isomorphism'" title="栈置换–二叉树同构">« 栈置换–二叉树同构</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 
@@ -1093,10 +1185,10 @@ path.typst-shape[stroke="#000000"] {
   }
 </style>
 
-<theme-option name="printer" style="display: none;">printer</theme-option>
+<theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-intersection"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/intersection">[intersection]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-intersection"><header><h1><span class="taxon">Proposition. </span>相交数 <a class="slug" href="/data-structure/stack-permutation/intersection">[intersection]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/stack-permutation/intersection.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p>所有 $n$ 节点二叉树的 Hille 编码构成的集合记为 $H_n$, 所有 $n$ 节点二叉树的栈编码构成的集合记为 $C_n$. 对于 $H_n \cap C_n$ 的大小 $a_n \eqdef |H_n \cap C_n|$, 我们有如下刻画.</p>
@@ -1104,6 +1196,6 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 a_n \spaces= \sum_{k = 0}^{n-1} \sum_{j = 0}^{n-k} \frac{1}{j+1}\binom{n-k-j}j \binom kj \binom{k+j+2}j
 $$</p>
 <p>记 $N = n+1$. 等式的证明可以通过分析一个半长为 $N$ 且不包含 <code>UUDD</code> 子序列的 Dyck 路径得到. 同时这也是从 $(0,0)$ 到 $(N,N)$ 不越过对角线且允许步长 $(1,k), (k,1), k \geqslant 1$ 的格路径的个数. 或者更简单地说, 是长度为 $N$ 的斜 Motzkin 路径的个数.</p>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-stack-permutation-ratio"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-stack-permutation-ratio"><header><h1><span class="taxon">Corollary. </span>相交率 <a class="slug" href="/data-structure/stack-permutation/ratio">[ratio]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/stack-permutation/ratio.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>记 Catalan 数为 $c_n$, 也即 $H_n$ 或 $C_n$ 的个数. 自然要问 $|H \cap C_n|$ 在全体 $n$ 节点二叉树个数中所占的比例与 $n$ 的关系. 根据 <span class="link local"><a href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">相交数</a></span> 与 Catalan 数的渐进估计 $a_{n} \sim \frac{\sqrt{2 + r}}{2\sqrt{\pi}n^{3/2}r^{n}}$, $c_n \sim \frac{4^n}{\sqrt\pi n^{3/2}}$ 可以知道 $\lim\limits_{n\to\infty} \frac{a_n}{c_n} = 0$. 并且事实上只要二叉树的节点个数 $n$ 大于 $8$, $H_n$ 与 $C_n$ 相同的部分就会少于整体的一半.</p>
 </details></section></details></section></footer></article></div></body></html>

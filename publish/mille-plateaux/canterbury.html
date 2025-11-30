@@ -587,28 +587,66 @@ path.typst-shape[stroke="#000000"] {
   thead {
     font-family: "Inria Sans", sans-serif;
   }
-</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
-  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
-  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
-  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+</style><template id="inline-section">
+  <section class="block" data-taxon="">
+    <details open="">
+      <summary>
+        <header>
+          <h1>
+            <span class="taxon"></span>
+            <div id="title"></div>
+          </h1>
+        </header>
+      </summary>
+      <div id="content"></div>
+    </details>
+  </section>
+</template>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    renderMathInElement(document.body, {
-      delimiters: [
-        { left: "$$", right: "$$", display: true },
-        { left: "$", right: "$", display: false },
-        { left: "\\(", right: "\\)", display: false },
-        { left: "\\[", right: "\\]", display: true },
-      ],
-      trust: true,
-      strict: false,
-      throwOnError: false,
-      minRuleThickness: 0.05,
+  function inlineSection(template, section, taxon, title) {
+    taxon = taxon || section.getAttribute("taxon") || null;
+    title = title || section.getAttribute("title") || "";
+
+    const clone = template.content.cloneNode(true);
+    clone.querySelector("section").dataset.taxon = taxon;
+    clone.querySelector(".taxon").textContent = taxon ? `${taxon}. ` : "";
+    clone.querySelector("#title").replaceWith(title);
+    clone.querySelector("#content").replaceWith(...section.childNodes);
+
+    if (section.hasAttribute("close")) {
+      clone.querySelector("details").removeAttribute("open");
+    }
+    
+    section.replaceWith(clone);
+  }
+
+  const tagTaxonTable = {
+    "exegesis": "Exegesis",
+    "definition": "Definition",
+    "proposition": "Proposition",
+    "remark": "Remark",
+    "conjecture": "Conjecture",
+    "postulate": "Postulate",
+    "claim": "Claim",
+    "observation": "Observation",
+    "fact": "Fact",
+    "hypothesis": "Hypothesis",
+    "axiom": "Axiom",
+    "lemma": "Lemma",
+    "theorem": "Theorem",
+    "corollary": "Corollary",
+    "example": "Example", 
+    "proof": "Proof",
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const template = document.getElementById("inline-section");
+
+    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
+
+    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
+      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
     });
   });
 </script><script>
@@ -671,12 +709,14 @@ path.typst-shape[stroke="#000000"] {
 </template>
 
 <script>
+  const THEME_KEY = `kodama-theme`;
+
   function storeSelectedTheme(name) {
-    localStorage.setItem(window.themeKey, name);
+    localStorage.setItem(THEME_KEY, name);
   }
 
   function getCurrentTheme() {
-    return localStorage.getItem(window.themeKey) || window.primaryTheme;
+    return localStorage.getItem(THEME_KEY) || window.primaryTheme;
   }
 
   function selectTheme(themeName) {
@@ -697,9 +737,8 @@ path.typst-shape[stroke="#000000"] {
         // e.g., when the theme options have changed, and the stored theme is no longer available.
         window.primaryOption.checked = true;
       }
-
-      applyDynamicColorInvert();
     }
+    applyDynamicColorInvert();
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -730,9 +769,6 @@ path.typst-shape[stroke="#000000"] {
         }
       },
     );
-
-    const baseUrl = document.getElementById("grid-wrapper").dataset.baseUrl;
-    window.themeKey = `${baseUrl}-kodama-theme`;
 
     window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
     window.primaryTheme = primaryOption?.value;
@@ -967,7 +1003,7 @@ path.typst-shape[stroke="#000000"] {
   colorParseCanvas.width = 1;
   colorParseCanvas.height = 1;
   const colorParseContext = colorParseCanvas.getContext('2d');
-  
+
   const toRGBArray = (cssColor) => {
     colorParseContext.fillStyle = cssColor;
     colorParseContext.fillRect(0, 0, 1, 1);
@@ -978,89 +1014,145 @@ path.typst-shape[stroke="#000000"] {
     return Array.from(rgba.slice(0, 3));
   };
 
-  const dynamicStyleId = 'dynamic-color-invert-style';
+  const DYNAMIC_STYLE_ID = 'dynamic-color-invert-style';
+  const SOLVED_COLOR_KEY = "solved-";
+
+  function memorizedSolvedFilter(color) {
+    const colorKey = SOLVED_COLOR_KEY + color;
+    const storedFilterOption = localStorage.getItem(colorKey);
+    if (storedFilterOption) {
+      return storedFilterOption;
+    } else {
+      const filter = solveColor(color).filter;
+      localStorage.setItem(colorKey, filter);
+      return filter;
+    }
+  }
 
   function applyDynamicColorInvert() {
     const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
     if (textColor && textColor.length > 0) {
       const rgb = toRGBArray(textColor);
-      const result = solveColor(rgb);
-      const filter = result.filter;
+      const filter = memorizedSolvedFilter(rgb);
 
-      const existingStyle = document.getElementById(dynamicStyleId);
+      const existingStyle = document.getElementById(DYNAMIC_STYLE_ID);
       if (existingStyle) {
         existingStyle.textContent = `.color-invert {${filter}}`;
       } else {
         const style = document.createElement('style');
-        style.id = dynamicStyleId;
+        style.id = DYNAMIC_STYLE_ID;
         style.textContent = `.color-invert {${filter}}`;
         document.head.appendChild(style);
       }
     }
   }
-</script><template id="inline-section">
-  <section class="block" data-taxon="">
-    <details open="">
-      <summary>
-        <header>
-          <h1>
-            <span class="taxon"></span>
-            <div id="title"></div>
-          </h1>
-        </header>
-      </summary>
-      <div id="content"></div>
-    </details>
-  </section>
-</template>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
+  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 
 <script>
-  function inlineSection(template, section, taxon, title) {
-    taxon = taxon || section.getAttribute("taxon") || "";
-    title = title || section.getAttribute("title") || "";
-
-    const clone = template.content.cloneNode(true);
-    clone.querySelector("section").dataset.taxon = taxon;
-    clone.querySelector(".taxon").textContent = `${taxon}. `;
-    clone.querySelector("#title").replaceWith(title);
-    clone.querySelector("#content").replaceWith(...section.childNodes);
-
-    if (section.hasAttribute("close")) {
-      clone.querySelector("details").removeAttribute("open");
-    }
-    
-    section.replaceWith(clone);
-  }
-
-  const tagTaxonTable = {
-    "exegesis": "Exegesis",
-    "definition": "Definition",
-    "proposition": "Proposition",
-    "remark": "Remark",
-    "conjecture": "Conjecture",
-    "postulate": "Postulate",
-    "claim": "Claim",
-    "observation": "Observation",
-    "fact": "Fact",
-    "hypothesis": "Hypothesis",
-    "axiom": "Axiom",
-    "lemma": "Lemma",
-    "theorem": "Theorem",
-    "corollary": "Corollary",
-    "example": "Example", 
-    "proof": "Proof",
-  };
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const template = document.getElementById("inline-section");
-
-    [...document.getElementsByTagName("block")].forEach(section => inlineSection(template, section));
-
-    Object.entries(tagTaxonTable).forEach(([tag, taxon]) => {
-      [...document.getElementsByTagName(tag)].forEach(section => inlineSection(template, section, taxon));
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
+      ],
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
     });
   });
 </script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/mille-plateaux/rational-points'" title="有理点">« 有理点</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 
@@ -1093,17 +1185,17 @@ path.typst-shape[stroke="#000000"] {
   }
 </style>
 
-<theme-option name="printer" style="display: none;">printer</theme-option>
+<theme-option name="printer">printer</theme-option>
 </div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1. </span>古代物理学博士问题</span></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 2. </span>切线与交点</span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 3. </span>Fermat 提升法</span></li></ul></details></div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-canterbury"><header><h1><span class="taxon">Exegesis. </span>Canterbury 物语 <a class="slug" href="/mille-plateaux/canterbury">[canterbury]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span class="link local"><a href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">此问题</a></span> 来自一本名为 <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Canterbury_Puzzles" title="The Canterbury Puzzles [https://en.wikipedia.org/wiki/The_Canterbury_Puzzles]">The Canterbury Puzzles</a></span> 的书, 是其中的 “The Puzzle of the Doctor of Physic” 的重述. 本文希望以此问题为起点, 介绍历史上若干算术问题的几何方法.</p>
-<p><section class="block hide-metadata" data-taxon="Problem"><details open><summary id="mille-plateaux-canterbury-2A"><header><h1><span class="taxon">Problem 1. </span>古代物理学博士问题 <a class="slug" href="/mille-plateaux/canterbury-2A">[canterbury-2A]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Problem"><details open><summary id="mille-plateaux-canterbury-2A"><header><h1><span class="taxon">Problem 1. </span>古代物理学博士问题 <a class="slug" href="/mille-plateaux/canterbury-2A">[canterbury-2A]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \spaces= 9 \quad \color{gray}{(= ~ 1^3+2^3)} $$</p>
-<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="mille-plateaux-canterbury-2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/mille-plateaux/canterbury-2B">[canterbury-2B]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><section class="block hide-metadata" data-taxon="Solution"><details open><summary id="mille-plateaux-canterbury-2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/mille-plateaux/canterbury-2B">[canterbury-2B]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
 <p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
@@ -1111,7 +1203,7 @@ path.typst-shape[stroke="#000000"] {
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
 </details></section></p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-3A"><header><h1><span class="taxon">Lemma 2. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-3A"><header><h1><span class="taxon">Lemma 2. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
@@ -1124,7 +1216,7 @@ $\gdef\eqq{\quads=}$</p>
 <p>反复利用映射 $2P$ 即可得到 <span class="link local"><a href="/mille-plateaux/canterbury-2B" title=" [mille-plateaux/canterbury-2B]">前文</a></span> 的 $8P$. 当然, 这也给出如下经典的恒等式. 最早亦可追溯到 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 和 Bacht.</p>
 <p>$$ x^3 + y^3 \eqq \left(\frac{x(x^3 + 2y^3)}{x^3 - y^3}\right)^3 + \left(\frac{y(y^3 + 2x^3)}{y^3 - x^3}\right)^3 $$</p>
 </details></section>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 3. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-fermat-ascent"><header><h1><span class="taxon">Exegesis 3. </span>Fermat 提升法 <a class="slug" href="/mille-plateaux/fermat-ascent">[fermat-ascent]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/fermat-ascent.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Q{\mathbf{Q}}$</p>
 <p>考虑一般的三次曲线 $\Gamma$. 已知一有理点时, 我们可以过此点做切线. 已知两有理点 $P, Q$ 时, 连接两点得到直线 $\ell$ 交曲线 $\Gamma$ 于另一点 $S$, 这个时候 $\ell$ 和 $\Gamma$ 的交点方程仍然是一个三次方程. 根与系数的关系给出</p>

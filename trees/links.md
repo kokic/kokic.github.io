@@ -6,28 +6,28 @@ title: 链接
 
 |  | | |
 | -: | - | :- |
-| 洛衣博客 || [www.lozumi.com](https://www.lozumi.com) |
-| Colin’s Blog || [blog.oyyko.com](https://blog.oyyko.com) |
-| 废紙时雨 || [blog.shigure.fun](https://blog.shigure.fun) |
-| dada 的研究站 || [kono-dada.github.io](https://kono-dada.github.io) |
-| 迷亭的日记 || [m1ting.github.io](https://m1ting.github.io) |
-| 徐天乐 || [blog.xtlsoft.top](https://blog.xtlsoft.top) |
-| Xinyu Yi || [xinyu-yi.github.io](https://xinyu-yi.github.io) |
 | Ashitemaru || [ashitemaru.github.io](https://ashitemaru.github.io) |
+| Colin’s Blog || [blog.oyyko.com](https://blog.oyyko.com) |
+| 王进一  || [simplicialcat.github.io](https://simplicialcat.github.io/) |
+| 洛衣博客 || [www.lozumi.com](https://www.lozumi.com) |
+| 废紙时雨 || [blog.shigure.fun](https://blog.shigure.fun) |
+| Xinyu Yi || [xinyu-yi.github.io](https://xinyu-yi.github.io) |
+| dada 的研究站 || [kono-dada.github.io](https://kono-dada.github.io) |
+| 徐天乐 || [blog.xtlsoft.top](https://blog.xtlsoft.top) |
+| Lambdaiae || [tonyxty.github.io](https://tonyxty.github.io) |
 | Chang Wang || [scholar.google.com/citations?...](https://scholar.google.com/citations?user=qrwhrccAAAAJ&hl=zh-CN) |
+| 迷亭的日记 || [m1ting.github.io](https://m1ting.github.io) |
 | Spore || [blog.spore.ink](https://blog.spore.ink/) |
 | Studying Father's blog || [studyingfather.com](https://studyingfather.com) |
-| Lambdaiae || [tonyxty.github.io](https://tonyxty.github.io) |
-
 
 
 |  | | |
 | -: | - | :- |
 | 辜开源 || [sites.google.com/view/gubao](https://sites.google.com/view/gubao) |
-| 张峻铭 || [www.llddeddym.site](https://www.llddeddym.site) |
 | 唐珑珂 || [web.math.princeton.edu/~longket](https://web.math.princeton.edu/~longket) |
-| Reinhardt 的魔法小屋 || [reinhardthk.github.io](https://reinhardthk.github.io) |
+| 张峻铭 || [www.llddeddym.site](https://www.llddeddym.site) |
 | 徐诩绫目 Xuxuayame || [home.ustc.edu.cn/~xuxuayame](http://home.ustc.edu.cn/~xuxuayame) |
+| Reinhardt 的魔法小屋 || [reinhardthk.github.io](https://reinhardthk.github.io) |
 
 ---
 

@@ -1,0 +1,754 @@
+{
+  "mille-plateaux/canterbury": {
+    "scope": "markdown",
+    "prefix": "Canterbury 物语",
+    "body": [
+      "[canterbury-物语]: /trees/mille-plateaux/canterbury.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "CN2A": {
+    "scope": "markdown",
+    "prefix": "Cauchy–Aczél 论证",
+    "body": [
+      "[cauchy–aczél-论证]: /trees/CN2A.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "mille-plateaux/periodic-2B": {
+    "scope": "markdown",
+    "prefix": "Weierstraß 的灵感来源",
+    "body": [
+      "[weierstraß-的灵感来源]: /trees/mille-plateaux/periodic-2B.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "CN2E": {
+    "scope": "markdown",
+    "prefix": "Aczél 不等式 Engel 形式",
+    "body": [
+      "[aczél-不等式-engel-形式]: /trees/CN2E.md"
+    ],
+    "description": "Theorem. "
+  },
+  "YL4A": {
+    "scope": "markdown",
+    "prefix": "增函数的 Young 不等式",
+    "body": [
+      "[增函数的-young-不等式]: /trees/YL4A.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "YL3C": {
+    "scope": "markdown",
+    "prefix": "加权算术平均–几何平均不等式",
+    "body": [
+      "[加权算术平均–几何平均不等式]: /trees/YL3C.md"
+    ],
+    "description": "Corollary. "
+  },
+  "daily-surf/CAN2": {
+    "scope": "markdown",
+    "prefix": "多项式高度",
+    "body": [
+      "[多项式高度]: /trees/daily-surf/CAN2.md"
+    ],
+    "description": "Definition. "
+  },
+  "data-structure/stack-permutation/hille-encode": {
+    "scope": "markdown",
+    "prefix": "Hille 编码",
+    "body": [
+      "[hille-编码]: /trees/data-structure/stack-permutation/hille-encode.md"
+    ],
+    "description": "Definition. "
+  },
+  "HP2B": {
+    "scope": "markdown",
+    "prefix": "Radon 不等式",
+    "body": [
+      "[radon-不等式]: /trees/HP2B.md"
+    ],
+    "description": "Theorem. "
+  },
+  "HP2E": {
+    "scope": "markdown",
+    "prefix": "Hölder–Popoviciu 论证",
+    "body": [
+      "[hölder–popoviciu-论证]: /trees/HP2E.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/CG2A": {
+    "scope": "markdown",
+    "prefix": "染色图",
+    "body": [
+      "[染色图]: /trees/data-structure/CG2A.md"
+    ],
+    "description": "Definition. "
+  },
+  "LF2A": {
+    "scope": "markdown",
+    "prefix": "连分式",
+    "body": [
+      "[连分式]: /trees/LF2A.md"
+    ],
+    "description": "Definition. "
+  },
+  "AC2B": {
+    "scope": "markdown",
+    "prefix": "历史背景",
+    "body": [
+      "[历史背景]: /trees/AC2B.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "bib/methods-of-algebra-1": {
+    "scope": "markdown",
+    "prefix": "代数学方法 卷一：基础架构",
+    "body": [
+      "[代数学方法-卷一：基础架构]: /trees/bib/methods-of-algebra-1.md"
+    ],
+    "description": "Reference. "
+  },
+  "person/ernst-kummer": {
+    "scope": "markdown",
+    "prefix": "Ernst Eduard Kummer",
+    "body": [
+      "[ernst-eduard-kummer]: /trees/person/ernst-kummer.md"
+    ],
+    "description": "人物. "
+  },
+  "YL3B": {
+    "scope": "markdown",
+    "prefix": "Bernoulli 不等式",
+    "body": [
+      "[bernoulli-不等式]: /trees/YL3B.md"
+    ],
+    "description": "Corollary. "
+  },
+  "data-structure/stern-brocot": {
+    "scope": "markdown",
+    "prefix": "Stern – Brocot 树",
+    "body": [
+      "[stern-–-brocot-树]: /trees/data-structure/stern-brocot.md"
+    ],
+    "description": "Definition. "
+  },
+  "CN2B": {
+    "scope": "markdown",
+    "prefix": "Cauchy 不等式",
+    "body": [
+      "[cauchy-不等式]: /trees/CN2B.md"
+    ],
+    "description": "Theorem. "
+  },
+  "person/william-lawvere": {
+    "scope": "markdown",
+    "prefix": "Francis William Lawvere",
+    "body": [
+      "[francis-william-lawvere]: /trees/person/william-lawvere.md"
+    ],
+    "description": "人物. "
+  },
+  "data-structure/stack-permutation/intersection": {
+    "scope": "markdown",
+    "prefix": "相交数",
+    "body": [
+      "[相交数]: /trees/data-structure/stack-permutation/intersection.md"
+    ],
+    "description": "Proposition. "
+  },
+  "data-structure/synthetic-differential/matrix-represent": {
+    "scope": "markdown",
+    "prefix": "矩阵表示",
+    "body": [
+      "[矩阵表示]: /trees/data-structure/synthetic-differential/matrix-represent.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "YL2A": {
+    "scope": "markdown",
+    "prefix": "Young 引理",
+    "body": [
+      "[young-引理]: /trees/YL2A.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "linear-algebra/star-semiring": {
+    "scope": "markdown",
+    "prefix": "星半环",
+    "body": [
+      "[星半环]: /trees/linear-algebra/star-semiring.md"
+    ],
+    "description": "Definition. "
+  },
+  "mille-plateaux/elliptic-integral": {
+    "scope": "markdown",
+    "prefix": "椭圆积分",
+    "body": [
+      "[椭圆积分]: /trees/mille-plateaux/elliptic-integral.md"
+    ],
+    "description": "Definition. "
+  },
+  "linear-algebra/kontsevich-periodicity-2A": {
+    "scope": "markdown",
+    "prefix": "$n=2$ 交换版本",
+    "body": [
+      "[$n=2$-交换版本]: /trees/linear-algebra/kontsevich-periodicity-2A.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/synthetic-differential/kock-lawvere": {
+    "scope": "markdown",
+    "prefix": "Kock–Lawvere",
+    "body": [
+      "[kock–lawvere]: /trees/data-structure/synthetic-differential/kock-lawvere.md"
+    ],
+    "description": "Axiom. "
+  },
+  "daily-surf/adams": {
+    "scope": "markdown",
+    "prefix": "Adams 谱序列",
+    "body": [
+      "[adams-谱序列]: /trees/daily-surf/adams.md"
+    ],
+    "description": "Poetry. "
+  },
+  "HP2C": {
+    "scope": "markdown",
+    "prefix": "Aczél–Popoviciu 不等式",
+    "body": [
+      "[aczél–popoviciu-不等式]: /trees/HP2C.md"
+    ],
+    "description": "Theorem. "
+  },
+  "bib/pftb": {
+    "scope": "markdown",
+    "prefix": "Proofs from THE BOOK",
+    "body": [
+      "[proofs-from-the-book]: /trees/bib/pftb.md"
+    ],
+    "description": "Reference. "
+  },
+  "mille-plateaux/elliptic-functions": {
+    "scope": "markdown",
+    "prefix": "椭圆函数",
+    "body": [
+      "[椭圆函数]: /trees/mille-plateaux/elliptic-functions.md"
+    ],
+    "description": "Definition. "
+  },
+  "YL3A": {
+    "scope": "markdown",
+    "prefix": "Young 不等式",
+    "body": [
+      "[young-不等式]: /trees/YL3A.md"
+    ],
+    "description": "Corollary. "
+  },
+  "bib/blass1995seven": {
+    "scope": "markdown",
+    "prefix": "Seven trees in one",
+    "body": [
+      "[seven-trees-in-one]: /trees/bib/blass1995seven.md"
+    ],
+    "description": "Reference. "
+  },
+  "data-structure/stack-permutation/ratio": {
+    "scope": "markdown",
+    "prefix": "相交率",
+    "body": [
+      "[相交率]: /trees/data-structure/stack-permutation/ratio.md"
+    ],
+    "description": "Corollary. "
+  },
+  "linear-algebra/permutation-matrix": {
+    "scope": "markdown",
+    "prefix": "置换矩阵构造",
+    "body": [
+      "[置换矩阵构造]: /trees/linear-algebra/permutation-matrix.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/stack-permutation/bounds": {
+    "scope": "markdown",
+    "prefix": "有效长度的上下界",
+    "body": [
+      "[有效长度的上下界]: /trees/data-structure/stack-permutation/bounds.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "linear-algebra/rayleigh-quotient": {
+    "scope": "markdown",
+    "prefix": "Rayleigh 商定理",
+    "body": [
+      "[rayleigh-商定理]: /trees/linear-algebra/rayleigh-quotient.md"
+    ],
+    "description": "Theorem. "
+  },
+  "bib/jin2024topos": {
+    "scope": "markdown",
+    "prefix": "意象理论讲义",
+    "body": [
+      "[意象理论讲义]: /trees/bib/jin2024topos.md"
+    ],
+    "description": "Reference. "
+  },
+  "AC2C": {
+    "scope": "markdown",
+    "prefix": "选择公理 $\\textsf{AC}$",
+    "body": [
+      "[选择公理-$\\textsf{ac}$]: /trees/AC2C.md"
+    ],
+    "description": "Axiom. "
+  },
+  "bib/hille1982stack": {
+    "scope": "markdown",
+    "prefix": "Stack permutations and an order relation for binary trees",
+    "body": [
+      "[stack-permutations-and-an-order-relation-for-binary-trees]: /trees/bib/hille1982stack.md"
+    ],
+    "description": "Reference. "
+  },
+  "mille-plateaux/circular-curve": {
+    "scope": "markdown",
+    "prefix": "圆曲线",
+    "body": [
+      "[圆曲线]: /trees/mille-plateaux/circular-curve.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/synthetic-differential/moler-correction": {
+    "scope": "markdown",
+    "prefix": "复步微分法 对数值微分误差的修正",
+    "body": [
+      "[复步微分法-对数值微分误差的修正]: /trees/data-structure/synthetic-differential/moler-correction.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "CN2D": {
+    "scope": "markdown",
+    "prefix": "Aczél 不等式",
+    "body": [
+      "[aczél-不等式]: /trees/CN2D.md"
+    ],
+    "description": "Theorem. "
+  },
+  "data-structure/synthetic-differential/numerical": {
+    "scope": "markdown",
+    "prefix": "数值微分的误差",
+    "body": [
+      "[数值微分的误差]: /trees/data-structure/synthetic-differential/numerical.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "person/george-david-birkhoff": {
+    "scope": "markdown",
+    "prefix": "George David Birkhoff",
+    "body": [
+      "[george-david-birkhoff]: /trees/person/george-david-birkhoff.md"
+    ],
+    "description": "人物. "
+  },
+  "mille-plateaux/canterbury-3A": {
+    "scope": "markdown",
+    "prefix": "Canterbury 曲线的切线与自身的交点",
+    "body": [
+      "[canterbury-曲线的切线与自身的交点]: /trees/mille-plateaux/canterbury-3A.md"
+    ],
+    "description": "Lemma. "
+  },
+  "data-structure/fiore-leinster": {
+    "scope": "markdown",
+    "prefix": "Fiore–Leinster",
+    "body": [
+      "[fiore–leinster]: /trees/data-structure/fiore-leinster.md"
+    ],
+    "description": "Theorem. "
+  },
+  "YL2B": {
+    "scope": "markdown",
+    "prefix": "Young 引理",
+    "body": [
+      "[young-引理]: /trees/YL2B.md"
+    ],
+    "description": "Lemma. "
+  },
+  "linear-algebra/kontsevich-periodicity": {
+    "scope": "markdown",
+    "prefix": "Kontsevich 周期性猜想",
+    "body": [
+      "[kontsevich-周期性猜想]: /trees/linear-algebra/kontsevich-periodicity.md"
+    ],
+    "description": "Conjecture. "
+  },
+  "data-structure/blass-lawvere": {
+    "scope": "markdown",
+    "prefix": "Blass–Lawvere 定理",
+    "body": [
+      "[blass–lawvere-定理]: /trees/data-structure/blass-lawvere.md"
+    ],
+    "description": "Theorem. "
+  },
+  "daily-surf/CAN3": {
+    "scope": "markdown",
+    "prefix": "定高多项式集有限",
+    "body": [
+      "[定高多项式集有限]: /trees/daily-surf/CAN3.md"
+    ],
+    "description": "Lemma. "
+  },
+  "CN2C": {
+    "scope": "markdown",
+    "prefix": "Titu 引理",
+    "body": [
+      "[titu-引理]: /trees/CN2C.md"
+    ],
+    "description": "Lemma. "
+  },
+  "SL2A": {
+    "scope": "markdown",
+    "prefix": "次可加归纳",
+    "body": [
+      "[次可加归纳]: /trees/SL2A.md"
+    ],
+    "description": "Lemma. "
+  },
+  "mille-plateaux/circular-parameterization": {
+    "scope": "markdown",
+    "prefix": "圆的参数化",
+    "body": [
+      "[圆的参数化]: /trees/mille-plateaux/circular-parameterization.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "person/dustin-clausen": {
+    "scope": "markdown",
+    "prefix": "Dustin Clausen",
+    "body": [
+      "[dustin-clausen]: /trees/person/dustin-clausen.md"
+    ],
+    "description": "人物. "
+  },
+  "SL2B": {
+    "scope": "markdown",
+    "prefix": "次可乘归纳",
+    "body": [
+      "[次可乘归纳]: /trees/SL2B.md"
+    ],
+    "description": "Lemma. "
+  },
+  "bib/kock2006synthetic": {
+    "scope": "markdown",
+    "prefix": "Synthetic differential geometry",
+    "body": [
+      "[synthetic-differential-geometry]: /trees/bib/kock2006synthetic.md"
+    ],
+    "description": "Reference. "
+  },
+  "HP2A": {
+    "scope": "markdown",
+    "prefix": "Hölder 不等式",
+    "body": [
+      "[hölder-不等式]: /trees/HP2A.md"
+    ],
+    "description": "Theorem. "
+  },
+  "daily-surf/CAN1": {
+    "scope": "markdown",
+    "prefix": "Cantor 的思路",
+    "body": [
+      "[cantor-的思路]: /trees/daily-surf/CAN1.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "HP3A": {
+    "scope": "markdown",
+    "prefix": "广义 Radon 不等式",
+    "body": [
+      "[广义-radon-不等式]: /trees/HP3A.md"
+    ],
+    "description": "Theorem. "
+  },
+  "mille-plateaux/periodic-2C": {
+    "scope": "markdown",
+    "prefix": "双周期函数",
+    "body": [
+      "[双周期函数]: /trees/mille-plateaux/periodic-2C.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/stack-permutation/three-nodes": {
+    "scope": "markdown",
+    "prefix": "$n=3$",
+    "body": [
+      "[$n=3$]: /trees/data-structure/stack-permutation/three-nodes.md"
+    ],
+    "description": "Example. "
+  },
+  "linear-algebra/regular-language": {
+    "scope": "markdown",
+    "prefix": "正则语言集",
+    "body": [
+      "[正则语言集]: /trees/linear-algebra/regular-language.md"
+    ],
+    "description": "Definition. "
+  },
+  "person/yuni": {
+    "scope": "markdown",
+    "prefix": "Yuniversal Y. Creeper 🥐",
+    "body": [
+      "[yuniversal-y.-creeper-🥐]: /trees/person/yuni.md"
+    ],
+    "description": "人物. "
+  },
+  "linear-algebra/amtx-3B": {
+    "scope": "markdown",
+    "prefix": "分块矩阵的逆",
+    "body": [
+      "[分块矩阵的逆]: /trees/linear-algebra/amtx-3B.md"
+    ],
+    "description": "Example. "
+  },
+  "daily-surf/baby-viewpoint": {
+    "scope": "markdown",
+    "prefix": "日经观点",
+    "body": [
+      "[日经观点]: /trees/daily-surf/baby-viewpoint.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "linear-algebra/amtx-3A": {
+    "scope": "markdown",
+    "prefix": "二阶矩阵的逆",
+    "body": [
+      "[二阶矩阵的逆]: /trees/linear-algebra/amtx-3A.md"
+    ],
+    "description": "Example. "
+  },
+  "data-structure/synthetic-differential/schanuel-lavendhomme": {
+    "scope": "markdown",
+    "prefix": "Schanuel–Lavendhomme 构造",
+    "body": [
+      "[schanuel–lavendhomme-构造]: /trees/data-structure/synthetic-differential/schanuel-lavendhomme.md"
+    ],
+    "description": "Definition. "
+  },
+  "linear-algebra/amtx": {
+    "scope": "markdown",
+    "prefix": "自动机与矩阵求逆",
+    "body": [
+      "[自动机与矩阵求逆]: /trees/linear-algebra/amtx.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/synthetic-differential/derived-differential": {
+    "scope": "markdown",
+    "prefix": "矩阵表示导出微分运算",
+    "body": [
+      "[矩阵表示导出微分运算]: /trees/data-structure/synthetic-differential/derived-differential.md"
+    ],
+    "description": "Example. "
+  },
+  "mille-plateaux/canterbury-2A": {
+    "scope": "markdown",
+    "prefix": "古代物理学博士问题",
+    "body": [
+      "[古代物理学博士问题]: /trees/mille-plateaux/canterbury-2A.md"
+    ],
+    "description": "Problem. "
+  },
+  "kokic": {
+    "scope": "markdown",
+    "prefix": "Kokic Liu",
+    "body": [
+      "[kokic-liu]: /trees/kokic.md"
+    ],
+    "description": "人物. "
+  },
+  "data-structure/synthetic-differential/chain-rule": {
+    "scope": "markdown",
+    "prefix": "链式法则",
+    "body": [
+      "[链式法则]: /trees/data-structure/synthetic-differential/chain-rule.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/binary-tree": {
+    "scope": "markdown",
+    "prefix": "二叉树类型",
+    "body": [
+      "[二叉树类型]: /trees/data-structure/binary-tree.md"
+    ],
+    "description": "Definition. "
+  },
+  "data-structure/synthetic-differential/dual-number": {
+    "scope": "markdown",
+    "prefix": "对偶数",
+    "body": [
+      "[对偶数]: /trees/data-structure/synthetic-differential/dual-number.md"
+    ],
+    "description": "Definition. "
+  },
+  "data-structure/synthetic-differential/smooths": {
+    "scope": "markdown",
+    "prefix": "所有函数都光滑",
+    "body": [
+      "[所有函数都光滑]: /trees/data-structure/synthetic-differential/smooths.md"
+    ],
+    "description": "Corollary. "
+  },
+  "AC2D": {
+    "scope": "markdown",
+    "prefix": "良序原理",
+    "body": [
+      "[良序原理]: /trees/AC2D.md"
+    ],
+    "description": "Theorem. "
+  },
+  "data-structure/complex-number": {
+    "scope": "markdown",
+    "prefix": "复数",
+    "body": [
+      "[复数]: /trees/data-structure/complex-number.md"
+    ],
+    "description": "Definition. "
+  },
+  "data-structure/stack-permutation/equivalence": {
+    "scope": "markdown",
+    "prefix": "栈编码与 Hille 编码的等价性",
+    "body": [
+      "[栈编码与-hille-编码的等价性]: /trees/data-structure/stack-permutation/equivalence.md"
+    ],
+    "description": "Proposition. "
+  },
+  "linear-algebra/amtx-2A": {
+    "scope": "markdown",
+    "prefix": "矩阵闭包",
+    "body": [
+      "[矩阵闭包]: /trees/linear-algebra/amtx-2A.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/deletion-contraction": {
+    "scope": "markdown",
+    "prefix": "删除–收缩公式",
+    "body": [
+      "[删除–收缩公式]: /trees/data-structure/deletion-contraction.md"
+    ],
+    "description": "Theorem. "
+  },
+  "mille-plateaux/laisant-young": {
+    "scope": "markdown",
+    "prefix": "Laisant–Young 不等式",
+    "body": [
+      "[laisant–young-不等式]: /trees/mille-plateaux/laisant-young.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "HP2D": {
+    "scope": "markdown",
+    "prefix": "Aczél–Popoviciu 不等式 Engel 形式",
+    "body": [
+      "[aczél–popoviciu-不等式-engel-形式]: /trees/HP2D.md"
+    ],
+    "description": "Theorem. "
+  },
+  "daily-surf/GF3A": {
+    "scope": "markdown",
+    "prefix": "$\\footnotesize (1-q)^{-m}$ 的系数",
+    "body": [
+      "[$\\footnotesize-(1-q)^{-m}$-的系数]: /trees/daily-surf/GF3A.md"
+    ],
+    "description": "Lemma. "
+  },
+  "linear-algebra/conway-condition": {
+    "scope": "markdown",
+    "prefix": "闭半环的 Conway 条件",
+    "body": [
+      "[闭半环的-conway-条件]: /trees/linear-algebra/conway-condition.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "data-structure/stack-permutation/stack-permutation": {
+    "scope": "markdown",
+    "prefix": "栈置换",
+    "body": [
+      "[栈置换]: /trees/data-structure/stack-permutation/stack-permutation.md"
+    ],
+    "description": "Definition. "
+  },
+  "linear-algebra/casus-irreducibilis": {
+    "scope": "markdown",
+    "prefix": "Casus irreducibilis",
+    "body": [
+      "[casus-irreducibilis]: /trees/linear-algebra/casus-irreducibilis.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "daily-surf/CAN5": {
+    "scope": "markdown",
+    "prefix": "代数数只有可数多个",
+    "body": [
+      "[代数数只有可数多个]: /trees/daily-surf/CAN5.md"
+    ],
+    "description": "Theorem. "
+  },
+  "daily-surf/CPSI": {
+    "scope": "markdown",
+    "prefix": "循环幂和不等式",
+    "body": [
+      "[循环幂和不等式]: /trees/daily-surf/CPSI.md"
+    ],
+    "description": "Example. "
+  },
+  "data-structure/synthetic-differential/complex-step": {
+    "scope": "markdown",
+    "prefix": "Complex step 微分法",
+    "body": [
+      "[complex-step-微分法]: /trees/data-structure/synthetic-differential/complex-step.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "mille-plateaux/fermat-ascent": {
+    "scope": "markdown",
+    "prefix": "Fermat 提升法",
+    "body": [
+      "[fermat-提升法]: /trees/mille-plateaux/fermat-ascent.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "linear-algebra/semiring": {
+    "scope": "markdown",
+    "prefix": "关于半环的注释",
+    "body": [
+      "[关于半环的注释]: /trees/linear-algebra/semiring.md"
+    ],
+    "description": "Exegesis. "
+  },
+  "daily-surf/CAN4": {
+    "scope": "markdown",
+    "prefix": "定高多项式根集有限",
+    "body": [
+      "[定高多项式根集有限]: /trees/daily-surf/CAN4.md"
+    ],
+    "description": "Lemma. "
+  },
+  "bib/blass2025choice": {
+    "scope": "markdown",
+    "prefix": "A Gentle Introduction to the Axiom of Choice",
+    "body": [
+      "[a-gentle-introduction-to-the-axiom-of-choice]: /trees/bib/blass2025choice.md"
+    ],
+    "description": "Reference. "
+  },
+  "mille-plateaux/q-denote": {
+    "scope": "markdown",
+    "prefix": "$q$ 记号",
+    "body": [
+      "[$q$-记号]: /trees/mille-plateaux/q-denote.md"
+    ],
+    "description": "Exegesis. "
+  }
+}

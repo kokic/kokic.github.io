@@ -3,9 +3,8 @@ trees = "trees"
 assets = "assets"
 base-url = "/"
 themes = [
-  # "themes/moon.html", 
-  # "themes/default.html",
-  # "themes/zenwritten.html",
+  "themes/default.html",
+  "themes/serena.html",
   "themes/printer.html",
 ]
 
@@ -29,6 +28,7 @@ footer-mode = "embed"
 inline-css = true
 asref = false
 output = "./publish"
+edit = "https://github.com/kokic/kokic.github.io/tree/master/trees/"
 
 [serve]
 edit = "vscode://file/"

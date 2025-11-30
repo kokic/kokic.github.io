@@ -21,7 +21,7 @@ asref: true
 
 </exegesis>
 
-<example>
+<example title="$\N$ 与 $\Z$">
 
 $\N$ 上的标准序 $\leqslant_\N$ 是一个良序关系, 但 $\leqslant_\Z$ 不满足良基性, 因为 $\Z$ 没有极小元. 
 
