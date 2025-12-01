@@ -1216,7 +1216,9 @@ set_nb_theme('monokai')
 <pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
 </code></pre>
 <p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
-<p>$\textbf{Remark.}$ 一个无关正文的冷知识: 如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 <code>sagemath/runtime/bin</code> 目录下就有一个, 头文件位于 <code>sagemath/runtime/usr/include</code>.</p>
+<remark title="一条或可利用的情报">
+<p>如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 <code>sagemath/runtime/bin</code> 目录下就有一个, 头文件位于 <code>sagemath/runtime/usr/include</code>.</p>
+</remark>
 <div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
   <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_toolbar-display-none-back">1</a></sup>
 <p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>

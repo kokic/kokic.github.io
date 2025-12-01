@@ -13,7 +13,9 @@ $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$
 $\gdef\Mat{\operatorname{Mat}}$
 
-置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 [此处](/mille-plateaux/bubble-compose.md) 的结论及证明提供直观. 
+置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 
+
+<!-- 这也可以为 [此处](/mille-plateaux/bubble-compose.md) 的结论及证明提供直观.  -->
 
 首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.
 

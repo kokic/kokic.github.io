@@ -1481,6 +1481,14 @@ $$</p>
 然而, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 仅保证了此类函数的存在性, 而没有提供构造它的方法.
 即 <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 并未涉及一个人作出或构想这些选择的能力.</p>
 </exegesis>
+<example title="(Russell)">
+<p><span class="link external"><a href="https://psg.fandom.com/wiki/Stocking" title="Stocking [https://psg.fandom.com/wiki/Stocking]">Stocking</a></span> 拥有无限多双鞋和无限多双袜子.
+一日, 她突发奇想, 让 <span class="link external"><a href="https://psg.fandom.com/wiki/Panty" title="Panty [https://psg.fandom.com/wiki/Panty]">Panty</a></span> 从每双鞋中挑选并展示一只鞋.
+当 <span class="link external"><a href="https://psg.fandom.com/wiki/Panty" title="Panty [https://psg.fandom.com/wiki/Panty]">Panty</a></span> 询问如何决定选哪只鞋时, <span class="link external"><a href="https://psg.fandom.com/wiki/Stocking" title="Stocking [https://psg.fandom.com/wiki/Stocking]">Stocking</a></span> 告诉她: 从每双鞋中选左脚的那只.
+翌日, <span class="link external"><a href="https://psg.fandom.com/wiki/Stocking" title="Stocking [https://psg.fandom.com/wiki/Stocking]">Stocking</a></span> 又在类似的情绪下, 让 <span class="link external"><a href="https://psg.fandom.com/wiki/Panty" title="Panty [https://psg.fandom.com/wiki/Panty]">Panty</a></span> 从每双袜子中挑选并展示一只袜子.
+这次, 当 <span class="link external"><a href="https://psg.fandom.com/wiki/Panty" title="Panty [https://psg.fandom.com/wiki/Panty]">Panty</a></span> 问起该如何决定选哪只袜子时, <span class="link external"><a href="https://psg.fandom.com/wiki/Stocking" title="Stocking [https://psg.fandom.com/wiki/Stocking]">Stocking</a></span> 却陷入了茫然:
+因为每双袜子中的两只完全无法区分, 所以无法像鞋子那样, 为无穷多双袜子中的每一双定义一个明确的选择方式.</p>
+</example>
 </details></section></p>
 </details></section>
 <section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> 平面曲线的有理点 <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/rational-points.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
@@ -1497,13 +1505,12 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \spaces= 9 \quad \color{gray}{(= ~ 1^3+2^3)} $$</p>
-<p><section class="block" data-taxon="Solution"><details ><summary id="mille-plateaux-canterbury-2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/mille-plateaux/canterbury-2B">[canterbury-2B]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<block taxon="Solution" title="椭圆曲线的倍点">
 <p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
 <p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在写出其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-</details></section></p>
+</block>
 </details></section>
 <section class="block" data-taxon="Lemma"><details ><summary id="mille-plateaux-canterbury-3A"><header><h1><span class="taxon">Lemma. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
@@ -2140,7 +2147,8 @@ $\gdef\eqq{\quads=}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$
 $\gdef\Mat{\operatorname{Mat}}$</p>
-<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示. 这也可以为 <span class="link local"><a href="/mille-plateaux/bubble-compose" title="冒泡排序合成置换分解 [mille-plateaux/bubble-compose]">此处</a></span> 的结论及证明提供直观.</p>
+<p>置换矩阵基本上可以认为是置换群的矩阵构造, 或者说矩阵表示.</p>
+<!-- 这也可以为 [此处](/mille-plateaux/bubble-compose.md) 的结论及证明提供直观.  -->
 <p>首先, 显然所有的置换矩阵都是单位矩阵 $I_n$ 的重新排列. 我们先从置换群 $S_2$ 也就是对换开始. 只考虑其中的非单位元 $\sigma = (1 ~~ 2)$.</p>
 <p>$$
 \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\ \end{pmatrix}
@@ -2420,7 +2428,9 @@ set_nb_theme('monokai')
 <pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
 </code></pre>
 <p>这样你就得到了一个永久生效的样式设置. 随后可以通过修改 <code>div#maintoolbar</code> 和 <code>#header-container</code> 的 <code>display</code> 为 <code>block</code> 重新显示这两个组件. 修改 <code>.MathJax</code> 的 <code>font-size</code> 为 <code>120%</code> 或者更大则能够增大渲染后公式的字号.</p>
-<p>$\textbf{Remark.}$ 一个无关正文的冷知识: 如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 <code>sagemath/runtime/bin</code> 目录下就有一个, 头文件位于 <code>sagemath/runtime/usr/include</code>.</p>
+<remark title="一条或可利用的情报">
+<p>如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 <code>sagemath/runtime/bin</code> 目录下就有一个, 头文件位于 <code>sagemath/runtime/usr/include</code>.</p>
+</remark>
 <div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
   <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_toolbar-display-none-back">1</a></sup>
 <p>从编译后的样式文件中我们可以看到, <code>div#maintoolbar</code> 和 <code>#header-container</code> 确实被设置为了 <code>display: none</code>.</p>
@@ -2601,13 +2611,12 @@ em {
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>有两个正方体, 一个边长为 $1$, 另一个边长为 $2$. 请找到另外两个边长为有理数的正方体使它们的体积总和相同. 换言之, 求下述方程的一组 (正) 有理解.</p>
 <p>$$ x^3 + y^3 \spaces= 9 \quad \color{gray}{(= ~ 1^3+2^3)} $$</p>
-<p><section class="block" data-taxon="Solution"><details ><summary id="mille-plateaux-canterbury-2B"><header><h1><span class="taxon">Solution. </span> <a class="slug" href="/mille-plateaux/canterbury-2B">[canterbury-2B]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<block taxon="Solution" title="椭圆曲线的倍点">
 <p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
 <p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
 <p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在写出其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-</details></section></p>
+</block>
 </details></section><section class="block" data-taxon=""><details ><summary id="pftb-P005"><header><h1><span class="taxon"></span>素数无限多与 Furstenberg 拓扑 <a class="slug" href="/pftb-P005">[pftb-P005]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pftb-P005.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK, p. 5</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
 <style>

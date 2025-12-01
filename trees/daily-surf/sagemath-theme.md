@@ -43,6 +43,10 @@ sagemath/runtime/opt/sagemath-9.3/local/lib/python3.7/site-packages/jupytertheme
 
 这样你就得到了一个永久生效的样式设置. 随后可以通过修改 `div#maintoolbar` 和 `#header-container` 的 `display` 为 `block` 重新显示这两个组件. 修改 `.MathJax` 的 `font-size` 为 `120%` 或者更大则能够增大渲染后公式的字号. 
 
-$\textbf{Remark.}$ 一个无关正文的冷知识: 如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 `sagemath/runtime/bin` 目录下就有一个, 头文件位于 `sagemath/runtime/usr/include`.
+<remark title="一条或可利用的情报">
+
+如果你需要带完整头文件的 C / C++ 编译器, 但还没安装 GCC 或者 Clang, 那 `sagemath/runtime/bin` 目录下就有一个, 头文件位于 `sagemath/runtime/usr/include`.
+
+</remark>
 
 [^toolbar-display-none]: 从编译后的样式文件中我们可以看到, `div#maintoolbar` 和 `#header-container` 确实被设置为了 `display: none`. 
