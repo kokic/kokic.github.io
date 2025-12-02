@@ -8,7 +8,6 @@ title: 链接
 | -: | - | :- |
 | Ashitemaru || [ashitemaru.github.io](https://ashitemaru.github.io) |
 | Colin’s Blog || [blog.oyyko.com](https://blog.oyyko.com) |
-| 王进一  || [simplicialcat.github.io](https://simplicialcat.github.io/) |
 | 洛衣博客 || [www.lozumi.com](https://www.lozumi.com) |
 | 废紙时雨 || [blog.shigure.fun](https://blog.shigure.fun) |
 | Xinyu Yi || [xinyu-yi.github.io](https://xinyu-yi.github.io) |
@@ -23,6 +22,8 @@ title: 链接
 
 |  | | |
 | -: | - | :- |
+| 卡布奇诺 || [cybcatppuccino.github.io](https://cybcatppuccino.github.io/) |
+| 王进一  || [simplicialcat.github.io](https://simplicialcat.github.io/) |
 | 辜开源 || [sites.google.com/view/gubao](https://sites.google.com/view/gubao) |
 | 唐珑珂 || [web.math.princeton.edu/~longket](https://web.math.princeton.edu/~longket) |
 | 张峻铭 || [www.llddeddym.site](https://www.llddeddym.site) |

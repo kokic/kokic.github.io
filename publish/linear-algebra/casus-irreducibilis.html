@@ -427,6 +427,7 @@ a.slug {
   box-shadow: none;
   text-decoration-line: underline;
   text-decoration-style: dotted;
+  word-wrap: break-word;
 }
 
 .slug,
@@ -1189,6 +1190,20 @@ path.typst-shape[stroke="#000000"] {
 </div></nav>
 
 <article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-casus-irreducibilis"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/linear-algebra/casus-irreducibilis">[casus-irreducibilis]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/casus-irreducibilis.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>对于实三次方程 $x^3 + ax^2 + bx + c = 0$, 利用相应的 Tschirnhaus 变换 $x \mapsto y-\frac{a}{3}$ 可得缺项形式</p>
+<p>$$ y^3 + py + q = 0$$</p>
+<remark title="代数琐碎细节" close>
+<p>$$
+\def\x{(y-\tfrac{a}{3})}
+\begin{aligned}
+\square 
+&amp;\spaces= \x^3 + a\x^2 + b\x + c \\
+&amp;\spaces= y^3 + \underline{(b-\tfrac{1}{3}a^2)}y + \underline{\tfrac{2}{27}a^3 - \tfrac{ab}{3} + c} \\
+&amp;\spaces= y^3 + py + q
+\end{aligned}
+$$</p>
+</remark>
 </details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition"><details ><summary id="data-structure-synthetic-differential-dual-number"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/dual-number.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\C{\mathbf{C}}$</p>

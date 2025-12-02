@@ -6347,7 +6347,7 @@
     "scope": "latex",
     "prefix": "\\frac",
     "body": [
-      "\\frac{$0}{$1}"
+      "\\frac{$1}{$2}"
     ],
     "description": "a/b"
   },
