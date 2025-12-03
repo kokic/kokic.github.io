@@ -6,11 +6,24 @@ author: [kokic](/trees/kokic.md)
 taxon: exegesis
 ---
 
+[分裂域]: /trees/linear-algebra/AD2A.md
+
 $\gdef\spaces#1{~ #1 ~}$
+$\gdef\Gal{\operatorname{Gal}}$
+$\gdef\Q{\mathbf{Q}}$
+$\gdef\R{\mathbf{R}}$
 
 对于实三次方程 $x^3 + ax^2 + bx + c = 0$, 利用相应的 Tschirnhaus 变换 $x \mapsto y-\frac{a}{3}$ 可得缺项形式
 
-$$ y^3 + py + q = 0$$
+$$ y^3 + py + q = 0, \quad p,q \in \R$$
+
+其判别式为 $\Delta = -4p^3 - 27q^2$, 情况如下
+
+|  |  |
+| - | - |
+| $\Delta > 0$ | 三个互异实根 |
+| $\Delta = 0$ | 三个实根, 有重根 |
+| $\Delta < 0$ | 一个实根, 两个共轭复根 |
 
 <remark title="代数琐碎细节" close>
 
@@ -25,3 +38,20 @@ $$
 $$
 
 </remark>
+
+<proposition>
+
+拉丁语 Casus irreducibilis 意为 "不可约情形", 于古代特指 $\Delta > 0$ 且多项式在 $\Q$ 上不可约的三次方程. 
+设 $f(x) \in \Q[x]$ 是一个 Casus irreducibilis. 则 $f(x)$ 的任意一个根不能表示为仅含实数和实根式的表达式. 
+
+<proof>
+
+1. 记此多项式为 $f$, $f$ 的 [][分裂域] 为 $K$, 其 Galois 群 $G = \Gal(K/\Q)$. $f$ 不可约导致 $G$ 是 $S_3$ 的一个传递子群. 这就意味着 $G$ 只能是 $S_3$ 或者 $A_3$. 
+
+1. 注意除 $1$ 以外, 实数中不能开奇数次单位根. 故任何实根式扩张的 Galois 群必为可解群且阶为 $2$ 的幂次. 同时, 为了解 $x^3 = a$, 则 $K$ 必须包含三次单位根 $e^{2\pi i/3} = -\frac{1}{2} + i\frac{\sqrt{3}}{2}$. 
+
+这就使得此时根的表达式必须包含复数.
+
+</proof>
+
+</proposition>

@@ -1210,7 +1210,71 @@ path.typst-shape[stroke="#000000"] {
 $$</p>
 <p>此处 $X_1$ 即 <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél 不等式 Engel 形式</a></span>, $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$.</p>
 </observation>
-</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="HP2E"><header><h1><span class="taxon">Exegesis. </span>Hölder–Popoviciu 论证 <a class="slug" href="/HP2E">[HP2E]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+</details></section><section class="block" data-taxon="Theorem"><details ><summary id="GALA"><header><h1><span class="taxon">Theorem. </span>加减乘除不能解二次方程 <a class="slug" href="/GALA">[GALA]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">October 23, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>只通过系数的加减乘除不能解一般的二次方程, 换言之, 二次方程的根不是系数的有理函数.</p>
+<proof>
+<p>$k$ 是域, 首一多项式 $f(x) = x^2 + t_1x + t_0 \in k[x]$. $k$ 关于 $t_0,t_1$ 的有理函数域 $k(t_0,t_1)$ 记为 $F$.</p>
+<block taxon="Step 1" title="$\sqrt{\Delta} \in F$">
+<p>假设存在 $r \in F$ 使得 $f(r) = 0$, 由 Viète 定理 $x_1+x_2 = -t_1$, 另一个根为 $-t_1-r \in F$. 于是</p>
+<p>$$ f(x) \spaces= (x-r)(x+t_1+r) \spaces\in F[x] $$</p>
+<p>其判别式 $\Delta = (x_1-x_2)^2 = (2r+t_1)^2 \in F$ 是 $F$ 中的平方元. 另一方面, 借助 Viète 定理, 判别式可完全表示为系数的函数</p>
+<p>$$
+\begin{array}{c|c}
+\begin{aligned}
+\Delta 
+&amp;\spaces= (x_1-x_2)^2 \\
+&amp;\spaces= (x_1+x_2)^2 - 4x_1x_2 \\
+&amp;\spaces= t^2 - 4t_0
+\end{aligned} 
+\quad &amp; \quad
+\begin{aligned}
+x_1 + x_2 &amp;\spaces= -t_1 \\
+x_1x_2 &amp;\spaces= t_0
+\end{aligned}
+\end{array}
+$$</p>
+<p>这就表明 $t^2 - 4t_0$ 是 $F$ 中的平方元.</p>
+</block>
+<block taxon="Step 2" title="$\sqrt{\Delta} \notin F$">
+<p>由于 $F$ 是有理函数域 $k(t_0,t_1)$, 所以知道一定存在一组关于 $t_0,t_1$ 的互质多项式 $p,q \in k[t_0,t_1]$ 使得</p>
+<p>$$ \bigg(\frac{p}{q}\bigg)^2 \spaces= t_1^2 - 4t_0 $$</p>
+<p>也就是 $p^2 = (t_1^2 - 4t_0)q^2$, 等式两边是 $k[t_0,t_1]$ 中的多项式, 所以 $\Delta$ 整除 $p^2$. 注意 $k[t_0,t_1]$ 是唯一分解整环, 由 $\Delta$ 是不可约多项式知 $\Delta$ 整除 $p$, 因此存在多项式 $p_1 \in k[t_0,t_1] $ 使得 $p = \Delta p_1$. 代入 $p^2 = \Delta q^2$, 因为 $\Delta \ne 0$, 可在整环中消去 $\Delta$, 得</p>
+<p>$$ (\Delta p_1)^2 = \Delta q^2 \spaces\implies \Delta p_1^2 = q^2 $$</p>
+<p>所以 $\Delta$ 整除 $q^2$. 类似知道 $\Delta$ 整除 $q$. 综上, 非常数多项式 $\Delta$ 整除 $p$ 且 $\Delta$ 整除 $q$, 但这与 $p,q$ 互质矛盾. 故 $\sqrt{\Delta} \notin F$.</p>
+</block>
+<remark title="$t_1^2 - 4t_0$ 不可约">
+<p>如果可约, 则存在两个一次 $k[t_0,t_1]$-多项式, 其乘积为 $\Delta$, 即</p>
+<p>$$
+\begin{aligned}
+\Delta 
+&amp;\spaces= (\alpha_1 t_0 + \alpha_2 t_1 + \alpha_3)(\beta_1 t_0 + \beta_2 t_1 + \beta_3) \\
+&amp;\spaces= \alpha_1\beta_1 t_0^2 + \alpha_2\beta_2 t_1^2 + (\alpha_1\beta_2 + \alpha_2\beta_1) t_0t_1 + \\
+&amp;\kern{1.8em} (\alpha_1\beta_3 + \alpha_3\beta_1)t_0 + (\alpha_2\beta_3 + \alpha_3\beta_2)t_1 + \alpha_3\beta_3 \\
+&amp;\spaces= t_1^2 - 4t_0
+\end{aligned}
+$$</p>
+<p>于是系数必须满足以下方程组</p>
+<p>$$
+\begin{equation*}
+\begin{align}
+\alpha_1\beta_1 &amp;\spaces= 0 \\
+\alpha_2\beta_2 &amp;\spaces= 1 \\
+\alpha_1\beta_2 + \alpha_2\beta_1 &amp;\spaces= 0 \\
+\alpha_1\beta_3 + \alpha_3\beta_1 &amp;\spaces= -4 \kern{3em} \\
+\alpha_2\beta_3 + \alpha_3\beta_2 &amp;\spaces= 0 \\
+\alpha_3\beta_3 &amp;\spaces= 0
+\end{align}
+\end{equation*}
+$$</p>
+<p>公式 $(1)$ 表明 $\alpha_1, \beta_1$ 中必有一个是 $0$. 讨论之:</p>
+<ul>
+<li>若 $\alpha_1 = 0$, $(3)$ 化简为 $\alpha_2\beta_1 = 0$, 而 $(2)$ 推出 $\alpha_2 \ne 0$, 故只能是 $\beta_1 = 0$, 代入 $(4)$ 得 $0 = -4$, 矛盾.</li>
+<li>若 $\beta_1 = 0$, $(3)$ 化简为 $\alpha_1\beta_2 = 0$, 而 $(2)$ 推出 $\beta_2 \ne 0$, 故只能是 $\alpha_1 = 0$. 代入 $(4)$ 得 $0 = -4$, 矛盾.</li>
+</ul>
+<p>所以假设的两个一次多项式不存在, $t_1^2 - 4t_0$ 不可约.</p>
+</remark>
+</proof></details></section><section class="block" data-taxon="Exegesis"><details ><summary id="HP2E"><header><h1><span class="taxon">Exegesis. </span>Hölder–Popoviciu 论证 <a class="slug" href="/HP2E">[HP2E]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p>类似 <span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél 论证</a></span>, 也可以将 <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]">次可加归纳</a></span> 应用于 <span class="link local"><a href="/HP2A" title="Hölder 不等式 [HP2A]">Hölder 不等式</a></span> 和 <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu 不等式</a></span>.</p>
 <proof>

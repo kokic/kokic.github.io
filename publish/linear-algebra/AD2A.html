@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Casus irreducibilis</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
+<meta name="viewport" content="width=device-width"><title>分裂域</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
   color-scheme: light dark;
   --content-gap: 15px;
   --radius: 5px;
@@ -1187,9 +1187,31 @@ path.typst-shape[stroke="#000000"] {
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/AD2C" title="有限中心单 k-代数的分裂域 [linear-algebra/AD2C]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-AD2C'"><span class="taxon">Definition. </span><span class="link external"><a href="https://stacks.math.columbia.edu/tag/074Y" title="[074Y] [https://stacks.math.columbia.edu/tag/074Y]">[074Y]</a></span> 有限中心单 $k$-代数的分裂域</span></li></ul></details></div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-casus-irreducibilis"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/linear-algebra/casus-irreducibilis">[casus-irreducibilis]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/casus-irreducibilis.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Definition"><details open><summary id="linear-algebra-AD2A"><header><h1><span class="taxon">Definition. </span>分裂域 <a class="slug" href="/linear-algebra/AD2A">[AD2A]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/AD2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>设 $k$ 为一个域, $p \in k[x]$ 为 $n$ 次首一多项式. $p$ 的一个分裂域是一个域扩张 $i : k \hookrightarrow E$, 使得在 <span class="link local"><a href="/linear-algebra/AD2B" title="将 p 视为 E[x] 中的多项式 [linear-algebra/AD2B]">将 $p$ 视为 $E[x]$ 中的多项式</a></span> 时, 该多项式可分解为可重复的一次因式之乘积：</p>
+<p>$$ p(x) = (x - r_1)(x - r_2) \cdots (x - r_n) $$</p>
+<p>其中所有根 $r_i$ 均属于 $E$, 且包含 $k$ 和这些根的最小子域就是 $E$ 本身, 也即 $E$ 被这些根生成</p>
+<p>$$ E \spaces= k(r_1, \dots, r_n) $$</p>
+<p>换言之, 不存在任何 $E$ 的真子域包含所有根 $r_i$.</p>
+<p>更一般地, 给定一个集合 $S = \{ {\footnotesize 首一多项式} ~ p : p \in k[x] \}$. 若一个域扩张 $E/k$ 使得每个 $p \in S$ 在 $E$ 上均可分解, 并且 $E$ 作为域是由这些伴随根在 $k$ 上生成的, 则称 $E$ 为 $S$ 的分裂域.</p>
+<p><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="linear-algebra-AD2C"><header><h1><span class="taxon">Definition. </span><span class="link external"><a href="https://stacks.math.columbia.edu/tag/074Y" title="[074Y] [https://stacks.math.columbia.edu/tag/074Y]">[074Y]</a></span> 有限中心单 $k$-代数的分裂域 <a class="slug" href="/linear-algebra/AD2C">[AD2C]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/AD2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>设 $A$ 是一个有限中心单 $k$-代数. 称一个域扩张 $k'/k$ 分裂 $A$, 或称 $k'$ 是 $A$ 的分裂域, 如果 $A \otimes_k k'$ 同构于 $k'$ 上的一个矩阵代数.</p>
+</details></section></p>
+</details></section><footer><section class="block"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Remark"><details ><summary id="linear-algebra-AD2B"><header><h1><span class="taxon">Remark. </span>将 $p$ 视为 $E[x]$ 中的多项式 <a class="slug" href="/linear-algebra/AD2B">[AD2B]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/AD2B.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>由于域扩张 $i: k \to E$ 未必是包含映射, 此时无法简单地把 $k$ 系数看作 $E$ 中的元素, 但通过张量积可以完成这件事, 应用映射 $k[x] \cong k \otimes_k k[x] \xrightarrow{i \otimes 1} E \otimes_k k[x] \cong E[x]$. 这里 $i \otimes 1$ 使得多项式 $p(x) = \sum a_j x^j$ 在张量积中可写为</p>
+<p>$$
+1 \otimes p(x) \spaces= \sum (1 \otimes a_j) \cdot (1 \otimes x^j)
+$$</p>
+<p>在此映射下变为</p>
+<p>$$
+\sum (i(a_j) \otimes 1) \cdot (1 \otimes x^j) \spaces= \sum i(a_j) \otimes x^j
+$$</p>
+<p>这就使得原本的系数 $a_j \in k$ 通过 $i$ 变换到了 $E$ 中.</p>
+</details></section></details></section><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-casus-irreducibilis"><header><h1><span class="taxon">Exegesis. </span>Casus irreducibilis <a class="slug" href="/linear-algebra/casus-irreducibilis">[casus-irreducibilis]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/casus-irreducibilis.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">April 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Gal{\operatorname{Gal}}$
 $\gdef\Q{\mathbf{Q}}$
@@ -1228,115 +1250,4 @@ $$</p>
 <p>这就使得此时根的表达式必须包含复数.</p>
 </proof>
 </proposition>
-</details></section><footer><section class="block"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Definition"><details ><summary id="data-structure-synthetic-differential-dual-number"><header><h1><span class="taxon">Definition. </span>对偶数 <a class="slug" href="/data-structure/synthetic-differential/dual-number">[dual-number]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/dual-number.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\C{\mathbf{C}}$</p>
-<p>一种通俗的讲法是, 认为对偶数 $R[x]/(x^2)$ 可以作为复数 $\R[x]/(x^2+1)$ 的类比. 如果有读者能轻率地暂时忽略 $R[x]/(x^2)$ 这种结构的存在性, 或者说接受了下面的 $d$ 的定义</p>
-<p>$$ \exists ~ d \in R\smallsetminus\{0\}, ~ d^2 = 0 $$</p>
-<p>不能接受也很正常, 因为这轻易就会导致某个经典逻辑中的 <span class="link local"><a href="/data-structure/synthetic-differential/schanuel-lavendhomme" title="Schanuel–Lavendhomme 构造 [data-structure/synthetic-differential/schanuel-lavendhomme]">矛盾</a></span>. 相比之下满足 $x^2 = -1$ 的 $x$ 对于大众而言要更容易接受的多, 甚至对于三次方程是 <span class="link local"><a href="/linear-algebra/casus-irreducibilis" title="Casus irreducibilis [linear-algebra/casus-irreducibilis]">必须品</a></span>. 为此我们需要下面的准备工作.</p>
-<p><section class="block" data-taxon="Axiom"><details ><summary id="data-structure-synthetic-differential-kock-lawvere"><header><h1><span class="taxon">Axiom. </span>Kock–Lawvere <a class="slug" href="/data-structure/synthetic-differential/kock-lawvere">[kock-lawvere]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/kock-lawvere.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$
-$\gdef\R{\mathbf{R}}$</p>
-<p>首先需要强调的是, 这个公理所涉及到的结构的有效性全都依赖于 <span class="link local"><a href="/bib/jin2024topos" title="意象理论讲义 [bib/jin2024topos]">意象理论</a></span>, 而相关基础的严格性保证基本上在 1970 年之前就已经由 <span class="link local"><a href="/person/william-lawvere" title="Francis William Lawvere [person/william-lawvere]">William Lawvere</a></span> 完工. 记 $\mathcal{E}$ 是光滑空间之间的光滑映射构成的范畴, 同时假定 $\mathcal{E}$ 还是笛卡尔闭范畴, 也就是 $\mathcal{E}$ 中的箭头对笛卡尔积封闭.</p>
-<p>我们可以从 $\mathcal{E}$ 中选出一条几何直线 $R$, 通过指定 $R$ 上两点 $0$ 和 $1$ 之间的距离作为单位长度来确定其他线段的长度. 发挥一些古希腊精神, 线段的移动可以给出 $R$ 上的加法, 尺规作图所构造的 <span class="link local"><a href="/bib/methods-of-algebra-1" title="代数学方法 卷一：基础架构 [bib/methods-of-algebra-1]">相似三角形</a></span> 能给出 $R$ 上的乘法 $\gamma = \alpha\beta$.</p>
-<p><figure><img src="/data-structure/synthetic-differential/similar-triangle.svg" class="color-invert"/><figcaption>Methods in Algebra - Volume 1, p. 369</figcaption></figure></p>
-<p>因此 $R$ 带有交换环结构, 并且允许经典数学中的对象实数环 $\R$ 成为 $R$ 的模型, 注意这里我们只能考虑 $\R$ 作为环的部分, 因为 $R$ 中存在着幂零元.</p>
-<p>Kock–Lawvere 公理说的是, 对任意映射 $f: D \to R$, 存在唯一的 $a,b \in R$, 使得</p>
-<p>$$ 
-f(\epsilon) \spaces= a + b \epsilon, \quad \forall \epsilon \in D 
-$$</p>
-<p>将这里的 $a$ 换成 $f(0)$, 并完全使用量词叙述, 则是</p>
-<p>$$ 
-\forall ~ f \in R^D, ~ \exists! ~ b ~ \text{s.t.} ~ \forall ~ d \in D \quad (f(d) = f(0) + b d) 
-$$</p>
-<p>如果说这个公理的形式还不足以暗示它的目的, 那么下面这个推论就完全能做到了.</p>
-<p><section class="block" data-taxon="Corollary"><details ><summary id="data-structure-synthetic-differential-smooths"><header><h1><span class="taxon">Corollary. </span>所有函数都光滑 <a class="slug" href="/data-structure/synthetic-differential/smooths">[smooths]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/smooths.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 13, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>对任意函数 $f:R \rightarrow R$, 存在唯一的函数 $f':R \rightarrow R$ 满足</p>
-<p>$$
-f(x + \varepsilon) \spaces= f(x) + f'(x)\varepsilon,\quad \forall ~ x \in R, ~ \forall ~ \varepsilon \in D
-$$</p>
-<p>这个通常作为 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">Kock–Lawvere 公理</a></span> 的推论出现, 不过从 $\mathcal{E}$ 的定义来看, 这才是整套框架真正的目的之一. 即, 为全体函数恢复牛顿时期 “幂零无穷小量” 计算上的直观, 而不导致矛盾.</p>
-<p><figure><img src="/data-structure/synthetic-differential/maclaurin.svg" class="color-invert"/></figure></p>
-</details></section></p>
-<blockquote>
-<p>Axiom is incompatible with the law of excluded middle.
-Either the one or the other has to leave the scene.
-In Part I of this book, the law of excluded middle has to leave,
-being incompatible with the natural synthetic reasoning
-on smooth geometry to be presented here.
-In the terms which the logicians use, this means that
-the logic employed is ‘constructive’ or ‘intuitionistic’.
-We prefer to think of it just as ‘that reasoning
-which can be carried out in all sufficiently good
-cartesian closed categories’. <p style="text-align: right;">— Anders Kock, <span class="link local"><a href="/bib/kock2006synthetic" title="Synthetic differential geometry [bib/kock2006synthetic]">Synthetic Differential Geometry</a></span></p></p>
-</blockquote>
-</details></section></p>
-<p>无论是单纯接受这个 <span class="link local"><a href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">公理</a></span> 还是认可该公理存在的舞台 $\mathcal{E}$, 其实都会导致完全相同的结果, 那就是 $\mathcal{E}$ 当中一般函数的性质发生了变化, 让所有的函数都变得光滑. 与之相对的, 这样的好性质所要求的代价是, $\mathcal{E}$ 当中不能使用经典逻辑中的选择公理、排中律、反证法等命题.</p>
-<p><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis. </span>矩阵表示 <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/matrix-represent.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\quads#1{\quad #1 \quad}$
-$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\C{\mathbf{C}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>这样一来, 我们所说的 <span class="link local"><a href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“将近似修正为严格等于”</a></span> 就可以精确表示为</p>
-<p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
-<p><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">复步微分法</a></span> 的来源是完全解析的, 但其得到的微分方法却能代数地刻画. 正如我们可以考虑复数的 $z = a+b\sqrt{-1} \in \C$ 矩阵表示</p>
-<p>$$
-A \spaces= \begin{pmatrix}
-a &amp; -b \\
-b &amp; ~~~a \\
-\end{pmatrix}
-,\quad
-\det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
-$$</p>
-<p>我们也可以构造 <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">对偶数</a></span> $a + b \varepsilon \in R$ 的矩阵表示, 并自动得到微分运算的加法和乘法规则, 这可以被简单地视为 Moler 方法的矩阵版本.</p>
-<p>$$
-A \spaces= \begin{pmatrix}
-a &amp; a' \\
-0 &amp; a \\
-\end{pmatrix}
-,\quad
-\det A \spaces= (a+b\varepsilon)(a-b\varepsilon)
-$$</p>
-</details></section>
-<section class="block" data-taxon="Example"><details ><summary id="data-structure-synthetic-differential-derived-differential"><header><h1><span class="taxon">Example. </span>导出微分运算 <a class="slug" href="/data-structure/synthetic-differential/derived-differential">[derived-differential]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/derived-differential.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\Mat{\operatorname{Mat}}$
-$\gdef\d{\operatorname{d}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>设 $u, v \in R^R$, $n \in \Z$. 记 $A(u, u') = (\begin{smallmatrix} u &amp; u' \\ 0 &amp; u \end{smallmatrix})$. 从矩阵运算中立刻得到</p>
-<ol>
-<li>$A(u, u') + A(v, v') \spaces= A(u+v, u'+v')$</li>
-<li>$A(u, u') - A(v, v') \spaces= A(u-v, u'-v')$</li>
-<li>$A(u, u') \cdot A(v, v') \spaces= A(uv, u'v + uv')$</li>
-<li>$A(u, u') \cdot (A(v, v'))^{-1} \spaces= A(uv^{-1}, (u'v - uv')v^{-2})$</li>
-<li>$(A(u, u'))^n = A(u^n, nu^{n-1}u')$</li>
-</ol>
-<p>对于 $e^{A(u,u')}$, 注意 $A(u, u') = A(u, 0) + A(0, u')$, 这里 $(A(0, u))^2 = 0$. 同样可以计算得到 $e^{A(u,u')} = A(e^u, 0) \cdot A(1, u') = A(e^u, e^u u')$. 而对于 $\log A(u,u')$ 我们直接展开为 $\sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (A-1)^k$ 即可验证:</p>
-<p>$$
-\begin{pmatrix} \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k &amp; \sum_{k \ge 0} (-1)^k (u-1)^k \cdot u'  \\ 0 &amp; \sum_{k \ge 1}\frac{(-1)^{k+1}}{k} \cdot (u-1)^k \end{pmatrix}
-\spaces= 
-\begin{pmatrix} \log u &amp; u'u^{-1} \\ 0 &amp; \log u \end{pmatrix}
-$$</p>
-</details></section>
-<section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-chain-rule"><header><h1><span class="taxon">Exegesis. </span>链式法则 <a class="slug" href="/data-structure/synthetic-differential/chain-rule">[chain-rule]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/chain-rule.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
-<p>$\gdef\Mat{\operatorname{Mat}}$
-$\gdef\spaces#1{~ #1 ~}$
-$\gdef\d{\operatorname{d}}$
-$\gdef\eqdef{\overset{\scriptscriptstyle\text{def}}{=}}$</p>
-<p>与 $\Mat_{2 \times 2}(R^R)$ 上的 <span class="link local"><a href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">运算</a></span> 不同, 复合运算是只位于 $R^R$ 上的, 或者说 $\Mat_{2 \times 2}(R^R)$ 上并没有周知的复合运算. 为了自然地给出 $A: J^1(R, R) \to \Mat_{2 \times 2}(R^R)$ 上的复合, 这里 $J^1$ 是一阶 <span class="link external"><a href="https://ncatlab.org/nlab/show/jet+bundle" title="射流丛 [https://ncatlab.org/nlab/show/jet+bundle]">射流丛</a></span>. 记 $\square(x)$ 为 $\square_x $, $A(u)$ 为 $A(u,u')$, 考虑显式应用的 $A(u)$, 即</p>
-<p>$$
-A(u)_x \spaces\eqdef \begin{pmatrix} u_x &amp; u'_x \\ 0 &amp; u_x \end{pmatrix} \spaces\in \Mat_{2 \times 2}(R), \quad x \in R
-$$</p>
-<p>对于 $u: Y \to Z$, $v: X \to Y$. $A$ 上的复合 $A(u) \circ A(v)$ 可定义为 $A(u)_{v_x}$, $(v_x, v'_x) \in A(v)_x$. 我们来验证 $A(u) \circ A(v) = A(u \circ v)$.</p>
-<p>$$
-\begin{aligned}
-A(u)_{v_x} 
-&amp;\spaces= \Big(u \cdot \frac{\partial A}{\partial u} + \frac{\d u}{\d x} \cdot \frac{\partial A}{\partial u'}\Big)\Big|_{v_x} \\
-&amp;\spaces= u(v_x) \cdot \frac{\partial A}{\partial u} + \frac{\d u(v_x)}{\d v_x} \frac{\d v_x}{\d x} \cdot \frac{\partial A}{\partial u'} \\
-&amp;\spaces= A(u(v(x)), u'(v(x))v'(x)) \\
-\end{aligned}
-$$</p>
-</details></section></p>
 </details></section></details></section></footer></article></div></body></html>
