@@ -25,7 +25,7 @@ $$ y^3 + py + q = 0, \quad p,q \in \R$$
 | $\Delta = 0$ | 三个实根, 有重根 |
 | $\Delta < 0$ | 一个实根, 两个共轭复根 |
 
-<remark title="代数琐碎细节" close>
+<remark title="缺项形式验证" close>
 
 $$
 \def\x{(y-\tfrac{a}{3})}
@@ -39,9 +39,32 @@ $$
 
 </remark>
 
+<remark title="计算判别式" close>
+
+记全体根为 $r_i$, 结式 $\operatorname{res}(f,f')$ 即 Sylvester 矩阵的行列式. 判别式可按如下手续计算
+
+$$
+\begin{aligned}
+\Delta &\spaces= \prod_{i < j} (r_i - r_j)^2 \\
+&\spaces= (r_1-r_2)^2(r_1-r_3)^2(r_2-r_3)^2 \\
+&\spaces= (-1)^{n(n-1)/2} \operatorname{res}(f,f') \\
+&\spaces= - \det 
+\begin{pmatrix}
+1 & 0 & p & q & 0 \\
+0 & 1 & 0 & p & q \\
+3 & 0 & p & 0 & 0 \\
+0 & 3 & 0 & p & 0 \\
+0 & 0 & 3 & 0 & p \\
+\end{pmatrix} \\
+&\spaces= -(4p^3+27q^3)
+\end{aligned}
+$$
+
+</remark>
+
 <proposition>
 
-拉丁语 Casus irreducibilis 意为 "不可约情形", 于古代特指 $\Delta > 0$ 且多项式在 $\Q$ 上不可约的三次方程. 
+拉丁语 Casus irreducibilis 意为 "不可约情形", 如今特指 $\Delta > 0$ 且多项式在 $\Q$ 上不可约的三次方程. 
 设 $f(x) \in \Q[x]$ 是一个 Casus irreducibilis. 则 $f(x)$ 的任意一个根不能表示为仅含实数和实根式的表达式. 
 
 <proof>

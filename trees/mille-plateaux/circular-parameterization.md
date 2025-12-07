@@ -28,5 +28,4 @@ $$ t \quads\mapsto r \cdot \bigg(\frac{1-t^2}{1+t^2}, \frac{2t}{1+t^2}\bigg) $$
 
 这样一种寻找点的方式, 通常被称为弦切法. 
 
-[](/mille-plateaux/chord-tangent.typ#:block)
-
+[](./chord-tangent.typ#:block)

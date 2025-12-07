@@ -1,594 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>回声</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
-  color-scheme: light dark;
-  --content-gap: 15px;
-  --radius: 5px;
-  --article-max-width: 90ex;
-  --toc-max-width: 90ex;
-
-  --text-color: black;
-  --toc-link-color: #555;
-  --background-color: white;
-
-  --background-color-pre: rgba(0, 100, 100, 0.04);
-  --background-color-code: rgba(0, 100, 100, 0.04);
-
-  --hover-color-block: rgba(0, 100, 255, 0.04);
-  --hover-color-link: rgba(0, 100, 255, 0.1);
-  --target-color: rgb(67, 92, 255);
-
-  --link-color: black;
-  --slug-color: gray;
-  --logo-color: #666;
-  --logo-hover-color: #aaa;
-  --span-taxon-color: #444;
-  --article-taxon-color: #888;
-  --mark-color: rgb(255, 255, 151);
-  --em-color: var(--text-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root body {
-    --text-color: white;
-    --toc-link-color: white;
-    --background-color: #2f2f2f;
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(100, 162, 255, 0.06);
-    --hover-color-link: rgba(100, 162, 255, 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: white;
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: #bbb;
-  }
-}
-
-body {
-  color: var(--text-color);
-  font-optical-sizing: auto;
-  hyphens: auto;
-  background-color: var(--background-color);
-}
-
-pre,
-code {
-  font-optical-sizing: auto;
-}
-
-p,
-pre {
-  line-height: 1.55;
-}
-
-pre {
-  border-radius: var(--radius);
-  background-color: var(--background-color-pre);
-  padding: 0.5em;
-  font-size: 11pt;
-  margin-top: 0em;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-}
-
-code {
-  border-radius: var(--radius);
-  background-color: var(--background-color-code);
-  padding: 0.2em;
-  font-size: 1em;
-}
-
-em {
-  color: var(--em-color);
-}
-
-table {
-  border-collapse: collapse;
-  margin-bottom: 1em;
-}
-
-/* !forest */
-th {
-  font-weight: normal;
-  text-align: left;
-}
-
-th,
-td {
-  padding: 0 15px;
-  vertical-align: top;
-}
-
-/* !forest */
-pre>code {
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-}
-
-/* !forest */
-.footnote-definition:last-child {
-  margin-bottom: 1em;
-}
-
-/* !forest */
-.footnote-definition>p {
-  display: inline;
-}
-
-/* !forest */
-.footnote-definition-label {
-  margin-right: 4px;
-}
-
-/* !forest */
-.footnote-reference:target {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-definition:target>.footnote-definition-label {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-reference::before,
-.footnote-definition-label::before {
-  content: "[";
-}
-
-.footnote-reference::after,
-.footnote-definition-label::after {
-  content: "]";
-}
-
-.katex {
-  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
-  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
-  line-height: 1.1em;
-  text-indent: 0;
-  text-rendering: auto;
-}
-
-.katex .mfrac .frac-line {
-  font-size: 1.25em;
-}
-
-p:has(span.katex-html:empty) {
-  display: none;
-}
-
-.katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.katex-display .katex {
-  /* Inconsistent bounding box at different font sizes. */
-  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
-  padding-top: 1px;
-}
-
-.display-none {
-  display: none;
-}
-
-blockquote {
-  font-style: italic;
-}
-
-blockquote {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-  unicode-bidi: isolate;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin-top: 0.5em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-details>summary {
-  list-style-type: none;
-  outline: none;
-}
-
-details>summary>header {
-  display: inline;
-}
-
-/* no effect */
-details>summary::marker,
-details>summary::-webkit-details-marker {
-  display: none;
-}
-
-details h1 {
-  font-size: 1.2em;
-  display: inline;
-}
-
-details>summary {
-  list-style-type: none;
-}
-
-span.taxon {
-  color: var(--span-taxon-color);
-  font-weight: 500;
-}
-
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
-}
-
-article>section>details>summary>header>h1 {
-  font-size: 1.5em;
-}
-
-article>section>details>summary>header {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-article>section>details>summary>header>h1>.taxon {
-  display: block;
-  font-size: 0.9em;
-  color: var(--article-taxon-color);
-  padding-bottom: 5pt;
-}
-
-article>section>details>summary>header>h1>.taxon:empty {
-  display: none;
-}
-
-section.block>details {
-  margin-bottom: 0.4em;
-}
-
-section.block>details[open] {
-  margin-bottom: 1em;
-}
-
-.link-list>section.block>details {
-  margin-bottom: 0.25em;
-}
-
-/* class */
-.inline-typst {
-  display: inline-block;
-  margin: 0 0;
-  line-height: 1em;
-  vertical-align: middle;
-}
-
-.block {
-  padding-left: 5px;
-  padding-right: 10px;
-  padding-bottom: 2px;
-  border-radius: 5px;
-}
-
-.block {
-  /* width: fit-content; */
-  border-radius: var(--radius);
-}
-
-.block:hover {
-  background-color: var(--hover-color-block);
-}
-
-.block.hide-metadata>details>summary>header>.metadata {
-  display: none;
-}
-
-img {
-  object-fit: cover;
-  max-width: 100%;
-}
-
-figure {
-  text-align: center;
-}
-
-figcaption {
-  font-style: italic;
-  padding: 3px;
-}
-
-mark {
-  background-color: var(--mark-color);
-}
-
-hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: gray;
-  border: 0 none;
-  width: 100%;
-  height: 1pt;
-}
-
-ul,
-ol {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.logo>span {
-  color: var(--logo-color);
-  text-decoration: none;
-}
-
-.logo>span:hover {
-  color: var(--logo-hover-color);
-}
-
-.logo {
-  font-weight: 600;
-  font-size: 24px;
-}
-
-section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
-section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
-  display: none;
-}
-
-section .block[data-taxon]>header>h1,
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
-}
-
-footer>section {
-  margin-bottom: 1em;
-}
-
-footer h2 {
-  font-size: 14pt;
-}
-
-.metadata ul {
-  padding-left: 0;
-  display: inline;
-}
-
-.metadata li::after {
-  content: " · ";
-}
-
-.metadata li:last-child::after {
-  content: "";
-}
-
-.metadata * {
-  display: inline;
-}
-
-.link {
-  cursor: pointer;
-}
-
-a {
-  color: var(--link-color);
-  text-decoration: inherit;
-}
-
-a.slug:hover,
-a.bullet:hover,
-.edit-button:hover,
-.link:hover {
-  background-color: var(--hover-color-link);
-}
-
-.link.external {
-  text-decoration: underline;
-}
-
-.link.asset {
-  text-decoration: underline;
-}
-
-.link.asset::before {
-  content: "[F] ";
-}
-
-a.link.local,
-.link.local a,
-a.slug {
-  box-shadow: none;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  word-wrap: break-word;
-}
-
-.slug,
-.doi,
-.orcid {
-  color: var(--slug-color);
-  font-weight: 200;
-}
-
-body>header {
-  margin-bottom: 0.5em;
-}
-
-#grid-wrapper>article {
-  max-width: var(--article-max-width);
-  margin-right: auto;
-  grid-area: article;
-}
-
-@media only screen and (max-width: 1000px) {
-  body {
-    margin-top: 1em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    transition: ease all 0.2s;
-  }
-
-  #grid-wrapper>nav {
-    transition: ease all 0.2s;
-  }
-
-  .mobile-sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-
-    background-color: var(--background-color);
-    z-index: 7;
-    border-bottom: solid var(--text-color);
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  body {
-    margin-top: 2em;
-    margin-left: 2em;
-    transition: ease all 0.2s;
-  }
-
-  #grid-wrapper {
-    display: grid;
-    grid-auto-flow: column;
-  }
-
-  .sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-nav#toc li.item-summary li {
-  display: none;
-}
-
-nav#toc ul {
-  list-style-type: none;
-}
-
-nav#toc li>ul {
-  margin: 0;
-  padding-left: 1em;
-}
-
-nav#toc,
-nav#toc a {
-  color: var(--toc-link-color);
-}
-
-nav#toc {
-  grid-area: toc;
-}
-
-nav {
-  font-optical-sizing: auto;
-}
-
-nav#toc a.bullet {
-  opacity: 0.7;
-  margin-left: 0.4em;
-  margin-right: 0.3em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  text-decoration: none;
-}
-
-.typst-text use[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-.typst-group use[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-path.typst-shape[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-path.typst-shape[stroke="#000000"] {
-  stroke: var(--text-color);
-}</style><style>
-@media only screen and (min-width: 1000px) {
-  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
-  nav#toc { max-width: max-content; }
-}
-</style><style>
-  footer section[data-taxon]:has(a[href="/index"]) {
-    display: none;
-  }
-</style><link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet" />
-
-<style>
-  body {
-    font-family: "Inria Sans", sans-serif;
-    line-height: 1.55;
-  }
-
-  .cjk_fallback {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  pre,
-  code {
-    font-family: monospace;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  nav {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  thead {
-    font-family: "Inria Sans", sans-serif;
-  }
-</style><template id="inline-section">
+<meta name="viewport" content="width=device-width"><title>回声</title><link rel="icon" href="/assets/favicon.ico" /><template id="inline-section">
   <section class="block" data-taxon="">
     <details open="">
       <summary>
@@ -1047,14 +460,12 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
-  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
-  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
-  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+</script><!-- Also see: https://katex.org/docs/autorender -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1071,7 +482,605 @@ path.typst-shape[stroke="#000000"] {
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</script>
+<style>html {
+  font-size: 18px;
+}
+
+:root body {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 75ex;
+  --toc-max-width: 75ex;
+  --text-font-family: PingFang SC, Noto Sans CJK SC, sans-serif;
+
+  /* root font size: 16px */
+  /* 11pt; */
+  --pre-font-size: 0.917rem;
+  --code-font-size: 1rem;
+  /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
+  --katex-font-size: 1.15rem;
+  --katex-frac-line-font-size: 1.25rem;
+  --details-h1-font-size: 1.2rem;
+  /* 13pt */
+  --section-details-h1-font-size: 1.083rem;
+  --article-details-h1-font-size: 1.5rem;
+  /* 0.9em */
+  --article-details-h1-taxon-font-size: 1.35rem;
+  /* 24px; */
+  --logo-font-size: 1.5rem;
+  /* 14pt; */
+  --footer-h2-font-size: 1.167rem;
+  --p-line-height: 1.55rem;
+
+  --text-color: black;
+  --toc-link-color: #555;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root body {
+    --text-color: white;
+    --toc-link-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+@media print {
+  html {
+    font-size: 16px;
+  }
+
+  .edit,
+  #theme-options {
+    display: none;
+  }
+}
+
+body {
+  color: var(--text-color);
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: var(--p-line-height);
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5rem;
+  font-size: var(--pre-font-size);
+  margin-top: 0rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2rem;
+  font-size: var(--code-font-size);
+}
+
+pre,
+code {
+  font-family: monospace;
+}
+
+em {
+  color: var(--em-color);
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target>.footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+.katex {
+  font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
+  line-height: 1rem;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: var(--katex-frac-line-font-size);
+}
+
+/* Generated by KaTeX */
+.cjk_fallback {
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: var(--details-h1-font-size);
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: var(--article-details-h1-font-size);
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: var(--article-details-h1-taxon-font-size);
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article>section>details>summary>header>h1>.taxon:empty {
+  display: none;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list>section.block>details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline;
+  margin: 0 0;
+  font-size: var(--katex-font-size);
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo>span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo>span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: var(--logo-font-size);
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: var(--section-details-h1-font-size);
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: var(--footer-h2-font-size);
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.edit:hover,
+a.bullet:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug,
+a.edit {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  word-wrap: break-word;
+}
+
+.slug,
+.edit,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper>article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 18px;
+  }
+
+  figure {
+    margin: 0rem;
+  }
+
+  .block {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  }
+
+  #grid-wrapper>nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+nav#toc,
+nav#toc a {
+  color: var(--toc-link-color);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  text-decoration: none;
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--text-color);
+}</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style></head><body><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://www.forester-notes.org/ -->
@@ -1199,7 +1208,7 @@ path.typst-shape[stroke="#000000"] {
 <p>1883 年, Georg Cantor 提出了 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">良序原理</a></span>. 由于他所谓的 <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]">法则</a></span> 并未立即得到接受, Cantor 发现自己不得不寻求证明. 为了提供这样的证明, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 在 1904 年由 Ernst Zermelo 首次明确表述出来.</p>
 </details></section>
 <section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="AC2C"><header><h1><span class="taxon">Axiom 1.2. </span>选择公理 $\textsf{AC}$ <a class="slug" href="/AC2C">[AC2C]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>对于任意一非空集合族 $\mathscr{F}$, 存在一个选择函数 $f$ 为每个成员 $A \in \mathscr{F}$ 分配一个元素 $f(A) \in A$.</p>
+<p>对于任意非空集合族 $\mathscr{F}$, 存在一个选择函数 $f$ 为每个 $A \in \mathscr{F}$ 分配一个元素 $f(A) \in A$.</p>
 <exegesis>
 <p>$f$ 可以被看作是从每个集合 $A \in \mathscr{F}$ 中选取一个元素.
 然而, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]">选择公理 $\textsf{AC}$</a></span> 仅保证了此类函数的存在性, 而没有提供构造它的方法.
@@ -1232,10 +1241,9 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <block taxon="Solution" title="椭圆曲线的倍点">
 <p>我们先画出 $x^3 + y^3 = 9$. 然后由已知的 $P=(1,2)$ 出发做切线得到 $2P$, $4P$, $8P$. 这种几乎全凭借运气的操作是 <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> 及 <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> 研究此类问题的方式.</p>
 <p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
-<p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在写出其坐标.</p>
+<p>如图, 随后注意到 $8P$ 恰好位于 $x &gt; 0,y &gt; 0$ 的区域, 现在计算其坐标.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
-</block>
-</details></section>
+</block></details></section>
 <section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-3A"><header><h1><span class="taxon">Lemma 1.1.2. </span>切线与交点 <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$
@@ -1446,35 +1454,7 @@ $\gdef\Z{\mathbf{Z}}$</p>
 <p>只要考虑下面这个例子即可发现, 将一棵二叉树转化为它的 Hille 编码并非是简单的中序遍历.</p>
 <p><figure><img src="/data-structure/stack-permutation/counterexample.svg" class="color-invert"/></figure></p>
 <p>可以验证, 从 <code>110100100</code> 这个编码出发, 无法直接恢复原本的 
-<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 18.044079999999997 22.672179999999997" width="18.044079999999997pt" height="22.672179999999997pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
-    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0v 22.67218 h 18.04408 v -22.67218 Z "/>
-    <g>
-        <g class="typst-group">
-            <g>
-                <g class="typst-group" transform="matrix(0.4 0 0 0.4 1 1)">
-                    <g>
-                        <g class="typst-group">
-                            <g>
-                                <g class="typst-group">
-                                    <g>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 10.533055765200158 10.533055765199913)" d="M 0 0m 5.1597886 0 l -5.1597886 5.1597886 "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 10.533055648846556 24.417355900815053)" d="M 0 0l 5.1597886 5.1597886 "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.7404959999999999" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 24.41735564884644 10.533055900814961)" d="M 0 0l 5.1597886 5.1597886 "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 13.884300000000003 0)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 13.88429999999999)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 13.884300000000003 27.768599999999996)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
-                                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.8" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 27.7686 13.88429999999999)" d="M 0 0m 6.1708 0 c -3.404949 0 -6.1708 2.7658513 -6.1708 6.1708 c 0 3.4049482 2.7658513 6.1708 6.1708 6.1708 c 3.4049482 0 6.1708 -2.765852 6.1708 -6.1708 c 0 -3.404949 -2.765852 -6.1708 -6.1708 -6.1708 Z "/>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
-</span>
+<span class="inline-typst"><span style="display: inline-block"><span style="display: inline-block"></span></span></span>
 , 其正确的 Hille 编码应该为 <code>1101000100</code>. 但是另一方面, 如果将序列 <code>110100100</code> 解释为栈的压入弹出操作, 即栈编码, 则可以得到正确的栈置换 <code>2314</code>. 这就意味着, 当二叉树的节点个数 $n &gt; 3$ 时, 存在二叉树使得其栈编码与 Hille 编码不同. 回忆二叉树和栈置换之间的双射关系, 这表明必然存在一套手续允许我们在两者之间互相转换, 下面我们将构造性地给出这个结果. 见 <span class="link local"><a href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">栈编码与 Hille 编码的等价性</a></span>. 随后通过 <span class="link local"><a href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">相交率</a></span> 解释, 为何中序遍历在 $n$ 不大情况下能够频繁得到正确的 Hille 编码.</p>
 <p><section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="data-structure-stack-permutation-equivalence"><header><h1><span class="taxon">Proposition 2.4. </span>栈编码与 Hille 编码的等价性 <a class="slug" href="/data-structure/stack-permutation/equivalence">[equivalence]</a><a class="slug" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/stack-permutation/equivalence.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 06, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>首先容易验证的是, 中序遍历总是能够给出二叉树 $b \in B$ 到栈置换 $s \in S$ 的映射, 而对于每一个栈置换 $s \in S$, 都能够写出唯一的二进制序列, 即栈编码 $c \in C$. 不考虑末尾连续的 <code>0</code>, 当栈编码 $c$ 与二叉树 $b$ 的 Hille 编码 $h \in H$ 相同时, 对 $B$ 直接进行中序遍历便能得出正确的 Hille 编码.</p>

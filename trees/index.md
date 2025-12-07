@@ -2,6 +2,8 @@
 ---
 title: 回声
 references: false
+backlinks: false
+asback: false
 ---
 
 本站使用 [Kodama](https://github.com/kokic/kodama) 构建, 源文件位于 [此处](https://github.com/kokic/kokic.github.io). 

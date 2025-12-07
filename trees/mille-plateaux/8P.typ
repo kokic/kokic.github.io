@@ -2,12 +2,14 @@
 #import "@preview/cetz:0.4.2" as cetz: canvas, draw
 #import "@preview/cetz-plot:0.1.3": plot
 
-#set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0)); 
-#set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");
+#import "../_lib/kodama.typ": html-math-font-size
+
+#set page(width: auto, height: auto, margin: (x: 0em, y: 0em), fill: rgb(0, 0, 0, 0));
+#set text(size: html-math-font-size, top-edge: "bounds", bottom-edge: "bounds");
 
 #let plot_max_value = 4
 #let plot_size = (8, 8)
-#let text-size = 1.5em
+#let text-size = 1em
 
 #let point(x, y, color: black) = plot.add(domain: (x, x), x => y, samples: 2, mark: "o", mark-style: (stroke: none, fill: color))
 
@@ -16,7 +18,7 @@
   point(px, py)
 }
 
-#cetz.canvas(length: 1.8cm, {
+#cetz.canvas(length: 1.2cm, {
 
   plot.plot(
     name: "plot",

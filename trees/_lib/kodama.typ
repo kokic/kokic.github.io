@@ -2,6 +2,8 @@
 // Released under the GPL-3.0 license as described in the file LICENSE.
 // Authors: Alias Qli (@AliasQli), Kokic (@kokic)
 
+#let html-math-font-size = 15.525pt;
+
 /*
 There are some external inputs:
   sys.inputs.path: relative path of the typst file

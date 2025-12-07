@@ -1,594 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>删除–收缩公式</title><link rel="icon" href="/assets/favicon.ico" /><style>:root body {
-  color-scheme: light dark;
-  --content-gap: 15px;
-  --radius: 5px;
-  --article-max-width: 90ex;
-  --toc-max-width: 90ex;
-
-  --text-color: black;
-  --toc-link-color: #555;
-  --background-color: white;
-
-  --background-color-pre: rgba(0, 100, 100, 0.04);
-  --background-color-code: rgba(0, 100, 100, 0.04);
-
-  --hover-color-block: rgba(0, 100, 255, 0.04);
-  --hover-color-link: rgba(0, 100, 255, 0.1);
-  --target-color: rgb(67, 92, 255);
-
-  --link-color: black;
-  --slug-color: gray;
-  --logo-color: #666;
-  --logo-hover-color: #aaa;
-  --span-taxon-color: #444;
-  --article-taxon-color: #888;
-  --mark-color: rgb(255, 255, 151);
-  --em-color: var(--text-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root body {
-    --text-color: white;
-    --toc-link-color: white;
-    --background-color: #2f2f2f;
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(100, 162, 255, 0.06);
-    --hover-color-link: rgba(100, 162, 255, 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: white;
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: #bbb;
-  }
-}
-
-body {
-  color: var(--text-color);
-  font-optical-sizing: auto;
-  hyphens: auto;
-  background-color: var(--background-color);
-}
-
-pre,
-code {
-  font-optical-sizing: auto;
-}
-
-p,
-pre {
-  line-height: 1.55;
-}
-
-pre {
-  border-radius: var(--radius);
-  background-color: var(--background-color-pre);
-  padding: 0.5em;
-  font-size: 11pt;
-  margin-top: 0em;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-}
-
-code {
-  border-radius: var(--radius);
-  background-color: var(--background-color-code);
-  padding: 0.2em;
-  font-size: 1em;
-}
-
-em {
-  color: var(--em-color);
-}
-
-table {
-  border-collapse: collapse;
-  margin-bottom: 1em;
-}
-
-/* !forest */
-th {
-  font-weight: normal;
-  text-align: left;
-}
-
-th,
-td {
-  padding: 0 15px;
-  vertical-align: top;
-}
-
-/* !forest */
-pre>code {
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-}
-
-/* !forest */
-.footnote-definition:last-child {
-  margin-bottom: 1em;
-}
-
-/* !forest */
-.footnote-definition>p {
-  display: inline;
-}
-
-/* !forest */
-.footnote-definition-label {
-  margin-right: 4px;
-}
-
-/* !forest */
-.footnote-reference:target {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-definition:target>.footnote-definition-label {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-reference::before,
-.footnote-definition-label::before {
-  content: "[";
-}
-
-.footnote-reference::after,
-.footnote-definition-label::after {
-  content: "]";
-}
-
-.katex {
-  /* Adjust `.katex font-size` to match "Noto Sans SC" & "Inria Sans". */
-  font: normal 1.15em KaTeX_Main, Times New Roman, serif;
-  line-height: 1.1em;
-  text-indent: 0;
-  text-rendering: auto;
-}
-
-.katex .mfrac .frac-line {
-  font-size: 1.25em;
-}
-
-p:has(span.katex-html:empty) {
-  display: none;
-}
-
-.katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.katex-display .katex {
-  /* Inconsistent bounding box at different font sizes. */
-  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
-  padding-top: 1px;
-}
-
-.display-none {
-  display: none;
-}
-
-blockquote {
-  font-style: italic;
-}
-
-blockquote {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-  unicode-bidi: isolate;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin-top: 0.5em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-details>summary {
-  list-style-type: none;
-  outline: none;
-}
-
-details>summary>header {
-  display: inline;
-}
-
-/* no effect */
-details>summary::marker,
-details>summary::-webkit-details-marker {
-  display: none;
-}
-
-details h1 {
-  font-size: 1.2em;
-  display: inline;
-}
-
-details>summary {
-  list-style-type: none;
-}
-
-span.taxon {
-  color: var(--span-taxon-color);
-  font-weight: 500;
-}
-
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
-}
-
-article>section>details>summary>header>h1 {
-  font-size: 1.5em;
-}
-
-article>section>details>summary>header {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-article>section>details>summary>header>h1>.taxon {
-  display: block;
-  font-size: 0.9em;
-  color: var(--article-taxon-color);
-  padding-bottom: 5pt;
-}
-
-article>section>details>summary>header>h1>.taxon:empty {
-  display: none;
-}
-
-section.block>details {
-  margin-bottom: 0.4em;
-}
-
-section.block>details[open] {
-  margin-bottom: 1em;
-}
-
-.link-list>section.block>details {
-  margin-bottom: 0.25em;
-}
-
-/* class */
-.inline-typst {
-  display: inline-block;
-  margin: 0 0;
-  line-height: 1em;
-  vertical-align: middle;
-}
-
-.block {
-  padding-left: 5px;
-  padding-right: 10px;
-  padding-bottom: 2px;
-  border-radius: 5px;
-}
-
-.block {
-  /* width: fit-content; */
-  border-radius: var(--radius);
-}
-
-.block:hover {
-  background-color: var(--hover-color-block);
-}
-
-.block.hide-metadata>details>summary>header>.metadata {
-  display: none;
-}
-
-img {
-  object-fit: cover;
-  max-width: 100%;
-}
-
-figure {
-  text-align: center;
-}
-
-figcaption {
-  font-style: italic;
-  padding: 3px;
-}
-
-mark {
-  background-color: var(--mark-color);
-}
-
-hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: gray;
-  border: 0 none;
-  width: 100%;
-  height: 1pt;
-}
-
-ul,
-ol {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.logo>span {
-  color: var(--logo-color);
-  text-decoration: none;
-}
-
-.logo>span:hover {
-  color: var(--logo-hover-color);
-}
-
-.logo {
-  font-weight: 600;
-  font-size: 24px;
-}
-
-section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
-section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
-  display: none;
-}
-
-section .block[data-taxon]>header>h1,
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: 13pt;
-}
-
-footer>section {
-  margin-bottom: 1em;
-}
-
-footer h2 {
-  font-size: 14pt;
-}
-
-.metadata ul {
-  padding-left: 0;
-  display: inline;
-}
-
-.metadata li::after {
-  content: " · ";
-}
-
-.metadata li:last-child::after {
-  content: "";
-}
-
-.metadata * {
-  display: inline;
-}
-
-.link {
-  cursor: pointer;
-}
-
-a {
-  color: var(--link-color);
-  text-decoration: inherit;
-}
-
-a.slug:hover,
-a.bullet:hover,
-.edit-button:hover,
-.link:hover {
-  background-color: var(--hover-color-link);
-}
-
-.link.external {
-  text-decoration: underline;
-}
-
-.link.asset {
-  text-decoration: underline;
-}
-
-.link.asset::before {
-  content: "[F] ";
-}
-
-a.link.local,
-.link.local a,
-a.slug {
-  box-shadow: none;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  word-wrap: break-word;
-}
-
-.slug,
-.doi,
-.orcid {
-  color: var(--slug-color);
-  font-weight: 200;
-}
-
-body>header {
-  margin-bottom: 0.5em;
-}
-
-#grid-wrapper>article {
-  max-width: var(--article-max-width);
-  margin-right: auto;
-  grid-area: article;
-}
-
-@media only screen and (max-width: 1000px) {
-  body {
-    margin-top: 1em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
-    transition: ease all 0.2s;
-  }
-
-  #grid-wrapper>nav {
-    transition: ease all 0.2s;
-  }
-
-  .mobile-sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-
-    background-color: var(--background-color);
-    z-index: 7;
-    border-bottom: solid var(--text-color);
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  body {
-    margin-top: 2em;
-    margin-left: 2em;
-    transition: ease all 0.2s;
-  }
-
-  #grid-wrapper {
-    display: grid;
-    grid-auto-flow: column;
-  }
-
-  .sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-nav#toc li.item-summary li {
-  display: none;
-}
-
-nav#toc ul {
-  list-style-type: none;
-}
-
-nav#toc li>ul {
-  margin: 0;
-  padding-left: 1em;
-}
-
-nav#toc,
-nav#toc a {
-  color: var(--toc-link-color);
-}
-
-nav#toc {
-  grid-area: toc;
-}
-
-nav {
-  font-optical-sizing: auto;
-}
-
-nav#toc a.bullet {
-  opacity: 0.7;
-  margin-left: 0.4em;
-  margin-right: 0.3em;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  text-decoration: none;
-}
-
-.typst-text use[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-.typst-group use[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-path.typst-shape[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-path.typst-shape[stroke="#000000"] {
-  stroke: var(--text-color);
-}</style><style>
-@media only screen and (min-width: 1000px) {
-  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
-  nav#toc { max-width: max-content; }
-}
-</style><style>
-  footer section[data-taxon]:has(a[href="/index"]) {
-    display: none;
-  }
-</style><link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-  rel="stylesheet" />
-
-<style>
-  body {
-    font-family: "Inria Sans", sans-serif;
-    line-height: 1.55;
-  }
-
-  .cjk_fallback {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  pre,
-  code {
-    font-family: monospace;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  nav {
-    font-family: "Inria Sans", sans-serif;
-  }
-
-  thead {
-    font-family: "Inria Sans", sans-serif;
-  }
-</style><template id="inline-section">
+<meta name="viewport" content="width=device-width"><title>删除–收缩公式</title><link rel="icon" href="/assets/favicon.ico" /><template id="inline-section">
   <section class="block" data-taxon="">
     <details open="">
       <summary>
@@ -1047,14 +460,12 @@ path.typst-shape[stroke="#000000"] {
       }
     }
   }
-</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
-  integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossorigin="anonymous" />
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
-  integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
-  integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/copy-tex.min.js"
-  integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+</script><!-- Also see: https://katex.org/docs/autorender -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1071,7 +482,605 @@ path.typst-shape[stroke="#000000"] {
       minRuleThickness: 0.05,
     });
   });
-</script></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/CG2A'" title="染色图">« 染色图</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</script>
+<style>html {
+  font-size: 18px;
+}
+
+:root body {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 75ex;
+  --toc-max-width: 75ex;
+  --text-font-family: PingFang SC, Noto Sans CJK SC, sans-serif;
+
+  /* root font size: 16px */
+  /* 11pt; */
+  --pre-font-size: 0.917rem;
+  --code-font-size: 1rem;
+  /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
+  --katex-font-size: 1.15rem;
+  --katex-frac-line-font-size: 1.25rem;
+  --details-h1-font-size: 1.2rem;
+  /* 13pt */
+  --section-details-h1-font-size: 1.083rem;
+  --article-details-h1-font-size: 1.5rem;
+  /* 0.9em */
+  --article-details-h1-taxon-font-size: 1.35rem;
+  /* 24px; */
+  --logo-font-size: 1.5rem;
+  /* 14pt; */
+  --footer-h2-font-size: 1.167rem;
+  --p-line-height: 1.55rem;
+
+  --text-color: black;
+  --toc-link-color: #555;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root body {
+    --text-color: white;
+    --toc-link-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+@media print {
+  html {
+    font-size: 16px;
+  }
+
+  .edit,
+  #theme-options {
+    display: none;
+  }
+}
+
+body {
+  color: var(--text-color);
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: var(--p-line-height);
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5rem;
+  font-size: var(--pre-font-size);
+  margin-top: 0rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.2rem;
+  font-size: var(--code-font-size);
+}
+
+pre,
+code {
+  font-family: monospace;
+}
+
+em {
+  color: var(--em-color);
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target>.footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+.katex {
+  font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
+  line-height: 1rem;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: var(--katex-frac-line-font-size);
+}
+
+/* Generated by KaTeX */
+.cjk_fallback {
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+  unicode-bidi: isolate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+/* no effect */
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: var(--details-h1-font-size);
+  display: inline;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: var(--article-details-h1-font-size);
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: var(--article-details-h1-taxon-font-size);
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article>section>details>summary>header>h1>.taxon:empty {
+  display: none;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+.link-list>section.block>details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline;
+  margin: 0 0;
+  font-size: var(--katex-font-size);
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: 5px;
+}
+
+.block {
+  /* width: fit-content; */
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo>span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo>span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: var(--logo-font-size);
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: var(--section-details-h1-font-size);
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: var(--footer-h2-font-size);
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.edit:hover,
+a.bullet:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external {
+  text-decoration: underline;
+}
+
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+}
+
+a.link.local,
+.link.local a,
+a.slug,
+a.edit {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  word-wrap: break-word;
+}
+
+.slug,
+.edit,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper>article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 18px;
+  }
+
+  figure {
+    margin: 0rem;
+  }
+
+  .block {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  }
+
+  #grid-wrapper>nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+nav#toc,
+nav#toc a {
+  color: var(--toc-link-color);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  text-decoration: none;
+}
+
+.typst-text use[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+.typst-group use[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--text-color);
+}</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style></head><body><header class="header"><nav class="nav"><div class="logo"><span onclick="window.location.href='/data-structure/CG2A'" title="染色图">« 染色图</span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://www.forester-notes.org/ -->
@@ -1196,13 +1205,12 @@ $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <proof>
-<p>$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>$\gdef\sstr#1{~#1~}$</p>
 <p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现</p>
 <p>$$
 \begin{aligned} 
 \pi(G \without e) 
-&amp;\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&amp;\spaces= \pi(G \without e \sstr{中} A,B ~同色的部分) ~ + ~ \pi(G \without e \sstr{中} A,B ~异色的部分) \\
 &amp;\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}
 $$</p>
@@ -1221,13 +1229,12 @@ $\gdef\without{\setminus}$</p>
 <p>对于简单图 $G$, 其色多项式 $\pi(G)$ 成立如下关系</p>
 <p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
 <proof>
-<p>$\gdef\str#1{{\footnotesize #1}}$
-$\gdef\sstr#1{~{\footnotesize #1}~}$</p>
+<p>$\gdef\sstr#1{~#1~}$</p>
 <p>假定边 $e$ 的两个端点分别为 $A,B$, 不难发现</p>
 <p>$$
 \begin{aligned} 
 \pi(G \without e) 
-&amp;\spaces= \pi(G \without e \sstr{中} A,B ~\str{同色的部分}) ~ + ~ \pi(G \without e \sstr{中} A,B ~\str{异色的部分}) \\
+&amp;\spaces= \pi(G \without e \sstr{中} A,B ~同色的部分) ~ + ~ \pi(G \without e \sstr{中} A,B ~异色的部分) \\
 &amp;\spaces= \pi(G / e) ~ + ~ \pi(G)
 \end{aligned}
 $$</p>
@@ -1238,48 +1245,7 @@ $$</p>
 <p>这里, $G+e$ 是指将 $e$ 两侧的顶点连接, $u v$ 是指顶点 $u, v$ 连接得到的边.</p>
 </details></section></p>
 <p>利用此结果, 可以轻易计算较为复杂的简单图的染色数, 如 
-<span class="inline-typst"><svg class="typst-doc" viewBox="0 0 39.207327015748035 21.007874015748037" width="39.207327015748035pt" height="21.007874015748037pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
-    <path class="typst-shape" fill="#00000000" fill-rule="nonzero" d="M 0 0v 21.007874 h 39.20733 v -21.007874 Z "/>
-    <g>
-        <g class="typst-group">
-            <g>
-                <g class="typst-text" transform="matrix(1 0 0 -1 0 14.360687007874018)">
-                    <use xlink:href="#gB9E5BCC2E946A29A97BB9BAAEEEF00C3" x="0" y="0" fill="#000000" fill-rule="nonzero"/>
-                </g>
-                <g class="typst-text" transform="matrix(1 0 0 -1 9.179065 14.360687007874018)">
-                    <use xlink:href="#gEB014AA7A75E1CBD49C2F5074A3CFA45" x="0" y="0" fill="#000000" fill-rule="nonzero"/>
-                </g>
-                <g class="typst-group" transform="matrix(1 0 0 1 15.689258999999998 2)">
-                    <g>
-                        <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/>
-                        <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 14.173228346456693 0)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/>
-                        <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 14.173228346456693 14.173228346456693)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/>
-                        <path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 14.173228346456693)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/>
-                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 2.8346456692913384 1.417322834645672)" d="M 0 0h 11.338583 "/>
-                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 15.590551181102361 2.834645669291341)" d="M 0 0v 11.338583 "/>
-                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 2.8346456692913384 15.590551181102365)" d="M 0 0m 11.338583 0 h -11.338583 "/>
-                        <path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 1.4173228346456674 2.8346456692913424)" d="M 0 0m 0.0000000000000037371682 11.338583 l -0.0000000000000037371682 -11.338583 "/>
-                    </g>
-                </g>
-                <g class="typst-text" transform="matrix(1 0 0 -1 32.69713301574804 14.360687007874018)">
-                    <use xlink:href="#g2705008A846E7BB9241F3E4436763086" x="0" y="0" fill="#000000" fill-rule="nonzero"/>
-                </g>
-            </g>
-        </g>
-    </g>
-    <defs id="glyph">
-        <symbol id="gB9E5BCC2E946A29A97BB9BAAEEEF00C3" overflow="visible">
-            <path d="M 0 0m 8.083748 6.649037 h -5.09091 c -0.63250685 0 -1.187879 -0.2468319 -1.6352619 -0.72506905 c -0.21597803 -0.23140478 -0.941047 -1.2187328 -0.941047 -1.4192839 c 0.061708003 -0.107988834 0.061708003 -0.20055103 0.24683201 -0.20055103 c 0.10798895 0 0.20055097 0.061707973 0.293113 0.20055103 c 0.49366397 0.7559228 1.1261709 1.1415982 1.8820939 1.1415982 h 0.786777 c -0.35482097 -1.3421493 -1.0027549 -2.9928381 -1.928375 -4.9520674 c -0.07713497 -0.18512398 -0.12341595 -0.323967 -0.12341595 -0.401102 c 0 -0.30854 0.16969693 -0.46280998 0.49366403 -0.46280998 c 0.293113 0 0.5090909 0.169697 0.64793396 0.49366403 c 0.27768588 0.879339 0.4782369 1.558127 0.586226 2.020937 l 0.84848475 3.3013783 h 1.5889812 c -0.41652918 -1.8358133 -0.63250685 -3.1162543 -0.63250685 -3.8413234 c 0 -0.7559229 0.16969681 -1.974656 0.7404957 -1.974656 c 0.32396698 0 0.6787882 0.30854 0.6787882 0.632507 c 0 0.077135 -0.030853748 0.200551 -0.0925622 0.354821 c -0.29311275 0.7250689 -0.4319558 1.5427 -0.4319558 2.483747 c 0 0.7250688 0.0925622 1.5118458 0.262259 2.3449042 h 1.6815429 c 0.5399451 0 0.8022046 0.18512392 0.8022046 0.5707989 c 0 0.35482073 -0.27768612 0.4319558 -0.66336155 0.4319558 Z "/>
-        </symbol>
-        <symbol id="gEB014AA7A75E1CBD49C2F5074A3CFA45" overflow="visible">
-            <path d="M 0 0m 5.368596 -4.581819 c 0.13884306 0 0.21597767 0.077135086 0.21597767 0.21597815 c 0 0.077135086 -0.030853748 0.12341595 -0.07713461 0.16969681 c -0.8639121 0.6633611 -1.5581272 1.7741051 -2.0826452 3.332232 c -0.44738293 1.342149 -0.67878795 2.638017 -0.67878795 3.918458 v 1.6044083 c 0 1.2804408 0.23140502 2.5763087 0.67878795 3.9184575 c 0.524518 1.5581274 1.2187331 2.668871 2.0826452 3.3322325 c 0.04628086 0.04628086 0.07713461 0.09256172 0.07713461 0.16969681 c 0 0.13884258 -0.07713461 0.21597767 -0.21597767 0.21597767 c -0.061707973 0 -0.10798931 -0.015426636 -0.12341595 -0.04628086 c -1.0027552 -0.7713499 -1.835813 -1.9129477 -2.499174 -3.4402208 c -0.6325071 -1.4501381 -0.95647407 -2.8385677 -0.95647407 -4.149863 v -1.6044083 c 0 -1.3112949 0.32396698 -2.699725 0.95647407 -4.149863 c 0.6633611 -1.527273 1.496419 -2.668871 2.499174 -3.4402213 c 0.015426636 -0.030853748 0.061707973 -0.04628086 0.12341595 -0.04628086 Z "/>
-        </symbol>
-        <symbol id="g2705008A846E7BB9241F3E4436763086" overflow="visible">
-            <path d="M 0 0m 1.2650139 -4.535538 c 1.0027552 0.77135015 1.835813 1.9129481 2.499174 3.4402213 c 0.6325071 1.450138 0.95647407 2.838568 0.95647407 4.149863 v 1.6044083 c 0 1.311295 -0.32396698 2.6997247 -0.95647407 4.149863 c -0.6633611 1.5272732 -1.496419 2.668871 -2.499174 3.4402208 c -0.015426993 0.030854225 -0.061707973 0.04628086 -0.12341595 0.04628086 c -0.13884294 0 -0.21597797 -0.077135086 -0.21597797 -0.21597767 c 0 -0.077135086 0.030853987 -0.12341595 0.07713503 -0.16969681 c 0.863912 -0.66336155 1.558127 -1.7741051 2.082645 -3.3322325 c 0.44738317 -1.3421488 0.6787882 -2.6380167 0.6787882 -3.9184575 v -1.6044083 c 0 -1.2804409 -0.23140502 -2.576309 -0.6787882 -3.918458 c -0.5245178 -1.558127 -1.2187328 -2.668871 -2.082645 -3.332232 c -0.04628104 -0.04628086 -0.07713503 -0.09256172 -0.07713503 -0.16969681 c 0 -0.13884306 0.07713503 -0.21597815 0.21597797 -0.21597815 c 0.061707973 0 0.10798895 0.015427113 0.12341595 0.04628086 Z "/>
-        </symbol>
-    </defs>
-</svg>
-</span>
+<span class="inline-typst"><span style="display: inline-block"><span style="vertical-align: -0.646em;"><svg class="typst-frame" style="overflow: visible; width: 3.335170365068003em; height: 1.792em;" viewBox="0 0 36.68687401574803 19.712" width="36.68687401574803pt" height="19.712pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 12.606)"><use xlink:href="#g4CBD9C8A5F806269254466A265B4F2B6" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 6.544999999999999 12.605999999999998)"><use xlink:href="#g1B2385BFB823B1A6C4E847F7D7BB647D" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-group" transform="matrix(1 0 0 1 13.112 1.3520629921259824)"><g><path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/><path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 14.173228346456693 0)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/><path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 14.173228346456693 14.173228346456693)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/><path class="typst-shape" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 14.173228346456693)" d="M 0 0m 1.4173229 0 c -0.7820561 0 -1.4173229 0.6352668 -1.4173229 1.4173229 c 0 0.7820561 0.6352668 1.4173229 1.4173229 1.4173229 c 0.7820561 0 1.4173229 -0.6352668 1.4173229 -1.4173229 c 0 -0.7820561 -0.6352668 -1.4173229 -1.4173229 -1.4173229 Z "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 2.8346456692913384 1.417322834645672)" d="M 0 0h 11.338583 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 15.590551181102361 2.834645669291341)" d="M 0 0v 11.338583 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 2.8346456692913384 15.590551181102365)" d="M 0 0m 11.338583 0 h -11.338583 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 1.4173228346456674 2.8346456692913424)" d="M 0 0m 0.0000000000000037371682 11.338583 l -0.0000000000000037371682 -11.338583 "/></g></g><g class="typst-text" transform="matrix(1 0 0 -1 30.11987401574803 12.605999999999998)"><use xlink:href="#gB24F395483F031357D2A533A19E3DFBF" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g4CBD9C8A5F806269254466A265B4F2B6" overflow="visible"><path d="M 0 0m 5.764 4.741 h -3.6299999 c -0.4510001 0 -0.8470001 -0.17600012 -1.1660001 -0.5170002 c -0.15399998 -0.16499996 -0.671 -0.86899996 -0.671 -1.0120001 c 0.044 -0.0769999 0.044 -0.14299989 0.176 -0.14299989 c 0.07700002 0 0.143 0.04399991 0.20899999 0.14299989 c 0.35200006 0.53900003 0.80300003 0.8140001 1.342 0.8140001 h 0.5610001 c -0.25300002 -0.957 -0.71500003 -2.134 -1.375 -3.5310001 c -0.055000067 -0.132 -0.08800006 -0.231 -0.08800006 -0.286 c 0 -0.22 0.12100005 -0.32999998 0.352 -0.32999998 c 0.20899999 0 0.36300004 0.121 0.462 0.352 c 0.19800007 0.627 0.34099996 1.1110001 0.4180001 1.441 l 0.6049998 2.354 h 1.1330001 c -0.29699993 -1.309 -0.45099998 -2.2220001 -0.45099998 -2.739 c 0 -0.5389999 0.12100005 -1.408 0.5280001 -1.408 c 0.23099995 0 0.48399973 0.22 0.48399973 0.45099998 c 0 0.055000007 -0.021999836 0.143 -0.065999985 0.25300002 c -0.20900011 0.517 -0.3080001 1.0999999 -0.3080001 1.7710001 c 0 0.51699996 0.065999985 1.0779998 0.18700027 1.6719999 h 1.1989999 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.19799995 0.3080001 -0.47300005 0.3080001 Z "/></symbol><symbol id="g1B2385BFB823B1A6C4E847F7D7BB647D" overflow="visible"><path d="M 0 0m 5.731 -7.106 c 0.13199997 0 0.19799995 0.065999985 0.19799995 0.19799995 c 0 0.065999985 -0.021999836 0.12099981 -0.065999985 0.16499996 c -0.9569998 0.737 -1.7269998 1.9910002 -2.299 3.762 c -0.4949999 1.507 -0.737 2.9919999 -0.737 4.444 v 2.5740004 c 0 1.4519997 0.2420001 2.9369998 0.737 4.444 c 0.57200027 1.7709999 1.3420002 3.0249996 2.299 3.762 c 0.04400015 0.043999672 0.065999985 0.09899998 0.065999985 0.16499996 c 0 0.13199997 -0.065999985 0.19799995 -0.19799995 0.19799995 c -0.021999836 0 -0.05499983 -0.01099968 -0.11000013 -0.022000313 c -1.0889997 -0.8359995 -1.9799998 -2.1339998 -2.6839998 -3.8829994 c -0.6489999 -1.6170001 -0.96800005 -3.1790004 -0.96800005 -4.664 v -2.5740004 c 0 -1.4849999 0.31900012 -3.047 0.96800005 -4.664 c 0.704 -1.7489998 1.595 -3.0470002 2.6839998 -3.8830001 c 0.055000305 -0.01099968 0.0880003 -0.021999836 0.11000013 -0.021999836 Z "/></symbol><symbol id="gB24F395483F031357D2A533A19E3DFBF" overflow="visible"><path d="M 0 0m 0.946 -7.084 c 1.0890001 0.83599997 1.9799999 2.1340003 2.684 3.8830001 c 0.6489999 1.617 0.9680002 3.179 0.9680002 4.664 v 2.5740004 c 0 1.4849997 -0.31900024 3.047 -0.9680002 4.664 c -0.704 1.7489996 -1.5949998 3.047 -2.684 3.8829994 c -0.055000007 0.011000633 -0.088 0.022000313 -0.110000014 0.022000313 c -0.13199997 0 -0.19799995 -0.065999985 -0.19799995 -0.19799995 c 0 -0.065999985 0.021999955 -0.12100029 0.065999985 -0.16499996 c 0.957 -0.73700047 1.727 -1.9910002 2.299 -3.762 c 0.4949999 -1.507 0.737 -2.992 0.737 -4.444 v -2.5740004 c 0 -1.4519999 -0.2420001 -2.9369998 -0.737 -4.444 c -0.572 -1.7709999 -1.342 -3.025 -2.299 -3.762 c -0.04400003 -0.04400015 -0.065999985 -0.09899998 -0.065999985 -0.16499996 c 0 -0.13199997 0.065999985 -0.19799995 0.19799995 -0.19799995 c 0.022000015 0 0.055000007 0.011000156 0.110000014 0.021999836 Z "/></symbol></defs></svg></span></span></span>
 .</p>
 <p>现在, 由于 <span class="link local"><a href="/data-structure/deletion-contraction" title="删除–收缩公式 [data-structure/deletion-contraction]">删除–收缩公式</a></span>, 可以知道 $\pi(C_4)$ 的着色数是 $4$ 点径图与三点环图 $C_3$ 着色数的差, 即</p>
 <p><figure><img src="/data-structure/CG2B.svg" class="color-invert"/></figure></p>

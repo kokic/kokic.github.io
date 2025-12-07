@@ -13,7 +13,7 @@ $\gdef\spaces#1{~ #1 ~}$
 
 <proof>
 
-$k$ 是域, 首一多项式 $f(x) = x^2 + t_1x + t_0 \in k[x]$. $k$ 关于 $t_0,t_1$ 的有理函数域 $k(t_0,t_1)$ 记为 $F$. 
+$k$ 是域, $k$ 关于 $t_0,t_1$ 的有理函数域 $k(t_0,t_1)$ 记为 $F$. 下面只需考虑首一多项式 $f(x) = x^2 + t_1x + t_0 \in k[x]$ 且没有重根的情况, 即 $\Delta \ne 0$. 
 
 <block taxon="Step 1" title="$\sqrt{\Delta} \in F$">
 
@@ -49,7 +49,7 @@ $$
 
 $$ \bigg(\frac{p}{q}\bigg)^2 \spaces= t_1^2 - 4t_0 $$
 
-也就是 $p^2 = (t_1^2 - 4t_0)q^2$, 等式两边是 $k[t_0,t_1]$ 中的多项式, 所以 $\Delta$ 整除 $p^2$. 注意 $k[t_0,t_1]$ 是唯一分解整环, 由 $\Delta$ 是不可约多项式知 $\Delta$ 整除 $p$, 因此存在多项式 $p_1 \in k[t_0,t_1] $ 使得 $p = \Delta p_1$. 代入 $p^2 = \Delta q^2$, 因为 $\Delta \ne 0$, 可在整环中消去 $\Delta$, 得
+也就是 $p^2 = (t_1^2 - 4t_0)q^2$, 等式两边是 $k[t_0,t_1]$ 中的多项式, 所以 $\Delta$ 整除 $p^2$. 注意 $k[t_0,t_1]$ 是唯一分解整环, 由 $\Delta$ 是不可约多项式知 $\Delta$ 整除 $p$, 因此存在 $p_1 \in k[t_0,t_1] $ 使得 $p = \Delta p_1$. 代入 $p^2 = \Delta q^2$, 因为 $\Delta \ne 0$, 可在整环中消去 $\Delta$, 得
 
 $$ (\Delta p_1)^2 = \Delta q^2 \spaces\implies \Delta p_1^2 = q^2 $$
 

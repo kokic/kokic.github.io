@@ -1,6 +1,6 @@
 
 ---
-title: $\footnotesize (1-q)^{-m}$ 的系数
+title: $(1-q)^{-m}$ 的系数
 page-title: 特殊有理函数展开式的系数
 taxon: lemma
 asref: true

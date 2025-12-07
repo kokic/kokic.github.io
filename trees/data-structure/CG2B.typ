@@ -1,9 +1,10 @@
 
 #import "../_lib/shared.typ": *
 #import "../_lib/chroma.typ": *
+#import "../_lib/kodama.typ": html-math-font-size
 
 #set page(width: auto, height: auto, margin: (x: 0em, y: 0.1em), fill: rgb(0, 0, 0, 0)); 
-#set text(size: 13.2pt, top-edge: "bounds", bottom-edge: "bounds");
+#set text(size: html-math-font-size, top-edge: "bounds", bottom-edge: "bounds");
 
 $ pi(#chroma.rect) 
   &eqq pi(chroma.rectd1) quad-quad pi(chroma.triangle) \
