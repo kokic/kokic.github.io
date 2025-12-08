@@ -500,8 +500,8 @@
   --pre-font-size: 0.917rem;
   --code-font-size: 1rem;
   /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
-  --katex-font-size: 1.15rem;
-  --katex-frac-line-font-size: 1.25rem;
+  --katex-font-size: 1.15em;
+  --katex-frac-line-font-size: 1.25em;
   --details-h1-font-size: 1.2rem;
   /* 13pt */
   --section-details-h1-font-size: 1.083rem;
@@ -713,15 +713,6 @@ blockquote {
   font-style: italic;
 }
 
-blockquote {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 40px;
-  margin-inline-end: 40px;
-  unicode-bidi: isolate;
-}
-
 h1,
 h2,
 h3,
@@ -777,6 +768,23 @@ span.taxon {
 
 article>section>details>summary>header>h1 {
   font-size: var(--article-details-h1-font-size);
+}
+
+article>section>details>h2 {
+  font-size: 1.25rem;
+}
+
+article>section>details>h3 {
+  font-size: 1.125rem;
+}
+
+article>section>details>h4 {
+  font-size: 1rem;
+}
+
+article>section>details>h5,
+article>section>details>h6 {
+  font-size: 0.875rem;
 }
 
 article>section>details>summary>header {
