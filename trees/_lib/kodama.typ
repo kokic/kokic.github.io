@@ -10,39 +10,6 @@ There are some external inputs:
   sys.inputs.random: a random number in 0..INT64_MAX (note, it's a string)
 */
 
-#let target() = {
-  if "target" in dictionary(std) { std.target() } else { "paged" }
-}
-
-// get the bounding box of an equation
-#let bounded(eq) = text(top-edge: "bounds", bottom-edge: "bounds", eq)
-
-// a dict that stores the height of equations
-#let eq_height_dict = state("eq_height_dict", (:))
-
-#let inside_pin = state("inside_pin", false)
-
-// when called, retrieves the height of the equation, which is then stored in a state variable
-#let pin(label) = context {
-  let height = here().position().y
-  eq_height_dict.update(it => {
-    if label in it.keys() or height < 0.000001pt {
-      it
-    } else {
-      it.insert(label, height)
-      it
-    }
-  })
-}
-
-// insert a function call `pin(label)`` at the start of the equation.
-#let add_pin(eq) = {
-  let label = repr(eq)
-  inside_pin.update(true)
-  $ inline(pin(label)#bounded(eq)) $
-  inside_pin.update(false)
-}
-
 #let repri(r) = if type(r) == str {
   r
 } else {

@@ -1,9 +1,44 @@
 
 #import "../_lib/html.typ": *
 
-#show: html.elem.with("html")
-#show math.equation.where(block: true): elem-frame.with(tag: "span", attrs: ("style": "display: flex; justify-content: center; overflow: auto;"))
-#show math.equation.where(block: false): elem-frame.with(tag: "span", attrs: ("style": "display: inline;"))
+#let elem-frame(content, attrs: (:), tag: "div") = html.elem(tag, html.frame(content), attrs: attrs)
+
+#let light-pink(content) = {
+  let adhoc-color = rgb(237, 0, 140)
+  if compatibled-target() != "paged" {
+    show text: html.elem.with("span", attrs: ("style": "color: " + adhoc-color.to-hex() + ";"))
+  }
+  text(fill: adhoc-color)[#content]
+}
+
+#let clink(s) = link(s)[#text(font: "Jetbrains Mono", size: 0.9em, s)]
+
+#let hint(content, fill: gray) = {
+  if compatibled-target() != "paged" {
+    show text: html.elem.with("span", attrs: ("style": "color: " + fill.to-hex() + ";"))
+  }
+  text(fill: fill)[#content]
+}
+
+#let kai(content) = {
+  if compatibled-target() != "paged" {
+    show text: html.elem.with("span", attrs: ("class": "kaiti"))
+  }
+  text(font: ("FandolKai"), content)
+}
+
+#show emph: it => {
+  if compatibled-target() != "paged" {
+    show text: html.elem.with("em")
+  }
+  text(style: "italic", font: ("New Computer Modern"), it.body)
+}
+
+#if compatibled-target() != "paged" {
+  show: html.elem.with("html")
+  show math.equation.where(block: true): elem-frame.with(tag: "span", attrs: ("style": "display: flex; justify-content: center; overflow: auto;"))
+  show math.equation.where(block: false): elem-frame.with(tag: "span", attrs: ("style": "display: inline;"))
+}
 
 #let script-size = 10pt
 #let normal-size = 12pt
@@ -16,7 +51,10 @@
 #set par(first-line-indent: 2em, justify: true)
 
 #[
-  #show block: html.elem.with("div", attrs: ("style": "text-align: center; display: block;"))
+  #if compatibled-target() != "paged" {
+    show block: html.elem.with("div", attrs: ("style": "text-align: center; display: block;"))
+  }
+
   #block[
     Central Committee, CPC \
 
@@ -27,7 +65,10 @@
 \
 
 #[
-  #show block: html.elem.with("div", attrs: ("style": "padding: 0 46px;"))
+  #if compatibled-target() != "paged" {
+    show block: html.elem.with("div", attrs: ("style": "padding: 0 46px;"))
+  }
+
   #block[
     #text(
       script-size,
@@ -40,7 +81,7 @@
 
 \
 
-怀着深切的悲痛, 我们谨此告知, 著名数学家 William Lawvere 博士于 2023 年 1 月 23 日与世长辞.  Lawvere 教授是加拿大共产党 (马列主义) 的好友, 一位始终秉持人类文明崇高道路的同路人, 致力于对抗并改变社会上的陈旧道德观念, 扫除阻碍进步与启蒙的障碍.
+怀着深切的悲痛, 我们谨此告知, 著名数学家 William Lawvere 博士于 2023 年 1 月 23 日与世长辞. Lawvere 教授是加拿大共产党 (马列主义) 的好友, 一位始终秉持人类文明崇高道路的同路人, 致力于对抗并改变社会上的陈旧道德观念, 扫除阻碍进步与启蒙的障碍.
 
 从 1970 年代初开始, 他与 CPC (M-L) #hint[[译注: 即 _Communist Party of Canada (Marxist-Leninist)_, 加拿大共产党 (马列主义)]] 的创始人和领导人 Hardial Bains 在 “变革的必然性” 与辩证法等哲学及其他项目上展开合作, Hardial Bains 本身就是一位科学家和哲学家. 从 1969 年到 1971 年, 作为 Killam 学者任职于 Halifax Dalhousie 大学, 领导一支享有国际声誉的数学家团队. 但在 1971 年, 当 Lawvere 教授抗议 Pierre Trudeau 颁布#kai[《战争措施法》]#hint[[_War Measures Act_]] 并暂停公民自由、实施种种暴行时, Dalhousie 大学拒绝续聘用他. 尽管其本人领导的数学家团队强烈抗议. 时逾千名学生齐聚 Dalhousie 大学学生会大楼大厅声援劳威尔教授, 反对校方这一专横解雇决定. 
 

@@ -4,6 +4,7 @@ title: Daily Surf
 collect: true
 ---
 
+[-](./haskell.typst#:embed)
 [-](./bevy.md#:embed)
 [-](./adams.md#:embed)
 [-](./sublime-text-config#:embed)

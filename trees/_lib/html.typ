@@ -1,25 +1,65 @@
 
-#let elem-frame(content, attrs: (:), tag: "div") = html.elem(tag, html.frame(content), attrs: attrs)
-
-#let light-pink(content) = {
-  let adhoc-color = rgb(237, 0, 140)
-  show text: html.elem.with("span", attrs: ("style": "color: " + adhoc-color.to-hex() + ";"))
-  text(fill: adhoc-color)[#content]
+// To be compatible with the current tinymist
+#let compatibled-target() = {
+  if "target" in dictionary(std) { std.target() } else { "paged" }
 }
 
-#let clink(s) = link(s)[#text(font: "Jetbrains Mono", size: 0.9em, s)]
+#let bounded(eq) = text(top-edge: "bounds", bottom-edge: "bounds", eq)
+#let to-em(pt) = str(pt / text.size.pt()) + "em"
 
-#let hint(content, fill: gray) = {
-  show text: html.elem.with("span", attrs: ("style": "color: " + fill.to-hex() + ";"))
-  text(fill: fill)[#content]
+// a dict that stores the height of equations
+#let equations-height-dict = state("eq_height_dict", (:))
+#let is-inside-pin = state("inside_pin", false)
+
+#let pin(label) = context {
+  let height = here().position().y
+  equations-height-dict.update(it => {
+    if label in it.keys() or height < 0.000001pt { it } else {
+      it.insert(label, height); it
+    }
+  })
 }
 
-#let kai(content) = {
-  show text: html.elem.with("span", attrs: ("class": "kaiti"))
-  text(font: ("FandolKai"), content)
+#let add-pin(eq) = {
+  let label = repr(eq)
+  is-inside-pin.update(true)
+  $ inline(pin(label)#bounded(eq)) $
+  is-inside-pin.update(false)
 }
 
-#show emph: it => {
-  show text: html.elem.with("em")
-  text(style: "italic", font: ("New Computer Modern"), it.body)
+#let html-equation(doc) = {
+  context if compatibled-target() == "paged" {
+    // set page(width: auto, height: auto)
+    set page(margin: 2em, paper: "iso-b6", height: auto)
+    doc
+  } else {
+    show math.equation: eq => {
+      if eq.block {
+        if is-inside-pin.get() {
+          html.frame(eq)
+        } else {
+          html.elem("div", attrs: (style: "display: flex; justify-content: center; width: 100%; margin: 1em 0;"), html.frame(eq))
+        }
+      } else {
+        let label = repr(eq)
+
+        if label in equations-height-dict.final().keys() {
+          let height = equations-height-dict.final().at(label, default: none)
+
+          equations-height-dict.update(d => {
+            d.insert(label, height); d
+          })
+
+          let y-length = measure(bounded(eq)).height
+          let shift = y-length - height
+
+          box(html.elem("span", attrs: (style: "vertical-align: -" + to-em(shift.pt()) + ";"), html.frame(bounded(eq))))
+        } else {
+          box(html.frame(add-pin(eq)))
+        }
+      }
+    }
+    doc
+  }
 }
+
