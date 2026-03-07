@@ -9,10 +9,10 @@ asref: true
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[cauchy]: /trees/CN2B.md
-[aczél]: /trees/CN2D.md
-[hölder]: /trees/HP2A.md
-[aczél-popoviciu]: /trees/HP2C.md
+[cauchy]: ./CN2B.md
+[aczél]: ./CN2D.md
+[hölder]: ./HP2A.md
+[aczél-popoviciu]: ./HP2C.md
 
 类似 [][cauchy] 和 [][aczél] 的关系, [][hölder] 是 [][cauchy] 的推广, 而 [][aczél-popoviciu] 是 [][aczél] 的推广. 
 

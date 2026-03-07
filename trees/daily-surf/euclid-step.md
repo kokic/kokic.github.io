@@ -3,7 +3,7 @@
 title: 辗转相除法步数估计
 date: June 10, 2021
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

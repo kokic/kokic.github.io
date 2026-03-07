@@ -9,7 +9,7 @@ asref: true
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[hölder]: /trees/HP2A.md
+[hölder]: ./HP2A.md
 
 此为 [][hölder] 的等价命题. 对于共轭指数 $p,q \in \R_{> 0}$, $\frac{1}{p} + \frac{1}{q} = 1$, 留意 
 

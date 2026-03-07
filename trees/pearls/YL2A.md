@@ -4,7 +4,7 @@ title: Young 引理
 date: May 14, 2019
 taxon: exegesis
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 [Young 不等式](./YL3A.md) 有许多风格迥然的证明, 最常见的办法可能是使用 [定积分](./YL4A.md).

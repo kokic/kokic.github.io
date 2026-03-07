@@ -4,7 +4,7 @@ title: 加减乘除不能解二次方程
 date: October 23, 2021
 taxon: theorem
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

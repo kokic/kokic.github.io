@@ -3,7 +3,7 @@ title: 格点三元组计数
 date: May 17, 2020
 taxon: proposition
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

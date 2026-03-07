@@ -4,18 +4,18 @@ title: Hölder--Popoviciu 论证
 date: June 25, 2021
 taxon: exegesis
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[cauchy–aczél]: /trees/CN2A.md
-[次线性归纳]: /trees/SL2A.md
-[hölder]: /trees/HP2A.md
-[radon]: /trees/HP2B.md
-[aczél–popoviciu]: /trees/HP2C.md
-[aczél–popoviciu-engel]: /trees/HP2D.md
-[young]: /trees/YL3A.md
+[cauchy–aczél]: ./CN2A.md
+[次线性归纳]: ./SL2A.md
+[hölder]: ./HP2A.md
+[radon]: ./HP2B.md
+[aczél–popoviciu]: ./HP2C.md
+[aczél–popoviciu-engel]: ./HP2D.md
+[young]: ./YL3A.md
 
 类似 [][cauchy–aczél], 也可以将 [][次线性归纳] 应用于 [][hölder] 和 [][aczél–popoviciu]. 
 

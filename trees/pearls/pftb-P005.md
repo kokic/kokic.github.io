@@ -4,7 +4,7 @@ title: 素数无限多与 Furstenberg 拓扑
 date: August 31, 2025
 author: [kokic](/trees/kokic.md)
 source: [Proofs from THE BOOK, p. 5](/trees/bib/pftb.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">

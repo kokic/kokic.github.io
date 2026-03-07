@@ -3,14 +3,14 @@
 title: 代数数可数
 date: July 25, 2020
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\N{\mathbf{N}}$
 $\gdef\C{\mathbf{C}}$
 
-代数数即 $\Q$ 系数首一多项式的根, 容易看出这也是任意整系数多项式方程的根. 1874 年, Cantor 在文章 ["Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen"](https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article) 中运用 [多项式高度](./CAN2.md) 的概念证明了实代数数的可数性. 
+代数数即 $\Q$ 系数首一多项式的根, 容易看出这也是任意整系数多项式方程的根. 1874 年, Cantor 在文章 ["Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen"](https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article) 中运用 [](./CNA1) 的概念证明了实代数数的可数性. 
 
 Cantor 的思路很大程度上可以视为一种数论策略. 他首先想的是对多项式 $P$ 定义一个恰当的 [高度概念][height] $H(P) \in \N$, 使得一旦我们固定了正整数 $h$, 则只会存在有限个多项式 $P$ 满足 $H(P) = h$, 且任意多项式都能被某个高度覆盖. 即用高度分类全体多项式的同时又控制了多项式的复杂程度. 随后, 代数基本定理保证给定 $n$ 次多项式, 其根在 $\C$ 上至多只有 $n$ 个, 全体代数数便可以写为可数个有限集的并, 如此证得. 
 

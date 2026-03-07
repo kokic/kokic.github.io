@@ -9,11 +9,11 @@ asref: true
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[titu]: /trees/CN2C.md
-[aczél–popoviciu]: /trees/HP2C.md
-[radon]: /trees/HP2B.md
-[次线性归纳]: /trees/SL2A.md
-[hölder–popoviciu]: /trees/HP2E.md
+[titu]: ./CN2C.md
+[aczél–popoviciu]: ./HP2C.md
+[radon]: ./HP2B.md
+[次线性归纳]: ./SL2A.md
+[hölder–popoviciu]: ./HP2E.md
 
 此为 [][aczél–popoviciu] 的 [Engel 形式][titu]. 在 [][aczél–popoviciu] 中实行替换 $a_k \mapsto \frac{x_k}{\sqrt[q]\ell_k}$, $b_k \mapsto \sqrt[q]\ell_k$, 两边做 $\square^p$
 

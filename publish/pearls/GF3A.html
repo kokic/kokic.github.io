@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Laisant–Young 不等式</title><link rel="icon" href="/assets/favicon.ico" /><script>
+<meta name="viewport" content="width=device-width"><title>特殊有理函数展开式的系数</title><link rel="icon" href="/assets/favicon.ico" /><script>
   function toggleDetailsOpen() {
     const details = document.querySelector("#toc>div>details");
     if (!details) return;
@@ -1252,28 +1252,54 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young <span lang="zh">不等式</span> <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/laisant-young.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
+<article><section class="block" data-taxon="Proposition"><details open><summary id="pearls-GF3A"><header><h1><span class="taxon">Proposition. </span>$(1-q)^{-m}$ <span lang="zh">的系数</span> <a class="slug" href="/pearls/GF3A">[GF3A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GF3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\d{\operatorname{d}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>$\textbf{Remark.}$ <span lang="zh">记</span> $F: t \mapsto (\int f(x) \d x)|_t$ <span lang="zh">即</span> $f$ <span lang="zh">的不定积分</span>, <span lang="zh">对</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">右侧使用</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> <span lang="zh">的一个</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]"><span lang="zh">简单结论</span></a></span>:</p>
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$</p>
+<p><span lang="zh">我们来证明</span></p>
 <p>$$
-\int f^{-1}(y) \d y \spaces= y f^{-1}(y) - (F \circ f^{-1})(y) + C
+\frac{1}{(1 - q)^{n}} 
+\spaces= \sum_{u \geq 0}\binom{n + u - 1}{u}q^{u}
 $$</p>
-<p><span lang="zh">我们得到</span> $\int_0^b f^{-1}(y) \d y \spaces= b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x$, <span lang="zh">也就是</span></p>
+<p><span lang="zh">对于</span> $(1-q)^{-m}$ <span lang="zh">这类特殊的有理函数</span>, <span lang="zh">注意到</span>
+$((1-q)^{-1})' = (1 - q)^{- 2}$. <span lang="zh">归纳地</span>, <span lang="zh">可以得到</span></p>
 <p>$$
-ab \spaces\le \int_0^a f(x) \d x + b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x
+\frac{\d^{n}}{\d q^{n}}(1 - q)^{- 1} 
+\spaces= \frac{n!}{(1 - q)^{n + 1}} 
+\quads\Longrightarrow \frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{dq^{n - 1}}(1 - q)^{- 1}
 $$</p>
-<p><span lang="zh">这是</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">的一个等价形式</span>. <span lang="zh">但是</span>, $f(0) = 0$ <span lang="zh">这个条件对于许多</span> $f$ <span lang="zh">并不适用</span>, <span lang="zh">为此我们需要考虑不依赖于此的</span> Young <span lang="zh">不等式</span>.</p>
-<p>$\textbf{Theorem.}$ <span lang="zh">可以一般地观察在</span> $[a_0, a]$ <span lang="zh">上可逆严格增函数</span> $f$ <span lang="zh">的图像</span>, <span lang="zh">我们发现</span> $f$ <span lang="zh">将区域</span>
-$$ ([0, a] \times [0, b])  \spaces\smallsetminus ([0, a_0] \times [0, b_0]) $$</p>
-<p><span lang="zh">分割为两部分</span>. <span lang="zh">此时有</span></p>
+<p><span lang="zh">另一方面</span>, <span lang="zh">我们知道几何级数满足</span>
+$\frac{1}{1 - q} = 1 + q + q^2 + \cdots = \sum_{u \geq 0}q^{u}$, <span lang="zh">代入可得</span></p>
 <p>$$
-ab - a_0b_0 \spaces\le 
-\bigg| \int_{a_0}^a f(x) \d x \bigg| + \bigg| \int_{b_0}^b f^{-1}(y) \d y \bigg|
+\frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}
 $$</p>
-<p>$\textbf{Example.}$ <span lang="zh">取</span> $f(x) = e^x$, $f: [0, a] \to [1, e^a]$, $f^{-1}: [1, b] \to [0, \log b]$. <span lang="zh">我们有</span></p>
+<p><span lang="zh">现在我们再使用下面的观察</span></p>
+<p>$$ 
+\frac{\d^n}{\d x^n} x^m
+\spaces=
+\begin{cases}
+  x^{m-n} \prod_{0 \le k \le n-1}(m-k) &amp; n \le m \\
+  0 &amp; \text{otherwise} 
+\end{cases}
+$$</p>
+<p><span lang="zh">就可以算出</span> $\frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}$ <span lang="zh">这一部分</span></p>
 <p>$$
-ab \spaces\le \int_0^a e^x \d x + \int_1^b \log y \d y \spaces= e^a + b\log b - b
+\begin{aligned}
+\frac{1}{(1 - q)^{n}} 
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq n - 1}q^{u - (n - 1)}\prod_{0 \leq k \leq n - 2}(u - k) \\
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}\prod_{0 \leq k \leq n - 2}(u + n - k - 1) \\
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}(u + n - 1)(u + n - 2) \spaces\cdots (u + 1)
+\end{aligned}
 $$</p>
-<p><span lang="zh">读者可以通过取</span> $b \in \{1, e\}$ <span lang="zh">得到</span> $e^x - 1 \ge x$ <span lang="zh">和</span> $e^x \ge ex$ <span lang="zh">来意识到这个结果的作用</span>. <span lang="zh">不过尽管</span> $f$ <span lang="zh">并不经过原点</span>, <span lang="zh">但是通过取</span> $f(x) = e^x-1$, <span lang="zh">经典的</span> Young <span lang="zh">不等式也能给出此不等式</span>, <span lang="zh">这一点可行是因为我们恰好选择了</span> $a_0 = 0$. <span lang="zh">而对于一般的</span> $(a_0,b_0)$, <span lang="zh">通过平移配合经典的</span> Young <span lang="zh">不等式并不能得到上面</span> Laisant–Young <span lang="zh">陈述的结果</span>.</p>
-</details></section><footer></footer></article></div></body></html>
+<p>$q^{u}$ <span lang="zh">的系数从</span> $u = 0$ <span lang="zh">开始</span>, <span lang="zh">则系数可再一次简化为组合数</span></p>
+<p><figure><img src="/pearls/GF3B.svg" class="color-invert"/></figure></p>
+<p><span lang="zh">于是明所欲证</span>.</p>
+</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="pearls-GF2A"><header><h1><span class="taxon"></span><span lang="zh">生成函数系数</span> <a class="slug" href="/pearls/GF2A">[GF2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GF2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">设</span> $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$, <span lang="zh">求</span> $a_n$.</p>
+<p><span lang="zh">不难发现</span>, <span class="link local"><a href="/pearls/GF2A" title="生成函数系数 [pearls/GF2A]"><span lang="zh">此处</span> $a_n$</a></span> <span lang="zh">同时也是</span> $x_1+x_2+x_3 = n$
+<span lang="zh">于</span> $\Z_{\ge 0}$ <span lang="zh">上解的个数</span>.
+<span lang="zh">在</span> <span class="link local"><a href="/pearls/GF3A" title="特殊有理函数展开式的系数 [pearls/GF3A]">$(1-q)^{-n}$ <span lang="zh">的系数</span></a></span> <span lang="zh">中取</span> $n = 3$, <span lang="zh">得到</span> $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+</details></section></details></section></footer></article></div></body></html>

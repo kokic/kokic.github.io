@@ -8,7 +8,7 @@ author: [kokic](/trees/kokic.md)
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[radon]: /trees/HP2B.md
+[radon]: ./HP2B.md
 
 [][radon] 有多个方向的推广, 此处为指数上的一般化 $(p, p-1) \to (p, r)$, 即
 

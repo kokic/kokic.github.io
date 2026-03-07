@@ -4,7 +4,7 @@ title: 古代物理学博士问题
 date: December 26, 2024
 taxon: problem
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Laisant–Young 不等式</title><link rel="icon" href="/assets/favicon.ico" /><script>
+<meta name="viewport" content="width=device-width"><title>素数无限多与 Furstenberg 拓扑</title><link rel="icon" href="/assets/favicon.ico" /><script>
   function toggleDetailsOpen() {
     const details = document.querySelector("#toc>div>details");
     if (!details) return;
@@ -1252,28 +1252,41 @@ path.typst-shape[stroke="#000000"] {
 <theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young <span lang="zh">不等式</span> <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/laisant-young.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
-<p>$\gdef\d{\operatorname{d}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>$\textbf{Remark.}$ <span lang="zh">记</span> $F: t \mapsto (\int f(x) \d x)|_t$ <span lang="zh">即</span> $f$ <span lang="zh">的不定积分</span>, <span lang="zh">对</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">右侧使用</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> <span lang="zh">的一个</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]"><span lang="zh">简单结论</span></a></span>:</p>
-<p>$$
-\int f^{-1}(y) \d y \spaces= y f^{-1}(y) - (F \circ f^{-1})(y) + C
-$$</p>
-<p><span lang="zh">我们得到</span> $\int_0^b f^{-1}(y) \d y \spaces= b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x$, <span lang="zh">也就是</span></p>
-<p>$$
-ab \spaces\le \int_0^a f(x) \d x + b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x
-$$</p>
-<p><span lang="zh">这是</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">的一个等价形式</span>. <span lang="zh">但是</span>, $f(0) = 0$ <span lang="zh">这个条件对于许多</span> $f$ <span lang="zh">并不适用</span>, <span lang="zh">为此我们需要考虑不依赖于此的</span> Young <span lang="zh">不等式</span>.</p>
-<p>$\textbf{Theorem.}$ <span lang="zh">可以一般地观察在</span> $[a_0, a]$ <span lang="zh">上可逆严格增函数</span> $f$ <span lang="zh">的图像</span>, <span lang="zh">我们发现</span> $f$ <span lang="zh">将区域</span>
-$$ ([0, a] \times [0, b])  \spaces\smallsetminus ([0, a_0] \times [0, b_0]) $$</p>
-<p><span lang="zh">分割为两部分</span>. <span lang="zh">此时有</span></p>
-<p>$$
-ab - a_0b_0 \spaces\le 
-\bigg| \int_{a_0}^a f(x) \d x \bigg| + \bigg| \int_{b_0}^b f^{-1}(y) \d y \bigg|
-$$</p>
-<p>$\textbf{Example.}$ <span lang="zh">取</span> $f(x) = e^x$, $f: [0, a] \to [1, e^a]$, $f^{-1}: [1, b] \to [0, \log b]$. <span lang="zh">我们有</span></p>
-<p>$$
-ab \spaces\le \int_0^a e^x \d x + \int_1^b \log y \d y \spaces= e^a + b\log b - b
-$$</p>
-<p><span lang="zh">读者可以通过取</span> $b \in \{1, e\}$ <span lang="zh">得到</span> $e^x - 1 \ge x$ <span lang="zh">和</span> $e^x \ge ex$ <span lang="zh">来意识到这个结果的作用</span>. <span lang="zh">不过尽管</span> $f$ <span lang="zh">并不经过原点</span>, <span lang="zh">但是通过取</span> $f(x) = e^x-1$, <span lang="zh">经典的</span> Young <span lang="zh">不等式也能给出此不等式</span>, <span lang="zh">这一点可行是因为我们恰好选择了</span> $a_0 = 0$. <span lang="zh">而对于一般的</span> $(a_0,b_0)$, <span lang="zh">通过平移配合经典的</span> Young <span lang="zh">不等式并不能得到上面</span> Laisant–Young <span lang="zh">陈述的结果</span>.</p>
-</details></section><footer></footer></article></div></body></html>
+<article><section class="block" data-taxon=""><details open><summary id="pearls-pftb-P005"><header><h1><span class="taxon"></span><span lang="zh">素数无限多与</span> Furstenberg <span lang="zh">拓扑</span> <a class="slug" href="/pearls/pftb-P005">[pftb-P005]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/pftb-P005.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK, p. 5</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<style>
+.kaiti {
+  font-family: "LXGW WenKai TC", serif;
+  font-style: normal;
+}
+</style>
+<p>$\gdef\Z{\mathbf{Z}}$
+$\gdef\PP{\mathbf{P}}$</p>
+<p><span lang="zh">此证明由</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> <span lang="zh">于</span> 1955 <span lang="zh">年提出</span> <sup class="footnote-reference" id="pearls_pftb-P005_furstenberg-back"><a href="#pearls_pftb-P005_furstenberg">1</a></sup>, <span lang="zh">收录于</span> <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">PFTB, p. 5</a></span>, <span lang="zh">此页配图的说明文字写道</span></p>
+<blockquote>
+<p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(<span lang="zh">掷扁石</span>, <span lang="zh">至无穷远</span>.) </span></p>
+</blockquote>
+<p><span lang="zh">对</span> $a,b \in \Z, b &gt; 0$, <span lang="zh">令</span> $N_{a,b} = \{ a + nb : n \in \Z \}$. <span lang="zh">每个集合</span> $N_{a,b}$ <span lang="zh">都是正负无界的算术级数</span>. <span lang="zh">如果集合</span> $O \subseteq \Z$ <span lang="zh">满足以下条件之一</span>:</p>
+<ol>
+<li>$O$ <span lang="zh">是空集</span>.</li>
+<li><span lang="zh">对任意的</span> $a \in O$ <span lang="zh">存在</span> $b &gt; 0$ <span lang="zh">使得</span> $N_{a,b} \subseteq O$.</li>
+</ol>
+<p><span lang="zh">则称</span> $O$ <span lang="zh">是开集</span>. <span lang="zh">这些条件保证</span> $O$ <span lang="zh">在</span> $a$ <span lang="zh">点附近</span> “<span lang="zh">稠密</span>”. <span lang="zh">显然</span>, <span lang="zh">开集的并总是开集</span>. <span lang="zh">另外</span>, <span lang="zh">如果</span> $O_1$ <span lang="zh">和</span> $O_2$ <span lang="zh">开</span>, <span lang="zh">则对任意的</span> $a \in O_1 \cap O_2$, $N_{a,b_1} \subseteq O_1$ <span lang="zh">及</span> $N_{a,b_2} \subseteq O_2$, <span lang="zh">都有</span> $a \in N_{a,b_1b_2} \subseteq O_1 \cap O_2$. <span lang="zh">所以开集的有限交也开</span>. <span lang="zh">从而此处定义的开集族的确导出了</span> $\Z$ <span lang="zh">上的一个拓扑</span>. <span lang="zh">随后</span>, <span lang="zh">我们注意</span>:</p>
+<p>   $(\text{A})$ <span lang="zh">每个非空的开集都是无界的</span>, <span lang="zh">显然</span>. <br />
+   $(\text{B})$ <span lang="zh">每个</span> $N_{a,b}$ <span lang="zh">都是既开又闭的</span>. <span lang="zh">因为</span> $N_{a,b} = \mathbb{Z} \setminus \bigcup_{i=1}^{b-1} N_{a+i,b}$, <span lang="zh">这说明</span> $N_{a,b}$ <span lang="zh">是开集的补</span>, <span lang="zh">因而闭</span>.</p>
+<p><span lang="zh">现在我们引出素数</span>. <span lang="zh">对于每个整数</span> $n \neq 1,-1$ <span lang="zh">都有某个素因子</span> $p$ <span lang="zh">使得</span> $n \in N_{0,p}$ <span lang="zh">以及</span> $\Z \setminus \{\pm1\} = \bigcup_{p \in \PP} N_{0,p}$. <span lang="zh">如果</span> $\PP$ <span lang="zh">是有限的</span>, <span lang="zh">那么根据</span> $(\text B)$, $\bigcup_{p \in \PP} N_{0,p}$ <span lang="zh">将是有限个闭集的并</span>, <span lang="zh">所以是闭的</span>. <span lang="zh">进而可以导出</span> $\{\pm1\}$ <span lang="zh">是一个开集</span>, <span lang="zh">这与</span> $(\text A)$ <span lang="zh">矛盾</span>, <span lang="zh">证毕</span>.</p>
+<p><span lang="zh">我们回顾证明</span>, <span lang="zh">不难发现核心是用拓扑解释</span> “<span lang="zh">每个整数都有素因子</span>” <span lang="zh">这件事</span>, <span lang="zh">进而</span> $\bigcup_{p \in \PP} N_{0,p} = \Z \setminus \{\pm1\}$ <span lang="zh">在</span> $\Z$ <span lang="zh">上稠密</span>, <span lang="zh">于是</span> $\PP$ <span lang="zh">绝不可能有限</span>. <span lang="zh">此方法实质利用了算术级数的性质</span>, <span lang="zh">而非拓扑内涵</span>. <span lang="zh">所以也可以翻译成不使用拓扑的版本</span>, <span lang="zh">见</span> Idris D. Mercer <span lang="zh">写的</span> 
+<span class="link external"><a href="http://www.idmercer.com/monthly355-356-mercer.pdf" title="On Furstenberg’s Proof of theInfinitude of Primes [http://www.idmercer.com/monthly355-356-mercer.pdf]">On Furstenberg’s Proof of theInfinitude of Primes</a></span>.</p>
+<div class="footnote-definition" id="pearls_pftb-P005_furstenberg">
+  <sup class="footnote-definition-label"><a href="#pearls_pftb-P005_furstenberg-back">1</a></sup>
+<p>Furstenberg <span lang="zh">当时是</span> Yeshiva <span lang="zh">大学的本科生</span>, <span lang="zh">其在美国数学月刊上发表了</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes" title="“On the infinitude of primes” [https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes]">“On the infinitude of primes”</a></span>, <span lang="zh">这才有了</span> <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> <span lang="zh">对此证明的收录</span>.</p>
+</div>
+</details></section><footer><section class="block link-list" id="references"><details open><summary><header><h1>References</h1></header></summary><section class="block" data-taxon="Reference"><details ><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="/bib/pftb">[pftb]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/bib/pftb.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li><li class="meta-item"><span class="link local"><a href="/books" title="书单 [books]"><span lang="zh">书单</span></a></span></li></ul></div></header></summary>
+<pre><code>@article{aigner2018proofs,
+  title={Proofs from the Book},
+  author={Aigner, Martin and Ziegler, G{\"u}nter M},
+  year={2018},
+  publisher={Springer}
+}
+</code></pre>
+</details></section></details></section></footer></article></div></body></html>

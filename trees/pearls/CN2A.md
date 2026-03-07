@@ -4,12 +4,12 @@ title: Cauchy--Aczél 论证
 date: June 25, 2021
 taxon: exegesis
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[aczél-engel]: /trees/CN2E.md
+[aczél-engel]: ./CN2E.md
 
 [Cauchy--Aczél 论证](./CN2A.md) 是 [](./SL2A.md) 的一个直接应用. 凭此能够同时证明: 
 

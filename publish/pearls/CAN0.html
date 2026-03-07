@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>Laisant–Young 不等式</title><link rel="icon" href="/assets/favicon.ico" /><script>
+<meta name="viewport" content="width=device-width"><title>代数数可数</title><link rel="icon" href="/assets/favicon.ico" /><script>
   function toggleDetailsOpen() {
     const details = document.querySelector("#toc>div>details");
     if (!details) return;
@@ -1250,30 +1250,28 @@ path.typst-shape[stroke="#000000"] {
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="/pearls/CNA1" title="多项式高度 [pearls/CNA1]">■</a><span class="link local" onclick="window.location.href='#pearls-CNA1'"><span class="taxon">Definition. </span>多项式高度</span></li></ul></details></div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-laisant-young"><header><h1><span class="taxon">Exegesis. </span>Laisant–Young <span lang="zh">不等式</span> <a class="slug" href="/mille-plateaux/laisant-young">[laisant-young]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/laisant-young.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">May 19, 2019</li></ul></div></header></summary>
-<p>$\gdef\d{\operatorname{d}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p>$\textbf{Remark.}$ <span lang="zh">记</span> $F: t \mapsto (\int f(x) \d x)|_t$ <span lang="zh">即</span> $f$ <span lang="zh">的不定积分</span>, <span lang="zh">对</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">右侧使用</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Charles-Ange_Laisant" title="Charles-Ange Laisant [https://en.wikipedia.org/wiki/Charles-Ange_Laisant]">Charles-Ange Laisant</a></span> <span lang="zh">的一个</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Integral_of_inverse_functions" title="简单结论 [https://en.wikipedia.org/wiki/Integral_of_inverse_functions]"><span lang="zh">简单结论</span></a></span>:</p>
+<article><section class="block" data-taxon=""><details open><summary id="pearls-CAN0"><header><h1><span class="taxon"></span><span lang="zh">代数数可数</span> <a class="slug" href="/pearls/CAN0">[CAN0]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CAN0.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\Q{\mathbf{Q}}$
+$\gdef\N{\mathbf{N}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p><span lang="zh">代数数即</span> $\Q$ <span lang="zh">系数首一多项式的根</span>, <span lang="zh">容易看出这也是任意整系数多项式方程的根</span>. 1874 <span lang="zh">年</span>, Cantor <span lang="zh">在文章</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article" title="“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen” [https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article]">“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen”</a></span> <span lang="zh">中运用</span> <span class="link local"><a href="/pearls/CNA1" title="多项式高度 [pearls/CNA1]">多项式高度</a></span> <span lang="zh">的概念证明了实代数数的可数性</span>.</p>
+<p>Cantor <span lang="zh">的思路很大程度上可以视为一种数论策略</span>. <span lang="zh">他首先想的是对多项式</span> $P$ <span lang="zh">定义一个恰当的</span> [<span lang="zh">高度概念</span>][height] $H(P) \in \N$, <span lang="zh">使得一旦我们固定了正整数</span> $h$, <span lang="zh">则只会存在有限个多项式</span> $P$ <span lang="zh">满足</span> $H(P) = h$, <span lang="zh">且任意多项式都能被某个高度覆盖</span>. <span lang="zh">即用高度分类全体多项式的同时又控制了多项式的复杂程度</span>. <span lang="zh">随后</span>, <span lang="zh">代数基本定理保证给定</span> $n$ <span lang="zh">次多项式</span>, <span lang="zh">其根在</span> $\C$ <span lang="zh">上至多只有</span> $n$ <span lang="zh">个</span>, <span lang="zh">全体代数数便可以写为可数个有限集的并</span>, <span lang="zh">如此证得</span>.</p>
+<section class="block hide-metadata" data-taxon="Definition"><details open><summary id="pearls-CNA1"><header><h1><span class="taxon">Definition. </span>多项式高度 <a class="slug" href="/pearls/CNA1">[CNA1]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">对于任意一个</span> $\Z$-<span lang="zh">多项式</span> $P$, <span lang="zh">其高度</span> $H(P)$ <span lang="zh">限制了</span> $P$ <span lang="zh">的次数和系数</span>.</p>
 <p>$$
-\int f^{-1}(y) \d y \spaces= y f^{-1}(y) - (F \circ f^{-1})(y) + C
+H(P) \spaces= \deg P - 1 + \sum_{0 \le i \le n} |a_i|
 $$</p>
-<p><span lang="zh">我们得到</span> $\int_0^b f^{-1}(y) \d y \spaces= b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x$, <span lang="zh">也就是</span></p>
-<p>$$
-ab \spaces\le \int_0^a f(x) \d x + b f^{-1}(b) - \int_0^{f^{-1}(b)}f(x) \d x
-$$</p>
-<p><span lang="zh">这是</span> <span class="link local"><a href="/pearls/YL4A" title="增函数的 Young 不等式 [pearls/YL4A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">的一个等价形式</span>. <span lang="zh">但是</span>, $f(0) = 0$ <span lang="zh">这个条件对于许多</span> $f$ <span lang="zh">并不适用</span>, <span lang="zh">为此我们需要考虑不依赖于此的</span> Young <span lang="zh">不等式</span>.</p>
-<p>$\textbf{Theorem.}$ <span lang="zh">可以一般地观察在</span> $[a_0, a]$ <span lang="zh">上可逆严格增函数</span> $f$ <span lang="zh">的图像</span>, <span lang="zh">我们发现</span> $f$ <span lang="zh">将区域</span>
-$$ ([0, a] \times [0, b])  \spaces\smallsetminus ([0, a_0] \times [0, b_0]) $$</p>
-<p><span lang="zh">分割为两部分</span>. <span lang="zh">此时有</span></p>
-<p>$$
-ab - a_0b_0 \spaces\le 
-\bigg| \int_{a_0}^a f(x) \d x \bigg| + \bigg| \int_{b_0}^b f^{-1}(y) \d y \bigg|
-$$</p>
-<p>$\textbf{Example.}$ <span lang="zh">取</span> $f(x) = e^x$, $f: [0, a] \to [1, e^a]$, $f^{-1}: [1, b] \to [0, \log b]$. <span lang="zh">我们有</span></p>
-<p>$$
-ab \spaces\le \int_0^a e^x \d x + \int_1^b \log y \d y \spaces= e^a + b\log b - b
-$$</p>
-<p><span lang="zh">读者可以通过取</span> $b \in \{1, e\}$ <span lang="zh">得到</span> $e^x - 1 \ge x$ <span lang="zh">和</span> $e^x \ge ex$ <span lang="zh">来意识到这个结果的作用</span>. <span lang="zh">不过尽管</span> $f$ <span lang="zh">并不经过原点</span>, <span lang="zh">但是通过取</span> $f(x) = e^x-1$, <span lang="zh">经典的</span> Young <span lang="zh">不等式也能给出此不等式</span>, <span lang="zh">这一点可行是因为我们恰好选择了</span> $a_0 = 0$. <span lang="zh">而对于一般的</span> $(a_0,b_0)$, <span lang="zh">通过平移配合经典的</span> Young <span lang="zh">不等式并不能得到上面</span> Laisant–Young <span lang="zh">陈述的结果</span>.</p>
-</details></section><footer></footer></article></div></body></html>
+</details></section><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-CAN0-1"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-CAN0-0"><header><h1><span class="taxon">Lemma. </span>固定高度的多项式只有有限个 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">固定</span> $h \in \N$, <span lang="zh">则集合</span> $P_h = \{ P \in \Z[x] : H(P) = h \}$ <span lang="zh">有限</span>. <span lang="zh">为了证明这件事</span>, <span lang="zh">注意到此时多项式的次数最多是</span> $h$, <span lang="zh">因为至少有一个非零整系数</span> $a_i$ <span lang="zh">使得</span> $|a_i| \ge 1$. <span lang="zh">另一方面</span>, <span lang="zh">每个</span> $a_i$ <span lang="zh">也满足</span> $|a_i| \le h$, <span lang="zh">因此一个多项式的所有信息都被正整数</span> $h$ <span lang="zh">控制</span>, <span lang="zh">故</span> $P_h$ <span lang="zh">有限</span>.</p>
+</details></section><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-CAN0-2"><header><h1><span class="taxon">Lemma. </span>固定高度的多项式的根集有限 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$</p>
+<p><span lang="zh">固定</span> $h \in \N$, <span lang="zh">集合</span> $R_h = \{ z \in \C : P(z) = 0, P \in P_h \}$ <span lang="zh">有限</span>. <span lang="zh">对</span> $P \in P_h$ <span lang="zh">处每一个固定的</span> $P$ <span lang="zh">使用代数基本定理</span>, <span lang="zh">便可得到此时的</span> $z$ <span lang="zh">也只有有限多个</span>.</p>
+</details></section><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\A{\mathbb{A}}$
+$\gdef\N{\mathbf{N}}$</p>
+<p><span lang="zh">根据代数数域</span> $\A$ <span lang="zh">的定义之一</span>, $\A = \bigcup_{h \in \N} R_h$ <span lang="zh">所以</span> $|\A| = |\N|$, <span lang="zh">故可数</span>.</p>
+</details></section></details></section><footer></footer></article></div></body></html>

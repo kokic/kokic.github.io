@@ -6,7 +6,7 @@ taxon: proposition
 asref: true
 date: August 15, 2021
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\d{\operatorname{d}}$

@@ -4,7 +4,7 @@ title: 删除--收缩公式
 date: July 21, 2024
 taxon: theorem
 author: [kokic](/trees/kokic.md)
-tag: [](/trees/pearls.md)
+tag: [](/trees/pearls/index.md)
 ---
 
 $\gdef\spaces#1{~ #1 ~}$
