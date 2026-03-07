@@ -1,0 +1,34 @@
+<!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option>

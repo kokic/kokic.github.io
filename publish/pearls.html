@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Pearls</title><link rel="icon" href="/assets/favicon.ico" /><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
+
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
+  theme-option {
+    display: inline-block;
+  }
+
+  theme-option>input {
+    display: none;
+  }
+
+  theme-option>label {
+    color: var(--slug-color);
+  }
+
+  theme-option>label:hover {
+    background-color: var(--hover-color-link);
+  }
+
+  theme-option:has(input:checked)>label {
+    color: var(--link-color);
+  }
+
+  theme-option>label::before {
+    content: "[";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option>label::after {
+    content: "]";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option:has(input:checked)>label::before {
+    color: var(--link-color);
+  }
+
+  theme-option:has(input:checked)>label::after {
+    color: var(--link-color);
+  }
+</style>
+
+<template id="theme-option-template">
+  <input type="radio" name="theme" />
+  <label></label>
+</template>
+
+<script>
+  const THEME_KEY = `kodama-theme`;
+
+  function storeSelectedTheme(name) {
+    localStorage.setItem(THEME_KEY, name);
+  }
+
+  function getCurrentTheme() {
+    return localStorage.getItem(THEME_KEY) || window.primaryTheme;
+  }
+
+  function selectTheme(themeName) {
+    storeSelectedTheme(themeName);
+    requestAnimationFrame(applyDynamicColorInvert);
+  }
+
+  function applyFavorTheme() {
+    const favoredTheme = getCurrentTheme();
+    if (favoredTheme) {
+      const selector = `input[type='radio'][id='${favoredTheme}']`;
+      const favoredOption = window.themeOptions.querySelector(selector);
+
+      if (favoredOption) {
+        favoredOption.checked = true;
+      } else if (window.primaryOption) {
+        // Fallback to primary theme, if the favored theme is not found
+        // e.g., when the theme options have changed, and the stored theme is no longer available.
+        window.primaryOption.checked = true;
+      }
+    }
+    applyDynamicColorInvert();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.themeOptions = document.getElementById("theme-options");
+    const templateContent = document.getElementById("theme-option-template").content;
+
+    customElements.define(
+      "theme-option",
+      class extends HTMLElement {
+        constructor() {
+          super();
+
+          const node = templateContent.cloneNode(true);
+          const themeName = this.getAttribute("name");
+
+          const input = node.querySelector("input");
+          input.setAttribute("id", themeName);
+          input.setAttribute("value", themeName);
+
+          const label = node.querySelector("label");
+          label.setAttribute("for", themeName);
+          label.addEventListener("click", () => selectTheme(themeName));
+
+          while (this.firstChild) {
+            label.appendChild(this.firstChild);
+          }
+          this.appendChild(node);
+        }
+      },
+    );
+
+    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
+    window.primaryTheme = primaryOption?.value;
+
+    applyFavorTheme();
+  });
+</script>
+
+<script>
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
+  const multiply = ([r, g, b], matrix) => {
+    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
+    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
+    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
+    return [nr, ng, nb];
+  };
+
+  const hueRotate = ([r, g, b], angle = 0) => {
+    const rad = (angle / 180) * Math.PI;
+    const sin = Math.sin(rad);
+    const cos = Math.cos(rad);
+    const matrix = [
+      0.213 + cos * 0.787 - sin * 0.213,
+      0.715 - cos * 0.715 - sin * 0.715,
+      0.072 - cos * 0.072 + sin * 0.928,
+      0.213 - cos * 0.213 + sin * 0.143,
+      0.715 + cos * 0.285 + sin * 0.140,
+      0.072 - cos * 0.072 - sin * 0.283,
+      0.213 - cos * 0.213 - sin * 0.787,
+      0.715 - cos * 0.715 + sin * 0.715,
+      0.072 + cos * 0.928 + sin * 0.072,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const grayscale = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.2126 + 0.7874 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 + 0.2848 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 + 0.9278 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const sepia = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.393 + 0.607 * (1 - value),
+      0.769 - 0.769 * (1 - value),
+      0.189 - 0.189 * (1 - value),
+      0.349 - 0.349 * (1 - value),
+      0.686 + 0.314 * (1 - value),
+      0.168 - 0.168 * (1 - value),
+      0.272 - 0.272 * (1 - value),
+      0.534 - 0.534 * (1 - value),
+      0.131 + 0.869 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const saturate = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.213 + 0.787 * value,
+      0.715 - 0.715 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 + 0.285 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 - 0.715 * value,
+      0.072 + 0.928 * value,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const linear = ([r, g, b], slope = 1, intercept = 0) => {
+    const scale = 255;
+    return [
+      clamp(r * slope + intercept * scale),
+      clamp(g * slope + intercept * scale),
+      clamp(b * slope + intercept * scale),
+    ];
+  };
+
+  const brightness = (rgb, value = 1) => linear(rgb, value);
+  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
+
+  const invert = ([r, g, b], value = 1) => {
+    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
+    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
+    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
+    return [clamp(nr), clamp(ng), clamp(nb)];
+  };
+
+  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
+  const rgbToHsl = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 100, s: s * 100, l: l * 100 };
+  };
+
+  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
+    let color = [...rgb];
+    color = invert(color, inv / 100);
+    color = sepia(color, sep / 100);
+    color = saturate(color, sat / 100);
+    color = hueRotate(color, hue * 3.6);
+    color = brightness(color, bri / 100);
+    color = contrast(color, con / 100);
+    return color;
+  };
+
+  const lossFn = (targetRgb, filters) => {
+    const resultRgb = applyFilters([0, 0, 0], filters);
+    const targetHsl = rgbToHsl(...targetRgb);
+    const resultHsl = rgbToHsl(...resultRgb);
+    return (
+      Math.abs(resultRgb[0] - targetRgb[0]) +
+      Math.abs(resultRgb[1] - targetRgb[1]) +
+      Math.abs(resultRgb[2] - targetRgb[2]) +
+      Math.abs(resultHsl.h - targetHsl.h) +
+      Math.abs(resultHsl.s - targetHsl.s) +
+      Math.abs(resultHsl.l - targetHsl.l)
+    );
+  };
+
+  const fix = (value, idx) => {
+    let max = 100;
+    if (idx === 2) max = 7500;                  // saturate
+    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
+    if (idx === 3) { // hue-rotate
+      if (value > max) return value % max;
+      if (value < 0) return max + (value % max);
+      return value;
+    }
+    return Math.max(0, Math.min(max, value));
+  };
+
+  const spsa = (targetRgb, A, a, c, initial, iters) => {
+    const alpha = 1;
+    const gamma = 1 / 6;
+    let values = [...initial];
+    let best = [...values];
+    let bestLoss = Infinity;
+
+    for (let k = 0; k < iters; k++) {
+      const ck = c / Math.pow(k + 1, gamma);
+      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
+      const highArgs = values.map((v, i) => v + ck * deltas[i]);
+      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
+      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
+
+      values = values.map((v, i) => {
+        const g = (lossDiff / (2 * ck)) * deltas[i];
+        const ak = a[i] / Math.pow(A + k + 1, alpha);
+        return fix(v - ak * g, i);
+      });
+
+      const loss = lossFn(targetRgb, values);
+      if (loss < bestLoss) {
+        best = [...values];
+        bestLoss = loss;
+      }
+    }
+    return { values: best, loss: bestLoss };
+  };
+
+  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
+  // A loss below this value is considered visually indistinguishable for most use cases.
+  // The value 25 was determined empirically to balance performance and color accuracy.
+  const ACCEPTABLE_COLOR_LOSS = 25;
+
+  const solveWide = (targetRgb) => {
+    const A = 5;
+    const c = 15;
+    const a = [60, 180, 18000, 600, 1.2, 1.2];
+    let best = { loss: Infinity, values: null };
+    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
+      const initial = [50, 20, 3750, 50, 100, 100];
+      const result = spsa(targetRgb, A, a, c, initial, 1000);
+      if (result.loss < best.loss) best = result;
+    }
+    return best;
+  };
+
+  const solveNarrow = (targetRgb, wideResult) => {
+    const A = wideResult.loss;
+    const c = 2;
+    const A1 = A + 1;
+    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
+    return spsa(targetRgb, A, a, c, wideResult.values, 500);
+  };
+
+  const cssFilterString = (filters) => {
+    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
+    const hueDeg = Math.round(hue * 3.6);
+    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
+  };
+
+  const solveColor = (targetRgb) => {
+    const wide = solveWide(targetRgb);
+    const narrow = solveNarrow(targetRgb, wide);
+    return {
+      values: narrow.values,
+      loss: narrow.loss,
+      filter: cssFilterString(narrow.values),
+    };
+  };
+
+  // Reuse a single canvas / context to avoid memory leaks
+  const colorParseCanvas = document.createElement('canvas');
+  colorParseCanvas.width = 1;
+  colorParseCanvas.height = 1;
+  const colorParseContext = colorParseCanvas.getContext('2d');
+
+  const toRGBArray = (cssColor) => {
+    colorParseContext.fillStyle = cssColor;
+    colorParseContext.fillRect(0, 0, 1, 1);
+
+    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
+    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
+    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
+    return Array.from(rgba.slice(0, 3));
+  };
+
+  const DYNAMIC_STYLE_ID = 'dynamic-color-invert-style';
+  const SOLVED_COLOR_KEY = "solved-";
+
+  function memorizedSolvedFilter(color) {
+    const colorKey = SOLVED_COLOR_KEY + color;
+    const storedFilterOption = localStorage.getItem(colorKey);
+    if (storedFilterOption) {
+      return storedFilterOption;
+    } else {
+      const filter = solveColor(color).filter;
+      localStorage.setItem(colorKey, filter);
+      return filter;
+    }
+  }
+
+  function applyDynamicColorInvert() {
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
+    if (textColor && textColor.length > 0) {
+      const rgb = toRGBArray(textColor);
+      const filter = memorizedSolvedFilter(rgb);
+
+      const existingStyle = document.getElementById(DYNAMIC_STYLE_ID);
+      if (existingStyle) {
+        existingStyle.textContent = `.color-invert {${filter}}`;
+      } else {
+        const style = document.createElement('style');
+        style.id = DYNAMIC_STYLE_ID;
+        style.textContent = `.color-invert {${filter}}`;
+        document.head.appendChild(style);
+      }
+    }
+  }
+</script><script>
+  (() => {
+    const url = "/kodama.reload";
+    const interval = 1000; // 1 second
+
+    let lastVersion = null;
+
+    async function check() {
+      try {
+        const res = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("reload marker not ready");
+        }
+        const version = (await res.text()).trim();
+        if (lastVersion && version && version !== lastVersion) {
+          location.reload();
+          return;
+        }
+        lastVersion = version || lastVersion;
+      } catch (e) {
+        // Ignore
+        console.warn("Reload check failed:", e);
+      }
+
+      setTimeout(check, interval);
+    }
+
+    check();
+  })();
+</script>
+<!-- Also see: https://katex.org/docs/autorender -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
+      ],
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script>
+<style>html {
+  font-size: 18px;
+}
+
+:root body {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+  --text-font-family: "Inria Sans", sans-serif;
+  --kaiti-font-family: "KaiTi", "SimKai", "STKaiti", "Kaiti SC", "Kaiti TC", "华文楷体", "楷体", serif;
+
+  /* root font size: 16px */
+  /* 11pt; */
+  --pre-font-size: 0.917rem;
+  --code-font-size: 1rem;
+  /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
+  --katex-font-size: 1.15em;
+  --katex-frac-line-font-size: 1.25em;
+  --details-h1-font-size: 1.2rem;
+  /* 13pt */
+  --section-details-h1-font-size: 1.083rem;
+  --article-details-h1-font-size: 1.5rem;
+  /* 0.9em */
+  --article-details-h1-taxon-font-size: 1.35rem;
+  /* 24px; */
+  --logo-font-size: 1.5rem;
+  /* 14pt; */
+  --footer-h2-font-size: 1.167rem;
+  --p-line-height: 1.55rem;
+
+  --text-color: black;
+  --toc-link-color: #555;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
+
+  --alert-border-color: gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root body {
+    --text-color: white;
+    --toc-link-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+@media print {
+  html {
+    font-size: 16px;
+  }
+
+  .edit,
+  #theme-options {
+    display: none;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+body {
+  color: var(--text-color);
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: var(--p-line-height);
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5rem;
+  font-size: var(--pre-font-size);
+  margin-top: 0rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.1rem;
+  font-size: var(--code-font-size);
+}
+
+pre,
+code {
+  font-family: monospace;
+}
+
+em {
+  color: var(--em-color);
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target>.footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+.katex {
+  font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
+  line-height: 1rem;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: var(--katex-frac-line-font-size);
+}
+
+/* Generated by KaTeX */
+.cjk_fallback {
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+section+p:empty {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+  --blockquote-cjk-font-family: var(--kaiti-font-family);
+}
+
+blockquote span:is([lang=zh], [lang=ja], [lang=ko]) {
+  font-style: normal;
+  font-family: var(--blockquote-cjk-font-family);
+}
+
+/* GFM Blockquote tags: https://github.com/orgs/community/discussions/16925 */
+
+blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution) {
+  --blockquote-cjk-font-family: var(--text-font-family);
+  margin: 0rem 0.5rem;
+  padding: 0rem 0.5rem;
+  font-style: normal;
+  border-left: .25rem double var(--alert-border-color);
+}
+
+blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution)>p:first-child::before {
+  font-size: var(--section-details-h1-font-size);
+  font-family: monospace;
+  color: var(--span-taxon-color);
+  margin-right: 0.5rem;
+  display: block;
+  content: var(--alert-label);
+}
+
+blockquote.markdown-alert-note {
+  --alert-label: "[# NOTE]";
+}
+
+blockquote.markdown-alert-tip {
+  --alert-label: "[# TIP]";
+}
+
+blockquote.markdown-alert-important {
+  --alert-label: "[# IMPORTANT]";
+}
+
+blockquote.markdown-alert-warning {
+  --alert-label: "[# WARNING]";
+}
+
+blockquote.markdown-alert-caution {
+  --alert-label: "[# CAUTION]";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: var(--details-h1-font-size);
+  display: inline;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: var(--article-details-h1-font-size);
+}
+
+article>section>details>h2 {
+  font-size: 1.25rem;
+}
+
+article>section>details>h3 {
+  font-size: 1.125rem;
+}
+
+article>section>details>h4 {
+  font-size: 1rem;
+}
+
+article>section>details>h5,
+article>section>details>h6 {
+  font-size: 0.875rem;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: var(--article-details-h1-taxon-font-size);
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article>section>details>summary>header>h1>.taxon:empty {
+  display: none;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+section.block.link-list>details {
+  margin-bottom: 0em;
+}
+
+section.block.link-list>details>section.block>details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline;
+  margin: 0 0;
+  font-size: var(--katex-font-size);
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo>span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo>span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: var(--logo-font-size);
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: var(--section-details-h1-font-size);
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: var(--footer-h2-font-size);
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.edit:hover,
+a.bullet:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external,
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+  /* file */
+}
+
+a.link.local,
+.link.local a,
+a.slug,
+a.edit {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  overflow-wrap: break-word;
+}
+
+.slug,
+.edit,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper>article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  figure {
+    margin: 0rem;
+  }
+
+  .block {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  }
+
+  #grid-wrapper>nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+nav#toc,
+nav#toc a {
+  color: var(--toc-link-color);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  text-decoration: none;
+}
+
+.typst-text use[fill="#000000"],
+.typst-group use[fill="#000000"],
+path.typst-shape[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--text-color);
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><style>
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Light.woff2");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Regular.woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Medium.woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Semibold.woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet" />
+
+<style>
+  body {
+    --text-font-family: "Inria Sans", "PingFang SC" !important;
+    --article-max-width: 90ex !important;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/index'" title="回声">« <span lang="zh">回声</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: #ffffff;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="printer">printer</theme-option>
+</div></nav>
+
+<article><section class="block" data-taxon=""><details open><summary id="pearls"><header><h1><span class="taxon"></span>Pearls <a class="slug" href="/pearls">[pearls]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>Short, elegant, and enlightening proof that illustrate important principles or techniques.</p>
+</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="CN2A"><header><h1><span class="taxon">Exegesis. </span>Cauchy–Aczél <span lang="zh">论证</span> <a class="slug" href="/CN2A">[CN2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél <span lang="zh">论证</span></a></span> <span lang="zh">是</span> <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">次可加归纳</span></a></span> <span lang="zh">的一个直接应用</span>. <span lang="zh">凭此能够同时证明</span>:</p>
+<ul>
+<li><section class="block" data-taxon="Theorem"><details ><summary id="CN2B"><header><h1><span class="taxon">Theorem. </span>Cauchy <span lang="zh">不等式</span> <a class="slug" href="/CN2B">[CN2B]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://mathworld.wolfram.com/CauchysInequality.html" title="Cauchy’s Inequality [https://mathworld.wolfram.com/CauchysInequality.html]">Cauchy’s Inequality</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>$$
+\Big(\sum_{k=1}^na_k^2\Big) \Big(\sum_{k=1}^nb_k^2\Big) \spaces\ge \Big(\sum_{k=1}^na_kb_k\Big)^2
+$$</p>
+</details></section></li>
+<li><section class="block" data-taxon="Lemma"><details ><summary id="CN2C"><header><h1><span class="taxon">Lemma. </span>Titu <span lang="zh">引理</span> <a class="slug" href="/CN2C">[CN2C]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Titu <span lang="zh">引理又名</span> <span class="link external"><a href="https://handwiki.org/wiki/Sedrakyan%27s_inequality" title="Sedrakyan 不等式 [https://handwiki.org/wiki/Sedrakyan%27s_inequality]">Sedrakyan <span lang="zh">不等式</span></a></span>、Bergström <span lang="zh">不等式、</span><span class="link external"><a href="https://artofproblemsolving.com/wiki/index.php/Cauchy-Schwarz_Inequality" title="Engel 形式 [https://artofproblemsolving.com/wiki/index.php/Cauchy-Schwarz_Inequality]">Engel <span lang="zh">形式</span></a></span>. <span lang="zh">在</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">中实行替换</span> $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, <span lang="zh">随后移项即得</span></p>
+<p>$$
+\sum_{k=1}^n\dfrac{x_k^2}{\ell_k} 
+\spaces\ge \Big(\sum_{k=1}^nx_k\Big)^2 \Big({\sum_{k=1}^n{\ell_k}}\Big)^{-1} 
+$$</p>
+</details></section></li>
+<li><section class="block" data-taxon="Theorem"><details ><summary id="CN2D"><header><h1><span class="taxon">Theorem. </span>Aczél <span lang="zh">不等式</span> <a class="slug" href="/CN2D">[CN2D]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2D.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">设</span> $\{a_i\}_{1\le i \le n}$ <span lang="zh">满足</span> $a_1^2 \ge a_2^2 + a_3^2 + \cdots + a_n^2$, $\{b_i\}_{1 \le i \le n}$ <span lang="zh">满足</span> $b_1^2 \ge b_2^2 + b_3^2 + \cdots + b_n^2$ <span lang="zh">则</span></p>
+<p>$$
+\Big(a_1b_1 - \sum_{k=2}^na_kb_k\Big)^2 \spaces\ge \Big(a_1^2 - \sum_{k=2}^na_k^2\Big) \Big(b_1^2 - \sum_{k=2}^nb_k^2\Big)
+$$</p>
+<p><span lang="zh">由于</span> <span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél <span lang="zh">论证</span></a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél <span lang="zh">不等式</span></a></span> <span lang="zh">实际上是</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">的另一种表达形式</span>.</p>
+</details></section></li>
+<li><section class="block" data-taxon="Theorem"><details ><summary id="CN2E"><header><h1><span class="taxon">Theorem. </span>Aczél <span lang="zh">不等式</span> Engel <span lang="zh">形式</span> <a class="slug" href="/CN2E">[CN2E]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2E.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">与</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">具有</span> <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Engel <span lang="zh">形式</span></a></span> <span lang="zh">类似</span>, Aczél <span lang="zh">不等式也有相应的</span> <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Engel <span lang="zh">形式</span></a></span>. <span lang="zh">实行替换</span> $a_k \mapsto \frac{x_k}{\sqrt\ell_k}$, $b_k \mapsto \sqrt\ell_k$, <span lang="zh">得</span></p>
+<p>$$
+\Big(x_1^2 - \sum_{k=2}^nx_k\Big)^2 \Big(\ell_1 - {\sum_{k=2}^n{\ell_k}}\Big)^{-1}
+\spaces\ge \frac{x_1^2}{\ell_1} - \sum_{k=2}^n\dfrac{x_k^2}{\ell_k} 
+$$</p>
+</details></section></li>
+</ul>
+<p><span lang="zh">具体步骤如下</span>.</p>
+<section class="block" data-taxon="Proof"><details ><summary id="__kodama_anon_subtree_internal__-CN2A-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">在</span> <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">次可加归纳</span></a></span> <span lang="zh">中取</span> $f(x, \ell) = \frac{x^2}{\ell}$, <span lang="zh">于是</span> <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu <span lang="zh">引理</span></a></span> $\iff$ <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél <span lang="zh">不等式</span> Engel <span lang="zh">形式</span></a></span>, <span lang="zh">又因为</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">等价于</span> <span class="link local"><a href="/CN2C" title="Titu 引理 [CN2C]">Titu <span lang="zh">引理</span></a></span>, <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél <span lang="zh">不等式</span></a></span> <span lang="zh">等价于</span> <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél <span lang="zh">不等式</span> Engel <span lang="zh">形式</span></a></span>. <span lang="zh">于是只需证明</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">中</span> $n=2$ <span lang="zh">的情况</span>, <span lang="zh">现在做差</span></p>
+<p>$$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_1)^2 $$</p>
+<p><span lang="zh">右侧非负</span>, <span lang="zh">从而证毕</span>.</p>
+</details></section><section class="block" data-taxon="Observation"><details ><summary id="__kodama_anon_subtree_internal__-CN2A-1"><header><h1><span class="taxon">Observation. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/CN2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">读者也应留意到</span>, <span lang="zh">尝试直接说明</span> <span class="link local"><a href="/CN2B" title="Cauchy 不等式 [CN2B]">Cauchy <span lang="zh">不等式</span></a></span> <span lang="zh">和</span> <span class="link local"><a href="/CN2D" title="Aczél 不等式 [CN2D]">Aczél <span lang="zh">不等式</span></a></span> <span lang="zh">等价往往不容易看出</span>, <span lang="zh">而沿着下面的路径就要轻松的多</span>.</p>
+<p>$$
+\begin{CD}
+\text{Cauchy} @&gt;s&gt;&gt; \text{Titu} \\
+@. @VV\text{次线性归纳}V \\
+\text{Aczél} @&lt;&lt;s^{-1}&lt; X_1
+\end{CD}
+$$</p>
+<p><span lang="zh">此处</span> $X_1$ <span lang="zh">即</span> <span class="link local"><a href="/CN2E" title="Aczél 不等式 Engel 形式 [CN2E]">Aczél <span lang="zh">不等式</span> Engel <span lang="zh">形式</span></a></span>, $s$ <span lang="zh">为</span> $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$.</p>
+</details></section></details></section><section class="block" data-taxon="Proposition"><details ><summary id="ECLA"><header><h1><span class="taxon">Proposition. </span><span lang="zh">格点三元组计数</span> <a class="slug" href="/ECLA">[ECLA]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 17, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\defeq{\overset{\text{def}}{=}}$</p>
+<p><span lang="zh">设</span> $n$ <span lang="zh">是非负整数</span>. $\mathcal{A}_n$ <span lang="zh">是满足</span> $a+b,a+c,b+c \le n+1$ <span lang="zh">的正整数三元组</span> $(a, b, c)$. <span lang="zh">则</span></p>
+<p>$$ |\mathcal{A}_n| \spaces= \frac{n}{8}(2n^2 + 3n + 2) + \frac{\delta_n}{8} $$</p>
+<p><span lang="zh">此处</span> $n$ <span lang="zh">为偶数时</span> $\delta = 0$, $n$ <span lang="zh">为奇数时</span> $\delta = 1$.</p>
+<section class="block" data-taxon="思路"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-0"><header><h1><span class="taxon">思路. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">先差分</span>, <span lang="zh">考虑</span> $h(n) \defeq |\mathcal{A}_n| - |\mathcal{A}_{n-1}|$, <span lang="zh">于是</span> $|\mathcal{A}_n| = |\mathcal{A}_0| + \sum_{k=1}^{n} h(k)$. <span lang="zh">分奇偶讨论</span>, <span lang="zh">我们需要计算</span> $h(2m), h(2m+1)$. <span lang="zh">考虑使用容斥原理</span>, <span lang="zh">将</span> $h(-)$ <span lang="zh">的计算化为</span></p>
+<p>$$
+\begin{aligned}
+h(-) &amp;\spaces= |X_1 \cup X_2 \cup X_3| \\
+&amp;\spaces= |X_1| + |X_2| + |X_3| \\
+&amp;\hspace{3.6em} - (|X_1 \cap X_2|+|X_1 \cap X_3|+|X_2 \cap X_3|) \\
+&amp;\hspace{3.6em} + (|X_1 \cap X_2 \cap X_3|)
+\end{aligned}
+$$</p>
+<p><span lang="zh">分情况求和</span>, <span lang="zh">最终得到</span> $|A_{2m}|, |A_{2m+1}|$.</p>
+</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-1"><header><h1><span class="taxon">Exegesis. </span>计算差分 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">记</span> $s_1 = a+b, s_2 = a+c, s_3 = b+c$. $h(2m)$ <span lang="zh">就是满足</span> $\max(s_1,s_2,s_3) = 2m+1$ <span lang="zh">的</span> $(a,b,c)$ <span lang="zh">的个数</span>. <span lang="zh">据容斥原理</span>, <span lang="zh">定义</span> $(X_i)_{1 \le i \le 3}$ <span lang="zh">是满足</span> $s_i = 2m+1, s_{j \ne i} \le 2m+1$ <span lang="zh">的集合</span>. <span lang="zh">于是</span> $h(2m) = |X_1 \cup X_2 \cup X_3|$.</p>
+<section class="block" data-taxon="$|X_i|$"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-3"><header><h1><span class="taxon">$|X_i|$. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">对于</span> $|X_1|$, $a, b \ge 1$, <span lang="zh">故</span> $(a, b)$ <span lang="zh">可取</span> $(1, 2m), (2, 2m-1), \cdots, (2m, 1)$ <span lang="zh">共</span> $2m$ <span lang="zh">种可能</span>. <span lang="zh">固定</span> $a,b$, <span lang="zh">此时</span> $c$ <span lang="zh">应该满足</span> $c \le (2m+1)-a$ <span lang="zh">且</span> $c \le (2m+1)-b$, <span lang="zh">即</span> $1 \le c \le 2m+1-\max(a,b)$.</p>
+<ol>
+<li>
+<p><span lang="zh">当</span> $a \le m$ <span lang="zh">时</span>, $b \ge m+1, \max(a,b) = 2m+1-a$, $c$ <span lang="zh">有</span> $a$ <span lang="zh">种选择</span>, <span lang="zh">求和</span> $\sum_{a=1}^m a = \frac{m(m+1)}{2}$.</p>
+</li>
+<li>
+<p><span lang="zh">当</span> $a &gt; m$ <span lang="zh">时</span>, $\max(a,b) = a$, $c$ <span lang="zh">有</span> $2m+1-a$ <span lang="zh">种选择</span>, <span lang="zh">记</span> $k=2m+1-a$, $a$ <span lang="zh">从</span> $m+1$ <span lang="zh">变到</span> $2m$. <span lang="zh">求和</span> $\sum_{k=1}^m = \frac{m(m+1)}{2}$.</p>
+</li>
+</ol>
+<p><span lang="zh">所以</span>, $|X_1| = 2 \cdot \frac{m(m+1)}{2}= m(m+1)$. <span lang="zh">由对称性</span>, $|X_2| = |X_3| = |X_1|$.</p>
+</details></section><section class="block" data-taxon="$|X_i \cap X_j|$"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-4"><header><h1><span class="taxon">$|X_i \cap X_j|$. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">条件</span> $a+b = 2m+1$ <span lang="zh">且</span> $a+c = 2m+1$, <span lang="zh">这要求</span> $b=c$. <span lang="zh">另外</span> $b + c \le 2m + 1$, <span lang="zh">这推出</span> $b \le m$, <span lang="zh">因为</span> $b, m$ <span lang="zh">需是整数</span>. <span lang="zh">这表明</span> $b$ <span lang="zh">可以取</span> $1,2,\cdots,m$, <span lang="zh">所以</span> $|X_1 \cap X_2| = m$, <span lang="zh">其他</span> $|X_i \cap X_j|$ <span lang="zh">同理</span>.</p>
+</details></section><section class="block" data-taxon="$|X_i \cap X_j \cap X_k|$"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-5"><header><h1><span class="taxon">$|X_i \cap X_j \cap X_k|$. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">此时</span> $a+b = a+c = b+c = 2m+1$, <span lang="zh">三式相加</span> $2(a+b+c) = 3(2m+1)$, <span lang="zh">故</span> $a+b+c = 3m + \frac{3}{2}$, <span lang="zh">无解</span>. <span lang="zh">即</span> $|X_1 \cap X_2 \cap X_3| = 0$.</p>
+</details></section><p><span lang="zh">如此</span>, $h(2m) = 3m(m+1) - 3m = 3m^2$. <span lang="zh">而对于</span> $h(2m+1)$, <span lang="zh">对应的</span> $|Y_i|$ <span lang="zh">可类似算得</span></p>
+<p>$$
+\begin{aligned}
+|Y_1| 
+&amp;\spaces= \tfrac{(m+1)(m+2)}{2} + \tfrac{m(m+1)}{2} \\
+&amp;\spaces= \tfrac{m+1}{2} \cdot (2m+2) \\
+&amp;\spaces= (m+1)^2
+\end{aligned}
+$$</p>
+<p><span lang="zh">其两两交集为</span> $|Y_i \cap Y_j| = m+1$. <span lang="zh">与</span> $|X_i \cap X_j \cap X_k|$ <span lang="zh">不同</span>, $|Y_1 \cap Y_2 \cap Y_3|$ <span lang="zh">时有一个整数解</span> $m+1$, <span lang="zh">故</span> $h(2m+1) = 3(m+1)^2 - 3(m+1) + 1 = 3m(m+1)+1$.</p>
+</details></section><section class="block" data-taxon="Proof"><details ><summary id="__kodama_anon_subtree_internal__-ECLA-2"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/ECLA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">当</span> $n=2m$ <span lang="zh">为偶数时</span> $|A_{2m}| = \sum_{k=1}^{2m} h(k) \spaces= \sum_{j=1}^m h(2j-1) + h(2j)$. <span lang="zh">也即</span></p>
+<p>$$
+\begin{aligned}
+|A_{2m}|
+&amp;\spaces= \sum_{j=1}^m 3j(j-1)+1 + 3j^2 \hspace{1.5em} \Big(= \sum_{j=1}^m 6j^2 - 3j + 1 \Big) \\
+&amp;\spaces= m(m+1)(2m+1) - \tfrac{3}{2}m(m+1) + m \\
+&amp;\spaces= \tfrac{m}{2}(4m^2 + 3m + 1)
+\end{aligned}
+$$</p>
+<p><span lang="zh">于是</span> $|A_n| = \frac{n}{8}(2n^2 + 3n + 2)$. <span lang="zh">当</span> $n=2m+1$ <span lang="zh">为奇数时</span></p>
+<p>$$
+|A_{2m+1}| \spaces= |A_{2m}| + h(2m+1) \spaces= \tfrac{m+1}{2} (4m^2 + 9m + 2)
+$$</p>
+<p>$A_n = \frac{n}{8}(2n^2 + 3n + 2) + \frac{1}{8}$, <span lang="zh">综合得到</span></p>
+<p>$$ |\mathcal{A}_n| \spaces= \frac{n}{8}(2n^2 + 3n + 2) + \frac{\delta_n}{8} $$</p>
+</details></section></details></section><section class="block" data-taxon="Theorem"><details ><summary id="GALA"><header><h1><span class="taxon">Theorem. </span><span lang="zh">加减乘除不能解二次方程</span> <a class="slug" href="/GALA">[GALA]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">October 23, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">只通过系数的加减乘除不能解一般的二次方程</span>, <span lang="zh">换言之</span>, <span lang="zh">二次方程的根不是系数的有理函数</span>.</p>
+<section class="block" data-taxon="Proof"><details ><summary id="__kodama_anon_subtree_internal__-GALA-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$k$ <span lang="zh">是域</span>, $k$ <span lang="zh">关于</span> $t_0,t_1$ <span lang="zh">的有理函数域</span> $k(t_0,t_1)$ <span lang="zh">记为</span> $F$. <span lang="zh">下面只需考虑首一多项式</span> $f(x) = x^2 + t_1x + t_0 \in k[x]$ <span lang="zh">且没有重根的情况</span>, <span lang="zh">即</span> $\Delta \ne 0$.</p>
+<section class="block" data-taxon="Step 1"><details ><summary id="__kodama_anon_subtree_internal__-GALA-1"><header><h1><span class="taxon">Step 1. </span>$\sqrt{\Delta} \in F$ <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">假设存在</span> $r \in F$ <span lang="zh">使得</span> $f(r) = 0$, <span lang="zh">由</span> Viète <span lang="zh">定理</span> $x_1+x_2 = -t_1$, <span lang="zh">另一个根为</span> $-t_1-r \in F$. <span lang="zh">于是</span></p>
+<p>$$ f(x) \spaces= (x-r)(x+t_1+r) \spaces\in F[x] $$</p>
+<p><span lang="zh">其判别式</span> $\Delta = (x_1-x_2)^2 = (2r+t_1)^2 \in F$ <span lang="zh">是</span> $F$ <span lang="zh">中的平方元</span>. <span lang="zh">另一方面</span>, <span lang="zh">借助</span> Viète <span lang="zh">定理</span>, <span lang="zh">判别式可完全表示为系数的函数</span></p>
+<p>$$
+\begin{array}{c|c}
+\begin{aligned}
+\Delta 
+&amp;\spaces= (x_1-x_2)^2 \\
+&amp;\spaces= (x_1+x_2)^2 - 4x_1x_2 \\
+&amp;\spaces= t^2 - 4t_0
+\end{aligned} 
+\quad &amp; \quad
+\begin{aligned}
+x_1 + x_2 &amp;\spaces= -t_1 \\
+x_1x_2 &amp;\spaces= t_0
+\end{aligned}
+\end{array}
+$$</p>
+<p><span lang="zh">这就表明</span> $t^2 - 4t_0$ <span lang="zh">是</span> $F$ <span lang="zh">中的平方元</span>.</p>
+</details></section><section class="block" data-taxon="Step 2"><details ><summary id="__kodama_anon_subtree_internal__-GALA-2"><header><h1><span class="taxon">Step 2. </span>$\sqrt{\Delta} \notin F$ <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">由于</span> $F$ <span lang="zh">是有理函数域</span> $k(t_0,t_1)$, <span lang="zh">所以知道一定存在一组关于</span> $t_0,t_1$ <span lang="zh">的互质多项式</span> $p,q \in k[t_0,t_1]$ <span lang="zh">使得</span></p>
+<p>$$ \bigg(\frac{p}{q}\bigg)^2 \spaces= t_1^2 - 4t_0 $$</p>
+<p><span lang="zh">也就是</span> $p^2 = (t_1^2 - 4t_0)q^2$, <span lang="zh">等式两边是</span> $k[t_0,t_1]$ <span lang="zh">中的多项式</span>, <span lang="zh">所以</span> $\Delta$ <span lang="zh">整除</span> $p^2$. <span lang="zh">注意</span> $k[t_0,t_1]$ <span lang="zh">是唯一分解整环</span>, <span lang="zh">由</span> $\Delta$ <span lang="zh">是不可约多项式知</span> $\Delta$ <span lang="zh">整除</span> $p$, <span lang="zh">因此存在</span> $p_1 \in k[t_0,t_1] $ <span lang="zh">使得</span> $p = \Delta p_1$. <span lang="zh">代入</span> $p^2 = \Delta q^2$, <span lang="zh">因为</span> $\Delta \ne 0$, <span lang="zh">可在整环中消去</span> $\Delta$, <span lang="zh">得</span></p>
+<p>$$ (\Delta p_1)^2 = \Delta q^2 \spaces\implies \Delta p_1^2 = q^2 $$</p>
+<p><span lang="zh">所以</span> $\Delta$ <span lang="zh">整除</span> $q^2$. <span lang="zh">类似知道</span> $\Delta$ <span lang="zh">整除</span> $q$. <span lang="zh">综上</span>, <span lang="zh">非常数多项式</span> $\Delta$ <span lang="zh">整除</span> $p$ <span lang="zh">且</span> $\Delta$ <span lang="zh">整除</span> $q$, <span lang="zh">但这与</span> $p,q$ <span lang="zh">互质矛盾</span>. <span lang="zh">故</span> $\sqrt{\Delta} \notin F$.</p>
+</details></section><section class="block" data-taxon="Remark"><details ><summary id="__kodama_anon_subtree_internal__-GALA-3"><header><h1><span class="taxon">Remark. </span>$t_1^2 - 4t_0$ 不可约 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果可约</span>, <span lang="zh">则存在两个一次</span> $k[t_0,t_1]$-<span lang="zh">多项式</span>, <span lang="zh">其乘积为</span> $\Delta$, <span lang="zh">即</span></p>
+<p>$$
+\begin{aligned}
+\Delta 
+&amp;\spaces= (\alpha_1 t_0 + \alpha_2 t_1 + \alpha_3)(\beta_1 t_0 + \beta_2 t_1 + \beta_3) \\
+&amp;\spaces= \alpha_1\beta_1 t_0^2 + \alpha_2\beta_2 t_1^2 + (\alpha_1\beta_2 + \alpha_2\beta_1) t_0t_1 + \\
+&amp;\kern{1.8em} (\alpha_1\beta_3 + \alpha_3\beta_1)t_0 + (\alpha_2\beta_3 + \alpha_3\beta_2)t_1 + \alpha_3\beta_3 \\
+&amp;\spaces= t_1^2 - 4t_0
+\end{aligned}
+$$</p>
+<p><span lang="zh">于是系数必须满足以下方程组</span></p>
+<p>$$
+\begin{equation*}
+\begin{align}
+\alpha_1\beta_1 &amp;\spaces= 0 \\
+\alpha_2\beta_2 &amp;\spaces= 1 \\
+\alpha_1\beta_2 + \alpha_2\beta_1 &amp;\spaces= 0 \\
+\alpha_1\beta_3 + \alpha_3\beta_1 &amp;\spaces= -4 \kern{3em} \\
+\alpha_2\beta_3 + \alpha_3\beta_2 &amp;\spaces= 0 \\
+\alpha_3\beta_3 &amp;\spaces= 0
+\end{align}
+\end{equation*}
+$$</p>
+<p><span lang="zh">公式</span> $(1)$ <span lang="zh">表明</span> $\alpha_1, \beta_1$ <span lang="zh">中必有一个是</span> $0$. <span lang="zh">讨论之</span>:</p>
+<ul>
+<li><span lang="zh">若</span> $\alpha_1 = 0$, $(3)$ <span lang="zh">化简为</span> $\alpha_2\beta_1 = 0$, <span lang="zh">而</span> $(2)$ <span lang="zh">推出</span> $\alpha_2 \ne 0$, <span lang="zh">故只能是</span> $\beta_1 = 0$, <span lang="zh">代入</span> $(4)$ <span lang="zh">得</span> $0 = -4$, <span lang="zh">矛盾</span>.</li>
+<li><span lang="zh">若</span> $\beta_1 = 0$, $(3)$ <span lang="zh">化简为</span> $\alpha_1\beta_2 = 0$, <span lang="zh">而</span> $(2)$ <span lang="zh">推出</span> $\beta_2 \ne 0$, <span lang="zh">故只能是</span> $\alpha_1 = 0$. <span lang="zh">代入</span> $(4)$ <span lang="zh">得</span> $0 = -4$, <span lang="zh">矛盾</span>.</li>
+</ul>
+<p><span lang="zh">所以假设的两个一次多项式不存在</span>, $t_1^2 - 4t_0$ <span lang="zh">不可约</span>.</p>
+</details></section></details></section></details></section><section class="block" data-taxon="Exegesis"><details ><summary id="HP2E"><header><h1><span class="taxon">Exegesis. </span>Hölder–Popoviciu <span lang="zh">论证</span> <a class="slug" href="/HP2E">[HP2E]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 25, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">类似</span> <span class="link local"><a href="/CN2A" title="Cauchy–Aczél 论证 [CN2A]">Cauchy–Aczél <span lang="zh">论证</span></a></span>, <span lang="zh">也可以将</span> <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">次可加归纳</span></a></span> <span lang="zh">应用于</span> <span class="link local"><a href="/HP2A" title="Hölder 不等式 [HP2A]">Hölder <span lang="zh">不等式</span></a></span> <span lang="zh">和</span> <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu <span lang="zh">不等式</span></a></span>.</p>
+<section class="block" data-taxon="Proof"><details ><summary id="__kodama_anon_subtree_internal__-HP2E-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block" data-taxon="Step 1"><details ><summary id="__kodama_anon_subtree_internal__-HP2E-1"><header><h1><span class="taxon">Step 1. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">在</span> <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">次可加归纳</span></a></span> <span lang="zh">中取</span> $f(x, \ell) = \frac{x^p}{\ell^{p-1}}$, <span lang="zh">此时</span> $\eta_*: \sum_i x_i^p / \ell_i^{p-1} \ge (\sum_i x_i)^p / (\sum_i \ell_i)^{p-1}$ <span lang="zh">即</span> <span class="link local"><a href="/HP2B" title="Radon 不等式 [HP2B]">Radon <span lang="zh">不等式</span></a></span>, $\varphi_*: (x - \sum_i x_i)^p / (\ell - \sum_i \ell_i)^{p-1} \ge x^p / \ell^{p-1} - \sum_i x_i^p / \ell_i^{p-1}$ <span lang="zh">即</span> <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu <span lang="zh">不等式</span> Engel <span lang="zh">形式</span></a></span>. <span lang="zh">沿下图</span></p>
+<p>$$
+\begin{CD}
+\text{Hölder} @&gt;s&gt;&gt; \text{Radon} \\
+@. @VV\text{次线性归纳}V \\
+A_2 @&lt;&lt;s^{-1}&lt; X_2
+\end{CD}
+$$</p>
+<p><span lang="zh">证得这四个命题等价于证明</span> <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">命题</span> $\eta$</a></span>, <span lang="zh">此处</span> $A_2$ <span lang="zh">为</span> <span class="link local"><a href="/HP2C" title="Aczél–Popoviciu 不等式 [HP2C]">Aczél–Popoviciu <span lang="zh">不等式</span></a></span>, $X_2$ <span lang="zh">为</span> <span class="link local"><a href="/HP2D" title="Aczél–Popoviciu 不等式 Engel 形式 [HP2D]">Aczél–Popoviciu <span lang="zh">不等式</span> Engel <span lang="zh">形式</span></a></span>, $s$ <span lang="zh">为</span> $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt[q]\ell_k}, \sqrt[q]\ell_k)$, <span class="link local"><a href="/SL2A" title="次可加归纳 [SL2A]"><span lang="zh">命题</span> $\eta$</a></span> <span lang="zh">为</span></p>
+<p>$$
+(a_1^p + a_2^p)^{\frac{1}{p}}(b_1^q + b_2^q)^{\frac{1}{q}} \spaces\ge a_1b_1+a_2b_2
+$$</p>
+</details></section><section class="block" data-taxon="Step 2"><details ><summary id="__kodama_anon_subtree_internal__-HP2E-2"><header><h1><span class="taxon">Step 2. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/HP2E.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">以下证明是标准的</span>, <span lang="zh">可见于任何一本泛函分析课本</span>. <span lang="zh">记</span></p>
+<p>$$ x_i = a_i /(a_1^p + a_2^p)^{\frac{1}{p}}, \quad y_i = b_i / (b_1^q + b_2^q)^{\frac{1}{q}}$$</p>
+<p><span lang="zh">则</span> $x_1^p + x_2^p = 1, y_1^q + y_2^q = 1$. <span lang="zh">欲证明</span> $x_1y_1 + x_2y_2 \le 1$, <span lang="zh">只要对</span> $(x_i, y_i)$ <span lang="zh">使用</span> <span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young <span lang="zh">不等式</span></a></span>, <span lang="zh">如此</span></p>
+<p>$$
+x_1y_1 + x_2y_2 \spaces\le \frac{x_1^p}{p} + \frac{y_1^q}{q} + \frac{x_2^p}{p} + \frac{y_2^q}{q}
+$$</p>
+<p><span lang="zh">由加法交换律和</span> $\frac{1}{p} + \frac{1}{q} = 1$, <span lang="zh">右侧当然</span> $=1$.</p>
+</details></section></details></section></details></section><section class="block" data-taxon="Exegesis"><details ><summary id="YL2A"><header><h1><span class="taxon">Exegesis. </span>Young <span lang="zh">引理</span> <a class="slug" href="/YL2A">[YL2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/YL2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p><span class="link local"><a href="/YL3A" title="Young 不等式 [YL3A]">Young <span lang="zh">不等式</span></a></span> <span lang="zh">有许多风格迥然的证明</span>, <span lang="zh">最常见的办法可能是使用</span> <span class="link local"><a href="/YL4A" title="增函数的 Young 不等式 [YL4A]"><span lang="zh">定积分</span></a></span>.</p>
+<p><span lang="zh">我们在此介绍一种充分利用对数线性化</span> $\log x \le x -1 $ <span lang="zh">的方法</span>, <span lang="zh">即</span> <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young <span lang="zh">引理</span></a></span>.
+<span lang="zh">并展示</span> Young <span lang="zh">不等式与其他常见不等式如何作为此结果的直接推论</span>.</p>
+<section class="block" data-taxon="Lemma"><details ><summary id="YL2B"><header><h1><span class="taxon">Lemma. </span>Young <span lang="zh">引理</span> <a class="slug" href="/YL2B">[YL2B]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/YL2B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">对数函数</span> $\log$ <span lang="zh">的独特性质体现在</span> $\log a^b = b\log a$ <span lang="zh">和</span> $\log a b = \log a + \log b$. <span lang="zh">另一方面</span>, <span lang="zh">我们知道对于非负的</span> $X,Y$, <span lang="zh">不等式</span> $X \le Y$ <span lang="zh">等价于</span> $\log \frac XY \le 0$. <span lang="zh">如果我们希望充分利用这三点</span>, <span lang="zh">那么就可以试着去考虑</span></p>
+<p>$$ \log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} \spaces= p_1\log\frac{f_1}g \spaces+ p_2\log\frac{f_2}g $$</p>
+<p><span lang="zh">现在对右侧使用对数的线性化</span>, <span lang="zh">得到</span></p>
+<p>$$ 
+\begin{aligned}
+\log \frac{f_1^{p_1}f_2^{p_2}}{g^{p_1+p_2}} 
+&amp;\spaces\le p_1\Big(\frac{f_1}g-1\Big) \spaces+ p_2\Big(\frac{f_2}g-1\Big) \\
+&amp;\spaces= g^{-1}(p_1f_1+p_2f_2) - (p_1+p_2)
+\end{aligned}
+$$</p>
+<p><span lang="zh">我们当然希望</span> $\log\frac\Box\Box \le 0$. <span lang="zh">这就是说</span>, <span lang="zh">如果有关于加法和乘法的条件</span></p>
+<p>$$
+p_1f_1+p_2f_2 \spaces\le (p_1+p_2)g
+$$</p>
+<p><span lang="zh">那么可以推出</span> $f_1^{p_1}f_2^{p_2} \le g^{p_1+p_2}$ <span lang="zh">这样一个指数上的结果</span>. <span lang="zh">有时我们也写成</span></p>
+<p>$$
+p_1 \log f_1 + p_2 \log f_2 \spaces\le (p_1+p_2)\log g 
+$$</p>
+<p><span lang="zh">用完全相同的步骤</span>, <span lang="zh">也可以证明任意多个</span> $p_i$ <span lang="zh">和</span> $f_i$ <span lang="zh">时的情况</span>.</p>
+</details></section><section class="block" data-taxon="Corollary"><details ><summary id="YL3A"><header><h1><span class="taxon">Corollary. </span>Young <span lang="zh">不等式</span> <a class="slug" href="/YL3A">[YL3A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/YL3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 14, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">我们在</span> <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]"><span lang="zh">此处</span></a></span> <span lang="zh">的条件中再添一笔</span> $p_1+p_2=1$, <span lang="zh">然后替换</span> $(p_1,p_2)$ <span lang="zh">为</span> $(\frac1p, \frac1q)$, <span lang="zh">替换</span> $(f_1,f_2)$ <span lang="zh">为</span> $(a,b)$, <span lang="zh">这样就有</span></p>
+<p>$$ (p_1f_1 + p_2f_2 \space =) \quad \frac ap + \frac bq \quad (= \space g) $$</p>
+<p><span lang="zh">立刻得出</span> $a^{\frac1p}b^{\frac1q} \le \frac ap + \frac bq$, <span lang="zh">当且仅当</span> $a=b$ <span lang="zh">取得等号</span>.</p>
+</details></section><section class="block" data-taxon="Corollary"><details ><summary id="YL3B"><header><h1><span class="taxon">Corollary. </span>Bernoulli <span lang="zh">不等式</span> <a class="slug" href="/YL3B">[YL3B]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/YL3B.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>Bernoulli <span lang="zh">不等式是说</span> $(1+x)^n \ge 1+nx$. <span lang="zh">这里</span> $n \ge 1$, $x \ge -1$. <span lang="zh">等价地</span>, <span lang="zh">我们来证明</span></p>
+<p>$$ x^n + n-1 \spaces\ge nx, \qquad (n \ge 1, x \ge 0) $$</p>
+<p><span lang="zh">在</span> <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]">Young <span lang="zh">引理</span></a></span> <span lang="zh">的条件中令</span> $p_i = \frac1n$, $(f_i)_{1\le i \le n}=(x^n, 1, 1, \cdots)$, $g = (x^n + n-1)n^{-1}$, <span lang="zh">这个时候以下条件显然成立</span></p>
+<p>$$
+\frac1n x^n + \underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n-1 ~ \text{times}} \spaces= \frac{x^n + n-1}n
+$$</p>
+<p><span lang="zh">于是可以得到</span> $(x^n)^{n^{-1}} \le (x^n + n-1)n^{-1}$. $\quad\Box$</p>
+</details></section><section class="block" data-taxon="Corollary"><details ><summary id="YL3C"><header><h1><span class="taxon">Corollary. </span><span lang="zh">加权算术平均</span>–<span lang="zh">几何平均不等式</span> <a class="slug" href="/YL3C">[YL3C]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/YL3C.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 15, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">我们要证的结果可以写成下面的样子</span></p>
+<p>$$
+\Big(\prod_{i \in S}z_i^{w_i}\Big)^{(\sum_{i \in S}w_{i})^{-1}}
+\spaces\le 
+\Big(\sum_{i \in S}w_iz_i\Big) \Big(\sum_{i \in S}w_i\Big)^{-1}
+$$</p>
+<p><span lang="zh">实际上可以利用对数的线性化对这个定理给出一个直接的证明</span>, <span lang="zh">不过这并非本文的重点</span>. <span lang="zh">我们在此处更关心如何将这些表达式调整为适合使用</span> <span class="link local"><a href="/YL2B" title="Young 引理 [YL2B]"><span lang="zh">此引理</span></a></span> <span lang="zh">的形式</span>. <span lang="zh">先引入一些记号</span>, <span lang="zh">用</span> $\Sigma_w$ <span lang="zh">表示</span> $\sum_{i \in S}w_{i}$, <span lang="zh">用</span> $\omega_i$ <span lang="zh">表示</span> $w_i\Sigma_w^{-1}$. <span lang="zh">这样目标就变成了</span></p>
+<p>$$ \prod_{i \in S}z_i^{\omega_i} \spaces\le \sum_{i \in S}\omega_iz_i $$</p>
+<p><span lang="zh">如果把这里的</span> $\omega_i$ <span lang="zh">看作</span> $p_i$, $z_i$ <span lang="zh">看作</span> $f_i$, $\sum_{i \in S}\omega_iz_i$ <span lang="zh">看作</span> $g$. <span lang="zh">那我们只要验证下面这件事</span></p>
+<p>$$
+\sum_{i \in S}\omega_iz_i \spaces\le \sum_{i \in S}\omega_iz_i
+$$</p>
+<p><span lang="zh">而这应该是很容易的</span>. $\quad\Box$</p>
+</details></section></details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-CAN0"><header><h1><span class="taxon"></span><span lang="zh">代数数可数</span> <a class="slug" href="/daily-surf/CAN0">[CAN0]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CAN0.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\Q{\mathbf{Q}}$
+$\gdef\N{\mathbf{N}}$
+$\gdef\C{\mathbf{C}}$</p>
+<p><span lang="zh">代数数即</span> $\Q$ <span lang="zh">系数首一多项式的根</span>, <span lang="zh">容易看出这也是任意整系数多项式方程的根</span>. 1874 <span lang="zh">年</span>, Cantor <span lang="zh">在文章</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article" title="“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen” [https://en.wikipedia.org/wiki/Cantor's_first_set_theory_article]">“Ueber eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen”</a></span> <span lang="zh">中运用</span> <span class="link local"><a href="/daily-surf/CAN2" title=" [daily-surf/CAN2]"><span lang="zh">多项式高度</span></a></span> <span lang="zh">的概念证明了实代数数的可数性</span>.</p>
+<p>Cantor <span lang="zh">的思路很大程度上可以视为一种数论策略</span>. <span lang="zh">他首先想的是对多项式</span> $P$ <span lang="zh">定义一个恰当的</span> [<span lang="zh">高度概念</span>][height] $H(P) \in \N$, <span lang="zh">使得一旦我们固定了正整数</span> $h$, <span lang="zh">则只会存在有限个多项式</span> $P$ <span lang="zh">满足</span> $H(P) = h$, <span lang="zh">且任意多项式都能被某个高度覆盖</span>. <span lang="zh">即用高度分类全体多项式的同时又控制了多项式的复杂程度</span>. <span lang="zh">随后</span>, <span lang="zh">代数基本定理保证给定</span> $n$ <span lang="zh">次多项式</span>, <span lang="zh">其根在</span> $\C$ <span lang="zh">上至多只有</span> $n$ <span lang="zh">个</span>, <span lang="zh">全体代数数便可以写为可数个有限集的并</span>, <span lang="zh">如此证得</span>.</p>
+<section class="block" data-taxon="Definition"><details ><summary id="daily-surf-CNA1"><header><h1><span class="taxon">Definition. </span>多项式高度 <a class="slug" href="/daily-surf/CNA1">[CNA1]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">对于任意一个</span> $\Z$-<span lang="zh">多项式</span> $P$, <span lang="zh">其高度</span> $H(P)$ <span lang="zh">限制了</span> $P$ <span lang="zh">的次数和系数</span>.</p>
+<p>$$
+H(P) \spaces= \deg P - 1 + \sum_{0 \le i \le n} |a_i|
+$$</p>
+</details></section><section class="block" data-taxon="Proof"><details ><summary id="daily-surf-__kodama_anon_subtree_internal__-daily-surf-CAN0-1"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block" data-taxon="Lemma"><details ><summary id="daily-surf-__kodama_anon_subtree_internal__-daily-surf-CAN0-0"><header><h1><span class="taxon">Lemma. </span>固定高度的多项式只有有限个 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\N{\mathbf{N}}$
+$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">固定</span> $h \in \N$, <span lang="zh">则集合</span> $P_h = \{ P \in \Z[x] : H(P) = h \}$ <span lang="zh">有限</span>. <span lang="zh">为了证明这件事</span>, <span lang="zh">注意到此时多项式的次数最多是</span> $h$, <span lang="zh">因为至少有一个非零整系数</span> $a_i$ <span lang="zh">使得</span> $|a_i| \ge 1$. <span lang="zh">另一方面</span>, <span lang="zh">每个</span> $a_i$ <span lang="zh">也满足</span> $|a_i| \le h$, <span lang="zh">因此一个多项式的所有信息都被正整数</span> $h$ <span lang="zh">控制</span>, <span lang="zh">故</span> $P_h$ <span lang="zh">有限</span>.</p>
+</details></section><section class="block" data-taxon="Lemma"><details ><summary id="daily-surf-__kodama_anon_subtree_internal__-daily-surf-CAN0-2"><header><h1><span class="taxon">Lemma. </span>固定高度的多项式的根集有限 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CAN0.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\C{\mathbf{C}}$</p>
+<p><span lang="zh">固定</span> $h \in \N$, <span lang="zh">集合</span> $R_h = \{ z \in \C : P(z) = 0, P \in P_h \}$ <span lang="zh">有限</span>. <span lang="zh">对</span> $P \in P_h$ <span lang="zh">处每一个固定的</span> $P$ <span lang="zh">使用代数基本定理</span>, <span lang="zh">便可得到此时的</span> $z$ <span lang="zh">也只有有限多个</span>.</p>
+</details></section><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\A{\mathbb{A}}$
+$\gdef\N{\mathbf{N}}$</p>
+<p><span lang="zh">根据代数数域</span> $\A$ <span lang="zh">的定义之一</span>, $\A = \bigcup_{h \in \N} R_h$ <span lang="zh">所以</span> $|\A| = |\N|$, <span lang="zh">故可数</span>.</p>
+</details></section></details></section><section class="block" data-taxon="Example"><details ><summary id="daily-surf-CPSI"><header><h1><span class="taxon">Example. </span><span lang="zh">循环幂和不等式</span> <a class="slug" href="/daily-surf/CPSI">[CPSI]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/CPSI.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 20, 2019</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">设</span> $0 &lt; x_1, x_2, \cdots, x_n &lt; 1$. <span lang="zh">试证</span></p>
+<p>$$
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} &gt; 1
+$$</p>
+<p><span lang="zh">利用</span> <span class="link local"><a href="/YL3B" title="Bernoulli 不等式 [YL3B]">Bernoulli <span lang="zh">不等式</span></a></span>, $(1+\frac{x}{y})^{\frac{1}{x}} \geqslant 1+\frac{1}{y} &gt; \frac{1}{y}$ <span lang="zh">得到</span> $1+\frac{x}{y} &gt; \frac{1}{y^x}$, <span lang="zh">即</span> $y^x &gt; \frac{1}{1+\frac{x}{y}}$.</p>
+<p>$$
+\begin{aligned}
+x_1^{x_2} + x_2^{x_3} + \cdots + x_n^{x_1} 
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{1}{1+\frac{x_1}{x_{i+1}}} \\
+&amp;\spaces&gt; \sum_{1 \leqslant i \leqslant n} \frac{x_{i+1}}{x_1 + x_2 + \cdots + x_n} \\
+&amp;\spaces= 1
+\end{aligned}
+$$</p>
+<p><span lang="zh">此处</span> $i+1$ <span lang="zh">按照</span> $\Z/n\Z$ <span lang="zh">处理</span>.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-GF2A"><header><h1><span class="taxon"></span><span lang="zh">生成函数系数</span> <a class="slug" href="/daily-surf/GF2A">[GF2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/GF2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\Z{\mathbf{Z}}$</p>
+<p><span lang="zh">设</span> $\frac1{(1-q)^3} = \sum_{u \ge 0} a_u q^u$, <span lang="zh">求</span> $a_n$.</p>
+<p><span lang="zh">不难发现</span>, <span class="link local"><a href="/daily-surf/GF2A" title="生成函数系数 [daily-surf/GF2A]"><span lang="zh">此处</span> $a_n$</a></span> <span lang="zh">同时也是</span> $x_1+x_2+x_3 = n$
+<span lang="zh">于</span> $\Z_{\ge 0}$ <span lang="zh">上解的个数</span>.
+<span lang="zh">在</span> <span class="link local"><a href="/daily-surf/GF3A" title="特殊有理函数展开式的系数 [daily-surf/GF3A]">$(1-q)^{-n}$ <span lang="zh">的系数</span></a></span> <span lang="zh">中取</span> $n = 3$, <span lang="zh">得到</span> $a_{u} = \frac{1}{2}(u + 2)(u + 1)$.</p>
+</details></section><section class="block" data-taxon="Proposition"><details ><summary id="daily-surf-GF3A"><header><h1><span class="taxon">Proposition. </span>$(1-q)^{-m}$ <span lang="zh">的系数</span> <a class="slug" href="/daily-surf/GF3A">[GF3A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/GF3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\d{\operatorname{d}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$</p>
+<p><span lang="zh">我们来证明</span></p>
+<p>$$
+\frac{1}{(1 - q)^{n}} 
+\spaces= \sum_{u \geq 0}\binom{n + u - 1}{u}q^{u}
+$$</p>
+<p><span lang="zh">对于</span> $(1-q)^{-m}$ <span lang="zh">这类特殊的有理函数</span>, <span lang="zh">注意到</span>
+$((1-q)^{-1})' = (1 - q)^{- 2}$. <span lang="zh">归纳地</span>, <span lang="zh">可以得到</span></p>
+<p>$$
+\frac{\d^{n}}{\d q^{n}}(1 - q)^{- 1} 
+\spaces= \frac{n!}{(1 - q)^{n + 1}} 
+\quads\Longrightarrow \frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{dq^{n - 1}}(1 - q)^{- 1}
+$$</p>
+<p><span lang="zh">另一方面</span>, <span lang="zh">我们知道几何级数满足</span>
+$\frac{1}{1 - q} = 1 + q + q^2 + \cdots = \sum_{u \geq 0}q^{u}$, <span lang="zh">代入可得</span></p>
+<p>$$
+\frac{1}{(1 - q)^{n}} 
+\spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}
+$$</p>
+<p><span lang="zh">现在我们再使用下面的观察</span></p>
+<p>$$ 
+\frac{\d^n}{\d x^n} x^m
+\spaces=
+\begin{cases}
+  x^{m-n} \prod_{0 \le k \le n-1}(m-k) &amp; n \le m \\
+  0 &amp; \text{otherwise} 
+\end{cases}
+$$</p>
+<p><span lang="zh">就可以算出</span> $\frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}$ <span lang="zh">这一部分</span></p>
+<p>$$
+\begin{aligned}
+\frac{1}{(1 - q)^{n}} 
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq n - 1}q^{u - (n - 1)}\prod_{0 \leq k \leq n - 2}(u - k) \\
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}\prod_{0 \leq k \leq n - 2}(u + n - k - 1) \\
+&amp;\spaces= \frac{1}{(n - 1)!} \cdot \sum_{u \geq 0}q^{u}(u + n - 1)(u + n - 2) \spaces\cdots (u + 1)
+\end{aligned}
+$$</p>
+<p>$q^{u}$ <span lang="zh">的系数从</span> $u = 0$ <span lang="zh">开始</span>, <span lang="zh">则系数可再一次简化为组合数</span></p>
+<p><figure><img src="/daily-surf/GF3B.svg" class="color-invert"/></figure></p>
+<p><span lang="zh">于是明所欲证</span>.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-euclid-step"><header><h1><span class="taxon"></span><span lang="zh">辗转相除法步数估计</span> <a class="slug" href="/daily-surf/euclid-step">[euclid-step]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/euclid-step.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">June 10, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p>1844 <span lang="zh">年</span>, 49 <span lang="zh">岁的法国数学家</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9" title="Gabriel Lamé [https://en.wikipedia.org/wiki/Gabriel_Lam%C3%A9]">Gabriel Lamé</a></span> <span lang="zh">发现</span>, <span lang="zh">设</span> $a,b$ <span lang="zh">两数辗转相除至余数为零所用步数为</span> $n$, <span lang="zh">则</span></p>
+<p>$$ n \spaces\le 1 + \log_\phi \min(a,b) $$</p>
+<p><span lang="zh">其中</span> $\phi = \frac{1+\sqrt5}{2}$ <span lang="zh">为黄金分割</span>. <span lang="zh">当然</span>, <span lang="zh">这也给出用递归实现</span> $\gcd$ <span lang="zh">函数的时间复杂度</span>. <span lang="zh">如今认为</span>, <span lang="zh">此结果标志着计算复杂度理论的开始</span>.</p>
+<p><span lang="zh">我们首先来证明</span> $n\le\log_\phi\sqrt{5}\min(a,b)$.
+<span lang="zh">不妨设</span> $a\gt b$, <span lang="zh">于是有</span> $a=qb+r_1,r_{k-1}=q_kr_k+r_{k+1}$, <span lang="zh">其中</span> $1\le k\le n-1$, <span lang="zh">显然一定有</span> $r_n=0$.
+<span lang="zh">还注意</span> $r_k$ <span lang="zh">依次递减且有</span> $r_k-r_{k+1}\ge1$, <span lang="zh">则</span> $r_{k-1}=q_kr_k+r_{k+1}\ge r_k+r_{k+1}$.
+<span lang="zh">将下标取反</span> $(s_k=r_{n-k})$ <span lang="zh">即</span> $s_{k+1}\ge s_k+s_{k-1}$. <span lang="zh">故考虑</span> Fibonacci <span lang="zh">数列</span> $F_n$, <span lang="zh">知</span> $s_k\ge F_k$, <span lang="zh">即</span> $b\ge F_n$, <span lang="zh">又</span> $F_n \sim \frac{\phi^n}{\sqrt5}$, <span lang="zh">证毕</span>.</p>
+<p><span lang="zh">现在</span>, <span lang="zh">注意到此估计与待证估计之差为</span></p>
+<p>$$
+\begin{aligned}
+\log_{\phi}\sqrt5-1 \
+&amp;\spaces= \dfrac{\log\sqrt5}{\log\dfrac{1+\sqrt5}{2}}-1 \\ 
+&amp;\spaces= \dfrac{1}{2}\cdot\dfrac{\log5}{\log(1+\sqrt5)-\log2}-1\\ 
+&amp;\spaces\lt 2\cdot\dfrac{\log5}{\log5}-1 \\ 
+&amp;\spaces= 1
+\end{aligned}
+$$</p>
+<p><span lang="zh">其中最后一个不等号是因为</span>, <span lang="zh">根据基本不等式</span> $1+\sqrt5 \ge 2\cdot5^{1/4}$, <span lang="zh">于是</span></p>
+<p>$$
+\log(1+\sqrt5) - \log2 
+\spaces\gt\log(2\cdot5^{1/4})-\log2 
+\spaces=\tfrac{1}{4}\log5
+$$</p>
+<p><span lang="zh">故</span> $n \le \log_{\phi}b+1$.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-gaussian-integral"><header><h1><span class="taxon"></span><span lang="zh">极坐标出现前人们怎样计算高斯积分</span> <a class="slug" href="/daily-surf/gaussian-integral">[gaussian-integral]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/gaussian-integral.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 2, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p><span lang="zh">这一证明最早似乎来自</span> Michael Rozman. <span lang="zh">除此之外</span> MSE <span lang="zh">上也有极类似的回答</span>, <span lang="zh">见</span> <span class="link external"><a href="https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick" title="此处 [https://math.stackexchange.com/questions/390850/integrating-int-infty-0-e-x2-dx-using-feynmans-parametrization-trick]"><span lang="zh">此处</span></a></span>.</p>
+<blockquote>
+<p>M. Rozman, Evaluate Gaussian integral using differentiation under the integral sign, Course notes for Physics 2400 (UConn), Spring 2016.</p>
+</blockquote>
+<p>$\gdef\R{\mathbf{R}}$
+$\gdef\spaces#1{~ #1 ~}$
+$\gdef\d{\operatorname{d}}$</p>
+<p><span lang="zh">核心技巧来自一个函数</span> $F(t)$ <span lang="zh">的构造</span>. <span lang="zh">对</span> $t \in \R$ <span lang="zh">定义如下函数</span></p>
+<p>$$
+F(t) \spaces= \int_0^\infty \frac{e^{-t^2(1+x^2)}}{1+x^2} \d x
+$$</p>
+<p><span lang="zh">容易验证</span> $F(t)$ <span lang="zh">满足</span> $F(0)=\frac{\pi}{2}$, $F(\infty) = 0$, <span lang="zh">以及最关键的</span></p>
+<p>$$
+F'(t) 
+\spaces= \int_0^\infty -2te^{-t^2(1+x^2)} \d x 
+\spaces= -2te^{-t^2} \int_0^\infty e^{-(tx)^2} \d x
+$$</p>
+<p><span lang="zh">记高斯积分为</span> $I$. <span lang="zh">这就有</span> $F'(t) = -2Ie^{-t^2}$, <span lang="zh">此时再求</span> $F'(t)$ <span lang="zh">于</span> $[0, \infty)$, <span lang="zh">上的积分</span>, <span lang="zh">就能得到</span></p>
+<p>$$
+F(\infty)- F(0) \spaces= -2I \int_0^\infty e^{-t^2} \d t \spaces= -2I^2
+$$</p>
+<p><span lang="zh">于是这给出</span> $I = \frac{\sqrt\pi}2$.</p>
+</details></section><section class="block" data-taxon="Theorem"><details ><summary id="data-structure-deletion-contraction"><header><h1><span class="taxon">Theorem. </span><span lang="zh">删除</span>–<span lang="zh">收缩公式</span> <a class="slug" href="/data-structure/deletion-contraction">[deletion-contraction]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/deletion-contraction.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">July 21, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\quads#1{\quad #1 \quad}$
+$\gdef\without{\setminus}$</p>
+<p><span lang="zh">对于简单图</span> $G$, <span lang="zh">其色多项式</span> $\pi(G)$ <span lang="zh">成立如下关系</span></p>
+<p>$$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$</p>
+<section class="block" data-taxon="Proof"><details ><summary id="data-structure-__kodama_anon_subtree_internal__-data-structure-deletion-contraction-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/deletion-contraction.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\sstr#1{~#1~}$</p>
+<p><span lang="zh">假定边</span> $e$ <span lang="zh">的两个端点分别为</span> $A,B$, <span lang="zh">不难发现</span></p>
+<p>$$
+\begin{aligned} 
+\pi(G \without e) 
+&amp;\spaces= \pi(G \without e \sstr{中} A,B ~同色的部分) ~ + ~ \pi(G \without e \sstr{中} A,B ~异色的部分) \\
+&amp;\spaces= \pi(G / e) ~ + ~ \pi(G)
+\end{aligned}
+$$</p>
+<p><span lang="zh">此处</span>, $G \without e$ <span lang="zh">是将</span> $G$ <span lang="zh">的边</span> $e$ <span lang="zh">删去</span>, $G/e$ <span lang="zh">是将</span> $e$ <span lang="zh">两侧的顶点合并为一个</span>.</p>
+</details></section><p><span lang="zh">这个结果可等价地叙述成连接的版本</span>, <span lang="zh">可称为</span> “<span lang="zh">连接</span>–<span lang="zh">收缩公式</span>”. <span lang="zh">对于简单图</span> $G = (V, E)$</p>
+<p>$$ \pi(G) \spaces= \pi(G + uv) \spaces+ \pi(G / uv), \quad \forall ~ uv \notin E $$</p>
+<p><span lang="zh">这里</span>, $G+e$ <span lang="zh">是指将</span> $e$ <span lang="zh">两侧的顶点连接</span>, $u v$ <span lang="zh">是指顶点</span> $u, v$ <span lang="zh">连接得到的边</span>.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="mille-plateaux-bubble-compose"><header><h1><span class="taxon"></span>冒泡排序合成置换分解 <a class="slug" href="/mille-plateaux/bubble-compose">[bubble-compose]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/bubble-compose.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    
+    <p>任意置换 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.595em; height: 0.683em;" viewBox="0 0 6.544999999999999 7.513000000000001" width="6.544999999999999pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="gE93D20F2752445B9A3D51A1B700338B1" overflow="visible"><path d="M 0 0m 5.775 4.741 h -2.4750001 c -0.5279999 0 -1.023 -0.16499996 -1.474 -0.50600004 c -0.704 -0.53900003 -1.408 -1.4850001 -1.408 -2.607 c 0 -0.99 0.68200004 -1.7490001 1.6719999 -1.7490001 c 0.737 0 1.3970001 0.319 1.958 0.95699996 c 0.53900003 0.61600006 0.803 1.2980001 0.803 2.057 c 0 0.45099998 -0.09899998 0.82500005 -0.29699993 1.1330001 h 1.1110001 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.1869998 0.3080001 -0.4619999 0.3080001 Z m -4.598 -3.4100003 c 0 0.64900005 0.15399992 1.2429999 0.47299993 1.771 c 0.37399995 0.61599994 0.8579999 0.924 1.4629999 0.924 c 0.638 0 0.95700026 -0.32999992 0.95700026 -1.0009999 c 0 -0.2750001 -0.055000305 -0.5940001 -0.1650002 -0.9680002 c -0.22000003 -0.7809999 -0.58299994 -1.3309999 -1.089 -1.6279999 c -0.25300002 -0.15399998 -0.4949999 -0.23099999 -0.7149999 -0.23099999 c -0.605 0 -0.924 0.495 -0.924 1.133 Z "/></symbol></defs></svg></span> 都可被写成若干个对换之积. 这里, 集合 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.879em; height: 0.683em;" viewBox="0 0 9.669 7.513000000000001" width="9.669pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g46182BCDFBF1DCCA9E470C1ED97B9A27" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g46182BCDFBF1DCCA9E470C1ED97B9A27" overflow="visible"><path d="M 0 0m 9.174 7.513 c -0.18700027 0 -0.8359995 -0.032999992 -1.0229998 -0.032999992 c -0.22000027 0 -0.99000025 0.032999992 -1.21 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.26399994 c 0 -0.09899998 0.055000305 -0.15400028 0.17600012 -0.16499996 c 0.26399994 -0.032999992 0.3959999 -0.12100029 0.3959999 -0.28600025 c 0 -0.09899998 -0.065999985 -0.21999979 -0.19799995 -0.36299992 l -1.7159996 -1.848 c -0.31900024 0.74800014 -0.62700033 1.4850001 -0.9460001 2.2330003 c 0.01099968 0.021999836 0.021999836 0.043999672 0.05499983 0.065999985 c 0.09899998 0.10999966 0.28600025 0.17599964 0.5500002 0.19799995 c 0.17599964 0.021999836 0.26399994 0.10999966 0.26399994 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.20900011 0.17600012 c -0.26399994 0 -1.1110001 -0.032999992 -1.375 -0.032999992 c -0.23099995 0 -0.99 0.032999992 -1.221 0.032999992 c -0.16499996 0 -0.2420001 -0.08799982 -0.2420001 -0.26399994 c 0 -0.11000013 0.099000216 -0.16499996 0.29700017 -0.16499996 c 0.4949999 0 0.6489999 0 0.7809999 -0.31900024 l 1.2760003 -3.0029998 l -2.288 -2.453 c -0.03300023 -0.032999992 -0.07700014 -0.07700002 -0.13200021 -0.110000014 c -0.45099986 -0.473 -0.96799994 -0.737 -1.573 -0.77 c -0.187 -0.011000007 -0.286 -0.109999985 -0.286 -0.27499998 c 0.032999992 -0.099 0.044 -0.154 0.187 -0.154 c 0.187 0 0.83599997 0.033 1.023 0.033 c 0.23100007 0 0.99 -0.033 1.221 -0.033 c 0.16499996 0 0.2420001 0.088 0.2420001 0.264 c 0 0.09900001 -0.055000067 0.15399998 -0.17600012 0.16499999 c -0.26399994 0.022000015 -0.3959999 0.12100002 -0.3959999 0.28599998 c 0 0.110000014 0.09899998 0.264 0.286 0.46200007 c 0.6819999 0.72599995 1.375 1.4519999 2.046 2.189 c 0.37400007 -0.89100003 0.7589998 -1.7709999 1.1219997 -2.6729999 c -0.01099968 -0.022000015 -0.021999836 -0.04400003 -0.05499983 -0.07700002 c -0.09899998 -0.09899998 -0.2750001 -0.15399998 -0.53900003 -0.187 c -0.16499996 -0.021999985 -0.25299978 -0.109999985 -0.25299978 -0.253 c 0 -0.121 0.065999985 -0.176 0.20899963 -0.176 l 1.375 0.033 c 0.23100042 0 1.0010004 -0.033 1.1990004 -0.033 c 0.16499996 0 0.25300026 0.088 0.25300026 0.253 c 0 0.110000014 -0.07700062 0.16499999 -0.24200058 0.176 c -0.3409996 0 -0.5609999 0.011000007 -0.638 0.055000007 c -0.076999664 0.044 -0.16499996 0.17599997 -0.25299978 0.396 l -1.3969998 3.3329997 c 0.74799967 0.7920003 1.309 1.3860002 1.6719999 1.7930002 c 0.26399994 0.2750001 0.44000006 0.4619999 0.53900003 0.53900003 c 0.4069996 0.34100008 0.8579998 0.5169997 1.3529997 0.53900003 c 0.23099995 0.01099968 0.28600025 0.065999985 0.28600025 0.27499962 c -0.032999992 0.099000454 -0.043999672 0.15400028 -0.18700027 0.15400028 Z "/></symbol></defs></svg></span> 上的置换是指 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.879em; height: 0.683em;" viewBox="0 0 9.669 7.513000000000001" width="9.669pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g46182BCDFBF1DCCA9E470C1ED97B9A27" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g46182BCDFBF1DCCA9E470C1ED97B9A27" overflow="visible"><path d="M 0 0m 9.174 7.513 c -0.18700027 0 -0.8359995 -0.032999992 -1.0229998 -0.032999992 c -0.22000027 0 -0.99000025 0.032999992 -1.21 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.26399994 c 0 -0.09899998 0.055000305 -0.15400028 0.17600012 -0.16499996 c 0.26399994 -0.032999992 0.3959999 -0.12100029 0.3959999 -0.28600025 c 0 -0.09899998 -0.065999985 -0.21999979 -0.19799995 -0.36299992 l -1.7159996 -1.848 c -0.31900024 0.74800014 -0.62700033 1.4850001 -0.9460001 2.2330003 c 0.01099968 0.021999836 0.021999836 0.043999672 0.05499983 0.065999985 c 0.09899998 0.10999966 0.28600025 0.17599964 0.5500002 0.19799995 c 0.17599964 0.021999836 0.26399994 0.10999966 0.26399994 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.20900011 0.17600012 c -0.26399994 0 -1.1110001 -0.032999992 -1.375 -0.032999992 c -0.23099995 0 -0.99 0.032999992 -1.221 0.032999992 c -0.16499996 0 -0.2420001 -0.08799982 -0.2420001 -0.26399994 c 0 -0.11000013 0.099000216 -0.16499996 0.29700017 -0.16499996 c 0.4949999 0 0.6489999 0 0.7809999 -0.31900024 l 1.2760003 -3.0029998 l -2.288 -2.453 c -0.03300023 -0.032999992 -0.07700014 -0.07700002 -0.13200021 -0.110000014 c -0.45099986 -0.473 -0.96799994 -0.737 -1.573 -0.77 c -0.187 -0.011000007 -0.286 -0.109999985 -0.286 -0.27499998 c 0.032999992 -0.099 0.044 -0.154 0.187 -0.154 c 0.187 0 0.83599997 0.033 1.023 0.033 c 0.23100007 0 0.99 -0.033 1.221 -0.033 c 0.16499996 0 0.2420001 0.088 0.2420001 0.264 c 0 0.09900001 -0.055000067 0.15399998 -0.17600012 0.16499999 c -0.26399994 0.022000015 -0.3959999 0.12100002 -0.3959999 0.28599998 c 0 0.110000014 0.09899998 0.264 0.286 0.46200007 c 0.6819999 0.72599995 1.375 1.4519999 2.046 2.189 c 0.37400007 -0.89100003 0.7589998 -1.7709999 1.1219997 -2.6729999 c -0.01099968 -0.022000015 -0.021999836 -0.04400003 -0.05499983 -0.07700002 c -0.09899998 -0.09899998 -0.2750001 -0.15399998 -0.53900003 -0.187 c -0.16499996 -0.021999985 -0.25299978 -0.109999985 -0.25299978 -0.253 c 0 -0.121 0.065999985 -0.176 0.20899963 -0.176 l 1.375 0.033 c 0.23100042 0 1.0010004 -0.033 1.1990004 -0.033 c 0.16499996 0 0.25300026 0.088 0.25300026 0.253 c 0 0.110000014 -0.07700062 0.16499999 -0.24200058 0.176 c -0.3409996 0 -0.5609999 0.011000007 -0.638 0.055000007 c -0.076999664 0.044 -0.16499996 0.17599997 -0.25299978 0.396 l -1.3969998 3.3329997 c 0.74799967 0.7920003 1.309 1.3860002 1.6719999 1.7930002 c 0.26399994 0.2750001 0.44000006 0.4619999 0.53900003 0.53900003 c 0.4069996 0.34100008 0.8579998 0.5169997 1.3529997 0.53900003 c 0.23099995 0.01099968 0.28600025 0.065999985 0.28600025 0.27499962 c -0.032999992 0.099000454 -0.043999672 0.15400028 -0.18700027 0.15400028 Z "/></symbol></defs></svg></span> 到 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.879em; height: 0.683em;" viewBox="0 0 9.669 7.513000000000001" width="9.669pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g46182BCDFBF1DCCA9E470C1ED97B9A27" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g46182BCDFBF1DCCA9E470C1ED97B9A27" overflow="visible"><path d="M 0 0m 9.174 7.513 c -0.18700027 0 -0.8359995 -0.032999992 -1.0229998 -0.032999992 c -0.22000027 0 -0.99000025 0.032999992 -1.21 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.26399994 c 0 -0.09899998 0.055000305 -0.15400028 0.17600012 -0.16499996 c 0.26399994 -0.032999992 0.3959999 -0.12100029 0.3959999 -0.28600025 c 0 -0.09899998 -0.065999985 -0.21999979 -0.19799995 -0.36299992 l -1.7159996 -1.848 c -0.31900024 0.74800014 -0.62700033 1.4850001 -0.9460001 2.2330003 c 0.01099968 0.021999836 0.021999836 0.043999672 0.05499983 0.065999985 c 0.09899998 0.10999966 0.28600025 0.17599964 0.5500002 0.19799995 c 0.17599964 0.021999836 0.26399994 0.10999966 0.26399994 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.20900011 0.17600012 c -0.26399994 0 -1.1110001 -0.032999992 -1.375 -0.032999992 c -0.23099995 0 -0.99 0.032999992 -1.221 0.032999992 c -0.16499996 0 -0.2420001 -0.08799982 -0.2420001 -0.26399994 c 0 -0.11000013 0.099000216 -0.16499996 0.29700017 -0.16499996 c 0.4949999 0 0.6489999 0 0.7809999 -0.31900024 l 1.2760003 -3.0029998 l -2.288 -2.453 c -0.03300023 -0.032999992 -0.07700014 -0.07700002 -0.13200021 -0.110000014 c -0.45099986 -0.473 -0.96799994 -0.737 -1.573 -0.77 c -0.187 -0.011000007 -0.286 -0.109999985 -0.286 -0.27499998 c 0.032999992 -0.099 0.044 -0.154 0.187 -0.154 c 0.187 0 0.83599997 0.033 1.023 0.033 c 0.23100007 0 0.99 -0.033 1.221 -0.033 c 0.16499996 0 0.2420001 0.088 0.2420001 0.264 c 0 0.09900001 -0.055000067 0.15399998 -0.17600012 0.16499999 c -0.26399994 0.022000015 -0.3959999 0.12100002 -0.3959999 0.28599998 c 0 0.110000014 0.09899998 0.264 0.286 0.46200007 c 0.6819999 0.72599995 1.375 1.4519999 2.046 2.189 c 0.37400007 -0.89100003 0.7589998 -1.7709999 1.1219997 -2.6729999 c -0.01099968 -0.022000015 -0.021999836 -0.04400003 -0.05499983 -0.07700002 c -0.09899998 -0.09899998 -0.2750001 -0.15399998 -0.53900003 -0.187 c -0.16499996 -0.021999985 -0.25299978 -0.109999985 -0.25299978 -0.253 c 0 -0.121 0.065999985 -0.176 0.20899963 -0.176 l 1.375 0.033 c 0.23100042 0 1.0010004 -0.033 1.1990004 -0.033 c 0.16499996 0 0.25300026 0.088 0.25300026 0.253 c 0 0.110000014 -0.07700062 0.16499999 -0.24200058 0.176 c -0.3409996 0 -0.5609999 0.011000007 -0.638 0.055000007 c -0.076999664 0.044 -0.16499996 0.17599997 -0.25299978 0.396 l -1.3969998 3.3329997 c 0.74799967 0.7920003 1.309 1.3860002 1.6719999 1.7930002 c 0.26399994 0.2750001 0.44000006 0.4619999 0.53900003 0.53900003 c 0.4069996 0.34100008 0.8579998 0.5169997 1.3529997 0.53900003 c 0.23099995 0.01099968 0.28600025 0.065999985 0.28600025 0.27499962 c -0.032999992 0.099000454 -0.043999672 0.15400028 -0.18700027 0.15400028 Z "/></symbol></defs></svg></span> 的双射. 而对换 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 1.8800000000000001em; height: 0.683em;" viewBox="0 0 20.68 7.513000000000001" width="20.68pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g36AA38D166ED963013BA6FE364B22A9D" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 4.279 7.513000000000001)"><use xlink:href="#g9844A54DF152B4E936553AFE77904ED7" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.074 7.513000000000001)"/><g class="typst-text" transform="matrix(1 0 0 -1 11.726 7.513000000000001)"><use xlink:href="#gF7073A72AAEC448EB6336E0A2F53FDB" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 16.401 7.513000000000001)"><use xlink:href="#gAD546D80CD3616A0658E5302973907D9" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g36AA38D166ED963013BA6FE364B22A9D" overflow="visible"><path d="M 0 0m 3.498 -2.728 c 0.09899998 0 0.15400004 0.05499983 0.15400004 0.15400004 c 0 0.032999992 -0.022000074 0.0769999 -0.055000067 0.12099981 c -0.5719998 0.44000006 -1.0339999 1.1660001 -1.375 2.167 c -0.29699993 0.869 -0.45099986 1.727 -0.45099986 2.5740001 v 0.9239998 c 0 0.8470001 0.15399992 1.7049999 0.45099986 2.574 c 0.34100008 1.0010004 0.8030002 1.7270002 1.375 2.1670003 c 0.032999992 0.032999992 0.055000067 0.076999664 0.055000067 0.12100029 c 0 0.09899998 -0.055000067 0.15399933 -0.15400004 0.15399933 c -0.010999918 0 -0.04399991 -0.01099968 -0.0769999 -0.032999992 c -0.6600001 -0.50599957 -1.21 -1.2539997 -1.661 -2.2549996 c -0.42900002 -0.95700026 -0.64900005 -1.8590002 -0.64900005 -2.7280002 v -0.9239998 c 0 -0.8690001 0.22000003 -1.7710001 0.64900005 -2.7280002 c 0.45099998 -1.0009999 1.0009999 -1.7489998 1.661 -2.2549999 c 0.032999992 -0.022000074 0.065999985 -0.032999992 0.0769999 -0.032999992 Z "/></symbol><symbol id="g9844A54DF152B4E936553AFE77904ED7" overflow="visible"><path d="M 0 0m 3.124 6.831 c 0 0.29699993 -0.14300013 0.44000006 -0.44000006 0.44000006 c -0.3080001 0 -0.61599994 -0.3080001 -0.61599994 -0.6160002 c 0 -0.29699993 0.1539998 -0.43999958 0.45099998 -0.43999958 c 0.30799985 0 0.605 0.3079996 0.605 0.6159997 Z m -0.2750001 -5.3129997 c -0.2420001 -0.869 -0.5940001 -1.309 -1.045 -1.309 c -0.143 0 -0.22000003 0.09900001 -0.22000003 0.30800003 c 0 0.18699998 0.319 1.1329999 0.96800005 2.849 c 0.08799982 0.25300002 0.13199997 0.45099998 0.13199997 0.5940001 c 0 0.53900003 -0.37400007 0.93499994 -0.913 0.93499994 c -0.47300005 0 -0.847 -0.2750001 -1.122 -0.83599997 c -0.22 -0.45099998 -0.32999998 -0.74800014 -0.32999998 -0.89100003 c 0 -0.09899998 0.055000007 -0.14299989 0.176 -0.14299989 c 0.143 0 0.16499996 0.065999985 0.20899999 0.21999979 c 0.25300002 0.8800001 0.594 1.3200002 1.034 1.3200002 c 0.143 0 0.21999991 -0.09899998 0.21999991 -0.3080001 c 0 -0.1539998 -0.032999992 -0.32999992 -0.109999895 -0.53900003 c -0.25300002 -0.69299984 -0.5170001 -1.4299998 -0.7370001 -2.013 c -0.16499996 -0.44000006 -0.25299996 -0.73700005 -0.25299996 -0.89100003 c 0 -0.53900003 0.39599997 -0.935 0.92399997 -0.935 c 0.47299993 0 0.847 0.275 1.1220001 0.825 c 0.20899987 0.42900002 0.319 0.72599995 0.319 0.89100003 c 0 0.09899998 -0.055000067 0.15399992 -0.17600012 0.15399992 c -0.032999992 0 -0.19799995 -0.09899998 -0.19799995 -0.23099995 Z "/></symbol><symbol id="gF7073A72AAEC448EB6336E0A2F53FDB" overflow="visible"><path d="M 0 0m 4.367 6.831 c 0 0.29699993 -0.15400028 0.44000006 -0.4510002 0.44000006 c -0.30799985 0 -0.61599994 -0.3080001 -0.61599994 -0.6160002 c 0 -0.29699993 0.14300013 -0.43999958 0.44000006 -0.43999958 c 0.30799985 0 0.6270001 0.3079996 0.6270001 0.6159997 Z m -1.4300001 -1.947 c -0.58299994 0 -1.0780001 -0.44000006 -1.32 -0.8249998 c -0.29700005 -0.47300005 -0.43999994 -0.77 -0.43999994 -0.90199995 c 0 -0.09899998 0.054999948 -0.14300013 0.16499996 -0.14300013 c 0.054999948 0 0.08799994 0.011000156 0.12099993 0.022000074 c 0.055000067 0.08800006 0.08800006 0.16499996 0.12100005 0.22000003 c 0.352 0.86899996 0.79199994 1.2979999 1.32 1.2979999 c 0.19799995 0 0.29699993 -0.1539998 0.29699993 -0.45099974 c 0 -0.1650002 -0.022000074 -0.35200024 -0.0769999 -0.5500002 l -1.0120001 -4.059 c -0.15400004 -0.6380001 -0.594 -1.4189999 -1.287 -1.4189999 c -0.09899998 0 -0.19800001 0.010999918 -0.297 0.04399991 c 0.27499998 0.110000014 0.407 0.3080001 0.407 0.58300006 c 0 0.286 -0.15399998 0.42899996 -0.451 0.42899996 c -0.352 0 -0.627 -0.31899995 -0.627 -0.67099994 c 0 -0.48399997 0.473 -0.7149999 0.99 -0.7149999 c 0.47299993 0 0.913 0.16499996 1.32 0.4949999 c 0.385 0.319 0.62699986 0.72599995 0.7479999 1.199 l 1.0009999 3.9819999 c 0.032999992 0.14299989 0.055000067 0.286 0.055000067 0.41799998 c 0 0.6049998 -0.4289999 1.0449998 -1.0339999 1.0449998 Z "/></symbol><symbol id="gAD546D80CD3616A0658E5302973907D9" overflow="visible"><path d="M 0 0m 0.858 -2.695 c 0.66 0.50600004 1.21 1.254 1.661 2.2549999 c 0.4289999 0.957 0.6489999 1.859 0.6489999 2.7280002 v 0.9239998 c 0 0.86899996 -0.22000003 1.7709999 -0.6489999 2.7280002 c -0.45099998 1.0009999 -1.001 1.7490001 -1.661 2.2549996 c -0.032999992 0.022000313 -0.065999985 0.032999992 -0.07699996 0.032999992 c -0.09900004 0 -0.15400004 -0.05499935 -0.15400004 -0.15399933 c 0 -0.044000626 0.022000015 -0.0880003 0.055000007 -0.12100029 c 0.57199997 -0.44000006 1.0339999 -1.1659999 1.375 -2.1670003 c 0.29700017 -0.86899996 0.45099998 -1.7269998 0.45099998 -2.574 v -0.9239998 c 0 -0.8470001 -0.1539998 -1.7050002 -0.45099998 -2.5740001 c -0.34099996 -1.0009999 -0.803 -1.727 -1.375 -2.167 c -0.032999992 -0.04399991 -0.055000007 -0.08799982 -0.055000007 -0.12099981 c 0 -0.099000216 0.055000007 -0.15400004 0.15400004 -0.15400004 c 0.010999978 0 0.04399997 0.010999918 0.07699996 0.032999992 Z "/></symbol></defs></svg></span> 则是交换元素 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 1.2146666666666668em; height: 0.683em;" viewBox="0 0 13.361333333333334 7.513000000000001" width="13.361333333333334pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g9844A54DF152B4E936553AFE77904ED7" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 3.795 7.513000000000001)"><use xlink:href="#g381A59C3AE8F7DE1CC21C8669CE5AA16" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.686333333333334 7.513000000000001)"><use xlink:href="#gF7073A72AAEC448EB6336E0A2F53FDB" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g9844A54DF152B4E936553AFE77904ED7" overflow="visible"><path d="M 0 0m 3.124 6.831 c 0 0.29699993 -0.14300013 0.44000006 -0.44000006 0.44000006 c -0.3080001 0 -0.61599994 -0.3080001 -0.61599994 -0.6160002 c 0 -0.29699993 0.1539998 -0.43999958 0.45099998 -0.43999958 c 0.30799985 0 0.605 0.3079996 0.605 0.6159997 Z m -0.2750001 -5.3129997 c -0.2420001 -0.869 -0.5940001 -1.309 -1.045 -1.309 c -0.143 0 -0.22000003 0.09900001 -0.22000003 0.30800003 c 0 0.18699998 0.319 1.1329999 0.96800005 2.849 c 0.08799982 0.25300002 0.13199997 0.45099998 0.13199997 0.5940001 c 0 0.53900003 -0.37400007 0.93499994 -0.913 0.93499994 c -0.47300005 0 -0.847 -0.2750001 -1.122 -0.83599997 c -0.22 -0.45099998 -0.32999998 -0.74800014 -0.32999998 -0.89100003 c 0 -0.09899998 0.055000007 -0.14299989 0.176 -0.14299989 c 0.143 0 0.16499996 0.065999985 0.20899999 0.21999979 c 0.25300002 0.8800001 0.594 1.3200002 1.034 1.3200002 c 0.143 0 0.21999991 -0.09899998 0.21999991 -0.3080001 c 0 -0.1539998 -0.032999992 -0.32999992 -0.109999895 -0.53900003 c -0.25300002 -0.69299984 -0.5170001 -1.4299998 -0.7370001 -2.013 c -0.16499996 -0.44000006 -0.25299996 -0.73700005 -0.25299996 -0.89100003 c 0 -0.53900003 0.39599997 -0.935 0.92399997 -0.935 c 0.47299993 0 0.847 0.275 1.1220001 0.825 c 0.20899987 0.42900002 0.319 0.72599995 0.319 0.89100003 c 0 0.09899998 -0.055000067 0.15399992 -0.17600012 0.15399992 c -0.032999992 0 -0.19799995 -0.09899998 -0.19799995 -0.23099995 Z "/></symbol><symbol id="g381A59C3AE8F7DE1CC21C8669CE5AA16" overflow="visible"><path d="M 0 0m 1.529 1.166 c -0.352 0 -0.58300006 -0.264 -0.58300006 -0.616 c 0 -0.33 0.25300002 -0.605 0.58300006 -0.605 c 0.15399992 0 0.2859999 0.044 0.385 0.143 l 0.010999918 -0.088 c 0 -0.693 -0.23099995 -1.287 -0.69299996 -1.76 c -0.07700002 -0.08800006 -0.12100005 -0.15400004 -0.12100005 -0.19799995 c 0 -0.11000013 0.04400003 -0.16499996 0.143 -0.16499996 c 0.0990001 0 0.23100007 0.13199997 0.41799998 0.38499987 c 0.37400007 0.528 0.5610001 1.1110001 0.5610001 1.738 c 0 0.583 -0.19799995 1.166 -0.704 1.166 Z "/></symbol><symbol id="gF7073A72AAEC448EB6336E0A2F53FDB" overflow="visible"><path d="M 0 0m 4.367 6.831 c 0 0.29699993 -0.15400028 0.44000006 -0.4510002 0.44000006 c -0.30799985 0 -0.61599994 -0.3080001 -0.61599994 -0.6160002 c 0 -0.29699993 0.14300013 -0.43999958 0.44000006 -0.43999958 c 0.30799985 0 0.6270001 0.3079996 0.6270001 0.6159997 Z m -1.4300001 -1.947 c -0.58299994 0 -1.0780001 -0.44000006 -1.32 -0.8249998 c -0.29700005 -0.47300005 -0.43999994 -0.77 -0.43999994 -0.90199995 c 0 -0.09899998 0.054999948 -0.14300013 0.16499996 -0.14300013 c 0.054999948 0 0.08799994 0.011000156 0.12099993 0.022000074 c 0.055000067 0.08800006 0.08800006 0.16499996 0.12100005 0.22000003 c 0.352 0.86899996 0.79199994 1.2979999 1.32 1.2979999 c 0.19799995 0 0.29699993 -0.1539998 0.29699993 -0.45099974 c 0 -0.1650002 -0.022000074 -0.35200024 -0.0769999 -0.5500002 l -1.0120001 -4.059 c -0.15400004 -0.6380001 -0.594 -1.4189999 -1.287 -1.4189999 c -0.09899998 0 -0.19800001 0.010999918 -0.297 0.04399991 c 0.27499998 0.110000014 0.407 0.3080001 0.407 0.58300006 c 0 0.286 -0.15399998 0.42899996 -0.451 0.42899996 c -0.352 0 -0.627 -0.31899995 -0.627 -0.67099994 c 0 -0.48399997 0.473 -0.7149999 0.99 -0.7149999 c 0.47299993 0 0.913 0.16499996 1.32 0.4949999 c 0.385 0.319 0.62699986 0.72599995 0.7479999 1.199 l 1.0009999 3.9819999 c 0.032999992 0.14299989 0.055000067 0.286 0.055000067 0.41799998 c 0 0.6049998 -0.4289999 1.0449998 -1.0339999 1.0449998 Z "/></symbol></defs></svg></span> 位置的映射.</p>
+    <section class="block" data-taxon="Proof"><details ><summary id="mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-bubble-compose-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/bubble-compose.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>冒泡排序使用若干次对换将 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.879em; height: 0.683em;" viewBox="0 0 9.669 7.513000000000001" width="9.669pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g46182BCDFBF1DCCA9E470C1ED97B9A27" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g46182BCDFBF1DCCA9E470C1ED97B9A27" overflow="visible"><path d="M 0 0m 9.174 7.513 c -0.18700027 0 -0.8359995 -0.032999992 -1.0229998 -0.032999992 c -0.22000027 0 -0.99000025 0.032999992 -1.21 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.26399994 c 0 -0.09899998 0.055000305 -0.15400028 0.17600012 -0.16499996 c 0.26399994 -0.032999992 0.3959999 -0.12100029 0.3959999 -0.28600025 c 0 -0.09899998 -0.065999985 -0.21999979 -0.19799995 -0.36299992 l -1.7159996 -1.848 c -0.31900024 0.74800014 -0.62700033 1.4850001 -0.9460001 2.2330003 c 0.01099968 0.021999836 0.021999836 0.043999672 0.05499983 0.065999985 c 0.09899998 0.10999966 0.28600025 0.17599964 0.5500002 0.19799995 c 0.17599964 0.021999836 0.26399994 0.10999966 0.26399994 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.20900011 0.17600012 c -0.26399994 0 -1.1110001 -0.032999992 -1.375 -0.032999992 c -0.23099995 0 -0.99 0.032999992 -1.221 0.032999992 c -0.16499996 0 -0.2420001 -0.08799982 -0.2420001 -0.26399994 c 0 -0.11000013 0.099000216 -0.16499996 0.29700017 -0.16499996 c 0.4949999 0 0.6489999 0 0.7809999 -0.31900024 l 1.2760003 -3.0029998 l -2.288 -2.453 c -0.03300023 -0.032999992 -0.07700014 -0.07700002 -0.13200021 -0.110000014 c -0.45099986 -0.473 -0.96799994 -0.737 -1.573 -0.77 c -0.187 -0.011000007 -0.286 -0.109999985 -0.286 -0.27499998 c 0.032999992 -0.099 0.044 -0.154 0.187 -0.154 c 0.187 0 0.83599997 0.033 1.023 0.033 c 0.23100007 0 0.99 -0.033 1.221 -0.033 c 0.16499996 0 0.2420001 0.088 0.2420001 0.264 c 0 0.09900001 -0.055000067 0.15399998 -0.17600012 0.16499999 c -0.26399994 0.022000015 -0.3959999 0.12100002 -0.3959999 0.28599998 c 0 0.110000014 0.09899998 0.264 0.286 0.46200007 c 0.6819999 0.72599995 1.375 1.4519999 2.046 2.189 c 0.37400007 -0.89100003 0.7589998 -1.7709999 1.1219997 -2.6729999 c -0.01099968 -0.022000015 -0.021999836 -0.04400003 -0.05499983 -0.07700002 c -0.09899998 -0.09899998 -0.2750001 -0.15399998 -0.53900003 -0.187 c -0.16499996 -0.021999985 -0.25299978 -0.109999985 -0.25299978 -0.253 c 0 -0.121 0.065999985 -0.176 0.20899963 -0.176 l 1.375 0.033 c 0.23100042 0 1.0010004 -0.033 1.1990004 -0.033 c 0.16499996 0 0.25300026 0.088 0.25300026 0.253 c 0 0.110000014 -0.07700062 0.16499999 -0.24200058 0.176 c -0.3409996 0 -0.5609999 0.011000007 -0.638 0.055000007 c -0.076999664 0.044 -0.16499996 0.17599997 -0.25299978 0.396 l -1.3969998 3.3329997 c 0.74799967 0.7920003 1.309 1.3860002 1.6719999 1.7930002 c 0.26399994 0.2750001 0.44000006 0.4619999 0.53900003 0.53900003 c 0.4069996 0.34100008 0.8579998 0.5169997 1.3529997 0.53900003 c 0.23099995 0.01099968 0.28600025 0.065999985 0.28600025 0.27499962 c -0.032999992 0.099000454 -0.043999672 0.15400028 -0.18700027 0.15400028 Z "/></symbol></defs></svg></span>, <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.7899999999999999em; height: 0.683em;" viewBox="0 0 8.69 7.513000000000001" width="8.69pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g4EA52B6D28647DF7ED3F4BE43107106C" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g4EA52B6D28647DF7ED3F4BE43107106C" overflow="visible"><path d="M 0 0m 7.304 7.48 c -0.19799995 0 -0.8800001 0.032999992 -1.0889997 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.25300026 c 0 -0.12099981 0.065999985 -0.17599964 0.20900011 -0.17599964 c 0.23099995 0 0.35199976 -0.065999985 0.35199976 -0.19799995 c 0 -0.12100029 -0.09899998 -0.28600025 -0.28599977 -0.49500036 l -2.475 -2.8489997 l -1.1660001 3.1569998 c -0.032999992 0.0880003 -0.055000067 0.14300013 -0.065999985 0.17600012 c 0 0.14300013 0.19799995 0.20900011 0.5940001 0.20900011 c 0.20899987 0 0.30799985 0.08799982 0.30799985 0.26399994 c 0 0.11000013 -0.065999985 0.16499996 -0.20899987 0.16499996 l -1.375 -0.032999992 c -0.2420001 0 -1.0120001 0.032999992 -1.21 0.032999992 c -0.16500002 0 -0.25300002 -0.08799982 -0.25300002 -0.26399994 c 0 -0.11000013 0.09900001 -0.16499996 0.297 -0.16499996 c 0.19800001 0 0.36299998 -0.022000313 0.46200007 -0.04400015 c 0.20899999 -0.05499983 0.21999991 -0.08799982 0.2859999 -0.29699993 l 1.3420001 -3.575 c 0.032999992 -0.0769999 0.04399991 -0.13199997 0.04399991 -0.16499996 l -0.23099995 -0.9130001 c -0.13199997 -0.5609999 -0.22000003 -0.91299987 -0.26399994 -1.0559999 c -0.07700014 -0.29700005 -0.15400004 -0.47300005 -0.23100019 -0.52800006 c -0.0769999 -0.054999977 -0.32999992 -0.07699999 -0.7479999 -0.07699999 c -0.24199998 -0.011000007 -0.34099996 -0.021999985 -0.34099996 -0.264 c 0 -0.10999999 0.065999985 -0.16499999 0.19799995 -0.16499999 l 1.3749999 0.033 l 1.3860002 -0.033 c 0.16499996 -0.011 0.25299978 0.077 0.25299978 0.264 c 0 0.07699999 -0.032999992 0.132 -0.08799982 0.143 c -0.11000013 0.010999978 -0.19799995 0.021999985 -0.25300002 0.021999985 c -0.36299992 0.011000007 -0.58299994 0.033000022 -0.638 0.066000015 c -0.022000074 0.010999978 -0.032999992 0.032999992 -0.032999992 0.07700002 c 0 0.04399997 0.055000067 0.27499998 0.15400004 0.6819999 l 0.385 1.529 c 0.032999992 0.14299989 0.0769999 0.25300002 0.14299989 0.319 l 2.6950002 3.102 l 0.14300013 0.14300013 c 0.28599977 0.28599977 0.5499997 0.48399973 0.78099966 0.5829997 c 0.18700027 0.0880003 0.3959999 0.14300013 0.62699986 0.15400028 c 0.19799995 0.021999836 0.25300026 0.076999664 0.25300026 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.18700027 0.17600012 c -0.16499996 0 -0.72599983 -0.032999992 -0.8909998 -0.032999992 Z "/></symbol></defs></svg></span> 打到有序列表 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.7510000000000001em; height: 0.683em;" viewBox="0 0 8.261000000000001 7.513000000000001" width="8.261000000000001pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#g625B803C7EBF9F77B57EAADD721833D1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="g625B803C7EBF9F77B57EAADD721833D1" overflow="visible"><path d="M 0 0m 7.92 7.183 c 0.021999836 0.09899998 0.032999992 0.16499996 0.032999992 0.1869998 c 0 0.09899998 -0.055000305 0.14300013 -0.17600012 0.14300013 h -4.73 c -0.27499986 0 -0.30799985 -0.032999992 -0.37399983 -0.25300026 l -0.5940001 -1.9469995 c -0.022000074 -0.055000305 -0.032999992 -0.12100029 -0.04399991 -0.17600012 c 0.032999992 -0.0880003 0.05499983 -0.15400028 0.17599988 -0.15400028 c 0.055000067 0 0.12100005 0.04400015 0.18700004 0.13199997 c 0.23099995 0.71500015 0.53900003 1.2320004 0.924 1.5290003 c 0.385 0.29699993 0.9569998 0.44000006 1.7049999 0.44000006 h 1.6719999 l -6.0169997 -6.721 l -0.04399997 -0.22 c 0 -0.09900001 0.065999985 -0.143 0.18699998 -0.143 h 4.8510003 c 0.28599977 0 0.31899977 0.022 0.38499975 0.253 l 0.77 2.409 c 0.011000156 0.04400015 0.04400015 0.12100005 0.04400015 0.16499996 c 0 0.11000013 -0.065999985 0.1650002 -0.18700027 0.1650002 c -0.076999664 0 -0.1539998 -0.099000216 -0.21999979 -0.3080001 c -0.2420001 -0.748 -0.53900003 -1.298 -0.90199995 -1.65 c -0.38500023 -0.38500005 -1.0230002 -0.572 -1.9030001 -0.572 h -1.7599999 Z "/></symbol></defs></svg></span>, 把这些对换之积复合出的两个映射记为 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 2.988066666666666em; height: 0.683em;" viewBox="0 0 32.86873333333333 7.513000000000001" width="32.86873333333333pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 6.280999999999999 10.23)"><use xlink:href="#gA19EAE7F22A9B25FCFE66CDDA974C49B" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 14.2967 7.513000000000001)"><use xlink:href="#g381A59C3AE8F7DE1CC21C8669CE5AA16" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 19.188033333333333 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 25.469033333333332 10.23)"><use xlink:href="#gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="gE93D20F2752445B9A3D51A1B700338B1" overflow="visible"><path d="M 0 0m 5.775 4.741 h -2.4750001 c -0.5279999 0 -1.023 -0.16499996 -1.474 -0.50600004 c -0.704 -0.53900003 -1.408 -1.4850001 -1.408 -2.607 c 0 -0.99 0.68200004 -1.7490001 1.6719999 -1.7490001 c 0.737 0 1.3970001 0.319 1.958 0.95699996 c 0.53900003 0.61600006 0.803 1.2980001 0.803 2.057 c 0 0.45099998 -0.09899998 0.82500005 -0.29699993 1.1330001 h 1.1110001 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.1869998 0.3080001 -0.4619999 0.3080001 Z m -4.598 -3.4100003 c 0 0.64900005 0.15399992 1.2429999 0.47299993 1.771 c 0.37399995 0.61599994 0.8579999 0.924 1.4629999 0.924 c 0.638 0 0.95700026 -0.32999992 0.95700026 -1.0009999 c 0 -0.2750001 -0.055000305 -0.5940001 -0.1650002 -0.9680002 c -0.22000003 -0.7809999 -0.58299994 -1.3309999 -1.089 -1.6279999 c -0.25300002 -0.15399998 -0.4949999 -0.23099999 -0.7149999 -0.23099999 c -0.605 0 -0.924 0.495 -0.924 1.133 Z "/></symbol><symbol id="gA19EAE7F22A9B25FCFE66CDDA974C49B" overflow="visible"><path d="M 0 0m 6.3294 5.2283 c -0.16170025 0 -0.7238002 0.030799866 -0.88549995 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0.0230999 -0.07700014 0.030799866 -0.1308999 0.14629984 -0.1308999 c 0.15400028 -0.0230999 0.23099995 -0.07700014 0.23099995 -0.16169977 c 0 -0.07700014 -0.06159973 -0.17710018 -0.18479967 -0.29260015 l -1.2782001 -1.2551 l -0.75460005 1.4553001 c -0.0230999 0.038499832 -0.038499832 0.0692997 -0.038499832 0.092400074 c 0.053900003 0.10780001 0.23099995 0.16169977 0.36959982 0.16169977 c 0.13090014 0 0.20020008 0.069300175 0.20020008 0.20020008 c -0.0230999 0.07700014 -0.03850007 0.1308999 -0.16170001 0.1308999 c -0.10010004 0 -0.41579986 -0.0230999 -0.50819993 -0.0230999 c -0.50049996 -0.0076999664 -0.8162 -0.0076999664 -0.9470999 0 c -0.26180005 0.015399933 -0.40040004 0.0230999 -0.4158001 0.0230999 c -0.13090003 0 -0.1925 -0.069300175 -0.1925 -0.20020008 c 0 -0.08470011 0.08469999 -0.1308999 0.25409997 -0.1308999 c 0.13860011 0 0.24640012 -0.0076999664 0.32340002 -0.030799866 c 0.13860011 -0.046200275 0.14630008 -0.05390024 0.20790005 -0.18480015 l 1.0548999 -2.079 l -1.0472 -1.0395 c -0.55439997 -0.53129995 -0.924 -0.87009996 -1.1165 -1.0086999 c -0.13090003 -0.092400014 -0.27719998 -0.15400001 -0.43119997 -0.19250003 c -0.06160003 -0.0153999925 -0.21560001 -0.03849998 -0.46969998 -0.069299996 c -0.07700002 -0.0076999962 -0.11550003 -0.069299996 -0.11550003 -0.1848 c 0 -0.09239999 0.046200007 -0.13859999 0.13859999 -0.13859999 c 0.13090003 0 0.5775 0.0308 0.7084 0.0308 c 0.3003 0 0.7700001 -0.0308 0.8855001 -0.0308 c 0.1308999 0 0.19249988 0.0616 0.19249988 0.1925 c 0 0.092400014 -0.053900003 0.13859999 -0.16939998 0.13859999 c -0.13859987 0.015400022 -0.20789993 0.069299996 -0.20789993 0.16170001 c 0 0.07700002 0.08469999 0.20020002 0.26179993 0.3696 l 1.5169001 1.4861 l 0.9008999 -1.771 c 0.0230999 -0.03850001 0.038499832 -0.06159997 0.046200275 -0.08469999 c -0.05390024 -0.10010001 -0.21560001 -0.14629999 -0.37730026 -0.16170001 c -0.1308999 -0.0076999962 -0.19250011 -0.069299996 -0.19250011 -0.20019999 c 0.023100376 -0.084699996 0.030800343 -0.1309 0.15400028 -0.1309 c 0.092400074 0 0.42350006 0.0231 0.51589966 0.0231 c 0.5005002 0.0077 0.81620026 0.0077 0.94710016 0 c 0.2617998 -0.0154 0.40040016 -0.0231 0.40810013 -0.0231 c 0.1308999 0 0.19250011 0.069299996 0.19250011 0.20019999 c 0 0.08470002 -0.08470011 0.1309 -0.25410032 0.1309 c -0.27719975 0 -0.43120003 0.023100019 -0.51589966 0.20020002 l -1.2243004 2.4024 l 0.70840025 0.7084 c 0.5236001 0.5158999 0.9008999 0.8623998 1.1395998 1.0241001 c 0.2849002 0.2001996 0.4389 0.20790005 0.90860033 0.26949978 c 0.076999664 0.0076999664 0.11549997 0.069300175 0.11549997 0.17710018 c 0 0.10010004 -0.046200275 0.14629984 -0.13860035 0.14629984 c -0.1308999 0 -0.58519983 -0.030799866 -0.71609974 -0.030799866 Z "/></symbol><symbol id="g381A59C3AE8F7DE1CC21C8669CE5AA16" overflow="visible"><path d="M 0 0m 1.529 1.166 c -0.352 0 -0.58300006 -0.264 -0.58300006 -0.616 c 0 -0.33 0.25300002 -0.605 0.58300006 -0.605 c 0.15399992 0 0.2859999 0.044 0.385 0.143 l 0.010999918 -0.088 c 0 -0.693 -0.23099995 -1.287 -0.69299996 -1.76 c -0.07700002 -0.08800006 -0.12100005 -0.15400004 -0.12100005 -0.19799995 c 0 -0.11000013 0.04400003 -0.16499996 0.143 -0.16499996 c 0.0990001 0 0.23100007 0.13199997 0.41799998 0.38499987 c 0.37400007 0.528 0.5610001 1.1110001 0.5610001 1.738 c 0 0.583 -0.19799995 1.166 -0.704 1.166 Z "/></symbol><symbol id="gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" overflow="visible"><path d="M 0 0m 5.8135 5.2283 c -0.14629984 0 -0.64680004 0.030799866 -0.7930999 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0 -0.07700014 0.06160021 -0.12319994 0.18480015 -0.13859987 c 0.12319994 -0.015399933 0.1770997 -0.05390024 0.1770997 -0.10780001 c 0 -0.07700014 -0.076999664 -0.19250011 -0.22329998 -0.34649992 l -1.8710997 -1.9558 l -0.99329996 2.1868 c -0.023100138 0.053899765 -0.03850007 0.10010004 -0.046200037 0.12319994 c 0 0.069300175 0.12319994 0.10780001 0.37730002 0.10780001 c 0.16170001 0 0.23099995 0.053899765 0.23099995 0.19250011 v 0.030799866 c -0.023100138 0.069300175 -0.06929994 0.10780001 -0.15400004 0.10780001 c -0.19250011 0 -0.8239 -0.030799866 -1.0164 -0.030799866 c -0.16170001 0 -0.7084 0.030799866 -0.8701 0.030799866 c -0.1232 0 -0.1848 -0.069300175 -0.1848 -0.20020008 c 0 -0.08470011 0.07699999 -0.1308999 0.2387 -0.1308999 c 0.25410002 0 0.40040004 -0.030799866 0.44659996 -0.08470011 c 0.023100019 -0.030799866 0.046200037 -0.076999664 0.069300056 -0.13859987 l 1.1780999 -2.5949 l -0.33879995 -1.3783002 c -0.046199918 -0.1925 -0.10009992 -0.30029997 -0.15399992 -0.33879998 c -0.053900003 -0.03849998 -0.23100007 -0.053899974 -0.5159 -0.0616 h -0.12319994 c -0.092400074 -0.0076999962 -0.13860011 -0.069299996 -0.13860011 -0.18479998 c 0 -0.1001 0.053900003 -0.1463 0.15400004 -0.1463 c 0.30799997 0 0.6545 0.0385 0.9779 0.0308 l 0.48510003 -0.0077 c 0.08469987 0 0.41579986 -0.0231 0.50819993 -0.0231 c 0.1308999 0 0.20020008 0.069299996 0.20020008 0.20019999 c 0 0.08470002 -0.10010004 0.1309 -0.29260015 0.1309 c -0.25409985 0 -0.42349982 -0.0153999925 -0.42349982 0.092400014 c 0 0.03850001 0.0461998 0.23869997 0.14629984 0.60830003 c 0.13860011 0.56209993 0.22329998 0.8778 0.23100019 0.93939996 c 0.0230999 0.08470011 0.06159997 0.14630008 0.1000998 0.19250011 l 2.0328002 2.1328998 c 0.36189985 0.38500023 0.7469001 0.5929003 1.1395998 0.6314001 c 0.14629984 0.0076999664 0.20020008 0.053899765 0.20020008 0.19250011 c 0 0.092400074 -0.0461998 0.13859987 -0.13859987 0.13859987 c -0.10780001 0 -0.50820017 -0.030799866 -0.6160002 -0.030799866 Z "/></symbol></defs></svg></span>. 现在观察下图, 写出 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 2.8935999999999997em; height: 0.683em;" viewBox="0 0 31.829599999999996 7.513000000000001" width="31.829599999999996pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 6.544999999999999 3.36545)"><use xlink:href="#gF9B5F35596A75559BEFB7CAA70FB21D0" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 12.535599999999999 3.36545)"><use xlink:href="#g4579907954435773284115A4AD809763" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 6.280999999999999 10.38455)"><use xlink:href="#gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 17.532899999999998 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 23.813899999999997 10.23)"><use xlink:href="#gA19EAE7F22A9B25FCFE66CDDA974C49B" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="gE93D20F2752445B9A3D51A1B700338B1" overflow="visible"><path d="M 0 0m 5.775 4.741 h -2.4750001 c -0.5279999 0 -1.023 -0.16499996 -1.474 -0.50600004 c -0.704 -0.53900003 -1.408 -1.4850001 -1.408 -2.607 c 0 -0.99 0.68200004 -1.7490001 1.6719999 -1.7490001 c 0.737 0 1.3970001 0.319 1.958 0.95699996 c 0.53900003 0.61600006 0.803 1.2980001 0.803 2.057 c 0 0.45099998 -0.09899998 0.82500005 -0.29699993 1.1330001 h 1.1110001 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.1869998 0.3080001 -0.4619999 0.3080001 Z m -4.598 -3.4100003 c 0 0.64900005 0.15399992 1.2429999 0.47299993 1.771 c 0.37399995 0.61599994 0.8579999 0.924 1.4629999 0.924 c 0.638 0 0.95700026 -0.32999992 0.95700026 -1.0009999 c 0 -0.2750001 -0.055000305 -0.5940001 -0.1650002 -0.9680002 c -0.22000003 -0.7809999 -0.58299994 -1.3309999 -1.089 -1.6279999 c -0.25300002 -0.15399998 -0.4949999 -0.23099999 -0.7149999 -0.23099999 c -0.605 0 -0.924 0.495 -0.924 1.133 Z "/></symbol><symbol id="gF9B5F35596A75559BEFB7CAA70FB21D0" overflow="visible"><path d="M 0 0m 5.3592 2.1021 h -4.7278 c -0.15399998 0 -0.20019999 -0.0769999 -0.20019999 -0.17709994 c 0 -0.10009992 0.046200007 -0.17709994 0.20019999 -0.17709994 h 4.7278 c 0.1539998 0 0.20020008 0.07700002 0.20020008 0.17709994 c 0 0.092400074 -0.046200275 0.17709994 -0.20020008 0.17709994 Z "/></symbol><symbol id="g4579907954435773284115A4AD809763" overflow="visible"><path d="M 0 0m 2.3331 5.1128 c -0.3311 -0.32340002 -0.8239001 -0.48510027 -1.4938002 -0.48510027 v -0.33879995 c 0.4543 0 0.81619996 0.069300175 1.0934 0.20020008 v -3.8346 c 0 -0.10010004 -0.0077000856 -0.16170001 -0.030800104 -0.1925 c -0.03849995 -0.08470002 -0.2694999 -0.13090003 -0.69299996 -0.13090003 h -0.3157 v -0.3311 l 1.3706 0.0308 l 1.3783002 -0.0308 v 0.3311 h -0.31570005 c -0.42350006 0 -0.6545 0.046200007 -0.70070004 0.13090003 c -0.015399933 0.030799985 -0.0230999 0.092399955 -0.0230999 0.1925 v 4.2118998 c 0 0.20790005 -0.030800104 0.24640036 -0.26950002 0.24640036 Z "/></symbol><symbol id="gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" overflow="visible"><path d="M 0 0m 5.8135 5.2283 c -0.14629984 0 -0.64680004 0.030799866 -0.7930999 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0 -0.07700014 0.06160021 -0.12319994 0.18480015 -0.13859987 c 0.12319994 -0.015399933 0.1770997 -0.05390024 0.1770997 -0.10780001 c 0 -0.07700014 -0.076999664 -0.19250011 -0.22329998 -0.34649992 l -1.8710997 -1.9558 l -0.99329996 2.1868 c -0.023100138 0.053899765 -0.03850007 0.10010004 -0.046200037 0.12319994 c 0 0.069300175 0.12319994 0.10780001 0.37730002 0.10780001 c 0.16170001 0 0.23099995 0.053899765 0.23099995 0.19250011 v 0.030799866 c -0.023100138 0.069300175 -0.06929994 0.10780001 -0.15400004 0.10780001 c -0.19250011 0 -0.8239 -0.030799866 -1.0164 -0.030799866 c -0.16170001 0 -0.7084 0.030799866 -0.8701 0.030799866 c -0.1232 0 -0.1848 -0.069300175 -0.1848 -0.20020008 c 0 -0.08470011 0.07699999 -0.1308999 0.2387 -0.1308999 c 0.25410002 0 0.40040004 -0.030799866 0.44659996 -0.08470011 c 0.023100019 -0.030799866 0.046200037 -0.076999664 0.069300056 -0.13859987 l 1.1780999 -2.5949 l -0.33879995 -1.3783002 c -0.046199918 -0.1925 -0.10009992 -0.30029997 -0.15399992 -0.33879998 c -0.053900003 -0.03849998 -0.23100007 -0.053899974 -0.5159 -0.0616 h -0.12319994 c -0.092400074 -0.0076999962 -0.13860011 -0.069299996 -0.13860011 -0.18479998 c 0 -0.1001 0.053900003 -0.1463 0.15400004 -0.1463 c 0.30799997 0 0.6545 0.0385 0.9779 0.0308 l 0.48510003 -0.0077 c 0.08469987 0 0.41579986 -0.0231 0.50819993 -0.0231 c 0.1308999 0 0.20020008 0.069299996 0.20020008 0.20019999 c 0 0.08470002 -0.10010004 0.1309 -0.29260015 0.1309 c -0.25409985 0 -0.42349982 -0.0153999925 -0.42349982 0.092400014 c 0 0.03850001 0.0461998 0.23869997 0.14629984 0.60830003 c 0.13860011 0.56209993 0.22329998 0.8778 0.23100019 0.93939996 c 0.0230999 0.08470011 0.06159997 0.14630008 0.1000998 0.19250011 l 2.0328002 2.1328998 c 0.36189985 0.38500023 0.7469001 0.5929003 1.1395998 0.6314001 c 0.14629984 0.0076999664 0.20020008 0.053899765 0.20020008 0.19250011 c 0 0.092400074 -0.0461998 0.13859987 -0.13859987 0.13859987 c -0.10780001 0 -0.50820017 -0.030799866 -0.6160002 -0.030799866 Z "/></symbol><symbol id="gA19EAE7F22A9B25FCFE66CDDA974C49B" overflow="visible"><path d="M 0 0m 6.3294 5.2283 c -0.16170025 0 -0.7238002 0.030799866 -0.88549995 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0.0230999 -0.07700014 0.030799866 -0.1308999 0.14629984 -0.1308999 c 0.15400028 -0.0230999 0.23099995 -0.07700014 0.23099995 -0.16169977 c 0 -0.07700014 -0.06159973 -0.17710018 -0.18479967 -0.29260015 l -1.2782001 -1.2551 l -0.75460005 1.4553001 c -0.0230999 0.038499832 -0.038499832 0.0692997 -0.038499832 0.092400074 c 0.053900003 0.10780001 0.23099995 0.16169977 0.36959982 0.16169977 c 0.13090014 0 0.20020008 0.069300175 0.20020008 0.20020008 c -0.0230999 0.07700014 -0.03850007 0.1308999 -0.16170001 0.1308999 c -0.10010004 0 -0.41579986 -0.0230999 -0.50819993 -0.0230999 c -0.50049996 -0.0076999664 -0.8162 -0.0076999664 -0.9470999 0 c -0.26180005 0.015399933 -0.40040004 0.0230999 -0.4158001 0.0230999 c -0.13090003 0 -0.1925 -0.069300175 -0.1925 -0.20020008 c 0 -0.08470011 0.08469999 -0.1308999 0.25409997 -0.1308999 c 0.13860011 0 0.24640012 -0.0076999664 0.32340002 -0.030799866 c 0.13860011 -0.046200275 0.14630008 -0.05390024 0.20790005 -0.18480015 l 1.0548999 -2.079 l -1.0472 -1.0395 c -0.55439997 -0.53129995 -0.924 -0.87009996 -1.1165 -1.0086999 c -0.13090003 -0.092400014 -0.27719998 -0.15400001 -0.43119997 -0.19250003 c -0.06160003 -0.0153999925 -0.21560001 -0.03849998 -0.46969998 -0.069299996 c -0.07700002 -0.0076999962 -0.11550003 -0.069299996 -0.11550003 -0.1848 c 0 -0.09239999 0.046200007 -0.13859999 0.13859999 -0.13859999 c 0.13090003 0 0.5775 0.0308 0.7084 0.0308 c 0.3003 0 0.7700001 -0.0308 0.8855001 -0.0308 c 0.1308999 0 0.19249988 0.0616 0.19249988 0.1925 c 0 0.092400014 -0.053900003 0.13859999 -0.16939998 0.13859999 c -0.13859987 0.015400022 -0.20789993 0.069299996 -0.20789993 0.16170001 c 0 0.07700002 0.08469999 0.20020002 0.26179993 0.3696 l 1.5169001 1.4861 l 0.9008999 -1.771 c 0.0230999 -0.03850001 0.038499832 -0.06159997 0.046200275 -0.08469999 c -0.05390024 -0.10010001 -0.21560001 -0.14629999 -0.37730026 -0.16170001 c -0.1308999 -0.0076999962 -0.19250011 -0.069299996 -0.19250011 -0.20019999 c 0.023100376 -0.084699996 0.030800343 -0.1309 0.15400028 -0.1309 c 0.092400074 0 0.42350006 0.0231 0.51589966 0.0231 c 0.5005002 0.0077 0.81620026 0.0077 0.94710016 0 c 0.2617998 -0.0154 0.40040016 -0.0231 0.40810013 -0.0231 c 0.1308999 0 0.19250011 0.069299996 0.19250011 0.20019999 c 0 0.08470002 -0.08470011 0.1309 -0.25410032 0.1309 c -0.27719975 0 -0.43120003 0.023100019 -0.51589966 0.20020002 l -1.2243004 2.4024 l 0.70840025 0.7084 c 0.5236001 0.5158999 0.9008999 0.8623998 1.1395998 1.0241001 c 0.2849002 0.2001996 0.4389 0.20790005 0.90860033 0.26949978 c 0.076999664 0.0076999664 0.11549997 0.069300175 0.11549997 0.17710018 c 0 0.10010004 -0.046200275 0.14629984 -0.13860035 0.14629984 c -0.1308999 0 -0.58519983 -0.030799866 -0.71609974 -0.030799866 Z "/></symbol></defs></svg></span>, 这当然就是 <span role="math"><svg class="typst-frame" style="overflow: visible; width: 0.595em; height: 0.683em;" viewBox="0 0 6.544999999999999 7.513000000000001" width="6.544999999999999pt" height="7.513000000000001pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-text" transform="matrix(1 0 0 -1 0 7.513000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g><defs id="glyph"><symbol id="gE93D20F2752445B9A3D51A1B700338B1" overflow="visible"><path d="M 0 0m 5.775 4.741 h -2.4750001 c -0.5279999 0 -1.023 -0.16499996 -1.474 -0.50600004 c -0.704 -0.53900003 -1.408 -1.4850001 -1.408 -2.607 c 0 -0.99 0.68200004 -1.7490001 1.6719999 -1.7490001 c 0.737 0 1.3970001 0.319 1.958 0.95699996 c 0.53900003 0.61600006 0.803 1.2980001 0.803 2.057 c 0 0.45099998 -0.09899998 0.82500005 -0.29699993 1.1330001 h 1.1110001 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.1869998 0.3080001 -0.4619999 0.3080001 Z m -4.598 -3.4100003 c 0 0.64900005 0.15399992 1.2429999 0.47299993 1.771 c 0.37399995 0.61599994 0.8579999 0.924 1.4629999 0.924 c 0.638 0 0.95700026 -0.32999992 0.95700026 -1.0009999 c 0 -0.2750001 -0.055000305 -0.5940001 -0.1650002 -0.9680002 c -0.22000003 -0.7809999 -0.58299994 -1.3309999 -1.089 -1.6279999 c -0.25300002 -0.15399998 -0.4949999 -0.23099999 -0.7149999 -0.23099999 c -0.605 0 -0.924 0.495 -0.924 1.133 Z "/></symbol></defs></svg></span>.</p><figure><svg class="typst-frame" style="overflow: visible; width: 10.601818181827271em; height: 8.109409090909091em;" viewBox="0 0 116.62000000009999 89.2035" width="116.62000000009999pt" height="89.2035pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-group"><g><g class="typst-group"><g><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 9.56177508043393 10.874214707884146)" d="M 0 0m 0 50.77136 c 8.595268 -20.110348 22.312422 -37.61602 39.783596 -50.77136 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 48.91733931752927 10.876009102362202)" d="M 0 0m 0.4293909 0 c -0.54816663 1.0356135 -0.5727907 2.2698116 -0.066367686 3.3264656 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 46.119037212633394 10.068682598229476)" d="M 0 0m 3.227693 0.8073265 c -1.1430445 0.2577433 -2.3405955 -0.04179406 -3.227693 -0.8073265 "/><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 4.04936847109558 16.200395594954145)" d="M 0 0h 18.6967 v 14.63 h -18.6967 v -14.63 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 4.049368439599514 16.200395579206123)"><g><g class="typst-group"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 2.2 9.713000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.481 12.430000000000001)"><use xlink:href="#gA19EAE7F22A9B25FCFE66CDDA974C49B" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 68.21935531384051 10.914311227423214)" d="M 0 0m 39.523666 51.058598 c -8.484985 -20.181742 -22.112522 -37.786457 -39.523666 -51.058598 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 68.21798607879016 10.127838127450353)" d="M 0 0m 0 0.7882574 c 1.1415026 0.26448685 2.340801 -0.0279755 3.2324023 -0.7882574 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 68.21798607879016 10.916095527559065)" d="M 0 0c 0.5420432 1.0388315 0.5593806 2.2731533 0.046728503 3.326799 "/><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 94.72416308384716 16.421171768613444)" d="M 0 0h 18.0807 v 14.63 h -18.0807 v -14.63 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 94.72416303660307 16.42117175286541)"><g><g class="typst-group"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 2.2 9.713000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.481 12.430000000000001)"><use xlink:href="#gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 63.269538945168804 14.405534047424625)" d="M 0 0c 8.45914 20.192503 22.064102 37.814568 39.458195 51.10892 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 99.49569838318487 65.4161716132289)" d="M 0 0m 3.2334087 0.09649891 c -1.1411638 -0.2659465 -2.3408356 0.024981879 -3.2334087 0.7841232 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 102.31205111796304 62.18581353897556)" d="M 0 0m 0.41705602 3.326857 c -0.5407144 -1.0395241 -0.55647326 -2.2738676 -0.042473942 -3.326857 "/><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 54.315884239201715 45.343794698881766)" d="M 0 0h 21.9329 v 14.78455 h -21.9329 v -14.78455 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 54.315884128965486 45.34379469100776)"><g><g class="typst-group"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 2.2 9.713000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.745 5.56545)"><use xlink:href="#gF9B5F35596A75559BEFB7CAA70FB21D0" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 14.7356 5.56545)"><use xlink:href="#g4579907954435773284115A4AD809763" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g><g class="typst-text" transform="matrix(1 0 0 -1 8.481 12.584550000000002)"><use xlink:href="#gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 16.956891804350143 72.76950000000001)" d="M 0 0h 83.31039 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 98.19382277986088 72.76950006299212)" d="M 0 0m 2.0734575 0 c -1.0645384 0.48963296 -1.8338406 1.455048 -2.0734575 2.6020293 "/><path class="typst-shape" fill="none" stroke="#000000" stroke-width="0.528" stroke-linecap="round" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 98.19382277986088 70.16747078081481)" d="M 0 0m 2.0734575 2.6020293 c -1.0645384 -0.48963308 -1.8338406 -1.455048 -2.0734575 -2.6020293 "/><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 53.27158604215008 77.16950000000001)" d="M 0 0h 10.945 v 12.034 h -10.945 v -12.034 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 53.27158601065401 77.16949996850396)"><g><g class="typst-group"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 2.2 9.713000000000001)"><use xlink:href="#gE93D20F2752445B9A3D51A1B700338B1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 54.66899999999999 0)" d="M 0 0h 8.261 v 7.513 h -8.261 v -7.513 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 54.66899988981377 -0.0000000787401568339292)"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 0.00000000004999893412679639 7.513)"><use xlink:href="#g625B803C7EBF9F77B57EAADD721833D1" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 0 69.01300000000002)" d="M 0 0h 9.669 v 7.513 h -9.669 v -7.513 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 -0.00000009443819069886337 69.01299992125985)"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 0.00000000004999893412679639 7.513)"><use xlink:href="#g46182BCDFBF1DCCA9E470C1ED97B9A27" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g><path class="typst-shape" fill="none" transform="matrix(1 0 0 1 107.92999999999999 69.01300000000002)" d="M 0 0h 8.69 v 7.513 h -8.69 v -7.513 Z "/><g class="typst-group"><g><g class="typst-group" transform="matrix(1 0 0 1 107.92999998430196 69.01299992125985)"><g><g class="typst-group"><g><g class="typst-text" transform="matrix(1 0 0 -1 0.00000000005000072447069752 7.513)"><use xlink:href="#g4EA52B6D28647DF7ED3F4BE43107106C" x="0" y="0" fill="#000000" fill-rule="nonzero"/></g></g></g></g></g></g></g></g></g></g></g></g><defs id="glyph"><symbol id="gE93D20F2752445B9A3D51A1B700338B1" overflow="visible"><path d="M 0 0m 5.775 4.741 h -2.4750001 c -0.5279999 0 -1.023 -0.16499996 -1.474 -0.50600004 c -0.704 -0.53900003 -1.408 -1.4850001 -1.408 -2.607 c 0 -0.99 0.68200004 -1.7490001 1.6719999 -1.7490001 c 0.737 0 1.3970001 0.319 1.958 0.95699996 c 0.53900003 0.61600006 0.803 1.2980001 0.803 2.057 c 0 0.45099998 -0.09899998 0.82500005 -0.29699993 1.1330001 h 1.1110001 c 0.38500023 0 0.572 0.13199997 0.572 0.40700006 c 0 0.25299978 -0.1869998 0.3080001 -0.4619999 0.3080001 Z m -4.598 -3.4100003 c 0 0.64900005 0.15399992 1.2429999 0.47299993 1.771 c 0.37399995 0.61599994 0.8579999 0.924 1.4629999 0.924 c 0.638 0 0.95700026 -0.32999992 0.95700026 -1.0009999 c 0 -0.2750001 -0.055000305 -0.5940001 -0.1650002 -0.9680002 c -0.22000003 -0.7809999 -0.58299994 -1.3309999 -1.089 -1.6279999 c -0.25300002 -0.15399998 -0.4949999 -0.23099999 -0.7149999 -0.23099999 c -0.605 0 -0.924 0.495 -0.924 1.133 Z "/></symbol><symbol id="gA19EAE7F22A9B25FCFE66CDDA974C49B" overflow="visible"><path d="M 0 0m 6.3294 5.2283 c -0.16170025 0 -0.7238002 0.030799866 -0.88549995 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0.0230999 -0.07700014 0.030799866 -0.1308999 0.14629984 -0.1308999 c 0.15400028 -0.0230999 0.23099995 -0.07700014 0.23099995 -0.16169977 c 0 -0.07700014 -0.06159973 -0.17710018 -0.18479967 -0.29260015 l -1.2782001 -1.2551 l -0.75460005 1.4553001 c -0.0230999 0.038499832 -0.038499832 0.0692997 -0.038499832 0.092400074 c 0.053900003 0.10780001 0.23099995 0.16169977 0.36959982 0.16169977 c 0.13090014 0 0.20020008 0.069300175 0.20020008 0.20020008 c -0.0230999 0.07700014 -0.03850007 0.1308999 -0.16170001 0.1308999 c -0.10010004 0 -0.41579986 -0.0230999 -0.50819993 -0.0230999 c -0.50049996 -0.0076999664 -0.8162 -0.0076999664 -0.9470999 0 c -0.26180005 0.015399933 -0.40040004 0.0230999 -0.4158001 0.0230999 c -0.13090003 0 -0.1925 -0.069300175 -0.1925 -0.20020008 c 0 -0.08470011 0.08469999 -0.1308999 0.25409997 -0.1308999 c 0.13860011 0 0.24640012 -0.0076999664 0.32340002 -0.030799866 c 0.13860011 -0.046200275 0.14630008 -0.05390024 0.20790005 -0.18480015 l 1.0548999 -2.079 l -1.0472 -1.0395 c -0.55439997 -0.53129995 -0.924 -0.87009996 -1.1165 -1.0086999 c -0.13090003 -0.092400014 -0.27719998 -0.15400001 -0.43119997 -0.19250003 c -0.06160003 -0.0153999925 -0.21560001 -0.03849998 -0.46969998 -0.069299996 c -0.07700002 -0.0076999962 -0.11550003 -0.069299996 -0.11550003 -0.1848 c 0 -0.09239999 0.046200007 -0.13859999 0.13859999 -0.13859999 c 0.13090003 0 0.5775 0.0308 0.7084 0.0308 c 0.3003 0 0.7700001 -0.0308 0.8855001 -0.0308 c 0.1308999 0 0.19249988 0.0616 0.19249988 0.1925 c 0 0.092400014 -0.053900003 0.13859999 -0.16939998 0.13859999 c -0.13859987 0.015400022 -0.20789993 0.069299996 -0.20789993 0.16170001 c 0 0.07700002 0.08469999 0.20020002 0.26179993 0.3696 l 1.5169001 1.4861 l 0.9008999 -1.771 c 0.0230999 -0.03850001 0.038499832 -0.06159997 0.046200275 -0.08469999 c -0.05390024 -0.10010001 -0.21560001 -0.14629999 -0.37730026 -0.16170001 c -0.1308999 -0.0076999962 -0.19250011 -0.069299996 -0.19250011 -0.20019999 c 0.023100376 -0.084699996 0.030800343 -0.1309 0.15400028 -0.1309 c 0.092400074 0 0.42350006 0.0231 0.51589966 0.0231 c 0.5005002 0.0077 0.81620026 0.0077 0.94710016 0 c 0.2617998 -0.0154 0.40040016 -0.0231 0.40810013 -0.0231 c 0.1308999 0 0.19250011 0.069299996 0.19250011 0.20019999 c 0 0.08470002 -0.08470011 0.1309 -0.25410032 0.1309 c -0.27719975 0 -0.43120003 0.023100019 -0.51589966 0.20020002 l -1.2243004 2.4024 l 0.70840025 0.7084 c 0.5236001 0.5158999 0.9008999 0.8623998 1.1395998 1.0241001 c 0.2849002 0.2001996 0.4389 0.20790005 0.90860033 0.26949978 c 0.076999664 0.0076999664 0.11549997 0.069300175 0.11549997 0.17710018 c 0 0.10010004 -0.046200275 0.14629984 -0.13860035 0.14629984 c -0.1308999 0 -0.58519983 -0.030799866 -0.71609974 -0.030799866 Z "/></symbol><symbol id="gDCFB042FA9A92BE6EBFD3BADAD0AD9E2" overflow="visible"><path d="M 0 0m 5.8135 5.2283 c -0.14629984 0 -0.64680004 0.030799866 -0.7930999 0.030799866 c -0.12319994 0 -0.18480015 -0.069300175 -0.18480015 -0.20020008 c 0 -0.07700014 0.06160021 -0.12319994 0.18480015 -0.13859987 c 0.12319994 -0.015399933 0.1770997 -0.05390024 0.1770997 -0.10780001 c 0 -0.07700014 -0.076999664 -0.19250011 -0.22329998 -0.34649992 l -1.8710997 -1.9558 l -0.99329996 2.1868 c -0.023100138 0.053899765 -0.03850007 0.10010004 -0.046200037 0.12319994 c 0 0.069300175 0.12319994 0.10780001 0.37730002 0.10780001 c 0.16170001 0 0.23099995 0.053899765 0.23099995 0.19250011 v 0.030799866 c -0.023100138 0.069300175 -0.06929994 0.10780001 -0.15400004 0.10780001 c -0.19250011 0 -0.8239 -0.030799866 -1.0164 -0.030799866 c -0.16170001 0 -0.7084 0.030799866 -0.8701 0.030799866 c -0.1232 0 -0.1848 -0.069300175 -0.1848 -0.20020008 c 0 -0.08470011 0.07699999 -0.1308999 0.2387 -0.1308999 c 0.25410002 0 0.40040004 -0.030799866 0.44659996 -0.08470011 c 0.023100019 -0.030799866 0.046200037 -0.076999664 0.069300056 -0.13859987 l 1.1780999 -2.5949 l -0.33879995 -1.3783002 c -0.046199918 -0.1925 -0.10009992 -0.30029997 -0.15399992 -0.33879998 c -0.053900003 -0.03849998 -0.23100007 -0.053899974 -0.5159 -0.0616 h -0.12319994 c -0.092400074 -0.0076999962 -0.13860011 -0.069299996 -0.13860011 -0.18479998 c 0 -0.1001 0.053900003 -0.1463 0.15400004 -0.1463 c 0.30799997 0 0.6545 0.0385 0.9779 0.0308 l 0.48510003 -0.0077 c 0.08469987 0 0.41579986 -0.0231 0.50819993 -0.0231 c 0.1308999 0 0.20020008 0.069299996 0.20020008 0.20019999 c 0 0.08470002 -0.10010004 0.1309 -0.29260015 0.1309 c -0.25409985 0 -0.42349982 -0.0153999925 -0.42349982 0.092400014 c 0 0.03850001 0.0461998 0.23869997 0.14629984 0.60830003 c 0.13860011 0.56209993 0.22329998 0.8778 0.23100019 0.93939996 c 0.0230999 0.08470011 0.06159997 0.14630008 0.1000998 0.19250011 l 2.0328002 2.1328998 c 0.36189985 0.38500023 0.7469001 0.5929003 1.1395998 0.6314001 c 0.14629984 0.0076999664 0.20020008 0.053899765 0.20020008 0.19250011 c 0 0.092400074 -0.0461998 0.13859987 -0.13859987 0.13859987 c -0.10780001 0 -0.50820017 -0.030799866 -0.6160002 -0.030799866 Z "/></symbol><symbol id="gF9B5F35596A75559BEFB7CAA70FB21D0" overflow="visible"><path d="M 0 0m 5.3592 2.1021 h -4.7278 c -0.15399998 0 -0.20019999 -0.0769999 -0.20019999 -0.17709994 c 0 -0.10009992 0.046200007 -0.17709994 0.20019999 -0.17709994 h 4.7278 c 0.1539998 0 0.20020008 0.07700002 0.20020008 0.17709994 c 0 0.092400074 -0.046200275 0.17709994 -0.20020008 0.17709994 Z "/></symbol><symbol id="g4579907954435773284115A4AD809763" overflow="visible"><path d="M 0 0m 2.3331 5.1128 c -0.3311 -0.32340002 -0.8239001 -0.48510027 -1.4938002 -0.48510027 v -0.33879995 c 0.4543 0 0.81619996 0.069300175 1.0934 0.20020008 v -3.8346 c 0 -0.10010004 -0.0077000856 -0.16170001 -0.030800104 -0.1925 c -0.03849995 -0.08470002 -0.2694999 -0.13090003 -0.69299996 -0.13090003 h -0.3157 v -0.3311 l 1.3706 0.0308 l 1.3783002 -0.0308 v 0.3311 h -0.31570005 c -0.42350006 0 -0.6545 0.046200007 -0.70070004 0.13090003 c -0.015399933 0.030799985 -0.0230999 0.092399955 -0.0230999 0.1925 v 4.2118998 c 0 0.20790005 -0.030800104 0.24640036 -0.26950002 0.24640036 Z "/></symbol><symbol id="g625B803C7EBF9F77B57EAADD721833D1" overflow="visible"><path d="M 0 0m 7.92 7.183 c 0.021999836 0.09899998 0.032999992 0.16499996 0.032999992 0.1869998 c 0 0.09899998 -0.055000305 0.14300013 -0.17600012 0.14300013 h -4.73 c -0.27499986 0 -0.30799985 -0.032999992 -0.37399983 -0.25300026 l -0.5940001 -1.9469995 c -0.022000074 -0.055000305 -0.032999992 -0.12100029 -0.04399991 -0.17600012 c 0.032999992 -0.0880003 0.05499983 -0.15400028 0.17599988 -0.15400028 c 0.055000067 0 0.12100005 0.04400015 0.18700004 0.13199997 c 0.23099995 0.71500015 0.53900003 1.2320004 0.924 1.5290003 c 0.385 0.29699993 0.9569998 0.44000006 1.7049999 0.44000006 h 1.6719999 l -6.0169997 -6.721 l -0.04399997 -0.22 c 0 -0.09900001 0.065999985 -0.143 0.18699998 -0.143 h 4.8510003 c 0.28599977 0 0.31899977 0.022 0.38499975 0.253 l 0.77 2.409 c 0.011000156 0.04400015 0.04400015 0.12100005 0.04400015 0.16499996 c 0 0.11000013 -0.065999985 0.1650002 -0.18700027 0.1650002 c -0.076999664 0 -0.1539998 -0.099000216 -0.21999979 -0.3080001 c -0.2420001 -0.748 -0.53900003 -1.298 -0.90199995 -1.65 c -0.38500023 -0.38500005 -1.0230002 -0.572 -1.9030001 -0.572 h -1.7599999 Z "/></symbol><symbol id="g46182BCDFBF1DCCA9E470C1ED97B9A27" overflow="visible"><path d="M 0 0m 9.174 7.513 c -0.18700027 0 -0.8359995 -0.032999992 -1.0229998 -0.032999992 c -0.22000027 0 -0.99000025 0.032999992 -1.21 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.26399994 c 0 -0.09899998 0.055000305 -0.15400028 0.17600012 -0.16499996 c 0.26399994 -0.032999992 0.3959999 -0.12100029 0.3959999 -0.28600025 c 0 -0.09899998 -0.065999985 -0.21999979 -0.19799995 -0.36299992 l -1.7159996 -1.848 c -0.31900024 0.74800014 -0.62700033 1.4850001 -0.9460001 2.2330003 c 0.01099968 0.021999836 0.021999836 0.043999672 0.05499983 0.065999985 c 0.09899998 0.10999966 0.28600025 0.17599964 0.5500002 0.19799995 c 0.17599964 0.021999836 0.26399994 0.10999966 0.26399994 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.20900011 0.17600012 c -0.26399994 0 -1.1110001 -0.032999992 -1.375 -0.032999992 c -0.23099995 0 -0.99 0.032999992 -1.221 0.032999992 c -0.16499996 0 -0.2420001 -0.08799982 -0.2420001 -0.26399994 c 0 -0.11000013 0.099000216 -0.16499996 0.29700017 -0.16499996 c 0.4949999 0 0.6489999 0 0.7809999 -0.31900024 l 1.2760003 -3.0029998 l -2.288 -2.453 c -0.03300023 -0.032999992 -0.07700014 -0.07700002 -0.13200021 -0.110000014 c -0.45099986 -0.473 -0.96799994 -0.737 -1.573 -0.77 c -0.187 -0.011000007 -0.286 -0.109999985 -0.286 -0.27499998 c 0.032999992 -0.099 0.044 -0.154 0.187 -0.154 c 0.187 0 0.83599997 0.033 1.023 0.033 c 0.23100007 0 0.99 -0.033 1.221 -0.033 c 0.16499996 0 0.2420001 0.088 0.2420001 0.264 c 0 0.09900001 -0.055000067 0.15399998 -0.17600012 0.16499999 c -0.26399994 0.022000015 -0.3959999 0.12100002 -0.3959999 0.28599998 c 0 0.110000014 0.09899998 0.264 0.286 0.46200007 c 0.6819999 0.72599995 1.375 1.4519999 2.046 2.189 c 0.37400007 -0.89100003 0.7589998 -1.7709999 1.1219997 -2.6729999 c -0.01099968 -0.022000015 -0.021999836 -0.04400003 -0.05499983 -0.07700002 c -0.09899998 -0.09899998 -0.2750001 -0.15399998 -0.53900003 -0.187 c -0.16499996 -0.021999985 -0.25299978 -0.109999985 -0.25299978 -0.253 c 0 -0.121 0.065999985 -0.176 0.20899963 -0.176 l 1.375 0.033 c 0.23100042 0 1.0010004 -0.033 1.1990004 -0.033 c 0.16499996 0 0.25300026 0.088 0.25300026 0.253 c 0 0.110000014 -0.07700062 0.16499999 -0.24200058 0.176 c -0.3409996 0 -0.5609999 0.011000007 -0.638 0.055000007 c -0.076999664 0.044 -0.16499996 0.17599997 -0.25299978 0.396 l -1.3969998 3.3329997 c 0.74799967 0.7920003 1.309 1.3860002 1.6719999 1.7930002 c 0.26399994 0.2750001 0.44000006 0.4619999 0.53900003 0.53900003 c 0.4069996 0.34100008 0.8579998 0.5169997 1.3529997 0.53900003 c 0.23099995 0.01099968 0.28600025 0.065999985 0.28600025 0.27499962 c -0.032999992 0.099000454 -0.043999672 0.15400028 -0.18700027 0.15400028 Z "/></symbol><symbol id="g4EA52B6D28647DF7ED3F4BE43107106C" overflow="visible"><path d="M 0 0m 7.304 7.48 c -0.19799995 0 -0.8800001 0.032999992 -1.0889997 0.032999992 c -0.16499996 0 -0.25300026 -0.08799982 -0.25300026 -0.25300026 c 0 -0.12099981 0.065999985 -0.17599964 0.20900011 -0.17599964 c 0.23099995 0 0.35199976 -0.065999985 0.35199976 -0.19799995 c 0 -0.12100029 -0.09899998 -0.28600025 -0.28599977 -0.49500036 l -2.475 -2.8489997 l -1.1660001 3.1569998 c -0.032999992 0.0880003 -0.055000067 0.14300013 -0.065999985 0.17600012 c 0 0.14300013 0.19799995 0.20900011 0.5940001 0.20900011 c 0.20899987 0 0.30799985 0.08799982 0.30799985 0.26399994 c 0 0.11000013 -0.065999985 0.16499996 -0.20899987 0.16499996 l -1.375 -0.032999992 c -0.2420001 0 -1.0120001 0.032999992 -1.21 0.032999992 c -0.16500002 0 -0.25300002 -0.08799982 -0.25300002 -0.26399994 c 0 -0.11000013 0.09900001 -0.16499996 0.297 -0.16499996 c 0.19800001 0 0.36299998 -0.022000313 0.46200007 -0.04400015 c 0.20899999 -0.05499983 0.21999991 -0.08799982 0.2859999 -0.29699993 l 1.3420001 -3.575 c 0.032999992 -0.0769999 0.04399991 -0.13199997 0.04399991 -0.16499996 l -0.23099995 -0.9130001 c -0.13199997 -0.5609999 -0.22000003 -0.91299987 -0.26399994 -1.0559999 c -0.07700014 -0.29700005 -0.15400004 -0.47300005 -0.23100019 -0.52800006 c -0.0769999 -0.054999977 -0.32999992 -0.07699999 -0.7479999 -0.07699999 c -0.24199998 -0.011000007 -0.34099996 -0.021999985 -0.34099996 -0.264 c 0 -0.10999999 0.065999985 -0.16499999 0.19799995 -0.16499999 l 1.3749999 0.033 l 1.3860002 -0.033 c 0.16499996 -0.011 0.25299978 0.077 0.25299978 0.264 c 0 0.07699999 -0.032999992 0.132 -0.08799982 0.143 c -0.11000013 0.010999978 -0.19799995 0.021999985 -0.25300002 0.021999985 c -0.36299992 0.011000007 -0.58299994 0.033000022 -0.638 0.066000015 c -0.022000074 0.010999978 -0.032999992 0.032999992 -0.032999992 0.07700002 c 0 0.04399997 0.055000067 0.27499998 0.15400004 0.6819999 l 0.385 1.529 c 0.032999992 0.14299989 0.0769999 0.25300002 0.14299989 0.319 l 2.6950002 3.102 l 0.14300013 0.14300013 c 0.28599977 0.28599977 0.5499997 0.48399973 0.78099966 0.5829997 c 0.18700027 0.0880003 0.3959999 0.14300013 0.62699986 0.15400028 c 0.19799995 0.021999836 0.25300026 0.076999664 0.25300026 0.25299978 c 0 0.12100029 -0.065999985 0.17600012 -0.18700027 0.17600012 c -0.16499996 0 -0.72599983 -0.032999992 -0.8909998 -0.032999992 Z "/></symbol></defs></svg></figure></details></section>
+  </body>
+</details></section><section class="block" data-taxon="Problem"><details ><summary id="mille-plateaux-canterbury-2A"><header><h1><span class="taxon">Problem. </span><span lang="zh">古代物理学博士问题</span> <a class="slug" href="/mille-plateaux/canterbury-2A">[canterbury-2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<p><span lang="zh">有两个正方体</span>, <span lang="zh">一个边长为</span> $1$, <span lang="zh">另一个边长为</span> $2$. <span lang="zh">请找到另外两个边长为有理数的正方体使它们的体积总和相同</span>. <span lang="zh">换言之</span>, <span lang="zh">求下述方程的一组</span> (<span lang="zh">正</span>) <span lang="zh">有理解</span>.</p>
+<p>$$ x^3 + y^3 \spaces= 9 \quad \color{gray}{(= ~ 1^3+2^3)} $$</p>
+<section class="block" data-taxon="Solution"><details ><summary id="mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0"><header><h1><span class="taxon">Solution. </span>椭圆曲线的倍点 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">我们先画出</span> $x^3 + y^3 = 9$. <span lang="zh">然后由已知的</span> $P=(1,2)$ <span lang="zh">出发做切线得到</span> $2P$, $4P$, $8P$. <span lang="zh">这种几乎全凭借运气的操作是</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> <span lang="zh">及</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> <span lang="zh">研究此类问题的方式</span>.</p>
+<p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
+<p><span lang="zh">如图</span>, <span lang="zh">随后注意到</span> $8P$ <span lang="zh">恰好位于</span> $x &gt; 0,y &gt; 0$ <span lang="zh">的区域</span>, <span lang="zh">现在计算其坐标</span>.</p>
+<p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
+</details></section></details></section><section class="block" data-taxon=""><details ><summary id="pftb-P005"><header><h1><span class="taxon"></span><span lang="zh">素数无限多与</span> Furstenberg <span lang="zh">拓扑</span> <a class="slug" href="/pftb-P005">[pftb-P005]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pftb-P005.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 31, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK, p. 5</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls" title="Pearls [pearls]">Pearls</a></span></li></ul></div></header></summary>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<style>
+.kaiti {
+  font-family: "LXGW WenKai TC", serif;
+  font-style: normal;
+}
+</style>
+<p>$\gdef\Z{\mathbf{Z}}$
+$\gdef\PP{\mathbf{P}}$</p>
+<p><span lang="zh">此证明由</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Hillel_Furstenberg" title="Hillel Furstenberg [https://en.wikipedia.org/wiki/Hillel_Furstenberg]">Hillel Furstenberg</a></span> <span lang="zh">于</span> 1955 <span lang="zh">年提出</span> <sup class="footnote-reference" id="pftb-P005_furstenberg-back"><a href="#pftb-P005_furstenberg">1</a></sup>, <span lang="zh">收录于</span> <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">PFTB, p. 5</a></span>, <span lang="zh">此页配图的说明文字写道</span></p>
+<blockquote>
+<p>Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(<span lang="zh">掷扁石</span>, <span lang="zh">至无穷远</span>.) </span></p>
+</blockquote>
+<p><span lang="zh">对</span> $a,b \in \Z, b &gt; 0$, <span lang="zh">令</span> $N_{a,b} = \{ a + nb : n \in \Z \}$. <span lang="zh">每个集合</span> $N_{a,b}$ <span lang="zh">都是正负无界的算术级数</span>. <span lang="zh">如果集合</span> $O \subseteq \Z$ <span lang="zh">满足以下条件之一</span>:</p>
+<ol>
+<li>$O$ <span lang="zh">是空集</span>.</li>
+<li><span lang="zh">对任意的</span> $a \in O$ <span lang="zh">存在</span> $b &gt; 0$ <span lang="zh">使得</span> $N_{a,b} \subseteq O$.</li>
+</ol>
+<p><span lang="zh">则称</span> $O$ <span lang="zh">是开集</span>. <span lang="zh">这些条件保证</span> $O$ <span lang="zh">在</span> $a$ <span lang="zh">点附近</span> “<span lang="zh">稠密</span>”. <span lang="zh">显然</span>, <span lang="zh">开集的并总是开集</span>. <span lang="zh">另外</span>, <span lang="zh">如果</span> $O_1$ <span lang="zh">和</span> $O_2$ <span lang="zh">开</span>, <span lang="zh">则对任意的</span> $a \in O_1 \cap O_2$, $N_{a,b_1} \subseteq O_1$ <span lang="zh">及</span> $N_{a,b_2} \subseteq O_2$, <span lang="zh">都有</span> $a \in N_{a,b_1b_2} \subseteq O_1 \cap O_2$. <span lang="zh">所以开集的有限交也开</span>. <span lang="zh">从而此处定义的开集族的确导出了</span> $\Z$ <span lang="zh">上的一个拓扑</span>. <span lang="zh">随后</span>, <span lang="zh">我们注意</span>:</p>
+<p>   $(\text{A})$ <span lang="zh">每个非空的开集都是无界的</span>, <span lang="zh">显然</span>. <br />
+   $(\text{B})$ <span lang="zh">每个</span> $N_{a,b}$ <span lang="zh">都是既开又闭的</span>. <span lang="zh">因为</span> $N_{a,b} = \mathbb{Z} \setminus \bigcup_{i=1}^{b-1} N_{a+i,b}$, <span lang="zh">这说明</span> $N_{a,b}$ <span lang="zh">是开集的补</span>, <span lang="zh">因而闭</span>.</p>
+<p><span lang="zh">现在我们引出素数</span>. <span lang="zh">对于每个整数</span> $n \neq 1,-1$ <span lang="zh">都有某个素因子</span> $p$ <span lang="zh">使得</span> $n \in N_{0,p}$ <span lang="zh">以及</span> $\Z \setminus \{\pm1\} = \bigcup_{p \in \PP} N_{0,p}$. <span lang="zh">如果</span> $\PP$ <span lang="zh">是有限的</span>, <span lang="zh">那么根据</span> $(\text B)$, $\bigcup_{p \in \PP} N_{0,p}$ <span lang="zh">将是有限个闭集的并</span>, <span lang="zh">所以是闭的</span>. <span lang="zh">进而可以导出</span> $\{\pm1\}$ <span lang="zh">是一个开集</span>, <span lang="zh">这与</span> $(\text A)$ <span lang="zh">矛盾</span>, <span lang="zh">证毕</span>.</p>
+<p><span lang="zh">我们回顾证明</span>, <span lang="zh">不难发现核心是用拓扑解释</span> “<span lang="zh">每个整数都有素因子</span>” <span lang="zh">这件事</span>, <span lang="zh">进而</span> $\bigcup_{p \in \PP} N_{0,p} = \Z \setminus \{\pm1\}$ <span lang="zh">在</span> $\Z$ <span lang="zh">上稠密</span>, <span lang="zh">于是</span> $\PP$ <span lang="zh">绝不可能有限</span>. <span lang="zh">此方法实质利用了算术级数的性质</span>, <span lang="zh">而非拓扑内涵</span>. <span lang="zh">所以也可以翻译成不使用拓扑的版本</span>, <span lang="zh">见</span> Idris D. Mercer <span lang="zh">写的</span> 
+<span class="link external"><a href="http://www.idmercer.com/monthly355-356-mercer.pdf" title="On Furstenberg’s Proof of theInfinitude of Primes [http://www.idmercer.com/monthly355-356-mercer.pdf]">On Furstenberg’s Proof of theInfinitude of Primes</a></span>.</p>
+<div class="footnote-definition" id="pftb-P005_furstenberg">
+  <sup class="footnote-definition-label"><a href="#pftb-P005_furstenberg-back">1</a></sup>
+<p>Furstenberg <span lang="zh">当时是</span> Yeshiva <span lang="zh">大学的本科生</span>, <span lang="zh">其在美国数学月刊上发表了</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes" title="“On the infinitude of primes” [https://en.wikipedia.org/wiki/Furstenberg%27s_proof_of_the_infinitude_of_primes]">“On the infinitude of primes”</a></span>, <span lang="zh">这才有了</span> <span class="link local"><a href="/bib/pftb" title="Proofs from THE BOOK [bib/pftb]">Proofs from THE BOOK</a></span> <span lang="zh">对此证明的收录</span>.</p>
+</div>
+</details></section></details></section></footer></article></div></body></html>

@@ -1,0 +1,36 @@
+[kodama]
+trees = "trees"
+assets = "assets"
+base-url = "/"
+themes = [
+  "themes/default.html",
+  "themes/serena.html",
+  "themes/printer.html",
+]
+
+[toc]
+placement = "right"
+sticky = true
+mobile-sticky = true
+max-width = "max-content"
+
+[text]
+edit = "[edit]"
+toc = "Table of Contents"
+references = "References"
+backlinks = "Backlinks"
+
+[build]
+typst-root = "trees"
+short-slug = true
+pretty-urls = true
+footer-mode = "embed"
+inline-css = true
+asref = false
+output = "./publish"
+edit = "https://github.com/kokic/kokic.github.io/tree/master/trees/"
+
+[serve]
+edit = "vscode://file/"
+output = "./.cache/publish"
+command = ["miniserve", "<output>", "--index", "index.html", "--pretty-urls", "--port", "8080"]

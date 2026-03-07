@@ -1,0 +1,6 @@
+/src
+/.cache
+/entire
+
+.DS_Store
+*.bat

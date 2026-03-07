@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>Daily Surf</title><link rel="icon" href="/assets/favicon.ico" /><script>
+  function toggleDetailsOpen() {
+    const details = document.querySelector("#toc>div>details");
+    if (!details) return;
+
+    if (window.matchMedia("(max-width: 1000px)").matches) {
+      details.removeAttribute("open");
+    } else {
+      details.setAttribute("open", "");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
+  window.addEventListener("resize", toggleDetailsOpen);
+</script><style>
+  theme-option {
+    display: inline-block;
+  }
+
+  theme-option>input {
+    display: none;
+  }
+
+  theme-option>label {
+    color: var(--slug-color);
+  }
+
+  theme-option>label:hover {
+    background-color: var(--hover-color-link);
+  }
+
+  theme-option:has(input:checked)>label {
+    color: var(--link-color);
+  }
+
+  theme-option>label::before {
+    content: "[";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option>label::after {
+    content: "]";
+    color: rgba(0, 0, 0, 0);
+  }
+
+  theme-option:has(input:checked)>label::before {
+    color: var(--link-color);
+  }
+
+  theme-option:has(input:checked)>label::after {
+    color: var(--link-color);
+  }
+</style>
+
+<template id="theme-option-template">
+  <input type="radio" name="theme" />
+  <label></label>
+</template>
+
+<script>
+  const THEME_KEY = `kodama-theme`;
+
+  function storeSelectedTheme(name) {
+    localStorage.setItem(THEME_KEY, name);
+  }
+
+  function getCurrentTheme() {
+    return localStorage.getItem(THEME_KEY) || window.primaryTheme;
+  }
+
+  function selectTheme(themeName) {
+    storeSelectedTheme(themeName);
+    requestAnimationFrame(applyDynamicColorInvert);
+  }
+
+  function applyFavorTheme() {
+    const favoredTheme = getCurrentTheme();
+    if (favoredTheme) {
+      const selector = `input[type='radio'][id='${favoredTheme}']`;
+      const favoredOption = window.themeOptions.querySelector(selector);
+
+      if (favoredOption) {
+        favoredOption.checked = true;
+      } else if (window.primaryOption) {
+        // Fallback to primary theme, if the favored theme is not found
+        // e.g., when the theme options have changed, and the stored theme is no longer available.
+        window.primaryOption.checked = true;
+      }
+    }
+    applyDynamicColorInvert();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    window.themeOptions = document.getElementById("theme-options");
+    const templateContent = document.getElementById("theme-option-template").content;
+
+    customElements.define(
+      "theme-option",
+      class extends HTMLElement {
+        constructor() {
+          super();
+
+          const node = templateContent.cloneNode(true);
+          const themeName = this.getAttribute("name");
+
+          const input = node.querySelector("input");
+          input.setAttribute("id", themeName);
+          input.setAttribute("value", themeName);
+
+          const label = node.querySelector("label");
+          label.setAttribute("for", themeName);
+          label.addEventListener("click", () => selectTheme(themeName));
+
+          while (this.firstChild) {
+            label.appendChild(this.firstChild);
+          }
+          this.appendChild(node);
+        }
+      },
+    );
+
+    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
+    window.primaryTheme = primaryOption?.value;
+
+    applyFavorTheme();
+  });
+</script>
+
+<script>
+  const clamp = (value) => Math.max(0, Math.min(255, value));
+
+  const multiply = ([r, g, b], matrix) => {
+    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
+    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
+    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
+    return [nr, ng, nb];
+  };
+
+  const hueRotate = ([r, g, b], angle = 0) => {
+    const rad = (angle / 180) * Math.PI;
+    const sin = Math.sin(rad);
+    const cos = Math.cos(rad);
+    const matrix = [
+      0.213 + cos * 0.787 - sin * 0.213,
+      0.715 - cos * 0.715 - sin * 0.715,
+      0.072 - cos * 0.072 + sin * 0.928,
+      0.213 - cos * 0.213 + sin * 0.143,
+      0.715 + cos * 0.285 + sin * 0.140,
+      0.072 - cos * 0.072 - sin * 0.283,
+      0.213 - cos * 0.213 - sin * 0.787,
+      0.715 - cos * 0.715 + sin * 0.715,
+      0.072 + cos * 0.928 + sin * 0.072,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const grayscale = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.2126 + 0.7874 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 + 0.2848 * (1 - value),
+      0.0722 - 0.0722 * (1 - value),
+      0.2126 - 0.2126 * (1 - value),
+      0.7152 - 0.7152 * (1 - value),
+      0.0722 + 0.9278 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const sepia = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.393 + 0.607 * (1 - value),
+      0.769 - 0.769 * (1 - value),
+      0.189 - 0.189 * (1 - value),
+      0.349 - 0.349 * (1 - value),
+      0.686 + 0.314 * (1 - value),
+      0.168 - 0.168 * (1 - value),
+      0.272 - 0.272 * (1 - value),
+      0.534 - 0.534 * (1 - value),
+      0.131 + 0.869 * (1 - value),
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const saturate = ([r, g, b], value = 1) => {
+    const matrix = [
+      0.213 + 0.787 * value,
+      0.715 - 0.715 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 + 0.285 * value,
+      0.072 - 0.072 * value,
+      0.213 - 0.213 * value,
+      0.715 - 0.715 * value,
+      0.072 + 0.928 * value,
+    ];
+    return multiply([r, g, b], matrix);
+  };
+
+  const linear = ([r, g, b], slope = 1, intercept = 0) => {
+    const scale = 255;
+    return [
+      clamp(r * slope + intercept * scale),
+      clamp(g * slope + intercept * scale),
+      clamp(b * slope + intercept * scale),
+    ];
+  };
+
+  const brightness = (rgb, value = 1) => linear(rgb, value);
+  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
+
+  const invert = ([r, g, b], value = 1) => {
+    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
+    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
+    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
+    return [clamp(nr), clamp(ng), clamp(nb)];
+  };
+
+  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
+  const rgbToHsl = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+    if (max === min) {
+      h = s = 0;
+    } else {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+    return { h: h * 100, s: s * 100, l: l * 100 };
+  };
+
+  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
+    let color = [...rgb];
+    color = invert(color, inv / 100);
+    color = sepia(color, sep / 100);
+    color = saturate(color, sat / 100);
+    color = hueRotate(color, hue * 3.6);
+    color = brightness(color, bri / 100);
+    color = contrast(color, con / 100);
+    return color;
+  };
+
+  const lossFn = (targetRgb, filters) => {
+    const resultRgb = applyFilters([0, 0, 0], filters);
+    const targetHsl = rgbToHsl(...targetRgb);
+    const resultHsl = rgbToHsl(...resultRgb);
+    return (
+      Math.abs(resultRgb[0] - targetRgb[0]) +
+      Math.abs(resultRgb[1] - targetRgb[1]) +
+      Math.abs(resultRgb[2] - targetRgb[2]) +
+      Math.abs(resultHsl.h - targetHsl.h) +
+      Math.abs(resultHsl.s - targetHsl.s) +
+      Math.abs(resultHsl.l - targetHsl.l)
+    );
+  };
+
+  const fix = (value, idx) => {
+    let max = 100;
+    if (idx === 2) max = 7500;                  // saturate
+    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
+    if (idx === 3) { // hue-rotate
+      if (value > max) return value % max;
+      if (value < 0) return max + (value % max);
+      return value;
+    }
+    return Math.max(0, Math.min(max, value));
+  };
+
+  const spsa = (targetRgb, A, a, c, initial, iters) => {
+    const alpha = 1;
+    const gamma = 1 / 6;
+    let values = [...initial];
+    let best = [...values];
+    let bestLoss = Infinity;
+
+    for (let k = 0; k < iters; k++) {
+      const ck = c / Math.pow(k + 1, gamma);
+      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
+      const highArgs = values.map((v, i) => v + ck * deltas[i]);
+      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
+      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
+
+      values = values.map((v, i) => {
+        const g = (lossDiff / (2 * ck)) * deltas[i];
+        const ak = a[i] / Math.pow(A + k + 1, alpha);
+        return fix(v - ak * g, i);
+      });
+
+      const loss = lossFn(targetRgb, values);
+      if (loss < bestLoss) {
+        best = [...values];
+        bestLoss = loss;
+      }
+    }
+    return { values: best, loss: bestLoss };
+  };
+
+  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
+  // A loss below this value is considered visually indistinguishable for most use cases.
+  // The value 25 was determined empirically to balance performance and color accuracy.
+  const ACCEPTABLE_COLOR_LOSS = 25;
+
+  const solveWide = (targetRgb) => {
+    const A = 5;
+    const c = 15;
+    const a = [60, 180, 18000, 600, 1.2, 1.2];
+    let best = { loss: Infinity, values: null };
+    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
+      const initial = [50, 20, 3750, 50, 100, 100];
+      const result = spsa(targetRgb, A, a, c, initial, 1000);
+      if (result.loss < best.loss) best = result;
+    }
+    return best;
+  };
+
+  const solveNarrow = (targetRgb, wideResult) => {
+    const A = wideResult.loss;
+    const c = 2;
+    const A1 = A + 1;
+    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
+    return spsa(targetRgb, A, a, c, wideResult.values, 500);
+  };
+
+  const cssFilterString = (filters) => {
+    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
+    const hueDeg = Math.round(hue * 3.6);
+    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
+  };
+
+  const solveColor = (targetRgb) => {
+    const wide = solveWide(targetRgb);
+    const narrow = solveNarrow(targetRgb, wide);
+    return {
+      values: narrow.values,
+      loss: narrow.loss,
+      filter: cssFilterString(narrow.values),
+    };
+  };
+
+  // Reuse a single canvas / context to avoid memory leaks
+  const colorParseCanvas = document.createElement('canvas');
+  colorParseCanvas.width = 1;
+  colorParseCanvas.height = 1;
+  const colorParseContext = colorParseCanvas.getContext('2d');
+
+  const toRGBArray = (cssColor) => {
+    colorParseContext.fillStyle = cssColor;
+    colorParseContext.fillRect(0, 0, 1, 1);
+
+    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
+    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
+    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
+    return Array.from(rgba.slice(0, 3));
+  };
+
+  const DYNAMIC_STYLE_ID = 'dynamic-color-invert-style';
+  const SOLVED_COLOR_KEY = "solved-";
+
+  function memorizedSolvedFilter(color) {
+    const colorKey = SOLVED_COLOR_KEY + color;
+    const storedFilterOption = localStorage.getItem(colorKey);
+    if (storedFilterOption) {
+      return storedFilterOption;
+    } else {
+      const filter = solveColor(color).filter;
+      localStorage.setItem(colorKey, filter);
+      return filter;
+    }
+  }
+
+  function applyDynamicColorInvert() {
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
+    if (textColor && textColor.length > 0) {
+      const rgb = toRGBArray(textColor);
+      const filter = memorizedSolvedFilter(rgb);
+
+      const existingStyle = document.getElementById(DYNAMIC_STYLE_ID);
+      if (existingStyle) {
+        existingStyle.textContent = `.color-invert {${filter}}`;
+      } else {
+        const style = document.createElement('style');
+        style.id = DYNAMIC_STYLE_ID;
+        style.textContent = `.color-invert {${filter}}`;
+        document.head.appendChild(style);
+      }
+    }
+  }
+</script><script>
+  (() => {
+    const url = "/kodama.reload";
+    const interval = 1000; // 1 second
+
+    let lastVersion = null;
+
+    async function check() {
+      try {
+        const res = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("reload marker not ready");
+        }
+        const version = (await res.text()).trim();
+        if (lastVersion && version && version !== lastVersion) {
+          location.reload();
+          return;
+        }
+        lastVersion = version || lastVersion;
+      } catch (e) {
+        // Ignore
+        console.warn("Reload check failed:", e);
+      }
+
+      setTimeout(check, interval);
+    }
+
+    check();
+  })();
+</script>
+<!-- Also see: https://katex.org/docs/autorender -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
+      ],
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script>
+<style>html {
+  font-size: 18px;
+}
+
+:root body {
+  color-scheme: light dark;
+  --content-gap: 15px;
+  --radius: 5px;
+  --article-max-width: 90ex;
+  --toc-max-width: 90ex;
+  --text-font-family: "Inria Sans", sans-serif;
+  --kaiti-font-family: "KaiTi", "SimKai", "STKaiti", "Kaiti SC", "Kaiti TC", "华文楷体", "楷体", serif;
+
+  /* root font size: 16px */
+  /* 11pt; */
+  --pre-font-size: 0.917rem;
+  --code-font-size: 1rem;
+  /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
+  --katex-font-size: 1.15em;
+  --katex-frac-line-font-size: 1.25em;
+  --details-h1-font-size: 1.2rem;
+  /* 13pt */
+  --section-details-h1-font-size: 1.083rem;
+  --article-details-h1-font-size: 1.5rem;
+  /* 0.9em */
+  --article-details-h1-taxon-font-size: 1.35rem;
+  /* 24px; */
+  --logo-font-size: 1.5rem;
+  /* 14pt; */
+  --footer-h2-font-size: 1.167rem;
+  --p-line-height: 1.55rem;
+
+  --text-color: black;
+  --toc-link-color: #555;
+  --background-color: white;
+
+  --background-color-pre: rgba(0, 100, 100, 0.04);
+  --background-color-code: rgba(0, 100, 100, 0.04);
+
+  --hover-color-block: rgba(0, 100, 255, 0.04);
+  --hover-color-link: rgba(0, 100, 255, 0.1);
+  --target-color: rgb(67, 92, 255);
+
+  --link-color: black;
+  --slug-color: gray;
+  --logo-color: #666;
+  --logo-hover-color: #aaa;
+  --span-taxon-color: #444;
+  --article-taxon-color: #888;
+  --mark-color: rgb(255, 255, 151);
+  --em-color: var(--text-color);
+
+  --alert-border-color: gray;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root body {
+    --text-color: white;
+    --toc-link-color: white;
+    --background-color: #2f2f2f;
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(100, 162, 255, 0.06);
+    --hover-color-link: rgba(100, 162, 255, 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: white;
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: #bbb;
+  }
+}
+
+@media print {
+  html {
+    font-size: 16px;
+  }
+
+  .edit,
+  #theme-options {
+    display: none;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+body {
+  color: var(--text-color);
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+  hyphens: auto;
+  background-color: var(--background-color);
+}
+
+pre,
+code {
+  font-optical-sizing: auto;
+}
+
+p,
+pre {
+  line-height: var(--p-line-height);
+}
+
+pre {
+  border-radius: var(--radius);
+  background-color: var(--background-color-pre);
+  padding: 0.5rem;
+  font-size: var(--pre-font-size);
+  margin-top: 0rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+code {
+  border-radius: var(--radius);
+  background-color: var(--background-color-code);
+  padding: 0.1rem;
+  font-size: var(--code-font-size);
+}
+
+pre,
+code {
+  font-family: monospace;
+}
+
+em {
+  color: var(--em-color);
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0 15px;
+  vertical-align: top;
+}
+
+/* !forest */
+pre>code {
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* !forest */
+.footnote-definition:last-child {
+  margin-bottom: 1rem;
+}
+
+/* !forest */
+.footnote-definition>p {
+  display: inline;
+}
+
+/* !forest */
+.footnote-definition-label {
+  margin-right: 4px;
+}
+
+/* !forest */
+.footnote-reference:target {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-definition:target>.footnote-definition-label {
+  border: 1px solid var(--target-color);
+}
+
+.footnote-reference::before,
+.footnote-definition-label::before {
+  content: "[";
+}
+
+.footnote-reference::after,
+.footnote-definition-label::after {
+  content: "]";
+}
+
+.katex {
+  font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
+  line-height: 1rem;
+  text-indent: 0;
+  text-rendering: auto;
+}
+
+.katex .mfrac .frac-line {
+  font-size: var(--katex-frac-line-font-size);
+}
+
+/* Generated by KaTeX */
+.cjk_fallback {
+  font-size: 1rem;
+  font-family: var(--text-font-family);
+}
+
+p:has(span.katex-html:empty) {
+  display: none;
+}
+
+section+p:empty {
+  display: none;
+}
+
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex-display .katex {
+  /* Inconsistent bounding box at different font sizes. */
+  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
+  padding-top: 1px;
+}
+
+.display-none {
+  display: none;
+}
+
+blockquote {
+  font-style: italic;
+  --blockquote-cjk-font-family: var(--kaiti-font-family);
+}
+
+blockquote span:is([lang=zh], [lang=ja], [lang=ko]) {
+  font-style: normal;
+  font-family: var(--blockquote-cjk-font-family);
+}
+
+/* GFM Blockquote tags: https://github.com/orgs/community/discussions/16925 */
+
+blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution) {
+  --blockquote-cjk-font-family: var(--text-font-family);
+  margin: 0rem 0.5rem;
+  padding: 0rem 0.5rem;
+  font-style: normal;
+  border-left: .25rem double var(--alert-border-color);
+}
+
+blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution)>p:first-child::before {
+  font-size: var(--section-details-h1-font-size);
+  font-family: monospace;
+  color: var(--span-taxon-color);
+  margin-right: 0.5rem;
+  display: block;
+  content: var(--alert-label);
+}
+
+blockquote.markdown-alert-note {
+  --alert-label: "[# NOTE]";
+}
+
+blockquote.markdown-alert-tip {
+  --alert-label: "[# TIP]";
+}
+
+blockquote.markdown-alert-important {
+  --alert-label: "[# IMPORTANT]";
+}
+
+blockquote.markdown-alert-warning {
+  --alert-label: "[# WARNING]";
+}
+
+blockquote.markdown-alert-caution {
+  --alert-label: "[# CAUTION]";
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+details>summary {
+  list-style-type: none;
+  outline: none;
+}
+
+details>summary>header {
+  display: inline;
+}
+
+details>summary::marker,
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details h1 {
+  font-size: var(--details-h1-font-size);
+  display: inline;
+}
+
+span.taxon {
+  color: var(--span-taxon-color);
+  font-weight: 500;
+}
+
+article>section>details>summary>header>h1 {
+  font-size: var(--article-details-h1-font-size);
+}
+
+article>section>details>h2 {
+  font-size: 1.25rem;
+}
+
+article>section>details>h3 {
+  font-size: 1.125rem;
+}
+
+article>section>details>h4 {
+  font-size: 1rem;
+}
+
+article>section>details>h5,
+article>section>details>h6 {
+  font-size: 0.875rem;
+}
+
+article>section>details>summary>header {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+article>section>details>summary>header>h1>.taxon {
+  display: block;
+  font-size: var(--article-details-h1-taxon-font-size);
+  color: var(--article-taxon-color);
+  padding-bottom: 5pt;
+}
+
+article>section>details>summary>header>h1>.taxon:empty {
+  display: none;
+}
+
+section.block>details {
+  margin-bottom: 0.4em;
+}
+
+section.block>details[open] {
+  margin-bottom: 1em;
+}
+
+section.block.link-list>details {
+  margin-bottom: 0em;
+}
+
+section.block.link-list>details>section.block>details {
+  margin-bottom: 0.25em;
+}
+
+/* class */
+.inline-typst {
+  display: inline;
+  margin: 0 0;
+  font-size: var(--katex-font-size);
+}
+
+.block {
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  border-radius: var(--radius);
+}
+
+.block:hover {
+  background-color: var(--hover-color-block);
+}
+
+.block.hide-metadata>details>summary>header>.metadata {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+figure {
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  padding: 3px;
+}
+
+mark {
+  background-color: var(--mark-color);
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: gray;
+  border: 0 none;
+  width: 100%;
+  height: 1pt;
+}
+
+ul,
+ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo>span {
+  color: var(--logo-color);
+  text-decoration: none;
+}
+
+.logo>span:hover {
+  color: var(--logo-hover-color);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: var(--logo-font-size);
+}
+
+section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
+section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
+  display: none;
+}
+
+section .block[data-taxon]>header>h1,
+section .block[data-taxon] details>summary>header>h1 {
+  font-size: var(--section-details-h1-font-size);
+}
+
+footer>section {
+  margin-bottom: 1em;
+}
+
+footer h2 {
+  font-size: var(--footer-h2-font-size);
+}
+
+.metadata ul {
+  padding-left: 0;
+  display: inline;
+}
+
+.metadata li::after {
+  content: " · ";
+}
+
+.metadata li:last-child::after {
+  content: "";
+}
+
+.metadata * {
+  display: inline;
+}
+
+.link {
+  cursor: pointer;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: inherit;
+}
+
+a.slug:hover,
+a.edit:hover,
+a.bullet:hover,
+.link:hover {
+  background-color: var(--hover-color-link);
+}
+
+.link.external,
+.link.asset {
+  text-decoration: underline;
+}
+
+.link.asset::before {
+  content: "[F] ";
+  /* file */
+}
+
+a.link.local,
+.link.local a,
+a.slug,
+a.edit {
+  box-shadow: none;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  overflow-wrap: break-word;
+}
+
+.slug,
+.edit,
+.doi,
+.orcid {
+  color: var(--slug-color);
+  font-weight: 200;
+}
+
+body>header {
+  margin-bottom: 0.5em;
+}
+
+#grid-wrapper>article {
+  max-width: var(--article-max-width);
+  margin-right: auto;
+  grid-area: article;
+}
+
+@media only screen and (max-width: 1000px) {
+  figure {
+    margin: 0rem;
+  }
+
+  .block {
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+  }
+
+  #grid-wrapper>nav {
+    transition: ease all 0.2s;
+  }
+
+  .mobile-sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    background-color: var(--background-color);
+    z-index: 7;
+    border-bottom: solid var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    transition: ease all 0.2s;
+  }
+
+  #grid-wrapper {
+    display: grid;
+    grid-auto-flow: column;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0px;
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+
+nav#toc li.item-summary li {
+  display: none;
+}
+
+nav#toc ul {
+  list-style-type: none;
+}
+
+nav#toc li>ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+nav#toc,
+nav#toc a {
+  color: var(--toc-link-color);
+}
+
+nav#toc {
+  grid-area: toc;
+}
+
+nav {
+  font-optical-sizing: auto;
+}
+
+nav#toc a.bullet {
+  opacity: 0.7;
+  margin-left: 0.4rem;
+  margin-right: 0.3rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  text-decoration: none;
+}
+
+.typst-text use[fill="#000000"],
+.typst-group use[fill="#000000"],
+path.typst-shape[fill="#000000"] {
+  fill: var(--text-color);
+}
+
+path.typst-shape[stroke="#000000"] {
+  stroke: var(--text-color);
+}
+</style><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><style>
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Light.woff2");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Regular.woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Medium.woff2");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Semibold.woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+  rel="stylesheet" />
+
+<style>
+  body {
+    --text-font-family: "Inria Sans", "PingFang SC" !important;
+    --article-max-width: 90ex !important;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/index'" title="回声">« <span lang="zh">回声</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: #ffffff;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="printer">printer</theme-option>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/haskell" title="Draw a Haskell Logo [daily-surf/haskell]">■</a><span class="link local" onclick="window.location.href='#daily-surf-haskell'"><span class="taxon"></span>Draw a Haskell Logo</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> <span lang="zh">备注</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams <span lang="zh">谱序列</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 <span lang="zh">高分屏设置</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter <span lang="zh">主题设置</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git <span lang="zh">过滤分支</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span><span lang="zh">日经观点</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci <span lang="zh">抛硬币</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span><span lang="zh">屏幕右上角的</span> “FPS GPU CPU <span lang="zh">延时</span>”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram <span lang="zh">引擎与</span> WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span><span lang="zh">文件互传</span></span></li></ul></details></div></nav>
+
+<article><section class="block" data-taxon=""><details open><summary id="daily-surf-index"><header><h1><span class="taxon"></span>Daily Surf <a class="slug" href="/daily-surf/index">[daily-surf]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/index.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<section class="block" data-taxon=""><details ><summary id="daily-surf-haskell"><header><h1><span class="taxon"></span>Draw a Haskell Logo <a class="slug" href="/daily-surf/haskell">[haskell]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/haskell.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    
+    <figure role="math">
+      <svg class="typst-frame" style="overflow: visible; width: 15.653114568438221em; height: 10.80606315176638em;" viewBox="0 0 172.18426025282042 118.86669466943019" width="172.18426025282042pt" height="118.86669466943019pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-group"><g><path class="typst-shape" fill="#5f5087" fill-rule="nonzero" stroke="#5f5087" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 42.51968503937008 0)" d="M 0 0l 77.19293 118.86669 l -48.846474 -118.86669 l 77.19293 118.86669 l -105.53939 -118.86669 h 28.346457 l 48.846474 118.86669 h 28.346458 "/><path class="typst-shape" fill="#5f5087" fill-rule="nonzero" stroke="#5f5087" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 42.51968503937008 59.433347334715094)" d="M 0 0m 38.596466 0 l -38.596466 59.433346 l 66.942924 -59.433346 l -38.596466 59.433346 l 10.25001 -59.433346 h 28.346458 l -66.942924 59.433346 h 28.346457 "/><path class="typst-shape" fill="#463a62" fill-rule="nonzero" stroke="#463a62" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0l 38.596466 59.433346 l -10.25001 -59.433346 l 38.596466 59.433346 l -66.942924 -59.433346 h 28.346457 l 10.25001 59.433346 h 28.346458 "/><path class="typst-shape" fill="#463a62" fill-rule="nonzero" stroke="#463a62" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 59.433347334715094)" d="M 0 0m 38.596466 0 l -38.596466 59.433346 l 66.942924 -59.433346 l -38.596466 59.433346 l 10.25001 -59.433346 h 28.346458 l -66.942924 59.433346 h 28.346457 "/><path class="typst-shape" fill="#964b90" fill-rule="nonzero" stroke="#964b90" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 103.58583505597005 28.554551883520112)" d="M 0 0l 15.438587 23.773338 l 52.592907 -23.773338 v 23.773338 l -68.031494 -23.773338 h 68.031494 l -52.592907 23.773338 h 52.592907 "/><path class="typst-shape" fill="#964b90" fill-rule="nonzero" stroke="#964b90" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 128.2472523788047 66.53880385202403)" d="M 0 0l 15.438587 23.773338 l 28.49842 -23.773338 v 23.773338 l -43.937008 -23.773338 h 43.937008 l -28.49842 23.773338 h 28.49842 "/></g></g></g></svg>
+    </figure>
+    <block title="Click to expand" close="close" taxon="Source"><pre><code data-lang="typst"><br><span style="color: #d73948">#</span><span style="color: #d73948">import</span> <span style="color: #198810">"@preview/cetz:0.4.2"</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">import</span> cetz.draw: <span style="color: #d73948">*</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-outline <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-grids <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-radius <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #198810">"666"</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> rangle-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">70</span>, <span style="color: #b60157">58</span>, <span style="color: #b60157">98</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> lambda-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">95</span>, <span style="color: #b60157">80</span>, <span style="color: #b60157">135</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> equals-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">150</span>, <span style="color: #b60157">75</span>, <span style="color: #b60157">144</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">parallel</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">right-trapezoid</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> degree <span style="color: #d73948">=</span> <span style="color: #b60157">57deg</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> c <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">cos</span>(degree)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> s <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">sin</span>(degree)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> c <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> s <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> haskell-logo <span style="color: #d73948">=</span> cetz.<span style="color: #4b69c6">canvas</span>({<br><br>  <span style="color: #4b69c6">set-style</span>(stroke: <span style="color: #b60157">0.25pt</span> <span style="color: #d73948">+</span> lambda-color)<br><br>  <span style="color: #d73948">if</span> display-grids {<br>    <span style="color: #4b69c6">grid</span>((grid-radius, grid-radius), (<span style="color: #d73948">-</span>grid-radius, <span style="color: #d73948">-</span>grid-radius), stroke: grid-color)<br><br>    <span style="color: #d73948">for</span> x <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>      <span style="color: #d73948">for</span> y <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>        <span style="color: #4b69c6">content</span>((x, y), <span style="color: #4b69c6">text</span>(size: <span style="color: #b60157">0.5em</span>, fill: grid-color)[<span style="color: #198810">$</span>(<span style="color: #8b41b1">#</span><span style="color: #8b41b1">x</span>, <span style="color: #8b41b1">#</span><span style="color: #8b41b1">y</span>)<span style="color: #198810">$</span>])<br>      }<br>    }<br>  }<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #4b69c6">y</span>(b)), (<span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span>, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br><br>  <span style="color: #d73948">let</span> offset <span style="color: #d73948">=</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #4b69c6">y</span>(b)), (<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), <span style="color: #b60157">1</span>, fill: rangle-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: rangle-color)<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #b60157">0.42</span> <span style="color: #d73948">+</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">2.4</span>, fill: equals-color)<br><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.42</span> <span style="color: #d73948">-</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">1.55</span>, fill: equals-color)<br>})</code></pre></block>
+  </body>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-bevy"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> <span lang="zh">备注</span> <a class="slug" href="/daily-surf/bevy">[bevy]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/bevy.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<h4>E0786</h4>
+<pre><code class="language-sh">error[E0786]: found invalid metadata files for crate `serde`                               
+  --&gt; C:\Users\...\.cargo\registry\src\...\bevy_math-0.16.1\src\ray.rs:60:42
+   |
+60 | #[cfg_attr(feature = "serialize", derive(serde::Serialize, serde::Deserialize))]      
+   |                                          ^^^^^^^^^^^^^^^^
+   |
+   = note: failed to mmap rmeta metadata: '\\?\D:\...\target\release\deps\libserde-f884fbba2cdca77e.rmeta'
+   = note: this error originates in the derive macro `serde::Serialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+</code></pre>
+<p><span lang="zh">如果在</span> Windows <span lang="zh">设备上</span> <code>cargo build --release</code> <span lang="zh">时遇到这个错误</span>, <span lang="zh">那很可能是</span> Windows <span lang="zh">的路径长度限制所致</span> <sup class="footnote-reference" id="daily-surf_bevy_path-length-back"><a href="#daily-surf_bevy_path-length">1</a></sup>. <span lang="zh">管理员身份运行如下</span> Powershell <span lang="zh">命令即可启用长路径支持</span>.</p>
+<pre><code class="language-sh">New-ItemProperty -Path "HKLM:SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+</code></pre>
+<p><span lang="zh">另见</span> <span class="link external"><a href="https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#registry-setting-to-enable-long-paths" title="Registry setting to enable long paths - Microsoft Learn [https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell#registry-setting-to-enable-long-paths]">Registry setting to enable long paths - Microsoft Learn</a></span>.</p>
+<div class="footnote-definition" id="daily-surf_bevy_path-length">
+  <sup class="footnote-definition-label"><a href="#daily-surf_bevy_path-length-back">1</a></sup>
+<p>In the Windows API (with some exceptions discussed in the following paragraphs), the maximum length for a path is MAX_PATH, which is defined as 260 characters.</p>
+</div>
+</details></section><section class="block" data-taxon="Poetry"><details ><summary id="daily-surf-adams"><header><h1><span class="taxon">Poetry. </span>Adams <span lang="zh">谱序列</span> <a class="slug" href="/daily-surf/adams">[adams]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/adams.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 21, 2025</li><li class="meta-item"><span class="link local"><a href="/person/yuni" title="Yuniversal Y. Creeper 🥐 [person/yuni]">Yuniversal Y. Creeper 🥐</a></span></li></ul></div></header></summary>
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
+<style>
+.kaiti {
+  font-family: "LXGW WenKai TC", serif;
+  font-style: normal;
+}
+</style>
+<blockquote class="kaiti">
+<p><span lang="zh">每个人都是独一无二的笨蛋</span></p>
+<p><span lang="zh">看到独一无二的宿命</span>, <span lang="zh">向另一个笨蛋提枪冲锋</span></p>
+<p><span lang="zh">死去</span>, <span lang="zh">照耀着独一无二的光荣</span></p>
+</blockquote>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-sublime-text-config"><header><h1><span class="taxon"></span>Sublime Text 4 <span lang="zh">高分屏设置</span> <a class="slug" href="/daily-surf/sublime-text-config">[sublime-text-config]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/sublime-text-config.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">装好</span> <span class="link external"><a href="https://github.com/SublimeText/PackageDev" title="PackageDev [https://github.com/SublimeText/PackageDev]"><code>PackageDev</code></a></span> <sup class="footnote-reference" id="daily-surf_sublime-text-config_package-resource-viewer-back"><a href="#daily-surf_sublime-text-config_package-resource-viewer">1</a></sup> <span lang="zh">包后</span>, <span lang="zh">修改主题文件如</span> <code>Default.sublime-theme</code> <span lang="zh">即可</span>.</p>
+<p><span lang="zh">侧边栏字体大小</span></p>
+<pre><code class="language-json">"class": "sidebar_label",
+"fg": "var(sidebar_label)",
+"font.face": "var(font_face)",
+"font.size": "var(font_size)"  // line 264
+</code></pre>
+<p><span lang="zh">侧边栏文件树条目</span> <code>padding</code></p>
+<pre><code class="language-json">"class": "sidebar_tree",
+"platforms": ["windows"],
+"row_padding": [6, 5, 4, 5],  // line 226
+</code></pre>
+<p><span lang="zh">文件</span> Tab <span lang="zh">字体大小</span></p>
+<pre><code class="language-json">"class": "tab_label",
+"font.face": "var(font_face)",
+"font.size": "var(font_size_lg)",  // line 938
+</code></pre>
+<div class="footnote-definition" id="daily-surf_sublime-text-config_package-resource-viewer">
+  <sup class="footnote-definition-label"><a href="#daily-surf_sublime-text-config_package-resource-viewer-back">1</a></sup>
+<p><span class="link external"><a href="https://packagecontrol.io/packages/PackageResourceViewer" title="PackageResourceViewer [https://packagecontrol.io/packages/PackageResourceViewer]"><code>PackageResourceViewer</code></a></span> <span lang="zh">这个包也能用</span>, <span lang="zh">不过相对而言太旧了</span>.</p>
+</div>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-sagemath-theme"><header><h1><span class="taxon"></span>Sagemath Jupyter <span lang="zh">主题设置</span> <a class="slug" href="/daily-surf/sagemath-theme">[sagemath-theme]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/sagemath-theme.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 17, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">如果你是一个没有定制化需求的</span> <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> <span lang="zh">用户或者单纯地使用</span> Jupyter Notebook <span lang="zh">连接一些与</span> <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> <span lang="zh">无关的服务</span>, <span lang="zh">你遇到本文所关心问题的可能性是很低的</span>, <span lang="zh">这个主要有以下两个原因</span>.</p>
+<ol>
+<li>
+<p>Sagemath Jupyter Notebook <span lang="zh">在</span> <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> <span lang="zh">上几乎不能使用</span>. <span lang="zh">这是因为</span>, <span lang="zh">所有由</span> <span class="link external"><a href="https://www.mathjax.org" title="MathJax [https://www.mathjax.org]">MathJax</a></span> <span lang="zh">提供渲染的公式都无法呈现</span>, <span lang="zh">甚至连</span> Cell <span lang="zh">也不出现</span>. <span lang="zh">于是最稳妥的做法就变成了使用浏览器访问</span> Jupyter Notebook.</p>
+</li>
+<li>
+<p>Jupyter Notebook <span lang="zh">的主题设计非常混乱</span>, <span lang="zh">常用主题位于</span> <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> <span lang="zh">包</span>, <span lang="zh">但是这个包的文档和使用示例并不适用于</span> <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span>.</p>
+</li>
+</ol>
+<p><span lang="zh">这两点使得问题看上去不太容易</span>. <span lang="zh">因为一般的</span>, <span lang="zh">如果用户使用</span> <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> <span lang="zh">访问</span> Jupyter Notebook <span lang="zh">就完全不需要担心主题问题</span>, <span lang="zh">于是相应的可能在互联网上存在的解决方案就会变少</span>. <span lang="zh">关于第二点</span>, <span lang="zh">如果尝试在</span> Jupyter Notebook <span lang="zh">当中执行下面这样的程序</span></p>
+<pre><code class="language-python">from jupyterthemes import get_themes, jtplot
+import jupyterthemes as jt
+from jupyterthemes.stylefx import set_nb_theme
+
+set_nb_theme('monokai')
+</code></pre>
+<p><span lang="zh">确实能够切换到</span> <code>monokai</code> <span lang="zh">主题</span>, <span lang="zh">同时你还会发现当前使用的</span> Jupyter Notebook <span lang="zh">的</span> <code>Header</code> <span lang="zh">和</span> <code>Toolbar</code> <span lang="zh">消失了</span> <sup class="footnote-reference" id="daily-surf_sagemath-theme_toolbar-display-none-back"><a href="#daily-surf_sagemath-theme_toolbar-display-none">1</a></sup>. <span lang="zh">如果你尝试检索相关信息</span>, <span lang="zh">你会在</span> <span class="link external"><a href="https://github.com/dunovank/jupyter-themes" title="jupyterthemes [https://github.com/dunovank/jupyter-themes]">jupyterthemes</a></span> <span lang="zh">的文档中找到像是</span></p>
+<pre><code class="language-sh">jt -t monokai -T -N
+</code></pre>
+<p><span lang="zh">这样的做法</span>, <span lang="zh">这里的</span> <code>-T</code> <span lang="zh">是</span> Toolbar Visible, <code>-N</code> <span lang="zh">是</span> Name &amp; Logo Visible. <span lang="zh">然后遗憾地发现这不会对</span> Sagemath <span lang="zh">的</span> Jupyter Notebook <span lang="zh">造成任何作用</span>. <span lang="zh">同时</span>, <span lang="zh">这样的设置也是临时的</span>, <span lang="zh">如果希望将某个特定的主题作为默认主题</span>, <span lang="zh">就得另谋他法</span>.</p>
+<p><span lang="zh">最直接的方法是</span>, <span lang="zh">找到像下面这样的编译后的样式文件</span></p>
+<pre><code>sagemath/runtime/opt/sagemath-9.3/local/lib/python3.7/site-packages/jupyterthemes/styles/compiled/monokai.css
+</code></pre>
+<p><span lang="zh">然后覆盖到</span></p>
+<pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
+</code></pre>
+<p><span lang="zh">这样你就得到了一个永久生效的样式设置</span>. <span lang="zh">随后可以通过修改</span> <code>div#maintoolbar</code> <span lang="zh">和</span> <code>#header-container</code> <span lang="zh">的</span> <code>display</code> <span lang="zh">为</span> <code>block</code> <span lang="zh">重新显示这两个组件</span>. <span lang="zh">修改</span> <code>.MathJax</code> <span lang="zh">的</span> <code>font-size</code> <span lang="zh">为</span> <code>120%</code> <span lang="zh">或者更大则能够增大渲染后公式的字号</span>.</p>
+<section class="block hide-metadata" data-taxon="Remark"><details open><summary id="daily-surf-__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0"><header><h1><span class="taxon">Remark. </span>一条或可利用的情报 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/sagemath-theme.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果你需要带完整头文件的</span> C / C++ <span lang="zh">编译器</span>, <span lang="zh">但还没安装</span> GCC <span lang="zh">或者</span> Clang, <span lang="zh">那</span> <code>sagemath/runtime/bin</code> <span lang="zh">目录下就有一个</span>, <span lang="zh">头文件位于</span> <code>sagemath/runtime/usr/include</code>.</p>
+<div class="footnote-definition" id="daily-surf___kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0_toolbar-display-none">
+  <sup class="footnote-definition-label"><a href="#daily-surf___kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0_toolbar-display-none-back">1</a></sup>
+<p><span lang="zh">从编译后的样式文件中我们可以看到</span>, <code>div#maintoolbar</code> <span lang="zh">和</span> <code>#header-container</code> <span lang="zh">确实被设置为了</span> <code>display: none</code>.</p>
+</div>
+</details></section><div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
+  <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_toolbar-display-none-back">1</a></sup>
+<p><span lang="zh">从编译后的样式文件中我们可以看到</span>, <code>div#maintoolbar</code> <span lang="zh">和</span> <code>#header-container</code> <span lang="zh">确实被设置为了</span> <code>display: none</code>.</p>
+</div>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-git-filter-branch"><header><h1><span class="taxon"></span>Git <span lang="zh">过滤分支</span> <a class="slug" href="/daily-surf/git-filter-branch">[git-filter-branch]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/git-filter-branch.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 15, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">一个常见的需求是对已经存在的</span> <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="git commit [https://git-scm.com/docs/git-commit]">git commit</a></span> <span lang="zh">历史作出修改</span>. <span lang="zh">如果目标</span> commits <span lang="zh">都存在于本地分支</span>, <span lang="zh">那么一组</span> <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="rebase [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span> <span lang="zh">就能解决问题</span>. <span lang="zh">但若是要修改已经推送至远程仓库或托管平台</span> <sup class="footnote-reference" id="daily-surf_git-filter-branch_host-platform-back"><a href="#daily-surf_git-filter-branch_host-platform">1</a></sup> <span lang="zh">则没有一步到位的操作</span>, <span lang="zh">且对于真实的多人协作仓库来说</span>, <span lang="zh">这么做的潜在危害远高于</span> <span class="link local"><a href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]"><span lang="zh">修改</span> commits <span lang="zh">历史</span></a></span> <span lang="zh">所得到的短期好处</span> <sup class="footnote-reference" id="daily-surf_git-filter-branch_alternative-approach-back"><a href="#daily-surf_git-filter-branch_alternative-approach">2</a></sup>. <span lang="zh">因此</span>, <span lang="zh">接下来的讨论都是以接受</span> “<span lang="zh">潜在危害</span>” <span lang="zh">这一点作为前提而进行的</span>.</p>
+<p><span lang="zh">这里只说方法</span>. <span lang="zh">即便对于已经提交的</span> <span class="link external"><a href="https://git-scm.com/docs/git-commit" title="commit [https://git-scm.com/docs/git-commit]">commit</a></span>, <span lang="zh">其修改仍然可用</span> <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="rebase [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>. <span lang="zh">但此时不能直接推送</span>, <span lang="zh">我们需要额外做一步</span> <span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="filter-branch [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span>.</p>
+<pre><code>git filter-branch --force     
+</code></pre>
+<p><span class="link external"><a href="https://git-scm.com/docs/git-filter-branch" title="filter-branch [https://git-scm.com/docs/git-filter-branch]"><code>filter-branch</code></a></span> <span lang="zh">配合</span> <span class="link external"><a href="https://git-scm.com/docs/git-replace" title="replace [https://git-scm.com/docs/git-replace]"><code>replace</code></a></span> <span lang="zh">或者</span> <code>&lt;GIT_DIR&gt;/info/grafts</code> <span lang="zh">也能够用来快速清除某次</span> commit <span lang="zh">之前的所有记录</span>. <code>grafts</code> <span lang="zh">文件内是</span> commit <span lang="zh">的</span> hash <span lang="zh">值</span>, <span lang="zh">可以通过</span> <code>git log</code> <span lang="zh">查询</span>.</p>
+<p><span lang="zh">注意</span>, <code>grafts</code> <span lang="zh">目前已经被标记为</span> deprecated, <span lang="zh">不过依旧可用</span>.</p>
+<pre><code>hint: Support for &lt;GIT_DIR&gt;/info/grafts is deprecated
+hint: and will be removed in a future Git version.
+hint:
+hint: Please use "git replace --convert-graft-file"
+hint: to convert the grafts into replace refs.
+hint:
+hint: Turn this message off by running
+hint: "git config advice.graftFileDeprecated false"
+</code></pre>
+<div class="footnote-definition" id="daily-surf_git-filter-branch_host-platform">
+  <sup class="footnote-definition-label"><a href="#daily-surf_git-filter-branch_host-platform-back">1</a></sup>
+<p><span lang="zh">如</span> <span class="link external"><a href="https://github.com" title="Github [https://github.com]">Github</a></span>, <span class="link external"><a href="https://about.gitlab.com" title="GitLab [https://about.gitlab.com]">GitLab</a></span>, <span class="link external"><a href="https://sourcehut.org" title="SourceHut [https://sourcehut.org]">SourceHut</a></span>, <span class="link external"><a href="https://codeberg.org" title="Codeberg [https://codeberg.org]">Codeberg</a></span> <span lang="zh">等</span>.</p>
+</div>
+<div class="footnote-definition" id="daily-surf_git-filter-branch_alternative-approach">
+  <sup class="footnote-definition-label"><a href="#daily-surf_git-filter-branch_alternative-approach-back">2</a></sup>
+<p><span lang="zh">这就是为何你应该对每个任务都开新的</span> <span class="link external"><a href="https://git-scm.com/docs/git-branch" title="分支 [https://git-scm.com/docs/git-branch]"><span lang="zh">分支</span></a></span>, <span lang="zh">同时在每次正式</span> <span class="link external"><a href="https://git-scm.com/docs/git-push" title="推送 [https://git-scm.com/docs/git-push]"><span lang="zh">推送</span></a></span> <span lang="zh">之前都</span> <span class="link external"><a href="https://git-scm.com/docs/git-rebase" title="rebase [https://git-scm.com/docs/git-rebase]"><code>rebase</code></a></span>, <span lang="zh">来避免污染主分支的</span> commit <span lang="zh">树</span>.</p>
+</div>
+</details></section><section class="block" data-taxon="Exegesis"><details ><summary id="daily-surf-baby-viewpoint"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">日经观点</span> <a class="slug" href="/daily-surf/baby-viewpoint">[baby-viewpoint]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/baby-viewpoint.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 11, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>$\gdef\Mat{\operatorname{Mat}}$
+$\gdef\vol{\operatorname{vol}}$
+$\gdef\diag{\operatorname{diag}}$
+$\gdef\d{\operatorname{d}}$
+$\gdef\R{\mathbf{R}}$
+$\gdef\Q{\mathbf{Q}}$</p>
+<ol>
+<li>
+<p><span lang="zh">一个矩阵</span> $A \in \Mat_{n \times n}(\R)$ <span lang="zh">所确定的线性映射</span> $\alpha: \R^n \to \R^n$ <span lang="zh">作用在</span> $X \in \R^n$ <span lang="zh">上</span>, <span lang="zh">此映射对</span> $X$ <span lang="zh">的</span> (<span lang="zh">有向</span>) <span lang="zh">体积</span> $\vol(X)$ <span lang="zh">的缩放量为</span> $\det A$. <span lang="zh">即</span> $\vol(\alpha X) = \det A \cdot \vol(X)$. <span lang="zh">特别地取</span> $A = \diag(a,b)$, <span lang="zh">然后乘单位圆</span> $u^2+v^2=1$ <span lang="zh">上一点构成的向量</span> $(u,v)$, <span lang="zh">得到满足椭圆方程</span> $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ <span lang="zh">的</span> $(x,y)$, <span lang="zh">这样便能看出椭圆的面积</span> $S = \det A \cdot \pi$.</p>
+</li>
+<li>
+<p><span lang="zh">设</span> $\omega$ <span lang="zh">是一个</span> $k$-<span lang="zh">形式</span>, <span lang="zh">它的两次微分</span> $\d(\d \omega) = 0$. <span lang="zh">另一方面</span>, <span lang="zh">考虑一个有向流形</span> $\Omega$ <span lang="zh">和它的边缘</span> $\partial \Omega$, <span lang="zh">我们知道</span> $\partial(\partial M) = \varnothing$. <span lang="zh">这两件事相互对偶</span>.</p>
+</li>
+<li>
+<p><span lang="zh">考虑数域</span> $K=\Q(\alpha_1, \cdots, \alpha_i)$ <span lang="zh">的一个存在于上的历史原因是</span>, <span lang="zh">在适当的</span> $K$ <span lang="zh">中考虑能够使原本在</span> $\Q$ <span lang="zh">上无法分解的</span> Diophantus <span lang="zh">方程因式分解</span>.  <span lang="zh">如</span> $\Q(\sqrt{-7})$ <span lang="zh">能使</span> Ramanujan–Nagell <span lang="zh">方程</span> $x^2=2^n-7$ <span lang="zh">改写为</span> $(x+\sqrt{-7})(x-\sqrt{-7})=2^n$. Fermat <span lang="zh">方程</span> $x^n+y^n=z^n$ <span lang="zh">能够在</span> $\Q(\zeta_n)$ <span lang="zh">上分解成</span> $x^n=(z-y)(z-\zeta_n y) \cdots (z-\zeta_n^{n-1} y)$, <span lang="zh">这是</span> <span class="link local"><a href="/person/ernst-kummer" title="Ernst Eduard Kummer [person/ernst-kummer]">Kummer</a></span> <span lang="zh">提出理想数概念的一个原因</span>.</p>
+</li>
+</ol>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-fibonacci-flip"><header><h1><span class="taxon"></span>Fibonacci <span lang="zh">抛硬币</span> <a class="slug" href="/daily-surf/fibonacci-flip">[fibonacci-flip]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/fibonacci-flip.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">January 24, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">抛一枚硬币</span> $n \ge 2$ <span lang="zh">次且从不连续出现正面</span>, <span lang="zh">这样的可能共有</span> $F_{n+2}$ <span lang="zh">种</span>, <span lang="zh">这里的</span> $F_{n+2}$ <span lang="zh">是从零开始的</span> Fibonacci <span lang="zh">数列</span>. <span lang="zh">我们把抛</span> $n$ <span lang="zh">次不连续出现正面的可能数记为</span> $S_n$, <span lang="zh">考虑相邻的两次抛硬币</span>, <span lang="zh">假设第</span> $i$ <span lang="zh">次掷硬币为正面</span>, <span lang="zh">则第</span> $i+1$ <span lang="zh">次掷硬币只能是反面</span>, <span lang="zh">这个时候的所有可能为</span> $S_{n-2}$. <span lang="zh">假设第</span> $i$ <span lang="zh">次掷硬币为反面</span>, <span lang="zh">则第</span> $i+1$ <span lang="zh">次掷硬币的结果可任意</span>. <span lang="zh">因此</span> $S_n = S_{n-1} + S_{n-2}$, <span lang="zh">再利用初值</span> $S_1$, $S_2$ <span lang="zh">就能解出</span> $S_n$.</p>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-nvidia-fps-gpu-cpu"><header><h1><span class="taxon"></span><span lang="zh">屏幕右上角的</span> “FPS GPU CPU <span lang="zh">延时</span>” <a class="slug" href="/daily-surf/nvidia-fps-gpu-cpu">[nvidia-fps-gpu-cpu]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/nvidia-fps-gpu-cpu.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">January 9, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">根据</span> <span class="link external"><a href="https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen" title="这个 Reddit 问题 [https://www.reddit.com/r/techsupport/comments/1b37zko/fps_gpu_cpu_and_lat_appearing_top_right_of_screen]"><span lang="zh">这个</span> Reddit <span lang="zh">问题</span></a></span>.</p>
+<p><span lang="zh">首先这项功能来自</span> <span class="link external"><a href="https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share" title="Nvidia Overlay [https://www.nvidia.com/en-us/geforce/guides/gfecnt/geforce-experience-shadowplay-is-now-share]">Nvidia Overlay</a></span>, Intel <span lang="zh">用户可以通过</span> <code>Alt+R</code> <span lang="zh">开启这个</span> “PC <span lang="zh">统计数据</span>”<sup class="footnote-reference" id="daily-surf_nvidia-fps-gpu-cpu_concept-name-back"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name">1</a></sup>
+AMD <span lang="zh">则是</span> <code>Ctrl + Shift + O</code>. <span lang="zh">目前看来这个信息会出现在安装了</span> Nvidia APP (Beta) <span lang="zh">或者</span> GeForce Experience <span lang="zh">程序的设备上</span>.</p>
+<div class="footnote-definition" id="daily-surf_nvidia-fps-gpu-cpu_concept-name">
+  <sup class="footnote-definition-label"><a href="#daily-surf_nvidia-fps-gpu-cpu_concept-name-back">1</a></sup>
+<p><span lang="zh">我们姑且按照该</span> Reddit <span lang="zh">问题的某个回答这么称呼此信息</span>.</p>
+</div>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-wolfram-engine"><header><h1><span class="taxon"></span>Wolfram <span lang="zh">引擎与</span> WLJS <a class="slug" href="/daily-surf/wolfram-engine">[wolfram-engine]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/wolfram-engine.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">July 29, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p>Wolfram <span lang="zh">把</span> Mathematica <span lang="zh">的内核</span> <span class="link external"><a href="https://www.wolfram.com/engine" title="Wolfram Engine [https://www.wolfram.com/engine]">Wolfram Engine</a></span> <span lang="zh">单独拆出来并作为免费软件</span> <sup class="footnote-reference" id="daily-surf_wolfram-engine_wolfram-engine-size-back"><a href="#daily-surf_wolfram-engine_wolfram-engine-size">1</a></sup> <span lang="zh">提供已不是什么新鲜事</span>. <span lang="zh">如不考虑实际的交互体验</span>, <span lang="zh">至少对于开发者而言</span>, <span lang="zh">为最新版</span> Mathematica <span lang="zh">付费这件事基本就意味着只购买了个带官方服务支持的</span> <span class="link external"><a href="https://www.wolfram.com/notebooks" title="Wolfram Notebook [https://www.wolfram.com/notebooks]">Wolfram Notebook</a></span>.</p>
+<p>Wolfram <span lang="zh">引擎能直接使用</span> Homebrew <span lang="zh">或</span> winget <span lang="zh">等包管理器安装</span>, <span lang="zh">命令行功能由引擎自带的</span> <span class="link external"><a href="https://www.wolfram.com/wolframscript" title="Wolfram Script [https://www.wolfram.com/wolframscript]">Wolfram Script</a></span> <span lang="zh">提供</span>. <span lang="zh">虽然能用</span>, <span lang="zh">但可想而知体验不会太好</span>. <span lang="zh">最早的一个方案是用</span> <span class="link external"><a href="https://code.visualstudio.com" title="Visual Studio Code [https://code.visualstudio.com]">Visual Studio Code</a></span> <span lang="zh">和相关</span> Notebook <span lang="zh">插件连接到</span> Wolfram <span lang="zh">引擎</span>, <span lang="zh">这样一来比起纯命令行能好上不少</span>, <span lang="zh">但是对于习惯了</span> Mathematica <span lang="zh">官方笔记本的用户来说还差点意思</span>.</p>
+<p><span lang="zh">要是用户不在乎多装一个浏览器以此换来更好的</span> Notebook <span lang="zh">体验</span>, <span lang="zh">那么开源的</span> WLJS <span lang="zh">会是一个可供考虑的选择</span>. Augsburg <span lang="zh">大学的物理学家</span> Kirill Vasin <span lang="zh">在</span> 2023 <span lang="zh">年</span> 11 <span lang="zh">月</span> 16 <span lang="zh">日发布了</span> <span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend" title="WLJS [https://github.com/JerryI/wolfram-js-frontend]">WLJS</a></span> <span lang="zh">的第一个长期版本</span> <sup class="footnote-reference" id="daily-surf_wolfram-engine_immortal-edition-back"><a href="#daily-surf_wolfram-engine_immortal-edition">2</a></sup>. WLJS <span lang="zh">这几个字母是</span> Wolfram JS Frontend <span lang="zh">的缩写</span>, <span lang="zh">从技术上说</span>, <span lang="zh">它是一个</span> <span class="link external"><a href="https://www.electronjs.org" title="Electron [https://www.electronjs.org]">Electron</a></span> APP, <span lang="zh">如果用户的目的是对于</span> Mathematica <span lang="zh">功能有高度依赖的科研用途</span>, <span lang="zh">那么多装一个浏览器的代价自然算不了什么</span>. <span lang="zh">另外</span> WLJS <span lang="zh">的引导部分做的很不错</span>, <span lang="zh">也有不少很有意思但是</span> Wolfram Notebook <span lang="zh">不具备的功能</span>.</p>
+<div class="footnote-definition" id="daily-surf_wolfram-engine_wolfram-engine-size">
+  <sup class="footnote-definition-label"><a href="#daily-surf_wolfram-engine_wolfram-engine-size-back">1</a></sup>
+<p>Windows <span lang="zh">上的</span> Wolfram Engine <span lang="zh">安装完成之后能占用大约</span> 6.5GB <span lang="zh">的磁盘空间</span>. <span lang="zh">比起</span> <span class="link external"><a href="https://www.sagemath.org" title="Sagemath [https://www.sagemath.org]">Sagemath</a></span> <span lang="zh">还是大了不少</span>.</p>
+</div>
+<div class="footnote-definition" id="daily-surf_wolfram-engine_immortal-edition">
+  <sup class="footnote-definition-label"><a href="#daily-surf_wolfram-engine_immortal-edition-back">2</a></sup>
+<p><span class="link external"><a href="https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1" title="The immortal edition [https://github.com/JerryI/wolfram-js-frontend/releases/tag/1.0.1]">The immortal edition</a></span>.</p>
+</div>
+</details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-file-transfer"><header><h1><span class="taxon"></span><span lang="zh">文件互传</span> <a class="slug" href="/daily-surf/file-transfer">[file-transfer]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/file-transfer.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 18, 2022</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">因为各种读者可以想象的原因</span>, <span lang="zh">基于网络的面对面文件互传其实是一件经常会遇到的事</span>. <span lang="zh">笔者先后尝试过依赖于特定品牌的互传功能</span>, <span lang="zh">但时不时会遇到因未知原因导致的传输无法开始的问题</span>. <span lang="zh">索性另求他法</span>.</p>
+<p><span lang="zh">我们假设有设备</span> $A$, $B$, <span lang="zh">且</span> $A$ <span lang="zh">将要发送文件</span> $F$ <span lang="zh">给</span> $B$, <span lang="zh">另可设文件</span> $F$ <span lang="zh">充分大</span> (<span lang="zh">如</span> $\geqslant 1 \text{GB}$). <span lang="zh">方案如下</span>.</p>
+<p>$B$ <span lang="zh">联网且开热点</span>, $A$ <span lang="zh">连接热点</span>. <span lang="zh">随后</span> $A$ <span lang="zh">通过</span> <span class="link external"><a href="https://termux.dev" title="Termux [https://termux.dev]">Termux</a></span> + <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> <span lang="zh">或其他等效软件在文件</span> $F$ <span lang="zh">所在目录开启本地</span> <span class="link external"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" title="HTTP [https://developer.mozilla.org/zh-CN/docs/Web/HTTP]">HTTP</a></span> <span lang="zh">服务器</span>, <span lang="zh">记下</span> IP. $B$ <span lang="zh">使用浏览器访问</span> IP, <span lang="zh">下载文件即可</span>, <span lang="zh">此时下载速率依赖于</span> $B$ <span lang="zh">连接到的网络</span>.</p>
+</details></section></details></section><footer></footer></article></div></body></html>

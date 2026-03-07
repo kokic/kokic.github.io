@@ -1,0 +1,38 @@
+
+#import "../_lib/kodama.typ": *
+
+#import "@preview/fletcher:0.5.8" as fletcher: node, edge
+
+#show: kodama
+
+#set text(font: ("Inria Sans", "HarmonyOS Sans SC"))
+
+#metadata((
+  "title": "冒泡排序合成置换分解", //
+  "date": "December 26, 2024",
+  "author": local("/kokic", text: "kokic"),
+  "tag": local("/pearls"),
+))
+
+任意置换 $sigma$ 都可被写成若干个对换之积. 这里, 集合 $X$ 上的置换是指 $X$ 到 $X$ 的双射. 而对换 $(i space j)$ 则是交换元素 $i,j$ 位置的映射. 
+
+#subtree(
+  taxon: "proof",
+)[
+
+  冒泡排序使用若干次对换将 $X$, $Y$ 打到有序列表 $Z$, 把这些对换之积复合出的两个映射记为 $sigma_X, sigma_Y$. 现在观察下图, 写出 $sigma_Y^(-1)sigma_X$, 这当然就是 $sigma$.
+
+  #auto-figure[
+    #let y = 1.5
+    #auto-frame(fletcher.diagram(
+      crossing-fill: rgb(0, 0, 0, 0),
+      node((0, 0), $Z$),
+      node((-1, y), $X$),
+      node((1, y), $Y$),
+      edge((-1, y), (0, 0), "->", $sigma_X$, bend: 15deg),
+      edge((1, y), (0, 0), "->", $sigma_Y$, bend: -15deg),
+      edge((0, 0), (1, y), "->", $sigma_Y^(-1)$, bend: -15deg),
+      edge((-1, y), (1, y), "->", $sigma$, label-side: right),
+    ))
+  ]
+]
