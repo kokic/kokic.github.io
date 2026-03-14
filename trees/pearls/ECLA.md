@@ -16,7 +16,7 @@ $$ |\mathcal{A}_n| \spaces= \frac{n}{8}(2n^2 + 3n + 2) + \frac{\delta_n}{8} $$
 
 此处 $n$ 为偶数时 $\delta = 0$, $n$ 为奇数时 $\delta = 1$. 
 
-<block taxon="思路">
+<block taxon="思路" catalog="false">
 
 先差分, 考虑 $h(n) \defeq |\mathcal{A}_n| - |\mathcal{A}_{n-1}|$, 于是 $|\mathcal{A}_n| = |\mathcal{A}_0| + \sum_{k=1}^{n} h(k)$. 分奇偶讨论, 我们需要计算 $h(2m), h(2m+1)$. 考虑使用容斥原理, 将 $h(-)$ 的计算化为
 
@@ -33,11 +33,11 @@ $$
 
 </block>
 
-<exegesis title="计算差分">
+<exegesis title="计算差分" catalog="false">
 
 记 $s_1 = a+b, s_2 = a+c, s_3 = b+c$. $h(2m)$ 就是满足 $\max(s_1,s_2,s_3) = 2m+1$ 的 $(a,b,c)$ 的个数. 据容斥原理, 定义 $(X_i)_{1 \le i \le 3}$ 是满足 $s_i = 2m+1, s_{j \ne i} \le 2m+1$ 的集合. 于是 $h(2m) = |X_1 \cup X_2 \cup X_3|$. 
 
-<block taxon="$|X_i|$">
+<block taxon="$|X_i|$" >
 
 对于 $|X_1|$, $a, b \ge 1$, 故 $(a, b)$ 可取 $(1, 2m), (2, 2m-1), \cdots, (2m, 1)$ 共 $2m$ 种可能. 固定 $a,b$, 此时 $c$ 应该满足 $c \le (2m+1)-a$ 且 $c \le (2m+1)-b$, 即 $1 \le c \le 2m+1-\max(a,b)$. 
   
@@ -76,7 +76,7 @@ $$
 
 </exegesis>
 
-<proof>
+<proof catalog="false">
 
 当 $n=2m$ 为偶数时 $|A_{2m}| = \sum_{k=1}^{2m} h(k) \spaces= \sum_{j=1}^m h(2j-1) + h(2j)$. 也即
 
