@@ -950,6 +950,7 @@ a {
 
 a.slug:hover,
 a.edit:hover,
+a.hash:hover,
 a.bullet:hover,
 .link:hover {
   background-color: var(--hover-color-link);
@@ -968,7 +969,8 @@ a.bullet:hover,
 a.link.local,
 .link.local a,
 a.slug,
-a.edit {
+a.edit,
+a.hash {
   box-shadow: none;
   text-decoration-line: underline;
   text-decoration-style: dotted;
@@ -1086,8 +1088,7 @@ path.typst-shape[fill="#000000"] {
 
 path.typst-shape[stroke="#000000"] {
   stroke: var(--text-color);
-}
-</style><style>
+}</style><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -1250,13 +1251,13 @@ path.typst-shape[stroke="#000000"] {
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-0" title=" [pearls/__kodama_anon_subtree_internal__-pearls-GALA-0]">■</a><span class="link local" onclick="window.location.href='#pearls-__kodama_anon_subtree_internal__-pearls-GALA-0'"><span class="taxon">Proof. </span></span><ul class="block"><li class=""><a class="bullet" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-1" title="$\sqrt{\Delta} \in F$ [pearls/__kodama_anon_subtree_internal__-pearls-GALA-1]">■</a><span class="link local" onclick="window.location.href='#pearls-__kodama_anon_subtree_internal__-pearls-GALA-1'"><span class="taxon">Step 1. </span>$\sqrt{\Delta} \in F$</span></li><li class=""><a class="bullet" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-2" title="$\sqrt{\Delta} \notin F$ [pearls/__kodama_anon_subtree_internal__-pearls-GALA-2]">■</a><span class="link local" onclick="window.location.href='#pearls-__kodama_anon_subtree_internal__-pearls-GALA-2'"><span class="taxon">Step 2. </span>$\sqrt{\Delta} \notin F$</span></li><li class=""><a class="bullet" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-3" title="$t_1^2 - 4t_0$ 不可约 [pearls/__kodama_anon_subtree_internal__-pearls-GALA-3]">■</a><span class="link local" onclick="window.location.href='#pearls-__kodama_anon_subtree_internal__-pearls-GALA-3'"><span class="taxon">Remark. </span>$t_1^2 - 4t_0$ 不可约</span></li></ul></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon="Theorem"><details open><summary id="pearls-GALA"><header><h1><span class="taxon">Theorem. </span><span lang="zh">加减乘除不能解二次方程</span> <a class="slug" href="/pearls/GALA">[GALA]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">October 23, 2021</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span lang="zh">只通过系数的加减乘除不能解一般的二次方程</span>, <span lang="zh">换言之</span>, <span lang="zh">二次方程的根不是系数的有理函数</span>.</p>
-<section class="block hide-metadata" data-taxon="Proof"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-0"><header><h1><span class="taxon">Proof. </span> <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$k$ <span lang="zh">是域</span>, $k$ <span lang="zh">关于</span> $t_0,t_1$ <span lang="zh">的有理函数域</span> $k(t_0,t_1)$ <span lang="zh">记为</span> $F$. <span lang="zh">下面只需考虑首一多项式</span> $f(x) = x^2 + t_1x + t_0 \in k[x]$ <span lang="zh">且没有重根的情况</span>, <span lang="zh">即</span> $\Delta \ne 0$.</p>
-<section class="block hide-metadata" data-taxon="Step 1"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-1"><header><h1><span class="taxon">Step 1. </span>$\sqrt{\Delta} \in F$ <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">假设存在</span> $r \in F$ <span lang="zh">使得</span> $f(r) = 0$, <span lang="zh">由</span> Viète <span lang="zh">定理</span> $x_1+x_2 = -t_1$, <span lang="zh">另一个根为</span> $-t_1-r \in F$. <span lang="zh">于是</span></p>
+<section class="block hide-metadata" data-taxon="Proof"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-0"><header><h1><span class="taxon">Proof. </span> <a class="hash" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-0">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$k$ <span lang="zh">是域</span>, $k$ <span lang="zh">关于</span> $t_0,t_1$ <span lang="zh">的有理函数域</span> $k(t_0,t_1)$ <span lang="zh">记为</span> $F$. <span lang="zh">下面只需考虑首一多项式</span> $f(x) = x^2 + t_1x + t_0 \in k[x]$ <span lang="zh">且没有重根的情况</span>, <span lang="zh">即</span> $\Delta \ne 0$.</p>
+<section class="block hide-metadata" data-taxon="Step 1"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-1"><header><h1><span class="taxon">Step 1. </span>$\sqrt{\Delta} \in F$ <a class="hash" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">假设存在</span> $r \in F$ <span lang="zh">使得</span> $f(r) = 0$, <span lang="zh">由</span> Viète <span lang="zh">定理</span> $x_1+x_2 = -t_1$, <span lang="zh">另一个根为</span> $-t_1-r \in F$. <span lang="zh">于是</span></p>
 <p>$$ f(x) \spaces= (x-r)(x+t_1+r) \spaces\in F[x] $$</p>
 <p><span lang="zh">其判别式</span> $\Delta = (x_1-x_2)^2 = (2r+t_1)^2 \in F$ <span lang="zh">是</span> $F$ <span lang="zh">中的平方元</span>. <span lang="zh">另一方面</span>, <span lang="zh">借助</span> Viète <span lang="zh">定理</span>, <span lang="zh">判别式可完全表示为系数的函数</span></p>
 <p>$$
@@ -1275,12 +1276,12 @@ x_1x_2 &amp;\spaces= t_0
 \end{array}
 $$</p>
 <p><span lang="zh">这就表明</span> $t^2 - 4t_0$ <span lang="zh">是</span> $F$ <span lang="zh">中的平方元</span>.</p>
-</details></section><section class="block hide-metadata" data-taxon="Step 2"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-2"><header><h1><span class="taxon">Step 2. </span>$\sqrt{\Delta} \notin F$ <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">由于</span> $F$ <span lang="zh">是有理函数域</span> $k(t_0,t_1)$, <span lang="zh">所以知道一定存在一组关于</span> $t_0,t_1$ <span lang="zh">的互质多项式</span> $p,q \in k[t_0,t_1]$ <span lang="zh">使得</span></p>
+</details></section><section class="block hide-metadata" data-taxon="Step 2"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-2"><header><h1><span class="taxon">Step 2. </span>$\sqrt{\Delta} \notin F$ <a class="hash" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">由于</span> $F$ <span lang="zh">是有理函数域</span> $k(t_0,t_1)$, <span lang="zh">所以知道一定存在一组关于</span> $t_0,t_1$ <span lang="zh">的互质多项式</span> $p,q \in k[t_0,t_1]$ <span lang="zh">使得</span></p>
 <p>$$ \bigg(\frac{p}{q}\bigg)^2 \spaces= t_1^2 - 4t_0 $$</p>
 <p><span lang="zh">也就是</span> $p^2 = (t_1^2 - 4t_0)q^2$, <span lang="zh">等式两边是</span> $k[t_0,t_1]$ <span lang="zh">中的多项式</span>, <span lang="zh">所以</span> $\Delta$ <span lang="zh">整除</span> $p^2$. <span lang="zh">注意</span> $k[t_0,t_1]$ <span lang="zh">是唯一分解整环</span>, <span lang="zh">由</span> $\Delta$ <span lang="zh">是不可约多项式知</span> $\Delta$ <span lang="zh">整除</span> $p$, <span lang="zh">因此存在</span> $p_1 \in k[t_0,t_1] $ <span lang="zh">使得</span> $p = \Delta p_1$. <span lang="zh">代入</span> $p^2 = \Delta q^2$, <span lang="zh">因为</span> $\Delta \ne 0$, <span lang="zh">可在整环中消去</span> $\Delta$, <span lang="zh">得</span></p>
 <p>$$ (\Delta p_1)^2 = \Delta q^2 \spaces\implies \Delta p_1^2 = q^2 $$</p>
 <p><span lang="zh">所以</span> $\Delta$ <span lang="zh">整除</span> $q^2$. <span lang="zh">类似知道</span> $\Delta$ <span lang="zh">整除</span> $q$. <span lang="zh">综上</span>, <span lang="zh">非常数多项式</span> $\Delta$ <span lang="zh">整除</span> $p$ <span lang="zh">且</span> $\Delta$ <span lang="zh">整除</span> $q$, <span lang="zh">但这与</span> $p,q$ <span lang="zh">互质矛盾</span>. <span lang="zh">故</span> $\sqrt{\Delta} \notin F$.</p>
-</details></section><section class="block hide-metadata" data-taxon="Remark"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-3"><header><h1><span class="taxon">Remark. </span>$t_1^2 - 4t_0$ 不可约 <a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果可约</span>, <span lang="zh">则存在两个一次</span> $k[t_0,t_1]$-<span lang="zh">多项式</span>, <span lang="zh">其乘积为</span> $\Delta$, <span lang="zh">即</span></p>
+</details></section><section class="block hide-metadata" data-taxon="Remark"><details open><summary id="pearls-__kodama_anon_subtree_internal__-pearls-GALA-3"><header><h1><span class="taxon">Remark. </span>$t_1^2 - 4t_0$ 不可约 <a class="hash" href="#pearls-__kodama_anon_subtree_internal__-pearls-GALA-3">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GALA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果可约</span>, <span lang="zh">则存在两个一次</span> $k[t_0,t_1]$-<span lang="zh">多项式</span>, <span lang="zh">其乘积为</span> $\Delta$, <span lang="zh">即</span></p>
 <p>$$
 \begin{aligned}
 \Delta 
