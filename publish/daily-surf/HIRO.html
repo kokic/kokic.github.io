@@ -1,37 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>“创造之门” 摘录</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><script>
-  (() => {
-    const url = "/kodama.reload";
-    const interval = 1000; // 1 second
-
-    let lastVersion = null;
-
-    async function check() {
-      try {
-        const res = await fetch(url + "?t=" + Date.now(), { cache: "no-store" });
-        if (!res.ok) {
-          throw new Error("reload marker not ready");
-        }
-        const version = (await res.text()).trim();
-        if (lastVersion && version && version !== lastVersion) {
-          location.reload();
-          return;
-        }
-        lastVersion = version || lastVersion;
-      } catch (e) {
-        // Ignore
-        console.warn("Reload check failed:", e);
-      }
-
-      setTimeout(check, interval);
-    }
-
-    check();
-  })();
-</script>
-<!-- Also see: https://katex.org/docs/autorender -->
+<meta name="viewport" content="width=device-width"><title>“创造之门” 摘录</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
