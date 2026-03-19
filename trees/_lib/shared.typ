@@ -2,10 +2,7 @@
 #let bf(x) = $bold(upright(#x))$
 #let mathcal(content) = text(font: "KaTeX_Caligraphic", content)
 #let stix(content) = text(font: "STIX Two Math", content)
-#let lato(content) = text(font: "Lato Math", content)
 #let latobb(content) = text(font: "Lato Bbb", content)
-
-#let varnothing = $lato(emptyset)$
 
 #let isqrt(x) = $inline(sqrt(#x))$
 

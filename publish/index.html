@@ -1,404 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>回声</title><link rel="icon" href="/assets/favicon.ico" /><script>
-  function toggleDetailsOpen() {
-    const details = document.querySelector("#toc>div>details");
-    if (!details) return;
-
-    if (window.matchMedia("(max-width: 1000px)").matches) {
-      details.removeAttribute("open");
-    } else {
-      details.setAttribute("open", "");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", toggleDetailsOpen);
-  window.addEventListener("resize", toggleDetailsOpen);
-</script><style>
-  theme-option {
-    display: inline-block;
-  }
-
-  theme-option>input {
-    display: none;
-  }
-
-  theme-option>label {
-    color: var(--slug-color);
-  }
-
-  theme-option>label:hover {
-    background-color: var(--hover-color-link);
-  }
-
-  theme-option:has(input:checked)>label {
-    color: var(--link-color);
-  }
-
-  theme-option>label::before {
-    content: "[";
-    color: rgba(0, 0, 0, 0);
-  }
-
-  theme-option>label::after {
-    content: "]";
-    color: rgba(0, 0, 0, 0);
-  }
-
-  theme-option:has(input:checked)>label::before {
-    color: var(--link-color);
-  }
-
-  theme-option:has(input:checked)>label::after {
-    color: var(--link-color);
-  }
-</style>
-
-<template id="theme-option-template">
-  <input type="radio" name="theme" />
-  <label></label>
-</template>
-
-<script>
-  const THEME_KEY = `kodama-theme`;
-
-  function storeSelectedTheme(name) {
-    localStorage.setItem(THEME_KEY, name);
-  }
-
-  function getCurrentTheme() {
-    return localStorage.getItem(THEME_KEY) || window.primaryTheme;
-  }
-
-  function selectTheme(themeName) {
-    storeSelectedTheme(themeName);
-    requestAnimationFrame(applyDynamicColorInvert);
-  }
-
-  function applyFavorTheme() {
-    const favoredTheme = getCurrentTheme();
-    if (favoredTheme) {
-      const selector = `input[type='radio'][id='${favoredTheme}']`;
-      const favoredOption = window.themeOptions.querySelector(selector);
-
-      if (favoredOption) {
-        favoredOption.checked = true;
-      } else if (window.primaryOption) {
-        // Fallback to primary theme, if the favored theme is not found
-        // e.g., when the theme options have changed, and the stored theme is no longer available.
-        window.primaryOption.checked = true;
-      }
-    }
-    applyDynamicColorInvert();
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    window.themeOptions = document.getElementById("theme-options");
-    const templateContent = document.getElementById("theme-option-template").content;
-
-    customElements.define(
-      "theme-option",
-      class extends HTMLElement {
-        constructor() {
-          super();
-
-          const node = templateContent.cloneNode(true);
-          const themeName = this.getAttribute("name");
-
-          const input = node.querySelector("input");
-          input.setAttribute("id", themeName);
-          input.setAttribute("value", themeName);
-
-          const label = node.querySelector("label");
-          label.setAttribute("for", themeName);
-          label.addEventListener("click", () => selectTheme(themeName));
-
-          while (this.firstChild) {
-            label.appendChild(this.firstChild);
-          }
-          this.appendChild(node);
-        }
-      },
-    );
-
-    window.primaryOption = window.themeOptions.querySelector("input[type='radio']");
-    window.primaryTheme = primaryOption?.value;
-
-    applyFavorTheme();
-  });
-</script>
-
-<script>
-  const clamp = (value) => Math.max(0, Math.min(255, value));
-
-  const multiply = ([r, g, b], matrix) => {
-    const nr = clamp(r * matrix[0] + g * matrix[1] + b * matrix[2]);
-    const ng = clamp(r * matrix[3] + g * matrix[4] + b * matrix[5]);
-    const nb = clamp(r * matrix[6] + g * matrix[7] + b * matrix[8]);
-    return [nr, ng, nb];
-  };
-
-  const hueRotate = ([r, g, b], angle = 0) => {
-    const rad = (angle / 180) * Math.PI;
-    const sin = Math.sin(rad);
-    const cos = Math.cos(rad);
-    const matrix = [
-      0.213 + cos * 0.787 - sin * 0.213,
-      0.715 - cos * 0.715 - sin * 0.715,
-      0.072 - cos * 0.072 + sin * 0.928,
-      0.213 - cos * 0.213 + sin * 0.143,
-      0.715 + cos * 0.285 + sin * 0.140,
-      0.072 - cos * 0.072 - sin * 0.283,
-      0.213 - cos * 0.213 - sin * 0.787,
-      0.715 - cos * 0.715 + sin * 0.715,
-      0.072 + cos * 0.928 + sin * 0.072,
-    ];
-    return multiply([r, g, b], matrix);
-  };
-
-  const grayscale = ([r, g, b], value = 1) => {
-    const matrix = [
-      0.2126 + 0.7874 * (1 - value),
-      0.7152 - 0.7152 * (1 - value),
-      0.0722 - 0.0722 * (1 - value),
-      0.2126 - 0.2126 * (1 - value),
-      0.7152 + 0.2848 * (1 - value),
-      0.0722 - 0.0722 * (1 - value),
-      0.2126 - 0.2126 * (1 - value),
-      0.7152 - 0.7152 * (1 - value),
-      0.0722 + 0.9278 * (1 - value),
-    ];
-    return multiply([r, g, b], matrix);
-  };
-
-  const sepia = ([r, g, b], value = 1) => {
-    const matrix = [
-      0.393 + 0.607 * (1 - value),
-      0.769 - 0.769 * (1 - value),
-      0.189 - 0.189 * (1 - value),
-      0.349 - 0.349 * (1 - value),
-      0.686 + 0.314 * (1 - value),
-      0.168 - 0.168 * (1 - value),
-      0.272 - 0.272 * (1 - value),
-      0.534 - 0.534 * (1 - value),
-      0.131 + 0.869 * (1 - value),
-    ];
-    return multiply([r, g, b], matrix);
-  };
-
-  const saturate = ([r, g, b], value = 1) => {
-    const matrix = [
-      0.213 + 0.787 * value,
-      0.715 - 0.715 * value,
-      0.072 - 0.072 * value,
-      0.213 - 0.213 * value,
-      0.715 + 0.285 * value,
-      0.072 - 0.072 * value,
-      0.213 - 0.213 * value,
-      0.715 - 0.715 * value,
-      0.072 + 0.928 * value,
-    ];
-    return multiply([r, g, b], matrix);
-  };
-
-  const linear = ([r, g, b], slope = 1, intercept = 0) => {
-    const scale = 255;
-    return [
-      clamp(r * slope + intercept * scale),
-      clamp(g * slope + intercept * scale),
-      clamp(b * slope + intercept * scale),
-    ];
-  };
-
-  const brightness = (rgb, value = 1) => linear(rgb, value);
-  const contrast = (rgb, value = 1) => linear(rgb, value, -0.5 * value + 0.5);
-
-  const invert = ([r, g, b], value = 1) => {
-    const nr = (value + r / 255 * (1 - 2 * value)) * 255;
-    const ng = (value + g / 255 * (1 - 2 * value)) * 255;
-    const nb = (value + b / 255 * (1 - 2 * value)) * 255;
-    return [clamp(nr), clamp(ng), clamp(nb)];
-  };
-
-  // Code taken from https://stackoverflow.com/a/9493060/2688027, licensed under CC BY-SA.
-  const rgbToHsl = (r, g, b) => {
-    r /= 255; g /= 255; b /= 255;
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-    if (max === min) {
-      h = s = 0;
-    } else {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      switch (max) {
-        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-        case g: h = (b - r) / d + 2; break;
-        case b: h = (r - g) / d + 4; break;
-      }
-      h /= 6;
-    }
-    return { h: h * 100, s: s * 100, l: l * 100 };
-  };
-
-  const applyFilters = (rgb, [inv, sep, sat, hue, bri, con]) => {
-    let color = [...rgb];
-    color = invert(color, inv / 100);
-    color = sepia(color, sep / 100);
-    color = saturate(color, sat / 100);
-    color = hueRotate(color, hue * 3.6);
-    color = brightness(color, bri / 100);
-    color = contrast(color, con / 100);
-    return color;
-  };
-
-  const lossFn = (targetRgb, filters) => {
-    const resultRgb = applyFilters([0, 0, 0], filters);
-    const targetHsl = rgbToHsl(...targetRgb);
-    const resultHsl = rgbToHsl(...resultRgb);
-    return (
-      Math.abs(resultRgb[0] - targetRgb[0]) +
-      Math.abs(resultRgb[1] - targetRgb[1]) +
-      Math.abs(resultRgb[2] - targetRgb[2]) +
-      Math.abs(resultHsl.h - targetHsl.h) +
-      Math.abs(resultHsl.s - targetHsl.s) +
-      Math.abs(resultHsl.l - targetHsl.l)
-    );
-  };
-
-  const fix = (value, idx) => {
-    let max = 100;
-    if (idx === 2) max = 7500;                  // saturate
-    else if (idx === 4 || idx === 5) max = 200; // brightness, contrast
-    if (idx === 3) { // hue-rotate
-      if (value > max) return value % max;
-      if (value < 0) return max + (value % max);
-      return value;
-    }
-    return Math.max(0, Math.min(max, value));
-  };
-
-  const spsa = (targetRgb, A, a, c, initial, iters) => {
-    const alpha = 1;
-    const gamma = 1 / 6;
-    let values = [...initial];
-    let best = [...values];
-    let bestLoss = Infinity;
-
-    for (let k = 0; k < iters; k++) {
-      const ck = c / Math.pow(k + 1, gamma);
-      const deltas = Array(6).fill().map(() => (Math.random() > 0.5 ? 1 : -1));
-      const highArgs = values.map((v, i) => v + ck * deltas[i]);
-      const lowArgs = values.map((v, i) => v - ck * deltas[i]);
-      const lossDiff = lossFn(targetRgb, highArgs) - lossFn(targetRgb, lowArgs);
-
-      values = values.map((v, i) => {
-        const g = (lossDiff / (2 * ck)) * deltas[i];
-        const ak = a[i] / Math.pow(A + k + 1, alpha);
-        return fix(v - ak * g, i);
-      });
-
-      const loss = lossFn(targetRgb, values);
-      if (loss < bestLoss) {
-        best = [...values];
-        bestLoss = loss;
-      }
-    }
-    return { values: best, loss: bestLoss };
-  };
-
-  // Threshold for acceptable color loss. This value determines when the SPSA algorithm stops early.
-  // A loss below this value is considered visually indistinguishable for most use cases.
-  // The value 25 was determined empirically to balance performance and color accuracy.
-  const ACCEPTABLE_COLOR_LOSS = 25;
-
-  const solveWide = (targetRgb) => {
-    const A = 5;
-    const c = 15;
-    const a = [60, 180, 18000, 600, 1.2, 1.2];
-    let best = { loss: Infinity, values: null };
-    for (let i = 0; best.loss > ACCEPTABLE_COLOR_LOSS && i < 3; i++) {
-      const initial = [50, 20, 3750, 50, 100, 100];
-      const result = spsa(targetRgb, A, a, c, initial, 1000);
-      if (result.loss < best.loss) best = result;
-    }
-    return best;
-  };
-
-  const solveNarrow = (targetRgb, wideResult) => {
-    const A = wideResult.loss;
-    const c = 2;
-    const A1 = A + 1;
-    const a = [0.25 * A1, 0.25 * A1, A1, 0.25 * A1, 0.2 * A1, 0.2 * A1];
-    return spsa(targetRgb, A, a, c, wideResult.values, 500);
-  };
-
-  const cssFilterString = (filters) => {
-    const [inv, sep, sat, hue, bri, con] = filters.map(Math.round);
-    const hueDeg = Math.round(hue * 3.6);
-    return `filter: invert(${inv}%) sepia(${sep}%) saturate(${sat}%) hue-rotate(${hueDeg}deg) brightness(${bri}%) contrast(${con}%);`;
-  };
-
-  const solveColor = (targetRgb) => {
-    const wide = solveWide(targetRgb);
-    const narrow = solveNarrow(targetRgb, wide);
-    return {
-      values: narrow.values,
-      loss: narrow.loss,
-      filter: cssFilterString(narrow.values),
-    };
-  };
-
-  // Reuse a single canvas / context to avoid memory leaks
-  const colorParseCanvas = document.createElement('canvas');
-  colorParseCanvas.width = 1;
-  colorParseCanvas.height = 1;
-  const colorParseContext = colorParseCanvas.getContext('2d');
-
-  const toRGBArray = (cssColor) => {
-    colorParseContext.fillStyle = cssColor;
-    colorParseContext.fillRect(0, 0, 1, 1);
-
-    // The `getImageData().data` returns a Uint8ClampedArray with 4 values per pixel (RGBA). 
-    // also see: https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data
-    const rgba = colorParseContext.getImageData(0, 0, 1, 1).data;
-    return Array.from(rgba.slice(0, 3));
-  };
-
-  const DYNAMIC_STYLE_ID = 'dynamic-color-invert-style';
-  const SOLVED_COLOR_KEY = "solved-";
-
-  function memorizedSolvedFilter(color) {
-    const colorKey = SOLVED_COLOR_KEY + color;
-    const storedFilterOption = localStorage.getItem(colorKey);
-    if (storedFilterOption) {
-      return storedFilterOption;
-    } else {
-      const filter = solveColor(color).filter;
-      localStorage.setItem(colorKey, filter);
-      return filter;
-    }
-  }
-
-  function applyDynamicColorInvert() {
-    const textColor = getComputedStyle(document.body).getPropertyValue('--text-color');
-    if (textColor && textColor.length > 0) {
-      const rgb = toRGBArray(textColor);
-      const filter = memorizedSolvedFilter(rgb);
-
-      const existingStyle = document.getElementById(DYNAMIC_STYLE_ID);
-      if (existingStyle) {
-        existingStyle.textContent = `.color-invert {${filter}}`;
-      } else {
-        const style = document.createElement('style');
-        style.id = DYNAMIC_STYLE_ID;
-        style.textContent = `.color-invert {${filter}}`;
-        document.head.appendChild(style);
-      }
-    }
-  }
-</script><script>
+<meta name="viewport" content="width=device-width"><title>回声</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><script>
   (() => {
     const url = "/kodama.reload";
     const interval = 1000; // 1 second
@@ -451,644 +54,7 @@
     });
   });
 </script>
-<style>html {
-  font-size: 18px;
-}
-
-:root body {
-  color-scheme: light dark;
-  --content-gap: 15px;
-  --radius: 5px;
-  --article-max-width: 90ex;
-  --toc-max-width: 90ex;
-  --text-font-family: "Inria Sans", sans-serif;
-  --kaiti-font-family: "KaiTi", "SimKai", "STKaiti", "Kaiti SC", "Kaiti TC", "华文楷体", "楷体", serif;
-
-  /* root font size: 16px */
-  /* 11pt; */
-  --pre-font-size: 0.917rem;
-  --code-font-size: 1rem;
-  /* If this value is not 1rem, the CJK text in Typst will not match the size of the CJK text in KaTeX. */
-  --katex-font-size: 1.15em;
-  --katex-frac-line-font-size: 1.25em;
-  --details-h1-font-size: 1.2rem;
-  /* 13pt */
-  --section-details-h1-font-size: 1.083rem;
-  --article-details-h1-font-size: 1.5rem;
-  /* 0.9em */
-  --article-details-h1-taxon-font-size: 1.35rem;
-  /* 24px; */
-  --logo-font-size: 1.5rem;
-  /* 14pt; */
-  --footer-h2-font-size: 1.167rem;
-  --p-line-height: 1.55rem;
-
-  --text-color: black;
-  --toc-link-color: #555;
-  --background-color: white;
-
-  --background-color-pre: rgba(0, 100, 100, 0.04);
-  --background-color-code: rgba(0, 100, 100, 0.04);
-
-  --hover-color-block: rgba(0, 100, 255, 0.04);
-  --hover-color-link: rgba(0, 100, 255, 0.1);
-  --target-color: rgb(67, 92, 255);
-
-  --link-color: black;
-  --slug-color: gray;
-  --logo-color: #666;
-  --logo-hover-color: #aaa;
-  --span-taxon-color: #444;
-  --article-taxon-color: #888;
-  --mark-color: rgb(255, 255, 151);
-  --em-color: var(--text-color);
-
-  --alert-border-color: gray;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root body {
-    --text-color: white;
-    --toc-link-color: white;
-    --background-color: #2f2f2f;
-
-    --background-color-pre: rgba(100, 100, 100, 0.2);
-    --background-color-code: rgba(150, 150, 150, 0.2);
-
-    --hover-color-block: rgba(100, 162, 255, 0.06);
-    --hover-color-link: rgba(100, 162, 255, 0.2);
-    --target-color: rgb(255, 255, 151);
-
-    --link-color: white;
-    --slug-color: #aeaeae;
-    --logo-color: #999;
-    --logo-hover-color: #eee;
-    --span-taxon-color: #bbb;
-  }
-}
-
-@media print {
-  html {
-    font-size: 16px;
-  }
-
-  .edit,
-  #theme-options {
-    display: none;
-  }
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-body {
-  color: var(--text-color);
-  font-optical-sizing: auto;
-  font-size: 1rem;
-  font-family: var(--text-font-family);
-  hyphens: auto;
-  background-color: var(--background-color);
-}
-
-pre,
-code {
-  font-optical-sizing: auto;
-}
-
-p,
-pre {
-  line-height: var(--p-line-height);
-}
-
-pre {
-  border-radius: var(--radius);
-  background-color: var(--background-color-pre);
-  padding: 0.5rem;
-  font-size: var(--pre-font-size);
-  margin-top: 0rem;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
-
-code {
-  border-radius: var(--radius);
-  background-color: var(--background-color-code);
-  padding: 0.1rem;
-  font-size: var(--code-font-size);
-}
-
-pre,
-code {
-  font-family: monospace;
-}
-
-em {
-  color: var(--em-color);
-}
-
-table {
-  border-collapse: collapse;
-  margin-bottom: 1rem;
-}
-
-/* !forest */
-th {
-  font-weight: normal;
-  text-align: left;
-}
-
-th,
-td {
-  padding: 0 15px;
-  vertical-align: top;
-}
-
-/* !forest */
-pre>code {
-  border-radius: 0;
-  background-color: transparent;
-  padding: 0;
-}
-
-/* !forest */
-.footnote-definition:last-child {
-  margin-bottom: 1rem;
-}
-
-/* !forest */
-.footnote-definition>p {
-  display: inline;
-}
-
-/* !forest */
-.footnote-definition-label {
-  margin-right: 4px;
-}
-
-/* !forest */
-.footnote-reference:target {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-definition:target>.footnote-definition-label {
-  border: 1px solid var(--target-color);
-}
-
-.footnote-reference::before,
-.footnote-definition-label::before {
-  content: "[";
-}
-
-.footnote-reference::after,
-.footnote-definition-label::after {
-  content: "]";
-}
-
-.katex {
-  font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
-  line-height: 1rem;
-  text-indent: 0;
-  text-rendering: auto;
-}
-
-.katex .mfrac .frac-line {
-  font-size: var(--katex-frac-line-font-size);
-}
-
-/* Generated by KaTeX */
-.cjk_fallback {
-  font-size: 1rem;
-  font-family: var(--text-font-family);
-}
-
-p:has(span.katex-html:empty) {
-  display: none;
-}
-
-section+p:empty {
-  display: none;
-}
-
-.katex-display {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-.katex-display .katex {
-  /* Inconsistent bounding box at different font sizes. */
-  /* Also see: https://github.com/KaTeX/KaTeX/issues/3965 */
-  padding-top: 1px;
-}
-
-.display-none {
-  display: none;
-}
-
-blockquote {
-  font-style: italic;
-  --blockquote-cjk-font-family: var(--kaiti-font-family);
-}
-
-blockquote span:is([lang=zh], [lang=ja], [lang=ko]) {
-  font-style: normal;
-  font-family: var(--blockquote-cjk-font-family);
-}
-
-/* GFM Blockquote tags: https://github.com/orgs/community/discussions/16925 */
-
-blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution) {
-  --blockquote-cjk-font-family: var(--text-font-family);
-  margin: 0rem 0.5rem;
-  padding: 0rem 0.5rem;
-  font-style: normal;
-  border-left: .25rem double var(--alert-border-color);
-}
-
-blockquote:is(.markdown-alert-note, .markdown-alert-tip, .markdown-alert-important, .markdown-alert-warning, .markdown-alert-caution)>p:first-child::before {
-  font-size: var(--section-details-h1-font-size);
-  font-family: monospace;
-  color: var(--span-taxon-color);
-  margin-right: 0.5rem;
-  display: block;
-  content: var(--alert-label);
-}
-
-blockquote.markdown-alert-note {
-  --alert-label: "[# NOTE]";
-}
-
-blockquote.markdown-alert-tip {
-  --alert-label: "[# TIP]";
-}
-
-blockquote.markdown-alert-important {
-  --alert-label: "[# IMPORTANT]";
-}
-
-blockquote.markdown-alert-warning {
-  --alert-label: "[# WARNING]";
-}
-
-blockquote.markdown-alert-caution {
-  --alert-label: "[# CAUTION]";
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin-top: 0.5em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 500;
-  margin-bottom: 0;
-}
-
-h5,
-h6,
-p {
-  margin-top: 0;
-}
-
-details>summary {
-  list-style-type: none;
-  outline: none;
-}
-
-details>summary>header {
-  display: inline;
-}
-
-details>summary::marker,
-details>summary::-webkit-details-marker {
-  display: none;
-}
-
-details h1 {
-  font-size: var(--details-h1-font-size);
-  display: inline;
-}
-
-span.taxon {
-  color: var(--span-taxon-color);
-  font-weight: 500;
-}
-
-article>section>details>summary>header>h1 {
-  font-size: var(--article-details-h1-font-size);
-}
-
-article>section>details>h2 {
-  font-size: 1.25rem;
-}
-
-article>section>details>h3 {
-  font-size: 1.125rem;
-}
-
-article>section>details>h4 {
-  font-size: 1rem;
-}
-
-article>section>details>h5,
-article>section>details>h6 {
-  font-size: 0.875rem;
-}
-
-article>section>details>summary>header {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-article>section>details>summary>header>h1>.taxon {
-  display: block;
-  font-size: var(--article-details-h1-taxon-font-size);
-  color: var(--article-taxon-color);
-  padding-bottom: 5pt;
-}
-
-article>section>details>summary>header>h1>.taxon:empty {
-  display: none;
-}
-
-section.block>details {
-  margin-bottom: 0.4em;
-}
-
-section.block>details[open] {
-  margin-bottom: 1em;
-}
-
-section.block.link-list>details {
-  margin-bottom: 0em;
-}
-
-section.block.link-list>details>section.block>details {
-  margin-bottom: 0.25em;
-}
-
-/* class */
-.inline-typst {
-  display: inline;
-  margin: 0 0;
-  font-size: var(--katex-font-size);
-}
-
-.block {
-  padding-left: 5px;
-  padding-right: 10px;
-  padding-bottom: 2px;
-  border-radius: var(--radius);
-}
-
-.block:hover {
-  background-color: var(--hover-color-block);
-}
-
-.block.hide-metadata>details>summary>header>.metadata {
-  display: none;
-}
-
-img {
-  object-fit: cover;
-  max-width: 100%;
-}
-
-figure {
-  text-align: center;
-}
-
-figcaption {
-  font-style: italic;
-  padding: 3px;
-}
-
-mark {
-  background-color: var(--mark-color);
-}
-
-hr {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background-color: gray;
-  border: 0 none;
-  width: 100%;
-  height: 1pt;
-}
-
-ul,
-ol {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.logo>span {
-  color: var(--logo-color);
-  text-decoration: none;
-}
-
-.logo>span:hover {
-  color: var(--logo-hover-color);
-}
-
-.logo {
-  font-weight: 600;
-  font-size: var(--logo-font-size);
-}
-
-section section[data-taxon="Reference"]>details>summary>header>h1>.taxon,
-section section[data-taxon="Person"]>details>summary>header>h1>.taxon {
-  display: none;
-}
-
-section .block[data-taxon]>header>h1,
-section .block[data-taxon] details>summary>header>h1 {
-  font-size: var(--section-details-h1-font-size);
-}
-
-footer>section {
-  margin-bottom: 1em;
-}
-
-footer h2 {
-  font-size: var(--footer-h2-font-size);
-}
-
-.metadata ul {
-  padding-left: 0;
-  display: inline;
-}
-
-.metadata li::after {
-  content: " · ";
-}
-
-.metadata li:last-child::after {
-  content: "";
-}
-
-.metadata * {
-  display: inline;
-}
-
-.link {
-  cursor: pointer;
-}
-
-a {
-  color: var(--link-color);
-  text-decoration: inherit;
-}
-
-a.slug:hover,
-a.edit:hover,
-a.hash:hover,
-a.bullet:hover,
-.link:hover {
-  background-color: var(--hover-color-link);
-}
-
-.link.external,
-.link.asset {
-  text-decoration: underline;
-}
-
-.link.asset::before {
-  content: "[F] ";
-  /* file */
-}
-
-a.link.local,
-.link.local a,
-a.slug,
-a.edit,
-a.hash {
-  box-shadow: none;
-  text-decoration-line: underline;
-  text-decoration-style: dotted;
-  overflow-wrap: break-word;
-}
-
-.slug,
-.edit,
-.doi,
-.orcid {
-  color: var(--slug-color);
-  font-weight: 200;
-}
-
-body>header {
-  margin-bottom: 0.5em;
-}
-
-#grid-wrapper>article {
-  max-width: var(--article-max-width);
-  margin-right: auto;
-  grid-area: article;
-}
-
-@media only screen and (max-width: 1000px) {
-  figure {
-    margin: 0rem;
-  }
-
-  .block {
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-bottom: 2px;
-    border-radius: 5px;
-  }
-
-  #grid-wrapper>nav {
-    transition: ease all 0.2s;
-  }
-
-  .mobile-sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-
-    background-color: var(--background-color);
-    z-index: 7;
-    border-bottom: solid var(--text-color);
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  body {
-    margin-top: 2rem;
-    margin-left: 2rem;
-    transition: ease all 0.2s;
-  }
-
-  #grid-wrapper {
-    display: grid;
-    grid-auto-flow: column;
-  }
-
-  .sticky-nav {
-    position: sticky;
-    top: 0px;
-    max-height: calc(100vh - 0px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-
-nav#toc li.item-summary li {
-  display: none;
-}
-
-nav#toc ul {
-  list-style-type: none;
-}
-
-nav#toc li>ul {
-  margin: 0;
-  padding-left: 1rem;
-}
-
-nav#toc,
-nav#toc a {
-  color: var(--toc-link-color);
-}
-
-nav#toc {
-  grid-area: toc;
-}
-
-nav {
-  font-optical-sizing: auto;
-}
-
-nav#toc a.bullet {
-  opacity: 0.7;
-  margin-left: 0.4rem;
-  margin-right: 0.3rem;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-  text-decoration: none;
-}
-
-.typst-text use[fill="#000000"],
-.typst-group use[fill="#000000"],
-path.typst-shape[fill="#000000"] {
-  fill: var(--text-color);
-}
-
-path.typst-shape[stroke="#000000"] {
-  stroke: var(--text-color);
-}</style><style>
+<link rel="stylesheet" href="/main.css"><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -1111,7 +77,7 @@ path.typst-shape[stroke="#000000"] {
   @font-face {
     font-family: "PingFang SC";
     src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Medium.woff2");
-    font-weight: 500;
+    font-weight: 700;
     font-style: normal;
   }
 
@@ -1251,7 +217,7 @@ path.typst-shape[stroke="#000000"] {
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/index" title="千高原 [mille-plateaux/index]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-index'"><span class="taxon"> 1. </span><span lang="zh">千高原</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/AC2A" title="何谓选择公理 [AC2A]">■</a><span class="link local" onclick="window.location.href='#AC2A'"><span class="taxon"></span><span lang="zh">何谓选择公理</span></span><ul class="block"><li class=""><a class="bullet" href="#__kodama_anon_subtree_internal__-AC2A-0" title="历史背景 [__kodama_anon_subtree_internal__-AC2A-0]">■</a><span class="link local" onclick="window.location.href='#__kodama_anon_subtree_internal__-AC2A-0'"><span class="taxon">Exegesis. </span>历史背景</span></li><li class=""><a class="bullet" href="/AC2C" title="选择公理 [AC2C]">■</a><span class="link local" onclick="window.location.href='#AC2C'"><span class="taxon">Axiom 1.1. </span><span lang="zh">选择公理</span> $\textsf{AC}$</span><ul class="block"><li class=""><a class="bullet" href="#__kodama_anon_subtree_internal__-AC2C-0" title="选择公理 (Descartes 积形式) [__kodama_anon_subtree_internal__-AC2C-0]">■</a><span class="link local" onclick="window.location.href='#__kodama_anon_subtree_internal__-AC2C-0'"><span class="taxon">Theorem. </span>选择公理 (Descartes 积形式)</span></li><li class=""><a class="bullet" href="#__kodama_anon_subtree_internal__-AC2C-1" title=" [__kodama_anon_subtree_internal__-AC2C-1]">■</a><span class="link local" onclick="window.location.href='#__kodama_anon_subtree_internal__-AC2C-1'"><span class="taxon">Exegesis. </span></span></li><li class=""><a class="bullet" href="/stocking" title="百万富翁 [stocking]">■</a><span class="link local" onclick="window.location.href='#stocking'"><span class="taxon">Example. </span>百万富翁</span></li></ul></li><li class=""><a class="bullet" href="/AC2E" title="Banach–Tarski 悖论 [AC2E]">■</a><span class="link local" onclick="window.location.href='#AC2E'"><span class="taxon">Paradox. </span>Banach–Tarski <span lang="zh">悖论</span></span></li><li class=""><a class="bullet" href="#__kodama_anon_subtree_internal__-AC2A-1" title=" [__kodama_anon_subtree_internal__-AC2A-1]">■</a><span class="link local" onclick="window.location.href='#__kodama_anon_subtree_internal__-AC2A-1'"><span class="taxon">Proposition. </span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> <span lang="zh">平面曲线的有理点</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1.1. </span>Canterbury <span lang="zh">物语</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1.1. </span><span lang="zh">古代物理学博士问题</span></span><ul class="block"><li class=""><a class="bullet" href="#mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0" title="椭圆曲线的倍点 [mille-plateaux/__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0'"><span class="taxon">Solution. </span>椭圆曲线的倍点</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.1.2. </span><span lang="zh">切线与交点</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.1.3. </span>Fermat <span lang="zh">提升法</span></span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 1.2. </span><span lang="zh">圆的参数化</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 1.3. </span><span lang="zh">圆曲线</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span><span lang="zh">周期函数的构造</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß <span lang="zh">的灵感来源</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span><span lang="zh">双周期函数</span></span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/index" title="数据与可计算结构 [data-structure/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-index'"><span class="taxon"> 2. </span><span lang="zh">数据与可计算结构</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span><span lang="zh">七树合一定理</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 2.1. </span><span lang="zh">二叉树类型</span></span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2.2. </span>Blass–Lawvere <span lang="zh">定理</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-isomorphism'"><span class="taxon"></span><span lang="zh">栈置换</span>–<span lang="zh">二叉树同构</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 2.1. </span><span lang="zh">栈置换</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2.2. </span>Hille <span lang="zh">编码</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-three-nodes'"><span class="taxon">Example 2.3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-equivalence'"><span class="taxon">Proposition 2.4. </span><span lang="zh">栈编码与</span> Hille <span lang="zh">编码的等价性</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-intersection'"><span class="taxon">Proposition 2.5. </span><span lang="zh">相交数</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-ratio'"><span class="taxon">Corollary 2.6. </span><span lang="zh">相交率</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/bounds" title="有效长度的上下界 [data-structure/stack-permutation/bounds]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-bounds'"><span class="taxon">Exegesis 2.7. </span><span lang="zh">有效长度的上下界</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential/index" title="综合微分法 [data-structure/synthetic-differential/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-index'"><span class="taxon"></span><span lang="zh">综合微分法</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-numerical'"><span class="taxon">Exegesis 2.1. </span><span lang="zh">数值微分的误差</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-complex-step'"><span class="taxon">Exegesis 2.2. </span><span lang="zh">复步微分法</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-moler-correction'"><span class="taxon">Exegesis 2.3. </span><span lang="zh">误差修正</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-dual-number'"><span class="taxon">Definition 2.4. </span><span lang="zh">对偶数</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-kock-lawvere'"><span class="taxon">Axiom 2.4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-matrix-represent'"><span class="taxon">Exegesis 2.4.2. </span><span lang="zh">矩阵表示</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-derived-differential'"><span class="taxon">Example 2.4.3. </span><span lang="zh">导出微分运算</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/chain-rule" title="链式法则 [data-structure/synthetic-differential/chain-rule]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-chain-rule'"><span class="taxon">Exegesis 2.4.4. </span><span lang="zh">链式法则</span></span></li></ul></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/index" title="线性代数杂记 [linear-algebra/index]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-index'"><span class="taxon"> 3. </span><span lang="zh">线性代数杂记</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity'"><span class="taxon">Conjecture. </span>Kontsevich <span lang="zh">周期性猜想</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-2A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-2A'"><span class="taxon">Exegesis. </span>$n=2$ <span lang="zh">交换版本</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient'"><span class="taxon">Theorem. </span>Rayleigh <span lang="zh">商定理</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2A" title=" [linear-algebra/rayleigh-quotient-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2A'"><span class="taxon">Exegesis 3.1. </span> <span lang="zh">某类二次型的商</span></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2B" title=" [linear-algebra/rayleigh-quotient-2B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2B'"><span class="taxon">Example 3.2. </span> <span lang="zh">二阶情形</span></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-3A" title=" [linear-algebra/rayleigh-quotient-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-3A'"><span class="taxon">Example 3.3. </span> <span lang="zh">一般二次型的商</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-permutation-matrix'"><span class="taxon">Exegesis. </span><span lang="zh">置换矩阵构造</span></span></li><li class="item-summary"><a class="bullet" href="/linear-algebra/amtx" title="自动机与矩阵求逆 [linear-algebra/amtx]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx'"><span class="taxon">Exegesis. </span><span lang="zh">自动机与矩阵求逆</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 3.1. </span><span lang="zh">正则语言集</span></span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 3.2. </span><span lang="zh">关于半环的注释</span></span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3.3. </span><span lang="zh">星半环</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-2A" title="矩阵闭包 [linear-algebra/amtx-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-2A'"><span class="taxon">Exegesis 3.4. </span><span lang="zh">矩阵闭包</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3A" title="二阶矩阵的逆 [linear-algebra/amtx-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3A'"><span class="taxon">Example 3.5. </span><span lang="zh">二阶矩阵的逆</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3B" title="分块矩阵的逆 [linear-algebra/amtx-3B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3B'"><span class="taxon">Example 3.6. </span><span lang="zh">分块矩阵的逆</span></span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/index" title="Daily Surf [daily-surf/index]">■</a><span class="link local" onclick="window.location.href='#daily-surf-index'"><span class="taxon"> 4. </span>Daily Surf</span><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/windows-skill" title="完全用 Windows 工作 [daily-surf/windows-skill]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill'"><span class="taxon"></span><span lang="zh">完全用</span> Windows <span lang="zh">工作</span></span><ul class="block"><li class=""><a class="bullet" href="#daily-surf-windows-skill:1" title="资源管理器字太小 [daily-surf/windows-skill/:1]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:1'"><span class="taxon"> 4.1. </span>资源管理器字太小</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:2" title="语音转文字 [daily-surf/windows-skill/:2]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:2'"><span class="taxon"> 4.2. </span>语音转文字</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:3" title="磁盘占用分析 [daily-surf/windows-skill/:3]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:3'"><span class="taxon"> 4.3. </span>磁盘占用分析</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:4" title="PowerShell 开启菜单式路径补全 [daily-surf/windows-skill/:4]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:4'"><span class="taxon"> 4.4. </span>PowerShell 开启菜单式路径补全</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:5" title="PowerShell 启动太慢 [daily-surf/windows-skill/:5]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:5'"><span class="taxon"> 4.5. </span>PowerShell 启动太慢</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:6" title="查看文件被哪些进程使用 [daily-surf/windows-skill/:6]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:6'"><span class="taxon"> 4.6. </span>查看文件被哪些进程使用</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:7" title="清理所有无响应程序 [daily-surf/windows-skill/:7]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:7'"><span class="taxon"> 4.7. </span>清理所有无响应程序</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:8" title="目录符号链接 [daily-surf/windows-skill/:8]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:8'"><span class="taxon"> 4.8. </span>目录符号链接</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:9" title="完全控制面板 [daily-surf/windows-skill/:9]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:9'"><span class="taxon"> 4.9. </span>完全控制面板</span></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/haskell" title="Draw a Haskell Logo [daily-surf/haskell]">■</a><span class="link local" onclick="window.location.href='#daily-surf-haskell'"><span class="taxon"></span>Draw a Haskell Logo</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> <span lang="zh">备注</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams <span lang="zh">谱序列</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 <span lang="zh">高分屏设置</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter <span lang="zh">主题设置</span></span><ul class="block"><li class=""><a class="bullet" href="#daily-surf-__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0" title="一条或可利用的情报 [daily-surf/__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0]">■</a><span class="link local" onclick="window.location.href='#daily-surf-__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0'"><span class="taxon">Remark. </span>一条或可利用的情报</span></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git <span lang="zh">过滤分支</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span><span lang="zh">日经观点</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci <span lang="zh">抛硬币</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span><span lang="zh">屏幕右上角的</span> “FPS GPU CPU <span lang="zh">延时</span>”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram <span lang="zh">引擎与</span> WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span><span lang="zh">文件互传</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/index" title="翠玉录 [smaragdina/index]">■</a><span class="link local" onclick="window.location.href='#smaragdina-index'"><span class="taxon"> 5. </span><span lang="zh">翠玉录</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 “你的电影没有意义” 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch <span lang="zh">对于人们说</span> “<span lang="zh">你的电影没有意义</span>” <span lang="zh">的回应</span></span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon"></span>The Celtic Myths <span lang="zh">摘录</span></span></li></ul></li></ul></details></div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class="item-summary"><a class="bullet" href="/mille-plateaux/index" title="千高原 [mille-plateaux/index]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-index'"><span class="taxon"> 1. </span><span lang="zh">千高原</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/AC2A" title="何谓选择公理 [AC2A]">■</a><span class="link local" onclick="window.location.href='#AC2A'"><span class="taxon"></span><span lang="zh">何谓选择公理</span></span><ul class="block"><li class=""><a class="bullet" href="#AC2A:1" title="历史背景 [AC2A/:1]">■</a><span class="link local" onclick="window.location.href='#AC2A:1'"><span class="taxon">Exegesis. </span>历史背景</span></li><li class=""><a class="bullet" href="/AC2C" title="选择公理 [AC2C]">■</a><span class="link local" onclick="window.location.href='#AC2C'"><span class="taxon">Axiom 1.1. </span><span lang="zh">选择公理</span> $\textsf{AC}$</span><ul class="block"><li class=""><a class="bullet" href="#AC2C:1" title="选择公理 (Descartes 积形式) [AC2C/:1]">■</a><span class="link local" onclick="window.location.href='#AC2C:1'"><span class="taxon">Theorem. </span>选择公理 (Descartes 积形式)</span></li><li class=""><a class="bullet" href="/stocking" title="百万富翁 [stocking]">■</a><span class="link local" onclick="window.location.href='#stocking'"><span class="taxon">Example. </span>百万富翁</span></li></ul></li><li class=""><a class="bullet" href="/AC2E" title="Banach–Tarski 悖论 [AC2E]">■</a><span class="link local" onclick="window.location.href='#AC2E'"><span class="taxon">Paradox. </span>Banach–Tarski <span lang="zh">悖论</span></span></li><li class=""><a class="bullet" href="#AC2A:2" title=" [AC2A/:2]">■</a><span class="link local" onclick="window.location.href='#AC2A:2'"><span class="taxon">Proposition. </span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/rational-points" title="有理点 [mille-plateaux/rational-points]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-rational-points'"><span class="taxon"></span> <span lang="zh">平面曲线的有理点</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury" title="Canterbury 物语 [mille-plateaux/canterbury]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury'"><span class="taxon">Exegesis 1.1. </span>Canterbury <span lang="zh">物语</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/canterbury-2A" title="古代物理学博士问题 [mille-plateaux/canterbury-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A'"><span class="taxon">Problem 1.1.1. </span><span lang="zh">古代物理学博士问题</span></span><ul class="block"><li class=""><a class="bullet" href="#mille-plateaux-canterbury-2A:1" title="椭圆曲线的倍点 [mille-plateaux/canterbury-2A/:1]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-2A:1'"><span class="taxon">Solution. </span>椭圆曲线的倍点</span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/canterbury-3A" title="Canterbury 曲线的切线与自身的交点 [mille-plateaux/canterbury-3A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-canterbury-3A'"><span class="taxon">Lemma 1.1.2. </span><span lang="zh">切线与交点</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/fermat-ascent" title="Fermat 提升法 [mille-plateaux/fermat-ascent]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-fermat-ascent'"><span class="taxon">Exegesis 1.1.3. </span>Fermat <span lang="zh">提升法</span></span></li></ul></li><li class=""><a class="bullet" href="/mille-plateaux/circular-parameterization" title="圆的参数化 [mille-plateaux/circular-parameterization]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-parameterization'"><span class="taxon">Exegesis 1.2. </span><span lang="zh">圆的参数化</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-circular-curve'"><span class="taxon">Exegesis 1.3. </span><span lang="zh">圆曲线</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/mille-plateaux/periodic-2A" title="周期函数的构造 [mille-plateaux/periodic-2A]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2A'"><span class="taxon"></span><span lang="zh">周期函数的构造</span></span><ul class="block"><li class=""><a class="bullet" href="/mille-plateaux/periodic-2B" title="Weierstraß 的灵感来源 [mille-plateaux/periodic-2B]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2B'"><span class="taxon">Exegesis. </span>Weierstraß <span lang="zh">的灵感来源</span></span></li><li class=""><a class="bullet" href="/mille-plateaux/periodic-2C" title="双周期函数 [mille-plateaux/periodic-2C]">■</a><span class="link local" onclick="window.location.href='#mille-plateaux-periodic-2C'"><span class="taxon">Exegesis. </span><span lang="zh">双周期函数</span></span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/index" title="数据与可计算结构 [data-structure/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-index'"><span class="taxon"> 2. </span><span lang="zh">数据与可计算结构</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/data-structure/seven-trees-in-one" title="七树合一定理 [data-structure/seven-trees-in-one]">■</a><span class="link local" onclick="window.location.href='#data-structure-seven-trees-in-one'"><span class="taxon"></span><span lang="zh">七树合一定理</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/binary-tree" title="二叉树类型 [data-structure/binary-tree]">■</a><span class="link local" onclick="window.location.href='#data-structure-binary-tree'"><span class="taxon">Definition 2.1. </span><span lang="zh">二叉树类型</span></span></li><li class=""><a class="bullet" href="/data-structure/blass-lawvere" title="Blass–Lawvere 定理 [data-structure/blass-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-blass-lawvere'"><span class="taxon">Theorem 2.2. </span>Blass–Lawvere <span lang="zh">定理</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/stack-permutation/isomorphism" title="栈置换–二叉树同构 [data-structure/stack-permutation/isomorphism]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-isomorphism'"><span class="taxon"></span><span lang="zh">栈置换</span>–<span lang="zh">二叉树同构</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/stack-permutation/stack-permutation" title="栈置换 [data-structure/stack-permutation/stack-permutation]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-stack-permutation'"><span class="taxon">Definition 2.1. </span><span lang="zh">栈置换</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/hille-encode" title="Hille 编码 [data-structure/stack-permutation/hille-encode]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-hille-encode'"><span class="taxon">Definition 2.2. </span>Hille <span lang="zh">编码</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/three-nodes" title="三节点二叉树 [data-structure/stack-permutation/three-nodes]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-three-nodes'"><span class="taxon">Example 2.3. </span>$n=3$</span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/equivalence" title="栈编码与 Hille 编码的等价性 [data-structure/stack-permutation/equivalence]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-equivalence'"><span class="taxon">Proposition 2.4. </span><span lang="zh">栈编码与</span> Hille <span lang="zh">编码的等价性</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/intersection" title="相交数 [data-structure/stack-permutation/intersection]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-intersection'"><span class="taxon">Proposition 2.5. </span><span lang="zh">相交数</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/ratio" title="相交率 [data-structure/stack-permutation/ratio]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-ratio'"><span class="taxon">Corollary 2.6. </span><span lang="zh">相交率</span></span></li><li class=""><a class="bullet" href="/data-structure/stack-permutation/bounds" title="有效长度的上下界 [data-structure/stack-permutation/bounds]">■</a><span class="link local" onclick="window.location.href='#data-structure-stack-permutation-bounds'"><span class="taxon">Exegesis 2.7. </span><span lang="zh">有效长度的上下界</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/data-structure/synthetic-differential/index" title="综合微分法 [data-structure/synthetic-differential/index]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-index'"><span class="taxon"></span><span lang="zh">综合微分法</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-numerical'"><span class="taxon">Exegesis 2.1. </span><span lang="zh">数值微分的误差</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-complex-step'"><span class="taxon">Exegesis 2.2. </span><span lang="zh">复步微分法</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-moler-correction'"><span class="taxon">Exegesis 2.3. </span><span lang="zh">误差修正</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-dual-number'"><span class="taxon">Definition 2.4. </span><span lang="zh">对偶数</span></span><ul class="block"><li class=""><a class="bullet" href="/data-structure/synthetic-differential/kock-lawvere" title="Kock–Lawvere [data-structure/synthetic-differential/kock-lawvere]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-kock-lawvere'"><span class="taxon">Axiom 2.4.1. </span>Kock–Lawvere</span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-matrix-represent'"><span class="taxon">Exegesis 2.4.2. </span><span lang="zh">矩阵表示</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/derived-differential" title="矩阵表示导出微分运算 [data-structure/synthetic-differential/derived-differential]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-derived-differential'"><span class="taxon">Example 2.4.3. </span><span lang="zh">导出微分运算</span></span></li><li class=""><a class="bullet" href="/data-structure/synthetic-differential/chain-rule" title="链式法则 [data-structure/synthetic-differential/chain-rule]">■</a><span class="link local" onclick="window.location.href='#data-structure-synthetic-differential-chain-rule'"><span class="taxon">Exegesis 2.4.4. </span><span lang="zh">链式法则</span></span></li></ul></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/index" title="线性代数杂记 [linear-algebra/index]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-index'"><span class="taxon"> 3. </span><span lang="zh">线性代数杂记</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/linear-algebra/kontsevich-periodicity" title="Kontsevich 周期性猜想 [linear-algebra/kontsevich-periodicity]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity'"><span class="taxon">Conjecture. </span>Kontsevich <span lang="zh">周期性猜想</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/kontsevich-periodicity-2A" title="二阶矩阵交换版本 [linear-algebra/kontsevich-periodicity-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-kontsevich-periodicity-2A'"><span class="taxon">Exegesis. </span>$n=2$ <span lang="zh">交换版本</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/rayleigh-quotient" title="Rayleigh 商定理 [linear-algebra/rayleigh-quotient]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient'"><span class="taxon">Theorem. </span>Rayleigh <span lang="zh">商定理</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2A" title=" [linear-algebra/rayleigh-quotient-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2A'"><span class="taxon">Exegesis 3.1. </span> <span lang="zh">某类二次型的商</span></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-2B" title=" [linear-algebra/rayleigh-quotient-2B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-2B'"><span class="taxon">Example 3.2. </span> <span lang="zh">二阶情形</span></span></li><li class=""><a class="bullet" href="/linear-algebra/rayleigh-quotient-3A" title=" [linear-algebra/rayleigh-quotient-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-rayleigh-quotient-3A'"><span class="taxon">Example 3.3. </span> <span lang="zh">一般二次型的商</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/linear-algebra/permutation-matrix" title="置换矩阵构造 [linear-algebra/permutation-matrix]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-permutation-matrix'"><span class="taxon">Exegesis. </span><span lang="zh">置换矩阵构造</span></span></li><li class="item-summary"><a class="bullet" href="/linear-algebra/amtx" title="自动机与矩阵求逆 [linear-algebra/amtx]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx'"><span class="taxon">Exegesis. </span><span lang="zh">自动机与矩阵求逆</span></span><ul class="block"><li class=""><a class="bullet" href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-regular-language'"><span class="taxon">Definition 3.1. </span><span lang="zh">正则语言集</span></span></li><li class=""><a class="bullet" href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-semiring'"><span class="taxon">Exegesis 3.2. </span><span lang="zh">关于半环的注释</span></span></li><li class=""><a class="bullet" href="/linear-algebra/star-semiring" title="星半环 [linear-algebra/star-semiring]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-star-semiring'"><span class="taxon">Definition 3.3. </span><span lang="zh">星半环</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-2A" title="矩阵闭包 [linear-algebra/amtx-2A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-2A'"><span class="taxon">Exegesis 3.4. </span><span lang="zh">矩阵闭包</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3A" title="二阶矩阵的逆 [linear-algebra/amtx-3A]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3A'"><span class="taxon">Example 3.5. </span><span lang="zh">二阶矩阵的逆</span></span></li><li class=""><a class="bullet" href="/linear-algebra/amtx-3B" title="分块矩阵的逆 [linear-algebra/amtx-3B]">■</a><span class="link local" onclick="window.location.href='#linear-algebra-amtx-3B'"><span class="taxon">Example 3.6. </span><span lang="zh">分块矩阵的逆</span></span></li></ul></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/index" title="Daily Surf [daily-surf/index]">■</a><span class="link local" onclick="window.location.href='#daily-surf-index'"><span class="taxon"> 4. </span>Daily Surf</span><ul class="block"><li class="item-summary"><a class="bullet" href="/daily-surf/HIRO" title="“创造之门” 摘录 [daily-surf/HIRO]">■</a><span class="link local" onclick="window.location.href='#daily-surf-HIRO'"><span class="taxon">Peruse. </span>“<span lang="zh">创造之门</span>” <span lang="zh">摘录</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/SWSL" title="读 “七周七语言” [daily-surf/SWSL]">■</a><span class="link local" onclick="window.location.href='#daily-surf-SWSL'"><span class="taxon">Peruse. </span><span lang="zh">读</span> “<span lang="zh">七周七语言</span>”</span><ul class="block"><li class=""><a class="bullet" href="#daily-surf-SWSL:1" title="松本行弘篇 [daily-surf/SWSL/:1]">■</a><span class="link local" onclick="window.location.href='#daily-surf-SWSL:1'"><span class="taxon"></span>松本行弘篇</span></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/windows-skill" title="完全用 Windows 工作 [daily-surf/windows-skill]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill'"><span class="taxon"></span><span lang="zh">完全用</span> Windows <span lang="zh">工作</span></span><ul class="block"><li class=""><a class="bullet" href="#daily-surf-windows-skill:1" title="资源管理器字太小 [daily-surf/windows-skill/:1]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:1'"><span class="taxon"> 4.1. </span>资源管理器字太小</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:2" title="语音转文字 [daily-surf/windows-skill/:2]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:2'"><span class="taxon"> 4.2. </span>语音转文字</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:3" title="磁盘占用分析 [daily-surf/windows-skill/:3]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:3'"><span class="taxon"> 4.3. </span>磁盘占用分析</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:4" title="PowerShell 开启菜单式路径补全 [daily-surf/windows-skill/:4]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:4'"><span class="taxon"> 4.4. </span>PowerShell 开启菜单式路径补全</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:5" title="PowerShell 启动太慢 [daily-surf/windows-skill/:5]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:5'"><span class="taxon"> 4.5. </span>PowerShell 启动太慢</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:6" title="查看文件被哪些进程使用 [daily-surf/windows-skill/:6]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:6'"><span class="taxon"> 4.6. </span>查看文件被哪些进程使用</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:7" title="清理所有无响应程序 [daily-surf/windows-skill/:7]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:7'"><span class="taxon"> 4.7. </span>清理所有无响应程序</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:8" title="目录符号链接 [daily-surf/windows-skill/:8]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:8'"><span class="taxon"> 4.8. </span>目录符号链接</span></li><li class=""><a class="bullet" href="#daily-surf-windows-skill:9" title="完全控制面板 [daily-surf/windows-skill/:9]">■</a><span class="link local" onclick="window.location.href='#daily-surf-windows-skill:9'"><span class="taxon"> 4.9. </span>完全控制面板</span></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/haskell" title="Draw a Haskell Logo [daily-surf/haskell]">■</a><span class="link local" onclick="window.location.href='#daily-surf-haskell'"><span class="taxon"></span>Draw a Haskell Logo</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/bevy" title="Bevy 备注 [daily-surf/bevy]">■</a><span class="link local" onclick="window.location.href='#daily-surf-bevy'"><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> <span lang="zh">备注</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/adams" title="Adams 谱序列 [daily-surf/adams]">■</a><span class="link local" onclick="window.location.href='#daily-surf-adams'"><span class="taxon">Poetry. </span>Adams <span lang="zh">谱序列</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sublime-text-config" title="Sublime Text 4 高分屏设置 [daily-surf/sublime-text-config]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sublime-text-config'"><span class="taxon"></span>Sublime Text 4 <span lang="zh">高分屏设置</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/sagemath-theme" title="Sagemath Jupyter 主题设置 [daily-surf/sagemath-theme]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme'"><span class="taxon"></span>Sagemath Jupyter <span lang="zh">主题设置</span></span><ul class="block"><li class=""><a class="bullet" href="#daily-surf-sagemath-theme:1" title="一条或可利用的情报 [daily-surf/sagemath-theme/:1]">■</a><span class="link local" onclick="window.location.href='#daily-surf-sagemath-theme:1'"><span class="taxon">Remark. </span>一条或可利用的情报</span></li></ul></li><li class="item-summary"><a class="bullet" href="/daily-surf/git-filter-branch" title="Git 过滤分支 [daily-surf/git-filter-branch]">■</a><span class="link local" onclick="window.location.href='#daily-surf-git-filter-branch'"><span class="taxon"></span>Git <span lang="zh">过滤分支</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/baby-viewpoint" title="日经观点 [daily-surf/baby-viewpoint]">■</a><span class="link local" onclick="window.location.href='#daily-surf-baby-viewpoint'"><span class="taxon">Exegesis. </span><span lang="zh">日经观点</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/fibonacci-flip" title="Fibonacci 抛硬币 [daily-surf/fibonacci-flip]">■</a><span class="link local" onclick="window.location.href='#daily-surf-fibonacci-flip'"><span class="taxon"></span>Fibonacci <span lang="zh">抛硬币</span></span></li><li class="item-summary"><a class="bullet" href="/daily-surf/nvidia-fps-gpu-cpu" title="屏幕右上角的 “FPS GPU CPU 延时” [daily-surf/nvidia-fps-gpu-cpu]">■</a><span class="link local" onclick="window.location.href='#daily-surf-nvidia-fps-gpu-cpu'"><span class="taxon"></span><span lang="zh">屏幕右上角的</span> “FPS GPU CPU <span lang="zh">延时</span>”</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/wolfram-engine" title="Wolfram 引擎与 WLJS [daily-surf/wolfram-engine]">■</a><span class="link local" onclick="window.location.href='#daily-surf-wolfram-engine'"><span class="taxon"></span>Wolfram <span lang="zh">引擎与</span> WLJS</span></li><li class="item-summary"><a class="bullet" href="/daily-surf/file-transfer" title="文件互传 [daily-surf/file-transfer]">■</a><span class="link local" onclick="window.location.href='#daily-surf-file-transfer'"><span class="taxon"></span><span lang="zh">文件互传</span></span></li></ul></li><li class="item-summary"><a class="bullet" href="/smaragdina/index" title="翠玉录 [smaragdina/index]">■</a><span class="link local" onclick="window.location.href='#smaragdina-index'"><span class="taxon"> 5. </span><span lang="zh">翠玉录</span></span><ul class="block"><li class="item-summary"><a class="bullet" href="/smaragdina/lynch-movie" title="Lynch 对于人们说 "你的电影没有意义" 的回应 [smaragdina/lynch-movie]">■</a><span class="link local" onclick="window.location.href='#smaragdina-lynch-movie'"><span class="taxon"></span>Lynch 对于人们说 "你的电影没有意义" 的回应</span></li><li class="item-summary"><a class="bullet" href="/smaragdina/celtic-myths" title="The Celtic Myths 摘录 [smaragdina/celtic-myths]">■</a><span class="link local" onclick="window.location.href='#smaragdina-celtic-myths'"><span class="taxon">Peruse. </span>The Celtic Myths 摘录</span></li></ul></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="index"><header><h1><span class="taxon"></span><span lang="zh">回声</span> <a class="slug" href="/index">[index]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/index.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><span lang="zh">本站使用</span> <span class="link external"><a href="https://github.com/kokic/kodama" title="Kodama [https://github.com/kokic/kodama]">Kodama</a></span> <span lang="zh">构建</span>, <span lang="zh">源文件位于</span> <span class="link external"><a href="https://github.com/kokic/kokic.github.io" title="此处 [https://github.com/kokic/kokic.github.io]"><span lang="zh">此处</span></a></span>.
@@ -1259,11 +225,11 @@ path.typst-shape[stroke="#000000"] {
 <section class="block hide-metadata" data-taxon=""><details ><summary id="mille-plateaux-index"><header><h1><span class="taxon"> 1. </span><span lang="zh">千高原</span> <a class="slug" href="/mille-plateaux/index">[mille-plateaux]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/index.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <section class="block" data-taxon=""><details ><summary id="AC2A"><header><h1><span class="taxon"></span><span lang="zh">何谓选择公理</span> <a class="slug" href="/AC2A">[AC2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">November 26, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p><span lang="zh">整理自</span> <span class="link local"><a href="/bib/blass2025choice" title="A Gentle Introduction to the Axiom of Choice [bib/blass2025choice]">A Gentle Introduction to the Axiom of Choice</a></span>.</p>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="__kodama_anon_subtree_internal__-AC2A-0"><header><h1><span class="taxon">Exegesis. </span>历史背景 <a class="hash" href="#__kodama_anon_subtree_internal__-AC2A-0">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>1883 <span lang="zh">年</span>, Georg Cantor <span lang="zh">提出了</span> <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]"><span lang="zh">良序原理</span></a></span>. <span lang="zh">由于他所谓的</span> <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]"><span lang="zh">法则</span></a></span> <span lang="zh">并未立即得到接受</span>, Cantor <span lang="zh">发现自己不得不寻求证明</span>. <span lang="zh">为了提供这样的证明</span>, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span> <span lang="zh">在</span> 1904 <span lang="zh">年由</span> Ernst Zermelo <span lang="zh">首次明确表述出来</span>.</p>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="AC2A:1"><header><h1><span class="taxon">Exegesis. </span>历史背景 <a class="hash" href="#AC2A:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>1883 <span lang="zh">年</span>, Georg Cantor <span lang="zh">提出了</span> <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]"><span lang="zh">良序原理</span></a></span>. <span lang="zh">由于他所谓的</span> <span class="link local"><a href="/AC2D" title="良序原理 [AC2D]"><span lang="zh">法则</span></a></span> <span lang="zh">并未立即得到接受</span>, Cantor <span lang="zh">发现自己不得不寻求证明</span>. <span lang="zh">为了提供这样的证明</span>, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span> <span lang="zh">在</span> 1904 <span lang="zh">年由</span> Ernst Zermelo <span lang="zh">首次明确表述出来</span>.</p>
 </details></section><section class="block hide-metadata" data-taxon="Axiom"><details open><summary id="AC2C"><header><h1><span class="taxon">Axiom 1.1. </span><span lang="zh">选择公理</span> $\textsf{AC}$ <a class="slug" href="/AC2C">[AC2C]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><span lang="zh">对于任意非空集合族</span> $\mathscr{F}$, <span lang="zh">存在一个选择函数</span> $f$ <span lang="zh">为每个</span> $A \in \mathscr{F}$ <span lang="zh">分配一个元素</span> $f(A) \in A$.</p>
-<section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="__kodama_anon_subtree_internal__-AC2C-0"><header><h1><span class="taxon">Theorem. </span>选择公理 (Descartes 积形式) <a class="hash" href="#__kodama_anon_subtree_internal__-AC2C-0">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">对任意非空集族</span> $(X_i)_{i \in I}$, <span lang="zh">其</span> Descartes <span lang="zh">积</span> $\prod_{i \in I} X_i$ <span lang="zh">非空</span>.</p>
-</details></section><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="__kodama_anon_subtree_internal__-AC2C-1"><header><h1><span class="taxon">Exegesis. </span> <a class="hash" href="#__kodama_anon_subtree_internal__-AC2C-1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$f$ <span lang="zh">可以被看作是从每个集合</span> $A \in \mathscr{F}$ <span lang="zh">中选取一个元素</span>.
+<section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="AC2C:1"><header><h1><span class="taxon">Theorem. </span>选择公理 (Descartes 积形式) <a class="hash" href="#AC2C:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">对任意非空集族</span> $(X_i)_{i \in I}$, <span lang="zh">其</span> Descartes <span lang="zh">积</span> $\prod_{i \in I} X_i$ <span lang="zh">非空</span>.</p>
+</details></section><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="AC2C:2"><header><h1><span class="taxon">Exegesis. </span> <a class="hash" href="#AC2C:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$f$ <span lang="zh">可以被看作是从每个集合</span> $A \in \mathscr{F}$ <span lang="zh">中选取一个元素</span>.
 <span lang="zh">然而</span>, <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span> <span lang="zh">仅保证了此类函数的存在性</span>, <span lang="zh">而没有提供构造它的方法</span>.
 <span lang="zh">即</span> <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span> <span lang="zh">并未涉及一个人作出或构想这些选择的能力</span>.</p>
 </details></section><section class="block hide-metadata" data-taxon="Example"><details open><summary id="stocking"><header><h1><span class="taxon">Example. </span>百万富翁 <a class="slug" href="/stocking">[stocking]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">本例来自</span> “Bertrand Russell. Introduction to Mathematical Philosophy. George Allen and Unwin, 1919”, <span lang="zh">略有修改</span>.</p>
@@ -1277,7 +243,7 @@ path.typst-shape[stroke="#000000"] {
 <section class="block hide-metadata" data-taxon="Paradox"><details open><summary id="AC2E"><header><h1><span class="taxon">Paradox. </span>Banach–Tarski <span lang="zh">悖论</span> <a class="slug" href="/AC2E">[AC2E]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2E.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <p><span lang="zh">假设</span> <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span>, <span lang="zh">对于一个三维闭球</span> $B$ <span lang="zh">存在一种分解</span> $B = B_1 \sqcup B_2$ <span lang="zh">使得</span> $B_1 \approx B \approx B_2$. <span lang="zh">此处</span>, <span lang="zh">我们称</span> $B \approx C$, <span lang="zh">如果存在有限划分</span> $B = P_1 \sqcup \cdots \sqcup P_n$, $C = Q_1 \sqcup \cdots \sqcup Q_n$, <span lang="zh">使得对每个</span> $1 \le i \le n$, $P_i$ <span lang="zh">与</span> $Q_i$ <span lang="zh">全等</span>.</p>
 </details></section><p><span lang="zh">尽管看似违反直觉</span>, <span lang="zh">这种所谓的悖论并非逻辑矛盾</span>, <span lang="zh">而仅仅是一种数学上的不便</span>. <span lang="zh">例如</span>, <span class="link local"><a href="/AC2E" title="Banach–Tarski 悖论 [AC2E]">Banach–Tarski <span lang="zh">悖论</span></a></span> (<span lang="zh">因此也包括</span> <span class="link local"><a href="/AC2C" title="选择公理 [AC2C]"><span lang="zh">选择公理</span> $\textsf{AC}$</a></span>) <span lang="zh">会推出另一个数学上不太方便的结果</span>.</p>
-<section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="__kodama_anon_subtree_internal__-AC2A-1"><header><h1><span class="taxon">Proposition. </span> <a class="hash" href="#__kodama_anon_subtree_internal__-AC2A-1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">存在</span> $\R^n$ <span lang="zh">的子集不是</span> Lebesgue <span lang="zh">可测的</span>. <span lang="zh">更具体地说</span>, <span lang="zh">作为</span> <span class="link local"><a href="/AC2E" title="Banach–Tarski 悖论 [AC2E]">Banach–Tarski <span lang="zh">悖论</span></a></span> <span lang="zh">的推论</span>, <span lang="zh">不存在定义在</span> $\R^3$ <span lang="zh">的所有子集上的、在刚性变换下不变的有限可加测度</span>.</p>
+<section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="AC2A:2"><header><h1><span class="taxon">Proposition. </span> <a class="hash" href="#AC2A:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/AC2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">存在</span> $\R^n$ <span lang="zh">的子集不是</span> Lebesgue <span lang="zh">可测的</span>. <span lang="zh">更具体地说</span>, <span lang="zh">作为</span> <span class="link local"><a href="/AC2E" title="Banach–Tarski 悖论 [AC2E]">Banach–Tarski <span lang="zh">悖论</span></a></span> <span lang="zh">的推论</span>, <span lang="zh">不存在定义在</span> $\R^3$ <span lang="zh">的所有子集上的、在刚性变换下不变的有限可加测度</span>.</p>
 </details></section></details></section><section class="block" data-taxon=""><details ><summary id="mille-plateaux-rational-points"><header><h1><span class="taxon"></span> <span lang="zh">平面曲线的有理点</span> <a class="slug" href="/mille-plateaux/rational-points">[rational-points]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/rational-points.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 26, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\ul#1{\underline{#1}}$
 $\gdef\spaces#1{~ #1 ~}$
@@ -1292,8 +258,8 @@ $\gdef\Q{\mathbf{Q}}$</p>
 <p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span lang="zh">有两个正方体</span>, <span lang="zh">一个边长为</span> $1$, <span lang="zh">另一个边长为</span> $2$. <span lang="zh">请找到另外两个边长为有理数的正方体使它们的体积总和相同</span>. <span lang="zh">换言之</span>, <span lang="zh">求下述方程的一组</span> (<span lang="zh">正</span>) <span lang="zh">有理解</span>.</p>
 <p>$$ x^3 + y^3 \spaces= 9 \quad \color{gray}{(= ~ 1^3+2^3)} $$</p>
-<section class="block hide-metadata" data-taxon="Solution"><details open><summary id="mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0"><header><h1><span class="taxon">Solution. </span>椭圆曲线的倍点 <a class="hash" href="#mille-plateaux-__kodama_anon_subtree_internal__-mille-plateaux-canterbury-2A-0">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">我们先画出</span> $x^3 + y^3 = 9$. <span lang="zh">然后由已知的</span> $P=(1,2)$ <span lang="zh">出发做切线得到</span> $2P$, $4P$, $8P$. <span lang="zh">这种几乎全凭借运气的操作是</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> <span lang="zh">及</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> <span lang="zh">研究此类问题的方式</span>.</p>
-<p><figure><img src="/mille-plateaux/8P.svg" class="color-invert"/></figure></p>
+<section class="block hide-metadata" data-taxon="Solution"><details open><summary id="mille-plateaux-canterbury-2A:1"><header><h1><span class="taxon">Solution. </span>椭圆曲线的倍点 <a class="hash" href="#mille-plateaux-canterbury-2A:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-2A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">我们先画出</span> $x^3 + y^3 = 9$. <span lang="zh">然后由已知的</span> $P=(1,2)$ <span lang="zh">出发做切线得到</span> $2P$, $4P$, $8P$. <span lang="zh">这种几乎全凭借运气的操作是</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Pierre_de_Fermat" title="Fermat [https://en.wikipedia.org/wiki/Pierre_de_Fermat]">Fermat</a></span> <span lang="zh">及</span> <span class="link external"><a href="https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te" title="Viète [https://en.wikipedia.org/wiki/Fran%C3%A7ois_Vi%C3%A8te]">Viète</a></span> <span lang="zh">研究此类问题的方式</span>.</p>
+<p><figure><img src="/mille-plateaux/canterbury-2A/8P.svg" class="color-invert"/></figure></p>
 <p><span lang="zh">如图</span>, <span lang="zh">随后注意到</span> $8P$ <span lang="zh">恰好位于</span> $x &gt; 0,y &gt; 0$ <span lang="zh">的区域</span>, <span lang="zh">现在计算其坐标</span>.</p>
 <p>$$ 8P \spaces= \left(\frac{1243617733990094836481}{609623835676137297449}, \frac{487267171714352336560}{609623835676137297449}\right) $$</p>
 </details></section></details></section><section class="block hide-metadata" data-taxon="Lemma"><details open><summary id="mille-plateaux-canterbury-3A"><header><h1><span class="taxon">Lemma 1.1.2. </span><span lang="zh">切线与交点</span> <a class="slug" href="/mille-plateaux/canterbury-3A">[canterbury-3A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/canterbury-3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 27, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
@@ -2048,7 +1014,37 @@ M^{-1}
 $$</p>
 <p><span lang="zh">在这里</span>, <span lang="zh">我们得到了一个相当经典且重要的结果</span>, <span lang="zh">即分块求逆</span>.</p>
 </details></section></details></section></details></section><section class="block hide-metadata" data-taxon=""><details ><summary id="daily-surf-index"><header><h1><span class="taxon"> 4. </span>Daily Surf <a class="slug" href="/daily-surf/index">[daily-surf]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/index.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<section class="block" data-taxon=""><details ><summary id="daily-surf-windows-skill"><header><h1><span class="taxon"></span><span lang="zh">完全用</span> Windows <span lang="zh">工作</span> <a class="slug" href="/daily-surf/windows-skill">[windows-skill]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 11, 2026</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block" data-taxon="Peruse"><details ><summary id="daily-surf-HIRO"><header><h1><span class="taxon">Peruse. </span>“<span lang="zh">创造之门</span>” <span lang="zh">摘录</span> <a class="slug" href="/daily-surf/HIRO">[HIRO]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/HIRO.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 19, 2026</li><li class="meta-item"><span lang="zh">广中平佑</span></li></ul></div></header></summary>
+<p><code>(p. 3)</code> <span lang="zh">换一种神秘点的说法</span>, <em><span lang="zh">消除奇点的定理</span>, <span lang="zh">就是搞清物体的本身和其影子之间的关系</span>.</em></p>
+<p><code>(p. 5)</code> <span lang="zh">这就是现实的社会</span>. <span lang="zh">由于在人们心中隐藏着烦恼</span>, <span lang="zh">因此</span>, <span lang="zh">就会生出各种无理的要求</span>, <span lang="zh">迫使人间满足这些要求</span>. <span lang="zh">那么</span>, <span lang="zh">天堂是怎样的呢</span>? <span lang="zh">在天堂里</span>, <span lang="zh">不存在任何烦恼</span>. <span lang="zh">而且</span>, <span lang="zh">从天堂看人间</span>, <span lang="zh">所有不合理的现象并不被看作不合理</span>, <span lang="zh">只不过是符合一条因果律的一种现象而已</span>. <span lang="zh">佛的世界的影子是现实世界</span>. <span lang="zh">物体的影子中的奇点</span>, <span lang="zh">不正和人间的无数的烦恼一样吗</span>? <em><span lang="zh">夸张一点说</span>, <span lang="zh">奇点解消</span>, <span lang="zh">就同消除烦恼到达天间</span>, <span lang="zh">寻找支配影子的因果律是一样的</span>.</em> <span lang="zh">对这个抽象的例子</span>, <span lang="zh">年轻的读者可能会有些难以理解的地方</span>. <span lang="zh">我们可以姑且不去管它</span>, <span lang="zh">但我当时确实是把这个数学问题认真地看成上述佛教问题加以考虑的</span>.</p>
+<p><code>(p. 6)</code> <span lang="zh">最近</span>, <span lang="zh">我在同青年人谈话时</span>, <span lang="zh">每次都要说这句话</span>: <em>“<span lang="zh">只有有所创造的人生</span>, <span lang="zh">才是最有意义的人生</span>.”</em> <span lang="zh">那么</span>, <span lang="zh">什么是创造</span>? <span lang="zh">创造中最重要的是什么</span>? <span lang="zh">创造是从哪里产生的</span>? <span lang="zh">创造有什么乐趣</span>? <span lang="zh">这些问题</span>, <span lang="zh">如同</span> “<span lang="zh">恋爱的乐趣是什么</span>?” <span lang="zh">一样</span>, <span lang="zh">是难以回答的</span>. <span lang="zh">但是</span>, <span lang="zh">我想</span> <em><span lang="zh">创造的乐趣之一</span></em>, <span lang="zh">就是唤醒沉睡在自身之中</span>, <span lang="zh">完全没有被注意到的才能与天赋</span>, <em><span lang="zh">也就是重新发现自己</span>, <span lang="zh">最后对自己有一更加深刻的理解</span></em>.</p>
+<p><code>(p. 8)</code> <span lang="zh">对一个未成年的人来说</span>, <span lang="zh">自己身边最具体的成人的模型就是双亲</span>. <span lang="zh">比较尊敬父母的人谁也不能否定这个事实</span>. <span lang="zh">我认为</span>: <span lang="zh">对孩子们来说</span>, <span lang="zh">双亲可大致分为两种类型</span>. <span lang="zh">一种是想成为受孩子尊敬的双亲</span>, <span lang="zh">而不看到自己的缺点</span>, <span lang="zh">只看到自己的优点</span>. <span lang="zh">另一种是没有任何做作的双亲</span>, <span lang="zh">这种类型的双亲在孩子们面前</span>, <span lang="zh">对自己的长处和短处不加任何掩饰</span>, <span lang="zh">痛苦的时候就流露出痛苦的表情</span>, <span lang="zh">有什么苦恼也对孩子们讲明</span>, <span lang="zh">疲劳的时候</span>, <span lang="zh">就显出一副邋遢的样子</span>. <span lang="zh">那么</span>, <span lang="zh">哪一种是孩子们人生的楷模呢</span>? <span lang="zh">至少我认为应该是后者</span>. <em><span lang="zh">也就是说</span>, <span lang="zh">只有在孩子们面前没有任何做作</span>, <span lang="zh">才能教给孩子更多的东西</span>.</em> <span lang="zh">我的双亲属于后者</span>, <span lang="zh">现在回想起来</span>, <span lang="zh">我才发现我从双亲那里学到了许多其它东西不能代替的、支撑我的人生的重要东西</span>.</p>
+<p><code>(p. 10)</code> <span lang="zh">任何人的一生中</span>, <span lang="zh">随时都会发生这类威胁生存的事件</span>. <span lang="zh">这类事件中既有象我父亲所遭遇的那样</span>, <span lang="zh">在吃饭问题上遇到困难的情形</span>, <span lang="zh">也有在精神上受到严重打击的情形</span>. <span lang="zh">不管哪一种情形</span>, <span lang="zh">逆境多是突然降临</span>, <span lang="zh">使人毫无准备</span>. <em><span lang="zh">但是</span>, <span lang="zh">一个人的真正的价值只有在这种时候才能显示出来</span>.</em> <span lang="zh">换句话说</span>, <span lang="zh">看他怎样渡过这道难关</span>.<span lang="zh">古往今来</span>, <span lang="zh">从东到西</span>, <span lang="zh">凡是有才干、</span> <span lang="zh">有气度的人</span>, <span lang="zh">可以说都有过一段不平凡的经历</span>, <span lang="zh">大都经历过凄风苦雨的时期</span>, <span lang="zh">迎接过雨过天晴的境界</span>, <span lang="zh">最后到达阳光灿烂的世界</span>. <span lang="zh">那时</span>, <span lang="zh">父亲正处于这种逆境之中</span>.</p>
+<p><code>(p. 15)</code> <span lang="zh">母亲总是以这种方式对待孩子</span>. <span lang="zh">即使是学习成绩不好</span>, <span lang="zh">但只要上学就行</span>; <span lang="zh">即使是没有什么作为</span>, <span lang="zh">但只要不伤害他人</span>, <span lang="zh">不败坏自己的家风就行</span>. <span lang="zh">总之采取的是一种只是能避免最坏的情形就行的教育方法</span>. $\dots\dots$ <em><span lang="zh">我从母亲身上还学到另一种思想</span>. <span lang="zh">思考问题时</span>, <span lang="zh">思考本身也很有意义</span>, <span lang="zh">很有价值</span>.</em> $\dots\dots$ <span lang="zh">除此之外我还问过许多问题</span>, <span lang="zh">然而母亲基本上一个也答不上来</span>. <em><span lang="zh">但是母亲也不说</span> “<span lang="zh">不知道</span>.” <span lang="zh">总是不厌其烦地说</span>: “<span lang="zh">这种事情也没有什么了不起的</span>, <span lang="zh">好好想想</span>.”</em> <span lang="zh">有时母亲歪着头说</span>: “<span lang="zh">是呀</span>! <span lang="zh">为什么会这样呢</span>?” <span lang="zh">每当这种时候我便又问</span>: “<span lang="zh">怎样才能知道呢</span>?” <span lang="zh">于是母亲就说</span>: “<span lang="zh">长大后好好学习就会知道啦</span>.” <span lang="zh">说着也和我一起陷入沉思</span>. <span lang="zh">可是不管怎么思考</span>, <span lang="zh">从来也没得出过答案</span>. <em><span lang="zh">于是母亲就领我到附近神社主家里或者到比较亲密的医生家里去询问</span>.</em></p>
+<p><code>(p. 16)</code> <span lang="zh">在当时的乡下小镇上</span>, <span lang="zh">神主和医生就是为数不多的知识分子</span>. <span lang="zh">母亲低着头对他们说</span>: <span lang="zh">这个孩子提出这样的问题</span>, <span lang="zh">请给他解释一下吧</span>. <span lang="zh">虽然我不十分明白</span>, <span lang="zh">但总算能得到答案了</span>. <em><span lang="zh">就在这样不断重复的过程中</span>, <span lang="zh">我幼小的心灵里懂得了思考问题时思考本身是很有意义的</span>.</em> <span lang="zh">母亲亲身教给了我思考的欢乐</span>. <span lang="zh">这不光对我如何作一个学者</span>, <span lang="zh">就是对我如何作一个人</span>, <span lang="zh">都是任何东西也难以代替的精神财富</span>. <em><span lang="zh">我母亲就是这样一个普通的女性</span>. <span lang="zh">甚至在学识上不得不承认连一般的母亲都比不上</span>.</em> <span lang="zh">她不是一个能教给孩子们精神食粮的人</span>, <span lang="zh">而是一个不得不采取放任自流主义立场的人</span>. <span lang="zh">她的放任自流就是只要在某一范围内</span>, <span lang="zh">不管干什么</span>, <span lang="zh">不管干的怎么样都可以</span>. <em><span lang="zh">即使是从这样的母亲身上</span>, <span lang="zh">只要你想学的话</span>, <span lang="zh">就能学到很多重要的东西</span>.</em></p>
+</details></section><section class="block" data-taxon="Peruse"><details ><summary id="daily-surf-SWSL"><header><h1><span class="taxon">Peruse. </span><span lang="zh">读</span> “<span lang="zh">七周七语言</span>” <a class="slug" href="/daily-surf/SWSL">[SWSL]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/SWSL.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 16, 2026</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-SWSL:1"><header><h1><span class="taxon"></span>松本行弘篇 <a class="hash" href="#daily-surf-SWSL:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/SWSL.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><blockquote class="markdown-alert-note">
+<p>Ruby <span lang="zh">语言的设计者松本行弘</span> [Mastumoto Yukihiro] <span lang="zh">著有一本</span> “<span lang="zh">松本行弘的程序世界</span>”, <span lang="zh">已由人民邮电出版社出版</span>.</p>
+</blockquote>
+<blockquote>
+<p><span lang="zh">英国计算机科学家</span> Peter Landin <span lang="zh">引入了术语</span> “<span lang="zh">语法糖</span>”, <span lang="zh">指为编程语言添加某种语法</span>, <span lang="zh">这种语法虽对语言本身功能并无实质影响</span>, <span lang="zh">但为程序员编程提供了便利</span>.</p>
+</blockquote>
+<p><span class="link external"><a href="https://en.wikipedia.org/wiki/Unification_(computer_science)" title="Unification [https://en.wikipedia.org/wiki/Unification_(computer_science)]">Unification</a></span> is an algorithmic process of solving equations between symbolic expressions, each of the form LHS = RHS.</p>
+<dl>
+<dt>Bruce <sup class="footnote-reference" id="daily-surf_SWSL_:1_bruce-back"><a href="#daily-surf_SWSL_:1_bruce">1</a></sup>:</dt>
+<dd>What is a feature that you would like to change, if you could go back in time?</dd>
+<dt>Matz <sup class="footnote-reference" id="daily-surf_SWSL_:1_matz-back"><a href="#daily-surf_SWSL_:1_matz">2</a></sup>:</dt>
+<dd>I would remove the thread and add <span class="link external"><a href="https://en.wikipedia.org/wiki/Actor_model" title="actors [https://en.wikipedia.org/wiki/Actor_model]">actors</a></span> or some other more advanced concurrency features.</dd>
+</dl>
+<div class="footnote-definition" id="daily-surf_SWSL_:1_bruce">
+  <sup class="footnote-definition-label"><a href="#daily-surf_SWSL_:1_bruce-back">1</a></sup>
+<p><span lang="zh">即</span> “<span lang="zh">七周七语言</span>” <span lang="zh">的作者</span> Bruce A. Tate.</p>
+</div>
+<div class="footnote-definition" id="daily-surf_SWSL_:1_matz">
+  <sup class="footnote-definition-label"><a href="#daily-surf_SWSL_:1_matz-back">2</a></sup>
+<p><span lang="zh">即</span> Mastumoto Yukihiro.</p>
+</div>
+</details></section></details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-windows-skill"><header><h1><span class="taxon"></span><span lang="zh">完全用</span> Windows <span lang="zh">工作</span> <a class="slug" href="/daily-surf/windows-skill">[windows-skill]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 11, 2026</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p><span lang="zh">此文为</span> Windows <span lang="zh">系统使用技巧收集</span>, <span lang="zh">且侧重介绍微软对普通用户隐藏的实用工具</span>.</p>
 <section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:1"><header><h1><span class="taxon"> 4.1. </span>资源管理器字太小 <a class="hash" href="#daily-surf-windows-skill:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">自</span> Windows 8.1 <span lang="zh">起</span>, <span lang="zh">资源管理器乃至系统</span> UI <span lang="zh">文字样式已经不能用正常手段调整</span>. <span lang="zh">开源软件</span> <span class="link external"><a href="https://github.com/Tatsu-syo/noMeiryoUI" title="No!! MeiryoUI [https://github.com/Tatsu-syo/noMeiryoUI]">No!! MeiryoUI</a></span> <span lang="zh">重新启用了自定义</span> Windows <span lang="zh">用户界面字体的功能</span>.</p>
 </details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:2"><header><h1><span class="taxon"> 4.2. </span>语音转文字 <a class="hash" href="#daily-surf-windows-skill:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">都是</span> <code>Win + H</code> <span lang="zh">打开工具栏</span>. Windows 10 <span lang="zh">使用内置的离线语音识别功能</span>, Windows 11 <span lang="zh">使用由</span> Azure <span lang="zh">语音服务提供支持的在线语音识别</span>.</p>
@@ -2076,10 +1072,10 @@ $$</p>
   </head>
   <body>
     
-    <figure role="math">
+    <div style="display: flex; justify-content: center; width: 100%; margin: 1em 0;">
       <svg class="typst-frame" style="overflow: visible; width: 15.653114568438221em; height: 10.80606315176638em;" viewBox="0 0 172.18426025282042 118.86669466943019" width="172.18426025282042pt" height="118.86669466943019pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml"><g><g class="typst-group"><g><path class="typst-shape" fill="#5f5087" fill-rule="nonzero" stroke="#5f5087" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 42.51968503937008 0)" d="M 0 0l 77.19293 118.86669 l -48.846474 -118.86669 l 77.19293 118.86669 l -105.53939 -118.86669 h 28.346457 l 48.846474 118.86669 h 28.346458 "/><path class="typst-shape" fill="#5f5087" fill-rule="nonzero" stroke="#5f5087" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 42.51968503937008 59.433347334715094)" d="M 0 0m 38.596466 0 l -38.596466 59.433346 l 66.942924 -59.433346 l -38.596466 59.433346 l 10.25001 -59.433346 h 28.346458 l -66.942924 59.433346 h 28.346457 "/><path class="typst-shape" fill="#463a62" fill-rule="nonzero" stroke="#463a62" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" d="M 0 0l 38.596466 59.433346 l -10.25001 -59.433346 l 38.596466 59.433346 l -66.942924 -59.433346 h 28.346457 l 10.25001 59.433346 h 28.346458 "/><path class="typst-shape" fill="#463a62" fill-rule="nonzero" stroke="#463a62" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 0 59.433347334715094)" d="M 0 0m 38.596466 0 l -38.596466 59.433346 l 66.942924 -59.433346 l -38.596466 59.433346 l 10.25001 -59.433346 h 28.346458 l -66.942924 59.433346 h 28.346457 "/><path class="typst-shape" fill="#964b90" fill-rule="nonzero" stroke="#964b90" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 103.58583505597005 28.554551883520112)" d="M 0 0l 15.438587 23.773338 l 52.592907 -23.773338 v 23.773338 l -68.031494 -23.773338 h 68.031494 l -52.592907 23.773338 h 52.592907 "/><path class="typst-shape" fill="#964b90" fill-rule="nonzero" stroke="#964b90" stroke-width="0.25" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(1 0 0 1 128.2472523788047 66.53880385202403)" d="M 0 0l 15.438587 23.773338 l 28.49842 -23.773338 v 23.773338 l -43.937008 -23.773338 h 43.937008 l -28.49842 23.773338 h 28.49842 "/></g></g></g></svg>
-    </figure>
-    <block title="Click to expand" close="close" taxon="Source"><pre><code data-lang="typst"><br><span style="color: #d73948">#</span><span style="color: #d73948">import</span> <span style="color: #198810">"@preview/cetz:0.4.2"</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">import</span> cetz.draw: <span style="color: #d73948">*</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-outline <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-grids <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-radius <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #198810">"666"</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> rangle-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">70</span>, <span style="color: #b60157">58</span>, <span style="color: #b60157">98</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> lambda-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">95</span>, <span style="color: #b60157">80</span>, <span style="color: #b60157">135</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> equals-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">150</span>, <span style="color: #b60157">75</span>, <span style="color: #b60157">144</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">parallel</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">right-trapezoid</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> degree <span style="color: #d73948">=</span> <span style="color: #b60157">57deg</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> c <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">cos</span>(degree)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> s <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">sin</span>(degree)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> c <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> s <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> haskell-logo <span style="color: #d73948">=</span> cetz.<span style="color: #4b69c6">canvas</span>({<br><br>  <span style="color: #4b69c6">set-style</span>(stroke: <span style="color: #b60157">0.25pt</span> <span style="color: #d73948">+</span> lambda-color)<br><br>  <span style="color: #d73948">if</span> display-grids {<br>    <span style="color: #4b69c6">grid</span>((grid-radius, grid-radius), (<span style="color: #d73948">-</span>grid-radius, <span style="color: #d73948">-</span>grid-radius), stroke: grid-color)<br><br>    <span style="color: #d73948">for</span> x <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>      <span style="color: #d73948">for</span> y <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>        <span style="color: #4b69c6">content</span>((x, y), <span style="color: #4b69c6">text</span>(size: <span style="color: #b60157">0.5em</span>, fill: grid-color)[<span style="color: #198810">$</span>(<span style="color: #8b41b1">#</span><span style="color: #8b41b1">x</span>, <span style="color: #8b41b1">#</span><span style="color: #8b41b1">y</span>)<span style="color: #198810">$</span>])<br>      }<br>    }<br>  }<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #4b69c6">y</span>(b)), (<span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span>, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br><br>  <span style="color: #d73948">let</span> offset <span style="color: #d73948">=</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #4b69c6">y</span>(b)), (<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), <span style="color: #b60157">1</span>, fill: rangle-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: rangle-color)<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #b60157">0.42</span> <span style="color: #d73948">+</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">2.4</span>, fill: equals-color)<br><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.42</span> <span style="color: #d73948">-</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">1.55</span>, fill: equals-color)<br>})</code></pre></block>
+    </div>
+    <block title="Click to expand" close="close" taxon="Source"><pre><code data-lang="typst"><span style="color: #d73948">#</span><span style="color: #d73948">import</span> <span style="color: #198810">"@preview/cetz:0.4.2"</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">import</span> cetz.draw: <span style="color: #d73948">*</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-outline <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> display-grids <span style="color: #d73948">=</span> <span style="color: #d73948">false</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-radius <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> grid-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #198810">"666"</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> rangle-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">70</span>, <span style="color: #b60157">58</span>, <span style="color: #b60157">98</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> lambda-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">95</span>, <span style="color: #b60157">80</span>, <span style="color: #b60157">135</span>)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> equals-color <span style="color: #d73948">=</span> <span style="color: #4b69c6">rgb</span>(<span style="color: #b60157">150</span>, <span style="color: #b60157">75</span>, <span style="color: #b60157">144</span>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">parallel</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x2 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x2 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">right-trapezoid</span>(p1, p2, width, fill: <span style="color: #d73948">none</span>) <span style="color: #d73948">=</span> {<br>  <span style="color: #d73948">let</span> (x1, y1) <span style="color: #d73948">=</span> p1<br>  <span style="color: #d73948">let</span> (x2, y2) <span style="color: #d73948">=</span> p2<br><br>  <span style="color: #d73948">let</span> fill <span style="color: #d73948">=</span> <span style="color: #d73948">if</span> display-outline { <span style="color: #d73948">none</span> } <span style="color: #d73948">else</span> { fill }<br><br>  <span style="color: #4b69c6">merge-path</span>(fill: fill, {<br>    <span style="color: #d73948">if</span> display-outline <span style="color: #d73948">or</span> fill <span style="color: #d73948">==</span> <span style="color: #d73948">none</span> {<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    } <span style="color: #d73948">else</span> {<br>      <span style="color: #4b69c6">set-style</span>(stroke: fill)<br>      <span style="color: #4b69c6">line</span>(p1, p2)<br>      <span style="color: #4b69c6">line</span>((x1 <span style="color: #d73948">+</span> width, y1), (x1 <span style="color: #d73948">+</span> width, y2))<br>      <span style="color: #4b69c6">line</span>(p1, (x1 <span style="color: #d73948">+</span> width, y1))<br>      <span style="color: #4b69c6">line</span>(p2, (x1 <span style="color: #d73948">+</span> width, y2))<br>    }<br>  })<br>}<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> degree <span style="color: #d73948">=</span> <span style="color: #b60157">57deg</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> c <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">cos</span>(degree)<br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> s <span style="color: #d73948">=</span> calc.<span style="color: #4b69c6">sin</span>(degree)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> c <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">=</span> b <span style="color: #d73948">*</span> s <span style="color: #d73948">/</span> <span style="color: #b60157">2</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> haskell-logo <span style="color: #d73948">=</span> cetz.<span style="color: #4b69c6">canvas</span>({<br><br>  <span style="color: #4b69c6">set-style</span>(stroke: <span style="color: #b60157">0.25pt</span> <span style="color: #d73948">+</span> lambda-color)<br><br>  <span style="color: #d73948">if</span> display-grids {<br>    <span style="color: #4b69c6">grid</span>((grid-radius, grid-radius), (<span style="color: #d73948">-</span>grid-radius, <span style="color: #d73948">-</span>grid-radius), stroke: grid-color)<br><br>    <span style="color: #d73948">for</span> x <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>      <span style="color: #d73948">for</span> y <span style="color: #d73948">in</span> <span style="color: #4b69c6">range</span>(<span style="color: #d73948">-</span>grid-radius, grid-radius <span style="color: #d73948">+</span> <span style="color: #b60157">1</span>) {<br>        <span style="color: #4b69c6">content</span>((x, y), <span style="color: #4b69c6">text</span>(size: <span style="color: #b60157">0.5em</span>, fill: grid-color)[<span style="color: #198810">$</span>(<span style="color: #8b41b1">#</span><span style="color: #8b41b1">x</span>, <span style="color: #8b41b1">#</span><span style="color: #8b41b1">y</span>)<span style="color: #198810">$</span>])<br>      }<br>    }<br>  }<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #4b69c6">y</span>(b)), (<span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span>, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b), <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: lambda-color)<br><br>  <span style="color: #d73948">let</span> offset <span style="color: #d73948">=</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #74747c">// "\"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #4b69c6">y</span>(b)), (<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), <span style="color: #b60157">1</span>, fill: rangle-color)<br>  <span style="color: #74747c">// "/"</span><br>  <span style="color: #4b69c6">parallel</span>((<span style="color: #b60157">0</span> <span style="color: #d73948">-</span> offset, <span style="color: #b60157">0</span>), (<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">-</span> offset, <span style="color: #d73948">-</span> <span style="color: #4b69c6">y</span>(b)), <span style="color: #b60157">1</span>, fill: rangle-color)<br><br>  <span style="color: #d73948">let</span> b <span style="color: #d73948">=</span> <span style="color: #b60157">1</span><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #b60157">0.42</span> <span style="color: #d73948">+</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">2.4</span>, fill: equals-color)<br><br>  <span style="color: #d73948">let</span> ox <span style="color: #d73948">=</span> <span style="color: #b60157">0.435</span> <span style="color: #d73948">+</span> <span style="color: #b60157">1.5</span><br>  <span style="color: #d73948">let</span> oy <span style="color: #d73948">=</span> <span style="color: #d73948">-</span><span style="color: #b60157">0.42</span> <span style="color: #d73948">-</span> <span style="color: #b60157">0.25</span><br><br>  <span style="color: #4b69c6">right-trapezoid</span>((<span style="color: #d73948">-</span> <span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), (<span style="color: #4b69c6">x</span>(b) <span style="color: #d73948">+</span> ox, <span style="color: #d73948">-</span><span style="color: #4b69c6">y</span>(b) <span style="color: #d73948">+</span> oy), <span style="color: #b60157">1.55</span>, fill: equals-color)<br>})</code></pre></block>
   </body>
 </details></section><section class="block" data-taxon=""><details ><summary id="daily-surf-bevy"><header><h1><span class="taxon"></span><span class="link external"><a href="https://github.com/bevyengine/bevy" title="Bevy [https://github.com/bevyengine/bevy]">Bevy</a></span> <span lang="zh">备注</span> <a class="slug" href="/daily-surf/bevy">[bevy]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/bevy.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <h4>E0786</h4>
@@ -2101,13 +1097,6 @@ $$</p>
 <p>In the Windows API (with some exceptions discussed in the following paragraphs), the maximum length for a path is MAX_PATH, which is defined as 260 characters.</p>
 </div>
 </details></section><section class="block" data-taxon="Poetry"><details ><summary id="daily-surf-adams"><header><h1><span class="taxon">Poetry. </span>Adams <span lang="zh">谱序列</span> <a class="slug" href="/daily-surf/adams">[adams]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/adams.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 21, 2025</li><li class="meta-item"><span class="link local"><a href="/person/yuni" title="Yuniversal Y. Creeper 🥐 [person/yuni]">Yuniversal Y. Creeper 🥐</a></span></li></ul></div></header></summary>
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
-<style>
-.kaiti {
-  font-family: "LXGW WenKai TC", serif;
-  font-style: normal;
-}
-</style>
 <blockquote class="kaiti">
 <p><span lang="zh">每个人都是独一无二的笨蛋</span></p>
 <p><span lang="zh">看到独一无二的宿命</span>, <span lang="zh">向另一个笨蛋提枪冲锋</span></p>
@@ -2163,9 +1152,9 @@ set_nb_theme('monokai')
 <pre><code>&lt;SAGE_HOME&gt;/.sage/jupyter-4.1/custom/custom.css
 </code></pre>
 <p><span lang="zh">这样你就得到了一个永久生效的样式设置</span>. <span lang="zh">随后可以通过修改</span> <code>div#maintoolbar</code> <span lang="zh">和</span> <code>#header-container</code> <span lang="zh">的</span> <code>display</code> <span lang="zh">为</span> <code>block</code> <span lang="zh">重新显示这两个组件</span>. <span lang="zh">修改</span> <code>.MathJax</code> <span lang="zh">的</span> <code>font-size</code> <span lang="zh">为</span> <code>120%</code> <span lang="zh">或者更大则能够增大渲染后公式的字号</span>.</p>
-<section class="block hide-metadata" data-taxon="Remark"><details open><summary id="daily-surf-__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0"><header><h1><span class="taxon">Remark. </span>一条或可利用的情报 <a class="hash" href="#daily-surf-__kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/sagemath-theme.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果你需要带完整头文件的</span> C / C++ <span lang="zh">编译器</span>, <span lang="zh">但还没安装</span> GCC <span lang="zh">或者</span> Clang, <span lang="zh">那</span> <code>sagemath/runtime/bin</code> <span lang="zh">目录下就有一个</span>, <span lang="zh">头文件位于</span> <code>sagemath/runtime/usr/include</code>.</p>
-<div class="footnote-definition" id="daily-surf___kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0_toolbar-display-none">
-  <sup class="footnote-definition-label"><a href="#daily-surf___kodama_anon_subtree_internal__-daily-surf-sagemath-theme-0_toolbar-display-none-back">1</a></sup>
+<section class="block hide-metadata" data-taxon="Remark"><details open><summary id="daily-surf-sagemath-theme:1"><header><h1><span class="taxon">Remark. </span>一条或可利用的情报 <a class="hash" href="#daily-surf-sagemath-theme:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/sagemath-theme.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">如果你需要带完整头文件的</span> C / C++ <span lang="zh">编译器</span>, <span lang="zh">但还没安装</span> GCC <span lang="zh">或者</span> Clang, <span lang="zh">那</span> <code>sagemath/runtime/bin</code> <span lang="zh">目录下就有一个</span>, <span lang="zh">头文件位于</span> <code>sagemath/runtime/usr/include</code>.</p>
+<div class="footnote-definition" id="daily-surf_sagemath-theme_:1_toolbar-display-none">
+  <sup class="footnote-definition-label"><a href="#daily-surf_sagemath-theme_:1_toolbar-display-none-back">1</a></sup>
 <p><span lang="zh">从编译后的样式文件中我们可以看到</span>, <code>div#maintoolbar</code> <span lang="zh">和</span> <code>#header-container</code> <span lang="zh">确实被设置为了</span> <code>display: none</code>.</p>
 </div>
 </details></section><div class="footnote-definition" id="daily-surf_sagemath-theme_toolbar-display-none">
@@ -2241,48 +1230,37 @@ AMD <span lang="zh">则是</span> <code>Ctrl + Shift + O</code>. <span lang="zh"
 <p><span lang="zh">我们假设有设备</span> $A$, $B$, <span lang="zh">且</span> $A$ <span lang="zh">将要发送文件</span> $F$ <span lang="zh">给</span> $B$, <span lang="zh">另可设文件</span> $F$ <span lang="zh">充分大</span> (<span lang="zh">如</span> $\geqslant 1 \text{GB}$). <span lang="zh">方案如下</span>.</p>
 <p>$B$ <span lang="zh">联网且开热点</span>, $A$ <span lang="zh">连接热点</span>. <span lang="zh">随后</span> $A$ <span lang="zh">通过</span> <span class="link external"><a href="https://termux.dev" title="Termux [https://termux.dev]">Termux</a></span> + <span class="link external"><a href="https://github.com/svenstaro/miniserve" title="miniserve [https://github.com/svenstaro/miniserve]">miniserve</a></span> <span lang="zh">或其他等效软件在文件</span> $F$ <span lang="zh">所在目录开启本地</span> <span class="link external"><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP" title="HTTP [https://developer.mozilla.org/zh-CN/docs/Web/HTTP]">HTTP</a></span> <span lang="zh">服务器</span>, <span lang="zh">记下</span> IP. $B$ <span lang="zh">使用浏览器访问</span> IP, <span lang="zh">下载文件即可</span>, <span lang="zh">此时下载速率依赖于</span> $B$ <span lang="zh">连接到的网络</span>.</p>
 </details></section></details></section><section class="block hide-metadata" data-taxon=""><details ><summary id="smaragdina-index"><header><h1><span class="taxon"> 5. </span><span lang="zh">翠玉录</span> <a class="slug" href="/smaragdina/index">[smaragdina]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/index.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<section class="block" data-taxon=""><details ><summary id="smaragdina-lynch-movie"><header><h1><span class="taxon"></span>Lynch <span lang="zh">对于人们说</span> “<span lang="zh">你的电影没有意义</span>” <span lang="zh">的回应</span> <a class="slug" href="/smaragdina/lynch-movie">[lynch-movie]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/lynch-movie.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item">David Lynch</li><li class="meta-item"><span class="link external"><a href="https://www.youtube.com/watch?v=YtlrDGRCAb8" title="Youtube [https://www.youtube.com/watch?v=YtlrDGRCAb8]">Youtube</a></span></li></ul></div></header></summary>
-<style>
-hint {
-  color: gray;  
-}
-light {
-  color: rgb(178, 113, 236);
-}
-</style>
-<blockquote>
-<p>I think I love ideas. I like a story that’s got some concrete <hint>you know</hint> structure but also holds abstractions. Life is filled with abstractions and the way we make heads tails of it is through intuition. And so people get used to film that pretty much explains itself a hundred percent. And they kind of turn off that you know beautiful thing of intuition when they’re looking at a film that has some abstractions. And some people on the other hand love these abstractions. <light>And it gives them room to dream.</light></p>
-</blockquote>
-<blockquote>
-<p>A abstractions to me is a thing that cinema can say. And it’ so beautiful for me anyway to think about these pictures and some sounds flowing along together in the time in a sequence making a thing that can only really be said in cinema. It’s not words. It’s not just music. It’s the whole bunch of things coming together and making a thing that didn’t exist before. And that’s what i really love about it.</p>
-</blockquote>
-<blockquote>
-<p>And then to answer your question a little further. It’s up to the people <hint>you know</hint> to <hint>you know</hint> find their own <hint>your know</hint> interpretation. It’s doesn’t really matter what I think. It’s all every screening no matter what even if all the frames of the film are exactly the same. But there no two screenings that are exactly the same. <light>It’s the viwer and the picture and the sound and it makes a circle and it just goes like that.</light> And so you just feel it and think it. That’s kind of intuition emotion and thinking together and come up make it have a sense to you.</p>
-</blockquote>
-<hr />
-<p><span lang="zh">译</span>: <span lang="zh">我想我钟爱的是理念本身</span>. <span lang="zh">我喜欢那种既有具象结构又蕴含抽象思维的故事</span>. <span lang="zh">生活本就充满抽象</span>, <span lang="zh">而我们理解它的方式就是通过直觉</span>. <span lang="zh">人们已经习惯了那些将一切解释得明明白白的电影</span>, <span lang="zh">当看到带有抽象元素的影片时</span>, <span lang="zh">他们往往会关闭那种美妙的直觉感知</span>. <span lang="zh">而另一些人却恰恰痴迷这种抽象</span>, <light><span lang="zh">因为这给了他们造梦的空间</span>. </light></p>
-<p><span lang="zh">对我而言</span>, <span lang="zh">抽象正是电影独有的表达方式</span>. <span lang="zh">当画面与声音在流动的时间中交织</span>, <span lang="zh">形成唯有电影才能言说的意境</span> $—$ <span lang="zh">这不是文字能描述的</span>, <span lang="zh">也不仅是音乐能呈现的</span>, <span lang="zh">而是所有元素共同创造出前所未有的存在</span> $—$ <span lang="zh">这种构想本身就已美得令人心醉</span>.</p>
-<p><span lang="zh">进一步回答你的问题</span>: <span lang="zh">观众完全可以根据自己的理解来诠释作品</span>. <span lang="zh">我的想法其实无关紧要</span>. <span lang="zh">每一次放映都是独特的相遇</span>, <span lang="zh">即便胶片帧数分毫不差</span>, <span lang="zh">但银幕光影与观者感受却不可重现</span>. <light><span lang="zh">这种循环生生不息</span>, </light> <span lang="zh">你只需去感受</span>, <span lang="zh">去思考</span>, <span lang="zh">让直觉情感与理性交融</span>, <span lang="zh">最终形成属于你自己的体验</span>.</p>
-</details></section><section class="block" data-taxon=""><details ><summary id="smaragdina-celtic-myths"><header><h1><span class="taxon"></span>The Celtic Myths <span lang="zh">摘录</span> <a class="slug" href="/smaragdina/celtic-myths">[celtic-myths]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/celtic-myths.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link external"><a href="https://book.douban.com/subject/31093378" title="豆瓣 [https://book.douban.com/subject/31093378]"><span lang="zh">豆瓣</span></a></span></li></ul></div></header></summary>
-<style>
-wavy {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-}
-quote {
-  color: gray;
-  font-style: italic;
-}
-pp { color: var(--slug-color) }
-pp:before { content: '(p. ' }
-pp:after { content: ')' }
-</style>
-<div style="margin: 0.5em;">中译版很烂, 所以引的是原文. </div>
-<p>The preface to the 1957 edition of Jorge Luis Borges’ collection of essays <span class="link external"><a href="https://book.douban.com/subject/1461159" title="The Book of Imaginary Beings [https://book.douban.com/subject/1461159]">The Book of Imaginary Beings</a></span> (<span lang="zh">幻兽辞典</span>) contains the comment that <quote>monsters will always stalk mythic stories because real animals are a deeply important part of human experience and because monstrous beings are combinations of the real and the imagined, the stuff of nightmares and dreams</quote>.
-The Classical mythic centaur, which melds the forms of man and horse, has its Celtic counterpart in the Welsh horse-woman, <span class="link external"><a href="https://en.wikipedia.org/wiki/Rhiannon" title="Rhiannon [https://en.wikipedia.org/wiki/Rhiannon]">Rhiannon</a></span>. The Cretan <span class="link external"><a href="https://en.wikipedia.org/wiki/Minotaur" title="Minotaur [https://en.wikipedia.org/wiki/Minotaur]">Minotaur</a></span> (<span lang="zh">米诺陶洛斯</span>), a hideous blend of bull and human, can perhaps be seen transmuted in Irish mythology to become the great fighting bulls of Ulster and Connacht, which had human speech and understanding, or, in Wales, the enchanted boar <span class="link external"><a href="https://en.wikipedia.org/wiki/Twrch_Trwyth" title="Twrch Trwyth [https://en.wikipedia.org/wiki/Twrch_Trwyth]">Twrch Trwyth</a></span> (<span lang="zh">图鲁夫图鲁维斯</span>).
-Borges even goes so far as to argue that monsters are ‘necessary’ for human society. In our own day, fascinated by space and the possibility of worlds beyond, we conjure up fantastic images of galactic monsters, nowhere more clearly presented than in the Star Wars <span class="link external"><a href="https://starwars.fandom.com/wiki/Cantina/Legends" title="cantina [https://starwars.fandom.com/wiki/Cantina/Legends]">cantina</a></span>, in which Skywalker and Solo encounter a collection of weird and wonderful beings from all over the Universe. Such are our modern mythic creations.
-<pp>26</pp></p>
-<p>A persistent feature of both Irish and Welsh mythology is the theme of the magical cauldron, a vessel capable of raising the dead and of providing ever-replenishing supplies of food. The Irish god <span class="link external"><a href="https://en.wikipedia.org/wiki/The_Dagda" title="Daghdha [https://en.wikipedia.org/wiki/The_Dagda]">Daghdha</a></span>, (‘the Good God’), possessed a huge inexhaustible cauldron. The central focus of the Irish Otherworld feast was the cauldron, which never ran out of food. One Irish cauldron-myth was associated with sacral kingship, where the new king of Ulster had to bathe in one, while consuming the meat and broth of a white mare he had ritually ‘married’. <pp>29</pp></p>
-<p>$\S$ Ceridwen’s Cauldron: A Welsh mythic tale, preserved in a 13th-century text, <span class="link external"><a href="https://en.wikipedia.org/wiki/Book_of_Taliesin" title="The Book of Taliesin [https://en.wikipedia.org/wiki/Book_of_Taliesin]">The Book of Taliesin</a></span> (<span lang="zh">塔列辛之书</span>), contains a rich story of an enchanted cauldron, whose contents endowed those who ate or drank from it with knowledge and inspiration. The cauldron’s keeper was Ceridwen. She bore two children, Crearwy (‘the light or beautiful one’) and Afagddu (‘black’ or ‘ugly’). Wanting to compensate her son for his ill-favoured appearance, his mother mixed a special brew in the cauldron, designed to give him absolute wisdom. Because the potion needed to boil for a year, Ceridwen appointed a young boy, Gwion, to watch over it. As he was tending the cauldron, three drops of scalding liquid splashed onto his hand and, without thinking, he licked his fingers, thus inadvertently acquiring the wisdom intended for Afagddu. Gwion’s flight and pursuit by the angry Ceridwen eventually caused Gwion’s rebirth as the great visionary poet Taliesin. <pp>30</pp></p>
-<p><wavy>Words are powerful things</wavy>, the more so if they are spoken aloud, so that sound and meaning blend into a single powerful message that can be shared simultaneously by many people. Keepers of oral tradition had to have prodigiously long and accurate memories and the ability to learn long tales by heart, while adding embellishments along the way. Listeners, too, would remember stories they had heard all their lives, and would not have hesitated to point out errors or inconsistencies. <pp>43</pp></p>
+<section class="block" data-taxon=""><details ><summary id="smaragdina-lynch-movie"><header><h1><span class="taxon"></span>Lynch 对于人们说 "你的电影没有意义" 的回应 <a class="slug" href="/smaragdina/lynch-movie">[lynch-movie]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/lynch-movie.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item">David Lynch</li><li class="meta-item"><a href="https://www.youtube.com/watch?v=YtlrDGRCAb8"><span style="text-decoration: underline">Youtube</span></a></li></ul></div></header></summary>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    
+    <blockquote>
+      <p>I think I love ideas. I like a story that’s got some concrete <span style="color: gray">you know</span> structure but also holds abstractions. Life is filled with abstractions and the way we make heads tails of it is through intuition. And so people get used to film that pretty much explains itself a hundred percent. And they kind of turn off that you know beautiful thing of intuition when they’re looking at a film that has some abstractions. And some people on the other hand love these abstractions. <span style="color: #b271ec">And it gives them room to dream.</span></p>
+      <p><span style="font-style: normal">我想我钟爱的是理念本身. 我喜欢那种既有具象结构又蕴含抽象思维的故事. 生活本就充满抽象, 而我们理解它的方式就是通过直觉. 人们已经习惯了那些将一切解释得明明白白的电影, 当看到带有抽象元素的影片时, 他们往往会关闭那种美妙的直觉感知. 而另一些人却恰恰痴迷这种抽象, <span style="color: #b271ec">因为这给了他们造梦的空间.</span></span></p>
+    </blockquote>
+    <blockquote>
+      <p>A abstractions to me is a thing that cinema can say. And it’ so beautiful for me anyway to think about these pictures and some sounds flowing along together in the time in a sequence making a thing that can only really be said in cinema. It’s not words. It’s not just music. It’s the whole bunch of things coming together and making a thing that didn’t exist before. And that’s what i really love about it.</p>
+      <p><span style="font-style: normal">对我而言, 抽象正是电影独有的表达方式. 当画面与声音在流动的时间中交织, 形成唯有电影才能言说的意境 — 这不是文字能描述的, 也不仅是音乐能呈现的, 而是所有元素共同创造出前所未有的存在 — 这种构想本身就已美得令人心醉.</span></p>
+    </blockquote>
+    <blockquote>
+      <p>And then to answer your question a little further. It’s up to the people <span style="color: gray">you know</span> to <span style="color: gray">you know</span> find their own <span style="color: gray">your know</span> interpretation. It’s doesn’t really matter what I think. It’s all every screening no matter what even if all the frames of the film are exactly the same. But there no two screenings that are exactly the same. <span style="color: #b271ec">It’s the viwer and the picture and the sound and it makes a circle and it just goes like that.</span> And so you just feel it and think it. That’s kind of intuition emotion and thinking together and come up make it have a sense to you.</p>
+      <p><span style="font-style: normal">进一步回答你的问题: 观众完全可以根据自己的理解来诠释作品. 我的想法其实无关紧要. 每一次放映都是独特的相遇, 即便胶片帧数分毫不差, 但银幕光影与观者感受却不可重现. <span style="color: #b271ec">这种循环生生不息,</span> 你只需去感受, 去思考, 让直觉情感与理性交融, 最终形成属于你自己的体验.</span></p>
+    </blockquote>
+  </body>
+</details></section><section class="block" data-taxon="Peruse"><details ><summary id="smaragdina-celtic-myths"><header><h1><span class="taxon">Peruse. </span>The Celtic Myths 摘录 <a class="slug" href="/smaragdina/celtic-myths">[celtic-myths]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/celtic-myths.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 21, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><a href="https://book.douban.com/subject/31093378"><span style="text-decoration: underline">豆瓣</span></a></li></ul></div></header></summary>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    
+    <p><span style="margin: 0.5em">中译版很烂, 所以引的是原文.</span></p>
+    <p>The preface to the 1957 edition of Jorge Luis Borges’ collection of essays <a href="https://book.douban.com/subject/1461159"><span style="text-decoration: underline">The Book of Imaginary Beings</span></a> (幻兽辞典) contains the comment that “<em>monsters will always stalk mythic stories because real animals are a deeply important part of human experience and because monstrous beings are combinations of the real and the imagined, the stuff of nightmares and dreams</em>”. The Classical mythic centaur, which melds the forms of man and horse, has its Celtic counterpart in the Welsh horse-woman, <a href="https://en.wikipedia.org/wiki/Rhiannon"><span style="text-decoration: underline">Rhiannon</span></a>. The Cretan <a href="https://en.wikipedia.org/wiki/Minotaur"><span style="text-decoration: underline">Minotaur</span></a> (米诺陶洛斯), a hideous blend of bull and human, can perhaps be seen transmuted in Irish mythology to become the great fighting bulls of Ulster and Connacht, which had human speech and understanding, or, in Wales, the enchanted boar <a href="https://en.wikipedia.org/wiki/Twrch_Trwyth"><span style="text-decoration: underline">Twrch Trwyth</span></a> (图鲁夫图鲁维斯). Borges even goes so far as to argue that monsters are ‘necessary’ for human society. In our own day, fascinated by space and the possibility of worlds beyond, we conjure up fantastic images of galactic monsters, nowhere more clearly presented than in the Star Wars <a href="https://starwars.fandom.com/wiki/Cantina/Legends"><span style="text-decoration: underline">cantina</span></a>, in which Skywalker and Solo encounter a collection of weird and wonderful beings from all over the Universe. Such are our modern mythic creations. <span style="color: var(--slug-color) ">(p. 26)</span></p>
+    <p>A persistent feature of both Irish and Welsh mythology is the theme of the magical cauldron, a vessel capable of raising the dead and of providing ever-replenishing supplies of food. The Irish god <a href="https://en.wikipedia.org/wiki/The_Dagda"><span style="text-decoration: underline">Daghdha</span></a>, (‘the Good God’), possessed a huge inexhaustible cauldron. The central focus of the Irish Otherworld feast was the cauldron, which never ran out of food. One Irish cauldron-myth was associated with sacral kingship, where the new king of Ulster had to bathe in one, while consuming the meat and broth of a white mare he had ritually ‘married’. <span style="color: var(--slug-color) ">(p. 29)</span></p>
+    <p>§ Ceridwen’s Cauldron: A Welsh mythic tale, preserved in a 13th-century text, <a href="https://en.wikipedia.org/wiki/Book_of_Taliesin"><span style="text-decoration: underline">The Book of Taliesin</span></a> (塔列辛之书), contains a rich story of an enchanted cauldron, whose contents endowed those who ate or drank from it with knowledge and inspiration. The cauldron’s keeper was Ceridwen. She bore two children, Crearwy (‘the light or beautiful one’) and Afagddu (‘black’ or ‘ugly’). Wanting to compensate her son for his ill-favoured appearance, his mother mixed a special brew in the cauldron, designed to give him absolute wisdom. Because the potion needed to boil for a year, Ceridwen appointed a young boy, Gwion, to watch over it. As he was tending the cauldron, three drops of scalding liquid splashed onto his hand and, without thinking, he licked his fingers, thus inadvertently acquiring the wisdom intended for Afagddu. Gwion’s flight and pursuit by the angry Ceridwen eventually caused Gwion’s rebirth as the great visionary poet Taliesin. <span style="color: var(--slug-color) ">(p. 30)</span></p>
+    <p><span style="text-decoration-line: underline; text-decoration-style: wavy;">Words are powerful things</span>, the more so if they are spoken aloud, so that sound and meaning blend into a single powerful message that can be shared simultaneously by many people. Keepers of oral tradition had to have prodigiously long and accurate memories and the ability to learn long tales by heart, while adding embellishments along the way. Listeners, too, would remember stories they had heard all their lives, and would not have hesitated to point out errors or inconsistencies. <span style="color: var(--slug-color) ">(p. 43)</span></p>
+  </body>
 </details></section></details></section></details></section><footer></footer></article></div></body></html>

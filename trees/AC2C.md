@@ -16,7 +16,7 @@ asref: true
 
 </theorem>
 
-<exegesis>
+<exegesis catalog="false">
 
 $f$ 可以被看作是从每个集合 $A \in \mathscr{F}$ 中选取一个元素. 
 然而, [][ac] 仅保证了此类函数的存在性, 而没有提供构造它的方法. 

@@ -15,7 +15,7 @@ $\gdef\without{\setminus}$
 
 $$ \pi(G) \spaces= \pi(G \without e) \spaces- \pi(G / e), \quad \forall ~ e \in \text{Edge}(G) $$
 
-<proof>
+<proof catalog="false">
 
 $\gdef\sstr#1{~#1~}$
 

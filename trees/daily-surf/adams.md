@@ -6,15 +6,6 @@ author: [](../person/yuni.md)
 taxon: poetry
 ---
 
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
-
-<style>
-.kaiti {
-  font-family: "LXGW WenKai TC", serif;
-  font-style: normal;
-}
-</style>
-
 <blockquote class="kaiti">
 
 每个人都是独一无二的笨蛋

@@ -9,9 +9,13 @@ tag: [](/trees/pearls/index.md)
 
 $\gdef\spaces#1{~ #1 ~}$
 
-[aczél-engel]: ./CN2E.md
+[次可加归纳]: /trees/pearls/SL2A.md
+[Cauchy 不等式]: /trees/pearls/CN2B.md
+[Titu 引理]: /trees/pearls/CN2C.md
+[Aczél 不等式]: /trees/pearls/CN2D.md
+[Aczél 不等式 Engel 形式]: /trees/pearls/CN2E.md
 
-[Cauchy--Aczél 论证](./CN2A.md) 是 [](./SL2A.md) 的一个直接应用. 凭此能够同时证明: 
+[Cauchy--Aczél 论证](./CN2A.md) 是 [次可加归纳] 的一个直接应用. 凭此能够同时证明: 
 
 - [](./CN2B.md#:embed)
 - [](./CN2C.md#:embed)
@@ -20,9 +24,9 @@ $\gdef\spaces#1{~ #1 ~}$
 
 具体步骤如下. 
 
-<proof>
+<proof catalog="false">
 
-在 [](./SL2A.md) 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 [](./CN2C.md) $\iff$ [][aczél-engel], 又因为 [](./CN2B.md) 等价于 [](./CN2C.md), [](./CN2D.md) 等价于 [][aczél-engel]. 于是只需证明 [](./CN2B.md) 中 $n=2$ 的情况, 现在做差
+在 [次可加归纳] 中取 $f(x, \ell) = \frac{x^2}{\ell}$, 于是 [Titu 引理] $\iff$ [Aczél 不等式 Engel 形式], 又因为 [Cauchy 不等式] 等价于 [Titu 引理], [Aczél 不等式] 等价于 [Aczél 不等式 Engel 形式]. 于是只需证明 [Cauchy 不等式] 中 $n=2$ 的情况, 现在做差
 
 $$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_1)^2 $$
 
@@ -30,9 +34,9 @@ $$ (a_1^2 + a_2^2)(b_1^2 + b_2^2) - (a_1b_1 + a_2b_2)^2 \spaces= (a_1b_2 - a_2b_
 
 </proof>
 
-<observation>
+<observation catalog="false">
 
-读者也应留意到, 尝试直接说明 [](./CN2B.md) 和 [](./CN2D.md) 等价往往不容易看出, 而沿着下面的路径就要轻松的多. 
+读者也应留意到, 尝试直接说明 [Cauchy 不等式] 和 [Aczél 不等式] 等价往往不容易看出, 而沿着下面的路径就要轻松的多. 
 
 $$
 \begin{CD}
@@ -42,6 +46,6 @@ $$
 \end{CD}
 $$
 
-此处 $X_1$ 即 [][aczél-engel], $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$. 
+此处 $X_1$ 即 [Aczél 不等式 Engel 形式], $s$ 为 $(a_k, b_k) \mapsto (\frac{x_k}{\sqrt\ell_k},\sqrt\ell_k)$. 
 
 </observation>

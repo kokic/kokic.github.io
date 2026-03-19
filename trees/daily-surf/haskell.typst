@@ -128,7 +128,6 @@ $ #haskell-logo $
 
 #details-code("Click to expand", "close")[
 ```typst
-
 #import "@preview/cetz:0.4.2"
 
 #import cetz.draw: *

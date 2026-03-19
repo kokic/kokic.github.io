@@ -2,11 +2,7 @@
 trees = "trees"
 assets = "assets"
 base-url = "/"
-themes = [
-  "themes/default.html",
-  "themes/serena.html",
-  "themes/printer.html",
-]
+themes = ["themes/default.html", "themes/serena.html", "themes/printer.html"]
 
 [toc]
 placement = "right"
@@ -25,7 +21,7 @@ typst-root = "trees"
 short-slug = true
 pretty-urls = true
 footer-mode = "embed"
-inline-css = true
+inline-css = false
 asref = false
 output = "./publish"
 edit = "https://github.com/kokic/kokic.github.io/tree/master/trees/"

@@ -7,21 +7,12 @@ source: [Proofs from THE BOOK, p. 5](/trees/bib/pftb.md)
 tag: [](/trees/pearls/index.md)
 ---
 
-<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
-
-<style>
-.kaiti {
-  font-family: "LXGW WenKai TC", serif;
-  font-style: normal;
-}
-</style>
-
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\PP{\mathbf{P}}$
 
 此证明由 [Hillel Furstenberg](https://en.wikipedia.org/wiki/Hillel_Furstenberg) 于 1955 年提出 [^furstenberg], 收录于 [PFTB, p. 5](/trees/bib/pftb.md), 此页配图的说明文字写道
 
-> Pitching flat rocks, infinitely. $\quad$ <span class="kaiti">(掷扁石, 至无穷远.) </span>
+> Pitching flat rocks, infinitely. $\quad$ _(掷扁石, 至无穷远.)_
 
 对 $a,b \in \Z, b > 0$, 令 $N_{a,b} = \{ a + nb : n \in \Z \}$. 每个集合 $N_{a,b}$ 都是正负无界的算术级数. 如果集合 $O \subseteq \Z$ 满足以下条件之一: 
 
