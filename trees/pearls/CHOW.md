@@ -12,11 +12,11 @@ $\gdef\spaces#1{~ #1 ~}$
 
 <theorem title="Cauchy-Davenport-Chowla">
 
-设 $m\ge 1$，$A, B \subseteq \Z/m\Z$ 为非空集合. 且 $B$ 满足 $(i)$ $0 \in B$, $(ii)$ 对每个 $b \in B \setminus\{0\}$, 都有 $\gcd(b,m)=1$, 即互质. 则
+设 $m\ge 1$，$A, B \subseteq \Z/m\Z$ 为非空集合. 且 $B$ 满足 $(i)$ $0 \in B$, $(ii)$ 对每个 $b \in B \setminus\{0\}$ 都有 $\gcd(b,m)=1$, 即互质. 则
 
 $$ |A+B| \spaces\ge \min(m,\ |A| + |B| - 1) $$
 
-此处加法为 Mincowski 和, 其定义为 $A+B=\{a+b:\ a\in A,\ b\in B\}$. 
+此处加法为 Minkowski 和, 其定义为 $A+B=\{a+b:\ a\in A,\ b\in B\}$. 
 
 </theorem>
 
@@ -69,3 +69,63 @@ $b' \notin A-e$ 而 $b'\in B$, 因此 $b'\notin B\cap (A-e) = B_{(e)}$.
 这与我们选取 $(A, B)$ 时 $|B|$ 极小相矛盾, 因此反例不存在, 得证. 
 
 </proof>
+
+<corollary title="Cauchy-Davenport">
+
+设 $p$ 为素数, $A,B \subseteq \Z/p\Z$ 非空, 则有 
+
+$$ |A+B| \spaces\ge \min(p, |A| + |B| - 1) $$
+
+这显然是 Cauchy-Davenport-Chowla 定理在 $m$ 为素数时的特例. 
+
+<proof catalog="false">
+
+取一个 $b \in B$, $B' := B - b$, 所以一定有 $0 \in B'$. 对 $(A, B')$ 使用 Cauchy-Davenport-Chowla 定理. 
+
+$$
+|A+B| \spaces= |A + B'| \spaces\ge \min(p, |A| + |B|' - 1) \spaces= \min(p, |A| + |B| - 1)
+$$
+
+证完.
+
+</proof>
+
+</corollary>
+
+<corollary title="多元 Cauchy-Davenport">
+
+设 $N \ge 2$, $p$ 为素数, $A_1, \cdots, A_N$ 是 $\Z/p\Z$ 的非空子集, 则 
+
+$$
+\Big|\sum_{1\le k\le N}A_k\Big|
+\spaces\ge \min\Big(p, \sum_{1\le k\le N}|A_k| - N + 1 \Big)
+$$
+
+<proof catalog="false">
+
+令 $S=\sum_{1\le k\le N-1}A_k$. 用归纳法, 假设 $N-1$ 时成立, 即 
+
+$$ |S| \spaces\ge \min\Big(p, \sum_{1\le k\le N-1}|A_k| - N + 2\Big) $$
+
+对 $(S, A_N)$ 利用 $N=2$ 时的结果 
+
+$$
+\begin{aligned}
+|S + A_N|
+&\spaces\ge \min(p, |S| + |A_N| - 1) \\ 
+&\spaces\ge \min(p,\min|S|+|A_N| - 1) \\ 
+&\spaces\ge \min\Big(p, \sum_{1\le k\le N}|A_k| - N + 1\Big)
+\end{aligned}
+$$
+
+证完.
+
+</proof>
+</corollary>
+
+<theorem title="Vosper 定理">
+
+Vosper 定理给出了 Cauchy-Davenport 定理的取等条件. 
+设 $\Z/p\Z$ 的非空子集 $A, B$ 满足条件 $|A|, |B| \ge 2$, $|A|+|B|\lt p$. 若有 $|A+B| = |A| + |B| - 1$, 则 $A, B$ 为两个公差相同的等差数列. 
+
+</theorem>
