@@ -28,8 +28,6 @@ $$
 
 </definition>
 
-<proof>
-
 <lemma title="固定高度的多项式只有有限个">
 
 $\gdef\N{\mathbf{N}}$
@@ -46,6 +44,8 @@ $\gdef\C{\mathbf{C}}$
 固定 $h \in \N$, 集合 $R_h = \{ z \in \C : P(z) = 0, P \in P_h \}$ 有限. 对 $P \in P_h$ 处每一个固定的 $P$ 使用代数基本定理, 便可得到此时的 $z$ 也只有有限多个. 
 
 </lemma>
+
+<proof catalog="false">
 
 $\gdef\spaces#1{~ #1 ~}$
 $\gdef\A{\mathbb{A}}$

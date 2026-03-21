@@ -21,7 +21,7 @@ $\gdef\spaces#1{~ #1 ~}$
 
 <proof>
 
-在 [次线性归纳] 中取 $f(x, \ell) = \frac{x^p}{\ell^{p-1}}$, 此时 $\eta_*: \sum_i x_i^p / \ell_i^{p-1} \ge (\sum_i x_i)^p / (\sum_i \ell_i)^{p-1}$ 即 [Radon 不等式], $\varphi_*: (x - \sum_i x_i)^p / (\ell - \sum_i \ell_i)^{p-1} \ge x^p / \ell^{p-1} - \sum_i x_i^p / \ell_i^{p-1}$ 即 [Aczél–Popoviciu 不等式]. 沿下图
+在 [次线性归纳] 中取 $f(x, \ell) = \frac{x^p}{\ell^{p-1}}$, 此时 $\eta_*: \sum_i x_i^p / \ell_i^{p-1} \ge (\sum_i x_i)^p / (\sum_i \ell_i)^{p-1}$ 即 [Radon 不等式], $\varphi_*: (x - \sum_i x_i)^p / (\ell - \sum_i \ell_i)^{p-1} \ge x^p / \ell^{p-1} - \sum_i x_i^p / \ell_i^{p-1}$ 即 [Aczél–Popoviciu 不等式 Engel 形式]. 沿下图
 
 $$
 \begin{CD}

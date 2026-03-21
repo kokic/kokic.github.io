@@ -186,7 +186,7 @@
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="#pearls-CHOW:1" title="Cauchy-Davenport-Chowla [pearls/CHOW/:1]">■</a><span class="link local" onclick="window.location.href='#pearls-CHOW:1'"><span class="taxon">Theorem. </span>Cauchy-Davenport-Chowla</span></li><li class=""><a class="bullet" href="#pearls-CHOW:2" title="$e$-变换 [pearls/CHOW/:2]">■</a><span class="link local" onclick="window.location.href='#pearls-CHOW:2'"><span class="taxon">Definition. </span>$e$-变换</span></li></ul></details></div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="#pearls-CHOW:1" title="Cauchy-Davenport-Chowla [pearls/CHOW/:1]">■</a><span class="link local" onclick="window.location.href='#pearls-CHOW:1'"><span class="taxon">Theorem. </span>Cauchy-Davenport-Chowla</span></li><li class=""><a class="bullet" href="#pearls-CHOW:2" title="$e$-变换及其性质 [pearls/CHOW/:2]">■</a><span class="link local" onclick="window.location.href='#pearls-CHOW:2'"><span class="taxon">Exegesis. </span>$e$-变换及其性质</span></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon=""><details open><summary id="pearls-CHOW"><header><h1><span class="taxon"></span>Chowla <span lang="zh">定理与</span> $e$-<span lang="zh">变换</span> <a class="slug" href="/pearls/CHOW">[CHOW]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">July 25, 2020</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\Z{\mathbb{Z}}$
@@ -194,10 +194,39 @@ $\gdef\spaces#1{~ #1 ~}$</p>
 <section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="pearls-CHOW:1"><header><h1><span class="taxon">Theorem. </span>Cauchy-Davenport-Chowla <a class="hash" href="#pearls-CHOW:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">设</span> $m\ge 1$，$A, B \subseteq \Z/m\Z$ <span lang="zh">为非空集合</span>. <span lang="zh">且</span> $B$ <span lang="zh">满足</span> $(i)$ $0 \in B$, $(ii)$ <span lang="zh">对每个</span> $b \in B \setminus\{0\}$, <span lang="zh">都有</span> $\gcd(b,m)=1$, <span lang="zh">即互质</span>. <span lang="zh">则</span></p>
 <p>$$ |A+B| \spaces\ge \min(m,\ |A| + |B| - 1) $$</p>
 <p><span lang="zh">此处加法为</span> Mincowski <span lang="zh">和</span>, <span lang="zh">其定义为</span> $A+B=\{a+b:\ a\in A,\ b\in B\}$.</p>
-</details></section><section class="block hide-metadata" data-taxon="Definition"><details open><summary id="pearls-CHOW:2"><header><h1><span class="taxon">Definition. </span>$e$-变换 <a class="hash" href="#pearls-CHOW:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">对任意</span> $e\in A$, <span lang="zh">定义</span></p>
-<p>$$
-A_{(e)} \spaces{:=} A\cup (B+e), \quad 
-B_{(e)} \spaces{:=} B\cap (A-e)
-$$</p>
-<p><span lang="zh">其中</span> $B+e=\{b+e:\ b\in B\}$, $A-e=\{a-e:\ a\in A\}$. <span lang="zh">且注意</span> $A_{(e)}$ <span lang="zh">和</span> $B_{(e)}$ <span lang="zh">都</span> $\subseteq \mathbb Z/m\mathbb Z$.</p>
+</details></section><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="pearls-CHOW:2"><header><h1><span class="taxon">Exegesis. </span>$e$-变换及其性质 <a class="hash" href="#pearls-CHOW:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">对任意</span> $e\in A$, <span lang="zh">定义</span> $A_{(e)} := A\cup (B+e)$, $B_{(e)} \spaces{:=} B\cap (A-e)$.
+<span lang="zh">其中</span> $B+e=\{b+e:\ b\in B\}$, $A-e=\{a-e:\ a\in A\}$.
+<span lang="zh">且注意</span> $A_{(e)}$ <span lang="zh">和</span> $B_{(e)}$ <span lang="zh">都</span> $\subseteq \mathbb Z/m\mathbb Z$.</p>
+<section class="block hide-metadata" data-taxon="Proposition"><details open><summary id="pearls-CHOW:4"><header><h1><span class="taxon">Proposition. </span> <a class="hash" href="#pearls-CHOW:4">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><ol>
+<li><span lang="zh">显然</span> $e \in A_{(e)}$, <span lang="zh">因此</span> $0 \in A-e$, <span lang="zh">故</span> $0 \in B_{(e)}$.</li>
+<li><span lang="zh">基数和保持不变</span>, <span lang="zh">即</span> $A_{(e)} + B_{(e)} = |A| + |B|$. <span lang="zh">注意平移</span> $x\mapsto x+e$ <span lang="zh">是双射</span>.$$ |B_{(e)}| \spaces= |(A-e)\cap B| \spaces= |((A-e) \cap B) + e| \spaces= A \cap (B+e) $$<span lang="zh">对</span> $A_{(e)}$ <span lang="zh">使用容斥原理</span> $A_{(e)} = |A| + |B+e| - |A \cap (B+e)|$ <span lang="zh">即可结束证明</span>.</li>
+<li><span lang="zh">和集不增大</span> $A_{(e)} + B_{(e)} \subseteq A+B$. <span lang="zh">取任意</span> $x \in A_{(e)} + B_{(e)}$, <span lang="zh">存在</span> $a' \in A_{(e)}, b' \in B_{(e)}$ <span lang="zh">使</span> $x = a' + b'$. <span lang="zh">据</span> $A_{(e)} := A \cup (B+e)$ <span lang="zh">分类讨论</span>:
+<ol>
+<li>$a' \in A$, $b' \in B_{(e)} \subseteq B$, <span lang="zh">所以</span> $x = a' + b'\in A+B$.</li>
+<li>$a'\in B+e$, <span lang="zh">则存在</span> $b'' \in B$ <span lang="zh">使得</span> $a^\prime = b^{\prime\prime} + e$. <span lang="zh">又因</span> $b' \in B_{(e)} \subseteq A-e$, <span lang="zh">存在</span> $a'' \in A$ <span lang="zh">使得</span> $b' = a'' - e$. <span lang="zh">于是</span> $x = a' + b' = (b''+e) + (a''-e) = a'' + b'' \in A+B$.</li>
+</ol>
+</li>
+</ol>
+</details></section></details></section><section class="block hide-metadata" data-taxon="Proof"><details open><summary id="pearls-CHOW:3"><header><h1><span class="taxon">Proof. </span> <a class="hash" href="#pearls-CHOW:3">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/CHOW.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">假设结论不成立</span>. <span lang="zh">则存在非空集合</span> $A, B \subseteq \Z/m\Z$, <span lang="zh">满足</span>:</p>
+<ol>
+<li>$0 \in B$, $B \setminus \{0\}$ <span lang="zh">中每个元素都与</span> $m$ <span lang="zh">互素</span>.</li>
+<li>$|A+B| &lt; \min(m, |A| + |B| - 1)$</li>
+</ol>
+<p><span lang="zh">由于</span> $|A+B| \le m$, <span lang="zh">上式只能说明</span> $|A+B| &lt; |A|+|B| - 1$, <span lang="zh">且必有</span> $|A+B| &lt; m$.
+<span lang="zh">故</span> $A+B \ne \Z/m\Z$. <span lang="zh">在所有这样的反例中</span>, <span lang="zh">取一个使</span> $|B|$ <span lang="zh">最小的反例</span> $(A, B)$.
+<span lang="zh">由于</span> $0 \in B$ <span lang="zh">可知</span> $|B| = 1$ <span lang="zh">时</span> $|A+B| = |A| = |A| + |B| - 1$, <span lang="zh">矛盾</span>.
+<span lang="zh">所以</span> $|B| \ge 2$, <span lang="zh">于是可取某个</span> $b' \in B\setminus\{0\}$, <span lang="zh">根据假设</span> $\gcd(b',m)=1$.</p>
+<blockquote class="markdown-alert-note">
+<p><span lang="zh">因为</span> $b'$ <span lang="zh">与</span> $m$ <span lang="zh">互素</span>, <span lang="zh">映射</span> $x\mapsto x+b'$ <span lang="zh">在</span> $\Z/m\Z$ <span lang="zh">上生成整个循环群</span>. <span lang="zh">特别地</span>, <span lang="zh">如果一个非空集合</span> $X$ <span lang="zh">满足</span> $X+b'\subseteq X$, <span lang="zh">那么实际上</span> $X = \Z/m\Z$.</p>
+</blockquote>
+<p><span lang="zh">现在</span> $A$ <span lang="zh">非空</span>. <span lang="zh">若对每个</span> $e \in A$ <span lang="zh">都有</span> $e+b'\in A$, <span lang="zh">则</span> $A+b'\subseteq A$.
+<span lang="zh">由于平移是双射</span>, <span lang="zh">这就推出</span> $A+b' = A$. <span lang="zh">于是</span> $A$ <span lang="zh">在加</span> $b'$ <span lang="zh">下不变</span>, <span lang="zh">从而</span> $A=\Z/m\Z$.
+<span lang="zh">此时</span> $A+B =\Z/m\Z$, <span lang="zh">与反例条件</span> $|A+B|&lt;m$ <span lang="zh">矛盾</span>.</p>
+<p><span lang="zh">所以必存在某个</span> $e\in A$ <span lang="zh">使得</span> $e+b'\notin A$.
+<span lang="zh">固定这样的</span> $e$, <span lang="zh">考虑</span> $A_{(e)}$, <span lang="zh">根据</span> $e$-<span lang="zh">变换的性质知</span> $|A_{(e)} + B_{(e)}| \le |A+B|$.
+<span lang="zh">下面说明</span> $(A_{(e)}, B_{(e)})$ <span lang="zh">是更小的反例</span>.</p>
+<p>$b' \notin A-e$ <span lang="zh">而</span> $b'\in B$, <span lang="zh">因此</span> $b'\notin B\cap (A-e) = B_{(e)}$.
+<span lang="zh">另一方面</span>, $b'\in B$. <span lang="zh">所以</span> $b'$ <span lang="zh">原来在</span> $B$ <span lang="zh">中</span>, <span lang="zh">但不在</span> $B'$ <span lang="zh">中</span>, <span lang="zh">故</span> $|B_{(e)}| &lt; |B|$,
+<span lang="zh">又由</span> $0\in B_{(e)}$, <span lang="zh">知</span> $B_{(e)}$ <span lang="zh">仍是非空集</span>.
+<span lang="zh">这与我们选取</span> $(A, B)$ <span lang="zh">时</span> $|B|$ <span lang="zh">极小相矛盾</span>, <span lang="zh">因此反例不存在</span>, <span lang="zh">得证</span>.</p>
 </details></section></details></section><footer></footer></article></div></body></html>
