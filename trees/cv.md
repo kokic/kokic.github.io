@@ -2,6 +2,7 @@
 ---
 backlinks: false
 title: Curriculum Vitae
+date: March 22, 2026
 author: [](/trees/kokic.md)
 status: Undergraduate
 major: Computer Science

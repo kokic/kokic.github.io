@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width"><title>读 “七周七语言”</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true },
+      ],
+      trust: true,
+      strict: false,
+      throwOnError: false,
+      minRuleThickness: 0.05,
+    });
+  });
+</script>
+<link rel="stylesheet" href="/main.css"><style>
+@media only screen and (min-width: 1000px) {
+  #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
+  nav#toc { max-width: max-content; }
+}
+</style><style>
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Light.woff2");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Regular.woff2");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Medium.woff2");
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "PingFang SC";
+    src: url("https://cdn.jsdelivr.net/npm/font-pingfang-sc@1.0.5/PingFangSC-Semibold.woff2");
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    --text-font-family: "Inria Sans", "PingFang SC" !important;
+    --article-max-width: 90ex !important;
+  }
+</style>
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/smaragdina/index'" title="翠玉录">« <span lang="zh">翠玉录</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+<!-- Inspired by https://www.forester-notes.org/ -->
+
+<style>
+  body:has(input[value="default"]:checked) {
+    --text-color: black;
+    --toc-link-color: #555;
+    --background-color: white;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(0, 100, 255, 0.04);
+    --hover-color-link: rgba(0, 100, 255, 0.1);
+    --target-color: rgb(67, 92, 255);
+
+    --link-color: black;
+    --slug-color: gray;
+    --logo-color: #666;
+    --logo-hover-color: #aaa;
+    --span-taxon-color: #444;
+    --article-taxon-color: #888;
+    --mark-color: rgb(255, 255, 151);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:has(input[value="default"]:checked) {
+      --text-color: white;
+      --toc-link-color: white;
+      --background-color: #2f2f2f;
+
+      --background-color-pre: rgba(100, 100, 100, 0.2);
+      --background-color-code: rgba(150, 150, 150, 0.2);
+
+      --hover-color-block: rgba(100, 162, 255, 0.06);
+      --hover-color-link: rgba(100, 162, 255, 0.2);
+      --target-color: rgb(255, 255, 151);
+
+      --link-color: white;
+      --slug-color: #aeaeae;
+      --logo-color: #999;
+      --logo-hover-color: #eee;
+      --span-taxon-color: #bbb;
+    }
+  }
+</style>
+
+<theme-option name="default">default</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="serena"]:checked) {
+    --hover-primary-color: 246, 227, 220;
+    --link-primary-color: 182, 199, 233;
+
+    --text-color: white;
+    --toc-link-color: rgb(168 173 195);
+    --background-color: rgb(28, 30, 39);
+
+    --background-color-pre: rgba(100, 100, 100, 0.2);
+    --background-color-code: rgba(150, 150, 150, 0.2);
+
+    --hover-color-block: rgba(var(--hover-primary-color), 0.06);
+    --hover-color-link: rgba(var(--hover-primary-color), 0.2);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: #aeaeae;
+    --logo-color: #999;
+    --logo-hover-color: #eee;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(248, 202, 215);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="serena">serena</theme-option><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+<!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
+<!-- Authors: Kokic (@kokic) -->
+
+<style>
+  body:has(input[value="printer"]:checked) {
+    --hover-primary-color: 235, 235, 235;
+    --link-primary-color: 115, 80, 87;
+
+    --text-color: rgb(20, 22, 27);
+    --toc-link-color: #555;
+    --background-color: #ffffff;
+
+    --background-color-pre: rgba(0, 100, 100, 0.04);
+    --background-color-code: rgba(0, 100, 100, 0.04);
+
+    --hover-color-block: rgba(var(--hover-primary-color));
+    --hover-color-link: rgba(201, 201, 201, 0.8);
+    --target-color: rgb(255, 255, 151);
+
+    --link-color: rgb(var(--link-primary-color));
+    --slug-color: rgb(99, 99, 99);
+    --logo-color: #999;
+    --logo-hover-color: #666;
+    --span-taxon-color: rgb(var(--link-primary-color));
+    --em-color: rgb(53, 53, 53);
+
+    .block:has(.block:hover) {
+      background-color: var(--background-color);
+    }
+  }
+</style>
+
+<theme-option name="printer">printer</theme-option>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="#smaragdina-SWSL:1" title="松本行弘篇 [smaragdina/SWSL/:1]">■</a><span class="link local" onclick="window.location.href='#smaragdina-SWSL:1'"><span class="taxon"></span>松本行弘篇</span></li></ul></details></div></nav>
+
+<article><section class="block" data-taxon="Peruse"><details open><summary id="smaragdina-SWSL"><header><h1><span class="taxon">Peruse. </span><span lang="zh">读</span> “<span lang="zh">七周七语言</span>” <a class="slug" href="/smaragdina/SWSL">[SWSL]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/SWSL.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 16, 2026</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<section class="block hide-metadata" data-taxon=""><details open><summary id="smaragdina-SWSL:1"><header><h1><span class="taxon"></span>松本行弘篇 <a class="hash" href="#smaragdina-SWSL:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/smaragdina/SWSL.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><blockquote class="markdown-alert-note">
+<p>Ruby <span lang="zh">语言的设计者松本行弘</span> [Mastumoto Yukihiro] <span lang="zh">著有一本</span> “<span lang="zh">松本行弘的程序世界</span>”, <span lang="zh">已由人民邮电出版社出版</span>.</p>
+</blockquote>
+<blockquote>
+<p><span lang="zh">英国计算机科学家</span> Peter Landin <span lang="zh">引入了术语</span> “<span lang="zh">语法糖</span>”, <span lang="zh">指为编程语言添加某种语法</span>, <span lang="zh">这种语法虽对语言本身功能并无实质影响</span>, <span lang="zh">但为程序员编程提供了便利</span>.</p>
+</blockquote>
+<p><span class="link external"><a href="https://en.wikipedia.org/wiki/Unification_(computer_science)" title="Unification [https://en.wikipedia.org/wiki/Unification_(computer_science)]">Unification</a></span> is an algorithmic process of solving equations between symbolic expressions, each of the form LHS = RHS.</p>
+<dl>
+<dt>Bruce <sup class="footnote-reference" id="smaragdina_SWSL_:1_bruce-back"><a href="#smaragdina_SWSL_:1_bruce">1</a></sup>:</dt>
+<dd>What is a feature that you would like to change, if you could go back in time?</dd>
+<dt>Matz <sup class="footnote-reference" id="smaragdina_SWSL_:1_matz-back"><a href="#smaragdina_SWSL_:1_matz">2</a></sup>:</dt>
+<dd>I would remove the thread and add <span class="link external"><a href="https://en.wikipedia.org/wiki/Actor_model" title="actors [https://en.wikipedia.org/wiki/Actor_model]">actors</a></span> or some other more advanced concurrency features.</dd>
+</dl>
+<div class="footnote-definition" id="smaragdina_SWSL_:1_bruce">
+  <sup class="footnote-definition-label"><a href="#smaragdina_SWSL_:1_bruce-back">1</a></sup>
+<p><span lang="zh">即</span> “<span lang="zh">七周七语言</span>” <span lang="zh">的作者</span> Bruce A. Tate.</p>
+</div>
+<div class="footnote-definition" id="smaragdina_SWSL_:1_matz">
+  <sup class="footnote-definition-label"><a href="#smaragdina_SWSL_:1_matz-back">2</a></sup>
+<p><span lang="zh">即</span> Mastumoto Yukihiro.</p>
+</div>
+</details></section></details></section><footer></footer></article></div></body></html>

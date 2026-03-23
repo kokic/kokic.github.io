@@ -4,11 +4,10 @@ title: Daily Surf
 collect: true
 ---
 
-[-](./HIRO.md#:embed)
-[-](./SWSL.md#:embed)
 [-](./windows-skill.md#:embed)
 [-](./haskell.typst#:embed)
 [-](./bevy.md#:embed)
+[-](./AP2A.md#:embed)
 [-](./adams.md#:embed)
 [-](./sublime-text-config#:embed)
 [-](./sagemath-theme.md#:embed)

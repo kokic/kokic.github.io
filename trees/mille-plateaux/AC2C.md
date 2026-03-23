@@ -6,7 +6,7 @@ taxon: axiom
 asref: true
 ---
 
-[ac]: /trees/AC2C.md
+[ac]: /trees/mille-plateaux/AC2C.md
 
 对于任意非空集合族 $\mathscr{F}$, 存在一个选择函数 $f$ 为每个 $A \in \mathscr{F}$ 分配一个元素 $f(A) \in A$. 
 
