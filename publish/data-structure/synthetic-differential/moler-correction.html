@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>复步微分法 对数值微分误差的修正</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
+<meta name="viewport" content="width=device-width"><title>复步微分法 对数值微分误差的修正</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
@@ -24,7 +24,7 @@
     });
   });
 </script>
-<link rel="stylesheet" href="/main.css"><style>
+<link rel="stylesheet" href="https://kokic.github.io/main.css"><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -70,7 +70,7 @@
     --article-max-width: 90ex !important;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/data-structure/synthetic-differential/index'" title="综合微分法">« <span lang="zh">综合微分法</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='https://kokic.github.io/data-structure/synthetic-differential/index'" title="综合微分法">« <span lang="zh">综合微分法</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="https://kokic.github.io/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://www.forester-notes.org/ -->
@@ -188,25 +188,25 @@
 <theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-moler-correction"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">对数值微分误差的修正</span> <a class="slug" href="/data-structure/synthetic-differential/moler-correction">[moler-correction]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/moler-correction.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="data-structure-synthetic-differential-moler-correction"><header><h1><span class="taxon">Exegesis. </span><span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">对数值微分误差的修正</span> <a class="slug" href="https://kokic.github.io/data-structure/synthetic-differential/moler-correction">[moler-correction]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/moler-correction.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\C{\mathbf{C}}$
 $\gdef\quads#1{\quad #1 \quad}$
 $\gdef\eqq{\quads=}$</p>
-<p><span lang="zh">选取同样的</span> $h=10^{-5}$, <span lang="zh">以下计算表明</span> <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">Moler <span lang="zh">的方法</span></a></span> <span lang="zh">相比</span> <span class="link local"><a href="/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]"><span lang="zh">此处</span></a></span> <span lang="zh">基于有限差分的数值微分方法能够很好的避免精度损失</span>.</p>
+<p><span lang="zh">选取同样的</span> $h=10^{-5}$, <span lang="zh">以下计算表明</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]">Moler <span lang="zh">的方法</span></a></span> <span lang="zh">相比</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/numerical" title="数值微分的误差 [data-structure/synthetic-differential/numerical]"><span lang="zh">此处</span></a></span> <span lang="zh">基于有限差分的数值微分方法能够很好的避免精度损失</span>.</p>
 <p>$$
 \frac{\Im(1 + 10^{-5}i)^{2}}{10^{-5}} \eqq \frac{\Im(\square + 2 \times 10^{- 5}i)}{10^{- 5}} \eqq 2
 $$</p>
-<p><span lang="zh">实际上此处</span> $h$ <span lang="zh">的选取</span>, <span lang="zh">只要其非零</span>, <span lang="zh">从而带有</span> $i$ <span lang="zh">的项不消失</span>, <span lang="zh">就不会影响到最终的结果</span>. <span lang="zh">换言之</span>, <span lang="zh">这个方法从根本上来说</span>, <span lang="zh">是无关于</span> $h \in \R\smallsetminus\{0\}$ <span lang="zh">和</span> $i$ <span lang="zh">的</span>, <span lang="zh">只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论</span>. <span lang="zh">一旦意识到这一点</span>, <span lang="zh">我们便可以将</span> <span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">的</span></p>
+<p><span lang="zh">实际上此处</span> $h$ <span lang="zh">的选取</span>, <span lang="zh">只要其非零</span>, <span lang="zh">从而带有</span> $i$ <span lang="zh">的项不消失</span>, <span lang="zh">就不会影响到最终的结果</span>. <span lang="zh">换言之</span>, <span lang="zh">这个方法从根本上来说</span>, <span lang="zh">是无关于</span> $h \in \R\smallsetminus\{0\}$ <span lang="zh">和</span> $i$ <span lang="zh">的</span>, <span lang="zh">只是在数值计算时借由复数算术和复函数值可以免去一些幂零结构的讨论</span>. <span lang="zh">一旦意识到这一点</span>, <span lang="zh">我们便可以将</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">的</span></p>
 <p>$$ \frac{\partial f}{\partial x} \quads\approx \frac{\Im f(x+ih)}{h} $$</p>
-<p><span lang="zh">中的近似</span> “$\approx$” <span class="link local"><a href="/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]"><span lang="zh">修正</span></a></span> <span lang="zh">为严格等于</span> “$=$”, <span lang="zh">这只需要将</span> $\{z \in \C : z^2 = -1\}$ <span lang="zh">替换为</span> $D = \{x \in R : x^2 = 0\}$, <span lang="zh">问题就来到了如何构造这样的</span> $R$ <span lang="zh">使得</span> $D$ <span lang="zh">中有非零的元素</span>, <span lang="zh">这样的结构实际上会</span> <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]"><span lang="zh">动摇</span></a></span> <span lang="zh">经典逻辑中对于排中律的看法</span>.</p>
-</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">矩阵表示</span> <a class="slug" href="/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/matrix-represent.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<p><span lang="zh">中的近似</span> “$\approx$” <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/matrix-represent" title="矩阵表示 [data-structure/synthetic-differential/matrix-represent]"><span lang="zh">修正</span></a></span> <span lang="zh">为严格等于</span> “$=$”, <span lang="zh">这只需要将</span> $\{z \in \C : z^2 = -1\}$ <span lang="zh">替换为</span> $D = \{x \in R : x^2 = 0\}$, <span lang="zh">问题就来到了如何构造这样的</span> $R$ <span lang="zh">使得</span> $D$ <span lang="zh">中有非零的元素</span>, <span lang="zh">这样的结构实际上会</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]"><span lang="zh">动摇</span></a></span> <span lang="zh">经典逻辑中对于排中律的看法</span>.</p>
+</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="data-structure-synthetic-differential-matrix-represent"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">矩阵表示</span> <a class="slug" href="https://kokic.github.io/data-structure/synthetic-differential/matrix-represent">[matrix-represent]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/synthetic-differential/matrix-represent.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\quads#1{\quad #1 \quad}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\C{\mathbf{C}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p><span lang="zh">这样一来</span>, <span lang="zh">我们所说的</span> <span class="link local"><a href="/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“<span lang="zh">将近似修正为严格等于</span>”</a></span> <span lang="zh">就可以精确表示为</span></p>
+<p><span lang="zh">这样一来</span>, <span lang="zh">我们所说的</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/moler-correction" title="复步微分法 对数值微分误差的修正 [data-structure/synthetic-differential/moler-correction]">“<span lang="zh">将近似修正为严格等于</span>”</a></span> <span lang="zh">就可以精确表示为</span></p>
 <p>$$ \frac{\partial f}{\partial x} \quads= f(x+\varepsilon) ~ \str{中} ~ \varepsilon ~ \str{项的系数} $$</p>
-<p><span class="link local"><a href="/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">的来源是完全解析的</span>, <span lang="zh">但其得到的微分方法却能代数地刻画</span>. <span lang="zh">正如我们可以考虑复数的</span> $z = a+b\sqrt{-1} \in \C$ <span lang="zh">矩阵表示</span></p>
+<p><span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/complex-step" title="Complex step 微分法 [data-structure/synthetic-differential/complex-step]"><span lang="zh">复步微分法</span></a></span> <span lang="zh">的来源是完全解析的</span>, <span lang="zh">但其得到的微分方法却能代数地刻画</span>. <span lang="zh">正如我们可以考虑复数的</span> $z = a+b\sqrt{-1} \in \C$ <span lang="zh">矩阵表示</span></p>
 <p>$$
 A \spaces= \begin{pmatrix}
 a &amp; -b \\
@@ -215,7 +215,7 @@ b &amp; ~~~a \\
 ,\quad
 \det A \spaces= (a+b\sqrt{-1})(a-b\sqrt{-1}) 
 $$</p>
-<p><span lang="zh">我们也可以构造</span> <span class="link local"><a href="/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]"><span lang="zh">对偶数</span></a></span> $a + b \varepsilon \in R$ <span lang="zh">的矩阵表示</span>, <span lang="zh">并自动得到微分运算的加法和乘法规则</span>, <span lang="zh">这可以被简单地视为</span> Moler <span lang="zh">方法的矩阵版本</span>.</p>
+<p><span lang="zh">我们也可以构造</span> <span class="link local"><a href="https://kokic.github.io/data-structure/synthetic-differential/dual-number" title="对偶数 [data-structure/synthetic-differential/dual-number]"><span lang="zh">对偶数</span></a></span> $a + b \varepsilon \in R$ <span lang="zh">的矩阵表示</span>, <span lang="zh">并自动得到微分运算的加法和乘法规则</span>, <span lang="zh">这可以被简单地视为</span> Moler <span lang="zh">方法的矩阵版本</span>.</p>
 <p>$$
 A \spaces= \begin{pmatrix}
 a &amp; a' \\

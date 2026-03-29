@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>回声</title>
+    <link>https://kokic.github.io/</link>
+    <atom:link href="https://kokic.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <description>RSS feed for 回声</description>
+    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>https://kokic.github.io/cv</link>
+      <guid>https://kokic.github.io/cv</guid>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>“创造之门” 摘录</title>
+      <link>https://kokic.github.io/smaragdina/HIRO</link>
+      <guid>https://kokic.github.io/smaragdina/HIRO</guid>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Draw a Haskell Logo</title>
+      <link>https://kokic.github.io/daily-surf/haskell</link>
+      <guid>https://kokic.github.io/daily-surf/haskell</guid>
+      <pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>A Gentle Introduction to the Axiom of Choice</title>
+      <link>https://kokic.github.io/bib/blass2025choice</link>
+      <guid>https://kokic.github.io/bib/blass2025choice</guid>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Proofs from THE BOOK</title>
+      <link>https://kokic.github.io/bib/pftb</link>
+      <guid>https://kokic.github.io/bib/pftb</guid>
+      <pubDate>March 2018</pubDate>
+    </item>
+    <item>
+      <title>读 “七周七语言”</title>
+      <link>https://kokic.github.io/smaragdina/SWSL</link>
+      <guid>https://kokic.github.io/smaragdina/SWSL</guid>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>完全用 Windows 工作</title>
+      <link>https://kokic.github.io/daily-surf/windows-skill</link>
+      <guid>https://kokic.github.io/daily-surf/windows-skill</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>何谓选择公理</title>
+      <link>https://kokic.github.io/mille-plateaux/AC2A</link>
+      <guid>https://kokic.github.io/mille-plateaux/AC2A</guid>
+      <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Flat structuralism</title>
+      <link>https://kokic.github.io/smaragdina/flat-structuralism</link>
+      <guid>https://kokic.github.io/smaragdina/flat-structuralism</guid>
+      <pubDate>Mon, 29 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>素数无限多与 Furstenberg 拓扑</title>
+      <link>https://kokic.github.io/pearls/pftb-P005</link>
+      <guid>https://kokic.github.io/pearls/pftb-P005</guid>
+      <pubDate>Sun, 31 Aug 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Bevy 备注</title>
+      <link>https://kokic.github.io/daily-surf/bevy</link>
+      <guid>https://kokic.github.io/daily-surf/bevy</guid>
+      <pubDate>Fri, 29 Aug 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Adams 谱序列</title>
+      <link>https://kokic.github.io/daily-surf/adams</link>
+      <guid>https://kokic.github.io/daily-surf/adams</guid>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>应用清单</title>
+      <link>https://kokic.github.io/daily-surf/AP2A</link>
+      <guid>https://kokic.github.io/daily-surf/AP2A</guid>
+      <pubDate>Fri, 09 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Stern – Brocot 树</title>
+      <link>https://kokic.github.io/data-structure/stern-brocot</link>
+      <guid>https://kokic.github.io/data-structure/stern-brocot</guid>
+      <pubDate>Sun, 04 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>复数</title>
+      <link>https://kokic.github.io/data-structure/complex-number</link>
+      <guid>https://kokic.github.io/data-structure/complex-number</guid>
+      <pubDate>Fri, 11 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Casus irreducibilis</title>
+      <link>https://kokic.github.io/linear-algebra/casus-irreducibilis</link>
+      <guid>https://kokic.github.io/linear-algebra/casus-irreducibilis</guid>
+      <pubDate>Fri, 11 Apr 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sublime Text 4 高分屏设置</title>
+      <link>https://kokic.github.io/daily-surf/sublime-text-config</link>
+      <guid>https://kokic.github.io/daily-surf/sublime-text-config</guid>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Celtic Myths 摘录</title>
+      <link>https://kokic.github.io/smaragdina/celtic-myths</link>
+      <guid>https://kokic.github.io/smaragdina/celtic-myths</guid>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Lynch 对于人们说 &quot;你的电影没有意义&quot; 的回应</title>
+      <link>https://kokic.github.io/smaragdina/lynch-movie</link>
+      <guid>https://kokic.github.io/smaragdina/lynch-movie</guid>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>二阶矩阵交换版本</title>
+      <link>https://kokic.github.io/linear-algebra/kontsevich-periodicity-2A</link>
+      <guid>https://kokic.github.io/linear-algebra/kontsevich-periodicity-2A</guid>
+      <pubDate>Tue, 18 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Sagemath Jupyter 主题设置</title>
+      <link>https://kokic.github.io/daily-surf/sagemath-theme</link>
+      <guid>https://kokic.github.io/daily-surf/sagemath-theme</guid>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Kontsevich 周期性猜想</title>
+      <link>https://kokic.github.io/linear-algebra/kontsevich-periodicity</link>
+      <guid>https://kokic.github.io/linear-algebra/kontsevich-periodicity</guid>
+      <pubDate>Sun, 16 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Git 过滤分支</title>
+      <link>https://kokic.github.io/daily-surf/git-filter-branch</link>
+      <guid>https://kokic.github.io/daily-surf/git-filter-branch</guid>
+      <pubDate>Sat, 15 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>日经观点</title>
+      <link>https://kokic.github.io/daily-surf/baby-viewpoint</link>
+      <guid>https://kokic.github.io/daily-surf/baby-viewpoint</guid>
+      <pubDate>Tue, 11 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>闭半环的 Conway 条件</title>
+      <link>https://kokic.github.io/linear-algebra/conway-condition</link>
+      <guid>https://kokic.github.io/linear-algebra/conway-condition</guid>
+      <pubDate>Wed, 29 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Fibonacci 抛硬币</title>
+      <link>https://kokic.github.io/daily-surf/fibonacci-flip</link>
+      <guid>https://kokic.github.io/daily-surf/fibonacci-flip</guid>
+      <pubDate>Fri, 24 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>联系</title>
+      <link>https://kokic.github.io/contact</link>
+      <guid>https://kokic.github.io/contact</guid>
+      <pubDate>Sat, 18 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>置换矩阵构造</title>
+      <link>https://kokic.github.io/linear-algebra/permutation-matrix</link>
+      <guid>https://kokic.github.io/linear-algebra/permutation-matrix</guid>
+      <pubDate>Thu, 16 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>曲线弧长计算</title>
+      <link>https://kokic.github.io/mille-plateaux/arc-length</link>
+      <guid>https://kokic.github.io/mille-plateaux/arc-length</guid>
+      <pubDate>Sun, 12 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>椭圆函数</title>
+      <link>https://kokic.github.io/mille-plateaux/elliptic-functions</link>
+      <guid>https://kokic.github.io/mille-plateaux/elliptic-functions</guid>
+      <pubDate>Sun, 12 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>椭圆积分</title>
+      <link>https://kokic.github.io/mille-plateaux/elliptic-integral</link>
+      <guid>https://kokic.github.io/mille-plateaux/elliptic-integral</guid>
+      <pubDate>Sun, 12 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>屏幕右上角的 “FPS GPU CPU 延时”</title>
+      <link>https://kokic.github.io/daily-surf/nvidia-fps-gpu-cpu</link>
+      <guid>https://kokic.github.io/daily-surf/nvidia-fps-gpu-cpu</guid>
+      <pubDate>Thu, 09 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>周期函数的构造</title>
+      <link>https://kokic.github.io/mille-plateaux/periodic-2A</link>
+      <guid>https://kokic.github.io/mille-plateaux/periodic-2A</guid>
+      <pubDate>Tue, 31 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>圆曲线</title>
+      <link>https://kokic.github.io/mille-plateaux/circular-curve</link>
+      <guid>https://kokic.github.io/mille-plateaux/circular-curve</guid>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>圆的参数化</title>
+      <link>https://kokic.github.io/mille-plateaux/circular-parameterization</link>
+      <guid>https://kokic.github.io/mille-plateaux/circular-parameterization</guid>
+      <pubDate>Sat, 28 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Canterbury 曲线的切线与自身的交点</title>
+      <link>https://kokic.github.io/mille-plateaux/canterbury-3A</link>
+      <guid>https://kokic.github.io/mille-plateaux/canterbury-3A</guid>
+      <pubDate>Fri, 27 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>冒泡排序合成置换分解</title>
+      <link>https://kokic.github.io/mille-plateaux/bubble-compose</link>
+      <guid>https://kokic.github.io/mille-plateaux/bubble-compose</guid>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Canterbury 物语</title>
+      <link>https://kokic.github.io/mille-plateaux/canterbury</link>
+      <guid>https://kokic.github.io/mille-plateaux/canterbury</guid>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>古代物理学博士问题</title>
+      <link>https://kokic.github.io/mille-plateaux/canterbury-2A</link>
+      <guid>https://kokic.github.io/mille-plateaux/canterbury-2A</guid>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Fermat 提升法</title>
+      <link>https://kokic.github.io/mille-plateaux/fermat-ascent</link>
+      <guid>https://kokic.github.io/mille-plateaux/fermat-ascent</guid>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>有理点</title>
+      <link>https://kokic.github.io/mille-plateaux/rational-points</link>
+      <guid>https://kokic.github.io/mille-plateaux/rational-points</guid>
+      <pubDate>Thu, 26 Dec 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>意象理论讲义</title>
+      <link>https://kokic.github.io/bib/jin2024topos</link>
+      <guid>https://kokic.github.io/bib/jin2024topos</guid>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Schanuel–Lavendhomme 构造</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/schanuel-lavendhomme</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/schanuel-lavendhomme</guid>
+      <pubDate>Mon, 18 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>栈置换–二叉树同构</title>
+      <link>https://kokic.github.io/data-structure/SPBC</link>
+      <guid>https://kokic.github.io/data-structure/SPBC</guid>
+      <pubDate>Wed, 06 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Rayleigh 商定理</title>
+      <link>https://kokic.github.io/linear-algebra/rayleigh-quotient</link>
+      <guid>https://kokic.github.io/linear-algebra/rayleigh-quotient</guid>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>linear-algebra/rayleigh-quotient-2A</title>
+      <link>https://kokic.github.io/linear-algebra/rayleigh-quotient-2A</link>
+      <guid>https://kokic.github.io/linear-algebra/rayleigh-quotient-2A</guid>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>linear-algebra/rayleigh-quotient-2B</title>
+      <link>https://kokic.github.io/linear-algebra/rayleigh-quotient-2B</link>
+      <guid>https://kokic.github.io/linear-algebra/rayleigh-quotient-2B</guid>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>linear-algebra/rayleigh-quotient-3A</title>
+      <link>https://kokic.github.io/linear-algebra/rayleigh-quotient-3A</link>
+      <guid>https://kokic.github.io/linear-algebra/rayleigh-quotient-3A</guid>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>极坐标出现前人们怎样计算高斯积分</title>
+      <link>https://kokic.github.io/daily-surf/gaussian-integral</link>
+      <guid>https://kokic.github.io/daily-surf/gaussian-integral</guid>
+      <pubDate>Sat, 02 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>二叉树类型</title>
+      <link>https://kokic.github.io/data-structure/binary-tree</link>
+      <guid>https://kokic.github.io/data-structure/binary-tree</guid>
+      <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Blass–Lawvere 定理</title>
+      <link>https://kokic.github.io/data-structure/blass-lawvere</link>
+      <guid>https://kokic.github.io/data-structure/blass-lawvere</guid>
+      <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Fiore–Leinster</title>
+      <link>https://kokic.github.io/data-structure/fiore-leinster</link>
+      <guid>https://kokic.github.io/data-structure/fiore-leinster</guid>
+      <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>七树合一定理</title>
+      <link>https://kokic.github.io/data-structure/seven-trees-in-one</link>
+      <guid>https://kokic.github.io/data-structure/seven-trees-in-one</guid>
+      <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Wolfram 引擎与 WLJS</title>
+      <link>https://kokic.github.io/daily-surf/wolfram-engine</link>
+      <guid>https://kokic.github.io/daily-surf/wolfram-engine</guid>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>染色图</title>
+      <link>https://kokic.github.io/data-structure/CG2A</link>
+      <guid>https://kokic.github.io/data-structure/CG2A</guid>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>删除–收缩公式</title>
+      <link>https://kokic.github.io/data-structure/deletion-contraction</link>
+      <guid>https://kokic.github.io/data-structure/deletion-contraction</guid>
+      <pubDate>Sun, 21 Jul 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>对偶数</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/dual-number</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/dual-number</guid>
+      <pubDate>Tue, 14 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Complex step 微分法</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/complex-step</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/complex-step</guid>
+      <pubDate>Mon, 13 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Kock–Lawvere</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/kock-lawvere</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/kock-lawvere</guid>
+      <pubDate>Mon, 13 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>所有函数都光滑</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/smooths</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/smooths</guid>
+      <pubDate>Mon, 13 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>矩阵闭包</title>
+      <link>https://kokic.github.io/linear-algebra/amtx-2A</link>
+      <guid>https://kokic.github.io/linear-algebra/amtx-2A</guid>
+      <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>分块矩阵的逆</title>
+      <link>https://kokic.github.io/linear-algebra/amtx-3B</link>
+      <guid>https://kokic.github.io/linear-algebra/amtx-3B</guid>
+      <pubDate>Fri, 10 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>链式法则</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/chain-rule</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/chain-rule</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>矩阵表示导出微分运算</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/derived-differential</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/derived-differential</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>综合微分法</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/index</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/index</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>矩阵表示</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/matrix-represent</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/matrix-represent</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>复步微分法 对数值微分误差的修正</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/moler-correction</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/moler-correction</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>数值微分的误差</title>
+      <link>https://kokic.github.io/data-structure/synthetic-differential/numerical</link>
+      <guid>https://kokic.github.io/data-structure/synthetic-differential/numerical</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>自动机与矩阵求逆</title>
+      <link>https://kokic.github.io/linear-algebra/amtx</link>
+      <guid>https://kokic.github.io/linear-algebra/amtx</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>二阶矩阵的逆</title>
+      <link>https://kokic.github.io/linear-algebra/amtx-3A</link>
+      <guid>https://kokic.github.io/linear-algebra/amtx-3A</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>正则语言集</title>
+      <link>https://kokic.github.io/linear-algebra/regular-language</link>
+      <guid>https://kokic.github.io/linear-algebra/regular-language</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>关于半环的注释</title>
+      <link>https://kokic.github.io/linear-algebra/semiring</link>
+      <guid>https://kokic.github.io/linear-algebra/semiring</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>星半环</title>
+      <link>https://kokic.github.io/linear-algebra/star-semiring</link>
+      <guid>https://kokic.github.io/linear-algebra/star-semiring</guid>
+      <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>文件互传</title>
+      <link>https://kokic.github.io/daily-surf/file-transfer</link>
+      <guid>https://kokic.github.io/daily-surf/file-transfer</guid>
+      <pubDate>Wed, 18 May 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>连分式</title>
+      <link>https://kokic.github.io/LF2A</link>
+      <guid>https://kokic.github.io/LF2A</guid>
+      <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>加减乘除不能解二次方程</title>
+      <link>https://kokic.github.io/pearls/GALA</link>
+      <guid>https://kokic.github.io/pearls/GALA</guid>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>生成函数系数</title>
+      <link>https://kokic.github.io/pearls/GF2A</link>
+      <guid>https://kokic.github.io/pearls/GF2A</guid>
+      <pubDate>Sun, 15 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>特殊有理函数展开式的系数</title>
+      <link>https://kokic.github.io/pearls/GF3A</link>
+      <guid>https://kokic.github.io/pearls/GF3A</guid>
+      <pubDate>Sun, 15 Aug 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cauchy–Aczél 论证</title>
+      <link>https://kokic.github.io/pearls/CN2A</link>
+      <guid>https://kokic.github.io/pearls/CN2A</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cauchy 不等式</title>
+      <link>https://kokic.github.io/pearls/CN2B</link>
+      <guid>https://kokic.github.io/pearls/CN2B</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Aczél 不等式</title>
+      <link>https://kokic.github.io/pearls/CN2D</link>
+      <guid>https://kokic.github.io/pearls/CN2D</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Aczél 不等式 Engel 形式</title>
+      <link>https://kokic.github.io/pearls/CN2E</link>
+      <guid>https://kokic.github.io/pearls/CN2E</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hölder 不等式</title>
+      <link>https://kokic.github.io/pearls/HP2A</link>
+      <guid>https://kokic.github.io/pearls/HP2A</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Radon 不等式</title>
+      <link>https://kokic.github.io/pearls/HP2B</link>
+      <guid>https://kokic.github.io/pearls/HP2B</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Aczél–Popoviciu 不等式</title>
+      <link>https://kokic.github.io/pearls/HP2C</link>
+      <guid>https://kokic.github.io/pearls/HP2C</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Aczél–Popoviciu 不等式 Engel 形式</title>
+      <link>https://kokic.github.io/pearls/HP2D</link>
+      <guid>https://kokic.github.io/pearls/HP2D</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Hölder–Popoviciu 论证</title>
+      <link>https://kokic.github.io/pearls/HP2E</link>
+      <guid>https://kokic.github.io/pearls/HP2E</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>广义 Radon 不等式</title>
+      <link>https://kokic.github.io/pearls/HP3A</link>
+      <guid>https://kokic.github.io/pearls/HP3A</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>次可加归纳</title>
+      <link>https://kokic.github.io/pearls/SL2A</link>
+      <guid>https://kokic.github.io/pearls/SL2A</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>次可乘归纳</title>
+      <link>https://kokic.github.io/pearls/SL2B</link>
+      <guid>https://kokic.github.io/pearls/SL2B</guid>
+      <pubDate>Fri, 25 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>辗转相除法步数估计</title>
+      <link>https://kokic.github.io/daily-surf/euclid-step</link>
+      <guid>https://kokic.github.io/daily-surf/euclid-step</guid>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>代数数可数</title>
+      <link>https://kokic.github.io/pearls/CAN0</link>
+      <guid>https://kokic.github.io/pearls/CAN0</guid>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Chowla 定理与 e-变换</title>
+      <link>https://kokic.github.io/pearls/CHOW</link>
+      <guid>https://kokic.github.io/pearls/CHOW</guid>
+      <pubDate>Sat, 25 Jul 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>格点三元组计数</title>
+      <link>https://kokic.github.io/pearls/ECLA</link>
+      <guid>https://kokic.github.io/pearls/ECLA</guid>
+      <pubDate>Sun, 17 May 2020 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>循环幂和不等式</title>
+      <link>https://kokic.github.io/pearls/CPSI</link>
+      <guid>https://kokic.github.io/pearls/CPSI</guid>
+      <pubDate>Thu, 20 Jun 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Laisant–Young 不等式</title>
+      <link>https://kokic.github.io/mille-plateaux/laisant-young</link>
+      <guid>https://kokic.github.io/mille-plateaux/laisant-young</guid>
+      <pubDate>Sun, 19 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>增函数的 Young 不等式</title>
+      <link>https://kokic.github.io/pearls/YL4A</link>
+      <guid>https://kokic.github.io/pearls/YL4A</guid>
+      <pubDate>Sun, 19 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Bernoulli 不等式</title>
+      <link>https://kokic.github.io/pearls/YL3B</link>
+      <guid>https://kokic.github.io/pearls/YL3B</guid>
+      <pubDate>Wed, 15 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>加权算术平均–几何平均不等式</title>
+      <link>https://kokic.github.io/pearls/YL3C</link>
+      <guid>https://kokic.github.io/pearls/YL3C</guid>
+      <pubDate>Wed, 15 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Young 引理</title>
+      <link>https://kokic.github.io/pearls/YL2A</link>
+      <guid>https://kokic.github.io/pearls/YL2A</guid>
+      <pubDate>Tue, 14 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Young 引理</title>
+      <link>https://kokic.github.io/pearls/YL2B</link>
+      <guid>https://kokic.github.io/pearls/YL2B</guid>
+      <pubDate>Tue, 14 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Young 不等式</title>
+      <link>https://kokic.github.io/pearls/YL3A</link>
+      <guid>https://kokic.github.io/pearls/YL3A</guid>
+      <pubDate>Tue, 14 May 2019 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>代数学方法 卷一：基础架构</title>
+      <link>https://kokic.github.io/bib/methods-of-algebra-1</link>
+      <guid>https://kokic.github.io/bib/methods-of-algebra-1</guid>
+      <pubDate>Fri, 16 Nov 2018 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Seven trees in one</title>
+      <link>https://kokic.github.io/bib/blass1995seven</link>
+      <guid>https://kokic.github.io/bib/blass1995seven</guid>
+      <pubDate>Fri, 20 May 1994 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Francis William Lawvere</title>
+      <link>https://kokic.github.io/person/william-lawvere</link>
+      <guid>https://kokic.github.io/person/william-lawvere</guid>
+      <pubDate>Tue, 09 Feb 1937 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>George David Birkhoff</title>
+      <link>https://kokic.github.io/person/george-david-birkhoff</link>
+      <guid>https://kokic.github.io/person/george-david-birkhoff</guid>
+      <pubDate>Fri, 21 Mar 1884 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Ernst Eduard Kummer</title>
+      <link>https://kokic.github.io/person/ernst-kummer</link>
+      <guid>https://kokic.github.io/person/ernst-kummer</guid>
+      <pubDate>Mon, 29 Jan 1810 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Synthetic differential geometry</title>
+      <link>https://kokic.github.io/bib/kock2006synthetic</link>
+      <guid>https://kokic.github.io/bib/kock2006synthetic</guid>
+      <pubDate>2006</pubDate>
+    </item>
+    <item>
+      <title>Stack permutations and an order relation for binary trees</title>
+      <link>https://kokic.github.io/bib/hille1982stack</link>
+      <guid>https://kokic.github.io/bib/hille1982stack</guid>
+      <pubDate>1982</pubDate>
+    </item>
+    <item>
+      <title>书单</title>
+      <link>https://kokic.github.io/books</link>
+      <guid>https://kokic.github.io/books</guid>
+    </item>
+    <item>
+      <title>CC BY-NC-SA 4.0</title>
+      <link>https://kokic.github.io/cc</link>
+      <guid>https://kokic.github.io/cc</guid>
+    </item>
+    <item>
+      <title>Daily Surf</title>
+      <link>https://kokic.github.io/daily-surf/index</link>
+      <guid>https://kokic.github.io/daily-surf/index</guid>
+    </item>
+    <item>
+      <title>数据与可计算结构</title>
+      <link>https://kokic.github.io/data-structure/index</link>
+      <guid>https://kokic.github.io/data-structure/index</guid>
+    </item>
+    <item>
+      <title>Pratt Parsing</title>
+      <link>https://kokic.github.io/data-structure/pratt</link>
+      <guid>https://kokic.github.io/data-structure/pratt</guid>
+    </item>
+    <item>
+      <title>回声</title>
+      <link>https://kokic.github.io/index</link>
+      <guid>https://kokic.github.io/index</guid>
+    </item>
+    <item>
+      <title>Kokic Liu</title>
+      <link>https://kokic.github.io/kokic</link>
+      <guid>https://kokic.github.io/kokic</guid>
+    </item>
+    <item>
+      <title>分裂域</title>
+      <link>https://kokic.github.io/linear-algebra/AD2A</link>
+      <guid>https://kokic.github.io/linear-algebra/AD2A</guid>
+    </item>
+    <item>
+      <title>将 p 视为 E[x] 中的多项式</title>
+      <link>https://kokic.github.io/linear-algebra/AD2B</link>
+      <guid>https://kokic.github.io/linear-algebra/AD2B</guid>
+    </item>
+    <item>
+      <title>有限中心单 k-代数的分裂域</title>
+      <link>https://kokic.github.io/linear-algebra/AD2C</link>
+      <guid>https://kokic.github.io/linear-algebra/AD2C</guid>
+    </item>
+    <item>
+      <title>线性代数杂记</title>
+      <link>https://kokic.github.io/linear-algebra/index</link>
+      <guid>https://kokic.github.io/linear-algebra/index</guid>
+    </item>
+    <item>
+      <title>链接</title>
+      <link>https://kokic.github.io/links</link>
+      <guid>https://kokic.github.io/links</guid>
+    </item>
+    <item>
+      <title>选择公理</title>
+      <link>https://kokic.github.io/mille-plateaux/AC2C</link>
+      <guid>https://kokic.github.io/mille-plateaux/AC2C</guid>
+    </item>
+    <item>
+      <title>良序原理</title>
+      <link>https://kokic.github.io/mille-plateaux/AC2D</link>
+      <guid>https://kokic.github.io/mille-plateaux/AC2D</guid>
+    </item>
+    <item>
+      <title>Banach–Tarski 悖论</title>
+      <link>https://kokic.github.io/mille-plateaux/AC2E</link>
+      <guid>https://kokic.github.io/mille-plateaux/AC2E</guid>
+    </item>
+    <item>
+      <title>千高原</title>
+      <link>https://kokic.github.io/mille-plateaux/index</link>
+      <guid>https://kokic.github.io/mille-plateaux/index</guid>
+    </item>
+    <item>
+      <title>j-不变量</title>
+      <link>https://kokic.github.io/mille-plateaux/j-invariant</link>
+      <guid>https://kokic.github.io/mille-plateaux/j-invariant</guid>
+    </item>
+    <item>
+      <title>Weierstraß 的灵感来源</title>
+      <link>https://kokic.github.io/mille-plateaux/periodic-2B</link>
+      <guid>https://kokic.github.io/mille-plateaux/periodic-2B</guid>
+    </item>
+    <item>
+      <title>双周期函数</title>
+      <link>https://kokic.github.io/mille-plateaux/periodic-2C</link>
+      <guid>https://kokic.github.io/mille-plateaux/periodic-2C</guid>
+    </item>
+    <item>
+      <title>q 记号</title>
+      <link>https://kokic.github.io/mille-plateaux/q-denote</link>
+      <guid>https://kokic.github.io/mille-plateaux/q-denote</guid>
+    </item>
+    <item>
+      <title>百万富翁</title>
+      <link>https://kokic.github.io/mille-plateaux/stocking</link>
+      <guid>https://kokic.github.io/mille-plateaux/stocking</guid>
+    </item>
+    <item>
+      <title>Titu 引理</title>
+      <link>https://kokic.github.io/pearls/CN2C</link>
+      <guid>https://kokic.github.io/pearls/CN2C</guid>
+    </item>
+    <item>
+      <title>多项式高度</title>
+      <link>https://kokic.github.io/pearls/CNA1</link>
+      <guid>https://kokic.github.io/pearls/CNA1</guid>
+    </item>
+    <item>
+      <title>Pearls</title>
+      <link>https://kokic.github.io/pearls/index</link>
+      <guid>https://kokic.github.io/pearls/index</guid>
+    </item>
+    <item>
+      <title>Dustin Clausen</title>
+      <link>https://kokic.github.io/person/dustin-clausen</link>
+      <guid>https://kokic.github.io/person/dustin-clausen</guid>
+    </item>
+    <item>
+      <title>Yuniversal Y. Creeper 🥐</title>
+      <link>https://kokic.github.io/person/yuni</link>
+      <guid>https://kokic.github.io/person/yuni</guid>
+    </item>
+    <item>
+      <title>翠玉录</title>
+      <link>https://kokic.github.io/smaragdina/index</link>
+      <guid>https://kokic.github.io/smaragdina/index</guid>
+    </item>
+  </channel>
+</rss>

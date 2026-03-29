@@ -1,3 +1,0 @@
-def encode : Tree → String
-  | .node l r => "1" ++ encode l ++ encode r
-  | _ => "0"

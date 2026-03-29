@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>闭半环的 Conway 条件</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
+<meta name="viewport" content="width=device-width"><title>闭半环的 Conway 条件</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
@@ -24,7 +24,7 @@
     });
   });
 </script>
-<link rel="stylesheet" href="/main.css"><style>
+<link rel="stylesheet" href="https://kokic.github.io/main.css"><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -70,7 +70,7 @@
     --article-max-width: 90ex !important;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/index'" title="回声">« <span lang="zh">回声</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='https://kokic.github.io/index'" title="回声">« <span lang="zh">回声</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="https://kokic.github.io/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://www.forester-notes.org/ -->
@@ -188,7 +188,7 @@
 <theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">闭半环的</span> Conway <span lang="zh">条件</span> <a class="slug" href="/linear-algebra/conway-condition">[conway-condition]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/conway-condition.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Exegesis"><details open><summary id="linear-algebra-conway-condition"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">闭半环的</span> Conway <span lang="zh">条件</span> <a class="slug" href="https://kokic.github.io/linear-algebra/conway-condition">[conway-condition]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/conway-condition.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">January 29, 2025</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\Q{\mathbf{Q}}$</p>
 <p>Conway <span lang="zh">证明了星半环矩阵可替换的条件为</span>, <span lang="zh">至少满足以下三个等式</span></p>
 <p>$\quad 1.$ $a \cdot 0 = 0 \cdot a = 0$. <br />
@@ -198,13 +198,13 @@ $\quad 3.$ $(a+b)^* = (a^* b)^* a^*$.</p>
 <p>$\quad (i).~$ <span lang="zh">对于星半环</span> $S$, <span lang="zh">星半环矩阵</span> $a \in S^{2\times 2}$ <span lang="zh">满足不动点方程</span> $1+aa^* = a^*$. <span lang="zh">并且这里实际上只需要对上三角或下三角矩阵验证即可</span>. <br />
 $\quad (ii).$ <span lang="zh">对于星半环</span> $S$ <span lang="zh">和每个</span> $n \ge 0$, <span lang="zh">星半环矩阵</span> $a \in S^{n\times n}$ <span lang="zh">满足不动点方程</span> $1+aa^* = a^*$.</p>
 <p><span lang="zh">每个闭半环都是</span> Conway <span lang="zh">半环</span>, <span lang="zh">反过来则未必</span>, <span lang="zh">如</span> Conway <span lang="zh">半环</span> $\Q_{\ge 0}\cup \{\infty\}$ <span lang="zh">就不是闭半环</span>.</p>
-</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-amtx-2A"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">矩阵闭包</span> <a class="slug" href="/linear-algebra/amtx-2A">[amtx-2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/amtx-2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+</details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon="Exegesis"><details ><summary id="linear-algebra-amtx-2A"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">矩阵闭包</span> <a class="slug" href="https://kokic.github.io/linear-algebra/amtx-2A">[amtx-2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/amtx-2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 10, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\Mat{\operatorname{Mat}}$
 $\gdef\R{\mathbf{R}}$
 $\gdef\str#1{{\footnotesize #1}}$
 $\gdef\sstr#1{~{\footnotesize #1}~}$</p>
-<p><span lang="zh">记</span> $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. <span lang="zh">从现在起</span>, <span lang="zh">我们对于</span> $\R_{\ge 0}^* ~ (= \mathcal{Q})$ <span lang="zh">当中的许多有用的观察可以安全地转移到</span> $\R ~ (= R)$. <span lang="zh">根据</span> <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]"><span lang="zh">半环注释</span></a></span>, <span lang="zh">我们优先考虑</span> $\Mat_{n \times n}(\mathcal{Q})$, <span lang="zh">从最小的非平凡情况</span> $n=2$ <span lang="zh">开始</span>, <span lang="zh">由于我们的目的是计算矩阵的逆</span>, <span lang="zh">故取这个半环的可逆子集也即幺半群</span> $\Mat_{n \times n}(\mathcal{Q})^\times$,  <span lang="zh">其中的元素会形如</span></p>
+<p><span lang="zh">记</span> $\R_{\ge 0}^* = \R_{\ge 0} \cup \{\infty\}$. <span lang="zh">从现在起</span>, <span lang="zh">我们对于</span> $\R_{\ge 0}^* ~ (= \mathcal{Q})$ <span lang="zh">当中的许多有用的观察可以安全地转移到</span> $\R ~ (= R)$. <span lang="zh">根据</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]"><span lang="zh">半环注释</span></a></span>, <span lang="zh">我们优先考虑</span> $\Mat_{n \times n}(\mathcal{Q})$, <span lang="zh">从最小的非平凡情况</span> $n=2$ <span lang="zh">开始</span>, <span lang="zh">由于我们的目的是计算矩阵的逆</span>, <span lang="zh">故取这个半环的可逆子集也即幺半群</span> $\Mat_{n \times n}(\mathcal{Q})^\times$,  <span lang="zh">其中的元素会形如</span></p>
 <p>$$
 M \spaces= \begin{pmatrix} a &amp; b \\ c &amp; d \end{pmatrix}, \quad
 ad - bc \spaces\neq 0
@@ -213,7 +213,7 @@ $$</p>
 <p>$$
 (1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
 $$</p>
-<p><span lang="zh">此处的</span> $1-M$ <span lang="zh">非常微妙</span>, <span lang="zh">因为一般情况下它只能存在于</span> $\Mat_{n \times n}(R)$ <span lang="zh">而非</span> $\Mat_{n \times n}(\mathcal{Q})$.  <span lang="zh">如果我们暂时忽略这个问题</span>, <span lang="zh">那么根据</span> <span class="link local"><a href="/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]"><span lang="zh">半环注释</span></a></span>, <span lang="zh">由于矩阵的加法直接就是</span> $\mathcal{Q}$ <span lang="zh">或者</span> $R$ <span lang="zh">的加法</span>, <span lang="zh">而乘法来自线性空间</span>. <span lang="zh">此时</span> $M$ <span lang="zh">与</span> $M^*$ <span lang="zh">之间存在一种直接的关系</span>, <span lang="zh">可以说成</span> $(M^*)_{ij} = $ <span lang="zh">有向图</span> $G$ <span lang="zh">中所有</span> $i \to j$ <span lang="zh">的路径</span>.</p>
+<p><span lang="zh">此处的</span> $1-M$ <span lang="zh">非常微妙</span>, <span lang="zh">因为一般情况下它只能存在于</span> $\Mat_{n \times n}(R)$ <span lang="zh">而非</span> $\Mat_{n \times n}(\mathcal{Q})$.  <span lang="zh">如果我们暂时忽略这个问题</span>, <span lang="zh">那么根据</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]"><span lang="zh">半环注释</span></a></span>, <span lang="zh">由于矩阵的加法直接就是</span> $\mathcal{Q}$ <span lang="zh">或者</span> $R$ <span lang="zh">的加法</span>, <span lang="zh">而乘法来自线性空间</span>. <span lang="zh">此时</span> $M$ <span lang="zh">与</span> $M^*$ <span lang="zh">之间存在一种直接的关系</span>, <span lang="zh">可以说成</span> $(M^*)_{ij} = $ <span lang="zh">有向图</span> $G$ <span lang="zh">中所有</span> $i \to j$ <span lang="zh">的路径</span>.</p>
 <p><figure><img src="/linear-algebra/amtx-2B.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
 <p><span lang="zh">具体的说</span>, <span lang="zh">固定下标</span> $i,j$, <span lang="zh">分量</span> $(M^*)_{ij}$ <span lang="zh">的值会等于以</span> $M$, $M^*$ <span lang="zh">为结点</span>, $M_{ij}$ <span lang="zh">为箭头的</span> $G$ <span lang="zh">中所有</span> $i \to j$ <span lang="zh">的路径</span> $\hom(i,j)$ <span lang="zh">的正则表达式</span>. <span lang="zh">并且从这些路径中我们也能够写出</span> $\hom(i,j)$ <span lang="zh">对应的正则表达式</span>, <span lang="zh">这就为计算</span> $(M^*)_{ij}$ <span lang="zh">提供了可能</span>.</p>
 <p>$$\begin{aligned}
@@ -229,5 +229,5 @@ M^* \spaces= \begin{pmatrix}
 d^* c \alpha &amp; \quad d^* + d^*c \alpha b d^* \tag{1.1}
 \end{pmatrix}
 $$</p>
-<p><span lang="zh">这里有两个不应忽视的问题</span>. <span lang="zh">其一</span>, <span lang="zh">虽然我们考虑的是</span> $\Mat_{n \times n}(\mathcal{Q})$ <span lang="zh">上的</span> Kleene <span lang="zh">星运算</span> $\square^*$, <span lang="zh">但右侧的表达式中涉及了</span> $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ <span lang="zh">上的</span> Kleene <span lang="zh">星运算</span> $\square^*$, <span lang="zh">根据之前的内容</span>, <span lang="zh">我们可以自然地确定它就是</span> $a \mapsto \frac1{1-a}$. <span lang="zh">这允许我们从</span> $M$ <span lang="zh">的各个分量</span> $M_{ij}$ <span lang="zh">计算出</span> $M^*$. <span lang="zh">更加重要的是</span>, <span lang="zh">由于</span> $\Mat_{n \times n}(\mathcal{Q})$ <span lang="zh">也能通过这样的方式构成闭半环</span>, <span lang="zh">这实际上允许我们将</span> $(1.1)$ <span lang="zh">的适用范围拓展到任意大小的方阵</span> $\Mat_{n \times n}(\mathcal{Q})$, <span lang="zh">此时的</span> $a,b,c,d$ <span lang="zh">能够选取为</span> $M$ <span lang="zh">的分块矩阵</span>. <span lang="zh">其二</span>, $d^* + d^*c \alpha b d^*$ <span lang="zh">在一般的星半环中不能直接替换为</span> $(d+ca^*b)^*$, <span lang="zh">可替换的前提被称为</span> <span class="link local"><a href="/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway <span lang="zh">条件</span></a></span>.</p>
+<p><span lang="zh">这里有两个不应忽视的问题</span>. <span lang="zh">其一</span>, <span lang="zh">虽然我们考虑的是</span> $\Mat_{n \times n}(\mathcal{Q})$ <span lang="zh">上的</span> Kleene <span lang="zh">星运算</span> $\square^*$, <span lang="zh">但右侧的表达式中涉及了</span> $\mathcal{Q} ~ (= \R_{\ge 0}^*)$ <span lang="zh">上的</span> Kleene <span lang="zh">星运算</span> $\square^*$, <span lang="zh">根据之前的内容</span>, <span lang="zh">我们可以自然地确定它就是</span> $a \mapsto \frac1{1-a}$. <span lang="zh">这允许我们从</span> $M$ <span lang="zh">的各个分量</span> $M_{ij}$ <span lang="zh">计算出</span> $M^*$. <span lang="zh">更加重要的是</span>, <span lang="zh">由于</span> $\Mat_{n \times n}(\mathcal{Q})$ <span lang="zh">也能通过这样的方式构成闭半环</span>, <span lang="zh">这实际上允许我们将</span> $(1.1)$ <span lang="zh">的适用范围拓展到任意大小的方阵</span> $\Mat_{n \times n}(\mathcal{Q})$, <span lang="zh">此时的</span> $a,b,c,d$ <span lang="zh">能够选取为</span> $M$ <span lang="zh">的分块矩阵</span>. <span lang="zh">其二</span>, $d^* + d^*c \alpha b d^*$ <span lang="zh">在一般的星半环中不能直接替换为</span> $(d+ca^*b)^*$, <span lang="zh">可替换的前提被称为</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/conway-condition" title="闭半环的 Conway 条件 [linear-algebra/conway-condition]">Conway <span lang="zh">条件</span></a></span>.</p>
 </details></section></details></section></footer></article></div></body></html>

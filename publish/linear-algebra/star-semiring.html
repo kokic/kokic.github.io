@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width"><title>星半环</title><link rel="icon" href="/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
+<meta name="viewport" content="width=device-width"><title>星半环</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
@@ -24,7 +24,7 @@
     });
   });
 </script>
-<link rel="stylesheet" href="/main.css"><style>
+<link rel="stylesheet" href="https://kokic.github.io/main.css"><style>
 @media only screen and (min-width: 1000px) {
   #grid-wrapper { grid-template-columns: var(--article-max-width) var(--toc-max-width); }
   nav#toc { max-width: max-content; }
@@ -70,7 +70,7 @@
     --article-max-width: 90ex !important;
   }
 </style>
-</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='/linear-algebra/amtx'" title="自动机与矩阵求逆">« <span lang="zh">自动机与矩阵求逆</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
+</head><body><header class="header"><nav class="nav"><div class="logo"><span class="cursor-pointer" onclick="window.location.href='https://kokic.github.io/linear-algebra/amtx'" title="自动机与矩阵求逆">« <span lang="zh">自动机与矩阵求逆</span></span></div></nav></header><div id="grid-wrapper" style="grid-template-areas: 'article toc';" data-base-url="https://kokic.github.io/"><nav id="toc" class="sticky-nav mobile-sticky-nav"><div id="theme-options"><!-- Copyright (c) 2025 Kodama Project. All rights reserved. -->
 <!-- Released under the Apache-2.0 license as described in the file LICENSE. -->
 <!-- Authors: Kokic (@kokic) -->
 <!-- Inspired by https://www.forester-notes.org/ -->
@@ -188,12 +188,12 @@
 <theme-option name="printer">printer</theme-option>
 </div></nav>
 
-<article><section class="block" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition. </span><span lang="zh">星半环</span> <a class="slug" href="/linear-algebra/star-semiring">[star-semiring]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/star-semiring.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary>
+<article><section class="block" data-taxon="Definition"><details open><summary id="linear-algebra-star-semiring"><header><h1><span class="taxon">Definition. </span><span lang="zh">星半环</span> <a class="slug" href="https://kokic.github.io/linear-algebra/star-semiring">[star-semiring]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/linear-algebra/star-semiring.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">May 9, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"></li></ul></div></header></summary>
 <p>$\gdef\spaces#1{~ #1 ~}$
 $\gdef\quads#1{\quad #1 \quad}$</p>
 <p>$\gdef\Q{\mathbf{Q}}$
 $\gdef\R{\mathbf{R}}$</p>
-<p><span lang="zh">仅仅只是为半环添加闭包或者说</span> Kleene <span lang="zh">星运算</span>, <span lang="zh">所得到的结构称为星半环</span>. <span lang="zh">与</span> <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">类似</span>, <span lang="zh">星半环也通过递归公理定义星运算</span>. <span lang="zh">但是</span> <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">所要求的幂等加法对于很多数字系统如</span> $\Q, \R$ <span lang="zh">而言都难以实现</span>, <span lang="zh">因为这破坏了</span> Archimedes <span lang="zh">性</span>. <span lang="zh">如果我们取消幂等加法这一点</span>, <span lang="zh">此时所得到的结构是完备星半环或称为闭半环</span>, <span lang="zh">因为</span> <span class="link local"><a href="/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">本身还允许了无穷和</span> $\sum_{i \ge 0}a^i$ <span lang="zh">以及</span> $a^*$ <span lang="zh">的存在性</span>, <span lang="zh">这就是称它</span> “<span lang="zh">完备</span>” <span lang="zh">或者</span> “<span lang="zh">闭</span>” <span lang="zh">的原因</span>.</p>
+<p><span lang="zh">仅仅只是为半环添加闭包或者说</span> Kleene <span lang="zh">星运算</span>, <span lang="zh">所得到的结构称为星半环</span>. <span lang="zh">与</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">类似</span>, <span lang="zh">星半环也通过递归公理定义星运算</span>. <span lang="zh">但是</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">所要求的幂等加法对于很多数字系统如</span> $\Q, \R$ <span lang="zh">而言都难以实现</span>, <span lang="zh">因为这破坏了</span> Archimedes <span lang="zh">性</span>. <span lang="zh">如果我们取消幂等加法这一点</span>, <span lang="zh">此时所得到的结构是完备星半环或称为闭半环</span>, <span lang="zh">因为</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/regular-language" title="正则语言集 [linear-algebra/regular-language]">Kleene <span lang="zh">代数</span></a></span> <span lang="zh">本身还允许了无穷和</span> $\sum_{i \ge 0}a^i$ <span lang="zh">以及</span> $a^*$ <span lang="zh">的存在性</span>, <span lang="zh">这就是称它</span> “<span lang="zh">完备</span>” <span lang="zh">或者</span> “<span lang="zh">闭</span>” <span lang="zh">的原因</span>.</p>
 <p><span lang="zh">下面来介绍一个重要的例子</span>. <span lang="zh">非负扩展实数集</span> $\R_{\ge 0} \cup \{\infty\}$ <span lang="zh">也即</span> $\R_{\ge 0}$ <span lang="zh">的单点紧化连同实数的通常加法和乘法构成闭半环</span>, <span lang="zh">其中</span> $a \ne 1$ <span lang="zh">时</span> $a^* = \frac1{1-a}$, <span lang="zh">否则</span> $a^* = \infty$. <span lang="zh">注意这个结构中不存在非零的加法逆</span> $-a$, <span lang="zh">而乘法逆</span> $a^{-1}$ <span lang="zh">则是未必存在</span>. $\frac1{1-a}$ <span lang="zh">应当被认为是一个整体记号</span>, <span lang="zh">或者说它实际上是无穷和</span> $1 + a + a^2 + \cdots$ <span lang="zh">在</span> $\R_{\ge 0}$ <span lang="zh">被添入全体非零加法逆</span> $\R_{\lt0}$ <span lang="zh">后所得的环</span> $\R$ <span lang="zh">中于</span> $(-1,1)$ <span lang="zh">处收敛的结果</span>. <span lang="zh">然后由于</span></p>
 <p>$$
 \R_{\ge 0} ~ \cap ~ \{a &lt; 1 : a \in \R_{\ge 0}\} \quads= [0, 1) \spaces\subset (-1,1)
