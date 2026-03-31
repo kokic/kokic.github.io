@@ -1,0 +1,131 @@
+
+#import "../_lib/kodama.typ": *
+
+#show: kodama
+
+#set text(font: ("Inria Sans", "HarmonyOS Sans SC"))
+#show raw: set text(font: "Maple Mono NF")
+
+#metadata((title: "完全用 Windows 工作", date: "March 31, 2026", author: local("/kokic.md")))
+
+此文为 Windows 系统使用技巧收集, 且侧重介绍微软对普通用户隐藏的实用工具.
+
+#subtree(
+  title: [资源管理器字太小].text,
+  numbering: true,
+)[
+  自 Windows 8.1 起, 资源管理器乃至系统 UI 文字样式已经不能用正常手段调整. 开源软件 #external("https://github.com/Tatsu-syo/noMeiryoUI")[No!! MeiryoUI] 重新启用了自定义 Windows 用户界面字体的功能.
+]
+
+#subtree(
+  title: [语音转文字].text,
+  numbering: true,
+)[
+Windows 10 和 Windows 11 都是 `Win + H` 打开工具栏. Windows 10 使用内置的离线语音识别功能, Windows 11 使用由 Azure 语音服务提供支持的在线语音识别.
+]
+
+#subtree(
+  title: [磁盘占用分析].text,
+  numbering: true,
+)[
+  安装 #external("https://www.uderzo.it/main_products/space_sniffer/index.html")[SpaceSniffer] 或者 #external("https://windirstat.net/")[WinDirStat]. 前者 UI 上更舒适, 后者分析速度更快.
+]
+
+#subtree(
+  title: [PowerShell].text,
+  numbering: true,
+)[
+#subtree(title: [开启菜单式路径补全].text, numbering: true)[
+用 `$PROFILE` 找到 PowerShell 的的配置文件路径, 然后向其中添加
+
+```ps
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+```
+]
+
+#subtree(
+  title: [启动太慢].text,
+  numbering: true,
+)[
+#let nushell = external("https://www.nushell.sh")[Nushell]
+
+换成 #nushell.
+
+安装 #nushell 后, 如果 Windows Terminal 新增 profile 的选项内没有, 则需要重启 Windows Terminal 并等待一定时间. 如果手动安装 #nushell 或其他原因导致 profile 没被自动添加, 可在 Windows Terminal 设置左下角处找到 "Open JSON file", 编辑 `profiles > list` 完成 profile 添加.
+]
+
+]
+
+#subtree(
+  title: [查看文件被哪些进程使用].text,
+  numbering: true,
+)[
+
+#let procexp = external("https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer")[Process Explorer]
+
+安装 #procexp 然后 `Find > Find Handle or DLL`, 点击检索出的条目定位对应进程, 然后可将进程终止. 除了 #procexp, #external("https://learn.microsoft.com/en-us/sysinternals/")[Sysinternals] 页面也包含其他 Windows 实用工具, 此处不再详细介绍.
+
+]
+
+#subtree(title: [清理所有无响应程序].text, numbering: true)[
+在 Windows Terminal 执行如下指令.
+
+```ps
+taskkill /F /FI "STATUS eq NOT RESPONDING"
+```
+]
+
+#subtree(
+  title: [目录符号链接].text,
+  numbering: true,
+)[
+```
+mklink /D link target
+```
+
+当系统识别到符号链接 `link` 时, 它会跳转到符号链接所指向的目标 `target` 中去. 利用此功能可以将不能改变位置的文件夹移动到其他位置.
+]
+
+#subtree(title: [完全控制面板].text, numbering: true)[
+新建文件夹, 名为
+
+```ps
+.{ED7BA470-8E54-465E-825C-99712043E01C}
+```
+
+然后打开即可看到属性设置列表.
+]
+
+#subtree(
+  title: [低内存极端优化].text,
+  numbering: true,
+)[
+
+#subtree(
+  title: [完全停用 Windows Defender].text,
+  numbering: true,
+)[`gpedit.msc > 计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒`]
+
+#subtree(
+  title: [关闭 Antimalware Service Executable].text,
+  numbering: true,
+)[
++ 先通过 `设置 > 隐私和安全性 > Windows 安全中心 > 病毒和威胁防护` 关闭篡改保护 [Tamper Protection].
++ 随后修改组策略, `Win + R` 输入 `gpedit.msc` 进入 `计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒`, 找到 `关闭 Microsoft Defender 防病毒`, 设置为 "已启用" 并确定.
++ 重启设备.
+]
+
+#subtree(title: [调整外观性能].text, numbering: true)[
+`此电脑 > 属性 > 高级系统设置 > 性能 > 设置`
+
+调整为最佳性能. 此设置将关闭所有窗口阴影和边缘平滑.
+]
+
+#subtree(title: [卸载冗余组件].text, numbering: true)[
+PowerShell 执行
+```
+winget uninstall "Windows Web Experience Pack"
+```
+]
+
+]
