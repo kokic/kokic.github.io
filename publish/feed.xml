@@ -11,8 +11,8 @@
       <link>https://kokic.github.io/daily-surf/windows-skill</link>
       <guid isPermaLink="false">daily-surf/windows-skill</guid>
       <pubDate>Tue, 31 Mar 2026 00:00:00 GMT</pubDate>
-      <description>&lt;h1&gt;完全用 Windows 工作 [windows-skill][edit]&lt;/h1&gt;March 31, 2026Kokic Liu 此文为 Windows 系统使用技巧收集, 且侧重介绍微软对普通用户隐藏的实用工具. &lt;h1&gt; 1. 资源管理器字太小 [#][edit]&lt;/h1&gt;自 Windows 8.1 起, 资源管理器乃至系统 UI 文字样式已经不能用正常手段调整. 开源软件 No!! MeiryoUI 重新启用了自定义 Windows 用户界面字体的功能.&lt;h1&gt; 2. 语音转文字 [#][edit]&lt;/h1&gt;Windows 10 和 ...</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon=""><details open><summary id="daily-surf-windows-skill"><header><h1><span class="taxon"></span>完全用 Windows 工作 <a class="slug" href="https://kokic.github.io/daily-surf/windows-skill">[windows-skill]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 31, 2026</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">Kokic Liu</a></span></li></ul></div></header></summary>
+      <description>&lt;h1&gt;完全用 Windows 工作 [windows-skill][edit]&lt;/h1&gt;March 31, 2026kokic 此文为 Windows 系统使用技巧收集, 且侧重介绍微软对普通用户隐藏的实用工具. &lt;h1&gt; 1. 资源管理器字太小 [#][edit]&lt;/h1&gt;自 Windows 8.1 起, 资源管理器乃至系统 UI 文字样式已经不能用正常手段调整. 开源软件 No!! MeiryoUI 重新启用了自定义 Windows 用户界面字体的功能.&lt;h1&gt; 2. 语音转文字 [#][edit]&lt;/h1&gt;Windows 10 和 Wind...</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon=""><details open><summary id="daily-surf-windows-skill"><header><h1><span class="taxon"></span>完全用 Windows 工作 <a class="slug" href="https://kokic.github.io/daily-surf/windows-skill">[windows-skill]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 31, 2026</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
   <body>
     
     <p>此文为 Windows 系统使用技巧收集, 且侧重介绍微软对普通用户隐藏的实用工具.</p>
-    <section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:1"><header><h1><span class="taxon"> 1. </span>资源管理器字太小 <a class="hash" href="#daily-surf-windows-skill:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>自 Windows 8.1 起, 资源管理器乃至系统 UI 文字样式已经不能用正常手段调整. 开源软件 <a href="https://github.com/Tatsu-syo/noMeiryoUI"><span style="text-decoration: underline">No!! MeiryoUI</span></a> 重新启用了自定义 Windows 用户界面字体的功能.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:2"><header><h1><span class="taxon"> 2. </span>语音转文字 <a class="hash" href="#daily-surf-windows-skill:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>Windows 10 和 Windows 11 都是 <code>Win + H</code> 打开工具栏. Windows 10 使用内置的离线语音识别功能, Windows 11 使用由 Azure 语音服务提供支持的在线语音识别.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:3"><header><h1><span class="taxon"> 3. </span>磁盘占用分析 <a class="hash" href="#daily-surf-windows-skill:3">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>安装 <a href="https://www.uderzo.it/main_products/space_sniffer/index.html"><span style="text-decoration: underline">SpaceSniffer</span></a> 或者 <a href="https://windirstat.net/"><span style="text-decoration: underline">WinDirStat</span></a>. 前者 UI 上更舒适, 后者分析速度更快.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:4"><header><h1><span class="taxon"> 4. </span>PowerShell <a class="hash" href="#daily-surf-windows-skill:4">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:5"><header><h1><span class="taxon"> 4.1. </span>开启菜单式路径补全 <a class="hash" href="#daily-surf-windows-skill:5">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>用 <code>$PROFILE</code> 找到 PowerShell 的的配置文件路径, 然后向其中添加</p><pre><code data-lang="ps">Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete</code></pre></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:6"><header><h1><span class="taxon"> 4.2. </span>启动太慢 <a class="hash" href="#daily-surf-windows-skill:6">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>换成 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a>.</p><p>安装 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a> 后, 如果 Windows Terminal 新增 profile 的选项内没有, 则需要重启 Windows Terminal 并等待一定时间. 如果手动安装 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a> 或其他原因导致 profile 没被自动添加, 可在 Windows Terminal 设置左下角处找到 “Open JSON file”, 编辑 <code>profiles > list</code> 完成 profile 添加.</p></details></section></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:7"><header><h1><span class="taxon"> 5. </span>查看文件被哪些进程使用 <a class="hash" href="#daily-surf-windows-skill:7">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>安装 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer"><span style="text-decoration: underline">Process Explorer</span></a> 然后 <code>Find > Find Handle or DLL</code>, 点击检索出的条目定位对应进程, 然后可将进程终止. 除了 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer"><span style="text-decoration: underline">Process Explorer</span></a>, <a href="https://learn.microsoft.com/en-us/sysinternals/"><span style="text-decoration: underline">Sysinternals</span></a> 页面也包含其他 Windows 实用工具, 此处不再详细介绍.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:8"><header><h1><span class="taxon"> 6. </span>清理所有无响应程序 <a class="hash" href="#daily-surf-windows-skill:8">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>在 Windows Terminal 执行如下指令.</p><pre><code data-lang="ps">taskkill /F /FI "STATUS eq NOT RESPONDING"</code></pre></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:9"><header><h1><span class="taxon"> 7. </span>目录符号链接 <a class="hash" href="#daily-surf-windows-skill:9">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>mklink /D link target</code></pre><p>当系统识别到符号链接 <code>link</code> 时, 它会跳转到符号链接所指向的目标 <code>target</code> 中去. 利用此功能可以将不能改变位置的文件夹移动到其他位置.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:10"><header><h1><span class="taxon"> 8. </span>完全控制面板 <a class="hash" href="#daily-surf-windows-skill:10">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>新建文件夹, 名为</p><pre><code data-lang="ps">.{ED7BA470-8E54-465E-825C-99712043E01C}</code></pre><p>然后打开即可看到属性设置列表.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:11"><header><h1><span class="taxon"> 9. </span>低内存极端优化 <a class="hash" href="#daily-surf-windows-skill:11">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:12"><header><h1><span class="taxon"> 9.1. </span>完全停用 Windows Defender <a class="hash" href="#daily-surf-windows-skill:12">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><code>gpedit.msc > 计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒</code></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:13"><header><h1><span class="taxon"> 9.2. </span>关闭 Antimalware Service Executable <a class="hash" href="#daily-surf-windows-skill:13">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><ol><li>先通过 <code>设置 > 隐私和安全性 > Windows 安全中心 > 病毒和威胁防护</code> 关闭篡改保护 [Tamper Protection].</li><li>随后修改组策略, <code>Win + R</code> 输入 <code>gpedit.msc</code> 进入 <code>计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒</code>, 找到 <code>关闭 Microsoft Defender 防病毒</code>, 设置为 “已启用” 并确定.</li><li>重启设备.</li></ol></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:14"><header><h1><span class="taxon"> 9.3. </span>调整外观性能 <a class="hash" href="#daily-surf-windows-skill:14">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><code>此电脑 > 属性 > 高级系统设置 > 性能 > 设置</code></p><p>调整为最佳性能. 此设置将关闭所有窗口阴影和边缘平滑.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:15"><header><h1><span class="taxon"> 9.4. </span>卸载冗余组件 <a class="hash" href="#daily-surf-windows-skill:15">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>PowerShell 执行</p><pre><code>winget uninstall "Windows Web Experience Pack"</code></pre></details></section></details></section>
+    <section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:1"><header><h1><span class="taxon"> 1. </span>资源管理器字太小 <a class="hash" href="#daily-surf-windows-skill:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>自 Windows 8.1 起, 资源管理器乃至系统 UI 文字样式已经不能用正常手段调整. 开源软件 <a href="https://github.com/Tatsu-syo/noMeiryoUI"><span style="text-decoration: underline">No!! MeiryoUI</span></a> 重新启用了自定义 Windows 用户界面字体的功能.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:2"><header><h1><span class="taxon"> 2. </span>语音转文字 <a class="hash" href="#daily-surf-windows-skill:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>Windows 10 和 Windows 11 都是 <code>Win + H</code> 打开工具栏. Windows 10 使用内置的离线语音识别功能, Windows 11 使用由 Azure 语音服务提供支持的在线语音识别.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:3"><header><h1><span class="taxon"> 3. </span>磁盘占用分析 <a class="hash" href="#daily-surf-windows-skill:3">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>安装 <a href="https://www.uderzo.it/main_products/space_sniffer/index.html"><span style="text-decoration: underline">SpaceSniffer</span></a> 或者 <a href="https://windirstat.net/"><span style="text-decoration: underline">WinDirStat</span></a>. 前者 UI 上更舒适, 后者分析速度更快.</details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:4"><header><h1><span class="taxon"> 4. </span>PowerShell <a class="hash" href="#daily-surf-windows-skill:4">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:5"><header><h1><span class="taxon"> 4.1. </span>开启菜单式路径补全 <a class="hash" href="#daily-surf-windows-skill:5">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>用 <code>$PROFILE</code> 找到 PowerShell 的的配置文件路径, 然后向其中添加</p><pre><code data-lang="ps">Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete</code></pre></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:6"><header><h1><span class="taxon"> 4.2. </span>启动太慢 <a class="hash" href="#daily-surf-windows-skill:6">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>换成 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a>.</p><p>安装 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a> 后, 如果 Windows Terminal 新增 profile 的选项内没有, 则需要重启 Windows Terminal 并等待一定时间. 如果手动安装 <a href="https://www.nushell.sh"><span style="text-decoration: underline">Nushell</span></a> 或其他原因导致 profile 没被自动添加, 可在 Windows Terminal 设置左下角处找到 “Open JSON file”, 编辑 <code>profiles > list</code> 完成 profile 添加.</p></details></section></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:7"><header><h1><span class="taxon"> 5. </span>查看文件被哪些进程使用 <a class="hash" href="#daily-surf-windows-skill:7">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>安装 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer"><span style="text-decoration: underline">Process Explorer</span></a> 然后 <code>Find > Find Handle or DLL</code>, 点击检索出的条目定位对应进程, 然后可将进程终止. 除了 <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer"><span style="text-decoration: underline">Process Explorer</span></a>, <a href="https://learn.microsoft.com/en-us/sysinternals/"><span style="text-decoration: underline">Sysinternals</span></a> 页面也包含其他 Windows 实用工具, 此处不再详细介绍.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:8"><header><h1><span class="taxon"> 6. </span>清理所有无响应程序 <a class="hash" href="#daily-surf-windows-skill:8">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>在 Windows Terminal 执行如下指令.</p><pre><code data-lang="ps">taskkill /F /FI "STATUS eq NOT RESPONDING"</code></pre></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:9"><header><h1><span class="taxon"> 7. </span>目录符号链接 <a class="hash" href="#daily-surf-windows-skill:9">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><pre><code>mklink /D link target</code></pre><p>当系统识别到符号链接 <code>link</code> 时, 它会跳转到符号链接所指向的目标 <code>target</code> 中去. 利用此功能可以将不能改变位置的文件夹移动到其他位置.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:10"><header><h1><span class="taxon"> 8. </span>完全控制面板 <a class="hash" href="#daily-surf-windows-skill:10">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>新建文件夹, 名为</p><pre><code data-lang="ps">.{ED7BA470-8E54-465E-825C-99712043E01C}</code></pre><p>然后打开即可看到属性设置列表.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:11"><header><h1><span class="taxon"> 9. </span>低内存极端优化 <a class="hash" href="#daily-surf-windows-skill:11">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:12"><header><h1><span class="taxon"> 9.1. </span>完全停用 Windows Defender <a class="hash" href="#daily-surf-windows-skill:12">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><code>gpedit.msc > 计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒</code></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:13"><header><h1><span class="taxon"> 9.2. </span>关闭 Antimalware Service Executable <a class="hash" href="#daily-surf-windows-skill:13">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><ol><li>先通过 <code>设置 > 隐私和安全性 > Windows 安全中心 > 病毒和威胁防护</code> 关闭篡改保护 [Tamper Protection].</li><li>随后修改组策略, <code>Win + R</code> 输入 <code>gpedit.msc</code> 进入 <code>计算机配置 > 管理模板 > Windows 组件 > Microsoft Defender 防病毒</code>, 找到 <code>关闭 Microsoft Defender 防病毒</code>, 设置为 “已启用” 并确定.</li><li>重启设备.</li></ol></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:14"><header><h1><span class="taxon"> 9.3. </span>调整外观性能 <a class="hash" href="#daily-surf-windows-skill:14">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><code>此电脑 > 属性 > 高级系统设置 > 性能 > 设置</code></p><p>调整为最佳性能. 此设置将关闭所有窗口阴影和边缘平滑.</p></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:15"><header><h1><span class="taxon"> 9.4. </span>卸载冗余组件 <a class="hash" href="#daily-surf-windows-skill:15">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>PowerShell 执行</p><pre><code>winget uninstall "Windows Web Experience Pack"</code></pre></details></section><section class="block hide-metadata" data-taxon=""><details open><summary id="daily-surf-windows-skill:16"><header><h1><span class="taxon"> 9.5. </span>卸载自带 UWP 应用 <a class="hash" href="#daily-surf-windows-skill:16">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/daily-surf/windows-skill.typst">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>在此之前请先确保卸载了 <code>Windows Web Experience Pack</code>. 然后在 PowerShell 以管理员模式执行</p><pre><code>$bloatware = @(<br>  "BingWeather", "WebExperience", "BingNews", "YourPhone",<br>  "WindowsFeedbackHub", "MicrosoftOfficeHub", "Xbox",<br>  "ZuneVideo", "ZuneMusic", "Clipchamp", "WindowsMaps",<br>  "People", "GetHelp", "windowscommunicationsapps",<br>  "OneNote", "Todos", "StickyNotes", "PowerAutomateDesktop",<br>  "SolitaireCollection", "SkypeApp"<br>)<br><br>foreach ($app in $bloatware) {<br>  Get-AppxPackage -AllUsers "*$app*" | Remove-AppxPackage -ErrorAction SilentlyContinue<br>  Write-Host "rm: $app" -ForegroundColor Cyan<br>}</code></pre><p>此处 <code>BingWeather</code> 至 <code>SkypeApp</code> 为要卸载的程序的内部包名, 卸载前建议按需调整.</p></details></section></details></section>
   </body>
 </details></section>]]></content:encoded>
     </item>
@@ -787,28 +787,31 @@ AMD <span lang="zh">则是</span> <code>Ctrl + Shift + O</code>. <span lang="zh"
     </item>
     <item>
       <title>周期函数的构造</title>
-      <link>https://kokic.github.io/mille-plateaux/periodic-2A</link>
-      <guid isPermaLink="false">mille-plateaux/periodic-2A</guid>
+      <link>https://kokic.github.io/mille-plateaux/periodic</link>
+      <guid isPermaLink="false">mille-plateaux/periodic</guid>
       <pubDate>Tue, 31 Dec 2024 00:00:00 GMT</pubDate>
-      <description>&lt;h1&gt;周期函数的构造 [periodic-2A][edit]&lt;/h1&gt;December 31, 2024kokic $\gdef\R{\mathbf{R}}$ $\gdef\Z{\mathbf{Z}}$ $\gdef\spaces#1{~ #1 ~}$ 我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, 圆函数 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象. &lt;h1&gt;Exegesis. Weierstraß 的灵感来源 [periodic-2B][edit]&lt;/h1&gt; $\gdef\spaces#1{...</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon=""><details open><summary id="mille-plateaux-periodic-2A"><header><h1><span class="taxon"></span><span lang="zh">周期函数的构造</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic-2A">[periodic-2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic-2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
+      <description>&lt;h1&gt;周期函数的构造 [periodic][edit]&lt;/h1&gt;December 31, 2024kokic $\gdef\R{\mathbf{R}}$ $\gdef\Z{\mathbf{Z}}$ $\gdef\spaces#1{~ #1 ~}$ 我们的目的是构造某些完备域上的非常值周期函数. 对于实数域 $\R$, 圆函数 告诉我们这当然是可行的, 不过我们的构造过程应当不依赖于对圆函数的印象. &lt;h1&gt;Exegesis. Weierstraß 的灵感来源 [#][edit]&lt;/h1&gt;$\gdef\spaces#1{~ #1 ~}$ 对于周期 ...</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon=""><details open><summary id="mille-plateaux-periodic"><header><h1><span class="taxon"></span><span lang="zh">周期函数的构造</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic">[periodic]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">December 31, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\R{\mathbf{R}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
 <p><span lang="zh">我们的目的是构造某些完备域上的非常值周期函数</span>. <span lang="zh">对于实数域</span> $\R$, <span class="link local"><a href="https://kokic.github.io/mille-plateaux/circular-curve" title="圆曲线 [mille-plateaux/circular-curve]"><span lang="zh">圆函数</span></a></span> <span lang="zh">告诉我们这当然是可行的</span>, <span lang="zh">不过我们的构造过程应当不依赖于对圆函数的印象</span>.</p>
-<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-2B"><header><h1><span class="taxon">Exegesis. </span>Weierstraß <span lang="zh">的灵感来源</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic-2B">[periodic-2B]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic-2B.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
+<section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic:1"><header><h1><span class="taxon">Exegesis. </span>Weierstraß 的灵感来源 <a class="hash" href="#mille-plateaux-periodic:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$</p>
 <p><span lang="zh">对于周期</span> $1$. <span lang="zh">下面这个观察因为</span> Weierstraß <span lang="zh">的使用而变得广为人知</span>. <span lang="zh">具体来说</span>, <span lang="zh">可以从这样一个级数出发</span></p>
 <p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
 <p><span lang="zh">因为</span> $n$ <span lang="zh">取遍了所有整数</span>, $f(x)$ <span lang="zh">在映射</span> $n \mapsto n + k$, $k \in \Z$ <span lang="zh">下不变</span>. <span lang="zh">这样一来</span>, <span lang="zh">如果</span> $x$ <span lang="zh">被选定为任意一个整数</span>, <span lang="zh">总会存在</span> $n-x$ <span lang="zh">为零的项使整个级数发散</span>, <span lang="zh">这就要求</span> $x \notin \Z$. <span lang="zh">同样的</span>, $f(x)$ <span lang="zh">在映射</span> $x \mapsto x + k$, $k \in \Z$ <span lang="zh">下不变</span>, <span lang="zh">这就意味着</span> $f(x)$ <span lang="zh">以</span> $1$ <span lang="zh">为周期</span>. <span lang="zh">现在我们当然知道这个</span> $f(x)$ <span lang="zh">其实就是</span> $\pi^2\csc^2(\pi x)$.</p>
 <p><span lang="zh">由于</span> $(n-x)^2 \ge x^2-n^2$, <span lang="zh">这使得如下级数也是收敛的</span></p>
-<p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
-</details></section><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-2C"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">双周期函数</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic-2C">[periodic-2C]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic-2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
+<p>$$ \sum_{n \in \Z\setminus\{0\}} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
+<p><span lang="zh">可以将</span> $\pi\cot(\pi x))$ <span lang="zh">稍作整理</span>. <span lang="zh">视为</span>, <span lang="zh">在一维晶格</span> $\Z$ <span lang="zh">上</span>, <span lang="zh">把每个格点处放一个简单极点</span>, <span lang="zh">再减去发散项使级数收敛</span>.</p>
+<p>$$ \pi\cot(\pi z) \spaces= \frac1z + \sum_{n \in \Z\setminus\{0\}}\left(\frac1{z+n} - \frac1n\right) $$</p>
+<p><span lang="zh">至此</span>, Weierstraß $\wp$ <span lang="zh">立刻成为</span> $\pi\cot(\pi x))$ <span lang="zh">的高次翻版</span>.</p>
+<p>$$ \wp(z, \Lambda) \spaces= \frac1{z^2} + \sum_{\omega\in\Lambda\setminus\{0\}} \left(\frac1{(z-\omega)^2}-\frac1{\omega^2}
+\right) $$</p>
+</details></section><section class="block hide-metadata" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic:2"><header><h1><span class="taxon">Exegesis. </span>双周期应线性无关 <a class="hash" href="#mille-plateaux-periodic:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$\gdef\R{\mathbf{R}}$
 $\gdef\Q{\mathbf{Q}}$
 $\gdef\Z{\mathbf{Z}}$
 $\gdef\spaces#1{~ #1 ~}$</p>
-<p><span lang="zh">我们要求两个</span> $\R$-<span lang="zh">周期</span> $T_1,T_2$ <span lang="zh">是</span> $\R$-<span lang="zh">线性无关的</span>, <span lang="zh">否则周期之比</span> $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, <span lang="zh">这意味着</span> $T_i$ <span lang="zh">生成的周期集合退化</span></p>
+<p><span lang="zh">我们要求两个周期</span> $T_1,T_2$ <span lang="zh">是</span> $\Q$-<span lang="zh">线性无关的</span>, <span lang="zh">否则周期之比</span> $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, <span lang="zh">这意味着</span> $T_i$ <span lang="zh">生成的周期集合退化</span></p>
 <p>$$
 \begin{aligned}
 \{ nT_1 + mT_2 : n,m \in \Z \} 
@@ -2612,22 +2615,6 @@ $$</p>
 </details></section></details></section></details></section>]]></content:encoded>
     </item>
     <item>
-      <title>Proofs from THE BOOK</title>
-      <link>https://kokic.github.io/bib/pftb</link>
-      <guid isPermaLink="false">bib/pftb</guid>
-      <pubDate>March 2018</pubDate>
-      <description>&lt;h1&gt;Reference. Proofs from THE BOOK [pftb][edit]&lt;/h1&gt;March 2018Martin Aigner, Günter M. ZieglerSpringer书单 @article{aigner2018proofs, title={Proofs from the Book}, author={Aigner, Martin and Ziegler, G{\&quot;u}nter M}, year={2018}, publisher={Springer} }</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="https://kokic.github.io/bib/pftb">[pftb]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/bib/pftb.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/books" title="书单 [books]"><span lang="zh">书单</span></a></span></li></ul></div></header></summary>
-<pre><code>@article{aigner2018proofs,
-  title={Proofs from the Book},
-  author={Aigner, Martin and Ziegler, G{\"u}nter M},
-  year={2018},
-  publisher={Springer}
-}
-</code></pre>
-</details></section>]]></content:encoded>
-    </item>
-    <item>
       <title>生成函数系数</title>
       <link>https://kokic.github.io/pearls/GF2A</link>
       <guid isPermaLink="false">pearls/GF2A</guid>
@@ -3374,6 +3361,64 @@ $$</p>
 </details></section>]]></content:encoded>
     </item>
     <item>
+      <title>三角参数化</title>
+      <link>https://kokic.github.io/pearls/TRIA</link>
+      <guid isPermaLink="false">pearls/TRIA</guid>
+      <pubDate>Sun, 24 Feb 2019 00:00:00 GMT</pubDate>
+      <description>&lt;h1&gt;Exegesis. 三角参数化 [TRIA][edit]&lt;/h1&gt;kokicFebruary 24, 2019$\gdef\spaces#1{~ #1 ~}$ $\gdef\atan2{\operatorname{atan2}}$ &lt;h1&gt;Example. 二元 Cauchy 不等式 [#][edit]&lt;/h1&gt;考虑实曲线 $\Gamma: x^2 + y^2 = r^2$ 上的点 $(x, y)$. 由于存在参数化 $(r\cos \alpha, r\sin \alpha)$, 关于坐标分量 $x, y$ 的实多项式 $R[x,y]$ 在...</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon="Exegesis"><details open><summary id="pearls-TRIA"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">三角参数化</span> <a class="slug" href="https://kokic.github.io/pearls/TRIA">[TRIA]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/TRIA.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item">February 24, 2019</li></ul></div></header></summary><p>$\gdef\spaces#1{~ #1 ~}$
+$\gdef\atan2{\operatorname{atan2}}$</p>
+<section class="block hide-metadata" data-taxon="Example"><details open><summary id="pearls-TRIA:1"><header><h1><span class="taxon">Example. </span>二元 Cauchy 不等式 <a class="hash" href="#pearls-TRIA:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/TRIA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">考虑实曲线</span> $\Gamma: x^2 + y^2 = r^2$ <span lang="zh">上的点</span> $(x, y)$. <span lang="zh">由于存在参数化</span> $(r\cos \alpha, r\sin \alpha)$, <span lang="zh">关于坐标分量</span> $x, y$ <span lang="zh">的实多项式</span> $R[x,y]$ <span lang="zh">在某些情况下可以化为单参数有界函数</span>.</p>
+<p><span lang="zh">如考虑</span> $ax + by = r(a \cos \alpha + b \sin \alpha)$, <span lang="zh">记</span> $s^2 = a^2 + b^2$, $\varphi = \atan2(b,a)$, <span lang="zh">对</span> $(a,b)$ <span lang="zh">也使用三角参数化</span> $(s\cos\varphi, s\sin\varphi)$. <span lang="zh">于是</span></p>
+<p>$$
+ax + by \spaces= s\cos\varphi \cdot r\cos \alpha + s\sin\varphi \cdot r\sin \alpha \spaces= rs \cos(\alpha - \varphi)
+$$</p>
+<p><span lang="zh">这表明</span> $ax + by = \sqrt{a^2+b^2} \cdot \sqrt{x^2+y^2} \cdot \cos(-) \le \sqrt{a^2+b^2} \cdot \sqrt{x^2+y^2}$.</p>
+</details></section><section class="block hide-metadata" data-taxon="Example"><details open><summary id="pearls-TRIA:2"><header><h1><span class="taxon">Example. </span>一般情况的 Cauchy 不等式 <a class="hash" href="#pearls-TRIA:2">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/TRIA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">现在来看</span> $x^2 + y^2 + z^2 = r^2$ <span lang="zh">和</span> $a^2 + b^2 + c^2 = s^2$, <span lang="zh">要处理的多项式为</span> $ax + by + cz$. <span lang="zh">同样三角参数化</span>.</p>
+<p>$$
+\begin{aligned}
+ax + by + cz 
+&amp;\spaces= a \underline{r\cos \alpha_1} + b \underline{r\cos \alpha_2 \sin \alpha_1} + c \underline{r \sin \alpha_1 \sin \alpha_2} \\
+&amp;\spaces= \underline{s \cos \varphi_1} x + \underline{s \cos \varphi_2 \sin \varphi_1} y + \underline{s \sin \varphi_1 \sin \varphi_2} z \\
+&amp;\spaces= rs (\cos\varphi_1\cos\alpha_1
++\sin\varphi_1\sin\alpha_1 \cos(\alpha_2-\varphi_2)) \\
+&amp;\spaces\le rs (\cos\varphi_1\cos\alpha_1
++\sin\varphi_1\sin\alpha_1) \\
+&amp;\spaces= rs \cos(\alpha_1 - \varphi_1) \\
+&amp;\spaces\le \sqrt{a^2 + b^2 + c^2} \cdot \sqrt{x^2 + y^2 + z^2}
+\end{aligned}
+$$</p>
+<p><span lang="zh">使用</span> $n$ <span lang="zh">维球坐标系</span>, <span lang="zh">可以类似得到一般情况</span>.</p>
+</details></section><section class="block hide-metadata" data-taxon="Example"><details open><summary id="pearls-TRIA:3"><header><h1><span class="taxon">Example. </span>Titu 引理 <a class="hash" href="#pearls-TRIA:3">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/TRIA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">我们现在来证明</span></p>
+<p>$$
+\frac{x_1^2}{\ell_1^2} + \frac{x_2^2}{\ell_2^2} + \frac{x_3^2}{\ell_3^2} \spaces\ge \frac{(x_1+x_2+x_3)^2}{\ell_1^2+\ell_2^2 + \ell_3^2}
+$$</p>
+<p><span lang="zh">记</span> $k^2 = \frac{x_1^2}{\ell_1^2} + \frac{x_2^2}{\ell_2^2} + \frac{x_3^2}{\ell_3^2}$. <span lang="zh">可设</span> $x_1 = k \ell_1 \cos \theta_1$, $x_2 = k \ell_2 \cos \theta_2 \sin \theta_1$, $x_3 = k \ell_3 \sin \theta_1 \sin \theta_2$, <span lang="zh">全部相加得</span></p>
+<p>$$
+\begin{aligned}
+x_1 + x_2 + x_3 
+&amp;\spaces= k (\ell_1 \cos \theta_1 + \ell_2 \underline{\cos \theta_2} \sin \theta_1 + \ell_3 \sin \theta_1 \underline{\sin \theta_2}) \\
+&amp;\spaces= k (\ell_1 \cos \theta_1 + \sqrt{\ell_2^2 + \ell_3^2} \sin \theta_1 \cos(-)) \\
+&amp;\spaces\le k (\ell_1 \cos \theta_1 + \sqrt{\ell_2^2 + \ell_3^2} \sin \theta_1) \\
+&amp;\spaces= k \sqrt{\ell_1^2 + \ell_2^2 + \ell_3^2} \cos(-) \\
+&amp;\spaces\le k \sqrt{\ell_1^2 + \ell_2^2 + \ell_3^2}
+\end{aligned}
+$$</p>
+<p><span lang="zh">这表明</span> $(x_1 + x_2 + x_3)^2 \le k^2 (\ell_1^2 + \ell_2^2 + \ell_3^2)$, <span lang="zh">证明结束</span>. <span lang="zh">类似地</span>, <span lang="zh">使用</span> $n$ <span lang="zh">维球坐标系</span>, <span lang="zh">可以得到一般情况</span>.</p>
+</details></section><section class="block hide-metadata" data-taxon="Example"><details open><summary id="pearls-TRIA:4"><header><h1><span class="taxon">Example. </span>算术平均–几何平均不等式 <a class="hash" href="#pearls-TRIA:4">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/TRIA.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p><span lang="zh">还是使用</span> $(x, y, z) = (r\cos \alpha_1, r\cos \alpha_2 \sin \alpha_1, r \sin \alpha_1 \sin \alpha_2)$, <span lang="zh">但是处理多项式</span> $xyz$.</p>
+<p>$$
+\begin{aligned}
+xyz 
+&amp;\spaces= r^3 \cdot \sin \alpha_1 \cdot \cos \alpha_1 \sin \alpha_1 \cdot \cos \alpha_2 \sin \alpha_2 \\
+&amp;\spaces= r^3 \cdot \cos \alpha_1 \sin^2 \alpha_1 \cdot \cos \alpha_2 \sin \alpha_2 \\
+&amp;\spaces\le r^3 \cdot (\tfrac{2^2}{3^3} \cdot \tfrac{1}{2^2})^{\frac{1}{2}} \\
+&amp;\spaces= \tfrac{r^3}{3\sqrt{3}}
+\end{aligned}
+$$</p>
+<p><span lang="zh">因此</span> $(xyz)^2 \le \frac{1}{27} (x^2+y^2+z^2)^3$, <span lang="zh">也就是算术平均</span>–<span lang="zh">几何平均不等式</span> $$ xyz \spaces\le \Big(\frac{x+y+z}{3}\Big)^3 $$ <span lang="zh">一般情况可以类似证得</span>.</p>
+</details></section></details></section>]]></content:encoded>
+    </item>
+    <item>
       <title>代数学方法 卷一：基础架构</title>
       <link>https://kokic.github.io/bib/methods-of-algebra-1</link>
       <guid isPermaLink="false">bib/methods-of-algebra-1</guid>
@@ -3422,16 +3467,6 @@ We clarify how this and similar bijections are related to the free commutative s
 </details></section>]]></content:encoded>
     </item>
     <item>
-      <title>Francis William Lawvere</title>
-      <link>https://kokic.github.io/person/william-lawvere</link>
-      <guid isPermaLink="false">person/william-lawvere</guid>
-      <pubDate>Tue, 09 Feb 1937 00:00:00 GMT</pubDate>
-      <description>&lt;h1&gt;人物. Francis William Lawvere [william-lawvere][edit]&lt;/h1&gt;February 9, 1937 – January 23, 2023Wikipedia &lt;img src=&quot;https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg&quot; title=&quot;https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg&quot; width=250 h...</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon="人物"><details open><summary id="person-william-lawvere"><header><h1><span class="taxon"><span lang="zh">人物</span>. </span>Francis William Lawvere <a class="slug" href="https://kokic.github.io/person/william-lawvere">[william-lawvere]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/person/william-lawvere.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 9, 1937 – January 23, 2023</li><li class="meta-item"><span class="link external"><a href="https://en.wikipedia.org/wiki/William_Lawvere" title="Wikipedia [https://en.wikipedia.org/wiki/William_Lawvere]">Wikipedia</a></span></li></ul></div></header></summary>
-<img src="https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg" title="https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg" width=250 height=300 />
-</details></section>]]></content:encoded>
-    </item>
-    <item>
       <title>George David Birkhoff</title>
       <link>https://kokic.github.io/person/george-david-birkhoff</link>
       <guid isPermaLink="false">person/george-david-birkhoff</guid>
@@ -3439,6 +3474,32 @@ We clarify how this and similar bijections are related to the free commutative s
       <description>&lt;h1&gt;人物. George David Birkhoff [george-david-birkhoff][edit]&lt;/h1&gt;March 21, 1884 – November 12, 1944Wikipedia</description>
       <content:encoded><![CDATA[<section class="block" data-taxon="人物"><details open><summary id="person-george-david-birkhoff"><header><h1><span class="taxon"><span lang="zh">人物</span>. </span>George David Birkhoff <a class="slug" href="https://kokic.github.io/person/george-david-birkhoff">[george-david-birkhoff]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/person/george-david-birkhoff.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 21, 1884 – November 12, 1944</li><li class="meta-item"><span class="link external"><a href="https://en.wikipedia.org/wiki/George_David_Birkhoff" title="Wikipedia [https://en.wikipedia.org/wiki/George_David_Birkhoff]">Wikipedia</a></span></li></ul></div></header></summary>
 <p><img src="https://www.bibmath.net/bios/images/birkhoff.jpg" title="https://www.bibmath.net/bios/images/birkhoff.jpg" alt="https://www.bibmath.net/bios/images/birkhoff.jpg"></p>
+</details></section>]]></content:encoded>
+    </item>
+    <item>
+      <title>Proofs from THE BOOK</title>
+      <link>https://kokic.github.io/bib/pftb</link>
+      <guid isPermaLink="false">bib/pftb</guid>
+      <pubDate>March 2018</pubDate>
+      <description>&lt;h1&gt;Reference. Proofs from THE BOOK [pftb][edit]&lt;/h1&gt;March 2018Martin Aigner, Günter M. ZieglerSpringer书单 @article{aigner2018proofs, title={Proofs from the Book}, author={Aigner, Martin and Ziegler, G{\&quot;u}nter M}, year={2018}, publisher={Springer} }</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="https://kokic.github.io/bib/pftb">[pftb]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/bib/pftb.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/books" title="书单 [books]"><span lang="zh">书单</span></a></span></li></ul></div></header></summary>
+<pre><code>@article{aigner2018proofs,
+  title={Proofs from the Book},
+  author={Aigner, Martin and Ziegler, G{\"u}nter M},
+  year={2018},
+  publisher={Springer}
+}
+</code></pre>
+</details></section>]]></content:encoded>
+    </item>
+    <item>
+      <title>Francis William Lawvere</title>
+      <link>https://kokic.github.io/person/william-lawvere</link>
+      <guid isPermaLink="false">person/william-lawvere</guid>
+      <pubDate>Tue, 09 Feb 1937 00:00:00 GMT</pubDate>
+      <description>&lt;h1&gt;人物. Francis William Lawvere [william-lawvere][edit]&lt;/h1&gt;February 9, 1937 – January 23, 2023Wikipedia &lt;img src=&quot;https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg&quot; title=&quot;https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg&quot; width=250 h...</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon="人物"><details open><summary id="person-william-lawvere"><header><h1><span class="taxon"><span lang="zh">人物</span>. </span>Francis William Lawvere <a class="slug" href="https://kokic.github.io/person/william-lawvere">[william-lawvere]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/person/william-lawvere.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">February 9, 1937 – January 23, 2023</li><li class="meta-item"><span class="link external"><a href="https://en.wikipedia.org/wiki/William_Lawvere" title="Wikipedia [https://en.wikipedia.org/wiki/William_Lawvere]">Wikipedia</a></span></li></ul></div></header></summary>
+<img src="https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg" title="https://cpcml.ca/images/InMemoriam/William_Lawvere-InMemoriamphoto.jpg" width=250 height=300 />
 </details></section>]]></content:encoded>
     </item>
     <item>
@@ -3702,41 +3763,6 @@ $$</p>
 </details></section>]]></content:encoded>
     </item>
     <item>
-      <title>Weierstraß 的灵感来源</title>
-      <link>https://kokic.github.io/mille-plateaux/periodic-2B</link>
-      <guid isPermaLink="false">mille-plateaux/periodic-2B</guid>
-      <description>&lt;h1&gt;Exegesis. Weierstraß 的灵感来源 [periodic-2B][edit]&lt;/h1&gt; $\gdef\spaces#1{~ #1 ~}$ 对于周期 $1$. 下面这个观察因为 Weierstraß 的使用而变得广为人知. 具体来说, 可以从这样一个级数出发 $$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$ 因为 $n$ 取遍了所有整数, $f(x)$ 在映射 $n \mapsto n + k$, $k \in \Z$ 下不变. 这样一...</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-2B"><header><h1><span class="taxon">Exegesis. </span>Weierstraß <span lang="zh">的灵感来源</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic-2B">[periodic-2B]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic-2B.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\spaces#1{~ #1 ~}$</p>
-<p><span lang="zh">对于周期</span> $1$. <span lang="zh">下面这个观察因为</span> Weierstraß <span lang="zh">的使用而变得广为人知</span>. <span lang="zh">具体来说</span>, <span lang="zh">可以从这样一个级数出发</span></p>
-<p>$$ f(x) \spaces= \sum_{n \in \Z} \frac1{(n-x)^2}, \quad x \notin \Z $$</p>
-<p><span lang="zh">因为</span> $n$ <span lang="zh">取遍了所有整数</span>, $f(x)$ <span lang="zh">在映射</span> $n \mapsto n + k$, $k \in \Z$ <span lang="zh">下不变</span>. <span lang="zh">这样一来</span>, <span lang="zh">如果</span> $x$ <span lang="zh">被选定为任意一个整数</span>, <span lang="zh">总会存在</span> $n-x$ <span lang="zh">为零的项使整个级数发散</span>, <span lang="zh">这就要求</span> $x \notin \Z$. <span lang="zh">同样的</span>, $f(x)$ <span lang="zh">在映射</span> $x \mapsto x + k$, $k \in \Z$ <span lang="zh">下不变</span>, <span lang="zh">这就意味着</span> $f(x)$ <span lang="zh">以</span> $1$ <span lang="zh">为周期</span>. <span lang="zh">现在我们当然知道这个</span> $f(x)$ <span lang="zh">其实就是</span> $\pi^2\csc^2(\pi x)$.</p>
-<p><span lang="zh">由于</span> $(n-x)^2 \ge x^2-n^2$, <span lang="zh">这使得如下级数也是收敛的</span></p>
-<p>$$ \sum_{n \in \Z} \frac{x}{x^2-n^2} \quad (= ~ \pi\cot(\pi x)) $$</p>
-</details></section>]]></content:encoded>
-    </item>
-    <item>
-      <title>双周期函数</title>
-      <link>https://kokic.github.io/mille-plateaux/periodic-2C</link>
-      <guid isPermaLink="false">mille-plateaux/periodic-2C</guid>
-      <description>&lt;h1&gt;Exegesis. 双周期函数 [periodic-2C][edit]&lt;/h1&gt; $\gdef\R{\mathbf{R}}$ $\gdef\Q{\mathbf{Q}}$ $\gdef\Z{\mathbf{Z}}$ $\gdef\spaces#1{~ #1 ~}$ 我们要求两个 $\R$-周期 $T_1,T_2$ 是 $\R$-线性无关的, 否则周期之比 $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, 这意味着 $T_i$ 生成的周期集合退化 $$ \begin{aligned...</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon="Exegesis"><details open><summary id="mille-plateaux-periodic-2C"><header><h1><span class="taxon">Exegesis. </span><span lang="zh">双周期函数</span> <a class="slug" href="https://kokic.github.io/mille-plateaux/periodic-2C">[periodic-2C]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/mille-plateaux/periodic-2C.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
-<p>$\gdef\R{\mathbf{R}}$
-$\gdef\Q{\mathbf{Q}}$
-$\gdef\Z{\mathbf{Z}}$
-$\gdef\spaces#1{~ #1 ~}$</p>
-<p><span lang="zh">我们要求两个</span> $\R$-<span lang="zh">周期</span> $T_1,T_2$ <span lang="zh">是</span> $\R$-<span lang="zh">线性无关的</span>, <span lang="zh">否则周期之比</span> $\frac{T_1}{T_2} = \frac{p}{q} \in \Q$, $\gcd(p,q) = 1$, <span lang="zh">这意味着</span> $T_i$ <span lang="zh">生成的周期集合退化</span></p>
-<p>$$
-\begin{aligned}
-\{ nT_1 + mT_2 : n,m \in \Z \} 
-&amp;\spaces= \left\{ \left(\frac{np}{q} + m \right) T_2 : n,m \in \Z \right\} \\
-&amp;\spaces= \left\{ (np + mq) \cdot \frac{T_2}{q} : n,m \in \Z \right\}
-\end{aligned}
-$$</p>
-<p><span lang="zh">此时</span> $np + mq \in \Z$, <span lang="zh">所以该集合被周期</span> $\frac{T_2}{q}$ <span lang="zh">生成</span>, <span lang="zh">矛盾</span>.</p>
-</details></section>]]></content:encoded>
-    </item>
-    <item>
       <title>q 记号</title>
       <link>https://kokic.github.io/mille-plateaux/q-denote</link>
       <guid isPermaLink="false">mille-plateaux/q-denote</guid>
@@ -3811,6 +3837,26 @@ $$</p>
       <guid isPermaLink="false">person/yuni</guid>
       <description>&lt;h1&gt;人物. Yuniversal Y. Creeper 🥐 [yuni][edit]&lt;/h1&gt;</description>
       <content:encoded><![CDATA[<section class="block" data-taxon="人物"><details open><summary id="person-yuni"><header><h1><span class="taxon"><span lang="zh">人物</span>. </span>Yuniversal Y. Creeper 🥐 <a class="slug" href="https://kokic.github.io/person/yuni">[yuni]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/person/yuni.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+</details></section>]]></content:encoded>
+    </item>
+    <item>
+      <title>圆函数恒等式</title>
+      <link>https://kokic.github.io/table/TRFN</link>
+      <guid isPermaLink="false">table/TRFN</guid>
+      <description>&lt;h1&gt;Table. 圆函数恒等式 [TRFN][edit]&lt;/h1&gt; $\alpha + \beta$$\alpha - \beta$ $\cos$$\cos\alpha \cos\beta - \sin\alpha \sin\beta$$\cos\alpha \cos\beta + \sin\alpha \sin\beta$ $\sin$$\sin\alpha \cos\beta + \cos\alpha \sin\beta$$\sin\alpha \cos\beta - \cos\alpha \sin\beta$ $\tan$$\dfrac{...</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon="Table"><details open><summary id="table-TRFN"><header><h1><span class="taxon">Table. </span><span lang="zh">圆函数恒等式</span> <a class="slug" href="https://kokic.github.io/table/TRFN">[TRFN]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/table/TRFN.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
+<table><thead><tr><th></th><th>$\alpha + \beta$</th><th>$\alpha - \beta$</th></tr></thead><tbody>
+<tr><td>$\cos$</td><td>$\cos\alpha \cos\beta - \sin\alpha \sin\beta$</td><td>$\cos\alpha \cos\beta + \sin\alpha \sin\beta$</td></tr>
+<tr><td>$\sin$</td><td>$\sin\alpha \cos\beta + \cos\alpha \sin\beta$</td><td>$\sin\alpha \cos\beta - \cos\alpha \sin\beta$</td></tr>
+<tr><td>$\tan$</td><td>$\dfrac{\tan\alpha + \tan\beta}{1 - \tan\alpha \tan\beta}$</td><td>$\dfrac{\tan\alpha - \tan\beta}{1 + \tan\alpha \tan\beta}$</td></tr>
+<tr><td>$\cot$</td><td>$\dfrac{\cot\alpha \cot\beta - 1}{\cot\alpha + \cot\beta}$</td><td>$\dfrac{\cot\alpha \cot\beta + 1}{\cot\beta - \cot\alpha}$</td></tr>
+</tbody></table>
+<table><thead><tr><th></th><th>$\alpha + \beta$</th><th>$\alpha - \beta$</th></tr></thead><tbody>
+<tr><td>$\cosh$</td><td>$\cosh x \cosh y + \sinh x \sinh y$</td><td>$\cosh x \cosh y - \sinh x \sinh y$</td></tr>
+<tr><td>$\sinh$</td><td>$\sinh x \cosh y + \cosh x \sinh y$</td><td>$\sinh x \cosh y - \cosh x \sinh y$</td></tr>
+<tr><td>$\tan$</td><td>$\dfrac{\tanh x + \tanh y}{1 + \tanh x \tanh y}$</td><td>$\dfrac{\tanh x - \tanh y}{1 - \tanh x \tanh y}$</td></tr>
+<tr><td>$\coth$</td><td>$\dfrac{1 + \coth x \coth y}{\coth x + \coth y}$</td><td>$\dfrac{1 - \coth x \coth y}{\coth x - \coth y}$</td></tr>
+</tbody></table>
 </details></section>]]></content:encoded>
     </item>
   </channel>

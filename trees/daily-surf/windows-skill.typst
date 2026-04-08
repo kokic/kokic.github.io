@@ -6,7 +6,11 @@
 #set text(font: ("Inria Sans", "HarmonyOS Sans SC"))
 #show raw: set text(font: "Maple Mono NF")
 
-#metadata((title: "完全用 Windows 工作", date: "March 31, 2026", author: local("/kokic.md")))
+#metadata((
+  title: "完全用 Windows 工作", //
+  date: "March 31, 2026",
+  author: local("/kokic.md", text: "kokic"),
+))
 
 此文为 Windows 系统使用技巧收集, 且侧重介绍微软对普通用户隐藏的实用工具.
 
@@ -123,9 +127,32 @@ mklink /D link target
 
 #subtree(title: [卸载冗余组件].text, numbering: true)[
 PowerShell 执行
+
 ```
 winget uninstall "Windows Web Experience Pack"
 ```
+]
+
+#subtree(title: [卸载自带 UWP 应用].text, numbering: true)[
+在此之前请先确保卸载了 `Windows Web Experience Pack`. 然后在 PowerShell 以管理员模式执行
+
+```
+$bloatware = @(
+  "BingWeather", "WebExperience", "BingNews", "YourPhone",
+  "WindowsFeedbackHub", "MicrosoftOfficeHub", "Xbox",
+  "ZuneVideo", "ZuneMusic", "Clipchamp", "WindowsMaps",
+  "People", "GetHelp", "windowscommunicationsapps",
+  "OneNote", "Todos", "StickyNotes", "PowerAutomateDesktop",
+  "SolitaireCollection", "SkypeApp"
+)
+
+foreach ($app in $bloatware) {
+  Get-AppxPackage -AllUsers "*$app*" | Remove-AppxPackage -ErrorAction SilentlyContinue
+  Write-Host "rm: $app" -ForegroundColor Cyan
+}
+```
+
+此处 `BingWeather` 至 `SkypeApp` 为要卸载的程序的内部包名, 卸载前建议按需调整. 
 ]
 
 ]
