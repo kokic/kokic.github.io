@@ -2,11 +2,11 @@
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width"><title>矩阵闭包</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
 <!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/copy-tex.min.js" integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -204,7 +204,7 @@ $$</p>
 (1-M)^* \spaces= \frac1M \quad (= ~ M^{-1})
 $$</p>
 <p><span lang="zh">此处的</span> $1-M$ <span lang="zh">非常微妙</span>, <span lang="zh">因为一般情况下它只能存在于</span> $\Mat_{n \times n}(R)$ <span lang="zh">而非</span> $\Mat_{n \times n}(\mathcal{Q})$.  <span lang="zh">如果我们暂时忽略这个问题</span>, <span lang="zh">那么根据</span> <span class="link local"><a href="https://kokic.github.io/linear-algebra/semiring" title="关于半环的注释 [linear-algebra/semiring]"><span lang="zh">半环注释</span></a></span>, <span lang="zh">由于矩阵的加法直接就是</span> $\mathcal{Q}$ <span lang="zh">或者</span> $R$ <span lang="zh">的加法</span>, <span lang="zh">而乘法来自线性空间</span>. <span lang="zh">此时</span> $M$ <span lang="zh">与</span> $M^*$ <span lang="zh">之间存在一种直接的关系</span>, <span lang="zh">可以说成</span> $(M^*)_{ij} = $ <span lang="zh">有向图</span> $G$ <span lang="zh">中所有</span> $i \to j$ <span lang="zh">的路径</span>.</p>
-<p><figure><img src="/linear-algebra/amtx-2B.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
+<p><figure class="typst-block"><img src="/linear-algebra/amtx-2B.svg" class="color-invert"/><figcaption>State diagram $G$ for $M \to M^*$</figcaption></figure></p>
 <p><span lang="zh">具体的说</span>, <span lang="zh">固定下标</span> $i,j$, <span lang="zh">分量</span> $(M^*)_{ij}$ <span lang="zh">的值会等于以</span> $M$, $M^*$ <span lang="zh">为结点</span>, $M_{ij}$ <span lang="zh">为箭头的</span> $G$ <span lang="zh">中所有</span> $i \to j$ <span lang="zh">的路径</span> $\hom(i,j)$ <span lang="zh">的正则表达式</span>. <span lang="zh">并且从这些路径中我们也能够写出</span> $\hom(i,j)$ <span lang="zh">对应的正则表达式</span>, <span lang="zh">这就为计算</span> $(M^*)_{ij}$ <span lang="zh">提供了可能</span>.</p>
 <p>$$\begin{aligned}
   1 \longrightarrow 1 &amp;: \quad (a+b d^*c)^* \\

@@ -2,11 +2,11 @@
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width"><title>七树合一定理</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
 <!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/copy-tex.min.js" integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -196,7 +196,7 @@
   | leaf : Tree α
   | node : α → Tree α → Tree α → Tree α</pre></details></p>
 <p><span lang="zh">叶结点构造器</span> <code>leaf</code> <span lang="zh">用于构造出一棵空树</span>, <span lang="zh">空树作为某个结点的所有子结点时</span>, <span lang="zh">该结点正是叶结点</span>. <span lang="zh">相应的</span>, <span lang="zh">二叉树的值存储在非叶结点中</span>. <span lang="zh">每个</span> (<span lang="zh">非空</span>, <span lang="zh">无标记</span>) <span lang="zh">二叉树类型的值要么是一个单结点</span> $\{\text{pt}\} = 1$, <span lang="zh">要么等价于二叉树的有序配对</span> $B \times B = B^2$. <span lang="zh">即</span> $B \xrightarrow{\sim} \{\text{pt}\} \sqcup B^2$.</p>
-<p><figure><img src="/data-structure/binary-tree.svg" class="color-invert"/></figure></p>
+<p><figure class="typst-block"><img src="/data-structure/binary-tree.svg" class="color-invert"/></figure></p>
 <p><span lang="zh">换言之</span>, <span lang="zh">二叉树可定义为某种满足</span> $B=1+B^2$ <span lang="zh">的</span> (<span lang="zh">代数</span>) <span lang="zh">结构</span>. <span lang="zh">回顾</span> $6$ <span lang="zh">次分圆多项式</span> $$ \Phi_6(x) \spaces= x^2-x+1 $$ <span lang="zh">其复根</span> $\zeta_6$, $\zeta^{-1}_6$ <span lang="zh">是所谓的</span> $6$ <span lang="zh">次本原单位根</span>.</p>
 </details></section><section class="block hide-metadata" data-taxon="Theorem"><details open><summary id="data-structure-blass-lawvere"><header><h1><span class="taxon">Theorem 2. </span>Blass–Lawvere <span lang="zh">定理</span> <a class="slug" href="https://kokic.github.io/data-structure/blass-lawvere">[blass-lawvere]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/data-structure/blass-lawvere.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">September 24, 2024</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li></ul></div></header></summary>
 <p>$\gdef\N{\mathbf{N}}$

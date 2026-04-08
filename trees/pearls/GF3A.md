@@ -40,6 +40,8 @@ $$
 
 现在我们再使用下面的观察 
 
+<observation title="单项式求导">
+
 $$ 
 \frac{\d^n}{\d x^n} x^m
 \spaces=
@@ -48,6 +50,8 @@ $$
   0 & \text{otherwise} 
 \end{cases}
 $$
+
+</observation>
 
 就可以算出 $\frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}$ 这一部分
 
@@ -62,6 +66,12 @@ $$
 
 $q^{u}$ 的系数从 $u = 0$ 开始, 则系数可再一次简化为组合数
 
-[](./GF3B.typ#:block)
+$$
+\begin{aligned}
+\frac{1}{(n-1)!} \cdot \frac{(n+u-1)!}{u!}
+&\spaces= \underbrace{(n+u-1) \cdots n}_{u \ge 1} \cdot \frac1{(n-1)!} \cdot \frac{(n-1)!}{u!} \\
+&\spaces= \frac{(n+u-1) \cdots n}{u!}
+\end{aligned}
+$$
 
 于是明所欲证. 

@@ -2,11 +2,11 @@
 <html lang="en-US"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width"><title>特殊有理函数展开式的系数</title><link rel="icon" href="https://kokic.github.io/assets/favicon.ico" /><template id="theme-option-template"><input type="radio" name="theme" /><label></label></template><script src="https://kokic.github.io/main.js"></script><!-- Also see: https://katex.org/docs/autorender -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
 <!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/copy-tex.min.js" integrity="sha384-HORx6nWi8j5/mYA+y57/9/CZc5z8HnEw4WUZWy5yOn9ToKBv1l58vJaufFAn9Zzi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/copy-tex.min.js" integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -186,7 +186,7 @@
 </style>
 
 <theme-option name="printer">printer</theme-option>
-</div></nav>
+</div><div class="block"><details open=""><summary><h1>Table of Contents</h1></summary><ul class="block"><li class=""><a class="bullet" href="#pearls-GF3A:1" title="单项式求导 [pearls/GF3A/:1]">■</a><span class="link local" onclick="window.location.href='#pearls-GF3A:1'"><span class="taxon">Observation. </span>单项式求导</span></li></ul></details></div></nav>
 
 <article><section class="block" data-taxon="Proposition"><details open><summary id="pearls-GF3A"><header><h1><span class="taxon">Proposition. </span>$(1-q)^{-m}$ <span lang="zh">的系数</span> <a class="slug" href="https://kokic.github.io/pearls/GF3A">[GF3A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GF3A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\d{\operatorname{d}}$
@@ -212,7 +212,7 @@ $\frac{1}{1 - q} = 1 + q + q^2 + \cdots = \sum_{u \geq 0}q^{u}$, <span lang="zh"
 \spaces= \frac{1}{(n - 1)!} \cdot \frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}
 $$</p>
 <p><span lang="zh">现在我们再使用下面的观察</span></p>
-<p>$$ 
+<section class="block hide-metadata" data-taxon="Observation"><details open><summary id="pearls-GF3A:1"><header><h1><span class="taxon">Observation. </span>单项式求导 <a class="hash" href="#pearls-GF3A:1">[#]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GF3A.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary><p>$$ 
 \frac{\d^n}{\d x^n} x^m
 \spaces=
 \begin{cases}
@@ -220,7 +220,7 @@ $$</p>
   0 &amp; \text{otherwise} 
 \end{cases}
 $$</p>
-<p><span lang="zh">就可以算出</span> $\frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}$ <span lang="zh">这一部分</span></p>
+</details></section><p><span lang="zh">就可以算出</span> $\frac{\d^{n - 1}}{\d q^{n - 1}}\sum_{u \geq 0}q^{u}$ <span lang="zh">这一部分</span></p>
 <p>$$
 \begin{aligned}
 \frac{1}{(1 - q)^{n}} 
@@ -230,7 +230,13 @@ $$</p>
 \end{aligned}
 $$</p>
 <p>$q^{u}$ <span lang="zh">的系数从</span> $u = 0$ <span lang="zh">开始</span>, <span lang="zh">则系数可再一次简化为组合数</span></p>
-<p><figure><img src="/pearls/GF3B.svg" class="color-invert"/></figure></p>
+<p>$$
+\begin{aligned}
+\frac{1}{(n-1)!} \cdot \frac{(n+u-1)!}{u!}
+&amp;\spaces= \underbrace{(n+u-1) \cdots n}_{u \ge 1} \cdot \frac1{(n-1)!} \cdot \frac{(n-1)!}{u!} \\
+&amp;\spaces= \frac{(n+u-1) \cdots n}{u!}
+\end{aligned}
+$$</p>
 <p><span lang="zh">于是明所欲证</span>.</p>
 </details></section><footer><section class="block link-list" id="backlinks"><details open><summary><header><h1>Backlinks</h1></header></summary><section class="block" data-taxon=""><details ><summary id="pearls-GF2A"><header><h1><span class="taxon"></span><span lang="zh">生成函数系数</span> <a class="slug" href="https://kokic.github.io/pearls/GF2A">[GF2A]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/pearls/GF2A.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">August 15, 2021</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/kokic" title="Kokic Liu [kokic]">kokic</a></span></li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/pearls/index" title="Pearls [pearls/index]">Pearls</a></span></li></ul></div></header></summary>
 <p>$\gdef\Z{\mathbf{Z}}$</p>
