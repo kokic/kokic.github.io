@@ -8,7 +8,7 @@ taxon: table
 
 </style>
 
-我们先列出 $\R$ 上主要的圆函数及其范围. 此处 "主要的圆函数" 明确指三角函数 $\cos, \sin, \cot, \tan$ 和对应的双曲函数. 
+我们先列出 $\R$ 上主要的圆函数及其范围, 然后总结其相关恒等式. 此处 "主要的圆函数" 明确指三角函数 $\cos, \sin, \cot, \tan$ 和对应的双曲函数. 
 
 $$
 \def\arraystretch{1.5}
@@ -38,7 +38,14 @@ $$
   & \cos\alpha \cos\beta + \sin\alpha \sin\beta \\
 \sin 
   & \sin\alpha \cos\beta + \cos\alpha \sin\beta 
-  & \sin\alpha \cos\beta - \cos\alpha \sin\beta \\
+  & \sin\alpha \cos\beta - \cos\alpha \sin\beta
+\end{array}
+$$
+
+$$
+\def\arraystretch{1.5}
+\begin{array}{c|cc}
+  & x + y & x - y\\ \hline
 \cosh 
   & \cosh x \cosh y + \sinh x \sinh y
   & \cosh x \cosh y - \sinh x \sinh y \\
@@ -62,8 +69,7 @@ $$
 \end{array}
 \hspace{3em}
 \begin{array}{c|cc}
-  & \alpha + \beta & \alpha - \beta 
-  \\ \hline \\[-1em]
+  & x + y & x - y\\ \hline \\[-1em]
 \coth 
   & \dfrac{1 + \coth x \coth y}{\coth x + \coth y}
   & \dfrac{1 - \coth x \coth y}{\coth x - \coth y} \\[2em]
