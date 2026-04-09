@@ -292,22 +292,6 @@ $$</p>
 </details></section>]]></content:encoded>
     </item>
     <item>
-      <title>Proofs from THE BOOK</title>
-      <link>https://kokic.github.io/bib/pftb</link>
-      <guid isPermaLink="false">bib/pftb</guid>
-      <pubDate>March 2018</pubDate>
-      <description>&lt;h1&gt;Reference. Proofs from THE BOOK [pftb][edit]&lt;/h1&gt;March 2018Martin Aigner, Günter M. ZieglerSpringer书单 @article{aigner2018proofs, title={Proofs from the Book}, author={Aigner, Martin and Ziegler, G{\&quot;u}nter M}, year={2018}, publisher={Springer} }</description>
-      <content:encoded><![CDATA[<section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="https://kokic.github.io/bib/pftb">[pftb]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/bib/pftb.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/books" title="书单 [books]"><span lang="zh">书单</span></a></span></li></ul></div></header></summary>
-<pre><code>@article{aigner2018proofs,
-  title={Proofs from the Book},
-  author={Aigner, Martin and Ziegler, G{\"u}nter M},
-  year={2018},
-  publisher={Springer}
-}
-</code></pre>
-</details></section>]]></content:encoded>
-    </item>
-    <item>
       <title>复数</title>
       <link>https://kokic.github.io/data-structure/complex-number</link>
       <guid isPermaLink="false">data-structure/complex-number</guid>
@@ -2631,6 +2615,22 @@ $$</p>
 </details></section></details></section></details></section>]]></content:encoded>
     </item>
     <item>
+      <title>Proofs from THE BOOK</title>
+      <link>https://kokic.github.io/bib/pftb</link>
+      <guid isPermaLink="false">bib/pftb</guid>
+      <pubDate>March 2018</pubDate>
+      <description>&lt;h1&gt;Reference. Proofs from THE BOOK [pftb][edit]&lt;/h1&gt;March 2018Martin Aigner, Günter M. ZieglerSpringer书单 @article{aigner2018proofs, title={Proofs from the Book}, author={Aigner, Martin and Ziegler, G{\&quot;u}nter M}, year={2018}, publisher={Springer} }</description>
+      <content:encoded><![CDATA[<section class="block" data-taxon="Reference"><details open><summary id="bib-pftb"><header><h1><span class="taxon">Reference. </span>Proofs from THE BOOK <a class="slug" href="https://kokic.github.io/bib/pftb">[pftb]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/bib/pftb.md">[edit]</a></h1><div class="metadata"><ul><li class="meta-item">March 2018</li><li class="meta-item">Martin Aigner, Günter M. Ziegler</li><li class="meta-item">Springer</li><li class="meta-item"><span class="link local"><a href="https://kokic.github.io/books" title="书单 [books]"><span lang="zh">书单</span></a></span></li></ul></div></header></summary>
+<pre><code>@article{aigner2018proofs,
+  title={Proofs from the Book},
+  author={Aigner, Martin and Ziegler, G{\"u}nter M},
+  year={2018},
+  publisher={Springer}
+}
+</code></pre>
+</details></section>]]></content:encoded>
+    </item>
+    <item>
       <title>生成函数系数</title>
       <link>https://kokic.github.io/pearls/GF2A</link>
       <guid isPermaLink="false">pearls/GF2A</guid>
@@ -3849,12 +3849,12 @@ $$</p>
       <title>圆函数清单</title>
       <link>https://kokic.github.io/table/TRFN</link>
       <guid isPermaLink="false">table/TRFN</guid>
-      <description>&lt;h1&gt;Table. 圆函数清单 [TRFN][edit]&lt;/h1&gt; 我们先列出 $\R$ 上主要的圆函数及其范围. 此处 “主要的圆函数” 明确指三角函数 $\cos, \sin, \cot, \tan$ 和对应的双曲函数. $$ \def\arraystretch{1.5} \begin{array}{c|cc} &amp;amp; 定义域 &amp;amp; 值域 \\ \hline \cos &amp;amp; \R &amp;amp; [-1, 1] \\ \sin &amp;amp; \R &amp;amp; [-1, 1] \\ \cot &amp;amp; \R\setminus\Z\p...</description>
+      <description>&lt;h1&gt;Table. 圆函数清单 [TRFN][edit]&lt;/h1&gt; 我们先列出 $\R$ 上主要的圆函数及其范围, 然后总结其相关恒等式. 此处 “主要的圆函数” 明确指三角函数 $\cos, \sin, \cot, \tan$ 和对应的双曲函数. $$ \def\arraystretch{1.5} \begin{array}{c|cc} &amp;amp; 定义域 &amp;amp; 值域 \\ \hline \cos &amp;amp; \R &amp;amp; [-1, 1] \\ \sin &amp;amp; \R &amp;amp; [-1, 1] \\ \cot &amp;amp; \R\...</description>
       <content:encoded><![CDATA[<section class="block" data-taxon="Table"><details open><summary id="table-TRFN"><header><h1><span class="taxon">Table. </span><span lang="zh">圆函数清单</span> <a class="slug" href="https://kokic.github.io/table/TRFN">[TRFN]</a><a class="edit" href="https://github.com/kokic/kokic.github.io/tree/master/trees/table/TRFN.md">[edit]</a></h1><div class="metadata"><ul></ul></div></header></summary>
 <style>
 
 </style>
-<p><span lang="zh">我们先列出</span> $\R$ <span lang="zh">上主要的圆函数及其范围</span>. <span lang="zh">此处</span> “<span lang="zh">主要的圆函数</span>” <span lang="zh">明确指三角函数</span> $\cos, \sin, \cot, \tan$ <span lang="zh">和对应的双曲函数</span>.</p>
+<p><span lang="zh">我们先列出</span> $\R$ <span lang="zh">上主要的圆函数及其范围</span>, <span lang="zh">然后总结其相关恒等式</span>. <span lang="zh">此处</span> “<span lang="zh">主要的圆函数</span>” <span lang="zh">明确指三角函数</span> $\cos, \sin, \cot, \tan$ <span lang="zh">和对应的双曲函数</span>.</p>
 <p>$$
 \def\arraystretch{1.5}
 \begin{array}{c|cc}
@@ -3882,7 +3882,13 @@ $$</p>
   &amp; \cos\alpha \cos\beta + \sin\alpha \sin\beta \\
 \sin 
   &amp; \sin\alpha \cos\beta + \cos\alpha \sin\beta 
-  &amp; \sin\alpha \cos\beta - \cos\alpha \sin\beta \\
+  &amp; \sin\alpha \cos\beta - \cos\alpha \sin\beta
+\end{array}
+$$</p>
+<p>$$
+\def\arraystretch{1.5}
+\begin{array}{c|cc}
+  &amp; x + y &amp; x - y\\ \hline
 \cosh 
   &amp; \cosh x \cosh y + \sinh x \sinh y
   &amp; \cosh x \cosh y - \sinh x \sinh y \\
@@ -3905,8 +3911,7 @@ $$</p>
 \end{array}
 \hspace{3em}
 \begin{array}{c|cc}
-  &amp; \alpha + \beta &amp; \alpha - \beta 
-  \\ \hline \\[-1em]
+  &amp; x + y &amp; x - y\\ \hline \\[-1em]
 \coth 
   &amp; \dfrac{1 + \coth x \coth y}{\coth x + \coth y}
   &amp; \dfrac{1 - \coth x \coth y}{\coth x - \coth y} \\[2em]
