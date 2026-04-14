@@ -2,6 +2,7 @@
 ---
 title: 应用清单
 date: May 9, 2025
+taxon: list
 author: [kokic](/trees/kokic.md)
 ---
 

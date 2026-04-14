@@ -4,6 +4,7 @@ title: Daily Surf
 collect: true
 ---
 
+[-](./AP2F.md#:embed)
 [-](./windows-skill.md#:embed)
 [-](./haskell.typst#:embed)
 [-](./bevy.md#:embed)

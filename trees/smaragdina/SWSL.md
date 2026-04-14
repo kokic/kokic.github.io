@@ -2,8 +2,6 @@
 ---
 title: 读 "七周七语言"
 taxon: peruse
-date: March 16, 2026
-author: [kokic](/trees/kokic.md)
 ---
 
 <block title="松本行弘篇">
