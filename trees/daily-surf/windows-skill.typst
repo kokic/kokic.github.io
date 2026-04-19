@@ -67,7 +67,69 @@ Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
 #let procexp = external("https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer")[Process Explorer]
 
-安装 #procexp 然后 `Find > Find Handle or DLL`, 点击检索出的条目定位对应进程, 然后可将进程终止. 除了 #procexp, #external("https://learn.microsoft.com/en-us/sysinternals/")[Sysinternals] 页面也包含其他 Windows 实用工具, 此处不再详细介绍.
+安装 #procexp 然后 `Find > Find Handle or DLL`, 点击检索出的条目定位对应进程, 然后可将进程终止. 除了 #procexp, #external("https://learn.microsoft.com/en-us/sysinternals/")[Sysinternals] 页面也包含其他 Windows 实用工具, 比如同样可以检查句柄的 Handle 工具, 此处不再详细介绍.
+
+
+
+]
+
+#subtree(
+  title: [查看U盘或移动硬盘被哪个进程使用，导致无法弹出].text,
+  numbering: true,
+)[
+
+先尝试弹出, 若失败, 运行 PowerShell 命令:
+
+```ps
+Get-WinEvent -LogName System | Where-Object { $_.Id -eq 225 } | Select-Object -First 3 | Format-List TimeCreated, Message
+```
+
+它会从事件日志中筛选出最近 3 条导致设备无法弹出的日志, 带有相应进程信息.
+
+]
+
+#subtree(
+  title: [防止端口被保留].text,
+  numbering: true,
+)[
+
+开启 Hyper-V/WSL/Docker 后, 在某些场景下端口会被系统随机地使用, 导致应用程序无法使用指定的端口, 并且在 netstat 命令里也看不到端口被占用.
+
+预防方法是设置保留端口范围:
+
+```ps
+netsh int ipv4 set dynamic tcp start=49152 num=16384
+netsh int ipv6 set dynamic tcp start=49152 num=16384
+```
+
+然后不要让应用程序使用 49152 及以上的端口.
+
+]
+
+#subtree(
+  title: [大量小文件的复制和删除].text,
+  numbering: true,
+)[
+
+若文件数量较多, Windows 资源管理器的复制和删除会变得非常慢, 应该尽量使用命令 (如用于复制的 robocopy 命令) 或第三方工具 (如 FastCopy).
+
+]
+
+#subtree(
+  title: [检查和管理启动项].text,
+  numbering: true,
+)[
+
+当开机自启动的程序较多时, 可能需要手动检查启动项, 从中去除不必要的自启动组件, 可以用 Sysinternals 中的 Autoruns 工具.
+
+]
+
+#subtree(
+  title: [睡眠和休眠].text,
+  numbering: true,
+)[
+
+Windows 笔记本上的睡眠分两类: S0 睡眠和 S3 睡眠, 前者相当不靠谱, 有概率出现问题, 不建议使用. 较新的笔记本都是 S0 睡眠 (也称为 S0ix 或 Modern Standby), 可以虑使用休眠代替.
 
 ]
 
