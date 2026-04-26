@@ -47,6 +47,10 @@ author: [kokic](/trees/kokic.md)
 |  |  |
 | - | - |
 | Marcellus SC | [Google Fonts](https://fonts.google.com/specimen/Marcellus+SC) |
+| Futura | 需要遵循苹果 EULA |
+| Jost | [Google Fonts](https://fonts.google.com/specimen/Jost) |
+| Manufacturing Consent | [Google Fonts](https://fonts.google.com/specimen/Manufacturing+Consent) | 
+| Cinzel Decorative | [Google Fonts](https://fonts.google.com/specimen/Cinzel+Decorative) |
 
 [maple]: https://github.com/subframe7536/Maple-font
 [cascadia]: https://github.com/microsoft/cascadia-code

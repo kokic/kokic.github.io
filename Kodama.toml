@@ -34,4 +34,4 @@ output = "./.cache/publish"
 command = ["miniserve", "<output>", "--index", "index.html", "--pretty-urls", "--port", "8080"]
 
 [publish]
-rss = true
+rss = false

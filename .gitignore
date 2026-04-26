@@ -1,6 +1,7 @@
 /src
 /.cache
 /entire
+/raw
 
 .DS_Store
 *.bat
