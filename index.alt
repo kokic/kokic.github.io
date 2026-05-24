@@ -1,0 +1,90 @@
+(block (:id content)
+
+  ;; DON'T LOSE YOUR WAY IN YOUR MIND
+  (header (:style "font-size: 2em")
+    (span (:style "font-size: 1.5em; vertical-align: 0.4em" :class manufacturing-consent-regular) Kokic Liu)
+    (span (:style "font-size: 1.5em" :class jetbrains-mono-100) /)
+    (span (:style "font-size: 0.8em; vertical-align: -0.2em" :class jetbrains-mono-100) @kokic)
+
+    (span (:id "social") in
+      (def item (href text) (a (:class "item" :href (href)) (text)))
+           (item "mailto:kokicplus@gmail.com" Email)
+      ", " (item "https://www.zhihu.com/people/kokic-86" Zhihu)
+      ", " (item "https://kokic.github.io/blog" Blog)
+      ", " (item "https://mathstodon.xyz/@kokic" Mastodon) ))
+
+  (let AGI 
+    (a (:title "Artificial General Intelligence" :href "https://en.wikipedia.org/wiki/Artificial_general_intelligence") AGI))
+  
+  (let MATP (term "Machine-Asisted Theorem Proving" MATP))
+  (let LLM (term "Large Language Model" LLM))
+
+  (segment Profile (_
+    (p My main research interests are Compiler Optimization, Document Language, Computer Algebra System, and Machine-Asisted Theorem Proving. I once worked as a visiting scholar at the (ex "https://bicmr.pku.edu.cn/" (span (:style "color: #8f000a") Beijing International Center for Mathematical Research at Peking University)) for one year, during which I researched how to adjust the Lean 4 compiler to facilitate better generation of mathematical proofs by Large Language Models. )
+    
+    (no-print (p
+      I am also deeply interested in literary and artistic works with a strong personal style, such as the films of 周星驰, the music composed by 菅野よう子, 梶浦由記, et 神前暁, und the novels of 鲁迅, 芥川龍之介, and 虚渊玄. Because the number one spot always remains an unknown, my second favorite anime of all time is KILL la KILL, and my second favorite instrumental piece is the Kyogen track (ex "https://touhoudb.com/S/15963" 狂言「九十九星降」). I also do graphic design from time to time, creating logos for my own projects as well as those of my friends. )) ))
+
+  (no-print (segment Belief
+    (p (LLM)s cannot fundamentally evolve into (AGI), even if (LLM)s currently represent the closest approach humanity has achieved. Therefore, (MATP) does not inherently imply using (LLM)s as the machine learning method for interactive theorem proving. Concurrently, the existence of Proof Assistants makes verifying the actual reliability of a proof highly feasible. For this reason, I also believe that (MATP) will serve as a crucial testing ground on the path toward (AGI). )))
+
+  (segment Selected Exhibits (_
+    (no-print (p I have been a (ex "https://github.com/kokic" GitHub user) for over 10 years. However, given GitHub's shameless introduction and promotion of LLM services for code review and (term "Pull Request" PR), combined with major incidents affecting its core Git hosting functionality \(such as lost commits\), I will be moving all of my projects to (ex "https://codeberg.org/kokic" Codeberg) and (ex "https://tangled.org/kokic.tngl.sh" Tangled) in the future.) )
+
+    (exhibit
+      (:url-text "github.com/altsia/altsia" :date `February 8, 2026 - $\infty$`)
+      (_ Altsia (no-print (span (:style "color: silver") /a.lɛ.tʰ.ʃi.ja/)))
+      "An experimental markup language that respects document calculus. "
+      (_ A structured markup language designed to overcome all known shortcomings of Markdown through proper design, with a strong focus on composability with related tools like $\KaTeX$, Typst and (ex "https://github.com/kodama-community/kodama" Kodama).) )
+
+    (exhibit 
+      (:url-text "github.com/kodama-community/kodama" :date `January 19, 2025 - $\infty$`)
+      "Kodama"
+      "A Typst-friendly static forest site generator. "
+      (_ Kodama is a Rust-based static site generator for evergreen notes. It compiles Markdown, Typst and (ex "https://github.com/altsia/altsia" Altsia) sources into interlinked HTML pages through a two-stage architecture, featuring automatic theming and graph-based organization inspired by (ex "https://www.jonmsterling.com/index/" Jon Sterling)'s (ex "https://www.forester-notes.org/index/index.xml" Forester). ))
+
+    )) 
+
+  (segment Trivia (_
+    
+    (exhibit 
+      (:url-text "github.com/kokic/mooncraft" :date `January 19, 2026 - $\infty$`)
+      "Mooncraft"
+      "A highly complete remake of Minecraft in MoonBit. "
+      This zero-dependency game demo implements terrain generation, the infinite world, basic biomes, biome-dependent shaders, and complex entity models. )
+    
+    (exhibit 
+      (:url-text "github.com/kokic/UniTeX" :date `February 10, 2024 - $\infty$`)
+      "UniTeX"
+      "A transpiler that converts $\\TeX$ into Unicode."
+      This zero-dependency tool implements a Parser Combinator style $\KaTeX$ parser, which converts complex KaTeX macros into Unicode characters. Based on this core, it features a Web-based, real-time editor with built-in autocomplete for $\KaTeX$ macros. ) ))
+
+  (no-print (block 
+    (:style "text-align: center; color: silver; margin: 2em 0" :class manufacturing-consent-regular) 
+    `$$0 ~\gt~ -\int_S (\text{Poincar$\acute{\text{e}}$ metric}) ~=~ 4\pi(1-g)$$` ))
+
+  (no-print (span (:style "font-size: 0.8em; color: silver") Page generated by (ex "https://github.com/altsia/altsia" Altsia))) )
+
+(def ex (href text) (a (:href (href) :target "_blank") (text)))
+(def no-print (content) (block (:class "no-print") (content)))
+(def term (title text) (span (:title (title) :style "text-decoration: underline;") (text)))
+
+(def segment (title content)
+  (block
+    (header (:style "font-size: 1.5em; font-variant-caps: small-caps; border-bottom: 1px solid silver;") (title))
+    (content) ))
+
+(def exhibit (title subtitle text date url-text)
+  (block (:style "margin-top: 1em")
+    (block (title) --- (em (subtitle)))
+    (block (:style "margin-top: 0.25em; padding-left: 2em") (text))
+    (block (:style "text-align: right") (em (date)))
+    (block (:style "text-align: right") (ex (:href "https://(url-text)") (em (url-text)))) ))
+
+(html.head 
+  (link (:rel stylesheet :href "./main.css"))
+  
+  (link (:rel preconnect :href "https://fonts.googleapis.com"))
+  (link (:rel preconnect :href "https://fonts.gstatic.com" :crossorigin))
+  (link (:rel stylesheet :href "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"))
+  (link (:rel stylesheet :href "https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap")) )
