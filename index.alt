@@ -46,7 +46,7 @@
       (:url-text "github.com/kodama-community/kodama" :date `January 19, 2025 - $\infty$`)
       "Kodama"
       "A Typst-friendly static forest site generator. "
-      (_ Kodama is a Rust-based static site generator for evergreen notes. It compiles Markdown, Typst and (ex "https://github.com/altsia/altsia" Altsia) sources into interlinked HTML pages through a two-stage architecture, featuring automatic theming and graph-based organization inspired by (ex "https://www.jonmsterling.com/index/" Jon Sterling)'s (ex "https://www.forester-notes.org/index/index.xml" Forester). )) )) 
+      (_ Kodama is a Rust-based static site generator for evergreen notes. It compiles Markdown, Typst and (ex "https://github.com/altsia/altsia" Altsia) sources into interlinked HTML pages through a two-stage architecture, featuring automatic theming and graph-based organization inspired by (ex "https://www.jonmsterling.com/index/" Jon Sterling)'s (ex "https://www.forester-notes.org/index/index.xml" Forester). )) ))
 
   (segment Trivia (_
     
@@ -82,13 +82,13 @@
     (content) ))
 
 (def exhibit (title subtitle text date url-text)
-  (block (:style "margin-bottom: 1em")
+  (block (:style "margin: 1em 0")
     (block (title) --- (em (subtitle)))
     (block (:style "margin-top: 0.25em; padding-left: 2em") (text))
     (block (:style "text-align: right") (em (date)))
     (block (:style "text-align: right") (ex (:href "https://(url-text)") (em (url-text)))) ))
 
-(html.head 
+(html.head
   (link (:rel stylesheet :href "./main.css"))
   
   (link (:rel preconnect :href "https://fonts.googleapis.com"))
