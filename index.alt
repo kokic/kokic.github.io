@@ -31,7 +31,7 @@
     (list 
       (- (LLM)s cannot fundamentally evolve into (AGI), even if (LLM)s currently represent the closest approach humanity has achieved. Therefore, (MATP) does not inherently imply using (LLM)s as the machine learning method for interactive theorem proving. Concurrently, the existence of Proof Assistants makes verifying the actual reliability of a proof highly feasible. For this reason, I also believe that (MATP) will serve as a crucial testing ground on the path toward (AGI).)
 
-      (- I conduct research, code, and ponder problems purely for pleasure—as a way of enjoying life. The questions I explore are not confined to mathematics and computer science. In fact, I see everything I do as a way of understanding and appreciating the beautiful facets of human intelligence.) )))
+      (- I conduct research, code, and ponder problems purely for pleasure --- as a way of enjoying life. The questions I explore are not confined to mathematics and computer science. In fact, I see everything I do as a way of understanding and appreciating the beautiful facets of human intelligence.) )))
 
   (segment Selected Exhibits (_
     (no-print (p I have been a (ex "https://github.com/kokic" GitHub user) for over 10 years. However, given GitHub's shameless introduction and promotion of LLM services for code review and (term "Pull Request" PR), combined with major incidents affecting its core Git hosting functionality \(such as lost commits\), I will be moving all of my projects to (ex "https://codeberg.org/kokic" Codeberg) and (ex "https://tangled.org/kokic.tngl.sh" Tangled) in the future.) )
@@ -82,7 +82,7 @@
     (content) ))
 
 (def exhibit (title subtitle text date url-text)
-  (block (:style "margin-top: 1em")
+  (block (:style "margin-bottom: 1em")
     (block (title) --- (em (subtitle)))
     (block (:style "margin-top: 0.25em; padding-left: 2em") (text))
     (block (:style "text-align: right") (em (date)))
