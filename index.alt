@@ -4,7 +4,8 @@
 
   ;; DON'T LOSE YOUR WAY IN YOUR MIND
   (header (:style "font-size: 2em")
-    (span (:style "font-size: 1.5em; vertical-align: 0.4em" :class manufacturing-consent-regular) Kokic Liu)
+    (span (:style "font-size: 1.5em; vertical-align: 0.4em" :class manufacturing-consent-regular) 
+      (span (:style "color: #d53210") K)okic Liu)
     (span (:style "font-size: 1.5em" :class jetbrains-mono-100) /)
     (span (:style "font-size: 0.8em; vertical-align: -0.2em" :class jetbrains-mono-100) @kokic)
 
