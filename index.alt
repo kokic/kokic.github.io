@@ -1,6 +1,6 @@
 (meta (:lang "en" :dir "ltr"))
 
-(block (:id content)
+(block (:id content :class homepage)
 
   ;; DON'T LOSE YOUR WAY IN YOUR MIND
   (header (:style "font-size: 2em")
@@ -91,8 +91,9 @@
 
 (html.head
   (link (:rel stylesheet :href "./main.css"))
-  
   (link (:rel preconnect :href "https://fonts.googleapis.com"))
   (link (:rel preconnect :href "https://fonts.gstatic.com" :crossorigin))
   (link (:rel stylesheet :href "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"))
-  (link (:rel stylesheet :href "https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap")) )
+  (link (:rel stylesheet :href "https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap"))
+
+  (style (:scope homepage) (a (:color "#0745ad")) ))
