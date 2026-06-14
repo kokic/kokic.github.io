@@ -19,6 +19,8 @@
 }
 
 body {
+  --link-color: #0745ad;
+
   display: flex;
   justify-content: center;
 
@@ -34,7 +36,7 @@ ul {
 }
 
 a {
-  color: #0745ad
+  color: var(--link-color)
 }
 
 #content {
@@ -66,6 +68,15 @@ a {
 
   .no-print {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background-color: #1e1e2e;
+
+    --link-color: #316cd1;
   }
 }
 
