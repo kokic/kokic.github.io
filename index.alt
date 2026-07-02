@@ -7,7 +7,7 @@
   (span (:style "font-size: 1.5em" :class jetbrains-mono-100) /)
   (span (:style "font-size: 0.8em; vertical-align: -0.2em" :class jetbrains-mono-100) @kokic)
 
-  (span (:id "social") in
+  (span (:id "social") in 
     (def item (href text) (a (:class "item" :href (href)) (text)))
          (item "mailto:kokicplus@gmail.com" Email)
     ", " (item "https://www.zhihu.com/people/kokic-86" (cn 知乎))
