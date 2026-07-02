@@ -23,7 +23,7 @@
   (p My main research interests are Compiler Optimization, Document Language, Computer Algebra System, and Machine-Asisted Theorem Proving. I once worked as a visiting scholar at the (a (:href "https://bicmr.pku.edu.cn/" :style "color: #962e35" :target "_blank") Beijing International Center for Mathematical Research at Peking University) for one year, during which I researched how to adjust the Lean 4 compiler to facilitate better generation of mathematical proofs by Large Language Models. )
   
   (no-print (p
-    I am also deeply interested in literary and artistic works with a strong personal style, such as the films of (hk 周星驰), the music composed by (ja 菅野よう子), (ja 梶浦由記), et (ja 神前暁), und the novels of (cn 鲁迅), (ja 芥川龍之介), and (ja 虚渊玄). Because the number one spot always remains an unknown, my second favorite anime of all time is (span (:style "color: #d53210") KILL la KILL), and my second favorite instrumental piece is the Kyogen track (ex "https://touhoudb.com/S/15963" (ja 狂言「九十九星降」)). I also do graphic design from time to time, creating logos for my own projects as well as those of my friends. )) ))
+    I am also deeply interested in literary and artistic works with a strong personal style, such as the films of (hk 周星驰), the music composed by (ja 菅野よう子), (ja 梶浦由記), et (ja 神前暁), und the novels of (cn 鲁迅), (ja 芥川龍之介), and (ja 虚渊玄). Because the number one spot always remains an unknown, my second favorite anime of all time is (span (:style "color: #d53210") KILL la KILL), and my second favorite instrumental piece is the Kyogen track (ex "https://touhoudb.com/S/15963" (ja 凋叶棕 --- 狂言「九十九星降」)). I also do graphic design from time to time, creating logos for my own projects as well as those of my friends. )) ))
 
 (no-print (segment Belief
   (list 
@@ -74,10 +74,6 @@
 (def ex (href text) (a (:href (href) :target "_blank") (text)))
 (def no-print (content) (block (:class "no-print") (content)))
 (def term (title text) (span (:title (title) :style "text-decoration: underline;") (text)))
-
-(def cn (text) (span (:lang "zh-Hans-CN") (text)))
-(def hk (text) (span (:lang "zh-Hant-HK") (text)))
-(def ja (text) (span (:lang "ja") (text)))
 
 (def segment (title content)
   (block
