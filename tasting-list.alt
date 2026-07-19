@@ -1,0 +1,23 @@
+(doc (
+  :title "Kokic's Homepage - Tasting List" :lang "en" :dir "ltr" :paper "iso-b5"
+  :style "font-family: KaTeX_Main, serif"))
+
+(let todo (input (:type "checkbox" :disabled)))
+(let done (input (:type "checkbox" :disabled :checked)))
+
+(enum Games
+  (- (todo) Ever 17.)
+  (- (todo) Danganronpa: Trigger Happy Havoc. (date July 19, 2026 ~ ???))
+  (- (done) Sheepy: A Short Adventure. (date March 22, 2024 ~ June 23, 2026))
+  (- (done) 魔法少女ノ魔女裁判. (date December 18, 2025 ~ January 7, 2026))
+  (- (done) 月影のシミュラクル -解放の羽-. (date March 01, 2024))
+  (- (done) Devil May Cry 5. (date April 2, 2024 ~ $\infty$))
+  (- (done) Steins;Gate. (date February 07, 2024 ~ May 14, 2024))
+  (- (done) Witch Spring R. (date December 23, 2023 ~ December 30, 2023))
+  (- (done) Witch Spring I, II, and III. (date 2019)) )
+
+(def date (text)
+  (span (:style "color: silver") (text).) )
+
+(html.head
+  (html.include "import-katex.html") )

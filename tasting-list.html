@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kokic's Homepage - Tasting List</title>
+    <style>
+    @media screen {
+      .paper {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 28px 28px 28px 28px;
+        box-sizing: border-box;
+        font-size: 20px;
+      }
+    }
+    @media print {
+      @page {
+        size: 176mm 250mm;
+        margin: 18mm 18mm 18mm 18mm;
+      }
+      .paper {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 10.5pt;
+      }
+    }
+    </style>
+    <!-- Also see: https://katex.org/docs/autorender -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
+      integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"
+      integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js"
+      integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+    <!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/copy-tex.min.js"
+      integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            { left: "\\[", right: "\\]", display: true },
+          ],
+          trust: true,
+          strict: false,
+          throwOnError: false,
+          minRuleThickness: 0.05,
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="font-family: KaTeX_Main, serif" class="paper"><ol>Games<li><input type="checkbox" disabled> Ever 17.</li><li><input type="checkbox" disabled> Danganronpa: Trigger Happy Havoc. <span style="color: silver">July 19, 2026 ~ ???.</span></li><li><input type="checkbox" disabled checked> Sheepy: A Short Adventure. <span style="color: silver">March 22, 2024 ~ June 23, 2026.</span></li><li><input type="checkbox" disabled checked> 魔法少女ノ魔女裁判. <span style="color: silver">December 18, 2025 ~ January 7, 2026.</span></li><li><input type="checkbox" disabled checked> 月影のシミュラクル -解放の羽-. <span style="color: silver">March 01, 2024.</span></li><li><input type="checkbox" disabled checked> Devil May Cry 5. <span style="color: silver">April 2, 2024 ~ $\infty$.</span></li><li><input type="checkbox" disabled checked> Steins;Gate. <span style="color: silver">February 07, 2024 ~ May 14, 2024.</span></li><li><input type="checkbox" disabled checked> Witch Spring R. <span style="color: silver">December 23, 2023 ~ December 30, 2023.</span></li><li><input type="checkbox" disabled checked> Witch Spring I, II, and III. <span style="color: silver">2019.</span></li></ol></div>
+  </body>
+</html>
