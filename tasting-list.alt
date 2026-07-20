@@ -2,10 +2,11 @@
   :title "Kokic's Homepage - Tasting List" :lang "en" :dir "ltr" :paper "iso-b5"
   :style "font-family: KaTeX_Main, serif"))
 
-(let todo (input (:type "checkbox" :disabled)))
-(let done (input (:type "checkbox" :disabled :checked)))
+(let todo ☐)
+(let done ☑)
 
-(enum Novel
+(category Novel)
+(enum
   (- (done) 补天)
   (- (done) 奔月)
   (- (done) 理水)
@@ -14,6 +15,7 @@
   (- (done) 出关)
   (- (done) 非攻)
   (- (done) 起死)
+  (- (done) Ein Landarzt)
   (- (done) 美しさと哀しみと)
   (- (done) 南京の基督)
   (- (done) 煙草と悪魔)
@@ -25,7 +27,8 @@
   (- (done) 芋粥)
   (- (done) 鼻) )
 
-(enum Animation & Film
+(category Animation & Film)
+(enum 
   (- (todo) BLACK LAGOON)
   (- (todo) Paprika)
   (- (todo) PERFECT BLUE)
@@ -46,6 +49,7 @@
   (- (done) 鋼の錬金術師)
   (- (todo) 楽園追放 心のレゾナンス)
   (- (done) 楽園追放 -Expelled From Paradise-)
+  (- (todo) 蟲師)
   (- (done) KILL la KILL)
   (- (done) とある魔術の禁書目録―エンデュミオンの奇蹟―)
   (- (done) とある魔術の禁書目録Ⅲ)
@@ -55,11 +59,27 @@
   (- (done) K RETURN OF KINGS)
   (- (done) K MISSING KINGS)
   (- (done) K)
+  (- (todo) さよなら絶望先生)
+  (- (done) STEINS;GATE 0)
   (- (done) STEINS;GATE 負荷領域のデジャヴ)
   (- (done) STEINS;GATE 聡明叡智のコグニティブ・コンピューティング)
-  (- (done) STEINS;GATE) )
+  (- (done) STEINS;GATE)
+  (- (todo) 暦物語)
+  (- (todo) 化物語)
+  (- (done) 花物語)
+  (- (done) 続・終物語)
+  (- (done) 終物語)
+  (- (done) 偽物語)
+  (- (done) 傾物語)
+  (- (done) 鬼物語)
+  (- (done) 恋物語)
+  (- (done) 囮物语)
+  (- (done) 憑物語)
+  (- (done) 猫物語（白）)
+  (- (done) 猫物語（黒）) )
 
-(enum Game
+(category Game)
+(enum 
   (- (todo) Ever 17.)
   (- (todo) Danganronpa: Trigger Happy Havoc. (date July 19, 2026 ~ ???))
   (- (done) Sheepy: A Short Adventure. (date March 22, 2024 ~ June 23, 2026))
@@ -72,6 +92,9 @@
 
 (def date (text)
   (span (:style "color: silver") (text).) )
+
+(def category (text)
+  (div (:style "text-align: center; font-size: 1.5em; font-variant-caps: small-caps; border-bottom: 1px solid silver") § (text)) )
 
 (html.head
   (html.include "import-katex.html") )

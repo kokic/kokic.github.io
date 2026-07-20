@@ -20,10 +20,8 @@
 
 body {
   --link-color: #0745ad;
-
   display: flex;
   justify-content: center;
-
   font-family: KaTeX_Main, serif;
   font-size: 20px;
 }
