@@ -2,7 +2,7 @@
   :title "Kokic's Homepage - Tasting List" :lang "en" :dir "ltr" :paper "iso-b5"
   :style "font-family: KaTeX_Main, serif"))
 
-(let todo ☐)
+(let todo (h 1em))
 (let done ☑)
 
 (category Novel)
@@ -27,8 +27,9 @@
   (- (done) 芋粥)
   (- (done) 鼻) )
 
-(category Animation & Film)
+(category Animation, Film)
 (enum 
+  (- (done) 恶魔人 Crybaby)
   (- (todo) BLACK LAGOON)
   (- (todo) Paprika)
   (- (todo) PERFECT BLUE)
@@ -51,6 +52,10 @@
   (- (done) 楽園追放 -Expelled From Paradise-)
   (- (todo) 蟲師)
   (- (done) KILL la KILL)
+  (- (done) 文豪ストレイドッグス DEAD APPLE)
+  (- (done) 文豪ストレイドッグス 第3シーズン)
+  (- (done) 文豪ストレイドッグス 第2シーズン)
+  (- (done) 文豪ストレイドッグス)
   (- (done) とある魔術の禁書目録―エンデュミオンの奇蹟―)
   (- (done) とある魔術の禁書目録Ⅲ)
   (- (done) とある魔術の禁書目録Ⅱ)
