@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kokic's Homepage - Tasting List</title>
+  <style>
+    @media screen {
+      .paper {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 28px 28px 28px 28px;
+        box-sizing: border-box;
+        font-size: 20px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: 176mm 250mm;
+        margin: 18mm 18mm 18mm 18mm;
+      }
+
+      .paper {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 10.5pt;
+      }
+    }
+  </style>
+  <!-- Also see: https://katex.org/docs/autorender -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.css"
+    integrity="sha384-vlBdW0r3AcZO/HboRPznQNowvexd3fY8qHOWkBi5q7KGgqJ+F48+DceybYmrVbmB" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/katex.min.js"
+    integrity="sha384-AtrdNsnxl/75rvBneBVH7DtOvCxSVahR2zWqle1coBKd8DEmLoviqNeJSx64gNAs"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+    crossorigin="anonymous"></script>
+  <!-- Also see: https://github.com/KaTeX/KaTeX/tree/main/contrib/copy-tex -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.17.0/dist/contrib/copy-tex.min.js"
+    integrity="sha384-Pe2JWbaShhSRT0SESJ9XLPeAsi4yrNi7r/CiH0Coq7giBjK5a6Ae7XcybE8rNlQP"
+    crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true },
+        ],
+        trust: true,
+        strict: false,
+        throwOnError: false,
+        minRuleThickness: 0.05,
+      });
+    });
+  </script>
+  <style>
+    :root body {
+      --katex-font-size: 1em;
+      --katex-frac-line-font-size: 1.25em;
+    }
+
+    .katex {
+      font: normal var(--katex-font-size) KaTeX_Main, Times New Roman, serif;
+      line-height: 1rem;
+      text-indent: 0;
+      text-rendering: auto;
+    }
+
+    .katex .mfrac .frac-line {
+      font-size: var(--katex-frac-line-font-size);
+    }
+  </style>
+</head>
+
+<body>
+  <div style="font-family: KaTeX_Main, serif" class="paper">
+    <p>$\gdef\CC{\mathbb{C}}$
+      $\gdef\spaces#1{~ #1 ~}$</p>
+    <p>求解方程, 简单来说, 就是把方程的解表示为系数的组合. 在多项式方程的根式解这个语境下, 组合方式被限定在四则运算和开根号. 能够开根号的一大前提是, 我们需要将表达式整理为如下形式:</p>
+    $$x^n \spaces{=} a$$
+    <p>小 Abel 和小 Galois 已经熟悉了低次单变量多项式方程的求解方法. 换言之, 就是这些方程的求根公式. 如 $ax + b = 0$ 其中 $a \ne 0$, 它有闭式解 $x = -\frac{b}{a}$.
+      对于 $a=0$ 的情况, 退化为 $b = 0$, 除非 $b$ 恰好也是 $0$, 否则这个方程无解. 基于类似的理由, 当我们讨论一个 $n$ 次多项式的时候, 它的 $n$ 次项系数总是不为零.</p>
+    <p>第一个得到答案的人未必真正理解问题, 许多答案凭借着运气就可以在观察尚不充分的时候被找到. 但另一方面, 如果已经有一些猜测出来的正确答案, 本身可以作为极好的例子, 帮助我们找到分析一般情况的健全视角.</p>
+    <p>二次方程 $ax^2 + bx + c = 0$ 在 $\CC$ 有两个根且满足 $r_1+r_2 = -\frac{b}{a}, r_1 r_2 = \frac{c}{a}$, 这里 $r_1, r_2$
+      在解出来之前无法区分, 因为根与系数的关系始终只能提供关于 $r_i$ 的对称多项式. 这种微妙的现象是由 $x^2$ 引入的, 因为 $x^2 = (-x)^2$ 把原本不相等但是和为零的 $x, -x$
+      在平方这种映射下等同了起来. 一开始我们提到过, 已知的信息都是关于根的对称多项式, 而未知的部分, 也就是区分 $r_1, r_2$ 这样一个任务, 是必须找到一种视角, 去除根的对称性. 虽然
+      &quot;从对称的信息得到不对称的信息&quot; 这个事情在逻辑上看起来好像没有希望, 但是根号这种运算允许我们将这个过程反过来. 也就是说, 如果我们能找到一种途径, 把不对称的信息变成对称的信息, 再借助开根号
+      $\pm\sqrt{x^2}$ 这样一种针对这个任务专门引入的运算, 代数地解多项式方程这件事似乎就变得清晰了起来.</p>
+    <p>一旦使用了这种思路, 就会发现, 为这个问题制造困难的角色同时也是解决这个问题的关键. 第一步, 是先确定我们要找的不对称的信息具体来说是怎样的式子. 回忆 $(-x)^2 = x^2$, 由于加法交换律和乘法交换律的存在,
+      如果我们只在平方之内写加法和乘法, 这只不过是把一个对称的式子变成了另一个对称的式子, 但是我们从未听说过有减法交换律或者除法交换律, 所以对假定出来的根做减法运算或者除法运算是值得尝试的, 比如就考虑最简单的情况
+      $r_1-r_2$ 或者 $\frac{r_1}{r_2}$, 实际上也完全够用了. 一旦我们对他们应用平方映射, 就得到:</p>
+    $$(r_1 - r_2)^2 \spaces{=} r_1^2 + r_2^2 - 2r_1r_2, \quad \Big(\frac{r_1}{r_2}\Big)^2 \spaces{=}
+    \frac{r_1^2}{r_2^2}$$
+    <p>后者涉及到根的分式, 这并不是我们已知的信息. 相比之下, 前者的形状 $r_1^2 + r_2^2 - 2r_1r_2$ 就要友善得多, 这里 $r_1r_2$ 已经是知道部分了, 那么 $r_1^2 + r_2^2$ 呢?
+      可以尝试</p>
+    $$(r_1 + r_2)^2 \spaces{=} r_1^2 + r_2^2 + 2r_1r_2$$
+    <p>这样我们就知道了 $(r_1 - r_2)^2 = (r_1 + r_2)^2 - 4r_1r_2$. 注意, 右侧的表达式现在全都是已知的内容了. 这是一个相当有力的观察, 值得为它引入一个单独的记号,
+      尽管我们在这里独立发现了它, 但遵循前人习惯, 我们还是记为 $V(r_1, r_2)^2$, 至于为什么是 $V$ 这样一个字母, 目前阶段就把它当做代表着胜利的 $V$ 看待吧! 我们可以直接用系数表示出 $V(r_1,
+      r_2)^2$.</p>
+    $$V(r_1, r_2)^2 \spaces{=} \frac{b^2 - 4ac}{a^2}$$
+    <p>一方面是为了避免分式的写法, 另一方面我们也只关心 $V(r_1, r_2)^2$ 和 $0$ 的关系, 因此分母的 $a^2$ 是可以忽略的对象, 为此同样引入遵循前人习惯的记号 $\Delta = a^2 V(r_1,
+      r_2)^2$, 也就是说:</p>
+    $$\Delta \spaces{=} a^2(r_1 - r_2)^2 \spaces{=} b^2 - 4ac$$
+    <p>如果 $r_1, r_2$ 是实数, 那么 $r_1 - r_2$ 也肯定是实数了. 这个时候, $\Delta$ 作为一个实数的平方, 一定是满足 $\Delta \ge 0$ 的, 更进一步,
+      还能说明这个性质在逻辑上是充分必要的. 对于 $r_1 - r_2$ 来说, 如果 $\Delta = 0$, 那么毫无争议地知道这两个根相等. 那么有没有 $\Delta &lt; 0$ 的情况呢? 由于我们最初的假设是
+      $r_1, r_2 \in \CC$, 因此这样的情况是存在的, 比如 $(\sqrt{-1})^2 = -1$.</p>
+    <p>现在正是破除对称性的绝佳时刻! 对 $\Delta$ 开根号会得到两个和为零的结果, 所以我们将其表述为 $a(r_1 - r_2) = \pm\sqrt{\Delta}$. 到了这一步, 我们似乎已经非常接近答案了,
+      但是好像也没有尚未用上的性质. 这时经典逻辑的诡异与慷慨就体现出来了, 写下</p>
+    $$\begin{cases}
+    r_1+r_2 = -\frac{b}{a} \\ \\
+    a(r_1 - r_2) = \pm\sqrt{\Delta}
+    \end{cases}$$
+    <p>虽然看起来有些奇怪, 但这确实是一个线性方程组, 而且除了 $r_1, r_2$ 以外的量全部都是已知的. 于是, 在 Gauss 消元的帮助下, 用 $a(r_1+r_2) + a(r_1 - r_2) = 2ar_1$,
+      终于解出了最初方程的根.</p>
+    $$r_{1,2} \spaces{=} \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+    <p>这使你充满了决心.</p>
+  </div>
+
+</body>
+
+</html>
