@@ -2,35 +2,35 @@
 $\gdef\CC{\mathbb{C}}$
 $\gdef\spaces#1{~ #1 ~}$
 
-求解方程, 简单来说, 就是把方程的解表示为系数的组合. 在多项式方程的根式解这个语境下, 组合方式被限定在四则运算和开根号. 能够开根号的一大前提是, 我们需要将表达式整理为如下形式: 
+Solving an equation, in simple terms, means expressing its solutions as combinations of its coefficients. In the context of solving polynomial equations by radicals, the allowed combinations are restricted to the four arithmetic operations and root extraction. A major prerequisite for extracting roots is that we need to rearrange the expression into the following form:
 
 $$ x^n \spaces{=} a $$
 
-小 Abel 和小 Galois 已经熟悉了低次单变量多项式方程的求解方法. 换言之, 就是这些方程的求根公式. 如 $ax + b = 0$ 其中 $a \ne 0$, 它有闭式解 $x = -\frac{b}{a}$. 对于 $a=0$ 的情况, 退化为 $b = 0$, 除非 $b$ 恰好也是 $0$, 否则这个方程无解. 基于类似的理由, 当我们讨论一个 $n$ 次多项式的时候, 它的 $n$ 次项系数总是不为零. 
+Young Abel and young Galois were already familiar with methods for solving low-degree univariate polynomial equations. In other words, the root formulas of these equations. For example, $ax + b = 0$ with $a \ne 0$ has the closed-form solution $x = -\frac{b}{a}$. When $a = 0$, it degenerates to $b = 0$, and unless $b$ happens to be $0$ as well, the equation has no solution. For similar reasons, whenever we discuss a polynomial of degree $n$, the coefficient of its $x^n$ term is always nonzero.
 
-第一个得到答案的人未必真正理解问题, 许多答案凭借着运气就可以在观察尚不充分的时候被找到. 但另一方面, 如果已经有一些猜测出来的正确答案, 本身可以作为极好的例子, 帮助我们找到分析一般情况的健全视角. 
+The first person to obtain an answer may not truly understand the problem; many answers can be found by luck before observation has sufficiently advanced. On the other hand, if some correct answers have already been guessed, they themselves can serve as excellent examples, helping us find a sound perspective for analyzing the general case.
 
-二次方程 $ax^2 + bx + c = 0$ 在 $\CC$ 有两个根且满足 $r_1+r_2 = -\frac{b}{a}, r_1 r_2 = \frac{c}{a}$, 这里 $r_1, r_2$ 在解出来之前无法区分, 因为根与系数的关系始终只能提供关于 $r_i$ 的对称多项式. 这种微妙的现象是由 $x^2$ 引入的, 因为 $x^2 = (-x)^2$ 把原本不相等但是和为零的 $x, -x$ 在平方这种映射下等同了起来. 一开始我们提到过, 已知的信息都是关于根的对称多项式, 而未知的部分, 也就是区分 $r_1, r_2$ 这样一个任务, 是必须找到一种视角, 去除根的对称性. 虽然 "从对称的信息得到不对称的信息" 这个事情在逻辑上看起来好像没有希望, 但是根号这种运算允许我们将这个过程反过来. 也就是说, 如果我们能找到一种途径, 把不对称的信息变成对称的信息, 再借助开根号 $\pm\sqrt{x^2}$ 这样一种针对这个任务专门引入的运算, 代数地解多项式方程这件事似乎就变得清晰了起来. 
+The quadratic equation $ax^2 + bx + c = 0$ has two roots in $\CC$ satisfying $r_1+r_2 = -\frac{b}{a}$ and $r_1 r_2 = \frac{c}{a}$. Here $r_1, r_2$ are indistinguishable before they are solved, because the relation between roots and coefficients can only ever provide symmetric polynomials in the $r_i$. This subtle phenomenon is introduced by $x^2$, since $x^2 = (-x)^2$ identifies the unequal pair $x, -x$, whose sum is zero, under the squaring map. As we mentioned at the start, all known information consists of symmetric polynomials in the roots, and the unknown part — the task of distinguishing $r_1, r_2$ — requires finding a perspective that removes the symmetry of the roots. Although obtaining asymmetric information from symmetric information seems logically hopeless, the operation of taking roots allows us to reverse this process. That is, if we can find a way to turn asymmetric information into symmetric information, and then resort to root extraction $\pm\sqrt{x^2}$ — an operation introduced specifically for this task — algebraically solving polynomial equations seems to become clear.
 
-一旦使用了这种思路, 就会发现, 为这个问题制造困难的角色同时也是解决这个问题的关键. 第一步, 是先确定我们要找的不对称的信息具体来说是怎样的式子. 回忆 $(-x)^2 = x^2$, 由于加法交换律和乘法交换律的存在, 如果我们只在平方之内写加法和乘法, 这只不过是把一个对称的式子变成了另一个对称的式子, 但是我们从未听说过有减法交换律或者除法交换律, 所以对假定出来的根做减法运算或者除法运算是值得尝试的, 比如就考虑最简单的情况 $r_1-r_2$ 或者 $\frac{r_1}{r_2}$, 实际上也完全够用了. 一旦我们对他们应用平方映射, 就得到: 
+Once this line of thinking is adopted, one discovers that the character who creates difficulty for this problem is also the key to solving it. The first step is to determine what kind of expression the asymmetric information we seek should take. Recall $(-x)^2 = x^2$: since addition and multiplication are commutative, if we only write addition and multiplication inside the square, we merely turn one symmetric expression into another symmetric expression. But we have never heard of a commutative law for subtraction or division, so performing subtraction or division on the assumed roots is worth trying. For instance, consider the simplest cases $r_1-r_2$ or $\frac{r_1}{r_2}$; in fact they are entirely sufficient. Once we apply the squaring map to them, we obtain:
 
 $$ (r_1 - r_2)^2 \spaces{=} r_1^2 + r_2^2 - 2r_1r_2, \quad \Big(\frac{r_1}{r_2}\Big)^2 \spaces{=} \frac{r_1^2}{r_2^2} $$
 
-后者涉及到根的分式, 这并不是我们已知的信息. 相比之下, 前者的形状 $r_1^2 + r_2^2 - 2r_1r_2$ 就要友善得多, 这里 $r_1r_2$ 已经是知道部分了, 那么 $r_1^2 + r_2^2$ 呢? 可以尝试 
+The latter involves a fraction of roots, which is not information we already possess. In contrast, the shape of the former, $r_1^2 + r_2^2 - 2r_1r_2$, is much friendlier. Here $r_1r_2$ is already known, but what about $r_1^2 + r_2^2$? We can try:
 
 $$ (r_1 + r_2)^2 \spaces{=} r_1^2 + r_2^2 + 2r_1r_2 $$
 
-这样我们就知道了 $(r_1 - r_2)^2 = (r_1 + r_2)^2 - 4r_1r_2$. 注意, 右侧的表达式现在全都是已知的内容了. 这是一个相当有力的观察, 值得为它引入一个单独的记号, 尽管我们在这里独立发现了它, 但遵循前人习惯, 我们还是记为 $V(r_1, r_2)^2$, 至于为什么是 $V$ 这样一个字母, 目前阶段就把它当做代表着胜利的 $V$ 看待吧! 我们可以直接用系数表示出 $V(r_1, r_2)^2$. 
+In this way we know $(r_1 - r_2)^2 = (r_1 + r_2)^2 - 4r_1r_2$. Note that everything on the right-hand side is now known. This is a rather powerful observation, deserving of its own notation. Although we discovered it independently here, following the convention of our predecessors, we still denote it $V(r_1, r_2)^2$. As for why the letter $V$, at this stage just regard it as the $V$ standing for victory! We can express $V(r_1, r_2)^2$ directly in terms of the coefficients.
 
 $$ V(r_1, r_2)^2 \spaces{=} \frac{b^2 - 4ac}{a^2} $$
 
-一方面是为了避免分式的写法, 另一方面我们也只关心 $V(r_1, r_2)^2$ 和 $0$ 的关系, 因此分母的 $a^2$ 是可以忽略的对象, 为此同样引入遵循前人习惯的记号 $\Delta = a^2 V(r_1, r_2)^2$, 也就是说: 
+On the one hand, to avoid writing fractions, and on the other hand, since we only care about the relation between $V(r_1, r_2)^2$ and $0$, the denominator $a^2$ can be ignored. For this purpose we likewise introduce, following the convention of our predecessors, the notation $\Delta = a^2 V(r_1, r_2)^2$, that is:
 
 $$ \Delta \spaces{=} a^2(r_1 - r_2)^2 \spaces{=} b^2 - 4ac $$
 
-如果 $r_1, r_2$ 是实数, 那么 $r_1 - r_2$ 也肯定是实数了. 这个时候, $\Delta$ 作为一个实数的平方, 一定是满足 $\Delta \ge 0$ 的, 更进一步, 还能说明这个性质在逻辑上是充分必要的. 对于 $r_1 - r_2$ 来说, 如果 $\Delta = 0$, 那么毫无争议地知道这两个根相等. 那么有没有 $\Delta < 0$ 的情况呢? 由于我们最初的假设是 $r_1, r_2 \in \CC$, 因此这样的情况是存在的, 比如 $(\sqrt{-1})^2 = -1$. 
+If $r_1, r_2$ are real, then $r_1 - r_2$ is certainly real as well. In this case, $\Delta$, being the square of a real number, must satisfy $\Delta \ge 0$; moreover, this property can be shown to be logically necessary and sufficient. As far as $r_1 - r_2$ is concerned, if $\Delta = 0$, then there is no dispute that the two roots are equal. Can there be a case with $\Delta < 0$? Since our initial assumption was $r_1, r_2 \in \CC$, such cases do exist; for example, $(\sqrt{-1})^2 = -1$.
 
-现在正是破除对称性的绝佳时刻! 对 $\Delta$ 开根号会得到两个和为零的结果, 所以我们将其表述为 $a(r_1 - r_2) = \pm\sqrt{\Delta}$. 到了这一步, 我们似乎已经非常接近答案了, 但是好像也没有尚未用上的性质. 这时经典逻辑的诡异与慷慨就体现出来了, 写下 
+Now is the perfect moment to break the symmetry! Taking the square root of $\Delta$ yields two results whose sum is zero, so we state it as $a(r_1 - r_2) = \pm\sqrt{\Delta}$. At this point, we seem very close to the answer, but there appears to be no property left unused. This is where the strangeness and generosity of classical logic show themselves: write down
 
 $$
 \begin{cases}
@@ -39,10 +39,10 @@ a(r_1 - r_2) = \pm\sqrt{\Delta}
 \end{cases}
 $$
 
-虽然看起来有些奇怪, 但这确实是一个线性方程组, 而且除了 $r_1, r_2$ 以外的量全部都是已知的. 于是, 在 Gauss 消元的帮助下, 用 $a(r_1+r_2) + a(r_1 - r_2) = 2ar_1$, 终于解出了最初方程的根. 
+Although it looks a bit strange, this is indeed a system of linear equations, and every quantity other than $r_1, r_2$ is known. Thus, with the help of Gaussian elimination, using $a(r_1+r_2) + a(r_1 - r_2) = 2ar_1$, we finally solve for the roots of the original equation.
 
 $$
 r_{1,2} \spaces{=} \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
-这使你充满了决心. 
+It fills you with determination.
