@@ -24,6 +24,7 @@ p {
 }
 @media screen and (max-width: 1000px) {
   .paper {
+    min-width: 0;
     padding: 0.1cm;
   }
 }
@@ -83,7 +84,7 @@ p {
 }
 
 .cjk_fallback {
-  font-size: 1rem;
+  font-size: 1em;
   font-family: var(--text-font-family);
 }
 p:has(span.katex-html:empty) {
@@ -132,10 +133,10 @@ x^n &amp;- \Big(\sum_i r_i \Big)x^{n-1} + \Big(\sum_{i&lt;j} r_ir_j\Big)x^{n-2} 
 \end{aligned}$$
 <p>并对比系数. 这就呈现出一元 $n$ 次多项式根与系数的关系</p>
 $$\sum_{1 \leq i_1 &lt; i_2 &lt; \cdots &lt; i_k \leq n} r_{i_1} r_{i_2} \cdots r_{i_k} \spaces{=} (-1)^k \frac{a_{n-k}}{a_n}$$
-<p>那么左侧的 $\sum_{1 \leq i_1 &lt; i_2 &lt; \cdots &lt; i_k \leq n} r_{i_1} r_{i_2} \cdots r_{i_k}$ 正是 $n$ 个根 $r_1, r_2, \cdots, r_n$ 的 $k$ 次初等对称多项式, 方便起见我们记为 $e_k(r_1, r_2, \cdots, r_n)$. 更进一步, 对称多项式基本定理断言, 任意对称多项式 $f$ 可以唯一地表示为初等对称多项式的多项式组合, 即</p>
+<p>那么左侧的 $\sum_{1 \leq i_1 &lt; i_2 &lt; \cdots &lt; i_k \leq n} \allowbreak r_{i_1} r_{i_2} \cdots r_{i_k}$ 正是这 $n$ 个根的 $k$ 次初等对称多项式, 方便起见我们记为 $e_k(r_1, r_2, \cdots, r_n)$. 更进一步, 对称多项式基本定理断言, 任意对称多项式 $f$ 可以唯一地表示为初等对称多项式的多项式组合, 即</p>
 $$f(r_1, r_2, \cdots, r_n) \spaces{=} g(e_1, e_2, \cdots, e_n)$$
 <p>这里 $g$ 也是多项式, 而且 $g$ 的存在是唯一的. 在这两件事的帮助下, 我们可以发现, 任何一个关于根的对称多项式, 都可以唯一地用方程的系数表达.</p>
-<p>现在来看一些例子. 对于 $n=2$, 分别固定 $k=1$ 和 $k=2$. 这些的初等对称多项式 $\sum_{1 \le i_1 \cdots \le i_k \le n}r_1 \cdots r_k$ 就是我们之前已经讨论过的 $r_1 + r_2$ 和 $r_1r_2$. 对于 $n=3$, 同样可以依次固定 $k$, 随即得到</p>
+<p>现在来看一些例子. 对于 $n=2$, 分别固定 $k=1$ 和 $k=2$. 这些的初等对称多项式 $\sum_{1 \le i_1 \cdots \le i_k \le n} \allowbreak r_1 \cdots r_k$ 就是我们之前已经讨论过的 $r_1 + r_2$ 和 $r_1r_2$. 对于 $n=3$, 同样可以依次固定 $k$, 随即得到</p>
 $$\begin{aligned}
 r_1+r_2+r_3 &amp;= -\frac ba\\
 r_1r_2+r_1r_3+r_2r_3 &amp;= \frac ca\\
